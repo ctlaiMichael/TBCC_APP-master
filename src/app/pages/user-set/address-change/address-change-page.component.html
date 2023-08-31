@@ -1,0 +1,81 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageType=='edit'?'step_active':''"><span *ngIf="pageType=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageType=='confirm'?'step_active':''"><span *ngIf="pageType=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <ng-container *ngIf="pageType=='edit'">
+        <div class="row_single"></div>
+        <!-- nav_first_page_frame -->
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['zipcode']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    郵遞區號
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="ZipCode" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userInput.zipCode">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['zipcode']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['address']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    通訊地址
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="address" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userInput.address">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['address']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['tel']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    聯絡電話
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="phone" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userInput.tel">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['tel']|translate}}</i>
+        </div>
+        <!-- <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    目前您的轉帳機制：
+                </li>
+                <li class="inner_table_cell">
+                    <select name="WireTransfer" class="inner_select" [(ngModel)]="nowType">
+                        <option *ngFor="let item of safeType" [ngValue]="item">{{item.name}}</option>
+                    </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['tel']}}</i>
+        </div> -->
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security> 
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')"(click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent();">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+    </ng-container>
+    <!-- <confirm> -->
+    <ng-container *ngIf="pageType=='confirm'">
+        <app-confirm-address-page [userAddress]="userAddress" (backToEdit)="toEditPage($event)" (backPageEmit)="goResult($event)" ></app-confirm-address-page>
+    </ng-container>
+    <!-- <confirm> -->
+    <!-- <result> -->
+    <ng-container *ngIf="pageType=='result'">
+        <app-result [successMsg]="successMsg"></app-result>
+    </ng-container>
+    <!-- </result> -->
+</section>
+<!-- </憑證> -->
+<ng-container *ngIf="popFlag">
+    <app-certify (verify)="onVerifyResult($event)"></app-certify>
+</ng-container>

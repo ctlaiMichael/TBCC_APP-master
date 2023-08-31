@@ -1,0 +1,46 @@
+<section *ngIf="!showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <!-- select -->
+    <div class="row_single">
+        <ul class="inner_table_frame">
+            <li class="inner_table_cell">
+                庫存狀況
+            </li>
+            <li class="inner_table_cell">
+                <select name="" class="inner_select" (change)="onChangeType()" [(ngModel)]="nowType">
+                    <option *ngFor="let menu of dataType" [ngValue]="menu">{{ menu.name }}</option>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <ng-container [ngSwitch]="showListType">
+        <ng-container *ngSwitchCase="'N'">
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-deposit-account-page [page]="1" [unitType]="'N'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-deposit-account-page>
+                <!-- Page other -->
+                <ng-container #pageBoxN></ng-container>
+            </ul>
+        </ng-container>
+        <ng-container *ngSwitchCase="'A'">
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-deposit-account-page [page]="1" [unitType]="'A'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-deposit-account-page>
+                <!-- Page other -->
+                <ng-container #pageBoxA></ng-container>
+            </ul>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-deposit-account-page [page]="1" [unitType]="'Y'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-deposit-account-page>
+                <!-- Page other -->
+                <ng-container #pageBoxY></ng-container>
+            </ul>
+        </ng-container>
+    </ng-container>
+</section>
+
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <app-deposit-account-content [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-deposit-account-content>
+</ng-template>

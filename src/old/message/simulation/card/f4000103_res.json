@@ -1,0 +1,32 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-f4000103",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "f40:f4000103ResultType",
+      "@xmlns:f40" : "http://mnb.hitrust.com/service/schema/f4000103",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "f40:details" : {
+        "f40:detail" : [
+          {
+            "f40:bankCode" : "004",
+            "f40:bankName" : "台灣銀行"
+          },
+          {
+            "f40:bankCode" : "006",
+            "f40:bankName" : "合作金庫"
+          },
+          {
+            "f40:bankCode" : "007",
+            "f40:bankName" : "第一銀行"
+          }
+        ]
+      }
+    }
+  }
+}

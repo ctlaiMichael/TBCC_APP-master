@@ -1,0 +1,98 @@
+
+<section *ngIf="!showContent; else contentBox">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.選擇變更帳號</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<!-- <div class="row_single">
+			<h4 class="simple_title">投資標的</h4>
+		</div> -->
+		<div class='row_single'></div>
+		<div class="row_single">
+			<input type="text"  class="inner_input_normal normal_disable" value="{{setData.fundCode}}{{setData.fundName}}"> 
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					原現金收益帳號
+				</li>
+				<li class="inner_table_cell">
+					<input type="text"  class="inner_input" placeholder="{{fullData.profitAcnt}}">
+				</li>
+			</ul>
+		</div>
+
+		<!-- <div class="row_single">
+			<h4 class="simple_title">帳號變更</h4>
+		</div> -->
+
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					現金收益帳號變更
+				</li>
+				<li class="inner_table_cell">
+					<!-- <select  class="inner_select" [(ngModel)]="nowType">
+						<option *ngFor="let acct of trnsInAccts" [ngValue]="acct">{{ acct.trnsfrInAccnt }}</option>
+					</select> -->
+					
+					<!-- 2019/08/23修改 -->
+					<select  class="inner_select" [(ngModel)]="nowType">
+						<option *ngFor="let acct of InAC" [ngValue]="acct.acctNo">{{ acct.acctNo }}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+
+		<!-- <div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					目前您的安控機制
+				</li>
+				<li class="inner_table_cell">
+					<select  class="inner_select">
+						<option value="1" selected='selected'>SSL</option>
+						<option value="2">憑證</option>
+					</select>
+				</li>
+			</ul>
+		</div> -->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security> 
+<!-- 
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					SSL轉帳密碼 :
+				</li>
+				<li class="inner_table_cell">
+					<input type="text"  class="inner_input" placeholder="請輸入SSL轉帳密碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">未輸入SSL轉帳密碼</i>
+		</div> -->
+		<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security> 
+
+		<div class="row_single">
+			<p class="inner_content">
+				說明：<br>
+				當您於線上完成本交易「變更現金收益存入帳號」時，您的【贖回款存入帳號】亦會一併變更！
+			</p>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="onBackPageData(item)" >回上頁</a><a href="javascript:void(0)" (click)="changeResultPage()">確定變更</a>
+			</div>
+		</div>
+	</section>
+
+<!-- 結果頁 -->
+<ng-template #contentBox>
+    <app-deposit-account-result [setData]="content_data" [fundName]="fundName" [e]="safeE"></app-deposit-account-result>
+</ng-template>
+
+

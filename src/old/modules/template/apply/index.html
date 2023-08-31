@@ -1,0 +1,15 @@
+<!-- 申辦用 tab 框架 -->
+<!--apply-menu></apply-menu-->
+<!-- 信用卡 slider 框架 -->
+<div ng-if="page_name==='index'">
+	<card-slider-directive></card-slider-directive>
+	<div class="credit_card_info">
+		<div class="card_info_tab">
+			<a href="javascript:void(0);" ng-click="showNowCardInfo('trait');" class="trait" >{{'CTRL_APPLY.CARD_INFO_TRAIT' | translate}}</a>
+			<a href="javascript:void(0);" ng-click="showNowCardInfo('privilege');" class="privilege" >{{'CTRL_APPLY.CARD_INFO_PRIVILEGE' | translate}}</a>
+		</div>
+		<p class="card_info"></p>
+	</div>
+</div>
+<!-- 信用卡 選擇頁 框架 -->
+<apply-choose-directive ng-if="page_name==='choose'"></apply-choose-directive>

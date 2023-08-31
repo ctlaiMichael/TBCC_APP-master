@@ -1,0 +1,23 @@
+<!-- Page Start-->
+<ul *ngFor="let item of data" class="credit_card_bill_detail_list">
+  <li>
+    <p>
+      <span>日期</span>
+      <span>{{(item| fieldCheck:'date')|htDate: 'date'}}</span>
+    </p>
+    <p>
+      <span>帳號</span>
+      <span>{{(item| fieldCheck:'acctNo')|| accountFormate}}</span>
+    </p>
+    <p>
+      <span>支票號碼</span>
+      <span>{{item| fieldCheck:'checkNo'}}</span>
+    </p>
+    <p>
+      <span>金額</span>
+      <span>{{(item| fieldCheck:'amount') | htMoney}}</span>
+    </p>
+  </li>
+</ul>
+
+<!-- Page End-->

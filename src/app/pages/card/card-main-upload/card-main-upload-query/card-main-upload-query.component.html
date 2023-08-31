@@ -1,0 +1,39 @@
+<ng-container *ngFor="let queryItem of queryData">
+    <!-- *2020/05/26 第一階段不顯示永久額度，此判斷須於第二階段移除，都需顯示 -->
+    <ng-container *ngIf="queryItem.applyType == '0'">
+        <ul class="credit_card_bill_detail_list loan">
+            <li>
+                <p class="credit_card_name">
+                    <i>網銀案件編號</i><br>
+                    <i>{{queryItem.txNo}}</i>
+                </p>
+                <p>
+                    <span>申請類別：</span>
+                    <ng-container *ngIf="queryItem.applyType == '0'">
+                        <span>臨時額度</span>
+                    </ng-container>
+                    <ng-container *ngIf="queryItem.applyType == '1'">
+                        <span>永久額度</span>
+                    </ng-container>
+                </p>
+                <p>
+                    <span>信用卡號：</span>
+                    <span>{{queryItem.cardAccount}}</span>
+                </p>
+                <p>
+                    <span>申請日：</span>
+                    <span>{{queryItem.applyDate | htDate:'date'}}</span>
+                </p>
+                <p>
+                    <span>申請迄日：</span>
+                    <span>{{queryItem.endDate | htDate:'date'}}</span>
+                </p>
+                <p>
+                    <span>申請額度：</span>
+                    <span>{{queryItem.applyAmount | currencyMoney:'TWD'}}元</span>
+                </p>
+                <a href="javascript:void(0);" (click)="onUpload(queryItem)" class="">上傳文件</a>
+            </li>
+        </ul>
+    </ng-container>
+</ng-container>

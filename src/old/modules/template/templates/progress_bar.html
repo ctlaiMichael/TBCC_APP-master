@@ -1,0 +1,9 @@
+<!--進度條-->
+<div class="step_col">
+	<ul>
+		<li ng-repeat="(step_key, step) in templateProgressBar.bar"
+			 after-progress-bar="onProgressBarFinish" data-step="{{step_key}}">
+			<a ng-class="showBoxStep==step_key ? 'active' : 'btn_disable'"><b>{{step_key}}</b><span>{{step}}</span></a>
+		</li>
+	</ul>
+</div>

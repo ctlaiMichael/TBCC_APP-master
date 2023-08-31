@@ -1,0 +1,38 @@
+{
+  "resHeader":{
+    "serviceId":"Twd.QueryChequeAcountShortage",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+
+  "acctNo":"04864705444550",
+  "ediName":"企業戶名稱",
+  "balance": "-120,000",
+  "chequeTotalCount": "3",
+  "chequeTotalAmt": "12,000,000,000,000",
+  "details": [
+    {
+      "chequeNo":"AA0000001",
+      "shortageAmt":"1,100"
+    },
+    {
+      "chequeNo":"AA0000002",
+      "shortageAmt":"1,200"
+    },
+    {
+      "chequeNo":"AA0000003",
+      "shortageAmt":"1,300"
+    },
+    {
+      "chequeNo":"AA0000004",
+      "shortageAmt":"1,110,000"
+    }
+  ]
+}
+

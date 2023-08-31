@@ -1,0 +1,72 @@
+
+<section>
+<ng-container *ngIf="nowStep!=='result'; else resultBox;">
+   
+      <div class="agree_info">
+        <div class="row_single">
+          <h4 class='simple_title'>電子化服務委託辦理特定金錢信託交易約定書</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">｢電子式交易｣係指委託人利用網際網路、數據通信傳輸及未來其他電子科技傳輸工具等方式，就特定金錢信託投資國內外有價證券之運用及其他相關事項指示受託人，並就所選定服務方式，同意下列各款：              
+                <br><i style="font-weight:bolder;color: #525252;">一、委託人利用電子式交易指示投資標的之申購、賣出或贖回、轉換、異動或查詢等服務，須先與受託人簽訂相關書件暨其他相關契約，並取得授權密碼，始得進行交易。</i>
+                <br><i style="font-weight:bolder;color: #525252;">二、 委託人使用電子式交易時，應先以密碼證明其身分。委託人應負責密碼之保密，受託人係憑正確密碼之指示提供服務，倘有未經委託人合法授權之情形，委託人應以電話、書面或雙方約定方式通知受託人停止該服務。</i>
+                <br><i style="font-weight:bolder;color: #525252;">三、 委託人如欲變更密碼，應以電子式交易或書面為之，但應以受託人確認完成相關手續後始生效力。</i>
+                <br><i style="font-weight:bolder;color: #525252;">四、 委託人以電子式交易指示有價證券之申購、賣出或贖回、轉換或異動時，應於受託人指定時間內為之，若因不可抗力或不可歸責於受託人之事由，如斷電、斷線、網路傳輸干擾、電信壅塞、第三人破壞等，致交易或其他指示遲延或無法完成時，受託人對該事由所致損失不負賠償責任。</i>
+                <br><i style="font-weight:bolder;color: #525252;">五、 委託人及受託人應妥善保存本服務相關紀錄，並應確保紀錄之真實性及完整性。</i>
+                <br><i style="font-weight:bolder;color: #525252;">六、 其餘事項悉依委託人與受託人簽訂之「開戶總約定書」相關約定事項、「網路銀行服務申請書」及「網路銀行服務約定事項」辦理。</i>
+                <br>委託人已完全明瞭並同意遵守本約定書相關內容。
+              </p>
+         
+        </div>
+        <!-- <li class="inner_table_cell ">
+             <input type="password" name="" maxlength="12" class="inner_input" placeholder="{{ placeholderStr | translate }}"
+             [(ngModel)]="inp_data"  >
+        </li> -->
+
+         <!-- 請輸入行動網銀登入密碼 -->
+            <!-- <input type="password" name="" maxlength="12" class="inner_input" placeholder="{{ placeholderStr | translate }}"
+             autocomplete="off" disableautocomplete 
+             [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" > -->
+        <!-- <app-login-pswd [setData]="inpSetData" [errorStr]="error_data.pwd" (backValueEmit)="onInputBack($event)"></app-login-pswd> -->
+        <!-- <div class="row_single">
+        <div class="inner_checkbox abc">
+          <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+            (click)="checkClick()">
+          <label for="inner_checkbox01">
+            <span>
+              <i></i>
+            </span>
+            <b>我已暸解並同意上述之內容</b>
+          </label>
+        </div>
+      </div> -->
+      <div class="row_single">
+          <li class="inner_table_cell">
+            行動網銀登入密碼
+          </li>
+          <li class="inner_table_cell" >
+            <input type="password"  maxlength='12' name='' style="border: 1px solid #d0d3d6;" [(ngModel)]="reqData.pwd" class="inner_input">
+          </li>
+      </div>
+
+        <div class='row_single'>
+          <div class="double_button">
+            <!-- 不同意 -->
+            <a (click)="clickDisAgree()">不同意</a>
+            <!-- 同意 -->
+            <a (click)="clickAgree()">暸解並同意</a>
+          </div>
+        </div>
+        <!-- <ng-container *ngIf="cancelBtn">
+          <div class="row_single">
+            <a (click)="cancelAgree()" class="button_confirm">取消約定</a>
+          </div>
+        </ng-container> -->
+      </div>
+
+    </ng-container>
+    <ng-template #resultBox>
+      <!-- 結果頁 -->
+      <app-edit-result-temp [setData]="resultData" (backPageEmit)="resultBack()"></app-edit-result-temp>
+    </ng-template>
+  </section>

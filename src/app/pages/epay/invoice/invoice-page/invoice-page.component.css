@@ -1,0 +1,49 @@
+.barcode {
+    width: 100%;
+}
+
+.btnStyle {
+    text-align: center;
+    color: #08b889;
+}
+
+.form-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-color: #f1f1f1;
+    color: #08b889;
+    top: -95px;
+    height: 30px;
+    width: 30px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 7px;
+    outline: none;
+}
+
+.form-radio:checked::before {
+    position: absolute;
+    font: 13px/1 'Open Sans', sans-serif;
+    left: 11px;
+    top: 7px;
+    content: '\02143';
+    transform: rotate(40deg);
+}
+
+.form-radio:hover {
+    background-color: #f7f7f7;
+}
+
+.form-radio:checked {
+    background-color: #f1f1f1;
+}
+
+.content_infor{
+  padding: 0px 25px;
+}
+
+

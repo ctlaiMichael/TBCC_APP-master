@@ -1,0 +1,75 @@
+{
+    "EPAY": {
+        "FIELD": {
+            "BACK_EPAY": "返回合庫E Pay",
+            "hostCode": "錯誤代碼",
+            "hostCodeMsg": "主機代碼訊息",
+            "merchantName": "特店名稱",
+            "noticeNbr": "銷帳編號",
+            "deadlinefinal": "繳納期限",
+            "charge": "手續費",
+            "txnAmt": "交易金額",
+            "trnsfrOutAcct": "交易帳號",
+            "trnsNo": "交易序號",
+            "trnsDateTime": "交易時間"
+        },
+        "ERROR": {
+            "DATA_FORMAT_ERROR": "很抱歉，資料遺失。請您重新掃描QR Code！",
+            "SMART_PAY_ALLOW": "請先開通SmartPay與設定帳號",
+            "UNKNOW_API_ERROR": "QR Code解析失敗(SERVER)",
+            "UNKNOW_QRCODE_TYPE": "QR Code掃描失敗(不明類別)",
+            "UNKNOW_EVM_QRTYPE": "非emv非台灣pay",
+            "OFFSHORE_NOSUPPORT": "目前不支援境外交易",
+            "TRANS_NOSUPPORT": "此交易尚未開放",
+            "TAX_NOSUPPORT": "尚未提供此稅款繳納服務",
+            "UNKNOW_EVM_SUPPORT": "QR Code掃描失敗(SUPPORT_ERRPR)",
+            "EXPIRED": "QR Code效期逾期",
+            "AMOUNT_LIMIT_200": "本交易超過單筆交易200萬限額",
+            "NO_SECURITY": "若您已申請OTP轉帳機制，請前往「個人設定 > 裝置綁定」服務進行裝置綁定，若您尚未申請憑證或OTP轉帳機制，請逕洽各營業單位辦理。"
+        },
+        "TRNSTYPE": {
+            "1": "支付",
+            "2": "繳費",
+            "3": "繳稅",
+            "4": "轉帳",
+            "5": "退貨",
+            "6": "轉帳購物"
+        },
+        "mode": {
+            "0": "主掃",
+            "1": "被掃"
+        },
+        "status": {
+            "0": "交易成功",
+            "1": "交易失敗",
+            "2": "處理中",
+            "3": "交易成功-已退款"
+        },
+        "SEARCH_RECORD": {
+            "START_EXCEED_END": "查詢起日不可以大於查詢迄日",
+            "INTERVAL_EXCEED_2M": "資料查詢區間最大為2個月"
+        },
+        "RECOMMEND": {
+            "FIELD": {
+                "ID": "推薦人編號",
+                "ID_NUM": "推薦人編號({{ number }}碼)",
+                "ID_EDIT": "請輸入推薦人編號"
+            },
+            "ERROR": {
+                "ID": "請輸入推薦人編號(共{{ number }}碼)",
+                "EDIT_ERROR": "更新推薦人編號失敗"
+            }
+        },
+        "PAY_CARD": {
+            "FIELD": {
+                "merchantName": "費用項目",
+                "noticeNbr": "銷帳編號",
+                "deadlinefinal": "繳納期限",
+                "charge": "手續費",
+                "txnAmt": "交易金額",
+                "trnsfrOutAcct": "交易帳號",
+                "cardNbr": "交易卡號"
+            }
+        }
+    }
+}

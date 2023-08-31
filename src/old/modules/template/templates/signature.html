@@ -1,0 +1,15 @@
+<div class="signature_frame">
+	<center>申請人簽署中文姓名</center>
+	<!-- 簽名區塊 -->
+	<div class="signature_area" ng-click="initPainter()" ng-mouseenter="initPainter()" id="signatureDemo">
+		<p class="signature_text">{{ 'INPUT_MSG.SIGN' | translate }}</p><!--請點擊後簽名-->
+	</div>
+	<canvas style="display:none;" class="signature_area" id="signatureCanvas"
+	></canvas>
+	<!-- 簽名區塊 //End -->
+
+	<div class="button_row">
+		<button class="button button_cancel" ng-click="clearPainter()">{{'BTN.CLEAR' | translate}}</button>
+		<button class="button button_submit" ng-click="signatureSuccess()" style="color: #009176;border: 1px solid #009176;">{{signature_check_name}}</button>
+	</div>
+</div>

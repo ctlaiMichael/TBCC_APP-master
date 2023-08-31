@@ -1,0 +1,270 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+		<!-- <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title" >返回</p>
+        </div> -->
+		<div class="page_title">交易結果</div>
+		<!-- <div class="back_bt" >
+            <p class="back_title" ng-click="logout()" >登出</p>
+        </div> -->
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+				<p style="text-align:center;font-weight: bold;font-size: 16px">基金申購</p>
+			<div class="result_location">
+				<!-- <div class="result_title">
+					<p>交易結果</p>
+                </div> -->
+                
+				<div class="result_title2">
+					<p ng-show="result2.trnsRsltCode=='0'">交易成功</p>
+					<p ng-show="result2.trnsRsltCode=='1'">交易失敗</p>
+					<p ng-show="result2.trnsRsltCode!='0'&&result2.trnsRsltCode!='1'">交易異常</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<!-- <div class="main_content"> -->
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-show="result2.trnsRsltCode!=0">
+				<!-- <div class="result_input" > -->
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result2.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">主機代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result2.hostCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				
+						
+		<div class="row" ng-show="result2.trnsRsltCode == 0">
+			<div class="main_content">
+				<div class="confirm_input">
+
+					<div class="content_infor">
+						<div class="content_text"><p>生效日期:</p></div>
+						<div class="ac_code ac_purple" ng-bind="result2.effectDate11" readonly></div>
+					</div>
+
+					<div class="content_infor">
+							<div class="content_text"><p>交易編號:</p></div>
+							<div class="ac_code ac_purple" ng-bind="result2.transCode" readonly></div>
+						</div>
+
+					<div class="content_infor">
+						<div class="content_text"><p>基金名稱:</p></div>
+						<div class="ac_code ac_purple" ng-bind="result.fundName" readonly></div>
+					</div>
+
+					<div class="content_infor">
+					<div class="content_text">
+						<p>約定投資金額:</p>
+					</div>
+					<div class="ac_code ac_purple"><span ng-bind="result2.amount"></span>元</div>
+					</div>
+
+					<div class="content_infor">
+						<div class="content_text"><p>基本手續費率:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.baseRate"></span>%</div>
+					</div>
+
+					<div class="content_infor">
+						<div class="content_text"><p>優惠手續費率:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.favorRate"></span>%</div>
+					</div>
+
+					<div class="content_infor">
+						<div class="content_text"><p>申購手續費:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.serviceFee"></span>元</div>
+					</div>
+
+					<div class="content_infor">
+						<div class="content_text"><p>扣款總金額:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="numFmt(result2.totalAmnt)"></span>元</div>
+					</div>
+
+					<div class="content_infor" ng-show = "result2.code != '[object Object]'">
+						<div class="content_text"><p>投資方式:</p></div>
+						<div class="ac_code ac_purple">定期不定額</div>					
+					</div>
+
+					<div   ng-show = "result2.code != '[object Object]'" style="text-align: center;background-color: #AAD5CA;display: flex;flex-direction: column;border-right: solid 5px white;border-left: solid 5px white;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+						<div class="invest_title11" >
+							<!-- <img src="ui/data/ad/66.gif" alt=""  class="img-responsive" style="height: 60px;width: auto;height: auto;max-width: 100%;max-height: 100%;" /> -->
+						<p class="invest_con2" >跌幅級距</p>
+						<p class="invest_con2">加/減碼金額</p>
+						<p class="invest_con2">漲幅級距</p>
+						<p class="invest_con2">加/減碼金額</p>
+				
+					</div>    
+				
+				   
+				
+					<div class="invest2">
+						
+						<p style="font-size:12px">-5％>跌幅結果> -10%</p>
+						<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.decline1Cd" ></div>
+						<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.decline1" ></div>
+						
+						<p style="font-size:12px">5％<漲幅結果<10%</p>
+						<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.gain1Cd" ></div>
+						<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.gain1" ></div>
+							
+						
+					</div>
+				
+					<div class="invest2">
+							
+							<p style="font-size:12px">-10％>跌幅結果> -15%</p>
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.decline2Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.decline2" ></div>
+							
+							<p style="font-size:12px">10％<漲幅結果<15%</p>   
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.gain2Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.gain2" ></div>
+								
+							
+					</div>
+				
+					<div class="invest2">
+						
+						<p style="font-size:12px">-15％>跌幅結果> -20%</p>
+						<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.decline3Cd" ></div>
+						<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.decline3" ></div>
+						
+						<p style="font-size:12px">15％<漲幅結果<20%</p>     
+						<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.gain3Cd" ></div>
+						<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.gain3" ></div>
+						  
+					</div>
+				
+					<div class="invest2">
+							<p style="font-size:12px">-20％>跌幅結果> -25%</p>
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.decline4Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.decline4" ></div>
+							
+							<p style="font-size:12px">20％<漲幅結果<25%</p>      
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.gain4Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.gain4" ></div>
+					</div>
+				
+					<div class="invest2">
+							<p style="font-size:12px">-25％<跌幅結果&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.decline5Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.decline5" ></div>
+							
+							<p style="font-size:12px">25％>漲幅結果&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+							<div   style ="width:10px;font-size:10px;color: blue" ng-bind="result2.gain5Cd" ></div>
+							<div   style ="width:40px;font-size:10px;text-align:left;color: blue" ng-bind="result2.gain5" ></div>
+					</div>
+							
+					</div>
+
+					
+				<div class="content_infor" ng-show="result2.payDate31 != '[object Object]'">
+					<div class="content_text"><p>每月扣款日:</p></div>
+					<div class="ac_number ac_purple" ng-bind="result2.payDate31" readonly></div>
+				</div>
+
+				<div class="content_infor" ng-show="result2.payDate5W != '[object Object]'">
+					<div class="content_text"><p>每週月扣款日:</p></div>
+					<div class="ac_number ac_purple" ng-bind="result2.payDate5W " readonly></div>
+				</div>
+
+				<div class="content_infor">
+						<div class="content_text"><p>扣款帳號/現金收益帳號:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.payAcnt"></span></div>
+				</div>
+
+				<div class="content_infor">
+						<div class="content_text"><p>通知/出場:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result1.notiCD11"></span></div>
+				</div>
+
+				<div class="content_infor"  ng-if="result2.sLoss != '000'">
+						<div class="content_text"><p>停損點:</p></div>
+						<!-- <div class="ac_code ac_purple"><span ng-bind="result2.sLossCD"></span><span ng-bind="result2.sLoss"></span></div> -->
+						<div class="ac_code ac_purple">"-"</span><span ng-bind="result2.sLoss"></span>%</div>
+						
+				</div>
+
+				<div class="content_infor"  ng-if="result2.sPro != '000'">
+						<div class="content_text"><p>停利點:</p></div>
+						<!-- <div class="ac_code ac_purple"><span ng-bind="result2.sProCD"></span><span ng-bind="result2.sPro"></span></div> -->
+						<div class="ac_code ac_purple">"+"</span><span ng-bind="result2.sPro"></span>%</div>
+						
+				</div>
+
+				<div class="content_infor" ng-show="result.kkk2 !=1">
+						<div class="content_text"><p>服務理專:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.salesName"></span></div>
+				</div>
+
+				<div class="content_infor" ng-show="result.ppp2 !=1">
+						<div class="content_text"><p>轉介人員:</p></div>
+						<div class="ac_code ac_purple"><span ng-bind="result2.introName"></span></div>
+				</div>
+					
+				</div> <!--main_input end-->
+
+				
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt " ng-click="clickSubmit()">確認</button>
+						<!-- <button type="button" class="cancel_bt " ng-click="clickCancel()">取消</button> -->
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div> <!--main_content end-->
+		</div> <!--row end-->
+								<!-- </section> main_sec end -->
+							<!-- </div> -->
+						
+							
+						<!-- </div> -->
+
+				<!-- </div> -->
+				<!--main_input end-->
+
+				<!-- <div class="notice_infor">
+					<div class="notice_text"><p>提醒您:</p></div>
+					<div class="notice_text2">1.您可至財政部Paytax網站(https://paytax.nat.gov.tw)查詢繳稅紀錄。
+						<br>2.本行24小時客服專線，0800-033-175。</div>
+				</div> -->
+
+				<!--content_checkbt 按鈕組合-->
+				<!-- <div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt2" ng-click="clickSubmit()">確定</button>
+						
+					</div>
+				</div> -->
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果

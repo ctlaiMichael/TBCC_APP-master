@@ -1,0 +1,112 @@
+<section>
+	<div class="row_single">
+		<h4 *ngIf="editPageFlag =='EditOne' && fullData['txKind'] =='B'" class='simple_title'>案件核准條件-信貸簽約對保</h4>
+		<h4 *ngIf="editPageFlag =='EditTwo' && fullData['txKind'] =='B'" class='simple_title'>選擇對保方式-信貸簽約對保</h4>
+		<h4 *ngIf="editPageFlag =='EditOne' && (fullData['txKind'] =='A' || fullData['txKind'] =='D')" class='simple_title'>案件核准條件-房貸簽約對保</h4>
+		<h4 *ngIf="editPageFlag =='EditTwo' && (fullData['txKind'] =='A' || fullData['txKind'] =='D')" class='simple_title'>選擇對保方式-房貸簽約對保</h4>
+	</div>
+	<ul class="table_info loan_1 loan_2">
+		<li class="table_row">
+			<span>姓名</span>
+			<i>{{custInfo.name}}</i>
+		</li>
+		<li class="table_row">
+			<span>身分證字號</span>
+			<i>{{custInfo.id_no | identityMask}}</i>
+		</li>
+		<li class="table_row">
+			<span>申請日期</span>
+			<i>{{fullData.date | htDate:'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>申請種類</span>
+			<i>{{txKind}}</i>
+		</li>
+		<li class="table_row">
+			<span>網銀案件編號</span>
+			<i>{{fullData.ebkCaseNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>申請金額</span>
+			<i>{{fullData.give_amt | currencyMoney:'TWD'}}元</i>
+		</li>
+		<li class="table_row">
+			<span>撥入帳號</span>
+			<i>{{fullData.account | accountFormate}}</i>
+		</li>
+	</ul>
+	<div class="row_single">
+		<h4 class='simple_title'>案件核准條件</h4>
+	</div>
+	<ul class="table_info loan_1 loan_2">
+		<li class="table_row">
+			<span>核准日期</span>
+			<i>{{fullData.apraprde | htDate:'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>擬准金額</span>
+			<i>{{fullData.apramt | currencyMoney:'TWD'}}元</i>
+		</li>
+		<li class="table_row">
+			<span>貸款分行</span>
+			<i>{{fullData.branch_id}}&nbsp;{{fullData.branch_nam}}</i>
+		</li>
+		<li class="table_row">
+			<span>限制清償期間</span>
+			<i>{{fullData.aprlimit}}</i>
+		</li>
+		<li class="table_row">
+			<span>開辦費</span>
+			<i>{{fullData.aprfee | currencyMoney:'TWD'}}元</i>
+		</li>
+		<li class="table_row">
+			<span>聯徵查詢費</span>
+			<i>{{fullData.aprJcIcFee | currencyMoney:'TWD'}}元</i>
+		</li>
+		<li class="table_row">
+			<span>攤還方式</span>
+			<i>{{fullData.aprrefundWay}}</i>
+		</li>
+	</ul>
+
+	<div class="row_single"></div>
+	<div class="row_single">
+		<h4 class="simple_title">期間及利率</h4>
+	</div>
+	<div class="row_single">
+		<ul class="inner_content">
+			<!--第一段按月繳息:自實際撥款日起，前XX年XX個月按月付息-->
+			<li *ngFor="let item of otherInfoData let indexnum = index;">{{(indexnum+1)}}. 第{{item | fieldCheck: ['aprintBgn'
+				,{zero_type:false, empty_str:'--'}]}}至{{item | fieldCheck: ['aprintEnd' ,{zero_type:false,
+				empty_str:'--'}]}}個月依{{item.aprintTyName}}{{item | fieldCheck: ['aprint' ,{zero_type:false, empty_str:'--'}]}}%，
+				加碼年息{{item | fieldCheck: ['apraint' ,{zero_type:false, empty_str:'--'}]}}%，即以 {{item | fieldCheck: ['aprRate'
+				,{zero_type:false, empty_str:'--'}]}}%浮動計息。
+			<li>
+		</ul>
+	</div>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				委託扣款帳號
+			</li>
+			<li class="inner_table_cell">
+				<input type="tel" class="inner_input" placeholder="{{fullData.account | accountFormate }}">
+			</li>
+		</ul>
+		<i class="input_info_warnning"></i>
+	</div>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<div class="double_button">
+			<ng-container *ngIf="editPageFlag =='EditOne'; else nextPage">
+				<a href="javascript:void(0)" (click)="onDisagree()">{{'BTN.AGREE.DISAGREE' | translate}}</a>
+				<a href="javascript:void(0)" (click)="onAgree()">{{'BTN.AGREE.AGREE' | translate}}</a>
+			</ng-container>
+			<ng-template #nextPage>
+				<a href="javascript:void(0)" (click)="onBranch()">{{'PG_ONLINE.BTN.TOBRANCH' | translate}}</a>
+				<a href="javascript:void(0)" (click)="onSign()">{{'PG_ONLINE.BTN.ONLINE' | translate}}</a>
+			</ng-template>
+		</div>
+	</div>
+</section>

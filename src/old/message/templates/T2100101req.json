@@ -1,0 +1,28 @@
+{
+  "reqHeader": {
+    "rquId": "12345",
+    "sessionId": "XXXXXXX",
+    "mobileNo": "12345",
+    "ipAddress": "29.10.33.21",
+    "locale": "zh-TW",
+    "appVersion": "2.0",
+    "plainText": "plainText",
+    "signature": "signature",
+    "certSN": "4D815EA1",
+    "cn": "cn",
+    "osType": "01",
+    "telegramName": "T2100101"
+  },
+  "t2100101BodyType": {
+    "custId": "B120281272",
+    "acctNo": "9997705073012",
+    "startDate": "1050201",
+    "endDate": "1050311",
+    "paginator": {
+      "pageSize": "20",
+      "pageNumber": "1",
+      "sortColName": "acctNo",
+      "sortDirection": "ASC"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" *ngIf="activation==='1'"></li>
+            <li class="step_bar step_active" *ngIf="activation==='1'"><span>2.身份確認</span></li>
+            <li class="step_bar step_active" *ngIf="activation==='0'"><span>1.身份確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+    </app-select-security>
+    <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+    <div class="row_single">
+        <div class="double_button">
+            <a href="javascript:void('0')" (click)='doCancel()'>{{'BTN.CANCEL' | translate }}</a>
+            <a href="javascript:void('0')" (click)="check();">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</section>

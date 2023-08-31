@@ -1,0 +1,17 @@
+<div class="topbox">
+  <div class="multiple-items nav_slider_frame initial_slider slick-initialized slick-slider slick-dotted {{className}}" >
+    <div class="swiper-container {{className}}-swiper-container">
+      <div class="swiper-wrapper ">
+        <div class="swiper-slide" *ngFor="let item of menuSlider" style="height:76px;line-height:14px">
+          <div style="width: 101%; display: inline-block;">
+            <a class="nav_slider_button" (click)="goNext(item.url)">
+              <i class="initial_bt {{ item.icon }}"></i>
+              <span style="width:99%">{{ item.name | translate }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="swiper-pagination slick-dots {{className}}-pagination" style="display: block;"></ul>
+  </div>
+</div>

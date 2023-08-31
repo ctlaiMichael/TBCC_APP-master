@@ -1,0 +1,39 @@
+<ng-container [ngSwitch]="showContent">
+    <ng-container *ngSwitchCase="'LOAN'">
+        <!-- 授信業務 -->
+        <div class="sub_info_frame">
+            <!-- 帳號資訊 -->
+            <ul class="inner_table_frame normal_disable">
+                <!-- [帳戶別] -->
+                <li class="inner_table_cell ">帳號</li>
+                <!-- 帳號(dddd-ddd-dddddd) -->
+                <li class="inner_table_cell">
+                    <input class="inner_input" type="text" value="{{ acctNo | accountFormate }}" placeholder="">
+                </li>
+            </ul>
+            <i class="input_info_warnning"></i>
+            <!-- 帳號資訊 End -->
+            <div class="row_single"></div>
+
+            <p class="sub_info_list">
+                <!-- 現欠餘額 -->
+                <i class="sub_info_title">現欠餘額</i>
+                <span class="sub_info_content">{{ balance }}</span>
+            </p>
+            <p class="sub_info_list">
+                <!-- 目前利率 -->
+                <i class="sub_info_title">目前利率</i>
+                <span class="sub_info_content">{{rate}}</span>
+            </p>
+            <p class="sub_info_list">
+                <!-- 到期日 -->
+                <i class="sub_info_title">到期日</i>
+                <span class="sub_info_content">{{ expirDate }}</span>
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <!-- 很抱歉，您欲查詢的帳戶資訊不存在 -->
+        <div class="sub_info_subtitle">{{ 'PG_DEPOSIT.ERROR.ACCT_CONTENT' | translate }}</div>
+    </ng-container>
+</ng-container>

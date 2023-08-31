@@ -1,0 +1,40 @@
+<div class="poppup_window_frame">
+	<div class="poppup_window">
+		<div class="text_content no_poppup_bbtn">
+			<div class="row_single">
+					<h4 class="simple_title">{{'LOGIN_MENU.TITLE' | translate}}</h4>
+			</div>
+			<div class="row_single info_list info_select">
+				<!-- <i class="info_title">{{'LOGIN_MENU.TITLE' | translate}}</i> -->
+				<!-- <select ng-model="loginSet.loginType" ng-change="loginSet.changeLogin(loginSet.loginType)"
+				 ng-options="option.name for option in loginSet.loginMenuData track by option.key">
+				</select> -->
+				<!-- <div class="radio_list radio_normal" >
+					<br> -->
+					<div ng-repeat="login_data in loginSet.loginMenuData" class="inner_radio"  >
+						<input  ng-model="radioInput.name" value="{{login_data.key}}" type="radio"  id="radio_login0{{$index}}"/>
+						<label for="radio_login0{{$index}}" class="original_checkbox option_for_group" ng-click="loginSet.changeLogin(login_data)">
+						<span><i></i></span>
+						<b style="font-size: 22px;color: #009075;">{{ login_data.name | translate }}</b>
+						</label>
+					</div>
+				<!-- </div> -->
+			</div>
+			<div class="login_form_box">
+			</div>
+			<div class="row_single"  id="web_login_row">
+				<div class="double_button">
+					<button class="button button_cancel" ng-click="loginSet.closeLogin()">{{'BTN.CANCEL' | translate}}</button>
+					<button class="button button_submit" ng-click="loginSet.loginEvent()">{{'LOGIN' | translate}}</button>
+				</div>
+			</div>
+			<!-- <div class="button_row" id="web_login_row">
+				<button class="button button_cancel" ng-click="loginSet.closeLogin()">{{'BTN.CANCEL' | translate}}</button>
+				<button class="button button_submit" ng-click="loginSet.loginEvent()">{{'LOGIN' | translate}}</button>
+			</div> -->
+		</div>
+		<div class="poppup_bclose">
+			<a href="javascript:void(0);" ng-click="loginSet.closeLogin()"></a>
+		</div>
+	</div>
+</div>

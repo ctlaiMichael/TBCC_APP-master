@@ -1,0 +1,68 @@
+<!--智富庫存明細查詢 Start-->
+<section>
+    <ul class="credit_card_bill_detail_list">
+        <!-- 列表start -->
+        <li *ngFor="let items of data; let i = index">
+            <!-- title start -->
+            <p class="credit_card_name">
+                <ng-container *ngIf="i == 0; else notFirst">
+                    <i>母-{{items.fundCode}}</i>
+                </ng-container>
+
+                <ng-template #notFirst>
+                    <i>子-{{items.fundCode}}</i>
+                </ng-template>
+                <i>{{items.fundName}}</i>
+            </p>
+            <!-- title end -->
+            <!-- row start -->
+            <!-- row end -->
+            <p>
+                <span>參考損益：</span>
+                <span class="{{ items.refProfit | fundAmtClass }}">{{items.refProfit | htMoney:backData.inCurrency}}</span>
+            </p>
+            <p>
+                <span>參考報酬率：</span>
+                <span class="{{ items.reward | fundAmtClass }}">{{items.reward}}%</span>
+            </p>
+            <p>
+                <span>庫存金額：</span>
+                <span>{{items.invenAmount | htMoney:backData.inCurrency}}</span>
+            </p>
+            <p>
+                <span>單位數：</span>
+                <span>{{items.unit}}</span>
+            </p>
+            <p>
+                <span>參考匯率：</span>
+                <span>{{items.refRate}}</span>
+            </p>
+            <p>
+                <span>參考現值：</span>
+                <span>{{items.refAmount | htMoney:backData.inCurrency}}</span>
+            </p>
+            <p>
+                <span>參考淨值：</span>
+                <span>{{items.refNetValue}}</span>
+            </p>
+            <p>
+                <span>淨值日期：</span>
+                <span>{{items.netValueDate | htDate:'date'}}</span>
+            </p>
+
+            <p>
+                <span>累計配息：</span>
+                <span>{{items.addIntAmount | htMoney:backData.inCurrency}}</span>
+            </p>
+            <p>
+                <span>預出金額：</span>
+                <span>{{items.aheadAmount | htMoney:backData.inCurrency}}</span>
+            </p>
+            <p>
+                <span>在途金額：</span>
+                <span>{{items.onTheWayPrice | htMoney:backData.inCurrency}}</span>
+            </p>
+        </li>
+    </ul>
+</section>
+<!--智富庫存明細查詢 End-->

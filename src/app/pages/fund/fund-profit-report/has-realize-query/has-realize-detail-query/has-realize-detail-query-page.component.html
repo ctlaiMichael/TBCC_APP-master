@@ -1,0 +1,117 @@
+<section>
+
+		<div class="sub_info_frame">
+		
+			<p class="sub_info_list">
+				<i class="sub_info_title">查詢期間 :</i>
+				<span class="sub_info_content">{{queryDuring}}</span>
+			</p>
+			<p class="sub_info_list">
+				<i class="sub_info_title">基金名稱</i>
+				<span class="sub_info_content">{{inputData.fundCode}}  {{inputData.fundName}} ({{inputData.riskRank}})</span>
+			</p>
+        </div>
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>投資幣別</span>
+				<i>{{ inputData.currency1 }}</i>
+			</li>
+			<li class="table_row">
+				<span>贖回日期</span>
+				<i>{{ inputData.terminateDate | htDate:'date' }}</i>
+			</li>
+			<li class="table_row">
+				<span>贖回金額</span>
+				<i>{{ inputData.terminateAmount | htMoney: inputData.currency1 }}</i>
+			</li>
+			<li class="table_row">
+				<span>全年損益</span>
+				<i class="{{ inputData.class }}">{{ inputData.incomeState | htMoney: inputData.currency1 }}</i>
+			</li>
+			<li class="table_row">
+				<span>信託日期</span>
+				<i>{{ inputData.trustDate | htDate:'date' }}</i>
+			</li>
+			<li class="table_row">
+				<span>原始信託金額</span>
+				<i>{{ inputData.amount | htMoney: inputData.currency1 }}</i>
+			</li>
+			<li class="table_row">
+				<span>交易所得/虧損</span>
+				<i class="{{ inputData.intclass }}">{{ inputData.intAmt | htMoney: inputData.currency1 }}</i>
+			</li>
+			<li class="table_row">
+				<span>股利日期</span>
+				<i>{{ inputData.onDate | htDate:'date' }}</i>
+			</li>
+			<li class="table_row">
+				<span>給付配息金額</span>
+				<i>{{ inputData.payAmt | htMoney: inputData.currency1 }}</i>
+			</li>
+		</ul>
+        
+		<!--投資金額目前帶原始信託金額，待確認-->
+		<!--
+		<ul class="table_info fund_table">
+			<li class="table_row">
+				<span>投資幣別</span>
+				<i>{{inputData.currency1 |iconFlag:'chineseName'}}</i>
+			</li>
+			<li class="table_row">
+				<span>贖回金額<br>(贖回日期{{inputData.terminateDate | htDate:'date'}})</span>
+				<i>{{inputData.terminateAmount}}</i>
+			</li>
+			<li class="table_row ">
+				<span>-投資金額</span>
+                <i>{{inputData.amount}}</i>
+			</li>
+		</ul>
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>交易損益</span>
+				<i>4,858.00</i>
+			</li>
+		</ul>
+		<ul class="table_info fund_table">
+			<li class="table_row">
+				<span>+配息金額<br>(配息日期2018/01/19)</span>
+				<i>0.00</i>
+			</li>
+		</ul>
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>含息損益</span>
+				<i>4,858.00</i>
+			</li>
+		</ul>
+		<ul class="table_info fund_table">
+			<li class="table_row">
+				<span class="fund_table_width">-申購手續費</span>
+				<i>235.00</i>
+			</li>
+			<li class="table_row">
+				<span class="fund_table_width">-扣繳稅額</span>
+				<i>0.00</i>
+			</li>
+			<li class="table_row">
+				<span class="fund_table_width">-信託管理費</span>
+				<i>100.00</i>
+			</li>
+		</ul>
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>淨損益</span>
+				<i>{{inputData.incomeState}}</i>
+			</li>
+		</ul>
+		-->
+		
+		<div class="row_single">			
+		</div>
+		<div class="row_single">
+			<a href="javascript:void(0)" (click)="onConfirm()" class="button_confirm">{{'BTN.CHECK' | translate }}</a>
+		</div>
+
+
+	<!-- section End -->
+	</section>

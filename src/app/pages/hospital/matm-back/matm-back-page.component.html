@@ -1,0 +1,79 @@
+<section>
+	<ng-container *ngIf="pageShow==false">
+		<div class="sub_info_subtitle">資料處理中，請稍後！！</div>
+	</ng-container>
+
+	<ng-container *ngIf="pageShow">
+		<!-- 步驟列 or 其他資訊框架 -->
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易成功</span>
+			</div>
+		</div>
+		<!-- 步驟列 or 其他資訊框架 End -->
+
+		<!-- 雙欄位（一左一右）資訊範例 -->
+		<ul class="table_info">
+			<li class="table_row">
+				<span>交易序號</span>
+				<i>{{ resultObj.info_data| fieldCheck:'stan'}}</i>
+			</li>
+			<li class="table_row">
+				<span>交易時間</span>
+				<i>{{ (resultObj.info_data| fieldCheck:'trnsDttm') | htDate:'date'}}</i>
+			</li>
+			<li class="table_row">
+				<span>銷帳編號</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'refNo' }}</i>
+			</li>
+			<li class="table_row">
+				<span>身分證號碼</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'personId' }}</i>
+			</li>
+			<li class="table_row">
+				<span>銀行代碼</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'trnsOutBank' }}
+					{{ resultObj.info_data | fieldCheck: 'trnsOutBankName'}}</i>
+			</li>
+			<li class="table_row">
+				<span>扣款帳號</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'trnsOutAcct' }}</i>
+			</li>
+			<li class="table_row">
+				<span>繳交費用筆數</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'totalCount' }}</i>
+			</li>
+			<li class="table_row">
+				<span>繳交金額共計</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'totalAmount' }}</i>
+			</li>
+			<li class="table_row">
+				<span>手續費</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'trnsFee' }}</i>
+			</li>
+			<li class="table_row">
+				<span>總計繳費金額</span>
+				<i>{{ resultObj.info_data | fieldCheck: 'sumAmount' }}</i>
+			</li>
+		</ul>
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>費用編號<br>費用日期</span>
+				<i>金額</i>
+			</li>
+			<li class="table_row" *ngFor="let item of resultObj.info_data.details">
+				<span>{{item.accountId}}<br>{{item.dateTime}}</span>
+				<i>{{item.amount}}</i>
+			</li>
+		</ul>
+
+
+		<!-- </ul> -->
+		<!-- 雙欄位（一左一右）資訊範例 End -->
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK' | translate }}</a>
+		</div>
+	</ng-container>
+</section>

@@ -1,0 +1,42 @@
+<ng-container *ngIf="creditFlag">
+    <ng-container *ngFor="let caseItem of branchData">
+        <ng-container *ngIf="caseItem['acctNo']!='' && caseItem['acctNo']!=null">
+            <ul class="credit_card_bill_detail_list loan">
+                <li>
+                    <p>
+                        <span>分行代號：</span>
+                        <span>{{caseItem.openBranchId}}</span>
+                    </p>
+                    <p>
+                        <span>存款行：</span>
+                        <ng-container *ngIf="caseItem.openBranchName !=''; else branchNameEmpty">
+                            <span>{{caseItem.openBranchName}}</span>
+                        </ng-container>
+                        <ng-template #branchNameEmpty><span>--</span></ng-template>
+                    </p>
+                    <p>
+                        <span>存款科目：</span>
+                        <span>{{caseItem.accountcd}}</span>
+                    </p>
+                    <p>
+                        <span>存款帳號：</span>
+                        <span>{{caseItem.acctNo | accountFormate}}</span>
+                    </p>
+                    <p>
+                        <span>餘額：</span>
+                        <span>{{caseItem.balance | htMoney:'TWD'}}</span>
+                    </p>
+                    <a href="javascript:void(0)" class="" (click)="onSelect(caseItem)">{{'BTN.LOAN.SELECT_BRANCH' |
+                        translate}}</a>
+                </li>
+            </ul>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="!creditFlag">
+    <div class="sub_info_subtitle">
+        查無資料
+    </div>
+    <div class="row_single"></div>
+</ng-container>

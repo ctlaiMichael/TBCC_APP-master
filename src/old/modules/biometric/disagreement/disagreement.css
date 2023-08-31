@@ -1,0 +1,18 @@
+.disagreement_text{
+    font-family: PingFangTC-Regular;
+    font-size: 15px;
+    color: rgba(0,0,0,0.70);
+    letter-spacing: 1.25px;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.disagreement_text p{
+    font-family: PingFangTC-Regular;
+    font-size: 15px;
+    color: rgba(0,0,0,0.70);
+    letter-spacing: 1.25px;
+    margin-top: 7px;
+}

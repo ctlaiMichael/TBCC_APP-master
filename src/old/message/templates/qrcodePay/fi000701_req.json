@@ -1,0 +1,12 @@
+{
+	"custId": "" ,
+	"unitType": "Y" ,
+	"investType": "2" ,
+	"filterFlag": "Y" ,
+	"paginator": {
+	  "pageSize":  "",
+	  "pageNumber": "",
+	  "sortColName": "fundName",
+	  "sortDirection": "DESC"
+	}
+}

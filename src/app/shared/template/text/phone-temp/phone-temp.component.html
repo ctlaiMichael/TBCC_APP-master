@@ -1,0 +1,13 @@
+<div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data != ''), 'normal_disable': disabledFlag}">
+        <!-- 標題 -->
+        <li class="inner_table_cell" [innerHtml]="title | safeHtml "></li>
+        <li class="inner_table_cell ">
+            <!-- 輸入欄位 -->
+            <input type="text" maxlength="10" class="inner_input" placeholder="{{ placeholderStr | translate }}"
+             autocomplete="off" disableautocomplete 
+             [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" >
+        </li>
+    </ul>
+    <i class="input_info_warnning">{{ error_data | translate }}</i>
+</div>

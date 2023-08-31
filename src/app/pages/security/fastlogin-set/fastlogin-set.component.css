@@ -1,0 +1,8 @@
+.gray_underline_80{
+    /* border-bottom: 2px lightgray solid; */
+    margin-bottom: 5px;
+}
+
+.no_before::before{
+    content: none;
+}

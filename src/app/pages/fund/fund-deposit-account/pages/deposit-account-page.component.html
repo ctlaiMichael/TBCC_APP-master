@@ -1,0 +1,52 @@
+<!-- Page Start-->
+<li *ngFor="let item of data;">
+    <!-- title start -->
+    <p class="credit_card_name">
+        <i>投資標的</i>
+        <i>{{ item | fieldCheck: 'transCode'}}<br>{{ item | fieldCheck: 'fundName'}}</i>
+    </p>
+
+    <!-- <p>
+        <span>投資編號：</span>
+        <span>{{ item | fieldCheck: 'fundCode'}}</span>
+    </p> -->
+    <p>
+        <span>投資幣別/金額：</span>
+        <span>{{ item | fieldCheck: 'iNCurrency'}} &nbsp; {{ ((item | fieldCheck: 'invenAmount') | htMoney:item.iNCurrency)}}</span>
+    </p>
+    <p>
+        <span>投資方式：</span>
+        <span>{{ item | fieldCheck: 'investDesc'}}</span>
+    </p>
+
+
+    <!-- fundCode	投資代碼
+    fundName	投資標的名稱
+    investType	投資型態
+    investDesc	投資型態說明
+    iNCurrency	投資幣別
+    invenAmount	庫存金額(信託本金)
+    transCode	交易編號
+    trustAcnt	信託帳號
+    unit	單位數
+    account	贖回預設存入帳號
+    code	定期不定額套餐代碼
+    debitStatus	扣款狀態    -->
+
+            <a href="javascript:void(0)" (click)="onContentEvent(item)">變更現金收益存入帳號</a>
+    
+</li>
+
+<!-- <a href="javascript:void(0)" class="inner_news_list" *ngFor="let item of data;" (click)="onContentEvent(item)">
+    <span class="inner_news_list_td">
+        <i class="inner_news_title">{{ item | fieldCheck: 'newsSubject'}}</i>
+        <b class="inner_news_info">{{ item | fieldCheck: 'newsBody'}}</b>
+    </span>
+    <span class="inner_news_list_td">
+        <i class="inner_news_data">
+            <s>{{ ((item | fieldCheck: 'applyDateTime') | htDate: 'yyyy')}}</s>
+            <s>{{ ((item | fieldCheck: 'applyDateTime') | htDate: 'MM/dd')}}</s>
+        </i>
+    </span>
+</a> -->
+<!-- Page End-->

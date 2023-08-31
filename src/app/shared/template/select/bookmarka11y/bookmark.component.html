@@ -1,0 +1,48 @@
+<!-- 第一層頁籤 -->
+<div class="tab_table_a11y" *ngIf="menuData">
+  <ng-container *ngFor="let menu of menuData; let i = index; let cnt = count">
+
+    <ng-container *ngIf="platform === 'ios' else android_tab">
+      <a class="tab_two_cell_a11y" *ngIf="!menu.selected"
+         role="tab"
+         attr.aria-setsize="{{cnt}}"
+         attr.aria-posinset="{{i+1}}"
+         (click)="onGoEvent(menu, i)">
+        <div class="tab_button_a11y" [ngClass]="{'active_a11y' : (showType==menu['id']) }">
+            {{ (menu | fieldCheck: 'name') | translate }}
+        </div>
+      </a>
+
+      <div class="tab_two_cell_a11y" *ngIf="menu.selected"
+              role="tab"
+              aria-selected="true"
+              attr.aria-setsize="{{cnt}}"
+              attr.aria-posinset="{{i+1}}"
+
+              (click)="onGoEvent(menu, i)"
+      >
+        <div class="tab_button_a11y" [ngClass]="{'active_a11y' : (showType==menu['id']) }">
+            {{ (menu | fieldCheck: 'name') | translate }}
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #android_tab>
+        <div class="tab_two_cell_a11y"
+        role="tab"
+        attr.aria-selected="{{menu.selected}}"
+        attr.aria-setsize="{{cnt}}"
+        attr.aria-posinset="{{i+1}}"
+        (click)="onGoEvent(menu, i)"
+        >
+          <div class="tab_button_a11y" [ngClass]="{'active_a11y' : (showType==menu['id']) }">
+              {{ (menu | fieldCheck: 'name') | translate }}
+          </div>
+        </div>
+
+    </ng-template>
+
+
+  </ng-container>
+
+</div>
+<!-- 第一層頁籤 End -->

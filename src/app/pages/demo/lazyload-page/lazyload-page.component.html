@@ -1,0 +1,38 @@
+<section>
+  <p (click)="alertSample()">
+    Alert使用範例
+  </p>
+  <p (click)="showLoading()">
+    Loading範例
+  </p>
+  <p>
+    {{ 'HOME.HELLO' | translate:param }}
+  </p>
+  <h1 appUiContentTo="title">LazyLoad</h1>
+
+  <p appLink="home">
+    回首頁!
+  </p>
+  <p appLink="back">
+    上一頁
+  </p>
+  <p (click)="clickMenu()">
+    Left Menu
+  </p>
+
+  <p (click)="showLoading()">
+    Loading範例
+  </p>
+  <p (click)="clickRouting()">
+    路徑不存在
+  </p>
+  <p (click)="saveCache()">
+    儲存cache
+  </p>
+  <p (click)="loadCache()">
+    讀取cache
+  </p>
+  <p (click)="cleanCache()">
+    刪除cache
+  </p>
+</section>

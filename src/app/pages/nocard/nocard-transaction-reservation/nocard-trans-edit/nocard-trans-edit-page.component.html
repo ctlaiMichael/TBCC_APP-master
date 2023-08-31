@@ -1,0 +1,104 @@
+<section>
+  <ng-container *ngIf="'originalPage' == showPage">
+  <div class="sub_info_frame">
+    <ul class="step_bar_frame">
+      <li class="step_bar step_active"><span>1.填寫資料</span></li>
+      <li class="step_bar"></li>
+      <li class="step_bar"></li>
+    </ul>
+  </div>
+  <div class="row_single"></div>
+  <div class="row_single">
+    <h4 class="simple_title">請輸入無卡提款資料
+    </h4>
+  </div>
+  <div class="row_single_2" >
+    <ul class="inner_table_frame" [ngClass]="errorMsg['withdrawAcct']?'active_warnning':''">
+      <li class="inner_table_cell">
+        提款帳號
+      </li>
+      <li class="inner_table_cell">
+        <select class="inner_select" (change)="onChangeAcct()" [(ngModel)]="checkDataObj.selectAcct">
+          <option value="-1">請選擇提款帳號</option>
+          <option *ngFor="let menu of withdrawAcctList; let i = index" [value]="i"
+          [disabled]="menu['disabled']" [ngStyle]="menu['style']">
+            {{ menu.accountStr }}</option>
+        </select>
+      </li>
+    </ul>
+    <i class="select_info">可用餘額 NTD {{ balance | htMoney:'TWD'}}</i>
+    <i class="input_info_warnning">{{errorMsg['withdrawAcct'] | translate}}</i>
+  </div>
+
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="errorMsg['withdrawMoney']?'active_warnning':''">
+      <li class="inner_table_cell">
+        提款金額
+      </li>
+      <li class="inner_table_cell">
+        <input type="number" pattern="\d*" size="5" class="inner_input" placeholder="請以千元為單位" [(ngModel)]="checkDataObj.withdrawMoney">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{ errorMsg.withdrawMoney }}</i>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">設定本次無卡提款密碼
+    </h4>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="errorMsg['withdrawPwd']?'active_warnning':''">
+      <li class="inner_table_cell">
+        無卡提款密碼
+      </li>
+      <li class="inner_table_cell">
+        <input type="password" class="inner_input"
+        maxlength="12" placeholder="請輸入6-12位數字" [(ngModel)]="checkDataObj.withdrawPwd">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{ errorMsg.withdrawPwd }}</i>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="errorMsg['checkPwd']?'active_warnning':''">
+      <li class="inner_table_cell">
+        確認提款密碼
+      </li>
+      <li class="inner_table_cell">
+        <input type="password" class="inner_input"
+        maxlength="12" placeholder="請輸入6-12位數字" [(ngModel)]="checkDataObj.checkPwd">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{ errorMsg.checkPwd }}</i>
+  </div>
+
+  <div class="row_single">
+    <div class="inner_checkbox" >
+      <input type="checkbox" id="inner_checkbox1" [ngModel]="isRemeberPwd" (click)="checkRemeberPwd()"/>
+      <label for="inner_checkbox1" >
+        <span><i></i></span>
+        <b >幫我記住，下次也用此密碼提款。</b>
+      </label>
+    </div>
+  </div>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="cancelBtn()">取消</a>
+      <a (click)="nextStep()">下一步</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <ol class="list-number">
+      <li class="inner_content">完成設定後請於15分鐘內至ATM取款。</li>
+      <li class="inner_content">自行提款單筆最高提領金額為3萬元，跨行提款單筆最高提領金額為2萬元。</li>
+      <li class="inner_content">無卡提款密碼不得為重複且連續數字，可輸入6~12位數字。</li>
+    </ol>
+  </div>
+  </ng-container>
+
+  <!-- 確認頁 -->
+  <ng-container *ngIf="'confirmPage' == showPage">
+    <app-nocard-trans-confirm-page (backToEdit)="toEditPage($event)" [nocardTransConfirm]="allEditReserveData"></app-nocard-trans-confirm-page>
+  </ng-container>
+</section>

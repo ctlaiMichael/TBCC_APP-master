@@ -1,0 +1,5 @@
+<div class="tab_title" ng-if="activityList != undefined ||type == 0">
+	<!-- 申辦用 tab 框架 => 搬離section -->
+	<a href="" ng-click="setPage('0');" ng-class="{active:type==0}">未登錄活動</a>
+	<a href="" ng-click="setPage('1');" ng-class="{active:type==1}">已登錄活動</a>
+</div>

@@ -1,0 +1,75 @@
+
+<div class="sub_info_frame">
+    <ul class="step_bar_frame">
+        <li class="step_bar"></li>
+        <li class="step_bar step_active">
+            <span>2.確認</span>
+        </li>
+        <li class="step_bar"></li>
+    </ul>
+</div>
+
+<ul class="table_info">
+    <li class="table_row">
+        <span>中文姓名</span>
+        <i>{{anotherData.chineseName}}</i>
+    </li>
+    <li class="table_row">
+        <span>身分證編號</span>
+        <i>{{anotherData.custId}}</i>
+    </li>
+    <li class="table_row">
+        <span>申請類別</span>
+        <i>{{anotherData.showApplyType}}</i>
+    </li>
+    <li class="table_row">
+        <span>申請日</span>
+        <i>{{reqData.applyDate | htDate:'date'}}</i>
+    </li>
+    <li class="table_row">
+        <span>申請迄日</span>
+        <i>{{reqData.endDate | htDate:'date'}}</i>
+    </li>
+    <li class="table_row">
+        <span>申請額度</span>
+        <i>新台幣&nbsp;{{reqData.applyAmount | htMoney:'TWD'}}</i>
+    </li>
+    <li class="table_row">
+        <span>申請原因</span>
+        <i>{{reqData.applyReason}}</i>
+    </li>
+    <li class="table_row">
+        <span>手機門號</span>
+        <i>{{reqData.cellPhone}}</i>
+    </li>
+    <li class="table_row">
+        <span>市內電話</span>
+        <i>{{anotherData.cityPhone}}</i>
+    </li>
+    <li class="table_row">
+        <span>分機</span>
+        <i>{{anotherData.applyTelExt}}</i>
+    </li>
+</ul>
+
+<!-- 雙欄位（一左一右）資訊範例 //End -->
+<div class="row_single"></div>
+<!-- <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security> -->
+
+<div class="row_single">
+    <div class="double_button">
+        <a (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+        <a (click)="onNextPgae()">{{'BTN.CHECK' | translate }}</a>
+    </div>
+</div>
+<div class="row_single_quota">
+    <div class="sub_info_subtitle_quota">
+        <h2 class="title_quota_button">謹慎理財 信用無價</h2>
+        <div class="inner_content_quota">循環利率：本行信用卡4.4%~15%(基準日為104年9月1日)。<br>
+            預借現金手續費：每筆預借現金金額乘以3%加上新臺幣150元。<br>
+            其他相關費用依本行網站公告，詳細折扣優惠活動內容請參考本行網站或向各分行查詢，本行保留修改、變更及終止折扣優惠活動之權利。<br>
+            合作金庫銀行網址：https//www.tcb-bank.com.tw<br>
+            客服專線：(04)2227-3131，(0800)033-175</div>
+    </div>
+</div>
+

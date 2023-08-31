@@ -1,0 +1,43 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickCancel()"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">QRCode消費扣款</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section QRCode掃描後輸入頁面-->
+<section style="top:125px;">
+    <div class="row_single">
+        <ul class="inner_table_frame">
+            <!-- 加入「active_warnning」後可顯示「input_info_warnning」 -->
+            <li class="inner_table_cell">
+                輸入密碼
+            </li>
+            <li class="inner_table_cell">
+                <input type="password" id="verifyCode" class="inner_input" maxlength="12" placeholder="請輸入行動網銀跟登入密碼" ng-model="form.verifyCode" >
+            </li>
+        </ul>
+        <i class="input_info_warnning">請輸入密碼</i>
+    </div>
+    <div class="row_single">
+            <div class="double_button">
+                <a ng-click="clickCancel()">取消</a><a id="check" ng-click="clickSubmit()">確定</a>
+            </div>
+        </div>
+</section>
+
+<!-- 跳出繳費作業視窗 -->
+<div ng-if="onChangeSecurityType">
+<div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+<div class="row" >
+    <div class="pop_securityType">
+        <a><div class="securityType" ng-click="changeSecurity(anotherSecurityType.key)" >{{anotherSecurityType.name}}</div>
+    </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出繳費作業視窗 // End -->

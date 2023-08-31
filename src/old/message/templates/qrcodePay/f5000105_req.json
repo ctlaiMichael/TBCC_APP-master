@@ -1,0 +1,15 @@
+{
+    "custId":"",
+    "trnsfrDate":"",
+    "trnsfrOutAccnt":"",
+    "trnsfrOutCurr":"",
+    "trnsfrInAccnt":"",
+    "trnsInSetType":"",
+    "trnsfrInCurr":"",
+    "trnsfrAmount":"",
+    "trnsfrCurr":"",
+    "subType":"",
+    "subTypeDscp":"",
+    "note":"",
+    "trnsToken":""
+}

@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="showPage">
+    <!-- 查詢頁 -->
+    <ng-container *ngSwitchCase="'queryPage'">
+        <section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+            <app-main-upload-search [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-main-upload-search>
+            <ng-container #pageBox></ng-container>
+        </section>
+    </ng-container>
+
+    <!-- 編輯頁 -->
+    <ng-container *ngSwitchCase="'editPage'">
+        <app-main-upload-edit [queryData]='queryData' (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-main-upload-edit>
+    </ng-container>
+
+    <!-- 結果頁 -->
+    <ng-container *ngSwitchCase="'resultPage'">
+        <app-main-upload-result></app-main-upload-result>
+    </ng-container>
+</ng-container>

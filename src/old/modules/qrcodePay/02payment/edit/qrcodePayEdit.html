@@ -1,0 +1,258 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickBack()"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">QRCode消費扣款</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<div ng-if="isEmv" style="margin-top: 90px;box-shadow: 0px 0px 1px 0px #333;border-radius: 5px;position: relative;">
+    <img id="card-logo" src="ui/images/logo.png" class="img-responsive" alt="Image" style="position: absolute;top: 8px;left: 8px;height: 18px;">
+    <img  id="visa-logo" src="ui/images/visa_logo.png" class="img-responsive" alt="Image" style="position: absolute;top: 8px;left: 8px;height: 18px;">
+    <img id="master-logo" src="ui/images/MasterCard_Logo.png" class="img-responsive" alt="Image" style="position: absolute;top: 8px;left: 8px;height: 18px;">
+    <img id="jcb-logo" src="ui/images/JCB_logo.png" class="img-responsive" alt="Image" style="position: absolute;top: 8px;left: 8px;height: 18px;">
+    <!-- <span style="position: absolute;right: 30px;line-height: 34px;">*{{trnsfrOutCard | limitTo:-6}}</span> -->
+     <select id="selectedItem" class="pretty-select" ng-change="changeMeansTransaction()" ng-model="selectedItem">
+         <option value="1"> 
+             {{form.trnsfrOutAcct}}
+         </option>
+         <option value="2">
+            *{{trnsfrOutCard | limitTo:-6}}
+        </option>
+     </select>
+ </div>
+
+<!--section QRCode掃描後輸入頁面-->
+
+<div class="row">
+     <!-- section -->
+     <section style="top:125px;">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar step_active"><span>1.填寫資料</span></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <div class="row_single"></div>
+        <!-- 金融卡 -->
+        <div id="meansTransactionMoney">
+            <div class="row_single">
+                <ul class="inner_table_frame" id="oneTB">
+                    <li class="inner_table_cell">
+                        特店名稱:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" ng-model="qrcode.merchantName" readonly>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" id="oneTB">
+                    <li class="inner_table_cell">
+                        訂單編號:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disablebillNumberInput" type="text" class="inner_input" ng-model="cardData.billNumber" placeholder="請輸入訂單編號" >
+                        <input ng-if="disablebillNumberInput" type="text" class="inner_input" ng-model="cardData.billNumber" placeholder="請輸入訂單編號" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" id="twoTB">
+                    <li class="inner_table_cell">
+                        交易金額：
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disableAmountInput" type="Number" class="inner_input" ng-model="form.trnsAmount" placeholder="請輸入轉帳金額" >
+                        <input ng-if="disableAmountInput" type="Number" class="inner_input" ng-model="form.trnsAmount" placeholder="請輸入轉帳金額" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" id="price_null">
+                    <li class="inner_table_cell">
+                        交易帳號：
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" class="inner_input" ng-model="form.trnsfrOutAcct" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        發票載具:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" class="content_input" ng-model="defaultBarcode.name" readonly>
+                        <div class="content_text_chang" ng-click="clickChangeBarcode(true)" ng-if="anotherBarcode && noBarcode=='N'">
+                            <p style="position: absolute;right: -30px;top: 6px;">變更</p>
+                        </div>
+                        <div ng-if="noBarcode=='Y'">
+                            <div class="content_text_chang" style="width: 100px;" ng-click="getBarcode()" >
+                                <p >手機條碼登錄</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 信用卡 -->
+        <div ng-if="isEmv" id="meansTransactionCard">
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        店家名稱:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" class="inner_input" readonly ng-model="cardData.merchantNameByLang">
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        訂單編號:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disablebillNumberInput" type="text" class="inner_input" ng-model="cardData.billNumber" placeholder="請輸入訂單編號" >
+                        <input ng-if="disablebillNumberInput" type="text" class="inner_input" ng-model="cardData.billNumber" placeholder="請輸入訂單編號" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        幣別:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" class="inner_input" placeholder="請輸入轉帳金額" readonly value="新台幣">
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        交易金額：
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disableAmountInput" type="Number" class="inner_input" ng-model="form.trnsAmount" placeholder="請輸入轉帳金額" >
+                        <input ng-if="disableAmountInput" type="Number" class="inner_input" ng-model="form.trnsAmount" placeholder="請輸入轉帳金額" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        交易卡號：
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disableAmountInput" type="Number" class="inner_input" readonly value="*{{trnsfrOutCard | limitTo:-6}}">
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" >
+                    <li class="inner_table_cell">
+                        手機號碼：
+                    </li>
+                    <li class="inner_table_cell">
+                        <input ng-if="!disablemobileNumberInput" type="text" class="inner_input" ng-model="cardData.mobileNumber" placeholder="請輸入手機號碼" >
+                        <input ng-if="disablemobileNumberInput" type="text" class="inner_input" ng-model="cardData.mobileNumber" placeholder="請輸入手機號碼" readonly>
+                    </li>
+                </ul>
+            </div>
+        
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame" >
+                <li class="inner_table_cell">
+                    目前您的轉帳機制:
+                </li>
+                <li class="inner_table_cell">
+                   <input type="Number" class="inner_input" ng-model="defaultSecurityType.name" readonly>
+                   <div class="content_text_chang" ng-click="clickChangeSceurityType(true)" ng-if="anotherSecurityType">
+                    <p style="position: absolute;right: -30px;top: 6px;">變更</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <div class="double_button" id="btn_submit">
+                <a ng-click="clickCancel()" ng-disabled="button_disable">取消</a>
+                <a href="jAvascript:void(0)" ng-click="clickSubmit()" ng-disabled="button_disable">確定</a>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<!-- 跳出繳費作業視窗 -->
+<div ng-if="onChangeSecurityType">
+<div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+<div class="row" >
+    <div class="pop_securityType" id="pop_securityType" ng-style="popup_Height">
+        <a><div class="securityType" ng-repeat="element in anotherSecurityType" ng-click="changeSecurity(element.key)" ng-style="Type_border($last)">{{element.name}}</div>
+    </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出繳費作業視窗 // End -->
+
+<!-- 跳出載具視窗 -->
+<div ng-if="onChangeBarcode">
+<div class="shadow" style="display: block" ng-click="clickChangeBarcode(false)"></div>
+<div class="row" >
+    <div class="pop_securityType">
+        <a><div class="securityType" ng-click="changeBarcode(anotherBarcode.key)" >{{anotherBarcode.name}}</div>
+    </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出載具視窗 // End -->
+<style>    
+    .noBarcode {
+        width:65px;
+    }
+    .haveBarcode {
+        width:140px;
+    }
+
+    .pretty-select {
+  /*移除箭頭樣式*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*改變右邊箭頭樣式*/
+  background: url("ui/images/aside_menu_arrow.png") no-repeat 95% center transparent;
+  border:solid 1px #DBDEE4;
+  width:100%;
+  height:34px;
+  padding-left:2px;
+  padding-right:40px;
+  background-color:#fff;
+  background-size: 20px;
+  padding: 0 10px 0px 70px;
+}
+
+/*IE隱藏箭頭樣式*/
+.pretty-select::-ms-expand { 
+  display: none; 
+}
+
+.pretty-select:focus{
+  box-shadow: 0 0 5px 2px #ccc;    
+}
+
+.main_sec {
+    top: 100px;
+}
+.button_row .popup_popup_dismiss{
+  background: #cd001c;
+}
+</style>

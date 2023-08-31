@@ -1,0 +1,83 @@
+<section *ngIf="!showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <!-- select -->
+    <ng-container [ngSwitch]="convertType">
+        <ng-container *ngSwitchCase="'SelectSingle'">
+            <ul class="tab_table">
+                <li class="tab_three_cell">
+                    <a href="javascript:void(0);" class="tab_button btn1" [ngClass]="{'active':(swtichFlag=='1')}">單筆轉換</a>
+                </li>
+                <li class="tab_three_cell">
+                    <a href="javascript:void(0);" class="tab_button btn2" (click)="switchPage('2')" [ngClass]="{'active':(swtichFlag=='2')}">一轉多</a>
+                </li>
+            </ul>
+            <div class="row_single">
+                <h4 class="simple_title">
+                    <a href="javascript:void(0);" class="fontw normal_link color_fee" (click)="showDescript()">
+                        基金轉換說明
+                    </a>
+                </h4>
+            </div>
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-fund-convert-page [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)" [trnsType]="trnsType"></app-fund-convert-page>
+                <!-- Page other -->
+                <ng-container #pageBoxS></ng-container>
+            </ul>
+            <div class="row_single">
+                <h4 class="simple_title">重要說明：</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content">
+                    1.定期(不)定額基金，如進行全部轉換或部份轉換，轉換後仍將依『原』約定投資基金(轉出基金)及扣款金額繼續投資，如需變更，請至「異動服務」／定期(不)定額查詢/異動。
+                    <br> 2.若該筆交易編號有部份轉換情形，如有累計配息將依轉換投資金額等比例調整，以延續原有報酬率。
+                    <br> 3.以定期不定額投資方式，如使用「前5日個營業日淨值/平均成本」評價方式者無法轉換其他標的。
+                </p>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'SelectMultiple'">
+            <ul class="tab_table">
+                <li class="tab_three_cell">
+                    <a href="javascript:void(0);" class="tab_button btn1" (click)="switchPage('1')" [ngClass]="{'active':(swtichFlag=='1')}">單筆轉換</a>
+                </li>
+                <li class="tab_three_cell">
+                    <a href="javascript:void(0);" class="tab_button btn2" [ngClass]="{'active':(swtichFlag=='2')}">一轉多</a>
+                </li>
+            </ul>
+            <div class="row_single">
+                <h4 class="simple_title">
+                    <a href="javascript:void(0);" class="fontw normal_link color_fee" (click)="showDescript()">
+                        基金轉換說明
+                    </a>
+                </h4>
+            </div>
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-fund-convert-page [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-convert-page>
+                <!-- Page other -->
+                <ng-container #pageBoxM></ng-container>
+            </ul>
+            <div class="row_single">
+                <h4 class="simple_title">重要說明：</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content">
+                    1.定期(不)定額基金，如進行全部轉換或部份轉換，轉換後仍將依『原』約定投資基金(轉出基金)及扣款金額繼續投資，如需變更，請至「異動服務」／定期(不)定額查詢/異動。
+                    <br> 2.若該筆交易編號有部份轉換情形，如有累計配息將依轉換投資金額等比例調整，以延續原有報酬率。
+                    <br> 3.以定期不定額投資方式，如使用「前5日個營業日淨值/平均成本」評價方式者無法轉換其他標的。
+                </p>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-enter-agree-content (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"> </app-enter-agree-content>
+                <!-- Page other -->
+            </ul>
+        </ng-container>
+    </ng-container>
+</section>
+
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <app-fund-convert-content [setData]="content_data" [reservFlag]="reserveFlag" [convertTypeContent]="convertType" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-convert-content>
+</ng-template>

@@ -1,0 +1,63 @@
+<div class="" ng-if="curStep == 3">
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">消費日期</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.consumptionDate}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">卡別/卡號末四碼</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.cardLast4Num}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">明細</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.detail | cleanSpace }}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣折算日</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.foreignCurrencyDate}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣幣別</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.foreignCurrency}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣金額</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.AmountForeignCurrency | currency:""}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">新臺幣金額</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.NTDollarAmount | currency:""}}</p></td>
+		</tr></table>
+	</div>
+
+</div>
+<div class="bc_frame">
+		<div class="row_single info_list info_select accountselect">
+				<div class="input_frame"><table><tr>
+				<td align="center"><i class="info_title">期數</i></td>
+				<td align="center"><select ng-options="option.name for option in billOptions track by option.value"  ng-model="selectBill">
+						<option value="">請選擇期數</option>
+					</select></td>
+				</tr></table></div>
+			</div>
+		<div class="row_single2">
+				<button class="button_confirm" ng-click="onForm(selectBill)">{{'BTN.NEXT' | translate}}</button>
+			</div>
+			<div class="terms_frame">
+					<h3 class="row_single in_sub_title">注意事項</h3>
+					<p>申請本方案須於繳費截止日前繳交最低應繳金額，並於當月21日前申請。</p>
+				</div>	
+	</div>

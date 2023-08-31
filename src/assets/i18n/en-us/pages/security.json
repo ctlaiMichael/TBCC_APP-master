@@ -1,0 +1,18 @@
+{
+  "PG_SECURITY": {
+    "PATTERN_LOCK": {
+      "AGREE": "同意",
+      "DISAGREE": "不同意",
+      "RESET": "重新設定",
+      "LOGIN_TOP_CAPTION_1": "輸入圖形密碼",
+      "TOP_CAPTION_1_1": "此圖形密碼可代替登入密碼",
+      "TOP_CAPTION_1_2": "圖形密碼至少需連結6個點",
+      "TOP_CAPTION_2_1": "請再次確認圖形密碼",
+      "SET_OK": "下次即可使用快速登入(圖形密碼)",
+      "CANCEL_PATTERNLOCK": "是否要停用圖形密碼快速登入？",
+      "CANCEL_SUCCESS": "圖形密碼快速登入已取消",
+      "CANCEL_FAIL": "圖形密碼快速登入取消失敗",
+      "ENTER_PATTERN_LOCK": "請輸入圖形密碼"
+    }
+  }
+}

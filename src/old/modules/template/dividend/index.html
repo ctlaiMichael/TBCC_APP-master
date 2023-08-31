@@ -1,0 +1,60 @@
+<div ng-if="showBoxStep === 1">
+	<!-- 您目前紅利點數:XXX點 -->
+	<h2 class="sub_title_inner">{{'CTRL_DIVIDEND.CHECK.HAVE' | translate}}：{{dividend_point}}{{'CTRL_DIVIDEND.POINT' | translate}}</h2>
+	<div class="bc_frame_dividend"  ng-if="isShow">
+		<!-- <div class="row_single input_single" ng-class="{0:'',1:'input_disable',2:'input_error'}[showClass]">
+			<i class="input_name required"></i>
+			<input type="tel" name="" ng-model="dividend_trans" /><b></b>
+			<s class="input_comment">{{dividend_message}}</s>
+		</div> -->
+ 
+		<div class="row_single input_single" ng-class="{0:'',1:'input_disable',2:'input_error'}[showClass]">
+			<div class="input_frame"><table><tr>
+			<td align="center" class="verali_mid"><i class="input_name required">兌換點數</i></td>
+			<td align="center"><input type="tel" name="" ng-model="dividend_trans" /></td>
+			
+			</tr></table></div><s class="input_comment">{{dividend_message}}</s>
+		</div>
+		<!-- 請輸入本次欲兌換點數(兌換點數需大於XX點，且須為XX的倍數) -->
+		<h3 class="row_single in_wran_title">
+			{{'CTRL_DIVIDEND.CHECK.INPUT' | translate}}
+			(
+				{{'CTRL_DIVIDEND.CHECK.MORE' | translate}}
+				{{max_num}}
+				{{'CTRL_DIVIDEND.POINT' | translate}}，
+				{{'CTRL_DIVIDEND.CHECK.FACTOR_1' | translate}}
+				{{factor_num}}
+				{{'CTRL_DIVIDEND.CHECK.FACTOR_2' | translate}}
+			)
+		</h3>
+
+
+
+
+		<!-- 按鈕 -->
+		<div class="row_single2">
+			<button class="button_confirm" ng-click="setTransfer(dividend_trans)">{{'CTRL_DIVIDEND.BTN.SEND' | translate}}</button><!--立即兌換-->
+		</div>
+		<!-- 按鈕 //END -->
+
+		<!--注意事項-->
+		<div class="terms_frame">
+			<h3 class="row_single in_sub_title">{{'MESSAGE_NOTE_INFO' | translate}}</h3>
+			<p>
+				1.兌換刷卡金係抵用次期帳單有消費款項時進行兌換刷卡金。
+				<br/>
+				2.折扣點數須以千點為單位，每 {{factor_num}} 點折抵新台幣 {{transfer_money}} 元。
+				<br/>
+				3.點數一經折抵則不能取消或要求退還現金。
+				<br/> 4.本項點數加總方式：係以正卡持卡人身分字證歸戶後，檢視當時其名下所有適用紅利點數下各信用卡(含附卡)及VISA金融卡，且為流通卡之可用點數餘額總計。
+				<br/>
+				5.本項點數抵用刷卡金方式：
+				<br/>
+				&nbsp;&nbsp;1).如正卡持卡人同時持有信用卡及VISA金融卡者：本次全部兌換點數優先抵用至次期信用卡帳單帳款。
+				<br/>
+				&nbsp;&nbsp;2).如正卡持卡人僅持有VISA金融卡者：本次全部兌換點數抵用至VISA金融卡相對應之存款帳戶。
+			</p>
+		</div>
+		<!--注意事項 //End -->
+	</div>
+</div>

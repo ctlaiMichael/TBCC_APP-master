@@ -1,0 +1,21 @@
+.ati_th:not(:first-child):not(:last-child):before,
+.ati_td:not(:first-child):not(:last-child):before {
+  display: none;
+}
+
+.ati_th:not(:first-child):not(:last-child):after,
+.ati_td:not(:first-child):not(:last-child):after {
+  display: none;
+}
+
+.ati_td {
+  background-color: #FFF;
+}
+
+.row_single {
+  background-color: #FFF;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding: 0 8px 8px 8px;
+  margin-bottom: 0;
+  z-index: 10;
+}

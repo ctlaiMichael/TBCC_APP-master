@@ -1,0 +1,1585 @@
+/* header button footer 按鍵 共用元素  （QRCode掃描後輸入頁面 顯示帳號選單頁面 css） */
+
+body{
+    font-family: sans-serif, "微軟正黑體";
+}
+
+.wrapper{
+    height: 100vh;
+}
+/*<!--header nav-->*/
+
+
+.main_nav{
+    background-color: #00835E;
+    position: fixed;
+    z-index: 888;
+    width: 100vw;
+    /* height: 70px; */
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*0922修改*/
+    justify-content: space-around;
+    /*0922修改 END*/
+}
+
+.native_main_nav{
+    background-color: #00835E;
+    position: fixed;
+    z-index: 888;
+    width: 100vw;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*0922修改*/
+    justify-content: space-around;
+    /*0922修改 END*/
+}
+
+.back_bt{
+    /*0922修改*/
+    /*width: 76px;*/
+    min-width: 30px;
+    max-width: 76px;
+    padding: 5px 5px;
+    /*0922修改 END*/
+
+
+    /* height: 32px; */
+    border-radius: 6px;
+    background-color: #30695A;
+    border: solid 1px #555454;
+    box-shadow: 0 1px 1px 0 #000000;
+
+    /*0922新增*/
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    position:absolute; /*此行設定div為不隨捲動而移動的模式*/ 
+    
+    left: 10px;
+    top:50%;
+    margin-top:-16px;
+    /* transform: translate(0,-50%); */
+    /*0922新增 END*/
+
+
+}
+
+.page_title{
+    font-size: 18px;
+    color: white;
+    /*0922修改*/
+
+    width: 100%;
+    text-align: center;
+
+    /*0922修改 END*/
+
+}
+
+.back_title{
+    /*0922修改*/
+
+    /*margin-top: 10px;*/
+    /*margin-left: 6px;*/
+    /*color: white;*/
+
+    /*0922修改 END*/
+}
+
+.bank_logo{
+    width: 25px;
+    height: 35px;
+    /*border-radius: 6px;*/
+    /*background-color: white;*/
+
+    /*0922修改*/
+    position: absolute;
+    right: 10px;
+    /*0922修改 END*/
+    top:50%;
+    margin-top: -18px;
+    /* transform: translate(0,-50%); */
+}
+
+.bank_logo img{
+    width: 25px;
+}
+
+.page_title img {
+    height: 75px;
+}
+/*<!--header nav end-->*/
+
+/*<!--section pay-->*/
+
+.main_sec{
+    width:100vw;
+    /*height:100vh;*/
+    /*background-color: green;*/
+    /*border: solid 1px #555454;*/
+    position: absolute;
+    top: 85px;
+}
+
+.content_title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.main_content{  padding: 0px 20px;}
+
+.confirm_content{
+    padding: 10px 20px;
+}
+
+.main_input{
+    display: flex;
+    padding: 10px 20px;
+    /*overflow: scroll;*/
+    /* width: 90vw; */
+    /*height: 280px;*/
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: solid 1px #DBDEE4;
+    /*box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);*/
+    flex-direction:column;
+}
+
+.content_input{
+    height: 30px;
+    border-color: #D6D9E0;
+    border-radius: 6px;
+}
+
+.input_warning{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.input_warning2{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.input_warning33{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.content_text{
+    font-weight: bold;
+    color: #3d4953;
+    width: 25%;
+    font-size: 14px;
+}
+
+.content_text2{
+    font-weight: bold;
+    color: #3d4953;
+    width: 40%;
+    font-size: 14px;
+}
+
+.content_text3{
+    font-weight: bold;
+    color: red;
+    width: 25%;
+    font-size: 14px;
+}
+
+.content_text4{
+    font-weight: bold;
+    color: #3d4953;
+    width: 50%;
+    font-size: 14px;
+}
+
+.content_text6{
+    font-weight: bold;
+    color: #3d4953;
+    width: 35%;
+    font-size: 14px;
+}
+
+.content_text77{
+    font-weight: bold;
+    color: #3d4953;
+    width: 25%;
+    font-size: 14px;
+    text-align: right;
+}
+.content_text8{
+    font-weight: bold;
+    color: #3d4953;
+    width: 40%;
+    font-size: 12px;
+}
+
+.content_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
+    /*padding-top: 15px;*/
+    padding: 10px;
+}
+
+.content_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
+    /*padding-top: 15px;*/
+    padding: 10px;
+}
+
+.content_note{
+    font-weight: bold;
+    color: #3d4953;
+    width: 35%;
+    font-size: 14px;
+}
+
+.content_text_chang{
+    font-weight: bold;
+    color: #8482DC;
+    width: 25%;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.content_sign{
+    width: 20%;
+}
+
+.content_bt{
+    padding: 15px 5px;
+    display: flex;
+    flex-direction:row;
+    /*0922修改*/
+    justify-content: center;
+    /*0922修改 END*/
+
+
+    align-items:center;
+}
+
+.confirm_bt{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FF8077, #992621); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF8077, #992621); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF8077, #992621); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF8077, #992621); /* Standard syntax */
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #000000;
+    border: solid 2px #696767;
+
+    /*0922修改*/
+    margin: 0 10px;
+    /*0922修改 END*/
+}
+
+.confirm_bt33{
+    background: rgb(0, 217, 255); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(119, 205, 255), #215f99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(119, 205, 255), #215f99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(119, 216, 255), #215f99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(119, 205, 255), #215f99); /* Standard syntax */
+    height: 30px;
+    width: 112px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #000000;
+    border: solid 2px #696767;
+}
+
+.confirm_bt44{
+    background: rgb(0, 217, 255); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(119, 205, 255), #215f99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(119, 205, 255), #215f99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(119, 216, 255), #215f99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(119, 205, 255), #215f99); /* Standard syntax */
+    height: 30px;
+    width: 60px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #000000;
+    border: solid 2px #696767;
+}
+
+.confirm_bt55{
+    background: rgb(0, 217, 255); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(119, 205, 255), #215f99); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(119, 205, 255), #215f99); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(119, 216, 255), #215f99); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(119, 205, 255), #215f99); /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #000000;
+    border: solid 2px #696767;
+}
+
+.cancel_bt{
+    background: #696767; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#DCDADA, #696767); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#DCDADA, #696767); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#DCDADA, #696767); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#DCDADA, #696767); /* Standard syntax */
+
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 #000000;
+    border: solid 2px #696767;
+    /*0922修改*/
+    margin: 0 10px;
+    /*0922修改 END*/
+}
+
+
+.confirm_bt2{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FF8077, #992621); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF8077, #992621); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF8077, #992621); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF8077, #992621); /* Standard syntax */
+    height: 30px;
+    width: 250px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+.confirm_bt3{
+    background: rgb(233, 193, 193); /* For browsers that do not support gradients */
+    font-weight: bold;
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+.confirm_bt4{
+    background: green; /* For browsers that do not support gradients */
+    font-weight: bold;
+    font-size:22px;
+    color:white;
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+.confirm_color{ color: white;  }
+
+.cancel_color{  color: white;  }
+/*<!--section pay end-->*/
+
+/*<!--shadow-->*/
+.shadow{
+    visibility: visible;
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    /*display: none;*/
+    transition: all .5s cubic-bezier(0.000, 0.995, 0.990, 1.000);
+    z-index: 1000;
+}
+
+/*<!--shadow end-->*/
+
+/*<!-- 跳出選擇帳號視窗 -->*/
+
+.pop_account{
+    background: #696767; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(circle,#ffffff, #DCDADA, #696767); /* Safari */
+    background: -o-radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Firefox 3.6 to 15 */
+    background: radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Standard syntax */
+    z-index: 1001;
+    border-radius: 15px;
+    position: fixed;
+    /*min-width: 295px;*/
+    min-height: 240px;
+    height: 220px;
+    left: 5vw;
+    right: 5vw;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 3px #C2C4C7;
+    /*padding: 10px 20px;*/
+}
+
+.pop_account_location{
+    display: flex;
+    padding: 10px 20px;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.pop_title{
+    text-align: center;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    /*padding-bottom: 10px;*/
+    padding: 10px;
+}
+
+.pop_account_bt{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* Standard syntax */
+    height: 80px;
+    width: 260px;
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 15px;
+    border: solid 5px #8C8B8B;
+    text-align: center;
+    justify-content:center;
+
+}
+
+.pop_ac_text{  padding-top: 25px;  }
+
+.pop_check{
+    margin-top: 20px;
+    border-radius: 15px;
+    height: 60px;
+    width: 280px;
+    background-color: #818181;
+    border: solid 3px #C2C4C7;
+}
+
+
+
+/*<!-- 跳出選擇帳號視窗 end-->*/
+
+/*header button 按鍵 共用元素  （QRCode掃描後輸入頁面 顯示帳號選單頁面 css）end*/
+
+
+
+
+
+/*轉帳確認頁面*/
+
+/*<!--確認轉帳注意事項-->*/
+
+.notice_location{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #D3000D;
+    margin: 10px;
+}
+
+/*<!--確認轉帳注意事項-->*/
+
+/*<!--確認轉帳資訊外框-->*/
+
+
+.confirm_input{
+    display: flex;
+    /*0922修改*/
+    padding: 10px 5px;
+    /*0922修改 END*/
+
+    /*overflow: scroll;*/
+    /* width: 90vw; */
+    /*height: 280px;*/
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    /*box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);*/
+    flex-direction:column;
+    border: solid 1px #8C8B8B;
+}
+
+.ac_purple{
+    color: #6D64E7;
+    padding-left: 10px;
+}
+/*<!--確認轉帳資訊外框-->*/
+/*轉帳確認頁面 end*/
+
+
+
+/*<!--繳費作業 popup-->*/
+.pop_pay{
+    background: #FFFFC4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left,  #B8EC7D ,  #FFFFC4); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right,  #B8EC7D,  #FFFFC4); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right,  #B8EC7D,  #FFFFC4); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,  #B8EC7D ,  #FFFFC4); /* Standard syntax */
+    z-index: 1001;
+    border-radius: 15px;
+    position: fixed;
+    /* min-width: 295px; */
+    min-height: 240px;
+    height: 320px;
+    left: 5vw;
+    right: 5vw;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 3px #ffffff;
+    padding: 10px 20px;
+}
+
+
+.pop_pay_location{
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+    z-index: 1001;
+    background-color: white;
+    /*position: fixed;*/
+    /* min-width: 295px; */
+    /*min-height: 200px;*/
+    /*height: 230px;*/
+    /*left: 10vw;*/
+    /*right: 10vw;*/
+    /*top: 160px;*/
+    /*margin: auto;*/
+    /*border: solid 3px #ffffff;*/
+
+}
+
+.pop_pay_title{
+    text-align: center;
+    /*font-weight: bold;*/
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.pop_note{
+    display: flex;
+    justify-content:flex-start;
+    flex-direction:column;
+    margin: 10px;
+}
+
+.password_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
+    /*padding-top: 10px;*/
+}
+
+.password_text{
+    font-weight: bold;
+    color: #3d4953;
+    width: 40%;
+    font-size: 14px;
+}
+
+.notice_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:flex-start;
+    padding-top: 10px;
+}
+
+.notice_text{
+    /*font-weight: bold;*/
+    color: #D0021B;
+    width: 25%;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.notice_text2{
+    /*font-weight: bold;*/
+    color: #D0021B;
+    width: 75%;
+    font-size: 13px;
+    padding-top: 10px;
+    align-content: flex-start;
+}
+
+.pop_pay_ckeck{  padding-top: 5px;  }
+
+.pop_line{
+    padding-top: 25px;
+    border-bottom: 1px #C5D697 solid;
+}
+
+/*<!--繳費作業 popup end-->*/
+
+/*<!--交易結果欄位-->*/
+
+.result_location{
+    /*display: flex;*/
+    /*margin: 0 auto;*/
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: solid 1px #8C8B8B;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.result_sec{
+    padding: 10px 20px;
+}
+
+.result_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+    margin: 10px;
+}
+
+.result_title2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #D3000D;
+    margin: 10px;
+}
+
+/*<!--交易結果欄位 end-->*/
+
+
+/*<!--交易內容欄位 -->*/
+
+.result_input{
+    display: flex;
+    padding: 10px 20px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    /* box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5); */
+    border: solid 1px #8C8B8B;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.result_text{  padding: 5px;  }
+
+.result_number{
+    float: right;
+    color: #FF0120;
+    font-size: 14px;
+}
+
+.result_number2{
+    float: right;
+    color: #594DE5;
+    font-size: 14px;
+}
+
+
+.result_infor{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 10px;
+    font-size: 14px;
+
+}
+
+.result_infor_number{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* padding-top: 15px; */
+    padding: 10px;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+/*<!--交易內容欄位 end-->*/
+
+/*<!--注意事項-->*/
+
+.main_agree {
+    padding: 20px 0px;
+}
+
+.agree_main{
+    font-weight: bold;
+    font-size: 16px;
+    /*padding: 5px 5px;*/
+    display: flex;
+    padding-top: 85px;
+}
+
+.agree_content{
+    /*border: solid 3px #C2C4C7;*/
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    padding-top: 10px;
+    overflow: scroll;
+    height: 426px;
+    /*padding: 10px;*/
+}
+
+.agree_location{
+
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 90px;
+    background-color: #78BA34;
+}
+
+.agree_check{
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.agree_check_bt{
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.agree_title{
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.agree_bt{
+
+    background-color: #FEAD32;
+    height: 30px;
+    width: 90px;
+    border-radius: 6px;
+    border: solid 1px #FEAD32;
+
+}
+
+.agree_bt p{  color: white;  }
+
+.disagree_bt{
+    background-color: #F4F4F4;
+    height: 30px;
+    width: 90px;
+    border-radius: 6px;
+    border: solid 1px #F4F4F4;
+}
+
+.disagree_bt p{  color: #818181;  }
+
+/*<!--注意事項 end-->*/
+
+/*合庫首頁*/
+
+/*<!--header-->*/
+.home_wrapper{
+    background: url("../image/main_bg_new.png") center center fixed no-repeat;;
+    margin:0px;
+    padding:0px;
+    background-size: cover;
+}
+.home_nav{
+    position: fixed;
+    z-index: 888;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.home_logo{
+    align-items: center;
+}
+/*<!--header end-->*/
+
+
+/*<!--section-->*/
+.home_sec{
+    height: 82.5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.home_icon{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon1 {
+    /* width: 30%; */
+    margin: 0%;
+    float: left;
+    order: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.image_iPad {
+    max-width: 50%;
+    width: 50%; 
+}
+
+.icon_name{
+    
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom:  4px;
+}
+
+.icon1 img{
+    width: 72%;
+}
+
+/* .icon_bank{
+    font-weight:bold;
+} */
+
+.funtion1{
+    display:flex;
+    width: 30%;
+    margin: 20% 0%;
+    float: left;
+    order: 1;
+    flex-grow: 1;
+    margin-left: 2.2%;
+    margin-top: 16%;
+}
+
+.funtion2{
+    display: flex;
+    margin: 20% 0%;
+    width: 30%;
+    margin-top: -18%;
+    float: left;
+    order: 1;
+    flex-grow: 1;
+    margin-left: 2.2%;
+}
+
+
+.funtion3{
+    display: flex;
+    width: 30%;
+    margin: 20% 0%;
+    margin-top: -18%;
+    float: left;
+    order: 1;
+    flex-grow: 1;
+    margin-left: 2.2%;
+}
+
+.funtion4{
+    display: flex;
+    width: 30%;
+    margin: 20% 0%;
+    margin-top: -18%;
+    float: left;
+    order: 1;
+    flex-grow: 1;
+    margin-left: 2.2%;
+
+}
+
+/*<!--section end-->*/
+
+
+/*<!--slider-->*/
+.home_page{
+    position: relative;
+    text-align: center;
+    bottom: 60px;
+}
+/*<!--slider end-->*/
+
+
+/*<!--footer-->*/
+.home_ad{
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 110px;
+    background: url("../image/ad1.png") no-repeat;
+}
+#slide {
+    /*position: relative;*/
+    /*max-width: 360px;?*/
+    max-width: 100%;
+}
+#slide img {
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 375px;*/
+    max-height: 100px;
+    display: block;
+    width: 100%;
+    opacity: 0;
+    visibility: hide;
+    transition: 0.8s;
+    height: 25vw;
+}
+#slide img:first-child {
+    /*position: static;*/
+}
+#slide img.hide {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    display: block;
+    width: 100%;
+    opacity: 0;
+    visibility: hide;
+    transition: 0.8s;
+}
+#slide img.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10000;
+}
+/*for iPad*/
+#slide_iPad {
+    /*position: relative;*/
+    /*max-width: 360px;?*/
+    max-width: 100%;
+}
+#slide_iPad img {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    max-width: 375px;
+    max-height: 100px;
+    display: block;
+    width: 100vw;
+    opacity: 0;
+    visibility: hide;
+    transition: 0.8s;
+    height: 20vw;
+}
+#slide_iPad img:first-child {
+    /*position: static;*/
+}
+#slide_iPad img.hide {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    display: block;
+    width: 100%;
+    opacity: 0;
+    visibility: hide;
+    transition: 0.8s;
+}
+#slide_iPad img.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10000;
+}
+.home_ad_banner {
+    position: fixed;
+    bottom: -10px;
+    width: 100vw;
+    height: 17.5%;
+    /* height: 110px; */
+}
+.home_ad_banner_ipad {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 16vh;
+    /* height: 110px; */
+}
+
+.module01 .swiperslide {
+    max-height: 100px;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.8s;
+    height: 25vh;
+}
+.module01 .swiperslide_ipad{
+    max-width: 375px;
+    max-height: 16vh;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.8s;
+    height: 16vh;
+}
+/*<!--footer end-->*/
+
+/*合庫首頁 end*/
+
+/*fund beg*/
+.keep_title {
+    font-weight: bold;
+}
+
+.keep_sel {
+    border: solid 1px #8C8B8B;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    /*border-radius: 0px;*/
+    margin-top: 10px;
+}
+
+.keep_con {
+    /*border: solid 1px #8C8B8B;*/
+    background-color: #AAD5CA;
+    border-radius: 10px;
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.invest_title {
+    /*border: solid 1px #8C8B8B;*/
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest_title p {
+    font-weight: bold;
+}
+
+.invest {
+    height: 60px;
+    background-color: #D4E9E6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest2 {
+    height: 60px;
+    background-color: #E3F4F1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest_con {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 20%;
+}
+
+.invest_con2 {
+    text-align: center;
+    width: 30%;
+}
+
+.invest_con3 {
+    font-size: 14px;
+    text-align: center;
+    width: 25%;
+}
+.fonesize12{
+    font-size: 12px;
+}
+.send_btarea{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ margin-top: 30px;
+}
+.send_yes{
+ background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+ width: 100px;
+ border-radius: 2px;
+ height: 30px;
+ margin-top: 10px;
+ color: white;
+ font-size: 16px;
+ border: none;
+
+}
+.send_back{
+ background:#EDEDED;
+ width: 100px;
+ border-radius: 2px;
+ height: 30px;
+ margin-top: 10px;
+ color: #3C3C3C;
+ font-size: 16px;
+ border: solid 1px #E9E6E6;
+}
+#fund_css_table {
+    display: table;
+    text-align: center;
+    margin: 0 auto;
+    width: 94%;
+}
+
+.fund_css_header {
+    display: table-row;
+}
+
+.fund_css_tr {
+    display: table-row;
+}
+
+.fund_css_td {
+    display: table-cell;
+    padding: 2px;
+    height: 18px;
+    font-size: 14px;
+}
+
+.fund_css_td_left {
+    text-align: right;
+    font-size: 12px;
+    width: 80px;
+}
+
+.fund_css_td_right {
+    text-align: left;
+    color: #6564BC;
+}
+.fund_css_td_right_nocolor {
+    text-align: left;
+}
+.choice_title2{
+    margin-top: 10px;
+    text-align: right;
+}
+
+.choice_title3{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.choice_con{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height:260px;
+    margin-left: 8%;
+}
+
+.choice_date{
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+
+
+.datebox{
+    border: solid 1px #E9E6E6;
+    /* width: 80px; */
+    display:flex;
+    width:23%;
+    height:30px;
+    float: left;
+    border-radius: 3px;
+    background: #ffffff;
+    font-size: 14px;
+    padding-left: 8.5%
+
+}
+
+.choice_info{
+    margin-top: 20px;
+}
+
+.choice_bt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.choice_done{
+    background:#EDEDED;
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: #3C3C3C;
+    font-size: 16px;
+    border: solid 1px #E9E6E6;
+}
+
+.choice_cancel{
+    background:#EDEDED;
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: #3C3C3C;
+    font-size: 16px;
+    border: solid 1px #E9E6E6;
+}
+
+.date_color{
+    background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+}
+/*fund end*/
+
+/*授信業務 扣款帳號設定 兩頁表格共用*/
+
+.content_title_debit{
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.main_debit{
+    display: flex;
+    padding: 10px ;
+    margin: 0 auto;
+    background-color: #ffffff;
+    /*border-radius: 15px;*/
+    /*border: solid 1px #DBDEE4;*/
+    flex-direction: column;
+}
+
+.content_debit{
+    border: solid 1px #DBDEE4;
+    border-radius: 5px;
+}
+
+
+
+.content_debit_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*0922修改*/
+    padding: 10px 15px;
+    /*0922修改 //END*/
+    border-bottom: 1px solid #d5dde1;
+}
+
+.debit_content{
+    padding-top: 80px;
+}
+
+.debit_title{
+    font-weight: bold;
+    color: #3d4953;
+    font-size: 16px;
+}
+
+.debit_check{
+    /*position: fixed;*/
+    bottom: 0px;
+    width: 100vw;
+    height: 70px;
+}
+
+
+.loan_sign{
+    font-size: 24px;
+    color: #696767;
+}
+
+
+
+
+
+
+/*--------------------checkbox*/
+
+
+.debit_sign_box { position: absolute; display: none; }
+
+
+.debit_sign_box[disabled] { cursor: not-allowed; }
+
+.fbo-radio + label,
+.debit_sign_box + label { position: relative;display: block; padding-left: 30px;cursor: pointer;vertical-align: middle; }
+.fbo-radio + label:hover:before,
+.debit_sign_box + label:hover:before {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color; }
+.fbo-radio + label:before,
+.debit_sign_box + label:before { position: absolute; top: -5px; right: 5px; display: inline-block; width: 20px; height: 20px; content: ''; background:#fff; border:2px solid #c0c0c0 }
+.fbo-radio + label:after,
+.debit_sign_box + label:after { position: absolute; display: none; content: ''; }
+
+.fbo-radio[disabled] + label,
+.debit_sign_box[disabled] + label {cursor: not-allowed; color: #e4e4e4; }
+.fbo-radio[disabled] + label:hover, .debit_sign_box[disabled] + label:before, .fbo-radio[disabled] + label:after,
+.debit_sign_box[disabled] + label:hover,
+.debit_sign_box[disabled] + label:before,
+.debit_sign_box[disabled] + label:after { cursor: not-allowed; }
+.fbo-radio[disabled] + label:hover:before, .debit_sign_box [disabled] + label:hover:before { border: 1px solid #e4e4e4; animation-name: none; }
+.fbo-radio[disabled] + label:before,
+.debit_sign_box [disabled] + label:before { border-color: #e4e4e4; }
+
+.fbo-radio:checked + label:before,
+.debit_sign_box:checked + label:before { animation-name: none; }
+
+.fbo-radio:checked + label:after,.debit_sign_box:checked + label:after { display: block; }
+.fbo-radio + label:before { border-radius: 50%; }
+.fbo-radio + label:after { top: 7px; right: 12px; width: 11px; height: 11px; border-radius: 50%; background: #3e97eb; }
+.fbo-radio:checked + label:before { border: 2px solid #3e97eb; }
+.fbo-radio:checked[disabled] + label:before { border: 1px solid #c9e2f9; }
+.fbo-radio:checked[disabled] + label:after { background: #c9e2f9; }
+.debit_sign_box + label:before { border-radius:0; }
+.debit_sign_box + label:after { top: -3px;
+    right: 15px;
+    box-sizing: border-box;
+    width: 8px;
+    height: 17px;
+    transform: rotate(45deg);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #23A230;
+    border-top: 0;
+    border-left: 0; }
+.debit_sign_box:checked + label:before { background: #fff;  border: solid 2px #DBDEE4; }
+.debit_sign_box:checked[disabled] + label:before { border: #c9e2f9; background: #c9e2f9; }
+
+.pull-right {
+    float: right!important;
+}
+
+
+/*--------------------checkbox*/
+
+
+/*授信業務 扣款帳號設定兩頁表格共用*/
+
+
+
+/*0922新增*/
+/*列表icon樣式*/
+.i-bk{
+    display: block;
+    width: 23px;
+    height: 23px;
+    /* border: 1px solid; */
+    border-radius: 50%;
+    background-color: chartreuse;
+    background-image: linear-gradient(-180deg, #FDFCFC 0%, #C2C2C2 100%);
+    border: 1px solid #979797;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.50);
+}
+
+.list-chevron-right {
+    margin-left: 7px;
+    font-size: 15px;
+    color: #3C3C3C;
+}
+
+button:focus{  outline:none;  }
+
+
+
+/*footer位置預留 (請不要刪除)*/
+
+
+/*.footer_icon_wrap {*/
+    /*display: flex;*/
+    /*width: 100%;*/
+    /*height: 55px;*/
+    /*position: fixed;*/
+    /*bottom: 0px;*/
+    /*left: 0;*/
+    /*z-index: 30000;*/
+    /*background: pink;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
+/*}*/
+/*.footer_icon {*/
+    /*width: 20%;*/
+    /*height: 55px;*/
+    /*background: powderblue;*/
+    /*border: 1px solid;*/
+/*}*/
+
+/*.main_content {*/
+    /*padding: 0px 20px;*/
+    /*padding-bottom: 70px;*/
+/*}*/
+
+/*footer位置預留 END(請不要刪除) */
+
+
+/*----------------------------------------------*/
+
+/*以下針對320畫面調整*/
+
+@media screen and (max-width: 321px) {
+
+    /*共用元素 確認取消 按鈕*/
+    .confirm_bt {
+        width: 100px;
+    }
+
+    .cancel_bt {
+        width: 100px;
+    }
+
+    /*共用元素 確認取消 按鈕 end*/
+    /*QR Code繳費*/
+    .content_text {
+        width: 30%;
+    }
+
+    .content_text2 {
+        width: 80%;
+    }
+
+    .input_warning2 {
+        width: 45%;
+    }
+
+    .content_text_chang {
+        width: 40%;
+    }
+
+    /*0922修改*/
+    .back_bt {
+        font-size: 15px;
+    }
+
+    .page_title img {
+        width: 175px;
+    }
+
+    /*0922修改 END*/
+    /*QR Code繳費 end*/
+    /*繳費作業*/
+    .password_text {
+        width: 45%;
+    }
+
+    /*繳費作業 end*/
+    /*轉帳確認*/
+    .content_note {
+        width: 45%;
+    }
+
+    /*轉帳確認 end*/
+    /*注意事項*/
+    .agree_title {
+        font-size: 13px;
+    }
+
+    /*注意事項 end*/
+    /*轉帳結果*/
+    .result_infor {
+        padding: 10px 4px;
+        line-height: 16px;
+    }
+
+    .balance_money {
+        width: 120%;
+    }
+
+    .result_infor_number {
+        line-height: 19px;
+    }
+
+    .result_number2 {
+        width: 105%;
+    }
+
+    /*轉帳結果 end*/
+    /*注意事項*/
+    .agree_main {
+        font-size: 15px;
+    }
+
+    .agree_bt {
+        width: 70px;
+    }
+
+    .disagree_bt {
+        width: 70px;
+    }
+
+    .agree_content {
+        height: 320px;
+    }
+
+
+    /*注意事項*/
+
+/*合庫首頁*/
+
+
+
+    /*ad banner*/
+    .home_ad{ height: 96px; background: url(../image/ad2.png) no-repeat;}
+
+    /*ad banner end*/
+
+    
+    
+
+/*合庫首頁 end*/
+
+}
+/*以下針對320畫面調整 end*/
+

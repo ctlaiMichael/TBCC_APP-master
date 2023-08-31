@@ -1,0 +1,24 @@
+<section>
+  <!-- 背框 -->
+  <div class="scanBox" id="scanBox" style="width: 100vw; height: 120vh; z-index: 99;margin-top:-140px;">
+    <canvas id="scanArea"></canvas>
+  </div>
+
+  <div style="z-index: 999">
+    <div class="row_single" style="background: #89bfb2;position: absolute;bottom: 0%;width: 100%;overflow: hidden;margin-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+    margin-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */">
+      <div (click)="closeBarcode()" style="width: 25%;margin-top: 5px;" class="button_confirm">返回</div>
+      <div class="barcodeImg">
+        <img id="barcodeImg1" src="assets/images/barcode1.png" alt="">
+      </div>
+      <div class="barcodeImg">
+        <img id="barcodeImg2" src="assets/images/barcode2.png" alt="">
+      </div>
+      <div class="barcodeImg">
+        <img id="barcodeImg3" src="assets/images/barcode3.png" alt="">
+      </div>
+    </div>
+    <div class="row_single" style="height:35px; background: black; position:absolute; bottom: -35px; margin-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+    margin-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */"></div>>
+  </div>
+</section>

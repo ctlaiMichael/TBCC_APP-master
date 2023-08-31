@@ -1,0 +1,68 @@
+<section>
+	<div class="row_single"></div>
+	<!-- 捐贈碼 -->
+	<div class="sub_info_subtitle donation">
+		{{orgLoveCode}}<br>{{orgSocialWelfareName}}
+	</div>
+
+
+	<div class="row_single donation" style="margin-top: 20px">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				捐贈碼
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" class="inner_input" maxlength="20" [(ngModel)]="keyword"
+					placeholder="請輸入關鍵字" (click)="hideLvList()" required>
+			</li>
+		</ul>
+		<div class="row_inner donation">
+			<a id="search" class="inner_button float_right_bt" (click)="clickSearch()">
+				<span>查詢</span>
+			</a>
+		</div>
+	</div>
+	<!-- 查詢結果標題列Strat -->
+	<div class="table_chbox_frame" *ngIf="ShowList=='Y'">
+
+		<div class="table_chbox_row">
+			<div class="table_chbox_th table_th_checkbox_column charityCode"></div>
+			<div class="table_chbox_th">捐贈碼</div>
+			<div class="table_chbox_th">受捐贈機關或團體</div>
+		</div>
+		<!-- 查詢結果標題列End -->
+		<!-- 查詢結果列表頁Start -->
+		<ng-container *ngIf="loveCodeCount > 0">
+			<div class="table_chbox_row" *ngFor="let LV of queryLV;">
+				<div class="table_chbox_td" (click)="selectLV(LV.rowNum)">
+					<div class="inner_radio">
+						<input type="radio" [attr.id]="LV.LoveCode" name="userIdType" [(ngModel)]="selectedLV"
+							[value]="LV.rowNum">
+						<label [attr.for]="LV.LoveCode">
+							<span><i></i></span>
+						</label>
+					</div>
+				</div>
+				<div class="table_chbox_td">{{LV.LoveCode}}</div>
+				<div class="table_chbox_td charityCode">
+					{{LV.SocialWelfareName}}<br>
+					{{LV.SocialWelfareBAN}}
+				</div>
+			</div>
+
+		</ng-container>
+		<!-- 查詢結果列表頁End -->
+	</div>
+	<!-- 無資料畫面Strat -->
+	<ng-container *ngIf="loveCodeCount == 0 && ShowList=='Y'">
+		<div class="row_single"></div>
+		<div class="invest_title">
+			<p class="" style="font-size: 20px;text-align: center; color: red;margin-top: 10px;">查無相關資料</p>
+		</div>
+	</ng-container>
+	<!-- 無資料畫面End -->
+
+	<div class="row_single donation_list" style="margin-top: 20px;" *ngIf="loveCodeCount > 0">
+		<a id="donation_list_check" class="button_confirm" (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+	</div>
+</section>

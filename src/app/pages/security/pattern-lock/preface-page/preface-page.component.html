@@ -1,0 +1,45 @@
+<section>
+  <div class="sub_info_frame">
+    <ul class="step_bar_frame">
+      <li class="step_bar step_active"><span>1.同意事項</span></li>
+      <li class="step_bar"></li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">快速登入及裝置綁定服務條款</h4>
+  </div>
+  <div class="row_single">
+    <div class="inner_content">
+      <ol class="order_list">
+        存戶同意啟用快速登入及裝置綁定服務，請詳閱以下約定事項，如您已經完全了解並同意遵守，請勾選同意條款<br>
+        <li>我同意與合作金庫銀行約定以本裝置作為綁定設備用於身分確認登入合作金庫銀行APP。</li>
+        <li>每台裝置僅接受一位客戶進行設定，且每位客戶僅接受綁定一台裝置。</li>
+        <li>為保障您的使用安全，圖形/指紋/臉部辨識快速登入錯誤累計達五次，將強迫改採密碼登入，如需繼續使用本服務，請重新完成「快速登入」設定。</li>
+        <li>裝置綁定暨快速登入服務設定後一年內有效，屆期系統將自動終止「快速登入」服務，如需繼續使用本服務，請重新完成「快速登入」設定。</li>
+        <li><span
+            class="font_red">指紋/臉部辨識為個人獨特且不可變更性，請謹慎設定及使用，並保管您的行動裝置。請勿將圖形密碼使他人知悉，亦勿將裝置指紋/臉部辨識功能設定他人之指紋/臉部。凡依您設定之圖形辨識、指紋辨識、臉部辨識進行登入或交易，均視同您本人親為。</span>
+        </li>
+        <li>如欲開啟合庫E Pay快速交易服務，請另行啟用合庫E Pay快速交易設定。</li>
+        <li>若因自身手機瑕疵導致辨識錯誤或裝置遺失所造成之損害責任，客戶願自行負擔責任。</li>
+        <li>存戶同意本約定事項如有未盡事宜均依 貴行有關規定辦理。</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row_single">
+    <div class="inner_checkbox">
+      <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="agreeStatement">
+      <label for="inner_checkbox01">
+        <span><i></i></span>
+        <b>本人已閱讀並瞭解上述服務條款之內容</b>
+      </label>
+    </div>
+  </div>
+  <div class="row_single">
+    <div class="double_button" style="margin-top: 10px;">
+      <!--不同意-->
+      <a (click)="disagree()">{{'PG_SECURITY.PATTERN_LOCK.DISAGREE' | translate}}</a>
+      <!--同意-->
+      <a (click)="agree()">{{'PG_SECURITY.PATTERN_LOCK.AGREE' | translate}}</a>
+    </div>
+  </div>
+</section>

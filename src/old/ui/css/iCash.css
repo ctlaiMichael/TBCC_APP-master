@@ -1,0 +1,96 @@
+﻿        /*----------------------------------
+        
+              POP 04 Android IOS CSS
+        
+        ----------------------------------*/
+
+        .iCash-target {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 1;
+            -moz-transition: opacity 0.5s ease-in-out;
+            -o-transition: opacity 0.5s ease-in-out;
+            -webkit-transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        .iCash-content {
+            width: 50%;
+            height: 0;
+            padding-bottom: 40%;
+            margin: auto;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            -moz-transition: ease-in-out 0.5s;
+            -o-transition: ease-in-out 0.5s;
+            -webkit-transition: ease-in-out 0.5s;
+            transition: ease-in-out 0.5s;
+        }
+
+        .iCash-close {
+            position: absolute;
+            right: -30px;
+            top: -30px;
+        }
+
+        .iCash-close img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+        }
+
+        .iCash-btn {
+            position: absolute;
+            bottom: 25px;
+            left: 15%;
+            width: 200px;
+        }
+
+        .iCash-btn img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .iCash-content {
+                width: 75%;
+                height: 0;
+                padding-bottom: 60%;
+            }
+        }
+
+        @media (min-width: 0px) and (max-width: 640px) {
+            .iCash-content {
+                width: 90%;
+                height: 0;
+                padding-bottom: 72%;
+            }
+            .iCash-close {
+                width: 30px;
+                position: absolute;
+                right: -12px;
+                top: -12px;
+            }
+            .iCash-btn {
+                width: 130px;
+                bottom: 5px;
+            }
+
+        }
+
+        /*----------------------------------
+        
+              POP 04 Android IOS CSS END
+        
+        ----------------------------------*/

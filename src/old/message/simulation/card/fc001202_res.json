@@ -1,0 +1,49 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc001202",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc001202ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc001202",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "上傳成功",
+      "fc0:balanceDate" : "1060101",
+      "fc0:details" : {
+        "fc0:detail" : [
+          {
+            "fc0:expendDate" : "1060101",
+            "fc0:expendDescription" : "隨身硬碟",
+            "fc0:foreignAmnt" : "5.00",
+            "fc0:nTAmnt" : "150"
+          },
+          {
+            "fc0:expendDate" : "1060102",
+            "fc0:expendDescription" : "電腦螢幕",
+            "fc0:foreignAmnt" : "15.00",
+            "fc0:nTAmnt" : "120"
+          },
+          {
+            "fc0:expendDate" : "1060103",
+            "fc0:expendDescription" : "筆記型電腦",
+            "fc0:foreignAmnt" : "25.00",
+            "fc0:nTAmnt" : "160"
+          }
+        ]
+      },
+      "sch:paginatedInfo" : {
+        "sch:totalRowCount" : "11",
+        "sch:pageSize" : "2",
+        "sch:pageNumber" : "1",
+        "sch:sortColName" : "",
+        "sch:sortDirection" : "ASC"
+      }
+    }
+  }
+}

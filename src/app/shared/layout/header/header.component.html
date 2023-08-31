@@ -1,0 +1,149 @@
+<!-- <div id="header">
+  <div id="sidebar_left" (click)="leftBtnClick()">left</div>
+  　<div id="sidebar_right" (click)="rightBtnClick()">right</div>
+  　<h1 appUiContent="title">Header</h1>
+</div> -->
+<ng-container *ngIf="options.style!=='normal_a11y'; then normal_header else a11yheader"></ng-container>
+<ng-template  #normal_header >
+<header>
+  <!-- 登入頁前兩頁才有 -->
+  <span class="login_box1" *ngIf="options.style==='login'"></span>
+  <span class="login_box2" *ngIf="options.style==='login'"></span>
+  <!-- 登入後才有 -->
+  <!-- 結果頁Header Start -->
+  <div *ngIf="options.style==='result'">
+    <span class="gradcolor_01"></span>
+    <span class="gradcolor_02"></span>
+    <span class="gradcolor_03"></span>
+  </div>
+  <!-- 結果頁Header End -->
+  <!-- menu展開會多 header_close -->
+  <span class="home_page_header" [ngClass]="leftMenu.isOpened || leftMenu.setOpened ?'header_close':''"
+    *ngIf="options.style==='user_home'"></span>
+  <span class="home_page_header header_close" *ngIf="options.style==='normal'"></span>
+  <!-- 選單開啟按鈕 -->
+  <button class="nav_left_menu_button {{leftBtnClass}}" (click)="leftBtnClick()">
+    <s class="menu_button_line"></s>
+  </button>
+  <!-- 選單開啟按鈕 End -->
+  <!-- 最新公告/消息按鈕 -->
+  <!-- menu 展開會多 -->
+  <button class="{{rightSecBtnClass}}" *ngIf="options.rightBtnIcon && showRightSecBtn"
+	[ngClass]="leftMenu.isOpened || leftMenu.setOpened ?'active':''" (click)="rightSecBtnClick()">
+	<div class="button_badge" *ngIf="showRightSecBadge">{{rightSecBadge}}<span *ngIf="overHundred">+</span></div>
+  </button>
+  <button class="{{rightBtnClass}}" *ngIf="options.rightBtnIcon"
+    [ngClass]="leftMenu.isOpened || leftMenu.setOpened ?'active':''" (click)="rightBtnClick()">
+  </button>
+
+  <!-- 最新公告/消息按鈕 End -->
+
+
+  <!--<span class="gradcolor_03"></span>-->
+  <h1 class="tcb_logo"></h1>
+  <div class="mascot_frame">
+    <s></s>
+    <h2 class="tcb_mascot" appLink="web:robot"></h2>
+  </div>
+  <!-- 選單開啟按鈕 -->
+
+  <ng-container [ngSwitch]="options.title">
+    <ng-container *ngSwitchCase="'logo'">
+      <!-- LOGO -->
+      <h2 class="header_title tcb_logo"></h2>
+    </ng-container>
+    <ng-container *ngSwitchCase="'epay'">
+      <!-- epay -->
+      <!-- <h2 class="header_title header_title2 tcbepay_logo"></h2> -->
+      <!-- <h2 class="header_title header_title2 tcbepay_logo">{{ 'FUNC.EPAY' |translate}}</h2> -->
+      <!-- icon改右邊 -->
+      <h2 class="header_title">{{ 'FUNC.EPAY' |translate}}</h2>
+      <div class="tcbepay_logo"></div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <!-- 預設 -->
+        <h2 class="header_title">{{options.title|translate}}</h2>
+    </ng-container>
+  </ng-container>
+
+  <!-- 主畫面個人資產(只有登入後首頁有) -->
+  <!-- menu展開時隱藏 -->
+  <div class="inner_main_info" id="main_info" [hidden]="leftMenu.isOpened || leftMenu.setOpened"
+    *ngIf="options.showMainInfo">
+    <!-- 現行: 台幣存款總覽/未來:資產總金額,20191209@wei 我的金庫 -->
+    <a class="inner_mi_btn" appLink="user-asset">
+      <span class="inner_mi_title">{{ 'HOME.ASSETS.DEPOSIT' | translate }}</span>
+      <!-- 20200113@wei 資產總覽關閉 -->
+      <i class="inner_mi_number" overAmountStyle [content]="personalInfo.deposit" [option]="amountOption"></i>
+      <!-- <i class="inner_mi_number inner_mi_txt">查詢 »</i> -->
+    </a>
+    <!-- 現行: 本期帳單(信用卡額度沒有此資料)/未來:信用卡目前消費 -->
+    <!-- 20190905@wei 需求變更要換為投資理財 -->
+    <!-- <a class="inner_mi_btn" appLink="web:bill">
+      <span class="inner_mi_title">{{ 'HOME.ASSETS.BILL' | translate }}</span>
+      <i class="inner_mi_number" overAmountStyle [content]="personalInfo.bill" [option]="amountOption"></i>
+    </a> -->
+    <!-- 20190905@wei 需求變更要換為投資理財 -->
+    <a class="inner_mi_btn" appLink="fund-report">
+      <span class="inner_mi_title">{{ 'HOME.ASSETS.FUND' | translate }}</span>
+      <!-- 20191209@wei 我的金庫 -->
+      <!-- <i class="inner_mi_number" overAmountStyle [content]="personalInfo.fund" [option]="amountOption"></i> -->
+      <i class="inner_mi_number inner_mi_txt">{{ 'HOME.ASSETS.FUND_SUBTITLE' | translate }}</i>
+    </a>
+    <a target="_blank" href="javascript:void(0);" appLink="web:robot">
+      <i class="tcb_mascot_img"></i>
+    </a>
+  </div>
+  <!-- 主畫面個人資產 End -->
+</header>
+<div *ngIf="options.style==='user_home'" [hidden]="leftMenu.isOpened" [ngClass]="leftMenu.isOpened ?'':'headerBtn'"
+  class="row_single fastLink">
+  <dl class="inner_table_four">
+    <dt class="inner_cell_four">
+      <a class="inner_button bt_100" href="javascript:void(0);" appLink="twd-transfer">
+        <!-- 台幣轉帳 -->
+        <span>{{ 'HOME.FAST_LINK.ITEM1' | translate }}</span>
+      </a>
+    </dt>
+    <dt class="inner_cell_four">
+      <a class="inner_button bt_100" href="javascript:void(0);" appLink="taxes">
+        <!-- 繳稅費 -->
+        <span>{{ 'HOME.FAST_LINK.ITEM2' | translate }}</span>
+      </a>
+    </dt>
+    <dt class="inner_cell_four">
+      <a class="inner_button bt_100" href="javascript:void(0);" appLink="foreign-exchange-twd-to-foreign">
+        <!-- 買外幣 -->
+        <span>{{ 'HOME.FAST_LINK.ITEM3' | translate }}</span>
+      </a>
+    </dt>
+  </dl>
+</div>
+</ng-template>
+
+<!--無障礙頭檔-->
+<ng-template #a11yheader >
+  <header style="position: fixed;z-index: 10;">
+    <!-- 選單回首頁 -->
+    <button class="home_a11y {{leftBtnClass}}" (click)="leftBtnClick()" *ngIf="options.leftBtnIcon==='home'" appAutoFocus >
+      首頁
+    </button>
+    <!-- 選單上一頁-->
+    <button #a11yBakBtn class="nav_left_menu_button_a11y {{leftBtnClass}}" aria-label="回上一頁" (click)="leftBtnClick()"
+    *ngIf="options.leftBtnIcon==='back'" appAutoFocus >
+    </button>
+    <!-- menu展開會多 header_close -->
+    <div class="home_page_header_a11y header_close_a11y" aria-relevant="additions text">
+      <title class="title_a11y" >{{options.title|translate}}</title>
+    </div>
+    <!-- 右邊按鈕設定(登入) -->
+    <button class="login_a11y" (click)="rightBtnClick()" *ngIf="options.rightBtnIcon==='login'">
+      登入
+    </button>
+    <!-- 右邊按鈕設定(登出) -->
+    <button class="login_a11y" (click)="rightBtnClick()" *ngIf="options.rightBtnIcon==='logout'">
+      登出
+    </button>
+    <!-- 選單開啟按鈕 End -->
+  </header>
+</ng-template>

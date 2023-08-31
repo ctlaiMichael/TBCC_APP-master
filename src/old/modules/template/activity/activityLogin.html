@@ -1,0 +1,16 @@
+
+<div class="bc_frame">
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.idNo}">
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name required" ng-class="{required:applyFormList.required.idNo}">持卡人<br>{{'FIELD.IDENTITY' | translate}}</i></td>
+		<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}" ng-model="inp.show.idNo"
+			identity-mask-directive /></td>
+	
+		</tr></table></div><s class="input_comment">{{error_msg_list.idNo}}</s>
+	</div>
+	<div class="double_button">
+		<button  ui-sref="home">{{'BTN.CANCEL' | translate}}</button>
+		<button ng-click="setQuery()">{{'BTN.SEARCH' | translate}}</button>
+
+	</div>
+</div>

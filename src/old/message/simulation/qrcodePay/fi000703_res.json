@@ -1,0 +1,44 @@
+{
+    "sch:MNBResponse": {
+        "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+        "sch:resHeader": {
+            "sch:requestNo": "1481860700840-fi000702",
+            "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+            "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+            "sch:custId": "F121374529"
+        },
+        "sch:result": {
+            "@xsi:type": "fi0:fi000702ResultType",
+            "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000702",
+            "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "fi0:trnsRsltCode": "0",
+            "fi0:hostCode": "4001",
+            "fi0:hostCodeMsg": "交易成功",
+            "fi0:custId": "F121374529",
+            "fi0:trustAcnt": "9997705073012",
+            "fi0:transCode": "CA000224044",
+            "fi0:fundCode": "0602",
+            "fi0:fundName": "富蘭克林坦伯頓成長基金",
+            "fi0:investAmntFlag": "Y",
+            "fi0:investAmnt": "100000",
+            "fi0:payDateFlag": "N",
+            "fi0:payDate1": "1",
+            "fi0:payDate2": "",
+            "fi0:payDate3": "11",
+            "fi0:payDate4": "",
+            "fi0:payDate5": "18",
+            "fi0:payTypeFlag": "N",
+            "fi0:changeBegin": "1070129",
+            "fi0:changeEnd": "1070129",
+            "fi0:payAcntStatus": "Y",
+            "fi0:payAcnt": "1997705071012",
+            "fi0:profitAcntFlag": "Y",
+            "fi0:oriProfitAcnt": "0008887705073012",
+            "fi0:profitAcnt": "0009997717093001",
+            "fi0:effectDate": "1070129",
+            "fi0:amount": "10000",
+            "fi0:unit1": "1",
+            "fi0:INCurrency": "NTD"
+        }
+    }
+}

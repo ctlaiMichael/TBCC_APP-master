@@ -1,0 +1,157 @@
+<section>
+    <!--繳費清單(checkbox) Start-->
+    <ng-container *ngIf="!goNextPage">
+        <ng-container *ngIf="showData; else noDataBox">
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar "></li>
+                    <li class="step_bar step_active"><span>2.繳款項目</span></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+            <div class="sub_info_subtitle">
+                查詢時間：{{info_data.queryTime | htDate}}<br>
+                身分證字號：{{personIdHidden}}
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title" *ngIf="channel=='1'">您尚有下列醫療費用可供繳納</h4>
+                <h4 class="simple_title" *ngIf="channel!='1'">您尚有下列保險費用可供繳納</h4>
+            </div>
+
+            <!-- 醫療繳費 Start-->
+            <ng-container  *ngIf="showDetailData">
+            <div class="table_chbox_frame">
+                <div class="table_chbox_row">
+                    <div class="table_chbox_th table_th_checkbox_column">
+                        全選
+                        <div class="inner_checkbox" (click)="onCheckAll()">
+                            <input type="checkbox" [ngModel]="checkAllFlag">
+                            <label>
+                                <span><i></i></span>
+                            </label>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="channel == 1 && !vghtpCheck">
+                        <div class="table_chbox_th">看診時間</div>
+                    </ng-container>
+                    <ng-container *ngIf="channel == 2 && !vghtpCheck">
+                        <div class="table_chbox_th">保單類別</div>
+                    </ng-container>
+                    <ng-container *ngIf="channel == 1 && vghtpCheck">
+                        <div class="table_chbox_th">就醫時間</div>
+                    </ng-container>
+                    <div class="table_chbox_th">應繳金額</div>
+                </div>
+
+                <div class="table_chbox_row" *ngFor="let item of data;" (click)="onCheck(item)">
+                    <div class="table_chbox_td">
+
+                        <ng-container *ngIf="!item['showDisabled'] || item['showCheck']">
+                            <div class="inner_checkbox">
+                                <input type="checkbox" name="inner_checkbox" [ngModel]="item['showCheck']" [disabled]="item['showDisabled']">
+                                <label>
+                                    <span [ngClass]="(item['isPayable']==1) ? 'normal_disable': ''"><i></i></span>
+                                </label>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="item['showDisabled'] && !item['showCheck']">
+                            <span class="data_cell font_red">請臨櫃繳</span>
+                        </ng-container>
+
+                    </div>
+                    <ng-container *ngIf="channel == 1">
+                        <div class="table_chbox_td">{{item.clinicDate | htDate:'date'}}<br>{{item.clinicDate | htDate:'HH:mm:ss'}}</div>
+                    </ng-container>
+
+                    <ng-container *ngIf="channel == 2">
+                        <div class="table_chbox_td">{{item.clinicDate}}</div>
+                    </ng-container>
+
+                    <div class="table_chbox_td">{{item.amount | htMoney:'TWD'}}</div>
+                </div>
+            </div>
+            <!--  醫療繳費 End -->
+
+            <!-- 醫療繳費 下方總計 Start-->
+            <div class="row_single">
+                <i class="fare_select_sum" id="selectNum">已選取項目為：{{amountData.count}}</i>
+                <p class="fare_info_list">
+                    <i class="fare_info_title">繳交金額共計：{{amountData.amount | htMoney:'TWD'}}</i>
+                    <span class="fare_info_content font_bl_gre"></span>
+                </p>
+            </div>
+            <!-- 醫療繳費 下方總計 End-->
+            </ng-container>
+
+            <div class="row_single">
+                <div class="double_button">
+                    <a (click)="onCancel('edit')" href="javascript:void(0)">{{'BTN.PREVIOUS' | translate}}</a><a href="javascript:void(0)"
+                        (click)="onPaymentNow()">{{'BTN.NEXT' | translate}}</a>
+                </div>
+            </div>
+
+        </ng-container>
+        <ng-template #noDataBox>
+            <div class="sub_info_subtitle">
+                查無資料
+            </div>
+        </ng-template>
+    </ng-container>
+    <!--繳費清單(checkbox) End-->
+
+
+    <!--顯示下一頁(本人帳戶、信用卡選單) Start-->
+    <ng-container *ngIf="!goCreditPage">
+        <ng-container *ngIf="!goEditPage">
+            <ng-container *ngIf="goNextPage">
+                <div class="sub_info_frame">
+                    <ul class="step_bar_frame">
+                        <li class="step_bar "></li>
+                        <li class="step_bar "></li>
+                        <li class="step_bar step_active"><span>3.選擇繳款方式</span></li>
+                        <li class="step_bar"></li>
+                        <li class="step_bar"></li>
+                        <li class="step_bar"></li>
+                        <li class="step_bar"></li>
+                    </ul>
+                </div>
+
+                <div class="inner_links_frame">
+                    <ng-container *ngIf="I_bank">
+                        <a href="javascript:void(0)" (click)="goBank()" class="inner_link">本人帳戶繳費</a>
+                    </ng-container>
+                    <ng-container *ngIf="H_bank">
+                        <a href="javascript:void(0)" (click)="goBank()" class="inner_link">活期性存款帳戶</a>
+                    </ng-container>
+                    <ng-container *ngIf="creditCard">
+                        <a href="javascript:void(0)" (click)="goCreditCard()" class="inner_link">信用卡</a>
+                    </ng-container>
+                    <!-- <ng-container>
+                            <a href="javascript:void(0)" class="inner_link">合庫存款帳戶</a>
+                    </ng-container> -->
+                    <ng-container *ngIf="H_icCard && disableATMObj.disableATM=='true'">
+                        <a href="javascript:void(0)" class="inner_link">行動ATM</a>
+                    </ng-container>
+                    <ng-container *ngIf="(I_icCard && disableATMObj.disableATM=='true' )">
+                        <a href="javascript:void(0)" class="inner_link" (click)="goDebidCard()">金融卡繳費</a>
+                    </ng-container>
+                </div>
+
+            </ng-container>
+        </ng-container>
+    </ng-container>
+
+    <!--顯示下一頁(本人帳戶、信用卡選單) End-->
+    <ng-container *ngIf="goEditPage">
+        <app-bank-pay [inputData]="requestData" (errorPageEmit)="onErrorBackEvent($event)"></app-bank-pay>
+    </ng-container>
+
+    <ng-container *ngIf="goCreditPage">
+        <app-creditcard-pay [inputData]="requestData" (errorPageEmit)="onErrorBackEvent($event)"></app-creditcard-pay>
+    </ng-container>
+</section>

@@ -1,0 +1,54 @@
+<section class="background_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y" *ngIf="info_data">
+    <div class="row4_top font_money_a11y">
+      查詢完成
+    </div>
+    <div class="row4_top_a11y">
+      帳號：<br>
+      {{formatAccount(loanObj.account)}}
+    </div>
+    <div class="row4_top_a11y">
+      目前利率：<br>
+      {{info_data.nowRate}}
+    </div>
+    <div class="row4_top_a11y">
+      委託繳息帳號：<br>
+      {{formatAccount(info_data.aupayAccount)}}
+    </div>
+    <div class="row4_top_a11y">
+      現欠本金：<br>
+      <font class="font_money_a11y">NT$ {{formateService.transMoney(info_data.balance,'TWD')}}</font>
+    </div>
+    <div class="row4_top_a11y">
+      借款額度：<br>
+      <font class="font_money_a11y">NT$ {{formateService.transMoney(info_data.loanCredit,'TWD')}}</font>
+    </div>
+    <div class="row4_top_a11y">
+      每月攤還本息：<br>
+      <font class="font_money_a11y">NT$ {{formateService.transMoney(info_data.anuMonPay,'TWD')}}</font>
+    </div>
+    <div class="row4_top_a11y" title="{{dateTitle(formatDate(info_data.ltrateDueDate),'上次利息收訖日')}}">
+      上次利息收訖日：<br>
+      {{formatDate(info_data.ltrateDueDate)}}
+    </div>
+    <div class="row4_top_a11y" title="{{dateTitle(formatDate(info_data.isranDueDate),'保險到期日')}}">
+      保險到期日：<br>
+      {{formatDate(info_data.isranDueDate)}}
+    </div>
+    <div class="row4_top_a11y" title="{{dateTitle(formatDate(info_data.loanDate),'借款日')}}">
+      借款日：<br>
+      {{formatDate(info_data.loanDate)}}
+    </div>
+    <div class="row4_top_a11y" title="{{dateTitle(formatDate(info_data.expirDate),'到期日')}}">
+      到期日：<br>
+      {{formatDate(info_data.expirDate)}}
+    </div>
+  </div>
+
+  <!-- Page1 -->
+  <app-loan-result-pagebox-a11y-page [page]="1" (backPageEmit)="onBackPage($event)"
+    (errorPageEmit)="onErrorBackEvent($event)" [reqObj]="loanObj">
+  </app-loan-result-pagebox-a11y-page>
+
+</section>

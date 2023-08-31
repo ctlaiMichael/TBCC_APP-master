@@ -1,0 +1,52 @@
+<div class="sub_info_frame result">
+	<div class="step_final_icon_frame">
+		<i class="icon_success"></i>
+		<span class="step_final_info">交易成功</span>
+	</div>
+</div>
+<ul class="table_info">
+	<li class="table_row">
+		<span>交易序號</span>
+		<i>{{taxesResult.trnsNo}}</i>
+	</li>
+	<li class="table_row">
+		<span>交易時間</span>
+		<i>{{taxesResult.trnsDateTime | htDate}}</i>
+	</li>
+	<li class="table_row">
+		<span>繳款類別</span>
+		<i>{{taxesResult.payCategory}}</i>
+	</li>
+	<li class="table_row">
+		<span>扣款帳號</span>
+		<i>{{taxesResult.trnsfrOutAccnt | accountFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>扣款帳號餘額</span>
+		<i>{{taxesResult.trnsfrOutAccntBal | currencyMoney}}元</i>
+	</li>
+	<li class="table_row">
+		<span>銷帳編號</span>
+		<i>{{taxesResult.payNo}}</i>
+	</li>
+	<li class="table_row">
+		<span>繳款金額</span>
+		<i>{{taxesResult.trnsfrAmount | currencyMoney:'TWD'}}元</i>
+	</li>
+	<li class="table_row">
+		<span>繳納截止日</span>
+		<!-- <i>{{taxesResult.payEndDate | htDate:'yyyy/MM/dd'}}</i> -->
+		<i>{{taxesResult.payEndDate }}</i>
+	</li>
+</ul>
+<div class="row_single"></div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+		交易訊息分享
+	</a>
+</div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="accountView()" class="button_confirm">
+		回帳戶總覽
+	</a>
+</div>

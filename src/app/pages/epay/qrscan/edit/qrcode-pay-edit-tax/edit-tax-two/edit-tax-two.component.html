@@ -1,0 +1,159 @@
+<section>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				繳款類別:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcode.payCategory1}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable" >
+			<li class="inner_table_cell">
+				銷帳編號:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcode.payNo}}" type="text" class="inner_input" >
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				繳納截止日:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcode.payEndDate1}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				繳納金額:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcode.trnsAmountStr}}" type="tel" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				繳款方式:
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" [(ngModel)]='status' (change)="chgStatus(status)">
+					<option value="1">已開通設定帳戶</option>
+					<option *ngIf="(qrcode.payCategory != '11002') && (qrcode.payCategory != '11003')" (click)="clickAccts()" value="2">活期(儲蓄)存款帳戶-限繳本人</option>
+					<option value="3" (click)="clickCard()">信用卡</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+
+	<ng-container *ngIf="status == 1">
+		<div class="row_single">
+			<h4 class="simple_title">交易帳號</h4>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					已開通設定帳戶:
+				</li>
+				<li class="inner_table_cell">
+					<input value="{{form.trnsfrOutAcct}}" type="text" class="inner_input">
+				</li>
+			</ul>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					目前轉帳機制:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+						<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="status == 2">
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					活期(儲蓄)存款帳戶:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" [(ngModel)]='life'>
+						<option value="">請選擇</option>
+						<option *ngFor='let acts of accts; let i = index;' [value]="i">{{acts.acctNo}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					目前轉帳機制:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+						<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="status == 3">
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					交易信用卡卡號:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" [(ngModel)]='card'>
+						<option value="">請選擇</option>
+						<option *ngFor="let cards of cardds" value="{{cards.creditCardNo}}">{{cards.cardType}},{{cards.creditCardNo}} </option>
+					</select>
+				</li>
+			</ul>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['cardDate']?'active_warnning':''">
+				<li class="inner_table_cell">
+					卡片有效月年:
+				</li>
+				<li class="inner_table_cell">
+					<input [(ngModel)]='form.cardDate' maxlength="4" (change)="checkFormat('cardDate', form.cardDate)" type="tel" class="inner_input"
+						placeholder="請輸入4位數字有效月年">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg.cardDate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['cardPassword']?'active_warnning':''">
+				<li class="inner_table_cell">
+					卡片背面末三碼:
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" [(ngModel)]='form.cardPassword' maxlength="3" (change)="checkFormat('cardPassword', form.cardPassword)"
+						class="inner_input" placeholder="請輸入卡片背面末三碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg.cardPassword}}</i>
+		</div>
+	</ng-container>
+	<div class="row_single">
+		<div class="double_button" id="btn_submit">
+			<a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+			<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+</section>

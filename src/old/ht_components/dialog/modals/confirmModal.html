@@ -1,0 +1,28 @@
+<!--
+<div class="mfp-content">
+  <div class="zoom-anim-dialog popup_message_frame">
+    <ul class="popup_message_frame_main">
+      <li class="popup_title">
+        <h4 class="popup_title_word" >{{title}}&nbsp;</h4>
+      </li>
+      <li class="popup_content">
+        <p class="small_word">
+          {{content}}
+        </p>
+      </li>
+      <li class="popup_footer">
+        <div class="row_main align_ceter">
+          <a href="" class="btn popup-modal-dismiss" ng-click="ok()"><i>確認</i></a>
+          <a href="" class="btn popup-modal-dismiss" ng-click="close()"><i>取消</i></a>
+        </div>
+      </li>
+    </ul>
+    &lt;!&ndash;<button title="Close (Esc)" type="button" class="mfp-close" ng-click="close()">×</button>&ndash;&gt;
+  </div>
+</div>-->
+<div class="dialog_cover action" ><!-- 加上 class「action」為開啟，加上「close」為關閉。 -->
+  <div class="dialog_content dialog_twobtn">
+    <p><span>{{content}}</span></p>
+    <button type="reset" ng-click="close()">取消</button><button type="submit" ng-click="ok()">確定</button>
+  </div>
+</div>

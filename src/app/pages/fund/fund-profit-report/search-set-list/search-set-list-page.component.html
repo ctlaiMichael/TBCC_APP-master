@@ -1,0 +1,69 @@
+<ng-container [ngSwitch]="goSubject">
+    <ng-container *ngSwitchCase="'select-page'">
+        <ng-container *ngIf="showAllData">
+            <section>
+                <!-- 頁籤 Start -->
+                <app-bookmark [setData]="bookmarkData"[setKey]="groupName" (backPageEmit)="onBookMarkBack($event)">
+                </app-bookmark>
+                <!-- 頁籤 End -->
+
+                <ng-container *ngIf="showData">
+                    <div class="sub_info_subtitle font_align_left" id="showTime">
+                        查詢時間：{{searchTime|htDate}}
+                        <span class="currentTime2"></span>
+                    </div>
+                </ng-container>
+                <!-- Detail Start -->
+                <ng-container *ngIf="showData; else noDataBox">
+                    <ul class="table_data_frame">
+                        <li class="table_data table_data_header">
+                            <span class="data_cell">代碼</span>
+                            <i class="data_cell">基金名稱</i>
+                            <b class="data_cell">{{rangeName}}(%)</b>
+                            <s class="data_cell fundset_search"></s>
+                        </li>
+                        <ng-container [ngSwitch]="nowPageType">
+                            <ng-container *ngSwitchCase="'1D'">
+                                <app-search-set-detail [group_data]="group_data" [reqObj]="reqObj" (backPageEmit)="onPageBackEvent($event)"
+                                    (backWebEmit)="onBackWebEvent($event)">
+                                </app-search-set-detail>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'1M'">
+                                <app-search-set-detail [group_data]="group_data" [reqObj]="reqObj" (backPageEmit)="onPageBackEvent($event)"
+                                    (backWebEmit)="onBackWebEvent($event)">
+                                </app-search-set-detail>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'6M'">
+                                <app-search-set-detail [group_data]="group_data" [reqObj]="reqObj" (backPageEmit)="onPageBackEvent($event)"
+                                    (backWebEmit)="onBackWebEvent($event)">
+                                </app-search-set-detail>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'12M'">
+                                <app-search-set-detail [group_data]="group_data" [reqObj]="reqObj" (backPageEmit)="onPageBackEvent($event)"
+                                    (errorPageEmit)="onErrorBackEvent($event)">
+                                </app-search-set-detail>
+                            </ng-container>
+                            <ng-container *ngSwitchDefault>
+                                <!-- 不顯示 -->
+                            </ng-container>
+                        </ng-container>
+                    </ul>
+                    <!-- Detail End -->
+                </ng-container>
+                <ng-template #noDataBox>
+                    <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+                </ng-template>
+                <div class="row_single">
+                    <h4 class="simple_title">說明：</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        1. 部分基金公司淨值係採雙向報價(即：＂申購價格＂、＂贖回價格＂不同)。<br>
+                        2. 部分基金無法於網路銀行執行申購或轉換等申請(基金公司已停止新申購或轉入)
+                    </p>
+                </div>
+            </section>
+        </ng-container>
+    </ng-container>
+   
+</ng-container>

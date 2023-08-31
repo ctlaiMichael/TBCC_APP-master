@@ -1,0 +1,151 @@
+<section class="background_a11y">
+    <div class="row_single_a11y"></div>
+
+    <ng-container *ngIf="!isFD; else fdView">
+    <!-- <div class="row_twd_search_a11y">
+        <div class="result_state_a11y">查詢完成</div>
+        <div class="row3_area_a11y">
+        <p class="row3_sheet_a11y" [title]="myquerytime">查詢時間：<br>{{ querytime }}</p>
+            <p class="row3_sheet_a11y" [title]="mytimeintvl">查詢區間：<br>{{timeintvl_start}}~{{timeintvl_end}}</p>
+            <p class="row3_sheet_a11y">存款帳號：<br>
+                <font class="font_money_a11y">{{ deposit_account }}</font>
+            </p>
+        <font class="font_money_a11y">{{ account_state }}</font>
+            <p class="row3_sheet_a11y">可用餘額：<br>
+                <font class="font_money_a11y">NT$ {{ avbl_balance }}</font>
+            </p>
+        </div>
+    </div> -->
+
+    <div class="row6_a11y">
+      <div class="result_state_a11y">查詢完成</div>
+      <div class="row6_content_a11y" id="row6">
+        <div class="row6_space_a11y"></div>
+        <div class="row7_black_a11y" [title]="myquerytime">查詢時間：<br>{{ querytime }}</div>
+        <div class="row6_space_a11y"></div>
+        <div class="row7_black_a11y" [title]="mytimeintvl">查詢區間：<br>{{timeintvl_start}}~{{timeintvl_end}}</div>
+        <div class="row6_space_a11y"></div>
+        <div class="row7_black_a11y">存款帳號：<br>
+          <font class="font_money_a11y">{{ deposit_account }}<br>
+            {{ account_state }}</font>
+    </div>
+        <!-- <div class="row6_space_a11y"></div>
+
+        <div class="row7_black_a11y">實質餘額：<br>
+          <font class="font_money_a11y">NT$ {{ real_balance }}</font>
+        </div>
+        <div class="row6_space_a11y"></div>
+
+        <div class="row7_black_a11y">可用餘額：<br>
+          <font class="font_money_a11y">NT$ {{ avbl_balance }}</font>
+        </div>
+        <div class="row6_space_a11y"></div> -->
+
+        <div id="more_detail" [ngStyle]="moredetail_style">
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">實質餘額：<br>
+            <font class="font_money_a11y">NT$ {{ real_balance }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">可用餘額：<br>
+            <font class="font_money_a11y">NT$ {{ avbl_balance }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">今交票金額：<br>
+            <font class="font_money_a11y">NT$ {{ payment_amt_today }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">明交票金額：<br>
+            <font class="font_money_a11y">NT$ {{ payment_amt_tomo }}</font>
+    </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">扣押總額：<br>
+            <font class="font_money_a11y">NT$ {{ detain_amt_tol }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">消費圈存：<br>
+            <font class="font_money_a11y">NT$ {{ reload_amt_tol }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">凍結總額：<br>
+            <font class="font_money_a11y">NT$ {{ frozen_amt_tol }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">營業時間後提款及轉出：<br>
+            <font class="font_money_a11y">NT$ {{ rollout_amt }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">營業時間後存款及轉入：<br>
+            <font class="font_money_a11y">NT$ {{ rollin_amt }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y" [title]="myfinance_rate">融資利率：<br>
+            <font class="font_money_a11y">{{ finance_rate }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y">融資額度：<br>
+            <font class="font_money_a11y">{{ finance_quota }}</font>
+          </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y" [title]="myfinance_date_start">融資期間(起)：</div>
+          <div class="row7_green_a11y">{{ finance_date_start }} </div>
+          <div class="row6_space_a11y"></div>
+          <div class="row7_black_a11y" [title]="myfinance_date_end">融資期間(迄)：</div>
+          <div class="row7_green_a11y">{{ finance_date_end }} </div>
+        </div>
+      </div>
+      <button id="drop_down" [title]="list_state" (click)="onchangelist()"
+        [ngClass]=" LIST_SHOW_FLAG !== true ? 'drop_down_a11y' : 'drop_up_a11y'"></button>
+    </div>
+
+    <app-detail-pagebox-a11y-page [reqObj]="reqObj" [acctType]="acctType" [page]="1" (backPageEmit)="onBackPage($event)"
+      (errorPageEmit)="onErrorBackEvent($event)"></app-detail-pagebox-a11y-page>
+
+    <div class="row_single_2_a11y">
+        <a class="button_confirm_a11y" (click)="goMoreDetail()" role="button">更多餘額查詢</a>
+    </div>
+
+    </ng-container>
+
+    <ng-template  #fdView>
+    <div class="row_twd_search_a11y">
+        <div class="result_state_a11y">查詢完成</div>
+        <div class="row3_area_a11y">
+        <p class="row3_sheet_a11y" [title]="mylastTrnsDate">定存到期日：<br>{{ lastTrnsDate }}</p>
+            <p class="row3_sheet_a11y">開戶分行：<br>{{ openBranchName }}</p>
+            <p class="row3_sheet_a11y">定存帳號：<br>
+                <font class="font_money_a11y">{{ deposit_account }}</font>
+            </p>
+            <p class="row3_sheet_a11y">可用餘額：<br>
+                <font class="font_money_a11y">NT$ {{ avbl_balance }}</font>
+            </p>
+        </div>
+    </div>
+    <div class="row5_a11y" *ngFor="let item of data">
+        <p class="row5_content_all_a11y text_align_right_a11y" title="{{ item.mystartAcctDate }}">
+            起息日&nbsp;&nbsp;{{ item.startAcctDate }}
+        </p>
+        <p class="row5_content_all_a11y text_align_right_a11y" title="{{ item.myendAcctDate }}">
+            到期日&nbsp;&nbsp;{{ item.endAcctDate }}
+        </p>
+        <p class="row5_content_all_a11y" *ngIf="item.isDepositNo">
+            存單號碼<br>{{ item.depositNo }}
+        </p>
+        <!-- <p class="row5_content_all" [title]="mysaveListBal"> -->
+        <p class="row5_content_all_a11y">
+            存單面額<br>NT$ {{ item.saveListBal }}
+        </p>
+      <p class="row5_content_all_a11y">
+            利率<br>{{ item.rate }} %
+        </p>
+        <p class="row5_content_all_a11y" title="利率別/{{ item.rateTypeName }}">
+            利率別&nbsp;&nbsp;{{ item.rateTypeName }}
+        </p>
+        <p class="row5_content_all_a11y">
+            定存類別&nbsp;&nbsp;{{ item.fdType }}
+        </p>
+    </div>
+    </ng-template>
+
+</section>
+<!-- section End -->

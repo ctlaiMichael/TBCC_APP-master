@@ -1,0 +1,12 @@
+{
+	"custId": "" ,
+	"trustAcnt": "",
+	"transCode": "" ,
+	"fundCode": "",
+	"amount": 0,
+	"unit": 0,
+	"oriProfitAcnt":"",
+	"profitAcnt":"",
+	"INCurrency": "",
+	"trnsToken": ""
+}

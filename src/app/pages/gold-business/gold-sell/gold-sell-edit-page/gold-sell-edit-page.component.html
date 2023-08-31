@@ -1,0 +1,86 @@
+<section>
+  <form action="" name="form1">
+    <div class="sub_info_frame">
+      <ul class="step_bar_frame">
+        <li class="step_bar "></li>
+        <li class="step_bar step_active"><span>2.填寫資料</span></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+      </ul>
+    </div>
+    <div class="row_single"></div>
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          * 黃金存摺帳號
+        </li>
+        <li class="inner_table_cell">
+          <select name="goldAccount" id="" class="inner_select" [(ngModel)]="selectedGold" (change)="updateBalance()">
+            <option [value]="i" *ngFor="let goldAccount of goldAccounts; let i = index;">
+              {{goldAccount.acctNo | accountFormate}}</option>
+          </select>
+        </li>
+      </ul>
+      <i class="select_info">
+        (剩餘<span id="currentGolden">{{goldBalance}}</span>公克)
+      </i>
+    </div>
+
+    <div class="row_single">
+      <div class="goldTransfer_frame">
+        <div class="goldTransfer_td">
+          回售<br>
+          克數
+        </div>
+        <div class="goldTransfer_td">
+          <select name="sell_type" id="sellbackType" class="inner_select" [(ngModel)]="sellType"
+            (change)="updateSellType()">
+            <option value="0">全部回售</option>
+            <option value="1">部分回售</option>
+          </select>
+          <ul class="inner_input_l2_frame">
+            <li class="inner_l2_cell">
+              <input [(ngModel)]="trnsWeight" type="tel" name="trnsWeight" id="sellbackGram"
+                class="inner_input normal_disable" placeholder="請輸入1公克之整倍數">
+            </li>
+            <li class="inner_l2_cell second_td_l2">克</li>
+          </ul>
+        </div>
+      </div>
+      <i class="input_info_warnning">限為一公克之倍數</i>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          * 回售存入帳號
+        </li>
+        <li class="inner_table_cell">
+          <select name="trnsfrAccts" [(ngModel)]="selectedTrnsfr" class="inner_select">
+            <option [value]="i" *ngFor="let trnsfrAcct of trnsfrAccts; let i = index">
+              {{trnsfrAcct.acctNo | accountFormate}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+    </app-select-security>
+    <div class="row_single">
+      <div class="double_button">
+        <a id="leave" (click)="previous()">{{'BTN.PREVIOUS' | translate }}</a>
+        <a id="goNext" (click)="nextStep()">{{'BTN.NEXT' | translate }}</a>
+      </div>
+    </div>
+
+    <div class="row_single">
+      <h4 class="simple_title">提醒您</h4>
+    </div>
+
+    <div class="row_single">
+      <p class="inner_content">
+        全部回售為將帳戶結存數全部回售，可以允許至小數點第二位數。
+      </p>
+    </div>
+
+  </form>
+</section>

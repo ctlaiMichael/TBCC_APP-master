@@ -1,0 +1,15 @@
+<div class="popup_window popup_open">
+    <div class="popup_content">
+        <div class="row_single" style="margin-bottom: 0px;">
+            <h4 class="simple_title" style="margin-bottom: 10px;">請選擇查詢幣別</h4>
+        </div>
+        <a class="inner_news_list" href="javascrit:void(0);" (click)="chooseOver(item)" *ngFor="let item of new_table">
+            <span class="inner_news_list_td no_line inner_news_title">
+                <span class="{{ item.country|iconFlag }}"></span>
+                {{ item['country'] | currencyName: item['currencyName']}}
+                <!-- {{item['country']}} &nbsp; {{item['country']|iconFlag:'chineseName'}} -->
+            </span>
+            <span class=""></span>
+        </a>
+    </div>
+</div>

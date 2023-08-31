@@ -1,0 +1,10 @@
+{
+  "iOS": {
+    "scheme" : "touchstocktbs:",
+    "store" : "https://itunes.apple.com/app/id586481877"
+  },
+  "Android": {
+    "scheme": "com.tbs",
+    "store" : "market://details?id=com.tbs&hl=zh_TWp"
+  }
+}

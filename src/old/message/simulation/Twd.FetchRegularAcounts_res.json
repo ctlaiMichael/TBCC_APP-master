@@ -1,0 +1,50 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "resultCode": "4001"
+  },
+  "accounts":  [
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9991-737-600032",
+        "branchName": "敦南分行"
+      },
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9991-803-600103",
+        "branchName": "敦南分行"
+      },
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9995-725-990230",
+        "branchName": "敦南分行"
+      },
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9995-729-990111",
+        "branchName": "敦南分行"
+      },
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9995-737-990146",
+        "branchName": "敦南分行"
+      },
+      {
+        "accounting": "",
+        "accountingName": "定存",
+        "acctNo": "9995-737-990154",
+        "branchName": "敦南分行"
+      }
+    ]
+  
+}
+

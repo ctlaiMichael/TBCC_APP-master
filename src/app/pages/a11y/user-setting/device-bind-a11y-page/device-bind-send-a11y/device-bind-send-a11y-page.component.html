@@ -1,0 +1,154 @@
+
+<ng-container *ngIf="!showResult; else resultBox;">
+     <!-- INFO -->
+     <section class="background_a11y">
+    <div class="row_single_a11y"></div>
+    <div class="row_white_a11y">
+    
+        <div class="simple_title_a11y">提醒您，裝置綁定須依循以下規則</div>
+        <ul>
+            <li class="simple_title_a11y simple_title_em_without_before_a11y">有*為必填欄位</li>
+            <!-- 1.「裝置認證密碼」，為您透過行動網銀或網路銀行申請產生的一組認證密碼，若輸入三次錯誤或逾24小時未輸入，則失效需重新申請。 -->
+            <li class="simple_title_a11y simple_title_em_without_before_a11y">
+                    裝置認證密碼，為您透過行動網銀或網路銀行申請產生的一組認證密碼，若輸入三次錯誤或逾24小時未輸入，則失效需重新申請。
+            </li>
+            <!-- 2.「裝置好記名稱」，請您為本裝置設定好記名稱，以方便您日後更換手機等情形，須於本行網路銀行刪除已認證裝置時辨識之用。 -->
+            <li class="simple_title_a11y simple_title_em_without_before_a11y">
+                    裝置好記名稱，請您為本裝置設定好記名稱，以方便您日後更換手機等情形，須於本行網路銀行刪除已認證裝置時辨識之用。
+            </li>
+        </ul>
+      
+    </div>
+
+    <!-- INFO END -->
+
+
+
+
+    <div class="row_white_a11y" >
+    <!-- 啟動 -->
+    <ng-container *ngIf="identityStr != ''">
+
+        <!-- 您的裝置認證密碼為：{{ identity }}，請將該密碼輸入「裝置認證密碼」欄位進行認證作業。 -->
+        <!-- <div class="sub_info_subtitle" [innerHtml]="'PG_OTP.BIND.INFO.BIND_identity' | translate: { identity: identityStr  }"></div>
+        <div class="row_single"></div> -->
+        <!-- <div class="row_content_black_a11y">您的裝置認證密碼為：{{identityStr}}，請將該密碼輸入「裝置認證密碼」欄位進行認證作業。</div> -->
+       
+        <div class="row_content_black_a11y">您的裝置認證密碼
+            <br>
+            <font class="row_content_green_a11y">{{identityStr}}</font>
+        </div>
+     
+
+    </ng-container>
+
+    <!-- <div class="row_single">
+        <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data.OtpIdentity != '')}">
+            
+            <li class="inner_table_cell">*{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY' | translate }}</li>
+            <li class="inner_table_cell ">
+              
+                <input type="tel" name="" class="inner_input" placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY_EDIT' | translate }}" maxlength="{{inp_maxlen.OtpIdentity}}"
+                    autocomplete="off" disableautocomplete [(ngModel)]="inp_data.OtpIdentity">
+            </li>
+        </ul>
+        <i class="input_info_warnning">{{ error_data.OtpIdentity | translate }}</i>
+    </div> -->
+
+    <div class="inner_table_frame_a11y">
+           <!-- 裝置認證密碼 -->
+        <div class="row_content_black_a11y">*{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY' | translate }}</div>
+        <div>
+           <!-- 請輸入裝置認證密碼 -->
+        <input type="tel" maxlength="{{inp_maxlen.OtpIdentity}}"
+        [ngClass]="error_data.OtpIdentity == ''?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'"
+        autocomplete="off" disableautocomplete [(ngModel)]="inp_data.OtpIdentity" placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY_EDIT' | translate }}"  />
+        </div>
+        <div *ngIf="error_data.OtpIdentity != ''" class="check_wrong_str_a11y">{{ error_data.OtpIdentity | translate }}</div>
+    </div>
+
+
+
+    <!-- <div class="row_single">
+        <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data.commonName != '')}">
+            
+            <li class="inner_table_cell">*{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME' | translate }}</li>
+            <li class="inner_table_cell ">
+            
+                <input type="text" name="" maxlength="{{inp_maxlen.commonName}}" placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME_EDIT' | translate }}"
+                    [(ngModel)]="inp_data.commonName" class="inner_input">
+            </li>
+        </ul>
+        <i class="input_info_warnning">{{ error_data.commonName | translate }}</i>
+    </div> -->
+
+
+    <div class="inner_table_frame_a11y">
+        <div class="row_content_black_a11y">*{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME' | translate }}</div>
+        <div>
+            <!-- 請輸入裝置好記名稱 -->
+        <input type="text" maxlength="{{inp_maxlen.commonName}}"
+        [ngClass]="error_data.commonName == ''?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'"
+         placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME_EDIT' | translate }}"  [(ngModel)]="inp_data.commonName"  />
+        </div>
+        <div *ngIf="error_data.commonName != ''" class="check_wrong_str_a11y">{{ error_data.commonName | translate }}</div>
+    </div>
+
+
+
+
+
+</div>
+
+
+    <!-- BTN Box -->
+    <div class="row_single_2_a11y"></div>
+    <div class="row_single_a11y" >
+      <div><a href="javascript:void(0)" class="button_confirm_a11y" (click)="onSubmitEvent()" role="button">{{ 'BTN.CHECK' | translate }}</a></div>
+    </div>
+      <!-- 確定: 送出後即產生授權碼，無法返回 -->
+    <div class="row_single_a11y" >
+      <a href="javascript:void(0)" class="button_confirm_a11y"  (click)="onCancelEvent()">
+        <div class="button_cancel_a11y" role="button">{{ 'BTN.CANCEL' | translate }}</div>
+      </a>
+    </div>
+    <!-- BTN Box End -->
+
+</section> 
+</ng-container>
+<ng-template #resultBox>
+    <!-- 結果頁 -->
+    <!-- <app-edit-result-temp [setData]="resultData"></app-edit-result-temp> -->
+
+
+    <section class="background_a11y">
+            <!-- 卡片式總覽8 -->
+            <div class="row_single_a11y"></div>
+         
+
+            <div class="row_white_a11y" [ngSwitch]="result.changenameresult">
+                <div *ngSwitchCase="'success'">
+                    <div class="success_icon_a11y"></div>
+                    <div class="row_single_a11y"></div>
+                    <div class="row8_black_a11y">{{result.header | translate}}<br>
+                        <div class="row_single_a11y"></div>
+                        <font class="change_pwd_complete_a11y">{{result.msg  | translate}}</font>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'fail'">
+                    <div class="fail_icon_a11y"></div>
+                    <div class="row_single_a11y"></div>
+                    <div class="row8_black_a11y">{{result.header | translate}}<br>
+                        <div class="row_single_a11y"></div>
+                        <font class="change_pwd_complete_a11y">{{result.msg | translate}}</font>
+                    </div>
+                </div>
+        
+                <div class="row_single_a11y"></div>
+            </div>
+
+            <div class="row_single_a11y" >
+                <div><a class="button_confirm_a11y" (click)="onBacksetHome()" role="button">回個人設定</a></div>
+            </div>
+        </section>
+</ng-template>

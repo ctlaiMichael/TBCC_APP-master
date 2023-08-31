@@ -1,0 +1,28 @@
+<ng-container>
+    <ng-container [ngSwitch]="assignPage">
+        <!-- 編輯頁 -->
+        <ng-container *ngSwitchCase="'edit_page'">
+            <app-twd-to-foreign-edit (backPageEmit)="onBackPage($event)"></app-twd-to-foreign-edit>
+        </ng-container>
+        <!-- 確認頁 -->
+        <!-- <ng-container *ngSwitchCase="'confirm_page'">
+            <app-twd-to-foreign-confirm (backPageEmit)="onBackPage($event)" [formObj]="mainpageObj"></app-twd-to-foreign-confirm>
+        </ng-container> -->
+        <!-- 結果頁 -->
+        <ng-container *ngSwitchCase="'result_page'">
+            <app-twd-to-foreign-result [formObj]="mainpageObj" [securityResult]="securityResult"></app-twd-to-foreign-result>
+        </ng-container>
+        <ng-container *ngSwitchCase="'bargain_result_page'">
+            <app-bargain-result [formObj]="mainpageObj" [securityResult]="securityResult"></app-bargain-result>
+        </ng-container>
+        <!-- 外幣匯率 -->
+        <!-- <ng-container *ngSwitchCase="'exchange_rate'">
+            <app-exchange-rate (backPageEmit)="onBackPage($event)"></app-exchange-rate>
+        </ng-container> -->
+        <!-- 結購性質 -->
+        <ng-container *ngSwitchCase="'proportyType'">
+            <app-proportyType (backPageEmit)="onBackPage($event)"></app-proportyType>
+        </ng-container>
+
+    </ng-container>
+</ng-container>

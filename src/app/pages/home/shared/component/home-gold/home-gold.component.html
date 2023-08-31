@@ -1,0 +1,46 @@
+<!-- 主畫面塊狀區-標題: 黃金存摺 -->
+<h4 class="mi_block_title">{{ 'HOME.MAIN.TITLE_GOLD' | translate }}</h4>
+<!-- 主畫面塊狀區-標題 End -->
+<ng-container *ngIf="showData; else emptyBox">
+    <ul class="ex_rate_list_frame">
+        <li class="ex_rate_list_tr">
+            <!-- 黃金存摺 -->
+            <p class="ex_rate_list_th">{{ 'PG_GOLD.RATE.FIELD.DEPOSIT' | translate }}</p>
+            <!-- 賣出 -->
+            <p class="ex_rate_list_th">{{ 'PG_GOLD.RATE.FIELD.SELL' | translate }}</p>
+            <!-- 買進 -->
+            <p class="ex_rate_list_th" style="width:40%;">{{ 'PG_GOLD.RATE.FIELD.BUY' | translate }}</p>
+        </li>
+        <li class="ex_rate_list_tr">
+            <p class="ex_rate_list_td">{{ data1.name | translate }}</p>
+            <p class="ex_rate_list_td">{{ data1.sell }}</p>
+            <p class="ex_rate_list_td">{{ data1.buy }}</p>
+        </li>
+    </ul>
+    <div class="row_single"></div>
+    <ul class="ex_rate_list_frame">
+        <li class="ex_rate_list_tr">
+            <!-- 黃金條塊 -->
+            <p class="ex_rate_list_th">{{ 'PG_GOLD.RATE.FIELD.BARS' | translate }}</p>
+            <!-- 賣出 -->
+            <p class="ex_rate_list_th">{{ 'PG_GOLD.RATE.FIELD.SELL' | translate }}</p>
+            <!-- 黃金存摺轉換<br>條塊應補繳款 -->
+            <p class="ex_rate_list_th" style="width:40%;" [innerHtml]="'PG_GOLD.RATE.FIELD.BALANCE' | translate"></p>
+        </li>
+
+        <li class="ex_rate_list_tr" *ngFor="let item of data2">
+            <div class="ex_rate_list_td" [innerHtml]="item.name | translate"></div>
+            <div class="ex_rate_list_td">{{ item.sell }}</div>
+            <div class="ex_rate_list_td">{{ item.balance }}</div>
+        </li>
+    </ul>
+    <!-- BTN Box -->
+    <hr class="mi_block_divider">
+    <div class="main_info_1btn" (click)="onClickEvent()">
+        <!-- 更多資訊 -->
+        <a href="javascript:void(0)" class="mib_btn">{{ 'BTN.MORE' | translate }}</a>
+    </div>
+</ng-container>
+<ng-template #emptyBox>
+    <div>{{ 'ERROR.EMPTY' | translate }}</div>
+</ng-template>

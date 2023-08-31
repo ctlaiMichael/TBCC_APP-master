@@ -1,0 +1,41 @@
+
+<div [hidden]="showContent" class="fixed_swiper">
+    <div class=" row swiper_position">
+      <!-- Tab 分頁按鈕組合 -->
+      <div class="swiper_banner">
+        <div id="swiper_container_edit" class="swiper-container_edit">
+          <div class="swiper-wrapper swiper-wrapper_edit">
+            <!-- 公告訊息 -->
+            <div class="swiper-slide swiper-slide_edit" (click)='msg()' [ngClass]="{active: activeSwiper === 0}">
+              合庫報報
+              <span *ngIf="!isRead[0]" class="badge">1</span>
+            </div>
+            <!-- 匯率通知 -->
+            <div class="swiper-slide swiper-slide_edit" (click)='msg()' [ngClass]="{active: activeSwiper === 1}">
+              全部
+              <span *ngIf="!isRead[1]" class="badge">1</span>
+            </div>
+            <!-- 匯款通知 -->
+            <div class="swiper-slide swiper-slide_edit notRead_dot" (click)='msg()'
+              [ngClass]="{active: activeSwiper === 2,notRead_dot:!isRead[2]}">
+              帳務
+              <!-- <div *ngIf="!isRead[2]" class="badge">2</div> -->
+            </div>
+            <!-- 未知 -->
+            <div class="swiper-slide swiper-slide_edit notRead_dot" (click)='msg()'
+              [ngClass]="{active: activeSwiper === 3,notRead_dot:!isRead[3]}">
+              提醒
+              <!-- <div *ngIf="!isRead[3]" class="badge">3</div> -->
+            </div>
+            <div class="swiper-slide swiper-slide_edit notRead_dot" (click)='msg()'
+              [ngClass]="{active: activeSwiper === 4,notRead_dot:!isRead[4]}">
+              優惠
+              <!-- <div *ngIf="!isRead[4]" class="badge">4</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <i id="left_arrow" class="left_arrow" aria-hidden="true"></i>
+      <i id="right_arrow" class="right_arrow" aria-hidden="true"></i>
+    </div>
+  </div>

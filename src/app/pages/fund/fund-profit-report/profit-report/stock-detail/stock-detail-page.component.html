@@ -1,0 +1,34 @@
+<!-- <div class="table_four_hl">
+    <ng-container *ngFor="let item of data">
+        <div class="table_four_hl_tr" (click)="onQuery(item)">
+            <p class="table_four_hl_td">
+                {{item.fundCode}}&nbsp;{{item.fundName}}
+            </p>
+            <p class="table_four_hl_td font_money_blu">{{item.investDesc}}<br>{{item.iNCurrency}}<br>{{item.invenAmount | htMoney:item.iNCurrency}}</p>
+            <p class="table_four_hl_td {{ item.reward | fundAmtClass }}">{{item.reward}}%</p>
+            <p class="table_four_hl_td fund_no_pad_right">
+                <a class="arrow_link" href="javascript:void(0)"></a>
+            </p>
+        </div>
+    </ng-container>
+</div> -->
+
+<!-- Start-->
+<ng-container *ngFor="let item of data">
+<table class="table_fund_font rich_table" (click)="onQuery(item)">
+    <tr>
+        <!-- 投資標的 -->
+        <td colspan="3" class="rich_pad_top">{{item.fundCode}}&nbsp;{{item.fundName}}</td>
+        <td rowspan="2" class="rich_pad_button"><a class="rich_allow_link" href="javascript:void(0)"></a></td>
+    </tr>
+    <tr class="rich_bod_bot">
+        <!-- 投資方式 -->
+        <td class="rich_pad_bot font_align_left">{{item.investDesc}}</td>
+        <!-- 投資金額 -->
+        <td class="rich_align_ri table_rich_font_money">{{item.invenAmount | currencyMoney:item.iNCurrency}}</td>
+        <!-- 含息報酬率 -->
+        <td class="rich_align_ri rich_pad_rig {{ item.reward | fundAmtClass }}">{{item.reward}}%</td>
+    </tr>
+</table>
+</ng-container>
+<!-- End-->

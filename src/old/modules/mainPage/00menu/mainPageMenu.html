@@ -1,0 +1,80 @@
+<div class="wrapper home_wrapper ">
+    <!--header-->
+    <div class="row">
+        <header class="home_nav">
+            <div class="home_bt">
+                <!-- 左上三條線 -->
+                <!-- <img src="ui/newMainPage/image/buger.png"> -->
+            </div>
+            <div class="home_logo">
+                <img src="ui/newMainPage/image/logo_home.png">
+            </div>
+            <div class="home_bt">
+                <a  ng-show="isLogined()" ng-click="logout()" style="color:#BD1921;font-weight:bold;">登出</a>
+                <!-- color:#127958; -->
+            </div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+
+    <!--section-->
+    <section class="home_sec">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <div class="swiper-slide" ng-repeat="menu in page" ng-cloak>
+                    <div class="funtion{{item.group}}" ng-repeat="item in menu" ng-click="clickMenu(item.url)"> -->
+                <!-- <div class="swiper-slide" ng-repeat="menu in page | limitTo: bbb ">
+                    <div class="funtion{{item.group}}" ng-repeat="item in menu " ng-click="clickMenu(item.url)"> -->
+                <div class="swiper-slide" ng-repeat="menu in page  | limitTo: bbb">
+                    <div class="funtion{{item.group}}" ng-repeat="item in menu " ng-click="clickMenu(item.url)" >
+                        <div class="icon1">
+                            <img class="{{imageClass}}" ng-src="{{item.iconName}}">
+                            <p class="icon_name" ng-bind-html="trustAsHtml(item.itemName)"></p>
+                        </div>
+                    </div>
+                </div>
+                <!--swiper-slide end-->
+            </div>
+            <!--swiper-wrapper end-->
+            <!-- <div class="swiper-pagination" ng-show="page.length>1"></div> -->
+            <!--swiper-pagination end-->
+        </div>
+        <!--swiper-container end-->
+    </section>
+    <!--section end-->
+
+
+    <!--slider-->
+    <!-- 換頁點點點圖案
+        <div class="row">
+            <div class="home_page">
+                <img src="ui/newMainPage/image/group.png">
+            </div>
+        </div>
+        -->
+    <!--slider end-->
+
+    <!--footer-->
+    <!-- 切版footer ad圖案
+            <div class="row">
+                <footer class="home_ad">
+                </footer>
+            </div>
+        -->
+    <!--end of footer-->
+
+
+    <!--輪播directive beg-->
+    <main-page-banner-directive></main-page-banner-directive>
+    
+    <!--輪播directive end-->
+    <!--輪播 
+        <div id="{{bannerClass}}" class="row">
+            <img class="home_ad" ng-src="data:image/png;base64,{{item.BANNER_IMG}}" ng-repeat="item in adimg track by $index" ng-click="clickMenu_ad(item.Banner_URL)"
+            />
+        </div>
+        輪播 end-->
+</div>
+
+<!--wrapper end-->

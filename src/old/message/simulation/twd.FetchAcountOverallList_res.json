@@ -1,0 +1,220 @@
+{
+  "resHeader":{
+    "serviceId":"twd.FetchAcountList",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : " 20160325123022879",
+    "resDateTime" : " 20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "groupAcctInfo" : [
+    {
+      "ediId" : "163133020001",
+      "ediName" : "網際威信股份有限公司",
+      "acounts" : [
+        {
+          "acctNo" : "048-64705-44455-0",
+          "acctType" : "有摺活期--證券",
+          "ccy" : "TWD",
+          "currAcctBal" : "93,207",
+          "endDate" : "201603251041",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "048-64717-10819-6",
+          "acctType" : "綜定存-固定利率1個月",
+          "ccy" : "TWD",
+          "currAcctBal" : "2,900,000",
+          "endDate" : "201603251055",
+          "isAccessable":"Y",
+          "isRegularAcount":"Y"
+        },
+        {
+          "acctNo" : "048-64188-06261-6",
+          "acctType" : "外匯活存",
+          "ccy" : "CNY",
+          "currAcctBal" : "513,000,000.00",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "048-64188-06261-6",
+          "acctType" : "外匯活存",
+          "ccy" : "USD",
+          "currAcctBal" : "13,129.53",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        }
+      ]
+    },
+    {
+      "ediId" : "800330730001",
+      "ediName" : "英屬維京群島商太古可口可樂股份有限公司",
+      "acounts" : [
+        {
+          "acctNo" : "04864717108200",
+          "acctType" : "綜定存-固定利率5個月",
+          "ccy" : "TWD",
+          "currAcctBal" : "3,123,300",
+          "endDate" : "201603251041",
+          "isAccessable":"Y",
+          "isRegularAcount":"Y"
+        },
+        {
+          "acctNo" : "04864717159738",
+          "acctType" : "綜定存-固定利率5個月",
+          "ccy" : "TWD",
+          "currAcctBal" : "1,000,000",
+          "endDate" : "201603251055",
+          "isAccessable":"Y",
+          "isRegularAcount":"Y"
+        },
+        {
+          "acctNo" : "04858683600131",
+          "acctType" : "外匯活存",
+          "ccy" : "CNY",
+          "currAcctBal" : "555,300.00",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04858683600131",
+          "acctType" : "外匯活存",
+          "ccy" : "EUR",
+          "currAcctBal" : "3,133.58",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        }
+      ]
+    },
+    {
+      "ediId" : "800330730001",
+      "ediName" : "ＳＷＩＲＥ　ＣＯＣＡ—ＣＯＬＡ　ＢＥＶＥＲＡＧＥ　ＬＴＤ．,　ＴＡＩＷＡＮ　ＢＲＡＮＣＨ　（Ｂ．Ｖ．Ｉ．）",
+      "acounts" : [
+        {
+          "acctNo" : "04804737000122",
+          "acctType" : "有摺活期",
+          "ccy" : "TWD",
+          "currAcctBal" : "23,500,268",
+          "endDate" : "201603251041",
+          "isAccessable":"N",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "USD",
+          "currAcctBal" : "55,013.94",
+          "endDate" : "201603251055",
+          "isAccessable":"N",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "CAD",
+          "currAcctBal" : "586.00",
+          "endDate" : "201603251055",
+          "isAccessable":"N",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "AUD",
+          "currAcctBal" : "3,359.3",
+          "endDate" : "201603251055",
+          "isAccessable":"N",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "EUR",
+          "currAcctBal" : "35,800.46",
+          "endDate" : "201603251100",
+          "isAccessable":"N",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04899864896534",
+          "acctType" : "外匯定存",
+          "ccy" : "CNY",
+          "currAcctBal" : "80,000",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"Y"
+        }
+      ]
+    },
+    {
+      "ediId" : "800330730002",
+      "ediName" : "英屬維京群島商高寶國際有限公司,ＧＬＯＢＡＬ　ＧＲＯＵＰ　ＨＯＬＤＩＮＧＳ　ＬＴＤ. ",
+      "acounts" : [
+        {
+          "acctNo" : "04804737000122",
+          "acctType" : "有摺活期",
+          "ccy" : "TWD",
+          "currAcctBal" : "23,500,268",
+          "endDate" : "201603251041",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "USD",
+          "currAcctBal" : "55,013.94",
+          "endDate" : "201603251055",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "CAD",
+          "currAcctBal" : "586.00",
+          "endDate" : "201603251055",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "AUD",
+          "currAcctBal" : "3,359.3",
+          "endDate" : "201603251055",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04864188073771",
+          "acctType" : "外匯活存",
+          "ccy" : "EUR",
+          "currAcctBal" : "35,800.46",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"N"
+        },
+        {
+          "acctNo" : "04899864896534",
+          "acctType" : "外匯定存",
+          "ccy" : "CNY",
+          "currAcctBal" : "80,000",
+          "endDate" : "201603251100",
+          "isAccessable":"Y",
+          "isRegularAcount":"Y"
+        }
+      ]
+    }
+
+  ]
+}

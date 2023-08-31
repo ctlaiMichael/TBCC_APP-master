@@ -1,0 +1,113 @@
+<!--header-->
+<div class="header_bar">
+	<header class="main_nav">
+		<div class="no_bt"></div>
+		<div class="page_title">現金收益存入帳號異動</div>
+		<div class="bank_logo">
+			<img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<div class="result_title">
+					<p>現金收益存入帳號異動</p>
+				</div>
+				<div class="result_title2">
+					<p ng-if="result.respCode=='0'">交易成功</p>
+					<p ng-if="result.respCode=='1'">交易失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">交易異常</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="fund_css_table">
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left result_title tmpWidth" >錯誤代碼：</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="fund_css_tr">&nbsp;</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left result_title tmpWidth" >主機代碼訊息：</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				<!--main_input end-->
+
+				<div class="result_input" ng-if="result.respCode=='0'">
+					<div id="fund_css_table">
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">基金名稱</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.fundName"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">交易編號</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="displayParam.transCode"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">申請日期</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.applyDT"></div>
+						</div>
+						<!-- <div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">每次投資金額</div>
+							<div class="fund_css_td fund_css_td_right" >{{displayParam.iNCurrency}} {{numFmt(displayParam.amount)}}元</div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">每月扣款日</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.debitDT"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">扣款狀態</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.payTypeFlag"></div>
+						</div> -->
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">扣款帳號</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.payAcnt"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">現金收益帳號</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="displayParam.profitAcnt"></div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<!--main_input end-->
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt2" ng-click="clickBack()">確定</button>
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+    .tmpWidth{
+        width:100px;
+		font-size: 14px;
+    }
+</style>

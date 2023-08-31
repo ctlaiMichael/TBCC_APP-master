@@ -1,0 +1,35 @@
+<div>
+    <div class="row_single">
+        <h4 class="simple_title">{{shwQuestion.rtName}}</h4>
+
+    </div>
+    <ng-container [ngSwitch]="shwQuestion.typeCtrl">
+        <ng-container *ngSwitchCase="'radio'">
+            <div class="row_single">
+                <div class="inner_radio" *ngFor="let ans of shwQuestion.ansLists;let i = index">
+                    <input type="radio" id="{{ans.rcIndex}}" [value]="ans.rcIndex" [(ngModel)]="answers" name="{{shwQuestion.rtName}}"
+                        (change)="onBackPageData($event, 'change')"
+                         [disabled]="(counter==0)||(age<7 && counter==8)||(counter==8 && ansLists[7].rcIndex=='10008001')">
+                    <label for="{{ans.rcIndex}}">
+                        <span><i></i></span>
+                        <b>{{ans.rcName}}</b>
+                    </label>
+                </div>
+
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'checkbox'"> 
+            <div class="row_single">
+                <div class="inner_checkbox" *ngFor="let ans of shwQuestion.ansLists;let i = index">
+                    <input type="checkbox" name="inner_checkbox" [value]="ans.rcIndex" [(ngModel)]="ans['showCheck']"
+                        id="{{ans.rcIndex}}" (change)="onBackPageData($event, 'change')"
+                        [disabled]="(age<7 &&counter==7)">
+                    <label for="{{ans.rcIndex}}">
+                        <span><i></i></span>
+                        <b>{{ans.rcName}}</b>
+                    </label>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

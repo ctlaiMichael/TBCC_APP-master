@@ -1,0 +1,187 @@
+<section>
+    <!-- 步驟列 -->
+    <app-step-bar [setData]="stepMenuData" [setKey]="nowStep"></app-step-bar>
+
+    <ng-container [ngSwitch]="nowStep">
+        <!-- 結果頁 Start -->
+        <ng-container *ngSwitchCase="'result'">
+            <!-- 結果頁 -->
+            <app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+        </ng-container>
+        <!-- 結果頁 End -->
+        <!-- 確認頁 Start (目前不顯示) -->
+
+        <!-- 確認頁 End -->
+
+        <!-- 編輯頁 START -->
+
+
+        <ng-container *ngSwitchDefault>
+                <div  class="row_single">
+                        <ul class="inner_table_frame">
+                            <li class="inner_table_cell">
+                                <!-- card-logo -->
+                                <ng-container *ngIf="'CARD' == iconFlag">
+                                    <img src="assets/images/epay/logo.png" style="height: 30px;">
+                                </ng-container>
+                                <!-- visa-logo -->
+                                <ng-container *ngIf="'VISA' == iconFlag">
+                                    <img src="assets/images/epay/visa_logo.png" style="height: 30px;">
+                                </ng-container>
+                                <!-- master-logo -->
+                                <ng-container *ngIf="'MASTER' == iconFlag">
+                                    <img src="assets/images/epay/MasterCard_Logo.png" style="height: 30px;">
+                                </ng-container>
+                                <!-- jcb-logo -->
+                                <ng-container *ngIf="'JOB' == iconFlag">
+                                    <img src="assets/images/epay/JCB_logo.png" style="height: 30px;">
+                                </ng-container>
+                            </li>
+                            <li class="inner_table_cell" *ngIf="typeAndFeeState3">
+                                <select class="inner_select" (change)="onType($event)">
+                                    <option value='1'>{{defaultTrnsOutAcct}}</option>
+                                    <option value='2'>{{defaultTrnsCard}}</option>
+                                </select>
+                            </li>
+                            <li class="inner_table_cell" *ngIf="typeAndFeeState1">
+                                <select class="inner_select" (change)="onType($event)">
+                                    <option value='1'>{{defaultTrnsOutAcct}}</option>
+                                </select>
+                            </li>
+                            <li class="inner_table_cell" *ngIf="typeAndFeeState2">
+                              <select class="inner_select" (change)="onType($event)">
+                                  <option value='1'>{{defaultTrnsCard}}</option>
+                              </select>
+                          </li>
+                        </ul>
+                    </div>
+
+
+            <div class="row_single"></div>
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 費用項目 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.merchantName' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{ qrcode.merchantName }}" readonly>
+                    </li>
+                </ul>
+            </div>
+             <!-- 20190920 新增費用名稱 -->
+             <div class="row_single" *ngIf="feeNameState">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 費用項目 -->
+                    <li class="inner_table_cell">費用名稱</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{ qrcode.feeName }}" readonly>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 銷帳編號 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.noticeNbr' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{ form.noticeNbr | epayNoticeNbr: 'fee' }}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 繳納期限 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.deadlinefinal' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{ form.deadlinefinal }}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single" *ngIf="typeAndFeeState == '1'">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 手續費 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.charge' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{ (form.charge | epayAmt) | htMoney: amountCurrency }}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single" *ngIf="typeAndFeeState == '2'">
+                <ul class="inner_table_frame normal_disable">
+
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.charge' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{typeAndFeeValue}}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single" *ngIf="typeAndFeeState == '3'">
+                <ul class="inner_table_frame normal_disable">
+
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.charge' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{typeAndFeeValue1}}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <!-- 交易金額 START -->
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{'normal_disable': disableList.txnAmt, 'active_warnning':(error_data['txnAmt'] != '')}">
+                    <!-- 交易金額 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.txnAmt' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="tel" [(ngModel)]="form.txnAmt" placeholder="請輸入轉帳金額">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{ error_data['txnAmt'] | translate }}</i>
+            </div>
+            <!-- 交易金額 END -->
+            <div class="row_single" *ngIf="meansTransactionMoney">
+                <ul class="inner_table_frame normal_disable">
+                    <!-- 交易帳號 -->
+                    <li class="inner_table_cell">{{ 'EPAY.PAY_CARD.FIELD.trnsfrOutAcct' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" value="{{defaultTrnsOutAcct}}" readonly>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single" *ngIf="meansTransactionCard">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        交易卡號
+                    </li>
+                    <li class="inner_table_cell">
+                        <input *ngIf='!disableAmountInput' value="{{defaultTrnsCard}}" type="text"
+                            class="inner_input">
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 安控機制(epay) -->
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <!-- 目前轉帳機制： -->
+                    <li class="inner_table_cell">{{ 'FIELD.SECURITY_SELECT_TITLE' | translate }}</li>
+                    <li class="inner_table_cell">
+                        <select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+                            <option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <!-- 安控機制(epay end) -->
+
+            <!-- 按鈕事件 -->
+            <div class="row_single"></div>
+            <div class="row_single">
+                <div class="double_button">
+                    <!-- 取消 -->
+                    <a (click)="cancelEdit()">{{ 'BTN.CANCEL' | translate }}</a>
+                    <!-- 確定 -->
+                    <a (click)="onCheckEvent()">{{ 'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+    <!-- 編輯頁 END -->
+
+</section>

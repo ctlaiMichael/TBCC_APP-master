@@ -1,0 +1,120 @@
+<!--AppView/msg/FUND04.html-->
+<!-- popup window -->
+<div class="popup_window popup_open" id="info">
+    <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <div class="popup_content">
+        <!-- 副標列 -->
+        <div class="row_single">
+            <h4 class="simple_title">定期(不)定額套餐說明</h4>
+        </div>
+        <!-- 副標列 End -->
+        <div class="row_single">
+            <p class="inner_content">
+                定期不定額套餐代碼：A1-漲跌幅正負５％
+                <br> 基準日: 當約定扣款日前5日營業日之「基金淨值」
+                <br> 計算條件: “平均投資成本”×數值
+            </p>
+
+            <div class="table_chbox_frame">
+                <div class="table_chbox_row">
+                    <div class="table_chbox_th" style="width: 70px;padding-left: 5px;">
+                        基準日
+                    </div>
+                    <div class="table_chbox_th" style="text-align:center;width: 70px;">計算條件</div>
+                    <div class="table_chbox_th" style="text-align:center">調整後扣款金額
+                        <br>(實際扣款金額)</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        小於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">95%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>提高為原約定金額×120%</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        大於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">105%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>降低為原約定金額×80%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <p class="inner_content">
+                定期不定額套餐代碼：A2-漲跌幅正負１０％
+                <br> 基準日: 當約定扣款日前5日營業日之「基金淨值」
+                <br> 計算條件: “平均投資成本”×數值
+            </p>
+
+            <div class="table_chbox_frame">
+                <div class="table_chbox_row">
+                    <div class="table_chbox_th ">
+                        基準日
+                    </div>
+                    <div class="table_chbox_th" style="text-align:center">計算條件</div>
+                    <div class="table_chbox_th" style="text-align:center">調整後扣款金額
+                        <br>(實際扣款金額)</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        小於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">90%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>提高為原約定金額×120%</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        大於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">110%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>降低為原約定金額×80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                定期不定額套餐代碼：A3-漲跌幅正負１５％
+                <br> 基準日: 當約定扣款日前5日營業日之「基金淨值」
+                <br> 計算條件: “平均投資成本”×數值
+            </p>
+
+            <div class="table_chbox_frame">
+                <div class="table_chbox_row">
+                    <div class="table_chbox_th ">
+                        基準日
+                    </div>
+                    <div class="table_chbox_th" style="text-align:center">計算條件</div>
+                    <div class="table_chbox_th" style="text-align:center">調整後扣款金額
+                        <br>(實際扣款金額)</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        小於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">85%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>提高為原約定金額×120%</div>
+                </div>
+                <div class="table_chbox_row">
+                    <div class="table_chbox_td">
+                        大於
+                    </div>
+                    <div class="table_chbox_td" style="text-align:center">115%</div>
+                    <div class="table_chbox_td" style="text-align:center">當次之扣款金額時<br>降低為原約定金額×80%</div>
+                </div>
+            </div>
+
+
+            <p class="inner_content">
+                註：
+                <br>1.外幣信託平均投資成本=庫存金額/庫存單位數
+                <br>2.台幣信託平均投資成本=庫存金額/庫存單位數/扣款前 1 營業日本行外匯賣出匯率
+            </p>
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a class="button_confirm" (click)="onConfirm()">確定</a>
+            </div>
+        </div>
+    </div>
+</div>

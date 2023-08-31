@@ -1,0 +1,226 @@
+<!-- section -->
+<section>
+  <!-- 步驟列 or 其他資訊框架 -->
+  <div class="sub_info_frame">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell normal_disable">財富管理</li>
+      <li class="inner_table_cell">
+        <input class="inner_input normal_disable" type="text" name=""
+          value="{{goldlistoverview.acctNo | accountFormate}}">
+      </li>
+    </ul>
+    <i class="input_info_warnning">錯誤訊息內容</i>
+    <div class="row_single"></div>
+    <p class="sub_info_list">
+      <i class="sub_info_title">分行</i>
+      <span class="sub_info_content">{{goldlistoverview.openBranchIdName}}</span>
+    </p>
+    <p class="sub_info_list">
+      <i class="sub_info_title">幣別</i>
+      <span class="sub_info_content">GOLD(黃金)</span>
+    </p>
+    <p class="sub_info_list">
+      <i class="sub_info_title">最後交易日/定存到期日</i>
+      <span class="sub_info_content">{{goldlistoverview.lastTransDay| htDate:'date'}}</span>
+    </p>
+  </div>
+
+  <ul class="tab_table">
+    <li class="tab_two_cell">
+      <!-- [ngclass]="isclick.toggledetail?'active':''"  -->
+      <a id="transctionRecord" class="tab_button" [ngClass]="{'active' : isclick.toggledetail}"
+        (click)="toggleswitch('detail')">交易明細</a>
+    </li>
+    <li class="tab_two_cell">
+      <!-- [ngclass]="isclick.toggleoverview?'active':''"  -->
+      <a id="accountList" class="tab_button" [ngClass]="{'active' : isclick.toggleoverview}"
+        (click)="toggleswitch('overview')">帳戶彙總</a>
+    </li>
+  </ul>
+  <ng-container *ngIf="isclick.toggledetail">
+    <ul class="sub_tab_table sub_tab_four" id="time_Interval">
+      <li class="sub_td_cell">
+        <!-- 前一日 -->
+        <a id='period_day' (click)="toggledataswitch('daybefore')"
+          [ngClass]="{'active' : isdataclick.daybefore}">前一日</a>
+      </li>
+      <li class="sub_td_cell">
+        <!-- 本日 -->
+        <a id='period_today' (click)="toggledataswitch('today')" [ngClass]="{'active' : isdataclick.today}">本日</a>
+      </li>
+      <li class="sub_td_cell">
+        <!-- 最近一週 -->
+        <a id='period_week' (click)="toggledataswitch('week')" [ngClass]="{'active' : isdataclick.week}">最近一週</a>
+      </li>
+    </ul>
+    <ul class="sub_tab_table sub_tab_four" id="time_Interval2">
+      <li class="sub_td_cell">
+        <!-- 最近一月 -->
+        <a id='period_month' class="active" (click)="toggledataswitch('month')"
+          [ngClass]="{'active' : isdataclick.month}">最近一月</a>
+      </li>
+      <li class="sub_td_cell">
+        <!-- 自訂 -->
+        <a id='period_custom' (click)="toggledataswitch('custom')" [ngClass]="{'active' : isdataclick.custom}">自訂</a>
+      </li>
+    </ul>
+    <ng-container *ngIf="!isdataclick.custom">
+      <div class="sub_info_subtitle font_align_left" id="showTime">
+        {{ 'FIELD.SEARCH_RANGE' | translate }}：
+        <span id="currentTime">{{obj.startDate| htDate:'date'}}</span>~
+        <span id="currentTime3">{{obj.endDate| htDate:'date'}}</span>
+        <br> {{ 'FIELD.SEARCH_TIME' | translate }}：
+        <span class="currentTime2">{{currentTime | htDate}}</span>
+      </div>
+    </ng-container>
+    <!--自訂-->
+    <ng-container *ngIf="isdataclick.custom">
+      <!-- 自訂搜尋box -->
+      <app-date-range-search [show]="showSearchBox" [dateObj]="searchBoxRule" [infoData]="searchInfoData"
+        (backPageEmit)="customserach($event)"></app-date-range-search>
+
+
+      <ng-container *ngIf="isserachclick">
+        <!-- 自訂收尋 -->
+        <div class="sub_info_subtitle" id="showTime3">
+          <a class="search_range_btn mb_15">
+            {{obj.startDate}}~{{obj.endDate}}
+            <i class="search_range_icon icon_search" (click)="customserach()"></i>
+          </a>
+          <br>{{ 'FIELD.SEARCH_TIME' | translate }}：
+          <span class="currentTime2">{{currentTime | htDate}}</span>
+        </div>
+      </ng-container>
+
+
+    </ng-container>
+    <ng-container *ngIf="datashow">
+      <ul class="table_info_new table_th_style_new" id="total_expenses">
+        <li class="table_row_new table_data_new">
+          <!-- 總支出(公克)/筆數 -->
+          <span>總支出(公克)/筆數</span>
+          <i>{{goldexpensesTotal}}/{{goldexpensesCount}}</i>
+          <s class="data_cell"></s>
+        </li>
+      </ul>
+      <ul class="table_info_new table_th_style_new" id="total_expenses_today">
+        <li class="table_row_new table_data_new">
+          <!-- 總存入(公克)/筆數 -->
+          <span>總存入(公克)/筆數</span>
+          <i>{{goldincomeTotal}}/{{goldincomeCount}}</i>
+          <s class="data_cell"></s>
+        </li>
+      </ul>
+      <li class="table_data" *ngIf="!!resdatas">
+        <span class="data_cell" style="/*min-width: 100px;*/">交易日</span>
+        <i class="data_cell">摘要</i>
+        <b class="data_cell">支出/存入(公克)</b>
+        <s class="data_cell"></s>
+      </li>
+      <ng-template #showNoResult>
+        <li class="table_data">
+          <span class="data_cell" style="color: red;">{{ 'ERROR.EMPTY' | translate }}</span>
+          <s class="data_cell"></s>
+        </li>
+      </ng-template>
+      <ng-container *ngIf="!!resdatas;else showNoResult">
+        <div *ngFor="let resdata of resdatas; let recordIndex = index;">
+          <li class="table_data">
+            <span class="data_cell">{{resdata.transDate | htDate: 'MM/dd'}}</span>
+            <i class="data_cell">{{resdata.digest}}</i>
+            <b class="data_cell font_money_blu">{{(resdata.digest==='黃金網買')?resdata.deposit:resdata.withdraw}}</b>
+            <s class="data_cell">
+              <button class="sub_open" (click)="changeStyle(recordIndex)"></button>
+            </s>
+          </li>
+          <div class="sub_open_info_frame" [ngStyle]="styleObject[recordIndex]">
+            <dl class="sub_open_info">
+              <dt class="sub_open_row">
+                <span></span>
+                <span>幣別</span>
+                <span>NT</span>
+                <span></span>
+              </dt>
+              <dt class="sub_open_row">
+                <span></span>
+                <span>支出(公克)</span>
+                <span>{{resdata.withdraw}}</span>
+                <span></span>
+              </dt>
+              <dt class="sub_open_row">
+                <span></span>
+                <span>存入(公克)</span>
+                <span>{{resdata.deposit}}</span>
+                <span></span>
+              </dt>
+              <dt class="sub_open_row">
+                <span></span>
+                <span>餘額(公克)</span>
+                <span>{{resdata.balance}}</span>
+                <span></span>
+              </dt>
+              <dt class="sub_open_row">
+                <span></span>
+                <span>交易行庫</span>
+                <span>{{resdata.branchName}}</span>
+                <span></span>
+              </dt>
+              <dt class="sub_open_row">
+                <span></span>
+                <span>單價(元)</span>
+                <span>0.0</span>
+                <span></span>
+              </dt>
+            </dl>
+          </div>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+
+
+
+  </ng-container>
+  <ng-container *ngIf="isclick.toggleoverview">
+
+    <div class="sub_info_subtitle" id="showTime2">
+      查詢時間：
+      <span class="currentTime2">{{currentTime | htDate}}</span>
+    </div>
+    <!-- 雙欄位（靠左靠右）資訊範例 -->
+    <ul class="table_info" id="accountList2">
+      <li class="table_row">
+        <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+        <span>新臺幣實際結存公克數</span>
+        <i>{{resOverview.realBal}}</i>
+      </li>
+      <li class="table_row">
+        <span>新臺幣可用結存公克數</span>
+        <i>{{resOverview.usefulBal}}</i>
+      </li>
+      <li class="table_row">
+        <span>扣押公克數</span>
+        <i>{{resOverview.distrainBal}}</i>
+      </li>
+      <li class="table_row">
+        <span>凍結公克數</span>
+        <i>{{resOverview.freezeBal}}</i>
+      </li>
+      <li class="table_row">
+        <span>美元實際結存公克數</span>
+        <i>{{resOverview.realBalUS}}</i>
+      </li>
+      <li class="table_row">
+        <span>美元可用結存公克數</span>
+        <i>{{resOverview.usefulBalUS}}</i>
+      </li>
+    </ul>
+  </ng-container>
+
+
+  <!--自訂(表格)End-->
+
+
+</section>
+<!-- section //End -->

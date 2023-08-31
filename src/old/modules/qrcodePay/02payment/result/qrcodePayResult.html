@@ -1,0 +1,109 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+		<div class="back_bt" ng-click="clickBack()">
+            <p class="back_title" >返回</p>
+        </div>
+		<div class="page_title">QRCode消費扣款</div>
+		<!-- <div class="back_bt" >
+            <p class="back_title" ng-click="logout()" >登出</p>
+        </div> -->
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<div class="row">
+	<!--section 轉帳結果-->
+	<section style="top:70px;">
+		<!-- section //End -->
+
+			<!-- 副標列 -->
+
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame" ng-if="result.respCode==0" style="margin-top: 50px;">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易成功</span>
+				</div>
+				<div class="step_final_icon_frame fault_active" ng-if="result.respCode!=0" style="margin-top: 50px;">
+					<i class="icon_success"></i>
+					<span class="step_final_info" ng-if="result.respCode=='1'">交易失敗</span>
+					<span class="step_final_info" ng-if="result.respCode!='0'&&result.respCode!='1'">交易異常</span>
+				</div>
+			</div>
+		<!-- 副標列 //End -->
+
+		
+		<ul class="table_info" ng-if="result.respCode=='0'">
+			<li class="table_row"><!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+				<span>交易序號：</span>
+				<i ng-bind="result.trnsNo"></i>
+			</li>
+			<li class="table_row">
+				<span>交易時間：</span>
+				<i ng-bind="result.trnsDateTime"></i>
+			</li>
+			<li class="table_row">
+				<span>店家名稱：</span>
+				<i ng-bind="qrcode.merchantName"></i>
+			</li>
+			<!-- 金融卡交易顯示 -->
+			<li class="table_row" ng-if="means=='financial'">
+				<span>訂單編號：</span>
+				<i ng-bind="result.orderNumber"></i>
+			</li>
+			<li class="table_row" ng-if="means=='financial'">
+				<span>交易帳號：</span>
+				<i ng-bind="result.trnsfrOutAcct"></i>
+			</li>
+
+			<!-- 信用卡交易顯示 -->
+			<li class="table_row" ng-if="means=='card'">
+				<span>交易卡號：</span>
+				<i>*{{result.cardNo | limitTo:-6}}</i>
+			</li>
+			<li class="table_row" ng-if="means=='card'">
+				<span>幣別：</span>
+				<i>台幣</i>
+			</li>
+			<li class="table_row">
+				<span>交易金額：</span>
+				<i><span ng-bind="result.trnsAmount"></span>元</i>
+			</li>
+			<li class="table_row" ng-if="means=='card'">
+				<span>交易授權碼：</span>
+				<i ng-bind="result.authCode"></i>
+			</li>
+		
+		</ul>
+
+		<div class="row_single" style="margin-top:20px;" ng-if="result.respCode!=0">
+			<div class="main_info_block">
+				<div class="main_info_innerblock">
+					<div id="css_table" style="margin: 10px 10px 10px -10px;">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row_single"></div>
+		
+		<div class="row_single">
+				<a ng-click="logout()" class="button_confirm">登出</a>
+			</div>
+
+	</section>
+
+</div>
+<!--section 轉帳結果-->

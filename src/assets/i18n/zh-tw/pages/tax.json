@@ -1,0 +1,73 @@
+{
+	"PG_TAX": {
+		"TITLE": {
+			"HINET-FEE": "中華電信費繳款",
+			"WATER": "台灣自來水費繳款",
+			"TAIPEI-WATER": "臺北自來水費繳款",
+			"ELECTRICITY": "電費繳款",
+			"HEALTH": "健保費繳款",
+			"LABOR": "勞保費繳款",
+			"NATIONAL": "國民年金保費繳款",
+			"TUITION": "學費繳款",
+			"MOBILE-FUEL": "汽機車燃料使用費"
+		},
+		"WATER": {
+			"CHKCODE": "請輸入查核碼",
+			"CHKCODE_1": "查核碼錯誤,請確認是否輸入正確",
+			"dueDate":"輸入錯誤，代收期限尚未輸入完全"
+		},
+		"TAIPEIWATER": {
+			"BARCODE_1": "請輸入第一條條碼",
+			"BARCODE_2": "請輸入第二條條碼",
+			"BARCODE_3": "請輸入第三條條碼",
+			"WATERNUMBER": "請輸入水號"
+
+		},
+		"ELECTRICITY": {
+			"CHKCODE_1": "請輸入查核碼",
+			"CHKCODE_2": "查核碼格式不符",
+			"CHKCODE_3": "查核碼錯誤,請確認是否輸入正確",
+			"CUSTNUM_1": "請輸入電號",
+			"CUSTNUM_2": "電號尚未輸入完全",
+			"CUSTNUM_3": "電號格式不符"
+		},
+		"LABORHEALTHNATIONAL": {
+			"BARCODE_1": "請輸入第一條條碼",
+			"BARCODE_2": "請輸入第二條條碼",
+			"BARCODE_3": "請輸入第三條條碼"
+
+		},
+		"HINETFEE": {
+			"ID": "請輸入統一編號/身分證號",
+			"IPHONE": "請輸入電信(號)號碼"
+
+		},
+		"ERROR":{
+			"TRNSFROUTACCNT":"請選擇扣款帳號",
+			"TRNSFROUTACCNT_1":"請選擇轉出帳號",
+			"TRNSFROUTACCNT_2":"你未設定扣款帳號，尚無法執行本項交易，欲設定扣款帳號，請洽本行營業單位辦理。",
+			"TRNSFROUTACCNT_3":"無轉出或轉入約定帳號設定，請先進行約定帳號設定",
+			"PAYNO_1":"請輸入正確銷帳編號",
+			"PAYNO_2":"銷帳編號不得小於16碼",
+			"PAYENDDATE_1":"請輸入截止日",
+			"PAYENDDATE_2":"截止日不得小於6碼",
+			"PAYENDDATE_3":"截止日不得小於8碼",
+			"DUEDATE_1":"請輸入正確代收期限",
+			"DUEDATE_2":"代收期限不得小於7碼",
+			"DUEDATE_3":"請輸入正確代收截止日",
+			"DUEDATE_4":"代收截止日不得小於7碼",
+			"ERROR_BARCODE_1": "條碼一長度應為9碼",
+			"ERROR_BARCODE_2": "條碼二長度應為16碼",
+			"ERROR_BARCODE_3": "條碼三長度應為15碼",
+			"CHECKNUMBER":"檢查碼錯誤,請確認條碼是否輸入正確"
+		},
+		"PLACEHOLDER":{
+			"PAYNO":"請輸入銷帳編號",
+			"PAYENDDATE":"(範例:20150731)",
+			"TRNSFRAMOUNT":"請輸入繳款金額"
+		},
+		"COMMON":{
+			"OUTOFTIME":"未到代收期間的稅款項目，無法提供繳費服務，請您見諒！"
+		}
+	}
+}

@@ -1,0 +1,7 @@
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <!-- Page1 -->
+    <app-income-notify-page [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-income-notify-page>
+    <!-- Page other -->
+    <ng-container #pageBox></ng-container>
+    
+</section>

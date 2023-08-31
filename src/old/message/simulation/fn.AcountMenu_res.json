@@ -1,0 +1,70 @@
+{
+  "resHeader":{
+    "serviceId":"twd.FetchAcounts",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "accounts" : [
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期--證券",
+      "acctNo": "04864705444550",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期",
+      "acctNo": "04864717108196",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "綜定存-固定利率1個月",
+      "acctNo": "04864188062616",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "綜定存-固定利率5個月",
+      "acctNo": "04864717108200",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "綜定存-固定利率5個月",
+      "acctNo": "04864717159738",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期",
+      "acctNo": "04858683600131",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期",
+      "acctNo": "04804737000122",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期",
+      "acctNo": "04864188073771",
+      "branchName": "分行名稱"
+    },
+    {
+      "accounting": "會計科目",
+      "accountingName": "有摺活期",
+      "acctNo": "04899864896534",
+      "branchName": "分行名稱"
+    }
+
+  ]
+}

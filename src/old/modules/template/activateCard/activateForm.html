@@ -1,0 +1,53 @@
+<div class="bc_frame">
+
+	<h3 class="row_single in_wran_title"></h3>
+
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.idNo}">
+		<!-- 持卡人身分證號 -->
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="input_name required" ng-class="{required:applyFormList.required.idNo}" style="width: 140px;"  >持卡人<br>身分證號</i></td>
+			<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}"
+				identity-mask-directive/></td>
+		
+			</tr></table></div><s class="input_comment">{{error_msg_list.idNo}}</s>
+	</div>
+
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.cardNum}">
+		<!-- 信用卡號碼 -->
+		<div class="input_frame"><table><tr>
+		<td align="center" width="110px" style="vertical-align:middle"><i class="input_name required">{{'FIELD.CARD.CARDNUM' | translate }}</i></td>
+		<td align="center" style="display: flex;flex-wrap: nowrap;">
+		<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n1" name="card_num_1" style="width: 20%; display:inline" value="">
+		<span style="width: 7%;line-height: 45px;">-</span>
+		<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n2" name="card_num_2" style="width: 20%; display:inline" value="">
+		<span style="width: 7%;line-height: 45px;">-</span>
+		<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n3" name="card_num_3" style="width: 20%; display:inline" value="">
+		<span style="width: 7%;line-height: 45px;">-</span>
+		<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n4" name="card_num_4" style="width: 20%; display:inline" value="">
+		</td>
+		</tr></table></div>
+<s class="input_comment">{{error_msg_list.cardNum}}</s>
+	</div>
+
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.ymData}">
+		<!-- 信用卡有效月年 -->
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="input_name required"  style="width: 140px;">信用卡<br>有效月年</i></td>
+			<td align="center"><input maxlength="5" type="tel" name="" id="ymData" ng-model="inp.ymData" placeholder="MM/YY" card-ym-mask-directive></td>
+			</tr></table></div><s class="input_comment">{{error_msg_list.ymData}}</s>
+	</div>
+
+	<div class="row_single input_single input_data" ng-class="{input_error:error_msg_list.birthday}">
+		<!-- 出生年月日 -->
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name required"style="width: 100px;">{{'FIELD.DATE_BIRTHDAY' | translate }}</i></td>
+		<td align="center"><input maxlength="10" type="data" name="" id="birthday" ng-model="inp.birthday" placeholder="1997/10/10" date-mask-directive></td>
+		</tr></table></div><s class="input_comment">{{error_msg_list.birthday}}</s>
+	</div>
+	<check-captcha-directive></check-captcha-directive>
+</div>
+<div class="bc_frame">
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="sendTransfer();">{{'BTN.CHECK_SEND' | translate}}</button>
+	</div>
+</div>

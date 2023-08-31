@@ -1,0 +1,38 @@
+<!-- 交易明細 -->
+<ng-container *ngIf="showData ; else noDataBox">
+    <!-- 列表(父層) -->
+    <div class="table_four_hl" id='fund_1'>
+        <!-- 列表start -->
+        <div class="table_four_hl_tr" *ngFor="let item of data"  (click)="onQuery(item)">
+            <p class="table_four_hl_td">{{item.enrollDate | htDate:'date'}}</p>
+            <p class="table_four_hl_td">{{item.transTypeDesc}}</p>
+            <!-- <p class="table_four_hl_td">{{(item | fieldCheck: 'purchTotalAmnt') | htMoney}}</p> -->
+            <ng-container *ngIf="item.hasOwnProperty('purchAmnt') && item.purchAmnt !== '' ; else detailBox">
+                <p class="table_four_hl_td">{{(item | fieldCheck: 'purchAmnt') | htMoney}}</p>
+            </ng-container>
+
+            <ng-template #detailBox>
+                <p class="table_four_hl_td">- -</p>
+            </ng-template>
+            <p class="table_four_hl_td">
+                <a href="javascript:void(0)" class="arrow_link"></a>
+            </p>
+
+        </div>
+        <!-- 列表 End  -->
+
+    </div>
+    <!-- 列表(父層) End -->
+</ng-container>
+<ng-template #noDataBox>
+    <div class="table_four_hl">
+        <div class="table_four_hl_tr">
+            <p class="table_four_hl_td" [ngClass]="{'msg_active': (showError != '')}">
+                {{ 'ERROR.EMPTY' | translate }}
+                <ng-container *ngIf="showError !== '' && showError !== 'ERROR.EMPTY'">
+                    <br>{{ showError | translate }}</ng-container>
+            </p>
+
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,24 @@
+<section>
+  <ul class="ati_table">
+    <li class="ati_tr">
+      <span class="ati_td" style="text-align: left; padding: 6px 15px; top: -20px; height:82px; vertical-align:middle;">
+        {{serviceAddressShow[0].name}}<br>
+        {{serviceAddressShow[0].address}}&nbsp;&nbsp;
+        <a id="phone" style="color: rgb(19, 0, 192);" (click)="callphone()">{{serviceAddressShow[0].tel}}</a><br>
+      </span>
+      <span class="ati_td" style="padding: 25px 15px; height:62px; top: -20px;">
+        <button class="ati_cancel" style="height:30px; width:60px;" (click)="gogooglemap()">前往</button>
+      </span>
+    </li>
+  </ul>
+
+
+  <ul>
+    <div id="map_canvas" style="position: fixed;
+    left: 0px;  top: 182px;  right: 0px;  bottom: 0px;  width: 100vw;  height: 67%;
+    overflow: hidden;">
+      <button id="button"><img src="assets/images/invokelocal_before_bg.png" class="current_postion_icon"></button>
+    </div>
+  </ul>
+
+</section>

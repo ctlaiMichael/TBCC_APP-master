@@ -1,0 +1,366 @@
+@import url('friendly_glorbal.css');
+
+.acc_login{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    width: 50px;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+.acc_login{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    width: 50px;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+.acc_home_a11y{
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    width: 50px;
+    z-index: 5;
+    color: #ffffff;
+    font-size: 22px;
+    /* border: 5px solid pink; */
+}
+
+.acc_btn1{
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    background: #096957;
+}
+
+.acc_btn2{
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    background:  #A2560D;
+}
+
+.acc_btn3{
+    display: inline-block;
+    vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/
+    margin: 6% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    background:  #1F6CA2;
+    /* border: 5px solid pink; */
+}
+
+.acc_btn4{
+    display: inline-block;
+    vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/
+    margin: 6% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    background:  #0A1F7D;
+    /* border: 5px solid pink; */
+}
+
+.acc_btn1_all{
+    background: #096957;
+
+    background-image: url("../../images/a11y/images/icon_account.png");
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    background-position: center 20px;
+
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding-top: 20%;
+}
+
+.acc_btn2_all{
+    background: #A2560D;
+
+    background-image: url("../../images/a11y/images/icon_transfer.png");
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    background-position: center 20px;
+
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding-top: 20%;
+}
+
+.acc_btn3_all{
+    background: #1F6CA2;
+
+    background-image: url("../../images/a11y/images/icon_set.png");
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    background-position: center 20px;
+
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding-top: 20%;
+}
+
+.acc_btn4_all{
+    background: #0A1F7D;
+
+    background-image: url("../../images/a11y/images/icon_function.png");
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    background-position: center 20px;
+
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding-top: 20%;
+}
+
+.acc_btn5_all{
+    background: #E6A304;
+
+    background-image: url("../../images/a11y/icons/icon_fintech.png");
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    background-position: center 20px;
+
+    display: inline-block;
+    margin: 3% 2% auto 2%;
+    width: 45%;
+    height: 24%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding-top: 20%;
+}
+
+.account_icon{
+    background-image: url("../../images/a11y/images/icon_account.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    margin-top: 15%;
+    left: 23%;
+    height: 55%;
+    width: 55%; 
+    /* z-index: 2; */
+    /* border: 6px solid green; */
+}
+
+.transaction_icon{
+    background-image: url("../../images/a11y/images/icon_transfer.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    margin-top: 15%;
+    left: 23%;
+    height: 55%;
+    width: 55%; 
+}
+
+.setup_icon{
+    background-image: url("../../images/a11y/images/icon_set.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    margin-top: 15%;
+    left: 23%;
+    height: 55%;
+    width: 55%; 
+}
+
+.guide_icon{
+    background-image: url("../../images/a11y/images/icon_function.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    margin-top: 15%;
+    left: 23%;
+    height: 55%;
+    width: 55%; 
+}
+
+.account_title{
+    height: 25%;
+    position: relative;
+    font-size: 24px;
+    color: #ffffff;
+    text-align:center;
+    top: 3%;
+}
+
+.transaction_title{
+    height: 25%;
+    position: relative;
+    font-size: 24px;
+    color: #ffffff;
+    text-align:center;
+    top: 3%;
+}
+
+.setup_title{
+    height: 25%;
+    position: relative;
+    font-size: 24px;
+    color: #ffffff;
+    text-align:center;
+    top: 3%;
+}
+
+.guide_title{
+    height: 25%;
+    position: relative;
+    font-size: 24px;
+    color: #ffffff;
+    text-align:center;
+    top: 3%;
+}
+.login_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_login.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.tw_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/images/icon_tw.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.abroad_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_abroad.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.loan_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_loan.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.deal_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_deal.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.account_icon2{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_account.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.lock_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_lock.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.SSL_icon{
+    /* display: inline-block; */
+    float:left;
+    background-image: url("../../images/a11y/icon_SSL.png");
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 75% 75%;
+    position: relative;
+    height: 100%;
+    width: 30%;
+    /* border: 1px solid black; */
+    /* margin: auto auto auto 3%; */
+}
+.btn_title{
+    /* display: inline-block; */
+    margin-top: 6%;
+    float:left;
+    height: 60%;
+    width: 65%;
+    font-size: 1.1em;
+    font-weight:bold;
+    color: #ffffff;
+    text-align: left;
+    /* border: 2px solid blue; */
+    /* margin: auto 2% auto 2%; */
+}
+
+.bottom_white{
+    color: white;
+    font-weight: 400;
+    font-size: 1.7em;
+}

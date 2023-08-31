@@ -1,0 +1,14 @@
+.cloneBox {
+    /* z-index: 2147483644; */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    /* padding-left: 15px; */
+    /* background: #f2faff; */
+    overflow: hidden;    
+}

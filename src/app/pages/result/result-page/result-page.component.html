@@ -1,0 +1,47 @@
+<section>
+    <!-- 結果 -->
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame {{className}}">
+        <i class="{{icon_img}}"></i>
+            <span class="step_final_info">{{ options.title | translate: options.title_params }}</span>
+        </div>
+        <p class="sub_info_list">
+            <span class="sub_info_title no_content" style="text-align: center;" [innerHtml]="(options.content | translate: options.content_params) | safeHtml"></span>
+        </p>
+        <ng-container *ngIf="showData.mainInfo">
+            <p class="sub_info_list" *ngFor="let item of mainInfo">
+                <i class="sub_info_title" [innerHtml]="(mainInfo.title | translate) | safeHtml"></i>
+                <span class="sub_info_content color_yellow" [innerHtml]="(mainInfo.content | translate) | safeHtml"></span>
+            </p>
+        </ng-container>
+    </div>
+    <!-- 結果 End -->
+    <!-- 雙欄位（一左一右）資訊 -->
+    <ul class="table_info" *ngIf="showData.detail">
+        <li class="table_row" *ngFor="let detail of detailData">
+            <span [innerHtml]="(detail.title | translate) | safeHtml"></span>
+            <i [innerHtml]="(detail.content | translate) | safeHtml"></i>
+        </li>
+    </ul>
+    <!-- 雙欄位（一左一右）資訊 End -->
+
+
+    <div *ngIf="showData.dataTime" class="sub_info_subtitle">
+        查詢時間：
+        <span>{{ options.dataTime | htDate }}</span>
+    </div>
+    <!-- 提醒您 -->
+    <ng-container *ngIf="showData.notice">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content" [innerHtml]="notice | safeHtml "></p>
+        </div>
+    </ng-container>
+    <!-- 提醒您 End -->
+    <div class="row_single" *ngIf="!showData.notice"></div>
+    <div class="row_single">
+        <a (click)="clickBtn()" class="button_confirm">{{options.button|translate}}</a>
+    </div>
+</section>

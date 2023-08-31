@@ -1,0 +1,32 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">QRCode消費扣款</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+
+<!--section 扣款帳號設定頁面-->
+<section style="top:125px;">
+    <a href="javascript:void(0);" class="final_stpe_button">
+        請選擇預設帳號
+    </a>
+    <div class="row_single"></div>
+    <div class="row_single">
+        <div class="inner_radio" ng-repeat="acct in accts">
+            <input class="debit_sign_box" type="checkbox" name="layout" id="cb_{{$index}}" ng-model="acct.selected" ng-click="selectAcct(acct)">
+            <label for="cb_{{$index}}">
+                <span><i></i></span>
+                <b>{{acct.acctNo}}</b>
+            </label>
+        </div>
+    </div>
+    <div class="row_single">
+        <div class="double_button">
+            <a ng-click="clickCancel()">取消</a><a ng-click="clickNextStep()">確定</a>
+        </div>
+    </div>
+</section>

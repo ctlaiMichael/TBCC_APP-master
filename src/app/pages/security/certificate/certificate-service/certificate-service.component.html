@@ -1,0 +1,57 @@
+<section>
+  <div class="row_single">
+    <h4 class="simple_title">憑證資訊</h4>
+  </div>
+
+  <ul class="table_info">
+    <li class="table_row">
+      <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+      <span>憑證序號</span>
+      <i>{{cert.serialNumber}}</i>
+    </li>
+    <li class="table_row">
+      <span>憑證生效日</span>
+      <i>{{cert.beforeTime}}</i>
+    </li>
+    <li class="table_row">
+      <span>憑證到期日</span>
+      <i>{{cert.afterTime}}</i>
+    </li>
+    <li class="table_row">
+      <span>金鑰長度</span>
+      <i>{{cert.keySize}}</i>
+    </li>
+  </ul>
+  <div class="row_single">
+    <h4 class="simple_title">主旨(使用者識別名稱)</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content">
+        {{cert.subject}}
+    </p>
+  </div>
+  <div class="row_single">
+    <dl class="inner_table_double">
+      <dt class="inner_cell_double" (click)="gotoUpdate()">
+        <a href="javascript:void(0)" class="inner_button bt_100">
+          <span>憑證更新</span>
+        </a>
+      </dt>
+      <dt class="inner_cell_double" (click)="cerificateStop()">
+        <a href="javascript:void(0)" class="inner_button bt_100">
+          <span>憑證暫禁</span>
+        </a>
+      </dt>
+    </dl>
+  </div>
+  <div class="row_single" (click)="gotoChangePwd()">
+    <dl class="inner_table_three">
+      <dt class="inner_cell_three">
+        <a href="javascript:void(0)" class="inner_button bt_100">
+          <span>憑證保護密碼變更</span>
+        </a>
+      </dt>
+    </dl>
+  </div>
+
+</section>

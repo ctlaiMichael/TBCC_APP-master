@@ -1,0 +1,43 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y">
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" [title]="mydataTime">牌告日期：<br>{{ dataTime }}</p>
+      <p class="row3_sheet_short_a11y">{{nowType.name}}</p>
+    </div>
+  </div>
+
+  <!-- <div class="input_area_a11y" style="margin: 10px;"> -->
+  <div style="margin: 10px;">
+    <select name="" class='transfer_select_white_a11y' (change)="onChangeType()" [(ngModel)]="nowType">
+      <option *ngFor="let menu of dataType" [ngValue]="menu">{{ menu.name }}</option>
+    </select>
+  </div>
+  <ng-container *ngIf="showData; else noDataBox">
+    <!-- <div class="input_area_a11y"> -->
+        <div>
+      <table class="Table_a11y">
+        <tr>
+          <th> 類別 </th>
+          <th> 固定利率% </th>
+          <th> 機動利率% </th>
+        </tr>
+        <ng-container *ngFor="let item of data">
+          <tr>
+            <td>{{item.range}}</td>
+            <td class="firstTable_a11y">{{ item | fieldCheck: ['normalFix' ,{zero_type:false, empty_str:'--'} ]}}</td>
+            <td class="firstTable_a11y">{{ item | fieldCheck: ['normalChang',{zero_type:false, empty_str:'--'}]}} </td>
+          </tr>
+          <tr *ngIf="item.bigFix&&(item.bigFix !='0' || item.bigChang !='0' )">
+            <td>{{item.range}}(大額)</td>
+            <td class="firstTable_a11y">{{ item | fieldCheck: ['bigFix',{zero_type:false, empty_str:'--'} ]}}</td>
+            <td class="firstTable_a11y">{{ item | fieldCheck: ['bigChang',{zero_type:false, empty_str:'--'}]}} </td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </ng-container>
+  <ng-template #noDataBox>
+    <div class="sub_info_subtitle_a11y">查無資料</div>
+  </ng-template>
+</section>

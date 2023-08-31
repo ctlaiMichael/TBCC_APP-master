@@ -1,0 +1,87 @@
+<ng-container>
+    <section>
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar"></li>
+                <li class="step_bar step_active"><span>2.填寫資料</span></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <!-- <div class="row_single"></div> -->
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['goldAccount']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    *黃金存摺帳號
+                </li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" (change)="onChangeGoldAcct(goldMenu)"
+                        [(ngModel)]="goldbuyInfo.goldAccount">
+                        <option *ngFor="let goldMenu of goldAcctsList" value="{{goldMenu.acctNo}}">
+                            {{ goldMenu.acctNo | accountFormate }}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['goldQuantity']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    買進公克數
+                </li>
+                <li class="inner_table_cell">
+                    <input type="tel" name="" id="kg" class="inner_input" [(ngModel)]="goldbuyInfo.goldQuantity"
+                        placeholder="請輸入1公克之整倍數" (click)='clearMsg()'>
+                </li>
+                <li class="inner_table_cell third_td">克</li>
+            </ul>
+            <i class="input_info_warnning"
+                *ngIf="errorMsg['goldQuantity']!==''">{{ errorMsg['goldQuantity'] | translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrAccount']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    *扣款帳號
+                </li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" (change)="onChangeTwAcct(goldbuyInfo.trnsfrAccount)"
+                        [(ngModel)]="goldbuyInfo.trnsfrAccount">
+                        <option *ngFor="let twMenu of trnsfrAcctsList" value="{{twMenu.acctNo}}">
+                            {{ twMenu.acctNo | accountFormate }}</option>
+                    </select>
+                </li>
+            </ul>
+            <i class="select_info" *ngIf="balance != undefined">可用餘額
+                <ng-container>{{balance | currencyMoney:'TWD'}}</ng-container>
+            </i>
+        </div>
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)='doCancel()'>{{'BTN.PREVIOUS' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent();">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_content">
+                <ol style="padding: 0px 20px 0px 20px;">
+                    <li style="list-style: decimal;">本業務交易時間，自每一營業日本行黃金存摺第一次掛牌起，至下午三時三十分止。
+                        大批買進黃金存摺價格折讓標準表(一公斤1000公克)：
+                        <a class="fontw normal_link color_fee" (click)="goldDesc()">請參閱說明</a>
+                    </li>
+                    <li style="list-style: decimal;">適用對象：黃金存摺單筆買進，其買進數量達到價格折讓表鎖定數量者</li>
+                    <li style="list-style: decimal;">計算方式：<br>
+                        <ol class="next_order_list">
+                            <li>折讓後之1公克黃金存摺單價=黃金存摺賣出牌價x(1-折讓率)(計算至小數點第2位，以下4捨5入)</li>
+                            <li>價格淨額=折讓後之1公克黃金存摺單價x購買數量(計算至整數，小數點以下4捨5入)</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+</ng-container>

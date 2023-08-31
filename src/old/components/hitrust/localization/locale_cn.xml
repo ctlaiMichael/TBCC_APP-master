@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ROOT>
+	<BUTTON>
+		<BACK>返回</BACK>
+		<OK>确定</OK>
+		<CANCEL>取消</CANCEL>
+		<YES>是</YES>
+		<NO>否</NO>
+	</BUTTON>
+
+	<MAIN>
+		<WELCOME>欢迎</WELCOME>
+		<WELCOMEMESSAGE>欢迎讯息</WELCOMEMESSAGE>
+		<WELCOMESENCHA>Welcome to Sencha Touch 2</WELCOMESENCHA>
+		<WELCOMETEXT1>You've just generated a new Sencha Touch 2 project. What you're looking at right now is the contents of</WELCOMETEXT1>
+		<WELCOMETEXT2> - edit that file and refresh to change what's rendered here.</WELCOMETEXT2>
+		<GETSTARTED>Get Started</GETSTARTED>
+		<GETTINGSTARTED>Getting Started</GETTINGSTARTED>
+	</MAIN>
+
+	<LOCALIZATION>
+		<CHANGELANGUAGE>Change Language</CHANGELANGUAGE>
+		<CHANGELANGUAGEQUESTION>You have to reload application in order to change to new language.</CHANGELANGUAGEQUESTION>
+	</LOCALIZATION>
+
+	<ITEM>
+		<TITLE>HtFramework 目錄</TITLE>
+		<ITEM_0>NFC</ITEM_0>
+		<ITEM_1>搖動偵測</ITEM_1>
+		<ITEM_2>文件檢測</ITEM_2>
+		<ITEM_3>BLE</ITEM_3>
+		<ITEM_4>傳送請求</ITEM_4>
+		<ITEM_5>定位</ITEM_5>
+		<ITEM_6>聯絡人</ITEM_6>
+		<ITEM_7>Google Map</ITEM_7>
+		<ITEM_8>控制台 Log</ITEM_8>
+		<ITEM_9>換頁</ITEM_9>
+		<ITEM_10>多國語言(中文)</ITEM_10>
+		<ITEM_11>QRCode 掃描</ITEM_11>
+		<ITEM_12>QRCode 產生</ITEM_12>
+		<ITEM_13>打開照相機</ITEM_13>
+		<ITEM_14>打開Word</ITEM_14>
+		<ITEM_15>打開PDF</ITEM_15>
+		<ITEM_16>傳email</ITEM_16>
+		<ITEM_17>傳sms</ITEM_17>
+		<ITEM_18>時區</ITEM_18>
+
+	</ITEM>
+</ROOT>

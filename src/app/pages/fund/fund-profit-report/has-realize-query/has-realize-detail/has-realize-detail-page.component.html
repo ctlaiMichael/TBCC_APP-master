@@ -1,0 +1,55 @@
+<!-- <div class='row_single'></div>
+<ul class="credit_card_bill_detail_list">
+    <li id='fund_1' *ngFor="let item of data">
+        <p class="credit_card_name">
+            <i>{{item.fundCode}}</i>
+            <i>{{item.fundName}}</i>
+        </p>
+        <p>
+            <span>贖回日期：</span>
+            <span>{{item.terminateDate | htDate:'date'}}</span>
+        </p>
+        <p>
+            <span>投資幣別：</span>
+            <span>{{item.currency1}}</span>
+        </p>
+        <p>
+            <span>全年損益：</span>
+            <span class="{{ item.class }}">{{item.incomeState | htMoney: item.currency1}}</span>
+        </p>
+        <a href="javascript:void(0)" (click)="onQuery(item)" class="">{{ 'BTN.SEARCH' | translate }}</a>
+    </li>
+</ul> -->
+
+
+<!-- <div class="table_four_hl">
+        <div class="table_four_hl_tr" (click)="onQuery(item)"*ngFor="let item of data">
+            <p class="table_four_hl_td fund_has_th_fis">{{item.fundCode}}&nbsp;{{item.fundName}}</p>
+            <p class="table_four_hl_td_fund fund_tex_cen">{{item.terminateDate | htDate:'date'}}<br>{{item.currency1}}</p>
+            <p class="table_four_hl_td_fund"><i class="{{ item.class }}">{{item.incomeState | htMoney: item.currency1}}%</i></p>
+           <p class="table_four_hl_td_fund">
+                <a class="arrow_link" href="javascript:void(0)"></a>
+            </p>
+        </div>
+</div> -->
+
+
+<!-- Start-->
+<ng-container *ngFor="let item of data">
+<table class="table_fund_font rich_table" (click)="onQuery(item)">
+    <tr>
+        <!-- 投資標的 -->
+        <td colspan="3" class="rich_pad_top">{{item.fundCode}}&nbsp;{{item.fundName}}</td>
+        <td rowspan="2" class="rich_pad_button"><a class="rich_allow_link" href="javascript:void(0)"></a></td>
+    </tr>
+    <tr class="rich_bod_bot">
+        <!-- 贖回日期 -->
+        <td class="rich_pad_bot font_align_left">{{item.terminateDate | htDate:'date'}}</td>
+        <!-- 贖回金額 -->
+        <td class="rich_align_ri table_rich_font_money" style="width: 30vw;">{{item.terminateAmount | currencyMoney:item.currency1}}</td>
+        <!-- 全年損益 -->
+        <td class="rich_align_ri rich_pad_rig {{ item.incomeState | fundAmtClass }}" style="width: 30vw;">{{item.incomeState | htMoney: item.currency1}}</td>
+    </tr>
+</table>
+</ng-container>
+<!-- End-->

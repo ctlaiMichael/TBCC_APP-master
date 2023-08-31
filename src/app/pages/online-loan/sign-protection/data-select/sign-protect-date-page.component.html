@@ -1,0 +1,71 @@
+<section>
+	<ng-container>
+		<!-- <div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar"></li>
+				<li class="step_bar step_active">
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+				<li class="step_bar step_active">
+					<span>5.簽署借款契約-信貸簽約對保</span>
+				</li>
+				<li class="step_bar"></li>
+			</ul>
+		</div> -->
+		<div class="row_single"></div>
+		<div class="row_single">
+			<h4 class='simple_title'>撥款資料設定</h4>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="dateFlag?'active_warnning':''">
+				<li class="inner_table_cell">
+					撥款日期
+				</li>
+				<li class="inner_table_cell">
+					<input-date [min]="minDay" [max]="maxDay" [(ngModel)]="reqData.aprprdbgn"
+						(backValueEmit)="onInputBack($event)"></input-date>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					撥入帳號
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" class="inner_input" placeholder="{{fullData.account | accountFormate }}">
+				</li>
+			</ul>
+			<i class="input_info_warnning"></i>
+		</div>
+
+		<!-- <ng-container *ngIf="securityA == false">
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+		</ng-container>
+
+
+		<ng-container *ngIf="securityB == false">
+			<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+		</ng-container> -->
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="onCancel()">{{'BTN.CANCEL' | translate}}</a>
+				<a href="javascript:void(0)" (click)="onContract()">{{'BTN.CHECK' | translate}}</a>
+			</div>
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content font_red">
+				您選擇之預定撥款日期，若遇不可抗力因素致銀行當日無法營業，將無法於預定撥款日期撥付款項，將通知您需親赴分行簽訂借款契約。
+			</p>
+		</div>
+	</ng-container>
+</section>

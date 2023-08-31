@@ -1,0 +1,24 @@
+.input_captcha input[type='text'],
+.input_captcha input[type='tel'],
+.input_captcha input[type='data'] {
+  margin-right: 10px;
+}
+
+.input_captcha div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+/* .input_captcha a {
+ 
+  width: 100px;
+  height: 35px;
+
+  background-position: center !important;
+  background-size: 100% auto !important;
+} */
+
+.margin_none {
+  margin-bottom: 0;
+}

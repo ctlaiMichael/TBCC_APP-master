@@ -1,0 +1,43 @@
+.table_row2 {
+	display: table-row;
+}
+.table_row2 .device{
+	word-break: break-all;
+}
+.table_row2 > * {
+	font-family: '微軟正黑體';
+    /* font-size: 17px; */
+    /* 外匯業務-彙總頁:右方文字大小調整 */
+	font-size: 16px;
+	font-weight: bold;
+
+	position: relative;
+
+	display: table-cell;
+	/* line-height: 40px; */
+
+	padding-top: 8px;
+	padding-bottom: 8px;
+
+	color: #646464;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+.table_row2 > *:first-child {
+    font-size: 16px;
+    /* 調整綜定存中途解約結果頁左邊欄位文字大小 */
+
+	width: 0px;
+	padding-right: 10px;
+    padding-left: 20px;
+
+    /* 粽定存結果頁帳號不斷行 */
+    word-break: keep-all;
+	/* white-space: nowrap; */
+}
+.table_row2 > *:last-child {
+	padding-right: 20px;
+
+	text-align: right;
+
+	color:#007680;
+}

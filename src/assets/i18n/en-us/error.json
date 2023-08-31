@@ -1,0 +1,73 @@
+{
+  "ERROR": {
+    "TITLE": "訊息",
+    "INFO_TITLE": "提醒您",
+    "WAIT_FOR_READY": "程序準備中，請稍後片刻再進行動作喔！",
+    "DEFAULT": "發生未預期的錯誤，若有帳務交易，請確認本筆交易是否成功（查詢轉出帳號餘額或交易明細），造成不便，敬請見諒。若有其他問題，請聯繫本行客服中心。",
+    "PATH_NOT_EXIST": "路徑不存在",
+    "DATA_FORMAT_ERROR": "資料格式錯誤",
+    "RSP_FORMATE_ERROR": "回傳資料格式錯誤，請聯絡客服人員。",
+    "EMPTY": "查無資料",
+    "EMPTY_SEARCH": "查詢期間無交易資料",
+    "PLUGIN_ERROR": "很抱歉，必要元件無法執行或異常！如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。",
+    "SQLITE_DB_ERROR": "很抱歉，資料連線異常！如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。",
+    "CONNECTION": "系統維護中，請稍後再試!若有其他問題，請聯絡客服人員。",
+    "EDIT_ERROR": "處理失敗",
+    "EDIT_SUCCESS": "處理成功",
+    "CHECK_ERROR": "驗證失敗",
+    "WAIT": "處理中，請稍後！",
+    "NO_NETWORK": "網路連線失敗，請您確認網路連線後再試。",
+    "NO_SERVICE": "親愛的客戶您好，目前系統維護中，請稍後再試。造成您的不便，敬請見諒。",
+    "NO_CUST_ID": "請輸入身分證字號",
+    "NO_USER_ID": "請輸入網路連線代號",
+    "NO_PWD": "請輸入密碼",
+    "ERROR_CUST_ID": "身分證字號請勿輸入符號或非英數",
+    "ERROR_USER_ID": "網路連線代號請輸入英數或符號",
+    "ERROR_PWD": "密碼請輸入英數或符號",
+    "ERROR_EXCEPTION": "系統連線異常，請稍後再試!如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。",
+    "SERVER_EXCEPTION": "目前無法與伺服器取得連線，請稍後再試！如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。(ERM001)",
+    "CONNECTION_TIMEOUT": "連線逾時，請稍後再試，若有帳務交易發生逾時情況，煩請先暫停交易並洽客服人員查明結果。",
+    "HASREDEEM_EMPTY": "查無可贖回基金資料",
+    "CANNOT_PURCHARSE": "投資風險屬性不允許申購或轉換此檔基金",
+    "AGREE": {
+      "AGREE_CHECK": "請先勾選同意事項。"
+    },
+    "LOGIN": {
+      "NO_LOGIN": "您尚未登入行動銀行",
+      "PATTERN_ERROR": "您輸入的圖形密碼錯誤，如錯誤累積五次將自動解除圖形密碼綁定。",
+      "PATTERN_DISABLE": "您輸入密碼的錯誤次數已達五次，系統將解除您的圖形密碼綁定，請改用一般登入。",
+      "BIO_NOT_ALLOW": "依據三星官方公告，Samsung galaxy s10系列 及 note10指紋認證機制有安全疑慮，本行將暫停止您裝置指紋辨識認證功能，請改以圖形密碼或網銀密碼等機制進行交易，造成您的不便，敬請見諒。"
+    },
+    "STEP_BAR": {
+      "MISS_KEY": "指定步驟不存在"
+    },
+    "TRANS": {
+      "SUCCESS": "交易成功",
+      "ERROR": "交易失敗",
+      "WARNING": "交易異常",
+      "UNKNOWN": "交易不明"
+    },
+    "SCAN": {
+      "SCAN": "掃描失敗",
+      "SCAN_ERROR": "QR Code掃描失敗",
+      "SCAN_ERROR_EMV": "QR Code掃描失敗(Unknown)",
+      "SCAN_ERROR_OTHER": "QR Code掃描失敗！",
+      "STOP_SCAN": "您已取消掃描",
+      "QRCODE_EMPTY": "QR Code為空值",
+      "ANALYZE": "解析失敗",
+      "MISS_CAMERA": "權限不足請至設定開啟",
+      "CAMERA_ACCESS_DENIED": "權限不足請至設定開啟(1)",
+      "CAMERA_ACCESS_RESTRICTED": "權限不足請至設定開啟(2)",
+      "BACK_CAMERA_UNAVAILABLE": "相機無法正常開啟與顯示(3)",
+      "FRONT_CAMERA_UNAVAILABLE": "相機無法正常開啟與顯示(4)",
+      "CAMERA_UNAVAILABLE": "相機無法正常開啟與顯示(5)",
+      "SCAN_CANCELED": "您已取消掃描",
+      "LIGHT_UNAVAILABLE": "無法正常使用閃光燈(7)",
+      "OPEN_SETTINGS_UNAVAILABLE": "很抱歉，無法正常前往系統設定！請自行前往設定開啟權限。(8)",
+      "ALBUM_ACCESS_DENIED": "相簿無法正常開啟與顯示(9)",
+      "SCAN_IMAGE_ERROR": "QR Code掃描失敗(IMAGE)",
+      "UNEXPECTED_ERROR": "發生非預期性錯誤",
+      "QRCODE_FORMATE_ERROR": "QR Code格式錯誤"
+    }
+  }
+}

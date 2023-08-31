@@ -1,0 +1,12 @@
+
+<!--輪播 -->
+<div class="module01 {{bannerClass}} ">
+	<div class="swiper-container" >
+		<div class="swiper-wrapper">
+			<img class="swiper-slide {{bannerImageClass}}" ng-repeat="item in adimg track by $index" ng-src="data:image/png;base64,{{item.BANNER_IMG}}" ng-click="clickMenu_ad(item.Banner_URL)"
+			/>
+		</div>
+		<div class="swiper-pagination" ng-show="false"></div>
+	</div>
+</div>
+<!--輪播 end-->

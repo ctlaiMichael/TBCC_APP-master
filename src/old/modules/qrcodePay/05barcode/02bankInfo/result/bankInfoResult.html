@@ -1,0 +1,87 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<div class="no_bt"></div>
+		<div class="page_title">發票載具條碼</div>
+		<div class="bank_logo">
+			<!-- <img src="ui/tcbbOldStyle/image/cobanklogo.png"> -->
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section style="top:70px;">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame" ng-if="result.respCode==0" style="margin-top: 50px;">
+					<i class="icon_success"></i>
+					<span class="step_final_info">領獎帳號設定成功</span>
+				</div>
+				<div class="step_final_icon_frame fault_active" ng-if="result.respCode!=0" style="margin-top: 50px;">
+					<i class="icon_success"></i>
+					<span class="step_final_info" ng-if="result.respCode=='1'">領獎帳號設定失敗</span>
+				</div>
+			</div>
+		<!-- 副標列 //End -->
+
+		
+		<ul class="table_info" ng-if="result.respCode=='0'">
+			<li class="table_row"><!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+				<span>手機條碼：</span>
+				<i ng-bind="cardNo"></i>
+			</li>
+			<li class="table_row">
+				<span>銀行帳號：</span>
+				<i ng-bind="formatAcct(accountNo)"></i>
+			</li>
+			<li class="table_row">
+				<span>聯絡電話：</span>
+				<i ng-bind="winnerPhone"></i>
+			</li>
+
+		
+		</ul>
+
+		<div class="row_single" style="margin-top:20px;" ng-if="result.respCode!=0">
+			<div class="main_info_block">
+				<div class="main_info_innerblock">
+					<div id="css_table" style="margin: 10px 10px 10px -10px;">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row_single"></div>
+		
+		<div class="row_single">
+				<a class="button_confirm" ng-click="clickSubmit()">確定</a>
+			</div>
+
+	</section>
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.barcode img {
+		/* max-width: 60vw; */
+		text-align: center;
+		width: 6.2cm;
+		height: 1.6cm;
+	}
+
+	.panddingL10{
+		padding-left: 10px;
+	}
+</style>

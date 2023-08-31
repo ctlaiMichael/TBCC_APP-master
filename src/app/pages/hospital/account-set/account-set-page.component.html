@@ -1,0 +1,31 @@
+<section>
+    <ng-container *ngIf="showData; else noDataBox">
+        <div class="row_single">
+            <h4 class="simple_title">請選擇扣款帳號</h4>
+        </div>
+        <!-- nav_first_page_frame -->
+        <div class="row_single">
+            <div class="inner_radio" *ngFor="let item of data">
+                <input type="radio" name="inner_radio" [value]="item" [(ngModel)]="choseAccount">
+                <label (click)="onChose(item)">
+                    <span><i></i></span>
+                    <b>{{item.acctNo}}</b>
+                </label>
+            </div>
+        </div>
+        <!-- nav_first_page_frame End -->
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void(0)" (click)="onCancel()">{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void(0)" (click)="onConfirm()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">
+            Get data error!
+        </div>
+    </ng-template>
+</section>

@@ -1,0 +1,45 @@
+<div class="sub_info_subtitle">
+  查詢時間 2019/11/29 11:23:07
+</div>
+<div class="row_single"></div>
+<ul class="credit_card_bill_detail_list" *ngFor="let item of info_data.details.detail; let i = index">
+  <li>
+    <p>
+      <span>起息日：</span>
+      <span>{{ (item | fieldCheck: ['startDate' ,{zero_type:false, empty_str:'--'}] ) |htDate:'date'}}</span>
+    </p>
+    <p>
+      <span>訖息日：</span>
+      <span>{{ (item | fieldCheck: ['endDate' ,{zero_type:false, empty_str:'--'}] ) |htDate:'date'}}</span>
+    </p>
+    <p class="">
+      <span>利率：</span>
+      <span>{{ (item | fieldCheck: ['rate' ,{zero_type:false, empty_str:'--'}] ) }}</span>
+    </p>
+    <p class="">
+      <span>本金：</span>
+      <span>{{ (item | fieldCheck: ['capital' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <p class="">
+      <span>違約金：</span>
+      <span>{{ (item | fieldCheck: ['breakPromiMoney' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <p class="">
+      <span>利息：</span>
+      <span>{{ (item | fieldCheck: ['interest' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <p class="">
+      <span>遲延利息：</span>
+      <span>{{ (item | fieldCheck: ['delayInter' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <p class="">
+      <span>本期應繳金額：</span>
+      <span>{{ (item | fieldCheck: ['totalAmount' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <p class="">
+      <span>截至本期應繳金額：</span>
+      <span>{{ (item | fieldCheck: ['sumAmount' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</span>
+    </p>
+    <a href="javascript:void('0')" (click)="selectItem(item,i)" class="">繳款</a>
+  </li>
+</ul>

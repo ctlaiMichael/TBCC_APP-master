@@ -1,0 +1,18 @@
+<ng-container *ngIf="!!showFlag&&!hiddenFlag">
+	<div id="nav_cover" [ngStyle]="{'display': (!!openFlag? 'block' : 'none')}"></div>
+	<div class="menu" [ngClass]="!!openFlag? 'active' :''" style="z-index:9000;">
+		<div (click)='openMenu()' class="btn trigger plus_btn" style="text-align:right ; line-height:100px;">
+			<!-- <span class="line"></span> -->
+			<img id="cross" src="assets/images/nav_plus.jpg"
+				[ngStyle]="{'transform': (!!openFlag? 'rotate(45deg)' : 'rotate(90deg)')}" width="95%">
+		</div>
+		<div class="icons">
+			<div class="rotater" *ngFor='let menu of showMicroMenu;'>
+				<div class="btn btn-icon" (click)="routing(menu.routing_path)">
+					<img src="{{menu.image_path}}" width="95%">
+					<p class="plus_font">{{menu.name | translate}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-container>

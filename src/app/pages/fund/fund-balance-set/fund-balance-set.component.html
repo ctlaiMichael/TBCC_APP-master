@@ -1,0 +1,287 @@
+<section>
+    <ng-container [ngSwitch]="nowPage">
+        <ng-container *ngSwitchCase="'edit_page1'">
+            <div class="row_single" (click)="onCreateSub()">
+                <a href="javascript:void(0)" class="inner_button float_right_bt">
+                    <span>新增通知標的</span>
+                </a>
+            </div>
+
+            <ul class="credit_card_bill_detail_list" *ngFor="let item of selectedData">
+                <li>
+                    <p class="credit_card_name">
+                        <i>
+                            <span class="inner_checkbox checkbox_inline" style="float: left;" (click)="onDelete(item)">
+                                <input type="checkbox" name="inner_checkbox" [ngModel]="item['showDelete']">
+                                <label>
+                                    <span>
+                                        <i></i>
+                                    </span>
+                                    <b>刪除</b>
+                                </label>
+                            </span>
+                        </i>
+                        <i>
+                            {{item.fundCode}}{{item.fundName}}
+                        </i>
+                    </p>
+
+                    <p>
+                        <span>交易編號：</span>
+                        <span>{{item.transCode}}</span>
+                    </p>
+                    <p>
+                        <span>停損點/獲利點：</span>
+                        <!--停損點start--->
+                        <ng-container *ngIf="item['incomePoint'] !== '0';else pointBox">
+                            <!-- 新版開啟下方註解，註解另一行，改動態選擇正負 -->
+                            <span>{{item.sLossCD}}{{item.incomePoint}}%</span>
+                            <!-- <span style="text-align: right;">-{{item.incomePoint}}%</span> -->
+                        </ng-container>
+                        <ng-container *ngIf="item['incomePoint'] !== '0' && item['profitPoint'] !== '0'">
+                            <span>/</span>
+                        </ng-container>
+                        <ng-template #pointBox>
+                            <span style="text-align: right;">未設定</span>
+                        </ng-template>
+                        <!--停損點end--->
+                       
+                        <!--獲利點start--->
+                        <ng-container *ngIf="item['profitPoint'] !== '0';else pointBox2">
+                            <!-- 新版開啟下方註解，註解另一行，改動態選擇正負 -->
+                            <span>{{item.sProCD}}{{item.profitPoint}}%</span>
+                            <!-- <span style="width:5%">/+{{item.profitPoint}}%</span> -->
+                        </ng-container>
+
+                        <ng-template #pointBox2>
+                            <span style="width:63px">/未設定</span>
+                        </ng-template>
+                        <!--獲利點end--->
+                    </p>
+
+                    <p class="no_border_bottom" >
+                        <span style="float: left;">通知/贖回：</span>
+                        <span style="float: right;">
+                             <!-- 自動贖回 -->
+                         <ng-container *ngIf="item['autoRed'] == 'Y'">
+                            <span>自動贖回</span><span>&nbsp;/&nbsp;</span>
+                        </ng-container>
+                         <!-- 續扣不續扣 -->
+                         <ng-container *ngIf="item['autoRed'] == 'Y' && item['continue'] == 'Y'">
+                            <span>續扣</span>
+                        </ng-container>
+                        <ng-container *ngIf="item['autoRed'] == 'Y' && item['continue'] == 'N'">
+                            <span>不續扣</span>
+                        </ng-container>
+                        <ng-container *ngIf="(item['webNotice'] == 'Y' || item['emailNotice'] == 'Y') && item['autoRed'] == 'Y'">
+                            <br>
+                        </ng-container>
+
+                        <!-- 即時畫面 -->
+                        
+                        <ng-container *ngIf="item['webNotice'] == 'Y'">
+                            <span>即時畫面</span>
+                        </ng-container>
+                        <ng-container *ngIf="item['webNotice'] == 'Y' && item['emailNotice'] == 'Y'">
+                                <span>&nbsp;/&nbsp;</span>
+                            </ng-container>
+                        <!-- email -->
+                        <ng-container *ngIf="item['emailNotice'] == 'Y'">
+                            <span>E-mail</span>
+                        </ng-container>
+                        <!-- 都不是 -->
+                        <ng-container *ngIf="item['webNotice'] !== 'Y' && item['emailNotice'] !== 'Y' && item['autoRed'] !== 'Y'">
+                            <span>未設定</span>
+                        </ng-container>
+                        </span>
+                        
+                    </p>
+                    <a href="javascript:void(0);" class="section_set" (click)="onSetBalance(item)">設定</a>
+                </li>
+            </ul>
+
+            <div class="row_single"></div>
+
+            <!-- 停損獲利功能無安控機制，於2019/9/4移除 -->
+            <!-- <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+            </app-select-security>
+
+            <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security> -->
+
+            <div class="row_single edit">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="onBack()">回上頁</a><a href="javascript:void(0)"
+                        (click)="onGoNext()">確定變更</a>
+                </div>
+            </div>
+
+            <div class="row_single edit">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single edit">
+                <p class="inner_content">
+                    「即時畫面」表示當設定之投資標的達到「停損/獲利點」時，一旦由網路銀行/行動網銀進入投資理財/基金業務，系統即會自動彈出視窗通知
+                </p>
+            </div>
+        </ng-container>
+
+        <!-- 結果頁 -->
+        <ng-container *ngSwitchCase="'result_page'">
+            <app-fund-balance-set-result [setData]="reqData" (backPageEmit)="onPageBackEvent($event)"
+                (errorPageEmit)="onErrorBackEvent($event)">
+            </app-fund-balance-set-result>
+        </ng-container>
+
+        <!-- 同意條款 -->
+        <!-- <ng-container *ngSwitchCase="'agree_balance'">
+            <app-enter-balance (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+            </app-enter-balance>
+        </ng-container> -->
+    </ng-container>
+</section>
+
+<!-- popup(新增標的) START-->
+<div class="popup_window" [ngClass]="{ 'popup_open': (createSub) }">
+    <div class="popup_content">
+        <div class='row_single'>
+
+            <h4 class="simple_title">新增通知標的</h4>
+
+            <div class="row_single"></div>
+
+            <div *ngFor="let item of unselectData">
+                <ng-container>
+                    <div class="checkbox_button" (click)="onSelectOne(item)">
+                        <input type="checkbox" name="popup_button" [ngModel]="item['showCheck']">
+                        <label>
+                            <b>{{item.fundCode}}{{item.fundName}}</b>
+                        </label>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <div class="double_button">
+                <a class="popup_cancel" href="javascript:void(0)" (click)="onCancel()">取消</a><a
+                    href="javascript:void(0)" (click)="onPopConfirm()">確認</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup(新增標的) END-->
+
+<!-- popup(設定) START-->
+<div class="popup_window" [ngClass]="{ 'popup_open': (setBalance) }">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{itemData.fundCode}}{{itemData.fundName}}</h4>
+        </div>
+        <div class="row_single">
+            <div class="goldTransfer_frame" [ngClass]="{ 'active_warnning': (check_profit) }">
+                <div class="goldTransfer_td">停利點
+                </div>
+                <div class="goldTransfer_td">
+                    <select name="" class="inner_select"  [(ngModel)]="itemData.sProCD">
+                        <!-- 新版才可選擇 -->
+                        <option value="+">＋</option>
+                        <option value="-">－</option>
+                    </select>
+                    <ul class="inner_input_l2_frame">
+                        <li class="inner_l2_cell">
+                            <input type="text" name="" class="inner_input" placeholder="輸入至多3位數"
+                                [(ngModel)]="itemData.profitPoint">
+                        </li>
+                        <li class="inner_l2_cell second_td_l2">％</li>
+                    </ul>
+                </div>
+            </div>
+            <i class="input_info_warnning">{{profit_msg | translate}}</i>
+        </div>
+        <div class="row_single" style="margin-bottom:0px">
+            <div class="goldTransfer_frame" [ngClass]="{ 'active_warnning': (check_income) }">
+                <div class="goldTransfer_td">停損點
+                </div>
+                <div class="goldTransfer_td">
+                    <select name="" class="inner_select"  [(ngModel)]="itemData.sLossCD">
+                        <!-- 新版才可選擇 -->
+                        <option value="-">－</option>
+                        <option value="+">＋</option>
+                    </select>
+                    <ul class="inner_input_l2_frame">
+                        <li class="inner_l2_cell">
+                            <input type="text" name="" class="inner_input" placeholder="輸入至多3位數"
+                                [(ngModel)]="itemData.incomePoint">
+                        </li>
+                        <li class="inner_l2_cell second_td_l2">％</li>
+                    </ul>
+                </div>
+            </div>
+            <i class="input_info_warnning">{{income_msg | translate}}</i>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">通知/贖回</h4>
+        </div>
+        <div class="row_single" style="margin-bottom:0px" [attr.disabled]="showAutoCheck">
+            <div class="inner_checkbox" (click)="onNotice('imm')">
+                <input type="checkbox" name="inner_checkbox" value="即時畫面" [ngModel]="showAutoCheck ? '' : showImmCheck">
+                <label>
+                    <span>
+                        <i></i>
+                    </span>
+                    <b>即時畫面</b>
+                </label>
+            </div>
+            <div class="inner_checkbox" (click)="onNotice('email')">
+                <input type="checkbox" name="inner_checkbox" value="E-mail" [ngModel]="showAutoCheck ? '' : showEmailCheck"  [disabled]='showAutoCheck'>
+                <label>
+                    <span>
+                        <i></i>
+                    </span>
+                    <b>E-mail</b>
+                </label>
+            </div>
+            <!-- 自動贖回 新版先不做 -->
+                 <div class="inner_checkbox" (click)="onNotice('auto')">
+                <input type="checkbox" name="inner_checkbox" value="自動贖回" [ngModel]="showAutoCheck">
+                <label>
+                    <span>
+                        <i></i>
+                    </span>
+                    <b>自動贖回</b>
+                </label>
+            </div>
+            <ng-container *ngIf="showAutoCheck == true">
+                <div>
+                    <dl class="inner_table_double">
+                        <dt class="inner_cell_double">
+                            <div class="radio_button" (click)="onContinue('yes')">
+                                <input type="radio" id="radio_s_buttond01" name="radio_button_s"
+                                    [checked]="showContinCheck" value="續扣">
+                                <label for="radio_s_buttond01">
+                                    <b>續扣</b>
+                                </label>
+                            </div>
+                        </dt>
+                        <dt class="inner_cell_double">
+                            <div class="radio_button" (click)="onContinue('no')">
+                                <input type="radio" id="radio_s_buttond02" name="radio_button_s"
+                                    [checked]="!showContinCheck" value="不續扣">
+                                <label for="radio_s_buttond02">
+                                    <b>不續扣</b>
+                                </label>
+                            </div>
+                        </dt>
+                    </dl>
+                </div>
+            </ng-container>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a class='popup_cancel' href="javascript:void(0)" (click)="onCancelSet()">取消</a>
+                <a href="javascript:void(0)" (click)="onConfirmSet()">確定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup(設定) END-->

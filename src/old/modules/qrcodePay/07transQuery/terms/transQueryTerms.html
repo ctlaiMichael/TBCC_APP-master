@@ -1,0 +1,166 @@
+<div class="wrapper">
+    <div class="status_bar" ng-if="ios"></div>
+    <!--header-->
+    <div class="header_bar " ng-class="{ios_header_bar:ios}">
+        <header class="main_nav">
+            <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickBack()"><s class="menu_button_line"></s></button>
+            <h2 class="header_title" style="opacity:1;top:25px;">交易紀錄</h2>
+            <div class="no_bt" ></div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+    <!--section 扣款帳號設定頁面-->
+    <section style="top:125px;">
+            <div class="row_single">
+                <h4 class="simple_title">請選擇查詢區間</h4>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        查詢起日
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="date" class="inner_input_data" ng-class="dateStyle" id="begdt" name="begdt" ng-model="begdt" ng-click="showQRList('N')" required>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        查詢迄日
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="date" class="inner_input_data" ng-class="dateStyle" id="enddt" name="enddt" ng-model="enddt" ng-click="showQRList('N')" required>
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <ul class="inner_table_frame">
+                            <li class="inner_table_cell word" for="qrTrnsType">
+                                類別
+                            </li>
+                            <li class="inner_table_cell">
+                                <select class="inner_select"
+                                    ng-click="showQRList('N')"
+                                    ng-model="qrTrnsTypeSelected" 
+                                    ng-options="qrTrnsType.Type as qrTrnsType.Name for qrTrnsType in qrTrnsType" >
+                                </select>
+                            </li>
+                        </ul>
+                    </dt>
+                </dl>
+            </div>
+            <div class="row_single clickConfirm">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a href="javascript:void(0)" class="inner_button bt_100" ng-click="submitPreWeek()">
+                            <span>近一週</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double clickConfirm">
+                        <a href="javascript:void(0)" class="inner_button bt_100" ng-click="submitPreMonth()">
+                            <span>近一月</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+            <div class="row_single clickConfirm">
+                <a href="javascript:void(0);" class="button_confirm" ng-click="submit()">查詢</a>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content" >
+                    退款:須先選擇原交易紀錄後，出示退款碼辦理。
+                </p>
+            </div>
+            <ul id="infoList" class="ati_table display" style="display:none;">
+            <li class="ati_tr">
+                    <span class="ati_th" ng-click="clickOrderBy('DT')">
+                        交易日期<span ng-bind="orderByTrnsDateSymbol"></span>
+                    </span>
+                    <span class="ati_th" ng-click="clickOrderBy('AC')">
+                        帳號/*卡號<span ng-bind="orderByTrnsAcctSymbol"></span>
+                    </span>
+                    <span class="ati_th">
+                        交易金額
+                    </span>
+                </li>
+                <li class="ati_tr" id="click" ng-class="$index%2==0?'invest':'invest2' " ng-repeat="QR in qrTransList | orderBy : orderByDesc" ng-click="clickList(QR)" ng-if="qrcodeTransCount > 0">
+                    <span class="ati_td">
+                        {{dateFmt(QR.trnsDate).substring(4,6)}}/{{dateFmt(QR.trnsDate).substring(6,8)}}<br>
+                        {{QR.trnsTypeDesc}}<br>
+                    </span>
+                    <span class="ati_td">
+                        {{acctFmt(QR.trnsAcct,QR.mode)}}
+                    </span>
+                    <span class="ati_td" ng-bind="numFmt(QR.trnsAmount)">
+                        <i class="fa fa-chevron-circle-right loan_sign" aria-hidden="true"></i>
+                        <span class="inner_link"></span>
+                    </span>
+                </li>
+                <p ng-if="qrcodeTransCount<= 0" style="display:table-row;position:absolute;left:35vw;">查無交易資料</p>
+            </ul>
+        </section>
+
+        <!--keep_sec end-->
+    
+    <!--section 扣款帳號設定頁面 end-->
+    <!--end of footer-->
+</div>
+<!--wrapper end-->
+
+<style>
+    .listStyleForA {
+        top:65px;
+        max-height:88vh;
+        overflow:auto;
+    }
+    .listStyleForI {
+        max-height:85vh;
+        overflow:auto;
+    }
+    .center {
+        text-align: center;
+    }
+    .left {
+        text-align: left;
+    }
+
+    .margin-top {
+        margin-top: 10px;
+    }
+
+    .marginL40 {
+        margin-left: 40px;
+    }
+
+    .marginLR-Auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fontSize {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .fontSize12 {
+        font-size: 14px;
+    }
+    .fontSize10 {
+        font-size: 14px;
+    }
+
+    .paddingBottom5 {
+        padding-bottom: 5px;
+    }
+    .btnStyle {
+        margin: 0px;
+        padding: 0px;
+    }
+
+</style>

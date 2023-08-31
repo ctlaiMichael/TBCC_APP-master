@@ -1,0 +1,167 @@
+/*主外框*/
+#sw-wrapper {
+  font-family: helvetica, sans-serif;
+
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+
+  width: 100%;
+
+  text-align: left;
+
+  /*background: rgba(0,0,0,.7);*/
+  /*background: #a73836;*/
+  background: rgb(219,72,72);
+  background:    -moz-linear-gradient(top,  rgba(219,72,72,1) 0%, rgba(167,56,54,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(219,72,72,1) 0%,rgba(167,56,54,1) 100%);
+  background:         linear-gradient(to bottom,  rgba(219,72,72,1) 0%,rgba(167,56,54,1) 100%);
+  -webkit-box-shadow: 0 2px 7px rgba(4,0,0,.25);
+     -moz-box-shadow: 0 2px 7px rgba(4,0,0,.25);
+          box-shadow: 0 2px 7px rgba(4,0,0,.25);
+}
+
+/*Button back*/
+#sw-header {
+  position: relative;
+
+  width: 100%;
+  height: 40px;
+  /*border-top:1px solid #000; border-bottom:1px solid #000;*/
+  /*background:url(../img/sw-header.png) 0 0 repeat-x;*/
+
+  opacity: .;
+}
+
+#sw-cancel,
+#sw-done {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  letter-spacing: 1px;
+
+  position: absolute;
+  top: 0;
+
+  height: 40px;
+  margin: 0;
+  padding: 0 5px;
+
+  color: #fff;
+  /*border-width: 5px;*/
+  /*text-shadow: rgba(0,0,0,.8) 0 -1px 0;*/
+}
+
+/*Cancel按鈕*/
+#sw-cancel {
+  left: 7px;
+  z-index: auto;
+  float: left;
+  /*-webkit-border-image:url(../img/sw-button-cancel.png) 5;*/
+}
+
+/*Done按鈕*/
+#sw-done {
+  right: 7px;
+  z-index: auto;
+  float: right;
+  /*-webkit-border-image:url(../img/sw-button-done.png) 5;*/
+}
+
+/*按鈕下後透明度*/
+.sw-pressed {
+  opacity: .5;
+}
+
+
+#sw-slots-wrapper {
+  position: relative;
+  z-index: 999;
+
+  display: block;
+  overflow: hidden;
+
+  height: 220px;
+  padding: 0 11px;
+}
+
+#sw-slots {
+  display: table;
+
+  width: 100%;
+
+  background: #fcfcfc;
+}
+
+/*項目區塊及分隔線*/
+#sw-slots div {
+  display: table-cell;
+
+  height: 100%;
+  padding-top: 86px;
+
+  border-left: 1px solid rgba(0,0,0,.15);
+  background-color: #fcfcfc;
+  background-repeat: repeat-y;
+  /*background-image: url(../img/sw-slot-border.png);*/
+  background-position: 0 0, 100% 0;
+}
+
+#sw-slots div:first-child {
+  border: 0;
+}
+
+#sw-slots ul {
+  margin: 0;
+  padding: 0 0 85px 0;
+
+  list-style: none;
+}
+
+#sw-slots .sw-right {
+  text-align: right;
+}
+#sw-slots .sw-shrink {
+  width: 1%;
+}
+#sw-slots .sw-readonly {
+  background: #ddd;
+}
+
+/*選項框架及文字*/
+#sw-slots li {
+  font: bold 24px/44px Helvetica,sans-serif;
+
+  overflow: hidden;
+
+  height: 44px;
+  padding: 0 8px;
+  color: #595857;
+}
+
+/*主要背景與選擇橫槓*/
+#sw-frame {
+  position: absolute;
+  z-index: 1000;
+  right: 11px;
+  bottom: 0;
+  left: 11px;
+
+  height: 183px;
+
+  border-width: 20px;
+  -webkit-border-image:url(../img/sw-alpha.png) 16;
+}
+#sw-mask {
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  /*background: rgba(0,0,0,.5);*/
+}

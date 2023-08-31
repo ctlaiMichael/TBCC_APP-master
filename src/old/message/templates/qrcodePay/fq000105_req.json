@@ -1,0 +1,13 @@
+{
+	"custId" : "",
+	"trnsfrOutAcct" : "",
+	"orderNumber" : "",
+	"trnsAmount" : "",
+	"secureCode" : "",
+	"txnCurrencyCode" : "",
+	"acqInfo" : "",
+	"qrExpirydate" : "",
+	"trnsToken" : "",
+	"merchantName" : "",
+	"mobileBarcode" : ""
+}

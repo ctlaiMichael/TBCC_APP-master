@@ -1,0 +1,18 @@
+<section>
+  <div class="row_single">
+    <h4 class="simple_title black_op7">匯率到價通知設定</h4>
+  </div>
+  <div class="inner_links_frame">
+    <a class="inner_link_toggle black_op6">
+      啟用狀態
+      <div class="switch_opne_close" style="float: right;">
+        <input type="checkbox" name="toggle" (change)="onAlertChange()" [(ngModel)]="blockType.TCB_ALERT_EXCHANGE">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div>
+  <div class="inner_link_toggle" style="padding: 0;">
+    <a class="inner_link custom_link no_before black_op6" [ngClass]="{disabled_font: !blockType.TCB_ALERT_EXCHANGE}"
+      (click)="goRateInform()">匯率到價通知設定</a>
+  </div>
+</section>

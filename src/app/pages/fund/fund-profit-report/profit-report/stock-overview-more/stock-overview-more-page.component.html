@@ -1,0 +1,113 @@
+<section>
+    <ul class="table_info table_th_style">
+        <ng-container *ngIf="!showTWD">
+            <li class="table_row">
+                <span>投資幣別</span>
+                <i>{{inputData.inCurrency|iconFlag:'chineseName'}}({{inputData.inCurrency}})</i>
+            </li>
+            <li class="table_row">
+                <span>參考報酬率%</span>
+                <i class="table_four_hl_td {{ inputData.reward | fundAmtClass }}">{{inputData.reward}}%</i>
+            </li>
+            <!-- <ng-container *ngIf="inputData.reward.substring(0,1) == '+'">
+                <li class="table_row">
+                    <span>參考報酬率%</span>
+                    <i class="table_four_hl_td font_red">{{inputData.reward}}%</i>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="inputData.reward.substring(0,1) == '-'">
+                <li class="table_row">
+                    <span>參考報酬率%</span>
+                    <i class="table_four_hl_td font_bl_gre">{{inputData.reward}}%</i>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="inputData.reward.substring(0,1) !== '+' && inputData.reward.substring(0,1) !== '-'">
+                <li class="table_row">
+                    <span>參考報酬率%</span>
+                    <i class="table_four_hl_td">{{inputData.reward}}%</i>
+                </li>
+            </ng-container> -->
+            <li class="table_row">
+                <span>庫存金額</span>
+                <i> {{inputData.invenAmount | htMoney}}</i>
+            </li>
+            <li class="table_row">
+                <span>現金配息</span>
+                <i>{{inputData.addIntAmount | htMoney}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>參考現值</span>
+                <i>{{inputData.refAmount | htMoney}}</i>
+            </li>
+            <li class="table_row">
+                <span>參考損益</span>
+                <i class="table_four_hl_td  {{ inputData.refProfit | fundAmtClass }}">{{inputData.refProfit | currencyMoney}}</i>
+            </li>
+
+            <!-- <ng-container *ngIf="inputData.refProfit.substring(0,1) == '+'">
+                <li class="table_row">
+                    <span>參考損益</span>
+                    <i class="table_four_hl_td font_red">{{inputData.refProfit | currencyMoney}}</i>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="inputData.refProfit.substring(0,1) == '-'">
+                <li class="table_row">
+                    <span>參考損益</span>
+                    <i class="table_four_hl_td font_bl_gre">{{inputData.refProfit | currencyMoney}}</i>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="inputData.refProfit.substring(0,1) !== '+' && inputData.refProfit.substring(0,1) !== '-'">
+                <li class="table_row">
+                    <span>參考損益</span>
+                    <i class="table_four_hl_td">{{inputData.refProfit | currencyMoney}}</i>
+                </li>
+            </ng-container> -->
+            <li class="table_row">
+                <span>預出金額</span>
+                <i>{{inputData.aheadAmount | htMoney:'TWD'}}</i>
+            </li>
+            <li class="table_row">
+                <span>在途金額</span>
+                <i>{{inputData.onTheWayPrice | htMoney:'TWD'}}</i>
+            </li>
+        </ng-container>
+
+        <ng-container *ngIf="showTWD">
+            <li class="table_row">
+                <span>投資幣別</span>
+                <i>{{inputData.inCurrency|iconFlag:'chineseName'}}({{inputData.inCurrency}})</i>
+            </li>
+            <li class="table_row">
+                <span>參考報酬率%</span>
+                <i class="{{ inputData.reward | fundAmtClass }}">{{inputData.reward}}%</i>
+            </li>
+            <li class="table_row">
+                <span>庫存金額</span>
+                <i> {{inputData.invenAmount | htMoney:'TWD'}}</i>
+            </li>
+            <li class="table_row">
+                <span>現金配息</span>
+                <i>{{inputData.addIntAmount | htMoney:'TWD'}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>參考現值</span>
+                <i>{{inputData.refAmount | htMoney:'TWD'}}</i>
+            </li>
+            <li class="table_row">
+                <span>參考損益</span>
+                <i class="{{ inputData.refProfit | fundAmtClass }}">{{inputData.refProfit}}</i>
+            </li>
+            <li class="table_row">
+                <span>預出金額</span>
+                <i>{{inputData.aheadAmount | htMoney:'TWD'}}</i>
+            </li>
+            <li class="table_row">
+                <span>在途金額</span>
+                <i>{{inputData.onTheWayPrice | htMoney:'TWD'}}</i>
+            </li>
+        </ng-container>
+    </ul>
+</section>

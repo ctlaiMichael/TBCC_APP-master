@@ -1,0 +1,41 @@
+<!-- 跳出繳費作業視窗 -->
+<!--輸入憑證頁面-->
+<div id="inputNonSet" class="popup_window popup_open" style="display:none">
+    <!-- 「po	pup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">交易作業</h4>
+        </div>
+        <p class="inner_content">
+            <div class="row_single">
+
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        憑證保護密碼
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="password" name="" id="nonSetCode" class="inner_input" placeholder="請輸入憑證保護密碼">
+                    </li>
+                </ul>
+            </div>
+        </p>
+        <div class="row_single">
+            <div class="double_button">
+                <a id="nonSetCancel">取消</a><a id="nonSetOk">確定</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+              「憑證保護密碼」為您申請憑證時，自行設定之轉帳密碼(4-12位英數字、符號)，若忘記此密碼，需回本行營業單位重新申請憑證。
+            </p>
+        </div>
+    </div>
+</div>
+<style>
+#inputNonSet{
+    z-index: 1001;
+}
+</style>

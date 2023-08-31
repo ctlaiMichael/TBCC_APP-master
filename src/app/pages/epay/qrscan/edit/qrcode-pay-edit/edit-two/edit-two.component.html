@@ -1,0 +1,97 @@
+<section>
+  <div class="row_single">
+    <ul class="inner_table_frame normal_disable">
+      <li class="inner_table_cell">
+        特店名稱:
+      </li>
+      <li class="inner_table_cell">
+        <input value="{{qrcodeObj.merchantName}}" type="text" class="inner_input">
+      </li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="(disableOrderNumberInput==true)?'normal_disable':(errorFlag.orderNumber==true?'active_warnning':'')">
+      <li class="inner_table_cell">
+        訂單編號：
+      </li>
+      <li class="inner_table_cell">
+        <input *ngIf='!disableOrderNumberInput' [(ngModel)]='form.orderNumber' type="text" class="inner_input"
+          placeholder="請輸入訂單編號">
+        <input *ngIf='disableOrderNumberInput' [(ngModel)]='form.orderNumber' type="text" class="inner_input">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{errorMsg.orderNumber}}</i>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="(disableAmountInput==true)?'normal_disable':(errorFlag.trnsAmount==true?'active_warnning':'')">
+      <li class="inner_table_cell">
+        交易金額：
+      </li>
+      <li class="inner_table_cell">
+        <input *ngIf='!disableAmountInput' [(ngModel)]='form.trnsAmount' type="text" class="inner_input" placeholder="請輸入交易金額">
+        <input *ngIf='disableAmountInput' [(ngModel)]='form.trnsAmount' type="text" class="inner_input">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{errorMsg.trnsAmount}}</i>
+  </div>
+
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(errorFlag.acct) }">
+      <li class="inner_table_cell">
+        交易帳號:
+      </li>
+      <li class="inner_table_cell">
+        <!-- <select name="" id="security" class="inner_select" (change)="onAct($event)">
+					<option value="">請選擇</option>
+					<option *ngFor="let acct of accts" value="{{acct.acctNo}}">{{acct.acctNo}}</option>
+				</select> -->
+
+        <select class="inner_select" [(ngModel)]="onAcctObj.acct">
+          <option value="">請選擇</option>
+          <option *ngFor="let acct of accts" [ngValue]="acct.acctNo">{{acct.acctNo}}</option>
+        </select>
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{errorMsg.acct}}</i>
+  </div>
+
+  <!-- <div class="row_single">
+		<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(errorFlag.security) }">
+			<li class="inner_table_cell">
+				目前轉帳機制：
+			</li>
+			<li class="inner_table_cell"> -->
+
+  <!-- <select name="" id="security" class="inner_select" (change)="onChange($event)">
+					<option *ngFor='let item of select_securityTypes' value="{{item}}">{{item}}</option> -->
+
+  <!-- <select class="inner_select" [(ngModel)]="onSelectObj.security">
+						<option value="">請選擇</option>
+						<option *ngFor='let item of select_securityTypes' [ngValue]="item">{{item}}</option>
+				</select>
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.security}}</i>
+  </div> -->
+
+
+  <!-- 安控機制(epay) -->
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">目前轉帳機制：</li>
+      <li class="inner_table_cell">
+        <select name="" class="inner_select" (change)="onChangeSecurity(selectSecurityType)"  [(ngModel)]="selectSecurityType">
+          <option *ngFor='let item of securityTypes' [ngValue]="item">{{item.name}}</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+  <!-- 安控機制(epay end) -->
+
+  <div class="row_single">
+    <div class="double_button" id="btn_submit">
+      <a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+      <a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+    </div>
+  </div>
+</section>

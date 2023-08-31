@@ -1,0 +1,61 @@
+<!--Added by Ivan 2018.5.10-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<div ng-class="{ios_header_bar:ios}" >
+          <div class="login_navigation">
+              <img src="modules/login/image/header_logo_green.png">
+          </div>
+          <div class="login_navigation2">
+          </div>
+              
+              
+              <div class="login_select" id="login_select">
+                  <div class="left_select" id="left_select" ng-click="password_login()" ng-model="isFast">
+                        <img src="modules/login/image/icon_password.png" >
+                        <h2 id="left_h2">密碼登入</h2>
+                  </div>
+                  <div class="right_select" id="right_select" ng-click="biometric_login()" ng-disabled="biomertic_disable">
+                        <img src="modules/login/image/icon_faceid.png" >
+                        <h2 id="right_h2">快速登入</h2>
+                  </div>
+              </div> 
+              
+              <div ng-if="isFast == '0'"> 
+                <div class="login_textfield">
+                            <input type="{{inputType}}" ng-model="custId" class="login_input" id="login_name" placeholder="* 請輸入身分證字號" ng-change="custId = (custId | uppercase)" maxlength="12" autocomplete="off">
+                            <span class="remember_text"><input type="checkbox" ng-model="checkbox_id" id="checkbox_Id" class="remember">記住我</span>
+                            <img src="modules/login/image/icon_see.png" ng-click="seePassword()">
+                </div>
+                <div class="login_textfield">
+                            <input type="{{inputType2}}" ng-model="userId" class="login_input" placeholder="* 請輸入使用者代號" id="login_user" maxlength="16" autocomplete="off">
+                            <span class="remember_text"><input type="checkbox" ng-model="checkbox_user" id="checkbox_User" class="remember">記住我</span>
+                            <img src="modules/login/image/icon_see.png" ng-click="seePassword2()">
+                 </div>              
+                 <div class="login_textfield">      
+                             <input type="{{inputType3}}" ng-model="password" class="login_input" placeholder="* 請輸入密碼" id="login_password" ng-keypress="keyPress($event,custId,userId,password)" maxlength="12" autocomplete="off">
+                             <img src="modules/login/image/icon_see.png" ng-click="seePassword3()">
+                </div>
+                                    <!--    <label class="switch">
+                                                <input type="checkbox" ng-model="checkbox">
+                                                <span class="slider round"></span>
+                                       </label> -->
+                <div class="row" style="text-align: center;margin:10px;">
+                    <span style="font-size:12px;text-align: center;color:red;">登入即表示了解並同意合作金庫銀行行動裝置<a target="_blank" href="https://www.tcb-bank.com.tw/others/Pages/privacy3.aspx">隱私權保護政策</a></span>
+                </div>
+              <div class="login_button">
+                  <button class="left_button" id="user_login" ng-click="login(custId,userId,password)" ng-disabled="login_disable">登入</button>
+                  <!-- <button class="left_button" ng-click="testbi102()">登入</button> -->
+
+                  <button class="right_button" ng-click="clickBack()" ng-disabled="login_disable">取消</button>                 
+              </div>
+
+              </div>
+              
+       
+      </div>
+      <script type="text/javascript" src="lib/readxml.js"></script>
+      <script type="text/javascript" src="lib/CelebrusInsert_tool.js"></script>
+    </body>
+    </html>

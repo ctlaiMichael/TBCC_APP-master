@@ -1,0 +1,68 @@
+<ng-container *ngFor="let queryItem of queryData">
+    <ul class="credit_card_bill_detail_list loan">
+        <li>
+            <p class="credit_card_name">
+                <i>網銀案件編號</i><br>
+                <i>{{queryItem.ebkCaseNo}}</i>
+            </p>
+            <p>
+                <span>申請日期：</span>
+                <span>{{queryItem.date | htDate:'date'}}</span>
+            </p>
+            <p>
+                <span>貸款分行：</span>
+                <span>{{queryItem.branch_nam | fieldCheck: ['branch_nam', {zero_type: true, empty_str: '- -'} ]}}</span>
+            </p>
+            <p>
+                <span>申請種類：</span>
+                <span>
+                    <ng-container [ngSwitch]="queryItem.txKind">
+                        <ng-container *ngSwitchCase="'A'">房貸增貸</ng-container>
+                        <ng-container *ngSwitchCase="'B'">信用貸款</ng-container>
+                        <!-- 目前無信用卡類別 -->
+                        <ng-container *ngSwitchCase="'C'">信用卡</ng-container>
+                        <ng-container *ngSwitchCase="'D'">房屋貸款</ng-container>
+                        <ng-container *ngSwitchCase="'E'">勞工紓困貸款</ng-container>
+                        <!-- <ng-container *ngSwitchCase="''"></ng-container> -->
+                        <ng-container *ngSwitchDefault>{{ queryItem.txKind }}</ng-container>
+                    </ng-container>
+                </span>
+            </p>
+            <p>
+                <span>申請金額：</span>
+                <span>{{queryItem.give_amt | currencyMoney:'TWD'}}元</span>
+            </p>
+            <p class="inner_content">
+                {{queryItem.statusName}}
+            </p>
+            <!-- <ng-container [ngSwitch]="queryItem.caseStatus">
+                <ng-container *ngSwitchCase="'01'">
+                    <p class="inner_content">
+                        申請書填寫完成，待分行取案
+                    </p>
+                </ng-container>
+                <ng-container *ngSwitchCase="'02'">
+                    <p class="inner_content">
+                        文件上傳完成，待分行取案
+                    </p>
+                </ng-container>
+                <ng-container *ngSwitchCase="'03'">
+                    <p class="inner_content">
+                        分行案件受理中
+                    </p>
+                </ng-container>
+                <ng-container *ngSwitchCase="'04'">
+                    <p class="inner_content">
+                        分行案件徵審中
+                    </p>
+                </ng-container>
+                <ng-container *ngSwitchCase="'05'">
+                    <p class="inner_content">
+                        待客戶回覆核准情形及選擇對保方式
+                    </p>
+                </ng-container>
+            </ng-container> -->
+            <a href="javascript:void(0);" (click)="onDownload(queryItem)" class="">約據下載</a>
+        </li>
+    </ul>
+</ng-container>

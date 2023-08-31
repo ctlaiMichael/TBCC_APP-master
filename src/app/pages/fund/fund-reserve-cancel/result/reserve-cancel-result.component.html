@@ -1,0 +1,127 @@
+<section>
+	<ng-container *ngIf="processing == true">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame exclamation_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">處理中</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content">處理中請稍後。</span>
+			</p>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="processing == false">
+		<ng-container *ngIf="trnsRsltCode =='0' || trnsRsltCode =='1'">
+			<ng-container *ngIf="trnsRsltCode=='0'">
+				<div class="sub_info_frame result">
+					<div class="step_final_icon_frame">
+						<i class="icon_success"></i>
+						<span class="step_final_info">{{ fullData.hostCodeMsg }}</span>
+					</div>
+				</div>
+			</ng-container>
+			<ng-container *ngIf="trnsRsltCode=='1'">
+				<div class="sub_info_frame result">
+					<div class="step_final_icon_frame exclamation_active">
+						<i class="icon_success"></i>
+						<span class="step_final_info">交易失敗</span>
+					</div>
+				</div>
+			</ng-container>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>預約交易日期</span>
+					<i>{{ fullData.enrollDate | htDate:'date' }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>預約編號</span>
+					<i>{{ fullData.reserveTransCode }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>預約生效日期</span>
+					<i>{{ fullData.effectDate | htDate:'date' }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易項目</span>
+					<i>{{ fullData.transTypeDesc }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易編號</span>
+					<i>{{ fullData.transCode }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>申購/轉換/<br>轉出投資標的</span>
+					<i>{{ fullData.fundCode }}{{ fullData.fundName }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>轉入投資標的</span>
+					<i>{{ fullData.inFundCode }}{{ fullData.inFundName }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>申/轉/贖回金額</span>
+					<i>{{ fullData.purchAmnt }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>申/轉手續費</span>
+					<i>{{ fullData.serviceFee }}</i>
+				</li>
+			</ul>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>扣款/贖回入賬帳號</span>
+					<i>{{ showAccount }}</i>
+				</li>
+			</ul>
+		</ng-container>
+
+		<ng-container *ngIf="erroMsg!=''">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame exclamation_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易失敗</span>
+				</div>
+				<p class="sub_info_list">
+					<span class="sub_info_title no_content">{{erroMsg}}</span>
+				</p>
+			</div>
+		</ng-container>
+		<!-- 交易失敗 END-->
+
+		<!-- 交易異常 -->
+		<ng-container *ngIf="trnsRsltCode =='X'">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame fault_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">{{ fullData.hostCodeMsg }}</span>
+				</div>
+				<p class="sub_info_list">
+					<span class="sub_info_title no_content">系統連線異常，請稍後再試!如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。</span>
+				</p>
+			</div>
+		</ng-container>
+		<!-- 交易異常 END-->
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a href="javascript:void(0)" class="button_confirm" (click)="backMenuPage()">確定</a>
+		</div>
+	</ng-container>
+
+
+</section>

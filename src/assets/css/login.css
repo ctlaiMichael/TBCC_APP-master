@@ -1,0 +1,14 @@
+.acc_home{
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    width: 50px;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+}
+.acc_background1{
+    z-index: 0;
+}
+

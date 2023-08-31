@@ -1,0 +1,22 @@
+<div class="row_single" *ngIf="showLayout; else onlyInputBox">
+    <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data != '')}">
+        <!-- 標題 -->
+        <li class="inner_table_cell" [innerHtml]="title | safeHtml "></li>
+        <li class="inner_table_cell ">
+            <!-- 目前僅提供顯示 -->
+            <div class="inner_input_data font_align_left" (click)="onDateSelect()">{{ inp_data }}</div>
+            <!-- 輸入欄位(模擬input type=date) -->
+            <!-- <input type="text" class="inner_input_data" placeholder="{{ placeholderStr | translate }}"
+             [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" > -->
+        </li>
+    </ul>
+    <i class="input_info_warnning">{{ error_data | translate }}</i>
+</div>
+<ng-template #onlyInputBox>
+    <!-- 只有輸入框 -->
+    <!-- 目前僅提供顯示 -->
+    <div class="inner_input_data font_align_left" (click)="onDateSelect()">{{ inp_data }}</div>
+    <!-- 輸入欄位(模擬input type=date) -->
+    <!-- <input type="text" class="inner_input_data" placeholder="{{ placeholderStr | translate }}"
+        [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" > -->
+</ng-template>

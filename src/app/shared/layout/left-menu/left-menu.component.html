@@ -1,0 +1,13 @@
+<nav id="leftBox">
+  <div class="tcb_menu">
+    <div class="menu_btn" *ngFor="let item of menu" appLink="{{item.url}}">
+      <i class="menu_icon {{item.icon}}"></i><span class="sub_menu_open arrow_right"
+        *ngIf="item.hasSubMenu"></span>{{item.name|translate}}
+    </div>
+  </div>
+  <div class="nav_bottom_frame">
+    <a class="inner_button" appLink="logout" *ngIf="isLogin"><span>{{'LOGOUT'|translate}}</span>
+    </a>
+    <p class="tcb_verinfo">{{'VERSION'|translate}}：{{version}}</p>
+  </div>
+</nav>

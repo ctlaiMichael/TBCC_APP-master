@@ -1,0 +1,30 @@
+{
+	"PG_ONLINE": {
+		"TITLE": {
+			"LOANAPPLE": "消費者貸款申請書",
+			"LOANAPPLE_BASIC": "消費者貸款申請書",
+			"REALTIONFORM":"同一關係人資料表"
+			, "LOANAPPLE_BAIL_OUT": "勞工紓困貸款"
+			, "LOANAPPLE_BAIL_OUT_BASIC": "勞工紓困貸款"
+		},
+		"FUNDS": {
+			"OTHER": "其他家計週轉金",
+			"CONSUMPRIONE": "消費性支出",
+			"FINA_MANAG": "理財週轉金"
+		},
+		"BTN": {
+			"TOBRANCH": "親赴分行",
+			"ONLINE": "線上對保",
+			"APPLY_DOWNLOAD": "申請書下載",
+			"BACKLOAN": "返回線上申請貸款",
+			"ADDED":"增加",
+			"DELETE":"刪除",
+			"NEW_ADDED": "增加同一關係人欄位"
+		},
+		"RELATION":{
+		},
+		"ERROR":{
+			"NAME_LEN":"長度不得超過20個字"
+		}
+	}
+}

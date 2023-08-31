@@ -1,0 +1,42 @@
+<ng-container *ngIf="operateFlag">
+  <canvas id="myCanvas" (click)="operateClick()" class="operate_canvas operate_bak">
+  </canvas>
+</ng-container>
+<div [hidden]="count!=0 || !operateFlag" class="operateImg_1" id="operateImg_1" (click)="operateClick()"></div>
+<div [hidden]="count!=1 || !operateFlag" class="operateImg_2" id="operateImg_2" (click)="operateClick()"></div>
+<div [hidden]="count!=1 || !operateFlag" class="operateBtn_hand" id="operateBtn_hand" (click)="operateClick()"></div>
+<div [hidden]="!operateFlag" class="operateBtn_1" id="operateBtn_1" (click)="operateClick()"></div>
+
+<section>
+  <span class="home_ad_area">
+    <!-- <img src="assets/images/ad2.png"> -->
+    <app-effect-cube [banners]="banners"></app-effect-cube>
+  </span>
+  <div class="topbox">
+    <div class="multiple-items nav_slider_frame initial_epay" id="operate_box">
+      <div *ngFor="let item of menuFix">
+        <a class="nav_slider_button" (click)="go(item.url)">
+          <i class="initial_bt {{ item.icon }}"></i>
+          <span>{{ item.name | translate }}</span>
+        </a>
+      </div>
+    </div>
+    <app-top-box className="initial_slider"></app-top-box>
+  </div>
+
+  <div class="initial_login_area" id="login_box">
+    <div class="initial_login" (click)="login()">
+      <p onclick="">登入/login</p>
+    </div>
+    <div class="initial_serve">
+      <a appLink="front-desk-home">
+        <p>線上櫃檯</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="login_box3"></span>
+  <span class="login_box4"></span>
+</footer>

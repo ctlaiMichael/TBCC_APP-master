@@ -1,0 +1,68 @@
+{
+
+  "sch:MNBResponse": {
+    "-xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "12345",
+      "sch:requestTime": "2013-02-07T17:31:12.471+08:00",
+      "sch:responseTime": "2013-02-07T17:31:14.780+08:00",
+      "sch:custId": "F121374529"
+    },
+    "sch:result": {
+      "@xmlns:f40": "http://mnb.hitrust.com/service/schema/f4000101",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "@xsi:type": "f40:f4000101ResultType",
+      "f40:custId": "F121374529",
+      "f40:businessType": "N",
+      "f40:nextBusinessDate": "1020208",
+      "f40:trnsToken": "2eb6c9a880c6423688fc8faa486550a3",
+      "f40:allowNonAgreeAcctFlag": "Y",
+      "f40:NonAgreeAcctListFlag": "Y",
+      "f40:trnsOutAccts": {
+        "f40:trnsOutAcct": [
+          { "f40:acctNo": "9997705071012" },
+          { "f40:acctNo": "9997705072012" },
+          { "f40:acctNo": "9997705073012" }
+        ]
+      },
+      "f40:trnsInAccts": {
+        "f40:trnsInAcct": [
+          {
+            "f40:bankId": "006",
+            "f40:bankName": "合作金庫",
+            "f40:acctNo": "0009997717093001"
+          },
+          {
+            "f40:bankId": "807",
+            "f40:bankName": "永豐商業銀行",
+            "f40:acctNo": "0003201717093001"
+          },
+          {
+            "f40:bankId": "006",
+            "f40:bankName": "合作金庫",
+            "f40:acctNo": "0008887705073012"
+          }
+        ]
+      },
+      "f40:commonTrnsInAccts": {
+        "f40:commonTrnsInAcct": [
+          {
+            "f40:bankId": "006",
+            "f40:bankName": "合作金庫",
+            "f40:acctNo": "0009997717093001",
+            "f40:acctName": "王小明",
+            "f40:isAAcct": "Y"
+          },
+          {
+            "f40:bankId": "004",
+            "f40:bankName": "台灣銀行",
+            "f40:acctNo": "28825282234",
+            "f40:acctName": "iptest",
+            "f40:isAAcct": "N"
+          }
+        ]
+      }
+    }
+  }
+
+}

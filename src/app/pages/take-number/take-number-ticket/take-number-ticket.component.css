@@ -1,0 +1,22 @@
+.mi_block_divider {
+  margin: 0
+}
+
+.department-info {
+  margin: 7px 0 15px 0;
+}
+
+.pending-info {
+  margin: 0 0 9px 0;
+}
+
+.ticket-notice {
+  color: #767676;
+  text-indent: -13px;
+  font-size: 13px;
+  letter-spacing: 0.22px;
+}
+
+.padding-ticket-bottom {
+  padding: 0 23px 0 36px;
+}

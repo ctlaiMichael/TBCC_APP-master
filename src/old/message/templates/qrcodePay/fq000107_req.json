@@ -1,0 +1,18 @@
+{
+	"custId" : "",
+	"trnsfrOutBank" : "",
+	"trnsfrOutAcct" : "",
+	"txnAmt" : "",
+	"secureCode" : "",
+	"txnCurrencyCode" : "",
+	"acqInfo" : "",
+	"deadlinefinal" : "",
+	"noticeNbr" : "",
+	"otherInfo" : "",
+	"qrExpirydate" : "",
+	"feeInfo" : "",
+	"charge" : "",
+	"feeName" : "",
+	"merchantName" : "",
+	"trnsToken" : ""
+}

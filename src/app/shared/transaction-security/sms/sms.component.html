@@ -1,0 +1,125 @@
+<ng-container *ngIf="check && !ignorCheckInfo">
+    <div class="row_single_2">
+        <h4 class="simple_title">提醒您</h4>
+    </div>
+    <div class="row_single_2">
+        <p class="inner_content">系統已發送簡訊驗證碼至{{markPhone}}手機門號，若您尚未收到驗證碼請於<i class="font_red">{{resData.OTP_SEC}}</i>秒後重新發送簡訊。</p>
+    </div>
+    <div class="row_single_2">
+        <div class="double_button">
+            <a (click)="onCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+            <a (click)="yes()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="otpView">
+
+    <!-- <div class="row_single_2">
+        <h4 class="simple_title">轉帳作業</h4>
+    </div>
+    <div class="inner_content">
+        <div class="row_single_2">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    網頁檢核碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" placeholder="{{resData.checkCode}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single_2">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    有效時間:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="effectiveTime" class="inner_input" placeholder="{{resData.OTP_SEC}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single_2">
+            <ul [ngClass]="ulClass">
+                <li class="inner_table_cell">
+                    OTP驗證碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="tel" maxlength="6" name="" [(ngModel)]="resData.OTP_val" class="inner_input" placeholder="請輸入OTP驗證碼">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{OTP_error_msg}}</i>
+        </div>
+        <app-captcha *ngIf="(transAccountType==='2' && showCaptcha===true)"></app-captcha>
+    </div>
+    <div class="row_single_2">
+        <div class="double_button">
+            <a (click)="otpNo()">{{ 'BTN.CANCEL' | translate }}</a>
+            <a (click)="otpYes()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div> -->
+
+    <div class="row_single_2">
+        <h4 class="simple_title">簡訊密碼：</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content">系統已發送簡訊驗證碼至{{markPhone}}手機門號，若您尚未收到驗證碼請於<i class="font_red">{{resData.OTP_SEC}}</i>秒後重新發送簡訊。
+        </p>
+    </div>
+
+    <div class="row_single">
+        <ul class="inner_table_frame normal_disable">
+            <li class="inner_table_cell">網頁檢核碼</li>
+            <li class="inner_table_cell">
+                <input class="inner_input" type="text" name="" placeholder="{{resData['apiData']['msgReqData']['verifyWeb']}}">
+            </li>
+        </ul>
+        <i class="input_info_warnning">錯誤訊息內容</i>
+    </div>
+
+    <!-- <div class="inner_content">
+            <div class="row_single_2">
+                <ul class="inner_table_frame" ng-reflect-ng-class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        <input class="inner_input ng-untouched ng-pristine ng-valid" maxlength="6" name=""
+                            placeholder="請輸入驗證碼" type="tel" ng-reflect-maxlength="6" ng-reflect-name=""
+                            ng-reflect-model="">
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+        </div> -->
+    <div class="inner_content">
+        <div class="row_single_2">
+            <ul class="inner_table_frame" [ngClass]="ulClass">
+                <li class="inner_table_cell">
+                    <input type="tel" class="inner_input" maxlength="6" name="" placeholder="請輸入驗證碼" [(ngModel)]="resData.OTP_val">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{OTP_error_msg}}</i>
+        </div>
+    </div>
+    <div class="row_single_2">
+        <div class="double_button">
+            <a (click)="otpNo()">{{ 'BTN.CANCEL' | translate }}</a>
+            <a (click)="otpYes()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+
+    <div class="row_single">
+        <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content font_red">
+            如資料已異動請致電本行客服中心02-2182-1313由專人為您服務。
+        </p>
+    </div>
+</ng-container>
+
+<!-- <ng-container *ngIf="ignorCheckInfo">
+    <div class="row_single">
+        <h4 class="simple_title">{{ 'ERROR.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content" [innerHtml]="content"></p>
+    </div>
+</ng-container> -->

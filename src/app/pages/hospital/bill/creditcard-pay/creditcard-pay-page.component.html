@@ -1,0 +1,303 @@
+<section>
+    <!--編輯頁 Start-->
+    <ng-container *ngIf="editShow">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar "></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar step_active"><span>4.填寫信用卡資訊</span></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame" style="height:47px" [ngClass]="{ 'active_warnning':(error_data.cardNo != '') }">
+                <li class="inner_table_cell">信用卡卡號</li>
+                <li class="inner_table_cell">
+                    <input type="tel" maxlength="16" class="inner_input" placeholder="請輸入信用卡號" [(ngModel)]="inp_data.cardNo">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{error_data.cardNo | translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame" style="height:47px" [ngClass]="{ 'active_warnning':(error_data.date != '') }">
+                <li class="inner_table_cell">
+                    信用卡<br>有效月年
+                </li>
+                <li class="inner_table_cell">
+                    <input type="tel" maxlength="4" class="inner_input" placeholder="MMYY" [(ngModel)]="inp_data.date">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{error_data.date | translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(error_data.code != '') }">
+                <li class="inner_table_cell">信用卡<br>驗證碼</li>
+                <li class="inner_table_cell">
+                    <input class="inner_input" maxlength="3" type="tel" placeholder="" [(ngModel)]="inp_data.code">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{error_data.code | translate}}</i>
+            <i class="select_info">*驗證碼為信用卡背面簽名欄上的三位數字</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">繳交金額</li>
+                <li class="inner_table_cell">
+                    <input class="inner_input" type="text" placeholder="{{inputData.totalAmount}}元" readonly>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void(0)" (click)="onCancel('edit')">{{'BTN.PREVIOUS' | translate}}</a>
+                <a href="javascript:void(0)" (click)="onCreditcard()">{{'BTN.NEXT' | translate}}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">可以接受的信用卡</h4>
+        </div>
+        <div style="padding-left: 10%;">
+            <img src="assets/images/epay/visa_logo.png" alt="" style="height: 25px;">
+            <img src="assets/images/epay/MasterCard_Logo.png" alt="" style="height: 25px;">
+            <img src="assets/images/epay/JCB_logo.png" alt="" style="height: 25px;">
+        </div>
+    </ng-container>
+    <!--編輯頁 End-->
+
+    <ng-container *ngIf="provisionShow">
+        <app-one-provision [provisionOption]="agreeProvision" (backPageEmit)="onProvision($event)"></app-one-provision>
+    </ng-container>
+    <!--確認頁 Start-->
+    <ng-container *ngIf="confirmShow">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar "></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar "></li>
+                <li class="step_bar step_active"><span>5.繳費確認</span></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <div class="sub_info_subtitle">請確認繳費資訊以及是否要繼續交易!!</div>
+        <ul class="table_info">
+            <li class="table_row">
+                <span>身分證號碼：</span>
+                <i>{{reqData.personId | identityMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>信用卡卡號：</span>
+                <i>{{reqData.creditCardNo | cardMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>有效年月：</span>
+                <i>{{valid_date}}</i>
+            </li>
+            <li class="table_row">
+                <span>繳交費用筆數：</span>
+                <i>{{reqData.totalCount}}筆</i>
+            </li>
+            <li class="table_row">
+                <span>繳交金額共計：</span>
+                <i>{{reqData.totalAmount | htMoney:'TWD'}}元</i>
+            </li>
+            <ng-container *ngIf="channel==1">
+                <li class="table_row">
+                    <span>參考手續費：</span>
+                    <i>10元</i>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="channel==2">
+                <li class="table_row">
+                    <span>手續費：</span>
+                    <i>0元</i>
+                </li>
+            </ng-container>
+            <li class="table_row">
+                <span>總計繳費金額：</span>
+                <i>{{sumAmount | htMoney:'TWD'}}元</i>
+            </li>
+        </ul>
+        <ul class="table_info table_th_style">
+            <li class="table_row">
+                <ng-container *ngIf="channel == 1">
+                    <span>看診時間</span>
+                </ng-container>
+                <ng-container *ngIf="channel == 2">
+                    <span>保單類別</span>
+                </ng-container>
+                <i>金額</i>
+            </li>
+            <li class="table_row" *ngFor="let item of inputData['details']['detail']">
+                <ng-container *ngIf="channel == 1">
+                    <span>{{item.clinicDate | htDate}}</span>
+                </ng-container>
+                <ng-container *ngIf="channel == 2">
+                    <span>{{item.clinicDate}}</span>
+                </ng-container>
+                <i>{{item.amount | htMoney:'TWD'}}元</i>
+            </li>
+        </ul>
+        <div class="row_single"></div>
+        <!-- <div class="row_single">
+            <ul class="captcha_input">
+                <li class="captcha_td">
+                    <img src="../ui/images/captcha_test.png" alt="">
+                </li>
+                <li class="captcha_td">
+                    <input type="text" name="" id="" class="inner_input" placeholder="請輸入圖形驗證碼">
+                </li>
+                <li class="captcha_td">
+                    <a href="javascript:void(0)" class="captcha_refresh_btn"></a>
+                </li>
+            </ul>
+            <i class="input_info_warnning">您輸入的驗證碼錯誤</i>
+        </div> -->
+
+        <!-- 圖形驗證 START -->
+        <app-captcha></app-captcha>
+        <!-- 圖形驗證 END -->
+
+        <div class="row_single">
+            <div class="double_button" style="margin-top: 10px;">
+                <a href="javascript:void(0)" (click)="onCancel('check')">{{'BTN.PREVIOUS' | translate}}</a>
+                <a href="javascript:void(0)" (click)="onConfirm()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                繳費一經授權成功，不能取消或更正；是否需支付發卡機構服務費，請先洽各發卡機構或參考手續費相關說明
+            </p>
+        </div>
+    </ng-container>
+    <!--確認頁 End-->
+
+
+    <!--結果頁 Start-->
+    <ng-container *ngIf="resultShow">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame {{resultContent.classType}}">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resultContent.title}}</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content">{{resultContent.content}}</span>
+            </p>
+        </div>
+
+        <ng-container *ngIf="successResultShow">
+            <ul class="table_info">
+                <li class="table_row">
+                    <span>交易序號：</span>
+                    <i>{{resultInfo.stan}}</i>
+                </li>
+                <li class="table_row">
+                    <span>交易時間：</span>
+                    <i>{{resultInfo.trnsDttm | htDate}}</i>
+                </li>
+                <li class="table_row">
+                    <span>身分證號碼：</span>
+                    <i>{{inputData.personId | identityMask}}</i>
+                </li>
+                <li class="table_row">
+                    <span>信用卡卡號：</span>
+                    <i>{{inputData.creditCardNo | cardMask}}</i>
+                <li class="table_row">
+                    <span>授權碼：</span>
+                    <i>{{resultInfo.authCode}}</i>
+                </li>
+                <li class="table_row">
+                    <span>繳交費用筆數：</span>
+                    <i>{{resultInfo.totalCount}}筆</i>
+                </li>
+                <li class="table_row">
+                    <span>繳交金額共計：</span>
+                    <i>{{resultInfo.totalAmount | htMoney:'TWD'}}元</i>
+                </li>
+                <li class="table_row">
+                    <span>手續費：</span>
+                    <i>{{resultInfo.trnsFee | htMoney:'TWD'}}元</i>
+                </li>
+                <li class="table_row">
+                    <span>總計繳費金額：</span>
+                    <i>{{resultInfo.sumAmount | htMoney:'TWD'}}元</i>
+                </li>
+            </ul>
+            <ul class="table_info table_th_style">
+                <li class="table_row">
+                    <ng-container *ngIf="channel == 1">
+                        <span>看診時間</span>
+                    </ng-container>
+                    <ng-container *ngIf="channel == 2">
+                        <span>保單類別</span>
+                    </ng-container>
+                    <i>金額</i>
+                </li>
+                <li class="table_row" *ngFor="let item of resultData">
+                    <ng-container *ngIf="channel == 1">
+                        <span>{{item.clinicDate | htDate}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="channel == 2">
+                        <span>{{item.clinicDate}}</span>
+                    </ng-container>
+                    <i>{{item.amount | htMoney:'TWD'}}元</i>
+                </li>
+            </ul>
+            <div class="row_single">
+                <a id="fund_add" href="javascript:void(0)" class="inner_button float_right_bt">
+                    <span>備註說明</span>
+                </a>
+            </div>
+            <ng-container *ngIf="channel == 1">
+                <div class="row_single">
+                    <h4 class="simple_title">單據列印序號</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        {{resultInfo.trnsNo}}<br>
+                        <ng-container *ngIf="resultInfo.hospitalId !='KTGH'">
+                            請持此序號至櫃台進行單據列印
+                        </ng-container>
+                        <ng-container *ngIf="resultInfo.hospitalId =='KTGH'">
+                            如需要列印收據請洽櫃台
+                        </ng-container>
+                    </p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="channel == 2">
+                <div class="row_single">
+                    <h4 class="simple_title">對帳序號(訂單編號)</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        {{resultInfo.trnsNo}}<br>
+                        若需對帳請洽本產險公司營業單位
+                    </p>
+                </div>
+            </ng-container>
+
+            <div class="row_single">
+                <div class="double_button" style="margin-top: 10px;">
+                    <a href="javascript:void(0)" (click)="socialSharing()">交易訊息分享</a>
+                    <a href="javascript:void(0)" (click)="onConfirmEnd()">{{'BTN.CHECK' | translate}}</a>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="failedResultShow">
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a href="javascript:void(0);" class="button_confirm" (click)="endResult()">返回{{ resultContent.channelType | translate }}</a>
+            </div>
+        </ng-container>
+    </ng-container>
+    <!--結果頁 End-->
+</section>

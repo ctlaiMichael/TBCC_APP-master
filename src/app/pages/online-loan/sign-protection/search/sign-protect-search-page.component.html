@@ -1,0 +1,110 @@
+<ng-container *ngFor="let queryItem of queryData">
+	<ul class="credit_card_bill_detail_list loan">
+		<li>
+			<p class="credit_card_name">
+				<i>網銀案件編號</i>
+				<br>
+				<i>{{queryItem.ebkCaseNo}}</i>
+			</p>
+			<p>
+				<span>申請日期</span>
+				<span>{{queryItem.date | htDate:'date'}}</span>
+			</p>
+			<p>
+				<span>貸款分行</span>
+				<span>{{queryItem.branch_nam | fieldCheck: ['branch_nam', {zero_type: true, empty_str: '- -'}]}}</span>
+			</p>
+			<p>
+				<span>申請種類</span>
+				<span>
+					<ng-container [ngSwitch]="queryItem.txKind">
+						<ng-container *ngSwitchCase="'A'">房貸增貸</ng-container>
+						<ng-container *ngSwitchCase="'B'">信用貸款</ng-container>
+						<!-- 目前無信用卡類別 -->
+						<ng-container *ngSwitchCase="'C'">信用卡</ng-container>
+						<ng-container *ngSwitchCase="'D'">房屋貸款</ng-container>
+						<!-- <ng-container *ngSwitchCase="''"></ng-container> -->
+						<ng-container *ngSwitchDefault>{{ queryItem.txKind }}</ng-container>
+					</ng-container>
+				</span>
+			</p>
+			<p>
+				<span>申請金額</span>
+				<span>{{queryItem.give_amt | currencyMoney:'TWD'}}元</span>
+			</p>
+			<ng-container *ngIf="queryItem.caseStatus =='01'">
+				<p class="inner_content">
+					申請書填寫完成，待分行取案
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='02'">
+				<p class="inner_content">
+					文件上傳完成，待分行取案
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='03'">
+				<p class="inner_content">
+					分行案件受理中
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='04'">
+				<p class="inner_content">
+					分行案件徵審中
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='05'">
+				<p class="inner_content">
+					待客戶回覆核准情形及選擇對保方式
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='06'">
+				<p class="inner_content">
+					親赴分行對保中
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='07'">
+				<p class="inner_content">
+					填寫約據完成，待分行撥款
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='98'">
+				<p class="inner_content">
+					核准不撥款，結案歸檔
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='99'">
+				<p class="inner_content">
+					撥款完成，結案歸檔
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='B1'">
+				<p class="inner_content">
+					客戶提出撤案
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='B2'">
+				<p class="inner_content">
+					婉拒
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='B3'">
+				<p class="inner_content">
+					客戶不同意核准情形，結案歸檔
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='B4'">
+				<p class="inner_content">
+					超過預定申請時程，請重新申請(未使用)
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='B5'">
+				<p class="inner_content">
+					超過預定對保時程，請重新申請(未使用)
+				</p>
+			</ng-container>
+			<ng-container *ngIf="queryItem.caseStatus =='05'">
+				<a href="javascript:void(0)" (click)="onSign(queryItem)">簽約對保</a>
+			</ng-container>
+		</li>
+	</ul>
+</ng-container>

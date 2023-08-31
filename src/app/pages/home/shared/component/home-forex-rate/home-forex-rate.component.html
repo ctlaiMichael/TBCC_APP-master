@@ -1,0 +1,37 @@
+<!-- 主畫面塊狀區-標題: 即期匯率 -->
+<h4 class="mi_block_title">{{ 'HOME.MAIN.TITLE_FOREX_RATE' | translate }}</h4>
+<!-- 主畫面塊狀區-標題 End -->
+<ng-container *ngIf="showData; else emptyBox">
+    <div class="ex_rate_data">{{ dataTime | htDate }}</div>
+
+    <ul class="ex_rate_list_frame">
+        <li class="ex_rate_list_tr">
+            <!-- 幣別 -->
+            <p class="ex_rate_list_th">{{ 'PG_FINANCIAL.FIELD.CURRENCY' | translate }}</p>
+            <!-- 銀行買進 -->
+            <p class="ex_rate_list_th">{{ 'PG_FINANCIAL.FIELD.BANK_BUY' | translate }}</p>
+            <!-- 銀行賣出 -->
+            <p class="ex_rate_list_th">{{ 'PG_FINANCIAL.FIELD.BANK_SELL' | translate }}</p>
+        </li>
+        <li class="ex_rate_list_tr" *ngFor="let item of data">
+            <p class="ex_rate_list_td">
+                <img src="./assets/images/blank.gif" alt="" class="ex_rate_icon {{ item['currency'] | iconFlag: 'class' }}">
+                {{ item['currency'] | currencyName: item['currencyName']}}
+            </p>
+            <p class="ex_rate_list_td">{{ item['spotBuy'] | htFinancial }}</p>
+            <p class="ex_rate_list_td">{{ item['spotSell'] | htFinancial }}</p>
+        </li>
+
+    </ul>
+
+    <!-- BTN Box -->
+    <hr class="mi_block_divider">
+    <div class="main_info_1btn" (click)="onClickEvent()">
+        <!-- 更多匯率 -->
+        <a href="javascript:void(0)" class="mib_btn">{{ 'HOME.MAIN.BTN_FOREX_RATE' | translate }}</a>
+    </div>
+
+</ng-container>
+<ng-template #emptyBox>
+    <div>{{ 'ERROR.EMPTY' | translate }}</div>
+</ng-template>

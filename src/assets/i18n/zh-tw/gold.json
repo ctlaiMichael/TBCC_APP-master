@@ -1,0 +1,61 @@
+{
+    "GOLD": {
+        "MAIN_TITLE":"黃金存摺",
+        "NO_GOLDACCT": {
+            "TITLE":"提醒您",
+            "CONTENT":"您尚未申請黃金存摺"
+        },
+        "NOT_BUSINESS_HOUR": {
+            "TITLE":"提醒您",
+            "CONTENT":"目前尚未開市",
+            "NOT_BUSINESS_HOUR": "非營業時間查無黃金牌價，無法申購"
+        },
+        "ACTIVATION_STATUS":{
+            "ON":"已開啟",
+            "OFF":"尚未開啟",
+            "TURN_ON":"開啟",
+            "TURN_OFF":"關閉",
+            "TITLE":"提醒您",
+            "NOT_ACTIVE":"尚未啟用黃金存摺網路交易，請於黃金存摺申請啟用功能開啟",
+            "APPLY_ACTIVE":"黃金存摺申請啟用",
+            "APPLY_STOP_ACTIVE":"黃金存摺申請停用"
+        },
+        "BUY":{
+            "WEIGHTE_ERROR":"買進公克數限為一公克之倍數",
+            "TIMEOUT":"交易未於80秒內完成，交易取消！！",
+            "DO_SECURITY_FAIL":"資料加密失敗，交易取消"
+		},
+        "SELL":{
+            "ENTER_QUANTITY":"請輸入回售克數",
+            "MUST_POSITIVE":"回售克數必須大於零",
+            "MUST_LESS_THAN_ACCOUNT":"回售克數不得大於帳號之剩餘黃金克數",
+            "MUST_N":"回售克數必須為1之整倍數"
+        },
+        "TERMS":{
+            "TITLE":"提醒您",
+            "TITLE_STATEMENT":"金融約定事項",
+            "TITLE_SELECTACCT":"黃金定期定額帳號",
+            "TITLE_EDIT_FIRST":"黃金定期定額買進",
+            "TITLE_EDIT":"黃金定期定額買進變更",
+            "CHECK_AMOUNT_ERROR":"約定扣款金額須至少為新台幣3,000元以上，並應為新台幣1,000元之倍數",
+            "NOMONEY":"您的可用餘額不足支付定期定額買進",
+            "NO_SELECT_DATE":"尚未約定扣款日期及金額",
+            "CHECK_SELECTDATE_ERROR":"請選取日期",
+            "PAUSE_DATE_NO_SELECT":"暫停扣款起訖日未設定",
+            "PAUSE_ENDDATE_LE_BEGDATE":"暫停扣款訖日未大於起日",
+            "PAUSE_BEGDATE_LT_TODAY":"暫停扣款起日須大於等於今日",
+            "PAUSE_ENDDATE_LT_TOMORROW":"暫停扣款迄日須大於今日",
+            "NO_SELECT_PAYMETHOD":"尚未選擇扣款狀態",
+            "TITLE_CONFIRM":"黃金定期定額變更確認",
+            "TITLE_RESULT":"交易結果"
+        },
+        "SUB_TITLE": {
+            "DETIAL":"黃金交易明細查詢" ,
+            "ACTIVE":"黃金存摺申請啟用" ,
+            "QUOTATION":"黃金存摺牌價" ,
+            "BUY":"黃金買進" ,
+            "SELL":"黃金回售" ,
+            "SYSTEMATIC_INVESTMENT_PLAN":"黃金定期定額買進變更/終止"
+        }
+    }
+}

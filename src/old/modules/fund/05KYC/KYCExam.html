@@ -1,0 +1,240 @@
+<div class="wrapper">
+        <!--header-->
+        <div class="row">
+            <header class="main_nav">
+                <div class="back_bt" ng-click="clickBack()">
+                    <p class="back_title">返回</p>
+                </div>
+                <div class="page_title">風險承受度測驗表</div>
+                <div class="bank_logo">
+                    <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+                </div>
+            </header>
+        </div>
+        <!--row-->
+        <!--header end-->
+    
+        <!--section 扣款帳號設定頁面-->
+        <div class="row" >
+            <section class="" style="background-color:rgb(194, 238, 119);padding: 10px;top:50px;height:900px">
+                <div class="row" >
+                    <div class="main_content" >
+                        
+                    <p style="font-size: 18px;color:white;padding: 5px;"><br><br><br>請填寫以下問題，並按“下一題”進行<br>後續題目:(共14題)<br></p>
+                    <br>
+                    <!-- <p style="font-size: 18px;color:black;padding: 10px;">{{ww1}}<br></p>
+                    <div class="swiper-slide" ng-repeat="w in ww2 "  ng-show="single == 'Y'">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" ng-model="$parent.status2" ng-value="ww2.indexOf(w)">  {{w}}<p>&nbsp;</p></label>
+                    </div>
+
+                        
+                    <div class="swiper-slide" ng-repeat="w3 in ww3 " ng-show="multi == 'Y'">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="it" name="it" type="checkbox" ng-model="us3" value="ww3.indexOf(w3)" >  {{w3}}<p>&nbsp;</p></label>
+                    </div> -->
+
+                    <!-- <div class="swiper-slide" ng-repeat="r2 in result2 " >
+                        {{r2.rtName}}<br><br>
+                                <div class="swiper-slide" ng-repeat="r3 in r2.ansLists.answer " >
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input"   type="radio" ng-model="r2.rtIndex"  ng-value="{{r3.rcIndex}}">  {{r3.rcName}}<p>&nbsp;</p><br>
+                                </div>
+                    </div> -->
+
+                    <div  ng-show="rtIndex1 == '0'">
+                   {{result2[0].rtName}}<br><br>
+                    <!-- <div class="swiper-slide" ng-show="seven == 0 "  ng-repeat="r3 in result2[0].ansLists.answer ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"  type="radio"  id="a13" name="{{result2[0].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a13">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 1 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[0].rcName}}</div> -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 0 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[0].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 1 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[0].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 2 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[0].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 3 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[1].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 4 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[2].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 5 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[3].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 6 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[0].ansLists.answer[4].rcName}}</div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '1'">
+                    {{result2[1].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[1].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[1].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a14">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '2'">
+                    {{result2[2].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[2].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[2].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a15" ng-disabled="pro">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    <!-- <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[2].ansLists.answer[kkk-1].rcName}} -->
+
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '3'">
+                    {{result2[3].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[3].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[3].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a16">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '4'">
+                    {{result2[4].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[4].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[4].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a17">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '5'">
+                    {{result2[5].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[5].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[5].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a18">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <!-- <div class="swiper-slide" ng-show="rtIndex1 == '19'">
+                    {{result2[6].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[6].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input"   type="radio"   name="{{result2[0].rtIndex}}" ng-value="{{r3.rcIndex}}">  {{r3.rcName}}<p>&nbsp;</p><br>
+                    </div>
+                    </div> -->
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '6'">
+                    {{result2[6].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[6].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[6].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a20">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    
+                    <div  ng-show="rtIndex1 == '7'">
+                    {{result2[7].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[7].ansLists.answer " ng-show="seven != 1 " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="a21"   type="checkbox"   name="a21" value="{{r3.rcIndex}}" >  {{r3.rcName}}<p>&nbsp;</p></label>
+                    </div>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 1 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[7].ansLists.answer[0].rcName}}</div><br>
+                    
+                    </div>
+                    
+
+                    
+                    <div  ng-show="rtIndex1 == '8'">
+                    {{result2[8].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[8].ansLists.answer " ng-show=" ten == 2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[8].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a22">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="seven == 1 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[8].ansLists.answer[0].rcName}}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div ng-show="ten == 1 "><input class="clontent_input"  type="radio"  id="a13" name="" value="" checked="checked">{{result2[7].ansLists.answer[0].rcName}}</div><br>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '9'">
+                    {{result2[9].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[9].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[9].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a106">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '10'">
+                    {{result2[10].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[10].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[10].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a155">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '11'">
+                    {{result2[11].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[11].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[11].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a156">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '12'">
+                    {{result2[12].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[12].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="checkbox"   name="a157" ng-value="{{r3.rcIndex}}" >  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide" ng-show="rtIndex1 == '13'">
+                    {{result2[13].rtName}}<br><br>
+                    <div class="swiper-slide" ng-repeat="r3 in result2[13].ansLists.answer " >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input class="clontent_input"   type="radio"   name="{{result2[13].rtIndex}}" ng-value="{{r3.rcIndex}}" ng-model="$parent.a158">  {{r3.rcName}}<p>&nbsp;</p></label><br>
+                    </div>
+                    </div>
+
+
+                    <div ng-show="isFirstKYC == 'Y'">
+                    <div>
+                        <div class="content_infor">
+                            <div class="content_text2" style="min-width: 125px;">
+                                <p>目前您的轉帳機制:</p>
+                            </div>
+                            <div class="input_warning2" style="width: 60px;"><input type="text"  class="content_input" ng-model="defaultSecurityType.name" readonly></div>
+                            <div class="content_text_chang" ng-click="clickChangeSceurityType(true)" ng-show="anotherSecurityType">
+                                <p style="width: 30px;">變更</p>
+                            </div>
+                            <div class="content_sign" ng-show="anotherSecurityType"><i class="fa fa-chevron-right " aria-hidden="true"></i></div>
+                        </div>
+                        <!-- <security-selector-directive></security-selector-directive> -->
+                    </div>
+                    </div>
+
+                    <!-- <div class="content_infor">
+                        <div class="content_text2" style="min-width: 125px;">
+                            <p>目前您的轉帳機制:</p>
+                        </div>
+                        <div class="input_warning2" style="width: 60px;"><input type="text"  class="content_input" ng-model="defaultSecurityType.name" readonly></div>
+                        <div class="content_text_chang" ng-click="clickChangeSceurityType(true)" ng-show="anotherSecurityType">
+                            <p style="width: 30px;">變更</p>
+                        </div>
+                        <div class="content_sign" ng-show="anotherSecurityType"><i class="fa fa-chevron-right " aria-hidden="true"></i></div>
+                    </div> -->
+
+
+
+                    </div>
+                    <div class="row" style="margin-top:-20px;">
+                        <!-- <p style="font-size: 10px;margin-left:30px;font-weight: bold;">我以了解並同意上述內容。</p> -->
+                        <div class="content_bt" style="height:35px">
+                            <button type="button" class="confirm_bt" style="background:orange;color:white" ng-click="clickSubmit1()">下一題</button>
+                            <button ng-show="nnn != '0'" type="button" class="cancel_bt" style="background:orange;color:white" ng-click="clickBack1()">上一題</button>							
+                        </div>
+                    </div>  
+
+                </div>
+                    </section>
+                    
+                    </div>
+                </div>  
+                    
+                    
+                    
+                    
+                    <!--main_content end-->
+                     
+                    
+              
+                <!--row end-->
+    
+            <!-- </section> -->
+            <!--main_sec end-->
+        
+        <div ng-show="onChangeSecurityType">  
+            <div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+            <div class="row" >
+                <div class="pop_securityType">
+                    <a><div class="securityType" ng-click="changeSecurity(anotherSecurityType.key)" >{{anotherSecurityType.name}}</div>
+                </div> <!--pop_pay end-->
+            </div>
+            </div>
+        <!--section 扣款帳號設定頁面 end-->
+        <!-- 跳出繳費作業視窗 -->
+    
+    <!-- 跳出繳費作業視窗 // End -->
+    
+        <!--end of footer-->
+    
+    
+    <!-- </div> -->
+    <!--wrapper end-->
+    
+    

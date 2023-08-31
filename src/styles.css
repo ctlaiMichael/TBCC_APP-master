@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+.cdk-overlay-backdrop.dark-backdrop.cdk-overlay-backdrop-showing{
+    background: #000;
+    opacity: 0.5 !important;
+}
+.cdk-global-overlay-wrapper{
+    padding: 35px 0;
+}
+
+pre {
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+
+/* 圖形鎖樣式 */
+/* 點 */
+.patt-dots {
+    background: #64e0c8;
+    height:26px;
+    width: 26px;
+    border-radius: 13px;
+    top: 29%;
+    left: 30%;
+    /* margin-left: -5px;
+    margin-top: -5px; */
+}
+
+.patt-circ{
+    margin: 29px !;
+    height:30px ;
+    width: 30px ;
+    border-radius: 13px ;
+}
+
+/* 點選過後旁邊的圈 */
+.patt-circ.hovered {
+    border:0px solid;
+    /* color: #A2FFED; */
+    /* height: 0.2em;
+    width: 0.2em;
+    border-radius: 50%;
+    background-color: 64e0c8; */
+}
+/* 背景 */
+.patt-holder {
+    -ms-touch-action: none;
+    background: #ffffff;
+    margin:auto;
+}
+/* 線 */
+.patt-lines {
+    -ms-transform-origin: 3px 3px;
+    -webkit-transform-origin: 3px 3px;
+    background: #64e0c8;
+    transform-origin: 3px 3px;
+    height: 6px;
+}
+

@@ -1,0 +1,22 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fq000302",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fq0:fq000302ResultType",
+      "@xmlns:fq0" : "http://mnb.hitrust.com/service/schema/fq000302",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fq0:trnsRsltCode" : "0",
+      "fq0:hostCode" : "4001",
+      "fq0:hostCodeMsg" : "交易成功",
+      "fq0:trnsSN" : "1234567",
+      "fq0:qrcode" : "YWhPCKAAAAFylQABwVwyNTQxMjAxNzA1MTExMDI1NTAwMDYwMDAwMDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTYIMDAwMDAwMDkACNqrNUJnVIOFMQ==",
+      "fq0:barcode" : "95AQAABhI0VniQEjRWABI0"
+    }
+  }
+}

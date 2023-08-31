@@ -1,0 +1,96 @@
+<ng-container [ngSwitch]="nowPage">
+    <ng-container *ngSwitchCase="'confirm'">
+        <section>
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar"></li>
+                    <li class="step_bar step_active">
+                        <span>2.確認</span>
+                    </li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+
+            <div class="sub_info_subtitle">
+                請確認外幣繳保費資訊以及是否要繼續交易,請於 {{timeLeft}} 秒內完成轉帳密碼及憑證保護密碼之輸入,逾時請重新進行交易
+            </div>
+
+            <ul class="table_info">
+                <li class="table_row">
+                    <span>繳費對象</span>
+                    <ng-container *ngIf="reqData.paymentObject == 'N'">
+                        <i>南山人壽外幣保險</i>
+                    </ng-container>
+
+                    <ng-container *ngIf="reqData.paymentObject == 'S'">
+                        <i>新光人壽外幣保險</i>
+                    </ng-container>
+                </li>
+                <li class="table_row">
+                    <span>付款帳號</span>
+                    <i>{{reqData.trnsfrOutAcct}}</i>
+                </li>
+                <li class="table_row">
+                    <span>付款幣別</span>
+                    <i>{{reqData.trnsfrOutCurr}}</i>
+                </li>
+
+                <li class="table_row">
+                    <span>轉入戶名</span>
+                    <ng-container *ngIf="reqData.paymentObject == 'N'">
+                        <i>南山人壽保險股份有限公司</i>
+                    </ng-container>
+
+                    <ng-container *ngIf="reqData.paymentObject == 'S'">
+                        <i>新光人壽保險股份有限公司</i>
+                    </ng-container>
+                </li>
+
+                <li class="table_row">
+                    <span>保單號碼</span>
+                    <i>{{reqData.paymentNumber}}</i>
+                </li>
+                <li class="table_row">
+                    <span>繳款金額</span>
+                    <i>{{reqData.trnsfrAmount | htMoney}}</i>
+                </li>
+            </ul>
+
+            <div class="row_single"></div>
+
+            <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+            </app-select-security>
+
+            <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+            <div class="row_single">
+                <div class="double_button">
+                    <a (click)="cancelEdit()">{{'BTN.PREVIOUS' | translate }}</a>
+                    <a (click)="onNextPage()">{{'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'result'">
+        <app-foreign-insurance-pay-result [result_data]="result_data" [info_data]="info_data" [resTitle]="resTitle" 
+        [trnsRsltCode]="trnsRsltCode" [hostCodeMsg]="hostCodeMsg" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-foreign-insurance-pay-result>
+    </ng-container>
+
+    <div class="popup_window" [ngClass]="{ 'popup_open': (timeout_flag) }">
+        <div class="popup_content">
+            <div class="row_single">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content">
+                    此筆交易已超過交易時間，該筆交易已取消
+                </p>
+            </div>
+            <div class="row_single">
+                <a href="javascript:void(0)" class="button_confirm" (click)="confirm_notification()">確定</a>
+            </div>
+        </div>
+    </div>
+</ng-container>

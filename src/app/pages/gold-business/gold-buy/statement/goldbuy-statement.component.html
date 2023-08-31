@@ -1,0 +1,56 @@
+<ng-container *ngIf="pageType=='statement'">
+  <section>
+     <div class="sub_info_frame">
+       <ul class="step_bar_frame">
+         <li class="step_bar step_active"><span>1.同意事項</span></li>
+         <li class="step_bar"></li>
+         <li class="step_bar"></li>
+         <li class="step_bar"></li>
+       </ul>
+     </div>
+     <div class="row_single">
+       <h4 class="simple_title">合作金庫銀行行動網銀辦理黃金存摺<br>買進聲明暨約定事項</h4>
+     </div>
+     <div class="row_single">
+       <p class="inner_content">
+         　　申請人透過合作金庫商業銀行股份有限公司(以下簡稱貴行)之網路銀行服務系統(以下簡稱本系統)辦理貴行黃金存摺業務(以下簡稱本業務)之黃金買進事宜，並願遵守與貴行已簽訂之「黃金存摺開戶約定條款」、「網路銀行服務約定事項」及下列各條款:<br>
+         1、本業務交易時間，自每一營業日本行黃金存摺第一次掛牌起，至下午三時三十分止。<br>
+         2、申請人線上辦理黃金買進時，其扣款款項限以本人開立於貴行之網路銀行約定帳戶辦理扣帳。<br>
+         3、每次買進黃金之數量最低為1公克以上，並應為1公克之整倍數。<br>
+         4、申請人轉出帳戶如為新臺幣綜合存款帳戶，且轉出之款項超過該帳戶活期性存款餘額時，依新臺幣綜合存款特別約定事項，其超過之差額即為申請人之借款，應依該借款之規定辦理。<br>
+         5、貴行對於申請人存放於黃金存摺帳戶內之黃金，不計付利息，申請人並明確瞭解國際黃金價格有漲有跌，可能產生投資本金收益或損失，上揭投資損失，均由申請人自行承擔投資風險。<br>
+         6、本業務非屬存款保險條例規定之標的，不受存款保險保障。
+       </p>
+     </div>
+     <div class="row_single">
+       <div class="inner_checkbox">
+         <input type="checkbox" name="inner_checkbox" [checked]="agree==true" >
+         <label for="inner_checkbox01" (click)="haveReadStatus()">
+           <span><i></i></span>
+           <b>本人已閱讀上開條款，並充分了解相關投資風險。</b>
+         </label>
+       </div>
+     </div>
+     <div class="row_single">
+       <div class="double_button">
+         <a href="javascript:void(0);" (click)="doCancel()">{{'BTN.CANCEL' | translate }}</a>
+         <a href="javascript:void(0);" (click)="goNext()">{{'BTN.NEXT' | translate }}</a>
+       </div>
+     </div>
+  </section>
+</ng-container>
+<!-- <edit> -->
+<ng-container *ngIf="pageType=='edit'">
+  <app-goldbuy-edit-page (goldbuyPage)="changePage($event)" ></app-goldbuy-edit-page>
+</ng-container>
+<!-- <edit> -->
+<!-- <confirm> -->
+<ng-container *ngIf="pageType=='confirm'">
+  <app-goldbuy-confirm-page [goldbuyInfo]="goldbuyInfo" (goldbuyPage)="changePage($event)" ></app-goldbuy-confirm-page>
+</ng-container>
+<!-- <confirm> -->
+<!-- <result> -->
+<ng-container *ngIf="pageType=='result'">
+  <app-result [btnName]="'RETURN'" [successMsg]="successMsg" [successContent]="successContent"></app-result>
+</ng-container>
+<!-- </result> -->

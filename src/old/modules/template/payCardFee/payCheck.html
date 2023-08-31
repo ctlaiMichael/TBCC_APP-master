@@ -1,0 +1,45 @@
+
+	<div class="row_single info_list">
+		<!-- 銷帳編號 -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">{{'FIELD.PAYMENT_ID' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt2">{{inp.cardnum}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<!-- 轉出銀行 -->
+		<td align="left"><i class="info_title2">{{'FIELD.CARD.BANK' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt2">{{ (inp.show.selectBank) ? inp.show.selectBank.bankNameAll : '--'}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">{{'FIELD.CARD.ACNT' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt2">{{inp.payAcnt}}</p>
+		<!-- 轉出帳號 -->
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list" ng-if="paymentData && inp.selectAmt">
+		<table class="check_form"><tr>
+		<!-- 繳費方式 -->
+		<td align="left"><i class="info_title2">{{'FIELD.PAYAMT.SELECT' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt2">{{applyFormList.paymentType[inp.selectAmt]['name']}}</p>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<!-- 繳費金額 -->
+		<td align="left"><i class="info_title2">繳費金額</i></td>
+		<td align="right"><p class="info_conetnt2">{{inp.payAmt | currency:""}}</p>
+		</tr></table>
+	</div>
+<div class="bc_frame">
+	<check-captcha-directive></check-captcha-directive>
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="sendTransfer()">{{'CTRL_PAY.BTN.PAY_CHECK' | translate}}</button><!-- 確定繳卡費 -->
+	</div>
+</div>

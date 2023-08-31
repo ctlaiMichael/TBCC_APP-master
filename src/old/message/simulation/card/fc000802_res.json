@@ -1,0 +1,27 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000802",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000802ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000802",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "查詢成功",
+      "fc0:activityRegDetails" : {
+        "fc0:activityRegDetail" : [
+          {"fc0:activityId" : "1001", "fc0:registerStatus" : "0", "fc0:message" : "登錄成功"},
+          {"fc0:activityId" : "1002", "fc0:registerStatus" : "0", "fc0:message" : "登錄成功"},
+          {"fc0:activityId" : "1003", "fc0:registerStatus" : "1", "fc0:message" : "活動已額滿"},
+          {"fc0:activityId" : "1004", "fc0:registerStatus" : "1", "fc0:message" : "活動暫停"}
+         ]
+      }
+    }
+  }
+}

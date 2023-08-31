@@ -1,0 +1,35 @@
+{
+    "sch:MNBResponse": {
+        "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+        "sch:resHeader": {
+            "sch:requestNo": "1481860700840-fi000702",
+            "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+            "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+            "sch:custId": "F121374529"
+        },
+        "sch:result": {
+            "@xsi:type": "fi0:fi000702ResultType",
+            "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000702",
+            "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "fi0:trnsRsltCode": "0",
+            "fi0:hostCode": "4001",
+            "fi0:hostCodeMsg": "交易成功",
+            "fi0:custId": "F121374529",
+            "fi0:trnsToken": "abcdefghijklmnopqrstuvwxyz123456",
+            "fi0:trustAcnt": "9997705073012",
+            "fi0:transCode": "CA000224044",
+            "fi0:fundType": "C",
+            "fi0:payDate1": "01",
+            "fi0:payDate2": "",
+            "fi0:payDate3": "11",
+            "fi0:payDate4": "00",
+            "fi0:payDate5": "18",
+            "fi0:payAcnt": "9997705073012",
+            "fi0:profitAcnt": "8887705073012",
+            "fi0:breakFlag": "N",
+            "fi0:fundCode": "7405",
+            "fi0:INCurrency": "NTD",
+            "fi0:purchAmnt": "100000"
+        }
+    }
+}

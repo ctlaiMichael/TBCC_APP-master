@@ -1,0 +1,45 @@
+<ng-container  *ngIf="isa11y==true" >
+<!--無障礙-->
+<!-- <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data != '')}">   
+        <li class="inner_table_cell" [innerHtml]="(title | translate) | safeHtml "></li>
+        <li class="inner_table_cell ">
+            <input type="password" name="" maxlength="12" class="inner_input" placeholder="{{ placeholderStr | translate }}"
+             autocomplete="off" disableautocomplete 
+             [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" >
+        </li>
+    </ul>
+    <i class="input_info_warnning">{{ error_data | translate }}</i>
+</div> -->
+
+    <div class="row_single_2_a11y">
+        <div class="inner_table_frame_a11y">
+            <div class="inner_title_content_a11y">*行動網銀登入密碼</div>
+            <div>
+            <!-- 請輸入行動網銀登入密碼 -->
+            <input type="password" maxlength="12" autocomplete="off" disableautocomplete 
+            [ngClass]="error_data == ''?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'"
+            [(ngModel)]="inp_data" placeholder="{{ placeholderStr | translate }}" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')"  />
+            </div>
+            <div *ngIf="error_data != ''" class="check_wrong_str_a11y">{{ error_data | translate }}</div>
+        </div>
+    </div>
+   
+</ng-container>  
+
+
+<ng-container  *ngIf="isa11y==false" >
+    <div class="row_single">
+        <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data != '')}">
+            <!-- 行動網銀登入密碼 -->
+            <li class="inner_table_cell" [innerHtml]="(title | translate) | safeHtml "></li>
+            <li class="inner_table_cell ">
+                <!-- 請輸入行動網銀登入密碼 -->
+                <input type="password" name="" maxlength="12" class="inner_input" placeholder="{{ placeholderStr | translate }}"
+                 autocomplete="off" disableautocomplete 
+                 [(ngModel)]="inp_data" (ngModelChange)="onBackPageData($event)" (change)="onBackPageData($event, 'change')" >
+            </li>
+        </ul>
+        <i class="input_info_warnning">{{ error_data | translate }}</i>
+    </div>
+</ng-container>   

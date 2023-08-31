@@ -1,0 +1,80 @@
+{
+    "PG_CARD": {
+        "MAIN_MENU":{
+            "MYCARD":"我的信用卡",
+            "BILLSEARCH":"帳單查詢",
+            "PAYCARDFEE":"繳卡費",
+            "QRCODE4FEE":"QR Code繳卡費",
+            "INSTSELECT":"分期付款",
+            "APPLY":"申請/補件",
+            "APP":"優惠活動",
+            "ACTIVITYLOGIN":"活動登錄",
+            "ACTIVATECARD":"開卡/掛失"
+        },
+        "MENU":{
+            "LEFT":{
+                "MYCARD":"我的信用卡",
+                "BILLSEARCH":"帳單查詢",
+                "BILLUNRECORDED":"信用卡未列帳單明細",
+                "VISASEARCH":"VISA金融卡帳單查詢",
+                "BILLPERIOD0":"本期帳單",
+                "BILLPERIOD1":"前期帳單",
+                "BILLPERIOD2":"前兩期帳單",
+                "PAYCARD":"繳卡費",
+                "PAYCARDFEE":"繳卡費",
+                "QRCODE4FEE":"QR Code繳卡費",
+                "APPLYANDUPLOAD":"申請/補件",
+                "APPLY":"申請信用卡",
+                "UPLOAD":"補件上傳",
+                "INSTSELECT":"分期付款",
+                "BILLINST":"帳單分期",
+                "SINGLEINST":"單筆分期",
+                "ACTIVITYAPP":"行銷活動",
+                "APP":"優惠活動",
+                "ACTIVITYLOGIN":"活動登錄",
+                "DIVIDEND":"紅利專區",
+                "ACTIVATECARD":"開卡/掛失",
+                "OPEN":"開卡",
+                "LOST":"掛失",
+                "QANDA":"Q&A",
+                "REGISTERED":"註冊信用卡會員",
+                "HOME":"首頁"
+            },
+            "FOOTER":{
+                "BACK_TO_HOME":"信用卡服務",
+                "PAYCARDFEE":"繳卡費",
+                "SINGLEINST":"單筆分期",
+                "ACTIVITYLOGIN":"活動登錄",
+                "HOME":"首頁"
+            }
+        },
+        "PAGE_TITLE" : {
+            "BACK_TO_HOME":"信用卡服務",
+            "ERRORMESSAGE":"錯誤訊息",
+            "DIVIDEND":"紅利積點",
+            "APPLY":"申請信用卡",
+            "UPLOAD":"補件上傳",
+            "PAYCARDFEE":"繳卡費",
+            "PAY_FORM":"自行輸入繳款",
+            "PAY_LOGIN":"登入網銀/信用卡會員繳款",
+            "QRCODE4FEE":"QR Code繳卡費",
+            "ACTIVATECARD":"開卡/掛失",
+            "ACTIVATEFORM":"信用卡開卡",
+            "LOSTFORM":"信用卡掛失",
+            "INSTSELECT":"分期付款",
+            "BILLINST":"帳單分期",
+            "SINGLEINST":"單筆分期",
+            "TAXBILLINST":"107年綜合所得稅分期",
+            "TAXBILLINST11":"107年綜合所得稅分期",
+            "ACTIVITYLOGIN":"活動登錄",
+            "BILLSEARCH":"帳單查詢",
+            "BILLUNRECORDED":"信用卡未列帳單明細",
+            "BILLPERIOD0":"本期帳單",
+            "BILLPERIOD1":"前期帳單",
+            "BILLPERIOD2":"前兩期帳單",
+            "MYCARD":"我的信用卡",
+            "VISASEARCH":"VISA金融卡帳單查詢",
+            "QANDA":"Q&A"
+        }
+    }
+}

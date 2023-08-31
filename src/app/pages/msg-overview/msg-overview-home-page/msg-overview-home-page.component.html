@@ -1,0 +1,62 @@
+<!-- 上方固定bookmark 放在section會跟著content一起滑動(ios) -->
+<div [hidden]="showContent"
+  style="padding-top: 1em;position: fixed;top: 90px; z-index: 5;background: white;width: 100%;">
+  <app-bookmark [setData]="bookmarkData" [defaultKey]="defaultKey" [setKey]="nowPage"
+    (backPageEmit)="onBookMarkBack($event)">
+  </app-bookmark>
+  <!-- 第二層bookmark，有客製化紅點   [ngClass]="{'active' : (showType==menu['id']) }"-->
+  <ul class="sub_tab_table sub_tab_four" *ngIf="activeBookmark==1">
+    <li class="sub_td_cell td_cell_transparent" (click)="changeActiveBookmark2(0);">
+      <a  [ngClass]="activeBookmark2==0?'active':'msg_font'">全部</a>
+      <div [ngClass]="{'red_dot': !isRead[0]}"></div>
+    </li>
+    <li class="sub_td_cell td_cell_transparent" (click)="changeActiveBookmark2(1);">
+      <a  [ngClass]="activeBookmark2==1?'active':'msg_font'">帳務</a>
+      <div [ngClass]="{'red_dot': !isRead[1]}"></div>
+    </li>
+    <li class="sub_td_cell td_cell_transparent" (click)="changeActiveBookmark2(2);">
+      <a  [ngClass]="activeBookmark2==2?'active':'msg_font'">提醒</a>
+      <div [ngClass]="{'red_dot': !isRead[2]}"></div>
+    </li>
+    <li class="sub_td_cell td_cell_transparent" (click)="changeActiveBookmark2(3);">
+      <a  [ngClass]="activeBookmark2==3?'active':'msg_font'">優惠</a>
+      <div [ngClass]="{'red_dot': !isRead[3]}"></div>
+    </li>
+  </ul>
+</div>
+<section style="overflow-x: hidden; padding-top: 90px;z-index: 3;">
+  <!-- 合庫報報 -->
+  <!-- [hidden]="showContent || activeBookmark==1" -->
+  <div *ngIf="!showContent && activeBookmark==0" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages"
+    (scrollEvent)="onScrollEvent($event)">
+    <div class="inner_news_list_frame">
+      <!-- Page1 -->
+      <app-msg-overview-page [page]="1" [isPublic]="true" [showNewsInfo]='false' [editable]="false"
+        (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+      </app-msg-overview-page>
+      <!-- Page other  -->
+      <ng-container #pageBox></ng-container>
+    </div>
+  </div>
+
+  <!-- 個人私訊 -->
+  <div [hidden]="check_apply.bound_id!='4'">
+  <div *ngIf="!showContent && activeBookmark==1" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages"
+    (scrollEvent)="onScrollEvent($event)">
+    <div class="inner_news_list_frame">
+      <!-- Page1 -->
+      <app-msg-overview-page [activeBookmark2]="activeBookmark2" [activeBookmark]="activeBookmark" [page]="1" [isPublic]="false" [showNewsInfo]='false'
+        [editable]="true" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"
+        (updateReadEmit)="updateRead($event)">
+      </app-msg-overview-page>
+      <!-- Page other  -->
+      <ng-container #pageBox></ng-container>
+    </div>
+  </div>
+  </div>
+  <!-- 內容頁 -->
+  <ng-container *ngIf="showContent">
+    <app-msg-content-page [contentObj]="content_data" (backPageEmit)="onBackPage($event)"
+      (errorPageEmit)="onErrorBackEvent($event)"></app-msg-content-page>
+  </ng-container>
+</section>

@@ -1,0 +1,31 @@
+<section>
+  <ng-container *ngIf="nowStep!=='result'; else resultBox;">
+    <!-- 步驟列 -->
+    <app-step-bar *ngIf="stepMenuData.length > 0" [setData]="stepMenuData" [setKey]="nowStep"></app-step-bar>
+    <div class="row_single"></div>
+    <div class="row_single">
+      <ul class="inner_table_frame" [ngClass]="errorMsg['employNo']?'active_warnning':''">
+        <!-- 推薦人編號(6碼) -->
+        <li class="inner_table_cell">{{ 'EPAY.RECOMMEND.FIELD.ID_NUM' | translate: { number: maxNum } }}</li>
+        <li class="inner_table_cell">
+          <input class="inner_input" [(ngModel)]="result.employNo" maxlength="{{maxNum}}" oninput="value=value.replace(/[^A-Za-z0-9]/g,'')"
+            type="text" name="" placeholder="{{ 'EPAY.RECOMMEND.FIELD.ID_EDIT' | translate }}">
+        </li>
+      </ul>
+      <!-- 請輸入推薦人編號(共6碼) -->
+      <i class="input_info_warnning">{{ errorMsg.employNo | translate: { number: maxNum } }}</i>
+    </div>
+    <div class="row_single">
+      <div class="double_button">
+        <!-- 返回 -->
+        <a (click)="onClickCancel()">{{ 'BTN.BACK' | translate }}</a>
+        <!-- 確定 -->
+        <a (click)="onClickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #resultBox>
+    <!-- 結果頁 -->
+    <app-edit-result-temp [setData]="resultData" (backPageEmit)="resultBack()"></app-edit-result-temp>
+  </ng-template>
+</section>

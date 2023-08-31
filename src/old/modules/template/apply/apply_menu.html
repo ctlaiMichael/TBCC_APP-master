@@ -1,0 +1,5 @@
+<div class="tab_title" ng-if="apply_menu !== undefined">
+	<!-- 搬離section (2017.02.14) -->
+	<a ui-sref="apply"  ng-class="{'active' : apply_menu == 'apply'}">{{'CTRL_APPLY.APPLY_MENU' | translate}}</a>
+	<a ui-sref="upload" ng-class="{'active' : apply_menu == 'upload'}">{{'PAGE_TITLE.UPLOAD' | translate}}</a>
+</div>

@@ -1,0 +1,17 @@
+<section>
+  <ul class="credit_card_links_frame">
+    <ng-container *ngFor="let row_item of menuData;">
+      <li class="cc_links_list">
+        <ng-container *ngFor="let menu of row_item;">
+          <a href="javascript:void(0);" class="cc_links" (click)="onGoEvent(menu)">
+            <img *ngIf="menu.icon && menu.icon !== ''" src="{{ menu.icon }}" alt="{{ menu.name | translate }}">
+            <span>{{ menu.name | translate }}</span>
+          </a>
+        </ng-container>
+      </li>
+    </ng-container>
+  </ul>
+  <div class="tcb_cc_ad" *ngIf="adImg !== ''">
+      <a href="javascript:void(0)" (click)="onAdEvnet()" style="width:100%;height:100%;" [ngStyle]="{'background': 'url(' + adImg + ') no-repeat 0 0'}"></a>
+  </div>
+</section>

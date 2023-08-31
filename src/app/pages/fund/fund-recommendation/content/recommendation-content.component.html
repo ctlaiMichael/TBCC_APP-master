@@ -1,0 +1,99 @@
+<ng-container *ngIf="showPage == 'fundNoPush'">
+    <div class="agree_info">
+        <div class="row_single">
+            <h4 class='simple_title'>同意信託業務推介</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您同意本行推介特定金錢信託受託投資外國有價證券商品相關資訊予您參考!
+            </p>
+        </div>
+        <div class='row_single'>
+            <div class='double_button'>
+                <a href='javascript:void(0);' (click)="agreeSend(false)">不同意</a>
+                <a href='javascript:void(0);' (click)="agreeSend(true)">同意</a>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="showPage == 'fundHasPush'">
+    <div class="agree_info">
+        <div class="row_single">
+            <h4 class='simple_title'>同意信託業務推介</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您於{{modifyDate.year}}年{{modifyDate.month}}月{{modifyDate.day}}日同意本行推介特定金錢信託受託投資國外有價證券商品相關資訊予您參考！
+            </p>
+        </div>
+        <div class='row_single'>
+            <a class='button_confirm' href='javascript:void(0);' (click)="stopReccomand()">終止推介</a>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="showPage == 'fundStopPush'">
+    <div class="agree_info">
+        <div class="row_single">
+            <h4 class='simple_title'>同意信託業務推介</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您欲終止{{ToDate.year}}年{{ToDate.month}}月{{ToDate.day}}日 簽署予本行之推介同意書，本行將無法就特定投資標的以當面洽談、電話或電子郵件連繫、寄發商品說明書之方式通知您相關訊息！是否仍終止推介？
+            </p>
+        </div>
+        <div class='row_single'>
+            <div class='double_button'>
+                <a href='javascript:void(0);' (click)="agreeStop(false)">不同意</a>
+                <a href='javascript:void(0);' (click)="agreeStop(true)">同意</a>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="showPage == 'fundErrorPush'">
+    <div class="agree_info">
+        <div class="row_single">
+            <h4 class='simple_title'>同意信託業務推介</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                親愛的客戶 您不符合推介資格! 依信託業營運範圍受益權轉讓限制風險揭露及行銷訂約管理辦法第21條第三款作業規範：
+                <br> 對已簽訂信託契約之客戶，得就特定投資標的已當面洽談、電話或電子郵件連繫、寄發商品說明書之方式進行推介。但不包含
+                <br>1.年齡為70歲以上。
+                <br>2.教育程度為國中畢業以下。
+                <br>3.有全民健康保險重大傷病證明之非專業投資人。
+                <br>
+            </p>
+        </div>
+        <div class="row_single"></div>
+        <div class='row_single'>
+            <a class='button_confirm' href='javascript:void(0);' (click)="backMenu()">確定</a>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="showPage == 'resultPage'">
+    <ng-container *ngIf="resultData.updateStatus=='0'">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame">
+                <i class="icon_success"></i>
+                <ng-container *ngIf="setData.act=='2'">
+                    <span class="step_final_info">設定完成! 您已終止推介!!</span>
+                </ng-container>
+                <ng-container *ngIf="setData.act=='1'">
+                    <span class="step_final_info">設定完成! 您已同意推介!!</span>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="resultData.updateStatus=='1'">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{ resultData.hostCodeMsg }}</span>
+            </div>
+        </div>
+    </ng-container>
+    <div class="row_single"></div>
+    <div class='row_single'>
+        <a class='button_confirm' href='javascript:void(0);' (click)="backMenu()">確定</a>
+    </div>
+</ng-container>

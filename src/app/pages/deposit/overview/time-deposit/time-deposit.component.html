@@ -1,0 +1,78 @@
+<section>
+    <!-- 帳戶資訊 -->
+    <app-account-content [acctObj]="acctObj" [acctGroup]="'TW'"></app-account-content>
+
+    <!-- 列表資訊 -->
+    <ul class="table_data_frame">
+        <li class="table_data table_data_header">
+            <!-- 到期日 -->
+            <span class="data_cell">{{ 'PG_DEPOSIT.OVERVIEW.TIME_TITLE.TITLE1' | translate }}</span>
+            <!-- 利率(%) -->
+            <i class="data_cell">{{ 'PG_DEPOSIT.OVERVIEW.TIME_TITLE.TITLE2' | translate }}</i>
+            <!-- 存單面額 -->
+            <b class="data_cell">{{ 'PG_DEPOSIT.OVERVIEW.TIME_TITLE.TITLE3' | translate }}</b>
+            <s class="data_cell"></s>
+        </li>
+        <ng-container *ngIf="showData ; else noDataBox">
+            <ng-container *ngFor="let item of data;">
+                <li class="table_data" expandList>
+                    <!-- 到期日: endAcctDate yyyy/MM/dd -->
+                    <span class="data_cell">{{ (item | fieldCheck: 'endAcctDate') | htDate: 'date'}}</span>
+                    <!-- 利率: rate  -->
+                    <i class="data_cell">{{ (item | fieldCheck: 'rate') | htFinancial }}</i>
+                    <!-- 存單面額: saveListBal -->
+                    <b
+                        class="data_cell font_money_blu">{{ (item | fieldCheck: 'saveListBal') | htMoney: showCurrency }}</b>
+                    <s class="data_cell">
+                        <button class="sub_open"></button>
+                    </s>
+                </li>
+                <div class="sub_open_info_frame" style="overflow: hidden;">
+                    <dl class="sub_open_info">
+                        <!-- 存單號碼 -->
+                        <dt class="sub_open_row">
+                            <span></span>
+                            <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.depositNo' | translate }}</span>
+                            <span>{{ item | fieldCheck: 'depositNo'}}</span>
+                            <span></span>
+                        </dt>
+                        <!-- 開戶日 -->
+                        <dt class="sub_open_row">
+                            <span></span>
+                            <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.startAcctDate' | translate }}</span>
+                            <span>{{ (item | fieldCheck: 'startAcctDate') | htDate: 'date'}}</span>
+                            <span></span>
+                        </dt>
+                        <!-- 到期日 -->
+                        <dt class="sub_open_row">
+                            <span></span>
+                            <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.endAcctDate' | translate }}</span>
+                            <span>{{ (item | fieldCheck: 'endAcctDate') | htDate: 'date'}}</span>
+                            <span></span>
+                        </dt>
+                        <!-- [機動|固定(rateTypeName)]利率 -->
+                        <dt class="sub_open_row">
+                            <span></span>
+                            <span></span>
+                            <!-- [機動|固定(rateTypeName)]利率，[interestTypeName] -->
+                            <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.rateInfo' | translate:{ 
+                            value1: (item | fieldCheck: 'rateTypeName'), 
+                            value2: (item | fieldCheck: 'interestTypeName') 
+                         } }}</span>
+                            <span></span>
+                        </dt>
+                    </dl>
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-template #noDataBox>
+            <li class="table_data">
+                <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+                    {{ 'ERROR.EMPTY' | translate }}
+                    <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+                </span>
+            </li>
+        </ng-template>
+    </ul>
+
+</section>

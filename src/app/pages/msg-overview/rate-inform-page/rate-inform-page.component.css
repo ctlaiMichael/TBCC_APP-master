@@ -1,0 +1,22 @@
+.color_757575{
+    color: #757575;
+}
+
+.background_e4f7f9{
+    background: #e4f7f9;
+}
+
+.search_time{
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    margin-bottom: 2em;
+}
+
+.create_new{
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    margin: 0 1em 2em;
+    border-radius: 10px;
+}

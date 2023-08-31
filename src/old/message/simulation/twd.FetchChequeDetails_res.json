@@ -1,0 +1,133 @@
+{
+  "resHeader":{
+    "serviceId":"Twd.FetchChequeDetails",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "acctBelongCustCode":"16313302",
+  "acctBelongName":"帳號戶名",
+  "acctNo":"04864705444550",
+  "ediName":"企業戶名稱",
+  "chequeStatus" : "OK",
+  "totalCount":"9",
+  "totalAmt":"30,000",
+  "currPage":"1",
+  "totalPage":"2",
+  "details": [
+    {
+      "seq":"1",
+      "chequeDueDate": "2016/03/26",
+      "chequeNo": "0007082150",
+      "chequeAmt": "1,000,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "S",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註1"
+    },
+    {
+      "seq":"2",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "A",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"3",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "P",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"4",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "T",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"5",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "C",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+
+    {
+      "seq":"6",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "A",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"7",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "D",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"8",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "OK",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    },
+    {
+      "seq":"9",
+      "chequeDueDate": "2016/03/24",
+      "chequeNo": "7082150",
+      "chequeAmt": "3,000",
+      "inDt": "2016/03/22",
+      "draweeAcct": "8120705036571",
+      "chequeStatus": "OK",
+      "designatedBank": "812",
+      "bankFullName": "台新國際商業銀行",
+      "memo": "備註2"
+    }
+  ]
+}

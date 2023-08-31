@@ -1,0 +1,131 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "resultCode": "4001"
+  },
+  "t5000201ResultType": {
+    "dataSource": "台新銀行",
+    "updateTime": "2016/04/22 12:33:35",
+    "rateDetail": [
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為進口遠期信用狀",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為進口機器貸款",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為出口押匯",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為外幣貸款基本利率-擔保貸款",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為外幣貸款基本利率-無擔保貸款",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "美金",
+        "cur": "USD",
+        "title": "為一般外匯授信利率",
+        "rate": "6.35000"
+      },
+      {
+        "currency": "英鎊",
+        "cur": "GBP",
+        "title": "為一般外匯授信利率",
+        "rate": "6.10000"
+      },
+      {
+        "currency": "港幣",
+        "cur": "HKD",
+        "title": "為一般外匯授信利率",
+        "rate": "6.00000"
+      },
+      {
+        "currency": "澳幣",
+        "cur": "AUD",
+        "title": "為一般外匯授信利率",
+        "rate": "7.45000"
+      },
+      {
+        "currency": "新加坡幣",
+        "cur": "SGD",
+        "title": "為一般外匯授信利率",
+        "rate": "6.00000"
+      },
+      {
+        "currency": "瑞士法朗",
+        "cur": "CHF",
+        "title": "為一般外匯授信利率",
+        "rate": "4.00000"
+      },
+      {
+        "currency": "加拿大幣",
+        "cur": "CAD",
+        "title": "為一般外匯授信利率",
+        "rate": "5.65000"
+      },
+      {
+        "currency": "日幣",
+        "cur": "JPY",
+        "title": "為一般外匯授信利率",
+        "rate": "3.40000"
+      },
+      {
+        "currency": "南非幣",
+        "cur": "ZAR",
+        "title": "為一般外匯授信利率",
+        "rate": "15.55000"
+      },
+      {
+        "currency": "瑞典幣",
+        "cur": "SEK",
+        "title": "為一般外匯授信利率",
+        "rate": "5.40000"
+      },
+      {
+        "currency": "泰銖",
+        "cur": "THB",
+        "title": "為一般外匯授信利率",
+        "rate": "11.10000"
+      },
+      {
+        "currency": "紐西蘭幣",
+        "cur": "NZD",
+        "title": "為一般外匯授信利率",
+        "rate": "7.40000"
+      },
+      {
+        "currency": "歐元",
+        "cur": "EUR",
+        "title": "為一般外匯授信利率",
+        "rate": "4.90000"
+      },
+      {
+        "currency": "人民幣",
+        "cur": "CNY",
+        "title": "為一般外匯授信利率",
+        "rate": "6.00000"
+      }
+    ]
+  }
+}
+

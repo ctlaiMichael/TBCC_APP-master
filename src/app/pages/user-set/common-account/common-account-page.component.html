@@ -1,0 +1,44 @@
+<section>
+    <ng-container *ngIf="pageType=='search'">
+        <div class="sub_info_subtitle bg_none txt_align_lft pad_lft30">
+            <div class="disp_inline txt_align_lft txt_time_search">
+                查詢時間：<span>{{dataTime|htDate}}</span>
+            </div>
+            <div class="disp_inline">
+                <a href="javascript:void('0')" (click)="modifyData();" class="inner_button float_right_bt" style="float:right">
+                    <span>新增</span>
+                </a>
+            </div>
+        </div>
+        <ng-container *ngIf="commonArr!=''; else noDataBox">
+            <ul class="credit_card_bill_detail_list" *ngFor="let item of commonArr">
+                <li>
+                    <p class="credit_card_name">
+                        <i>好記名稱：</i>
+                        <i>{{  item | fieldCheck: ['accntName' ,{zero_type:false, empty_str:''} ]}}</i>
+                    </p>
+                    <p>
+                        <span>銀行代碼：</span>
+                        <span>{{item | fieldCheck: ['trnsInBank' ,{zero_type:false, empty_str:''} ]}}-{{item| fieldCheck: ['trnsInBankName' ,{zero_type:false, empty_str:'--'} ]}}</span>
+                    </p>
+                    <p>
+                        <span>帳號：</span>
+                        <span>{{item | fieldCheck: ['trnsInAccnt' ,{zero_type:false, empty_str:'--'} ]}}</span>
+                    </p>
+                    <a href="javascript:void('0')" (click)="modifyData(item);">修改</a>
+                </li>
+            </ul>
+        </ng-container>
+        <ng-template #noDataBox>
+            <div class="sub_info_subtitle">查無資料</div>
+        </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="pageType=='modify'">
+        <app-modify-account-page [editData]="editData"></app-modify-account-page>
+    </ng-container>
+    
+    <ng-container *ngIf="pageType=='add'">
+        <app-add-account-page></app-add-account-page>
+    </ng-container>
+</section>

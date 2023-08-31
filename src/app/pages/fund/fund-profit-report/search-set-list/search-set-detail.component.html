@@ -1,0 +1,72 @@
+<ng-container *ngIf="showData ; else noDataBox">
+    <ng-container *ngFor="let item of group_data.wishList;">
+        <li class="table_data" expandList>
+            <!-- 代碼 -->
+            <span class="data_cell">{{ (item | fieldCheck: 'fundCode') }}</span>
+            <!-- 基金名稱  -->
+            <i class="data_cell" (click)="goWeb(item)">{{ item | fieldCheck: 'fundName'}}</i>
+            <!-- XX漲跌幅(%) -->
+            <ng-container *ngIf="reqObj.id=='1D'"><b class="data_cell {{ item.riseDown | fundAmtClass }}">{{ item |
+                    fieldCheck: 'riseDown' |htFundSetNumber}}</b></ng-container>
+            <ng-container *ngIf="reqObj.id=='1M'"><b class="data_cell {{ item.monthEffect | fundAmtClass }}">{{ item |
+                    fieldCheck: 'monthEffect'|htFundSetNumber}}</b></ng-container>
+            <ng-container *ngIf="reqObj.id=='6M'"><b class="data_cell {{ item.halfYearEffect | fundAmtClass }}">{{ item |
+                    fieldCheck: 'halfYearEffect'|htFundSetNumber}}</b></ng-container>
+            <ng-container *ngIf="reqObj.id=='12M'"><b class="data_cell {{ item.yearEffect | fundAmtClass }}">{{ item |
+                    fieldCheck: 'yearEffect'|htFundSetNumber}}</b></ng-container>
+            <s class="data_cell">
+                <button class="sub_open"></button>
+            </s>
+        </li>
+        <div class="sub_open_info_frame" style="overflow: hidden;">
+            <dl class="sub_open_info">
+                <!-- 標的型態: fieldCheck -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>標的型態</span>
+                    <span>{{ item | fieldCheck: 'fundStyle'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 計價幣別: fieldCheck -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>計價幣別</span>
+                    <span>{{ item | fieldCheck: 'currency'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 淨值日期: fieldCheck -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>淨值日期</span>
+                    <span>{{ (item | fieldCheck: 'netDate') | htDate: 'date'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 參考淨值: fieldCheck -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>參考淨值</span>
+                    <span>{{ item | fieldCheck: 'netValue'|htFundSetNumber}}</span>
+                    <span></span>
+                </dt>
+                <!-- 快速申購: -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span></span>
+                    <span>
+                        <a class="inner_button float_right_bt" href="javascript:void(0)" (click)="onPurchase(item)">
+                          <span style="white-space: nowrap;">快速申購</span>
+                        </a>
+                    </span>
+                </dt>
+            </dl>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #noDataBox>
+    <li class="table_data">
+        <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+            {{ 'ERROR.EMPTY' | translate }}
+            <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+        </span>
+    </li>
+</ng-template>

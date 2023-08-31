@@ -1,0 +1,60 @@
+import { ReqBody } from '@base/api/model/req-body';
+
+export class FI000710ReqBody extends ReqBody {
+    custId = '';
+    trustAcnt = '';
+    fundCode = '';
+    enrollDate = '';
+    currency = '';
+    amount = '';
+    payAcnt = '';
+    effectDate = '';
+    baseRate = '';
+    favorRate = '';
+    serviceFee = '';
+    fundType = '';
+    investAttribute = '';
+    riskLvl = '';
+    okCode = '';
+    prospectus = '';
+    payDateS = '';
+    salesId = '';
+    salesName = '';
+    introId = '';
+    introName = '';
+    branchName = '';
+    unitCall = '';
+    code = '';
+    payDate31 = '';
+    payDate5W  = '';
+    notiCD = '';
+    sLossCD = '';
+    sLoss = '';
+    sProCD = '';
+    sPro = '';
+    continue = '';
+    decline1Cd = '';
+    decline1 = '';
+    decline2Cd = '';
+    decline2 = '';
+    decline3Cd = '';
+    decline3 = '';
+    decline4Cd = '';
+    decline4 = '';
+    decline5Cd = '';
+    decline5 = '';
+    gain1Cd = '';
+    gain1 = '';
+    gain2Cd = '';
+    gain2 = '';
+    gain3Cd = '';
+    gain3 = '';
+    gain4Cd = '';
+    gain4 = '';
+    gain5Cd = '';
+    gain5 = '';
+    trnsToken = '';
+    constructor() {
+        super();
+    }
+}

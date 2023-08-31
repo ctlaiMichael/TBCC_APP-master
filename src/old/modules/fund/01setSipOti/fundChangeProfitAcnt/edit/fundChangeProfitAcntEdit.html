@@ -1,0 +1,60 @@
+<!--header-->
+<div class=" header_bar">
+    <header class="main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">返回</p>
+        </div>
+        <div class="page_title">現金收益存入帳號異動</div>
+        <div class="bank_logo"><img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--header end-->
+
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="main_input">
+
+                    <div class="content_infor">
+                        <div class="content_text" ng-cloak>
+                            <p>投資標的</p>
+                        </div>
+                        <div class="input_warning" ng-bind-html="fundTarget" ></div>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>原現金收益帳號</p>
+                        </div>
+						<div class="input_warning fonesize12" ng-bind="orgCreditAcct" ng-cloak></div>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>現金收益帳號變更</p>
+                        </div>
+						<select ng-model="SelectCreditAcctSelected"  ng-options="fundCreditAcct.acctNo as fundCreditAcct.acctNo for fundCreditAcct in InAC" ng-cloak>
+                            <!-- <option value=""> 請選擇 現金收益帳號 </option> -->
+                        </select>
+                    </div>
+                    
+                    <security-selector-directive></security-selector-directive>
+                    <!--content_checkbt 按鈕組合-->
+                    <div class="send_btarea">
+                        <button type="button" class="send_yes" ng-click="clickSubmit()">
+                            <i class="fa fa-check" aria-hidden="true"></i> 確定變更</button>
+                        <button type="button" class="send_back" ng-click="clickCancel()">
+                            <i class="fa fa-undo" aria-hidden="true"></i> 回上頁</button>
+                    </div>
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div>
+                <!--main_input end-->
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>

@@ -1,0 +1,70 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc001101",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc001101ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc001101",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "上傳成功",
+      "fc0:cards" : {
+        "fc0:cardDetail" : [
+          {
+            "fc0:creditCardNo" : 4907060702001108,
+            "fc0:details" : null,
+            "fc0:twdTotalAmt" : 0
+          },
+          {
+            "fc0:creditCardNo" : "4907060702007708",
+            "fc0:details" : {
+              "fc0:detail" :
+                {
+                  "fc0:expendDate" : 1051107,
+                  "fc0:cardApplyType" : "1",
+                  "fc0:cardApplyTypeName" : "正卡",
+                  "fc0:frgnValueDate" : {},
+                  "fc0:frgnAmt" : "0",
+                  "fc0:twdAmt" : "150",
+                  "fc0:expendDesc" : "一個外套"
+                }
+            },
+            "fc0:twdTotalAmt" : "150"
+          },
+          {
+            "fc0:creditCardNo" : "4907060702007708",
+            "fc0:details" : {
+              "fc0:detail" : [
+                {
+                  "fc0:expendDate" : 1051107,
+                  "fc0:cardApplyType" : "1",
+                  "fc0:cardApplyTypeName" : "正卡",
+                  "fc0:frgnValueDate" : {},
+                  "fc0:frgnAmt" : "0",
+                  "fc0:twdAmt" : "150",
+                  "fc0:expendDesc" : "一個外套"
+                },
+                {
+                  "fc0:expendDate" : "2010-12-08",
+                  "fc0:cardApplyType" : "1",
+                  "fc0:cardApplyTypeName" : "正卡",
+                  "fc0:frgnValueDate" : "2010-12-07",
+                  "fc0:frgnAmt" : "0",
+                  "fc0:twdAmt" : "50",
+                  "fc0:expendDesc" : "一個長袖"
+                }
+              ]
+            },
+            "fc0:twdTotalAmt" : "200"
+          }
+        ]
+      }
+    }
+  }
+}

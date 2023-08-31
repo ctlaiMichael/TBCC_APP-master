@@ -1,0 +1,99 @@
+<section>
+	<div class="sub_info_frame result">
+		<div class="step_final_icon_frame">
+			<i class="icon_success"></i>
+			<span class="step_final_info">繳費完成</span>
+		</div>
+	</div>
+	<div class="row_single"></div>
+	<ul class="table_info">
+		<li class="table_row">
+			<span>交易序號</span>
+			<i>{{inputData.stan}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易時間</span>
+			<i>{{inputData.trnsDttm | htDate:'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>轉出帳號</span>
+			<i>{{inputData.trnsAcctNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易對象</span>
+			<i>{{isMySelfPayment}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易金額</span>
+			<i>{{inputData.totalAmount | htMoney:'TWD'}}元</i>
+		</li>
+	</ul>
+
+	<div class="row_single"></div>
+	<ul class="table_info table_th_style">
+		<li class="table_row">
+			<span>看診時間</span>
+			<i>金額</i>
+		</li>
+		<li class="table_row" *ngFor="let item of detail">
+			<span>{{ item.clinicDate | htDate }}</span>
+			<i>{{ item.patientOwnAmount | htMoney:'TWD' }}元</i>
+		</li>
+	</ul>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0);" class="button_confirm" (click)="detailInfoURL()">用藥及檢查資訊</a>
+	</div>
+	<div class="row_single"></div>
+	<hr class="divider">
+
+	<div class="row_single">
+		<h4 class="simple_title">單據列印序號：{{inputData.specialInfo}}</h4>
+	</div>
+	<div style="text-align: center">
+		<a class="fontw normal_link color_fee" href="javascript:void('0')">
+			請持此序號至櫃台進行單據列印
+		</a>
+	</div>
+	<div class="row_single"></div>
+	<div style="text-align: center">
+		<qr-code [value]="genQRCode" [size]="200"></qr-code>
+	</div>
+	<div style="text-align: center">
+		<a class="fontw normal_link color_fee" href="javascript:void('0')">
+			您可持此QR code至櫃檯進行單據列印
+		</a>
+	</div>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0);" class="button_confirm" (click)="onInsert()">儲存QRcode到您的手機</a>
+	</div>
+	<hr class="divider">
+
+	<ng-container *ngIf="notPayData.length!=0; else notPayBox">
+		<div class="row_single">
+			<h4 class="simple_title">提醒您尚有下列醫療費用需臨櫃辦理</h4>
+		</div>
+		<!-- 需臨櫃繳之資料 -->
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>看診時間</span>
+				<i>金額</i>
+			</li>
+			<li class="table_row" *ngFor="let notPayItem of notPayData">
+				<span>{{ notPayItem.clinicDate | htDate }}</span>
+				<i class="font_red">{{ notPayItem.patientOwnAmount | htMoney:'TWD' }}元</i>
+			</li>
+		</ul>
+	</ng-container>
+
+	<ng-template #notPayBox>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您，無醫療費用需臨櫃辦理</h4>
+		</div>
+	</ng-template>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0)" (click)="backHospital()" class="button_confirm">返回醫療服務</a>
+	</div>
+</section>

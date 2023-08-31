@@ -1,0 +1,33 @@
+<section>
+  <ul class="table_info">
+    <li class="table_row">
+      <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+      <span>手機軟體版本</span>
+      <i>{{deviceInfo.platform}}</i>
+    </li>
+    <li class="table_row">
+      <span>行動銀行版本</span>
+      <i>{{deviceInfo.appversion}}</i>
+    </li>
+    <li class="table_row">
+      <span>裝置名稱</span>
+      <i>{{deviceInfo.name}}</i>
+    </li>
+    <li class="table_row">
+      <span>設備綁定碼</span>
+      <i class="device">{{deviceInfo.udid}}</i>
+    </li>
+    <!--<li class="table_row">
+      <span>主旨(使用者識別名稱)</span>
+      <i>c=tw,o=fINANCE,ou=tAIca tEST fxml<br>CA,OU=0060000-Taiwan Cooperativ<br>Bank2,OU=FXML,CN=AXXXXXXXXX-00-20181120004</i>
+    </li>-->
+  </ul>
+  <div class="row_single" style="margin-top: 20px;">
+    <a id="callphone" class="button_confirm" (click)='callService();'>撥打客服專線</a>
+  </div>
+  <div class="login_privacy_box">
+    <i class="attract_link" (click)="goTour('guide')">導覽說明</i> &nbsp; <i class="attract_link" (click)="goTour('teach')">操作說明</i>
+  </div>
+  <!-- 暫時不提供 -->
+  <div *ngIf="deviceInfo.server_path != ''" class="dev_server_box">網址: <br>{{deviceInfo.server_path}}</div>
+</section>

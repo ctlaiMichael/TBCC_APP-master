@@ -1,0 +1,31 @@
+
+<div class="sub_info_subtitle">
+    請確認資訊以及是否要繼續交易！
+</div>
+<ul class="table_info">
+    <li class="table_row">
+        <span>轉入行庫</span>
+        <i>{{editData.bankAllname}}</i>
+    </li>
+    <li class="table_row">
+        <span>轉入帳號</span>
+        <i>{{editData.accountNo}}</i>
+    </li>
+    <li class="table_row">
+        <span>好記名稱</span>
+        <i>{{editData.accountNickName}}</i>
+    </li>
+</ul>
+
+<div class="row_single"></div>
+
+
+<div class="row_single">
+    <div class="double_button">
+        <a href="javascript:void('0')"(click)='cancelEdit()'>{{'BTN.PREVIOUS' | translate }}</a>
+        <a href="javascript:void('0')" (click)="goResult();">{{'BTN.CHECK' | translate }}</a>
+    </div>
+</div>
+
+<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+	

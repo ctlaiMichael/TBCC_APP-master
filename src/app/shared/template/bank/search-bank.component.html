@@ -1,0 +1,27 @@
+<div class="row_single_2">
+    <h4 class="simple_title">請輸入銀行代碼或銀行名稱</h4>
+</div>
+<div class="row_single"></div>
+    <div class="row_single_2">
+        <ul class="search_input">
+            <li class="search_td">
+                <input type="text" class="inner_input" placeholder="" [(ngModel)]="search_input">
+            </li>
+            <li class="search_td" (click)="onSearch()">
+                <a class="search_btn"></a>
+            </li>
+        </ul>
+    </div>
+<ng-container *ngIf="showData; else noDataBox">
+    <a class="inner_news_list" *ngFor=" let bank of bankList">
+        <span class="inner_news_list_td no_line">
+            <i class="inner_news_title" (click)="getBankCode(bank.bankCode,bank.bankName)">
+                {{bank.bankCode}}&nbsp; {{bank.bankName}}
+            </i>
+        </span>
+        <span class=""></span>
+    </a>
+</ng-container>
+<ng-template #noDataBox>
+    <div class="sub_info_subtitle">查無資料，請重新輸入或輸入空白重新查詢</div>
+</ng-template>

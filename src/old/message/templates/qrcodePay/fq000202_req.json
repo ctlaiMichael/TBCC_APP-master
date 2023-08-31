@@ -1,0 +1,15 @@
+{
+	"custId": "",
+	"paymentTool": "",
+	"trnsToken": "",
+	"trnsfrOutAcct": "",
+	"trnsAmountStr": "",
+	"payCategory": "",
+	"payNo": "",
+	"taxNo": "",
+	"taxMonth": "",
+	"checkId": "",
+	"cityId": "",
+	"payEndDate": "",
+	"payId": ""
+}

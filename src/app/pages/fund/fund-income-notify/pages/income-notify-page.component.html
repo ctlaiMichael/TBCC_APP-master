@@ -1,0 +1,44 @@
+<!-- Page Start-->
+<div *ngFor="let item of notifyData;">
+    <ul class="credit_card_bill_detail_list">
+        <li>
+            <p class="credit_card_name">
+                <i>{{ item | fieldCheck: 'fundCode'}}</i>
+                <i>{{ item | fieldCheck: 'fundName'}}</i>
+            </p>
+            <p>
+                <span>交易編號：</span>
+                <span>{{ item | fieldCheck: 'tradeNo'}}</span>
+            </p>
+            <p>
+                <span>投資幣別：</span>
+                <span>{{ item | fieldCheck: 'currency'}}</span>
+            </p>
+            <p>
+                <span>投資本金：</span>
+                <span>{{ ((item | fieldCheck: 'capital') | htMoney)}}</span>
+            </p>
+            <p>
+                <span>投資損益(元)：</span>
+                <span>{{ ((item | fieldCheck: 'incomeState') | htMoney)}}</span>
+            </p>
+            <p>
+                <span>獲利率(%)：</span>
+                <span>{{ item | fieldCheck: 'reward'}}%</span>
+            </p>
+            <!-- <p>
+                <span>停損點/獲利點</span>
+                <span>-{{ item | fieldCheck: 'incomePoint'}}%/+{{ item | fieldCheck: 'profitPoint'}}%</span>
+            </p> -->
+            <!-- 贖回 待新增 -->
+            <!-- <p class="">
+                <span>通知：</span>
+                <span>
+                    <ng-container *ngIf="item.webNotice != 'N'"> {{ item | fieldCheck: 'webNotice'}} </ng-container>
+                    <ng-container *ngIf="item.emailNotice != 'N'"> {{ item | fieldCheck: 'emailNotice'}} </ng-container>
+                </span>
+            </p> -->
+
+        </li>
+    </ul>
+</div>

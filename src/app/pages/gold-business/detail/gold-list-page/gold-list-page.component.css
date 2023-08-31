@@ -1,0 +1,131 @@
+/* @group [table_info] ----------------------------------------------------------------------------------------*/
+
+.table_info_new {
+    display: table;
+    float: left;
+
+    width: 100%;
+}
+
+.table_row_new {
+    display: table-row;
+}
+
+.table_row_new>* {
+    font-size: 17px;
+    font-family: 'arial';
+    /* font-weight: bold; */
+    position: relative;
+
+    display: table-cell;
+
+    padding-top: 13px;
+    padding-bottom: 13px;
+    text-align: right;
+
+    color: #646464;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.table_row_new>*:first-child {
+    font-size: 14px;
+
+    width: 1px;
+    padding-right: 10px;
+    padding-left: 20px;
+
+    white-space: nowrap;
+}
+
+.table_row_new>*:last-child {
+    padding-right: 20px;
+
+    text-align: right;
+
+    color: #519d7a;
+}
+
+.table_th_style_new .table_row_new:first-child {
+    background: #fffeee;
+}
+
+.table_th_style_new .table_row_new>*:last-child {
+    font-size: 14px;
+}
+
+.table_th_style_new .table_row_new:first-child>* {
+    font-size: 14px !important;
+
+    color: #646464;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+/* End [table_info] ---------------------------------------------------------------------------------------- */
+
+.table_data_frame {
+    float: left;
+
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.table_data_new {
+    display: table;
+    float: left;
+
+    width: 100%;
+}
+
+.table_data_new>.data_cell {
+    font-family: 'arial';
+    font-size: 14px;
+
+    line-height: 50px;
+
+    position: relative;
+
+    display: table-cell;
+
+    padding: 0 5px;
+
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+
+    color: #646464;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.data_open>.data_cell {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.table_data_new:first-child>.data_cell {
+    font-size: 14px !important;
+    font-weight: normal !important;
+
+    /* border-bottom: 1px solid #6cc19e; */
+}
+
+.table_data_new>.data_cell:first-child {
+    width: 65px;
+    min-width: 65px;
+    padding-left: 20px;
+}
+
+.table_data_new>.data_cell:nth-child(3) {
+    font-size: 17px;
+    font-weight: bold;
+
+    text-align: right;
+}
+
+.table_data_new>.data_cell:last-child {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+
+    text-align: center;
+}

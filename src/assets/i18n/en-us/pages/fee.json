@@ -1,0 +1,14 @@
+{
+    "PG_FEE": {
+        "ERROR": {
+            "ERROR": "TEST",
+            "NOT_YET": "本功能即將提供!",
+            "ACCT_CONTENT": "很抱歉，您欲查詢的帳戶資訊不存在",
+            "ID":"統一編號或身分證號不得為空",
+            "PHONENUM":"電信(號)號碼不得為空"
+        },
+        "BUTTON":{
+            "HINETPAY":"繳交電信費用"
+        }
+    }
+}

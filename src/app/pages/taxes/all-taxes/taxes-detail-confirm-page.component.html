@@ -1,0 +1,60 @@
+<div class="sub_info_subtitle">
+	請確認轉帳資訊以及是否要繼續交易
+</div>
+
+<ul class="table_info">
+	<ng-container *ngIf="!isFuelFee">
+		<li class="table_row">
+			<span>扣款帳號</span>
+			<i>{{taxesConfirm.trnsfrOutAccnt | accountFormate }}</i>
+		</li>
+		<li class="table_row">
+			<span>繳款類別</span>
+			<i>{{taxesDetailConfirm.atmCode}}-{{taxesDetailConfirm.subName}}</i>
+		</li>
+		<li class="table_row">
+			<span>銷帳編號</span>
+			<i>{{taxesConfirm.payNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>繳納截止日</span>
+			<!-- <i>{{taxesConfirm.payEndDate | htDate:'yyyy-MM-dd'}}</i> -->
+			<i>{{taxesConfirm.payEndDate}}</i>
+		</li>
+		<li class="table_row">
+			<span>繳納金額</span>
+			<i>{{taxesConfirm.trnsfrAmount | currencyMoney:'TWD'}}元</i>
+		</li>
+	</ng-container>
+	<ng-container *ngIf="isFuelFee">
+		<li class="table_row">
+			<span>繳款類別</span>
+			<i>{{allFuelFee.payCategory}}</i>
+		</li>
+		<li class="table_row">
+			<span>扣款帳號</span>
+			<i>{{allFuelFee.trnsfrOutAccnt | accountFormate }}</i>
+		</li>
+		<li class="table_row">
+			<span>銷帳編號</span>
+			<i>{{allFuelFee.payNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>繳納金額</span>
+			<i>{{allFuelFee.trnsfrAmount | currencyMoney:'TWD'}}元</i>
+		</li>
+		<li class="table_row">
+			<span>繳納截止日</span>
+			<i>{{allFuelFee.payEndDate | htDate:'yyyy/MM/dd'}}</i>
+			<!-- <i>{{allFuelFee.payEndDate}}</i> -->
+		</li>
+	</ng-container>
+</ul>
+<div class="row_single"></div>
+<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+<div class="row_single">
+	<div class="double_button">
+		<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.PREVIOUS' | translate }}</a>
+		<a href="javascript:void(0)" (click)="finalCheck()">{{'BTN.CHECK' | translate }}</a>
+	</div>
+</div>

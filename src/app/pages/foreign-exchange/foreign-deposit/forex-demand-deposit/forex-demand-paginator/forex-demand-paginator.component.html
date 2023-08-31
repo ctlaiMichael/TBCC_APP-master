@@ -1,0 +1,49 @@
+<ng-container *ngIf="showData ; else noDataBox">
+    <ng-container *ngFor="let item of data;">
+        <li class="table_data" expandList>
+            <!-- 交易日: transDate -->
+            <span class="data_cell">{{ ((item | fieldCheck: 'transDate') | htDate: 'MM/dd')}}</span>
+            <!-- 摘要: digest  -->
+            <i class="data_cell">{{ item | fieldCheck: 'digest'}}</i>
+            <!-- 支出/存入 -->
+            <b class="data_cell" depositAmount [data]="item"></b>
+            <s class="data_cell">
+                <button class="sub_open"></button>
+            </s>
+        </li>
+        <div class="sub_open_info_frame" style="overflow: hidden;">
+            <dl class="sub_open_info">
+
+                <!-- 結餘金額: balance -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.balance' | translate }}</span>
+                    <span>{{ (item | fieldCheck: ['balance',{zero_type:false, empty_str:'--'}]) | htMoney }}</span>
+                    <span></span>
+                </dt>
+                <!-- 交易行庫: rcvBankName -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.rcvBankName' | translate }}</span>
+                    <span>{{ (item | fieldCheck: 'rcvBankName') | branchName: false  }}</span>
+                    <span></span>
+                </dt>
+                <!-- 備註: remarks -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.remarks' | translate }}</span>
+                    <span>{{ item | fieldCheck: ['remarks',{zero_type:false, empty_str:'--'}]}}</span>
+                    <span></span>
+                </dt>
+            </dl>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #noDataBox>
+    <li class="table_data">
+        <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+            {{ 'ERROR.EMPTY' | translate }}
+            <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+        </span>
+    </li>
+</ng-template>

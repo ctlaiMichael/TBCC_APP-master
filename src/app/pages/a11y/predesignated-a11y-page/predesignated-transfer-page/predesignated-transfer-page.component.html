@@ -1,0 +1,133 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y">
+    <div class="simple_title_a11y">提醒您，新增約定轉帳需依循以下規則</div>
+  </div>
+  <div class="row_single_a11y">
+      <ul>
+          <li class="simple_title_a11y simple_title_em_without_before_a11y">
+              有*為必填欄位
+          </li>
+          <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            備註及訊息文字長度限18位英數字或8個中文字。
+          </li>
+      </ul>
+  </div>
+
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">*轉出帳號</div>
+      <!-- <div class="input_area_a11y"> -->
+        <div>
+        <select name="" [ngClass]="checkObj.checkTransOut?'transfer_select_a11y':'transfer_select_wrong_a11y'"
+          [(ngModel)]="transferObj.selectTrnsOutAcct" (change)=transOutChange()>
+          <option *ngIf="transferObj.selectTrnsOutAcct == -1" value="-1">請選擇轉出帳號</option>
+          <!-- 注意顯示的轉出帳號為format的，帶入電文為沒有format的 -->
+          <option *ngFor="let trnsOutAcct of transferObj.trnsOutAccts; let i = index" [value]="i">
+            {{formatAccount(trnsOutAcct.acctNo)}}</option>
+        </select>
+        <div *ngIf="!checkObj.checkTransOut" class="check_wrong_str_a11y">
+          {{checkObj.TransOutStr}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div *ngIf="transferObj.balanceShow">
+        <label class="inner_title_content_a11y">餘額</label>
+        <div class="inner_div_a11y" id="enter_balance">
+          <!-- title="{{twdTitle(balanceAmt|htMoney:'TWD'|htMoney:'TWD','')}}" -->
+          NT$ {{balanceAmt|htMoney:'TWD'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">*約定轉入帳號</div>
+      <!-- <div class="input_area_a11y"> -->
+          <div>
+        <select #trnsInSelect tabindex="0" name="" [ngClass]="checkObj.checkTransIn?'transfer_select_a11y':'transfer_select_wrong_a11y'"
+          [(ngModel)]="transferObj.selectTrnsInAcct" (change)="transInChange()">
+          <option *ngIf="transferObj.selectTrnsInAcct == -1" value="-1">請選擇約定轉入帳號</option>
+          <!-- 注意顯示的轉入帳號為format的，帶入電文為沒有format的 -->
+          <option *ngFor="let trnsInAcct of transferObj.trnsInAccts; let i = index" [value]="i">
+            {{trnsInAcct.bankName}}&nbsp;{{formateTrnsInAcct(trnsInAcct.acctNo)}}
+          </option>
+        </select>
+        <div *ngIf="!checkObj.checkTransIn" class="check_wrong_str_a11y">
+          {{checkObj.TransInStr}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">*轉帳金額</div>
+      <div class="inner_table_cell1_a11y" [ngClass]="checkObj.checkTransAmt?'':'red_border_a11y'">
+        <!-- (ngModelChange)="checkNumber($event)" -->
+        <input appNumbersOnly type="number" pattern="\d*"
+          [ngClass]="checkObj.checkTransAmt?'inner_input1_a11y':'inner_input1_a11y_wrong'"
+          [(ngModel)]="transferObj.trnsfrAmount" placeholder="請輸入轉帳金額" id="enter_amt" (change)="transAmtChange()" />
+        <div class="inner_table_cell_text_a11y" [style.color]="checkObj.checkTransAmt?'' : 'red' "
+          [ngStyle]="checkObj.checkTransAmt?'':''">元</div>
+      </div>
+      <div *ngIf="!checkObj.checkTransAmt" class="check_wrong_str_a11y">
+        {{checkObj.TransAmtStr}}
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">轉帳機制</div>
+      <!-- <div class="input_area_a11y"> -->
+          <div>
+        <div class="inner_div_a11y" id="enter_mechanism">
+          SSL
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">付款人備註</div>
+      <!-- <div class="input_area_a11y"> -->
+          <div>
+        <input type="text"
+          [ngClass]="checkObj.checkNotePayer?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'"
+          [(ngModel)]="transferObj.notePayer" placeholder="請輸入備註" id="enter_note" (change)="notePayerChange()" />
+      </div>
+      <div *ngIf="!checkObj.checkNotePayer" class="check_wrong_str_a11y">
+        {{checkObj.NotePayerStr}}
+      </div>
+    </div>
+  </div>
+  <div class="row_single_2_a11y">
+    <div class="inner_table_frame_a11y">
+      <div class="inner_title_content_a11y">給收款人訊息</div>
+      <!-- <div class="input_area_a11y"> -->
+          <div>
+        <input type="text"
+          [ngClass]="checkObj.checkNotePayee?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'"
+          [(ngModel)]="transferObj.notePayee" placeholder="請輸入訊息(限本行帳號)" id="enter_msg" (change)="notePayeeChange()" />
+      </div>
+      <div *ngIf="!checkObj.checkNotePayee" class="check_wrong_str_a11y">
+        {{checkObj.NotePayeeStr}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row_single_a11y"></div>
+  <div class="row_single_a11y">
+    <div>
+      <button class="button_confirm_a11y" (click)="nextStep()">
+        下一步
+      </button>
+    </div>
+  </div>
+  <div class="row_single_a11y">
+    <button class="button_confirm_a11y" (click)=cancel()>
+      <div class="button_cancel_a11y">取消</div>
+    </button>
+  </div>
+</section>

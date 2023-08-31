@@ -1,0 +1,43 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "rtnCode": "ok",
+    "subCode": ""
+  },
+  "acctBelongCustCode":"16313302",
+  "acctBelongName": "企業戶名稱",
+  "dataQueryTime":"2016/05/05 13:00:12",
+  "inwardRemittanceInfo": [
+      {
+        "seq":"0001",
+        "refNo": "NHAH5115901-002",
+        "ccy":"USD",
+        "amt": "87,578.00",
+        "ordCustInfo":"DSM FINANCE BV",
+        "paymentDay": "2016/04/21",
+        "benefitAcctNo":"003710000070001234567890000"
+      },
+      {
+        "seq":"0002",
+        "refNo": "NHAJ1100354-002",
+        "ccy":"USD",
+        "amt": "690.50",
+        "ordCustInfo":"KOREA NONWOVEN INDUSTRY COOPERATIVE",
+        "paymentDay": "2016/04/21",
+        "benefitAcctNo":"003710000070001234566788900000000000"
+      },
+      {
+        "seq":"0003",
+        "refNo": "NHAJ1100354-002",
+        "ccy":"USD",
+        "amt": "12,132,158,894,569.50",
+        "ordCustInfo":"KOREA NONWOVEN INDUSTRY COOPERATIVE",
+        "paymentDay": "2016/04/21",
+        "benefitAcctNo":"00371000007000"
+      }
+  ]
+}

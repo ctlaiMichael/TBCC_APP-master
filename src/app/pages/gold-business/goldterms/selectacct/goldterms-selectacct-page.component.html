@@ -1,0 +1,16 @@
+<ng-container>
+  <section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar"></li>
+            <li class="step_bar step_active"><span>2.帳號選擇</span></li>
+            <li class="step_bar"></li>
+            <li class="step_bar"></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <div class="inner_links_frame">
+        <a class="inner_link" *ngFor="let menu of goldAcctsList" (click)="onClick(menu)">{{ menu.acctNo | accountFormate }}</a>
+    </div>
+  </section>
+</ng-container>

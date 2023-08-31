@@ -1,0 +1,66 @@
+<!--說明頁popup -->
+<div class="poppup_window_frame" id="popup_information">
+	<div class="poppup_window">
+		<div class="text_content">
+			<h3 class="row_single in_sub_title"></h3>
+			<p></p>
+		</div>
+		<div class="poppup_bbtn"></div>
+		<div class="poppup_bclose">
+			<a href="javascript:void(0);" onclick="MainUiTool.closePopupWindow(this);"></a>
+		</div>
+	</div>
+</div>
+<!-- 說明頁popup //End -->
+<!-- 錯誤頁popup -->
+
+<!-- popup 警告視窗 -->
+<div class="zoom-anim-dialog mfp-hide dialog_style dialog_warning" id="popup_dialog">
+	<h3 class="row_single in_sub_title"></h3>
+	<p></p>
+	<div class="button_row"></div>
+</div>
+<!-- 錯誤頁popup //End -->
+
+<!-- Add by Ivan 2018.5.24 -->
+
+<!-- popup 警告視窗 -->
+<div class="zoom-anim-dialog mfp-hide dialog_style biometric_dialog_warning" id="biometric_dialog">
+	<h3 class="row_single in_sub_title"></h3>
+	<p></p>
+	<div class="button_row"></div>
+</div>
+<!-- 錯誤頁popup //End -->
+
+
+<!-- popup(上傳照片) -->
+<div id="popup_upload">
+	<div class="ca_upload_frame">
+		<!-- 上傳之圖片顯示框架 -->
+		<div class="camera_album_frame"></div>
+		<!-- 選單按鈕 -->
+		<div class="ca_button">
+			<a href="javascript:void(0);" class="ca_btn_l"><b class="i_ca_camera"></b><span>{{'NACTIVE_MSG.OPEN_CAMERA' | translate }}</span></a><!-- 開啟相機 -->
+			<a href="javascript:void(0);" class="ca_sumbit"><b class="i_ca_upload"></b><span>{{'BTN.CHECK' | translate }}</span></a><!-- 確認 -->
+			<a href="javascript:void(0);" class="ca_btn_r"><b class="i_ca_album"></b><span>{{'NACTIVE_MSG.OPEN_PHOTO' | translate }}</span></a><!-- 開啟相簿 -->
+		</div>
+		<div class="poppup_bclose">
+			<a href="javascript:void(0);">X</a>
+		</div>
+	</div>
+	<!-- popup(檢視照片)  -->
+	<div class="ca_show_frame">
+		<!-- 上傳之圖片顯示框架 -->
+		<div class="camera_album_frame"></div>
+		<a href="javascript:void(0);" class="upload_delete"></a>
+		<div class="poppup_bclose">
+			<a href="javascript:void(0);">X</a>
+		</div>
+	</div>
+	<!-- popup(檢視照片)  //End -->
+</div>
+<!-- popup(上傳照片) //End -->
+
+<!-- 登入選單 -->
+<login-directive></login-directive>
+<!-- 登入選單 //End

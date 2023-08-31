@@ -1,0 +1,73 @@
+<!-- 歷史牌價才有子選單:查巡區間 -->
+<ul class="sub_tab_table sub_tab_four">
+	<li class="sub_td_cell" (click)="onDayClick(item)" *ngFor="let item of daytime_menu">
+		<a href="javascript:void(0)" [ngClass]="{'active': (active_daytime==item) }">{{item.day}}</a>
+	</li>
+</ul>
+
+<ng-container *ngIf="showData; else noDataBox">
+	<ng-container *ngIf="self_flag">
+		<app-date-range-search [show]="showSearchBox" [dateObj]="searchBoxRule" [infoData]="searchInfoData"
+			(backPageEmit)="customserach($event)"></app-date-range-search>
+
+	</ng-container>
+	<ng-container *ngIf="isserachclick">
+		<!-- 自訂收尋 -->
+		<div class="sub_info_subtitle" id="showTime3">
+			<a class="search_range_btn mb_15">
+				{{set_data.startDate| htDate:'date'}}~{{set_data.endDate| htDate:'date'}}
+				<i class="search_range_icon icon_search" (click)="customserach($event)"></i>
+			</a>
+		</div>
+	</ng-container>
+	<!-- </div> -->
+	<!-- 自定查詢 end -->
+	<ng-container *ngIf="!self_flag">
+		<ng-container *ngIf="contentflag">
+			<div class="sub_info_subtitle font_align_left">
+				<!-- 掛牌時間 -->
+				{{ 'FIELD.SEARCH_TIME' | translate }}：
+				<span>{{currentTime | htDate}}</span>
+				<!-- {{ dataTime | htDate}} -->
+				<br>
+				<!-- 牌價幣別：新台幣（元）  -->
+				{{ 'PG_GOLD.RATE.FIELD.CURRENCY' | translate }}：
+				<span>{{ 'PG_FINANCIAL.FIELD.UNIT_TWD' | translate }}</span>
+				<br>
+				<!-- 商品重量: 1公克  -->
+				{{ 'PG_GOLD.RATE.FIELD.WEIGHT' | translate }}：
+				<span>{{ 'PG_GOLD.RATE.BARS.1G' | translate }}</span>
+			</div>
+
+
+			<!--黃金走勢圖-->
+			<ng-container *ngIf="onedayflag">
+				<div class="">
+					<echart [chartData]="chart_setting" [sourceData]="sourceData"></echart>
+				</div>
+			</ng-container>
+			<!--黃金走勢表-->
+
+			<div class="table_gold_frame">
+				<div class="table_gold_row">
+					<div class="table_gold_th">日期</div>
+					<div class="table_gold_th">賣出</div>
+					<div class="table_gold_th">買進</div>
+				</div>
+				<div class="table_gold_row" *ngFor="let item of table_data">
+					<div class="table_gold_td">{{item.trandDate}}</div>
+					<div class="table_gold_td">{{item.balance | htMoney: 'TWD' }}</div>
+					<div class="table_gold_td">{{item.deposit | htMoney: 'TWD' }}</div>
+					
+				</div>
+			</div>
+		</ng-container>
+
+		<!-- 歷史牌價 -->
+		<!-- </ng-template>
+	</span> -->
+	</ng-container>
+</ng-container>
+<ng-template #noDataBox>
+	<div class="sub_info_subtitle">查無資料</div>
+</ng-template>

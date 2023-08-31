@@ -1,0 +1,105 @@
+{
+  "resHeader":{
+    "rquId":"12345",
+    "transDttm":"20160325123022879",
+    "deviceId":"Gphone12345",
+    "ipAddress":"29.10.33.21",
+    "locale":"zh-TW",
+    "appVersion":"2.0",
+    "osType":"01",
+    "idNo":"20795222",
+    "userId":"user01",
+    "telegramName":"T2100101"
+  },
+  "t2100201ResultType" : {
+    "details" : [
+      {
+        "compId" : "16313302",
+        "compName" : "網際威信股份有限公司",
+        "accounts" : [
+          {
+            "acctNo" : "04864188062616",
+            "acctType" : "XM",
+            "currencys" : [
+              {
+                "crncyName" : "CNY",
+                "balance" : "513000000000000"
+              },
+              {
+                "crncyName" : "USD",
+                "balance" : "13129.53"
+              }
+            ],
+            "lastTransDate" : "201603251100"
+          }
+        ]
+      },
+      {
+        "compId" : "53530345",
+        "compName" : "不二股份有限公司",
+        "accounts" : [
+          {
+            "acctNo" : "04858683600131",
+            "acctType" : "XM",
+            "currencys" : [
+              {
+                "crncyName" : "CNY",
+                "balance" : "555300"
+              },
+              {
+                "crncyName" : "USD",
+                "balance" : "15332.39"
+              },
+              {
+                "crncyName" : "EUR",
+                "balance" : "3133.58"
+              }
+            ],
+            "lastTransDate" : "201603251100"
+          }
+        ]
+      },
+      {
+        "compId" : "86880378",
+        "compName" : "逸凡科技股份有限公司",
+        "accounts" : [
+          {
+            "acctNo" : "04864188073771",
+            "acctType" : "XM",
+            "currencys" : [
+              {
+                "crncyName" : "USD",
+                "balance" : "55013.94"
+              },
+              {
+                "crncyName" : "AUD",
+                "balance" : "3359.3"
+              },
+              {
+                "crncyName" : "CAD",
+                "balance" : "586.00"
+              }
+            ],
+            "lastTransDate" : "201603251055"
+          },
+          {
+            "acctNo" : "04899864896534",
+            "acctType" : "XM",
+            "currencys" : [
+              {
+                "crncyName" : "CNY",
+                "balance" : "80000"
+              },
+              {
+                "crncyName" : "EUR",
+                "balance" : "35800.46"
+              }
+            ],
+            "lastTransDate" : "201603251100"
+          }
+        ]
+      }
+
+    ]
+  }
+}

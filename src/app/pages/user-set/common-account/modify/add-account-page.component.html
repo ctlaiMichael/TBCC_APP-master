@@ -1,0 +1,142 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageModify=='edit'?'step_active':''"><span *ngIf="pageModify=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageModify=='confirm'?'step_active':''"><span *ngIf="pageModify=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+
+
+    <ng-container *ngIf="pageModify=='edit'">
+        <div [hidden]="showPage == 'bankPage'">
+            <div class="row_single"></div>
+
+            <div class="row_single">
+                <div class="inner_radio radio_inline">
+                    <input type="radio" id="inner_radio01" name="inner_radio"  value="1" [(ngModel)]="acntRadio.type"
+                        (click)="clearAcnt('1')">
+                    <label for="inner_radio01">
+                        <span><i></i></span>
+                        <b>約定帳號</b>
+                    </label>
+                </div>
+                <div class="inner_radio radio_inline">
+                    <input type="radio" id="inner_radio02" name="inner_radio" value="2" [(ngModel)]="acntRadio.type"
+                        (click)="clearAcnt('2')">
+                    <label for="inner_radio02">
+                        <span><i></i></span>
+                        <b>其他帳號</b>
+                    </label>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="transfer_frame" [ngClass]="errorMsg['errAcnt']?'active_warnning':''">
+                    <div class="transfer_td">轉入<br>帳號</div>
+                    <div class="transfer_td">
+                        <input type="text" name="code" class="inner_input" (click)="selectCode()" readonly=""
+                            placeholder="請選擇轉入行庫" [(ngModel)]="userAcnt.bankAllname">
+                        <input type="tel" name="account" class="inner_input accountCheck" (click)="enterAcnt()" [ngClass]="dis_input&&userAcnt.trnsInAccnt!=''?'normal_disable':''"
+                            placeholder="請輸入轉入帳號" [(ngModel)]="userAcnt.trnsInAccnt" maxlength="16">
+                    </div>
+                    <div class=""></div>
+                </div>
+                <i class="input_info_warnning">{{errorMsg['errAcnt']|translate}}</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="errorMsg['easyName']?'active_warnning':''">
+                    <li class="inner_table_cell">
+                        *好記名稱
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="nickname" class="inner_input" placeholder="請輸入好記名稱" [(ngModel)]="userAcnt.accntName">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg['easyName']|translate}}</i>
+            </div>
+
+            <!-- <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        目前您的轉帳機制：
+                    </li>
+                    <li class="inner_table_cell">
+                        <select name="WireTransfer" class="inner_select" [(ngModel)]="nowType">
+                            <option [ngValue]="item" *ngFor="let item of safeType">{{item.name}}</option>
+                        </select>
+                    </li>
+                </ul>
+            </div> -->
+            <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+            </app-select-security>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void('0')" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+                    <a href="javascript:void('0')" (click)="checkEvent('1');">{{'BTN.NEXT' | translate }}</a>
+                </div>
+            </div>
+        </div>
+        <!-- 選擇銀行代號 -->
+        <div [hidden]="showPage != 'bankPage'">
+            <!-- <div class="row_single_2">
+                <h4 class="simple_title">選擇銀行代號</h4>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single_2">
+                <ul class="search_input">
+                    <li class="search_td">
+                        <input type="text" class="inner_input" placeholder="">
+                    </li>
+                    <li class="search_td">
+                        <a class="search_btn"></a>
+                    </li>
+                </ul>
+            </div>
+            <a class="inner_news_list" *ngFor="let item of bankList">
+                <span class="inner_news_list_td no_line">
+                    <i class="inner_news_title" (click)="getBankCode(item.bankCode,item.bankName)">
+                        {{item.bankCode}}&nbsp; {{item.bankName}}
+                    </i>
+                </span>
+                <span class=""></span>
+            </a> -->
+
+            <app-search-bank-page (backPageEmit)="getBankCode($event)"></app-search-bank-page>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="pageModify=='confirm'">
+        <app-confirm-account-modify-page [editData]="userAcnt" (backPageEmit)="goResult($event)" (backToEdit)="toEditPage($event)"></app-confirm-account-modify-page>
+    </ng-container>
+    <ng-container *ngIf="pageModify=='result'">
+        <app-result [successMsg]="successMsg" [successContent]="successContent" 
+        [toTwdTransfer]="goBackFlag" (backToTWDTransfer)="toTWDTransfer($event)" ></app-result>
+    </ng-container>
+</section>
+<!-- </憑證> -->
+<ng-container *ngIf="popFlag">
+    <app-certify (verify)="onVerifyResult($event)"></app-certify>
+</ng-container>
+
+<ng-container *ngIf="acntRadio.type=='1'">
+    <div class="popup_window " [ngClass]="acntRadio.flag?'popup_open':''">
+        <div class="popup_content">
+            <div class="row_single">
+                <h4 class="simple_title">請選擇約定轉入帳號</h4>
+            </div>
+            <div class="row_single">
+                <select name="Promise_Select" class="inner_select_normal" [(ngModel)]="selectAcnt">
+                    <option [ngValue]="item" *ngFor="let item of agreeAccList">{{item.bankId}}-{{item.bankName}}
+                        {{item.acctNo}}</option>
+                </select>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void('0')" (click)="cancel_pop();">{{'BTN.CANCEL' | translate }}</a>
+                    <a href="javascript:void('0')" (click)="check_pop('1')">{{'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

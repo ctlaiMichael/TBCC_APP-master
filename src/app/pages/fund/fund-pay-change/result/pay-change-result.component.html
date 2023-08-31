@@ -1,0 +1,146 @@
+<section>
+	<!-- 錯誤結果頁 -->
+	<ng-container *ngIf="isSuccess =='1'">
+		<app-edit-result-temp [setData]="resultData" (backPageEmit)="backMenuPage()"></app-edit-result-temp>
+	</ng-container>
+	<ng-container *ngIf="isSuccess =='-1'">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame exclamation_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">處理中</span>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="isSuccess=='0'">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">{{ fullData.hostCodeMsg }}</span>
+			</div>
+		</div>
+		<ul class="table_info">
+			<li class="table_row">
+				<span>現金收益存入帳號</span>
+				<i id='type'>{{ fullData.profitAcnt }}</i>
+			</li>
+			<li class="table_row">
+				<span>申請日期</span>
+				<i>{{setData.effectDate | htDate:'date'}}</i>
+			</li>
+			<li class="table_row">
+				<span>交易編號</span>
+				<i>{{fullData.transCode}}</i>
+			</li>
+			<li class="table_row">
+				<span>基金名稱</span>
+				<i>{{fullData.newFund}}-{{fullData.newFundName}}</i>
+			</li>
+			<li class="table_row">
+				<span>每次投資金額</span>
+				<i>{{fullData.INCurrency}}{{fullData.investAmnt | htMoney:fullData.INCurrency}}元</i>
+			</li>
+			<li class="table_row">
+				<span>每週/每月扣款日期</span>
+				<i>{{showDateStr}}</i>
+			</li>
+			<li class="table_row">
+				<span>扣款狀態</span>
+				<i>{{payAcntStatusName}}</i>
+			</li>
+			<li class="table_row">
+				<span>扣款帳號</span>
+				<i>{{fullData.payAcnt}}</i>
+			</li>
+			<li class="table_row">
+				<span>現金收益帳號</span>
+				<i>{{fullData.profitAcnt}}</i>
+			</li>
+			<!-- 2020/06/05 經清福同意將 不定額加減碼(title)移除 -->
+			<!-- code非空值: 定期不定額-顯示加減碼設定 -->
+			<!-- <ng-container *ngIf="code != ''&& code != null">
+				<li class="table_row">
+					<span>不定額加碼</span>
+					<i>
+						<div class="curreny_change_frame">
+							<div class="curreny_change">
+								<a href="javascript:void(0);" class="active">跌幅級距</a>
+								<a href="javascript:void(0);">漲幅級距</a>
+							</div>
+						</div>
+
+					</i>
+				</li>
+			</ng-container> -->
+		</ul>
+		<!-- code非空值: 定期不定額-顯示加減碼設定 -->
+		<ng-container *ngIf="code != '' && code != null">
+			<ul class="table_info table_th_style">
+				<li class="table_row">
+					<span>評價跌幅級距%</span>
+					<i>加/減碼金額</i>
+				</li>
+				<li class="table_row">
+					<span>-5~-10</span>
+					<i>{{fullData.decline1Cd}}{{fullData.decline1 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>-10~-15</span>
+					<i>{{fullData.decline2Cd}}{{fullData.decline2 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>-15~-20</span>
+					<i>{{fullData.decline3Cd}}{{fullData.decline3 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>-20~-25</span>
+					<i>{{fullData.decline4Cd}}{{fullData.decline4 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>-25以下</span>
+					<i>{{fullData.decline5Cd}}{{fullData.decline5 | htMoney:fullData.INCurrency}}</i>
+				</li>
+			</ul>
+
+			<ul class="table_info table_th_style" id="upsDown2">
+				<li class="table_row">
+					<span>評價漲幅級距%</span>
+					<i>加/減碼金額</i>
+				</li>
+				<li class="table_row">
+					<span>+5~+10</span>
+					<i>{{fullData.gain1Cd}}{{fullData.gain1 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>+10~+15</span>
+					<i>{{fullData.gain2Cd}}{{fullData.gain2 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>+15~+20</span>
+					<i>{{fullData.gain3Cd}}{{fullData.gain3 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>+20~+25</span>
+					<i>{{fullData.gain4Cd}}{{fullData.gain4 | htMoney:fullData.INCurrency}}</i>
+				</li>
+				<li class="table_row">
+					<span>+25以上</span>
+					<i>{{fullData.gain5Cd}}{{fullData.gain5 | htMoney:fullData.INCurrency}}</i>
+				</li>
+			</ul>
+		</ng-container>
+		<ng-container *ngIf="erroMsg!=''">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame exclamation_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">{{erroMsg}}</span>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 交易失敗 END-->
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a href="javascript:void(0)" class="button_confirm" (click)="backMenuPage()">返回投資理財</a>
+		</div>
+	</ng-container>
+
+</section>

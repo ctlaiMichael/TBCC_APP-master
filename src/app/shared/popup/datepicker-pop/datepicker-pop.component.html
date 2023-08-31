@@ -1,0 +1,57 @@
+<div class="date_select">
+
+	<div class="date_header">
+		<span class="year_part" (click)="onYearOpen()">{{selectItem.getFullYear()}}</span>
+		<h1 (click)="onMonthOpen()">{{(selectItem.getMonth()+1
+			<10 ? '0' : '')+(selectItem.getMonth()+1) + '/' + (selectItem.getDate()<10 ? '0' : '')+selectItem.getDate()}}</h1>
+	</div>
+
+
+	<div class="control" *ngIf="date_area">
+		<div class="pre {{!IsPre ? 'disable' : ''}}" (click)="onChangePreMonth()">
+			<i class="arrow_link arrow_left"></i>
+		</div>
+		<div class="date_month" (click)="onMonthOpen()">{{Date_now.getFullYear() + ' ' + Month_name[Date_now.getMonth()]}}</div>
+		<div class="next {{!IsNext ? 'disable' : ''}}" (click)="onChangeNextMonth()">
+			<i class="arrow_link"></i>
+		</div>
+	</div>
+	<!-- 日期選單 -->
+	<div class="select_area" *ngIf="date_area">
+		<div class="week">
+			<span>{{ 'WEEK.SUN' | translate }} </span>
+			<span>{{ 'WEEK.MON' | translate }} </span>
+			<span>{{ 'WEEK.TUE' | translate }} </span>
+			<span>{{ 'WEEK.WED' | translate }} </span>
+			<span>{{ 'WEEK.THUR' | translate }} </span>
+			<span>{{ 'WEEK.FRI' | translate }} </span>
+			<span>{{ 'WEEK.SAT' | translate }} </span>
+		</div>
+		<div class="day">
+			<div *ngFor="let day of Month_Data">
+				<span *ngIf="onCheckMonthFilter(day)" (click)="onSelect(day)" [class]="onCheckDayClass(day)">{{day.getDate()}}</span>
+			</div>
+		</div>
+	</div>
+	<!-- 日期選單 End -->
+	<div class="yearSelect" style="display:none" #scrollerBoardBox>
+		<!-- 年份選單 Start -->
+		<div #yearBoardBox>
+			<div *ngFor="let year of years_before" (click)="yearOnSelect(year)">{{year}}</div>
+			<div #targetyear class="selected" (click)="yearOnSelect(Date_now.getFullYear())">{{Date_now.getFullYear()}}</div>
+			<div *ngFor="let year of years_after" (click)="yearOnSelect(year)">{{year}}</div>
+		</div>
+		<!-- 年份選單 End -->
+		<!-- 月份選單 Start -->
+		<div #monthBoardBox>
+			<div *ngFor="let m1 of months_before" (click)="monthsOnSelect(m1)">{{ m1 | monthNameDatepicker: Month_name }}</div>
+			<div #targetmonth class="selected" (click)="monthsOnSelect(Date_now)">{{ Date_now | monthNameDatepicker: Month_name }}</div>
+			<div *ngFor="let m2 of months_after" (click)="monthsOnSelect(m2)">{{ m2 | monthNameDatepicker: Month_name }}</div>
+		</div>
+		<!-- 月份選單 End -->
+	</div>
+	<div class="bottom_area">
+		<div (click)="popClose()">{{ 'BTN.CANCEL' | translate }} </div>
+		<div (click)="onSubmit()">{{ 'BTN.CHECK' | translate }} </div>
+	</div>
+</div>

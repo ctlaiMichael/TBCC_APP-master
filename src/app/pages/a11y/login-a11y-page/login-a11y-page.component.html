@@ -1,0 +1,106 @@
+<section class="background1_a11y">
+    <div class="row_single_a11y">
+        <p class="simple_title_em_a11y">有*為必填欄位</p>
+    </div>
+    <form [formGroup]="loginForm2">
+        <div class="row_single3_a11y">
+            <div class="inner_table_frame_a11y">
+                <div>
+                    <label class="inner_title_content_a11y" style="width: 75%;" for="IDChoose">*身分證字號/統一編號</label>
+                    <li class="inner_area_right_a11y">記住我</li>
+                    <div class="td_like_a11y" [ngClass]="validate('custId')?'input_error_a11y':''">
+                        <li class="ai_td_a11y" style="display:inline;">
+                            <div class="ai_frame_a11y" style="width: 75%;  height: 120%;">
+                                <!-- <input type="text" maxlength="12" formControlName="custId" appUppercase
+                                    class="account_input_a11y" placeholder="請輸入身分證字號"
+                                    [checked]="loginRemember.rememberMe.remcust === '1'" /> -->
+                                  <input #custId type="{{seeObj.seecust?'password':'text'}}" maxlength="12"
+                                  (keyup.enter)="onEnter('custId')" formControlName="custId" appUppercase
+                                  class="account_input_a11y" placeholder="身分證字號">
+                            </div>
+                        </li>
+                    </div>
+
+
+                    <li class="inner_area_right_a11y" style="padding-top: 0em;">
+                        <div class="switch_opne_close_a11y">
+                            <input (click)="remember('remcust')" title="記住身分證字號或統一編號" type="checkbox" name="toggle"
+                                [checked]="loginRemember.rememberMe.remcust === '1'" id="rememberMyId">
+                            <label for="toggle"><i></i></label>
+                        </div>
+                    </li>
+                    <!-- 提示錯誤訊息 -->
+                    <div *ngIf="validate('custId')" class="data_error_a11y">
+                        {{(loginForm2.getError('custId')?'ERROR.ERROR_CUST_ID':'ERROR.NO_CUST_ID')|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row_single3_a11y">
+            <div class="inner_table_frame_a11y">
+                <div>
+
+                    <label class="inner_title_content_a11y" for="NameChoose">*網路連線代號/使用者代號<br></label>
+                    <div class="td_like_a11y" [ngClass]="validate('userId')?'input_error_a11y':''">
+                        <li class="ai_td_a11y" style="display:inline;">
+                            <div class="ai_frame_a11y" style="width: 75%;  height: 120%;">
+                                <!-- <input type="text" formControlName="userId" class="account_input_a11y"
+                                    placeholder="請輸入使用者代號" [checked]="loginRemember.rememberMe.remuser === '1'" /> -->
+                                <input #userId type="{{seeObj.seeuser?'password':'text'}}" maxlength="16"
+                                  (keyup.enter)="onEnter('userId')" formControlName="userId" class="account_input_a11y"
+                                  placeholder="使用者代號">
+                            </div>
+                        </li>
+                    </div>
+
+
+                    <li class="inner_area_right_a11y" style="padding-top: 0em">
+
+
+                        <div class="switch_opne_close_a11y">
+                            <input (click)="remember('remuser')" title="記住使用者代號" type="checkbox" name="toggle"
+                                [checked]="loginRemember.rememberMe.remuser === '1'" id=rememberMyName>
+                            <label for="toggle"><i></i></label>
+                        </div>
+                    </li>
+                    <!-- 提示錯誤訊息 -->
+                    <div *ngIf="validate('userId')" class="data_error_a11y">
+                        {{(loginForm2.getError('userId')?'ERROR.ERROR_USER_ID':'ERROR.NO_USER_ID')|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row_single3_a11y">
+            <li class="inner_title_content_a11y" for="pwdChoose">*密碼</li>
+            <div class="td_like_a11y" [ngClass]="validate('pwd')?'input_error_a11y':''">
+                <div class="ai_td_a11y" style="display:inline;">
+                    <!-- 出現錯誤訊息的樣式「input_error」 -->
+                    <li class="ai_frame_a11y" style="width: 75%; height: 120%;">
+                        <!-- <input type="password" class="account_input_a11y" placeholder="請輸入使用者密碼" formControlName="pwd"
+                            maxlength="12" /> -->
+                        <input #pwd type="{{seeObj.seepwd?'password':'text'}}" class="account_input_a11y"
+                        (keyup.enter)="onEnter('pwd')" placeholder="密碼" formControlName="pwd"
+                        maxlength="12">
+                    </li>
+                </div>
+            </div>
+            <!-- 提示錯誤訊息 -->
+            <div *ngIf="validate('pwd')" class="data_error_a11y">
+                {{(loginForm2.getError('pwd')?'ERROR.ERROR_PWD':'ERROR.NO_PWD')|translate}}
+            </div>
+        </div>
+    </form>
+    <div class="row_single_a11y">
+    </div>
+    <div class="row_single_a11y"></div>
+    <div class="row_single_a11y"></div>
+    <div class="row_single_a11y" >
+        <div><a id="login" class="button_confirm_a11y" (click)="loginMethod()" role="button">登入</a></div>
+    </div>
+    <div class="row_single_a11y">
+        <a class="button_confirm_a11y" (click)="cancellogin()" >
+            <div class="button_cancel_a11y" role="button">取消</div>
+        </a>
+    </div>
+</section>

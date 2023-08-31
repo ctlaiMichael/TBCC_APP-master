@@ -1,0 +1,20 @@
+export const fq000406_res_01 = {
+	"MNBResponse": {
+		"@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+		"resHeader": {
+			"requestNo": "1481860700840-fq000406",
+			"requestTime": "2016-12-13T18:27:40.500+08:00",
+			"responseTime": "2016-12-13T18:27:40.671+08:00",
+			"custId": "B1202812720"
+		},
+		"result": {
+			"@xsi:type": "fq0:fq000406ResultType",
+			"@xmlns:fq0": "http://mnb.hitrust.com/service/schema/fq000406",
+			// "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+			"fq0:trnsRsltCode": "0",
+			"fq0:hostCode": "4001",
+			"fq0:hostCodeMsg": "交易成功",
+			"fq0:resData": "{\"v\":\"0.2\",\"code\":\"200\",\"msg\":\"查詢成功\",\"details\":[{\"rowNum\":0,\"SocialWelfareBAN\":\"29215439\",\"LoveCode\":\"199907\",\"SocialWelfareName\":\"社團法人台灣彩虹愛家生命教育協會\",\"SocialWelfareAbbrev\":\"彩虹愛家\"},{\"rowNum\":1,\"SocialWelfareBAN\":\"19472660\",\"LoveCode\":\"1999\",\"SocialWelfareName\":\"中華民國老人福祉協會\",\"SocialWelfareAbbrev\":\"老福會\"},{\"rowNum\":2,\"SocialWelfareBAN\":\"19992\",\"LoveCode\":\"19992\",\"SocialWelfareName\":\"內政部委託財團法人台灣省天主教會新竹教區辦理台灣省寧園安養院\",\"SocialWelfareAbbrev\":\"寧園安養院\"},{\"rowNum\":3,\"SocialWelfareBAN\":\"5241999\",\"LoveCode\":\"5241999\",\"SocialWelfareName\":\"社團法人高雄市注意力缺陷過動症協會\",\"SocialWelfareAbbrev\":\"過動症協會\"},{\"rowNum\":4,\"SocialWelfareBAN\":\"1199902\",\"LoveCode\":\"1199902\",\"SocialWelfareName\":\"財團法人愛盲基金會\",\"SocialWelfareAbbrev\":\"愛盲基金會\"},{\"rowNum\":5,\"SocialWelfareBAN\":\"1999197\",\"LoveCode\":\"1999197\",\"SocialWelfareName\":\"財團法人天主教靈醫會私立聖嘉民啟智中心\",\"SocialWelfareAbbrev\":\"聖嘉民啟智中心\"},{\"rowNum\":6,\"SocialWelfareBAN\":\"245199907\",\"LoveCode\":\"5199907\",\"SocialWelfareName\":\"財團法人宜蘭縣私立蘭陽仁愛之家\",\"SocialWelfareAbbrev\":\"蘭陽仁愛之家\"},{\"rowNum\":7,\"SocialWelfareBAN\":\"6619991\",\"LoveCode\":\"66199911\",\"SocialWelfareName\":\"恆基醫療財團法人恆春基督教醫院\",\"SocialWelfareAbbrev\":\"恆春基督教醫院\"}]}"
+		}
+	}
+};

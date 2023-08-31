@@ -1,0 +1,33 @@
+<div class="backimage">
+
+    <div style="height:90vh;"></div>
+    <div style="font-size: 12px;text-align: center;color:white; height:10vh;" ng-if="androidPlatform">
+        將條碼置於鏡頭範圍內以進行掃描。
+    </div>
+    <!-- <div style="height:10vh;" ng-if="!androidPlatform"> -->
+        <button class="btnStyle" ng-click="cancel()">取消</button>  
+    <!-- </div> -->
+
+</div>
+
+
+
+<style>
+    .backimage{
+        margin-top:-20px;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('ui/newMainPage/image/qrcode.svg');
+        background-size:cover;
+        background-position: center 0;
+        background-size: 120%;
+    }
+    .btnStyle{
+        background: #ffffff;
+        text-align: center;
+        width:100vw;
+        height: 10vh;
+        line-height: 40px;
+        color: #23a5fc;
+    }
+</style>

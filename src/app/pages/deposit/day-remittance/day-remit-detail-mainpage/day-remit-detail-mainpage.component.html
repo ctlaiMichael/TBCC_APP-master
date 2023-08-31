@@ -1,0 +1,17 @@
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <div class="inner_news_list_frame">
+        <div class="sub_info_subtitle">
+            帳號：{{(acctObj| fieldCheck:'account')| accountFormate}}<br>
+            查詢時間：<span>{{ dataTime | htDate }}</span>
+        </div>
+        <div class="row_single"></div>
+
+        <!-- Page1 -->
+        <app-day-remit-detail-paginator [page]="1" [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"
+            (errorPageEmit)="onErrorBackEvent($event)">
+        </app-day-remit-detail-paginator>
+        <!-- Page other -->
+        <ng-container #pageBox></ng-container>
+    </div>
+</section>
+

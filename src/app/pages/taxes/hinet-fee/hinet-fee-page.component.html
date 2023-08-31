@@ -1,0 +1,173 @@
+<section>
+	<ng-container *ngIf="'result' != showPage ">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar" [ngClass]="{'step_active':'inquiry'==showPage}">
+					<span *ngIf="'inquiry' == showPage ">1.填寫資料</span>
+				</li>
+				<li class="step_bar" [ngClass]="{'step_active':'list'==showPage}">
+					<span *ngIf="'list' == showPage ">2.選擇繳款</span>
+				</li>
+				<li class="step_bar" [ngClass]="{'step_active':'confirm'==showPage}">
+					<span *ngIf="'confirm' == showPage ">3.確認</span>
+				</li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="'inquiry' == showPage ">
+		<div class="row_single">
+			<h4 class="simple_title">{{'PG_TAX.TITLE.HINET-FEE' | translate}}</h4>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['customerId']?'active_warnning':''">
+				<li class="inner_table_cell">
+					統一編號/<br>身分證號
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" [(ngModel)]="allHinetFeeData['customerId']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['customerId'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['phone']?'active_warnning':''">
+				<li class="inner_table_cell">
+					電信(號)號碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" [(ngModel)]="allHinetFeeData['phone']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['phone'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="goList()">{{'BTN.NEXT' | translate }}</a>
+			</div>
+		</div>
+
+		<div class="row_single">
+			<h4 class="simple_title">提醒您：</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				*電信(號)號碼請參考電信費帳單，並輸入英數字之號碼。<br>
+				*本項繳費作業係與中華電信電腦系統即時連線，代繳費用之查核依中華電信方式處理或者您可以利用中華電信線上繳費網頁進行繳納電信費作業。
+			</p>
+		</div>
+	</ng-container>
+
+	<!--- 列表頁-->
+	<ng-container *ngIf="'list' == showPage ">
+		<!-- 安控機制 start-->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+		<!-- 安控機制 end-->
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrOutAccnt']?'active_warnning':''">
+				<li class="inner_table_cell">
+					扣款帳號:
+				</li>
+				<li class="inner_table_cell">
+					<ng-container *ngIf="defaultAcctNoFlag;else otherShow">
+					<select class="inner_select" (change)="onChangeType()"
+						[(ngModel)]="hinetFeeConfirmData['trnsfrOutAccnt']">
+						<option value="" selected disabled>請選擇扣款帳號</option>
+						<option *ngFor="let item of trnsfrOutAccnt">{{item.acctNo | accountFormate }}</option>
+					</select>
+				</ng-container>
+				<ng-template #otherShow>
+						<select class="inner_select">
+							<option>{{hinetFeeConfirmData['trnsfrOutAccnt'] | accountFormate }}</option>
+						</select>
+					</ng-template>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['trnsfrOutAccnt'] | translate}}</i>
+		</div>
+		<ul class="credit_card_bill_detail_list" *ngFor="let item of hinetFeeData">
+			<li>
+				<p class="credit_card_name">
+					<!---YYYMM-->
+					<i>出帳年月</i>
+					<i>{{item.billDt}}</i>
+				</p>
+				<p>
+					<!---YYYMMDD-->
+					<span>繳交期限</span>
+					<span>{{item.dueDt | htDate:'yyyy/MM/dd'}}</span>
+				</p>
+				<p>
+					<span>欠費金額</span>
+					<span>{{item.payableAmount}}</span>
+				</p>
+				<p>
+					<span>帳單種類</span>
+					<span>{{item.billType}}</span>
+				</p>
+				<p>
+					<span>帳類</span>
+					<span>{{item.accountType}}</span>
+				</p>
+				<p>
+					<span>檢查碼</span>
+					<span>{{item.checkCode}}</span>
+				</p>
+				<!-- 有按鈕最後一個項目要加上 no_border_bottom -->
+				<a class="no_border_bottom" (click)="goConfirmPage(item)">{{'PG_FEE.BUTTON.HINETPAY' | translate}}</a>
+			</li>
+		</ul>
+
+
+		<!-- 20190903 Boy 因無中華電信查詢測試資料，故使用下列資料為
+			「查詢資料」，以便開發並測試至繳交中華電信費。資料於上傳前將註解。-->
+	
+		<!-- <ul class="credit_card_bill_detail_list">
+			<li>
+				<p class="credit_card_name">
+					<i>出帳年月</i>
+					<i>10808</i>
+				</p>
+				<p>
+					<span>繳交期限</span>
+					<span>2019/08/26</span>
+				</p>
+				<p>
+					<span>欠費金額</span>
+					<span> TWD 499</span>
+				</p>
+				<p>
+					<span>帳單種類</span>
+					<span>02</span>
+				</p>
+				<p>
+					<span>帳類</span>
+					<span>G8</span>
+				</p>
+				<p>
+					<span>檢查碼</span>
+					<span>A1</span>
+				</p>
+				<a class="no_border_bottom" (click)="fakeDatagoConfirmPage()">{{'PG_FEE.BUTTON.HINETPAY' | translate}}</a>
+			</li>
+		</ul> -->
+
+		<!-- 20190903 Boy  修改完畢------------------>
+		
+	</ng-container>
+
+	<!-- 確認頁-->
+	<ng-container *ngIf="'confirm' == showPage ">
+		<app-hinet-fee-confirm-page (backToEdit)="toEditPage($event)" (backPageEmit)="finalCheckData($event)"
+			[hinetFeeConfirm]="hinetFeeConfirmData"></app-hinet-fee-confirm-page>
+	</ng-container>
+
+	<!-- 結果頁-->
+	<ng-container *ngIf="'result' == showPage">
+			<app-hinet-fee-result-page [hinetFeeResult]="hinetFeeResultData"></app-hinet-fee-result-page>
+		</ng-container>
+
+</section>

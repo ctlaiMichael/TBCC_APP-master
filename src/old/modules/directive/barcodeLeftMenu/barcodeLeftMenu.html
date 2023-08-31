@@ -1,0 +1,49 @@
+<!-- 跳出雲端發票左側隱藏式選單視窗 -->
+<div ng-if="onBarcodeLeftMenu" >
+    <div class="shadow" style="display: block" ng-click="clickMenuList(false)"></div>
+    <div class="pop_content">
+        <div style="border-bottom: 1px solid #dddddd;">
+            <img style="height:50px;margin-top:10px;" src="ui/tcbbOldStyle/image/logocmyk-02.png">
+        </div>
+        <div class="colStyle" ng-repeat="item in menu" ng-click="clickGO(item.url)" ng-bind="item.name"></div>
+        <!-- <div class="colStyle" ng-click="clickGO('getBarcodeTerm')">發票載具條碼</div>
+        <div class="colStyle" ng-click="clickGO('bankInfoEdit')">設定領獎帳號</div>
+        <div class="colStyle" ng-click="clickGO('changeVerEdit')">變更手機條碼驗證碼</div>
+        <div class="colStyle" ng-click="clickGO('backToTWPay')">回合庫E pay</div> -->
+    </div>
+    <!--pop_pay end-->
+</div>
+<!-- 跳出雲端發票左側隱藏式選單視窗 // End -->
+
+<style>
+    .pop_content {
+        /*此行指定放置廣告的div */
+        width: 50vw;
+        /*此行設定div的寬度*/
+        height: 100vh;
+        /*此行設定div的高度*/
+        background-color: #ffffff;
+        /*此行設定div的背景圖形*/
+        box-shadow: 4px 4px 12px 4px rgba(20%, 20%, 40%, 0.5);
+        /*此行設定div的外框陰影*/
+        position: fixed;
+        /*此行設定div為不隨捲動而移動的模式*/
+        left: 27%;
+        top: 50%;
+        /* transform: translate(-50%, -50%); */
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        z-index: 1001;
+        line-height: 36px;
+        padding: 10px;
+    }
+
+    .colStyle {
+        border-bottom: 1px solid #dddddd;
+        padding: 5px;
+        margin-top: 5px;
+        height: 40px;
+    }
+
+</style>

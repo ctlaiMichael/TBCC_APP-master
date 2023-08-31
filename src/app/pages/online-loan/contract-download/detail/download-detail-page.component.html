@@ -1,0 +1,49 @@
+<section>
+
+    <ng-container [ngSwitch]="nowPage">
+        <ng-container *ngSwitchCase="'edit2Page'">
+            <ul class="credit_card_bill_detail_list loan">
+                <li>
+                    <p class="credit_card_name">
+                        <i>網銀案件編號</i><br>
+                        <i>000000000239</i>
+                    </p>
+                    <p>
+                        <span>申請日期：</span>
+                        <span>108/03/13</span>
+                    </p>
+                    <p>
+                        <span>貸款分行：</span>
+                        <span>自強分行</span>
+                    </p>
+                    <p>
+                        <span>申請種類：</span>
+                        <span>信用貸款</span>
+                    </p>
+                    <a href="javascript:void(0);" (click)="onDownload()">下載</a>
+                </li>
+            </ul>
+        </ng-container>
+
+        <!-- <ng-container *ngSwitchCase="'resultPage'">
+            <app-download-result></app-download-result>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'testPage'">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame exclamation_active">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">沒有您要查詢的資料</span>
+                </div>
+                <p class="sub_info_list">
+                    <span class="sub_info_title no_content">如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。</span>
+                </p>
+            </div>
+            <div class="row_single">
+                <div class="row_single"></div>
+                <a href="javascript:void(0);" class="button_confirm">返回線上申貸</a>
+            </div>
+        </ng-container>
+    </ng-container> -->
+    </ng-container>
+</section>

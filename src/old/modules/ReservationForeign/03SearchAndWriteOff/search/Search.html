@@ -1,0 +1,107 @@
+<!-- <frameset rows="," cols=",">
+	<frame src="" name="">
+	
+</frameset>header -->
+<div class="row">
+    <header class="native_main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">預約外匯</p>
+        </div>
+        <div class="page_title">預約外匯轉帳查詢</div>
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></img></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="main_input">
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>交易類型:</p>
+                        </div>
+                        <!-- <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payNo" placeholder="請選擇轉出帳號"></div>
+                         -->
+                         <select name="Accountselect" ng-model = "life" >
+                            <option  value="">請選擇交易類型</option> 
+                            <option  value="P">結購存外存</option> 
+                            <option  value="S">外存結售</option> 
+                            
+                            
+                        </select>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>扣款期間起日:</p>
+                        </div>						
+                         <!-- <div class="input_warning"><input type="date"  max="{{date1}}" min="{{date2}}" class="content_input" ng-model="example.value"  value="" placeholder="yyyy-MM-dd"></div>  -->
+                         <!-- <input type= "text" onfocus="(this.type='date')" id="" name="" placeholder="請選擇時間" />  -->
+                         <!-- <div class="input_warning"><input type="text" placeholder="請選擇扣款期間起日" id="birthday" max="{{date1}}" min="{{date2}}"/></div> -->
+                         <div class=""><input id="birthday" ng-model="message" class="" type="date" placeholder="請選擇起日"  style="height:21px;overflow: hidden;" max="{{date1}}" min="{{date2}}" ng-blur="checkDate()"></div>
+                         <!-- <input type="date" id="send-date" ng-model="message" max="{{date1}}" min="{{date2}}" ng-blur="checkDate()" /> -->
+                         <!-- <input type="date" min="2013-07-29" max="2013-12-31">
+                         <select placeholder="heure"> -->
+                        </div>
+                    <!-- https://msdn.microsoft.com/zh-tw/library/ee532932(v=vs.94).aspx -->
+                    
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>扣款期間迄日:</p>
+                        </div>						
+                         <!-- <div class="input_warning"><input type="date"  max="{{date1}}" min="{{date2}}" class="content_input" ng-model="example.value"  value="" placeholder="yyyy-MM-dd"></div>  -->
+                         <!-- <input type= "text" onfocus="(this.type='date')" id="" name="" placeholder="請選擇時間" />  -->
+                         <div class=""><input id="birthday1" ng-model="message1" class="" type="date" placeholder="請選擇迄日"  style="height:21px;overflow: hidden;" max="{{date1}}" min="{{date2}}" ng-blur="checkDate()"></div>
+                         <!-- <input type="date" id="send-date1" ng-model="message1" max="{{date1}}" min="{{date2}}" ng-blur="checkDate()" /> -->
+                    </div>
+                   
+                        
+                        
+                        
+
+                    
+                    
+                    <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+                            <button type="button" class="cancel_bt" ng-click="clickBack()">取消</button>							
+                        </div>
+                    </div>
+					
+                    
+
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div>
+
+                <!--main_input end-->
+            </div>
+            <!--main_content end-->
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>
+
+<!-- 跳出繳費作業視窗 -->
+<div ng-if="onChangeSecurityType">
+<div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+<div class="row" >
+    <div class="pop_securityType">
+        <a><div class="securityType" ng-click="changeSecurity(anotherSecurityType.key)" >{{anotherSecurityType.name}}</div>
+    </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出繳費作業視窗 End -->

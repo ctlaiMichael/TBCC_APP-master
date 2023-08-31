@@ -1,0 +1,98 @@
+<ng-container *ngIf="showContent=='searchPage'">
+    <section>
+        <div class="row_single">
+            <!-- <input type="text" name="" id="timeInterval" class="inner_input_normal" placeholder="2018/06/06-2018/11/26"> -->
+            <!-- <a href="javascript:void(0)" class="search_range_btn mb_15" id="timeInterval">
+            2018/11/07~2019/03/07
+            <i class="search_range_icon icon_search"></i>
+        </a> -->
+
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    交易狀況
+                </li>
+                <li class="inner_table_cell">
+                    <select name="" class="inner_select" [(ngModel)]="nowStatus" (change)="onChangeType(event)">
+                        <option *ngFor="let menuS of dataStatus" [ngValue]="menuS">{{ menuS.name }}</option>
+                    </select>
+                </li>
+            </ul>
+            <div class='row_single'></div>
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    交易項目
+                </li>
+                <li class="inner_table_cell">
+                    <select name="" class="inner_select" [(ngModel)]="nowType" (change)="onChangeType(event)">
+                        <option *ngFor="let menuT of dataType" [ngValue]="menuT">{{ menuT.name }}</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="row_single"></div>
+
+            <ul class="inner_table_frame mb_15" [ngClass]="{'active_warnning': showError.error }">
+                <!-- 查詢起日 -->
+                <li class="inner_table_cell">*{{ 'FIELD.SEARCH_START_DATE' | translate }}</li>
+                <li class="inner_table_cell">
+                    <!-- <input type="date" class="inner_input_data" min="{{startDate.min}}" max="{{startDate.max}}" [(ngModel)]="content_data.startDate"> -->
+					<input-date [min]="startDate.min" [max]="startDate.max" [(ngModel)]="content_data.startDate"></input-date>
+                </li>
+            </ul>
+            <ul class="inner_table_frame mb_15" [ngClass]="{'active_warnning': showError.error}">
+                <!-- 查詢迄日 -->
+                <li class="inner_table_cell">*{{ 'FIELD.SEARCH_END_DATE' | translate }}</li>
+                <li class="inner_table_cell">
+                    <!-- <input type="date" class="inner_input_data" min="{{endDate.min}}" max="{{endDate.max}}" [(ngModel)]="content_data.endDate"> -->
+                    <input-date [min]="endDate.min" [max]="endDate.max" [(ngModel)]="content_data.endDate"></input-date>
+                </li>
+            </ul>
+            <i class="input_info_warnning font_align_left">{{ showError.msg | translate }}</i>
+
+            <div class="row_single search_custom"></div>
+            <a href="javascript:(void);" class="button_confirm search_custom" (click)="showContentList()">查詢</a>
+            <!-- </div> -->
+        </div>
+    </section>
+</ng-container>
+<!-- 結果頁 -->
+<ng-container *ngIf="showContent=='listPage'">
+    <section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+        <div class="row_single" style="margin-bottom: 0px;">
+            <!-- <input type="text" name="" id="timeInterval" class="inner_input_normal" placeholder="2018/06/06-2018/11/26"> -->
+            <a href="javascript:void(0)" class="search_range_btn mb_15">
+                {{ content_data | fieldCheck:'startDate' | htDate:'date' }}~{{ content_data | fieldCheck:'endDate' | htDate:'date' }}
+                <i class="search_range_icon icon_search"></i>
+            </a>
+        </div>
+        <ng-container [ngSwitch]="showListType">
+            <ng-container *ngSwitchCase="'B'">
+                <ul class="credit_card_bill_detail_list">
+                    <app-reserve-cancel-page [page]="1" [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-reserve-cancel-page>
+                    <ng-container #pageBoxB></ng-container>
+                </ul>
+            </ng-container>
+            <ng-container *ngSwitchCase="'C'">
+                <ul class="credit_card_bill_detail_list">
+                    <app-reserve-cancel-page [page]="1" [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-reserve-cancel-page>
+                    <ng-container #pageBoxC></ng-container>
+                </ul>
+            </ng-container>
+            <ng-container *ngSwitchCase="'D'">
+                <ul class="credit_card_bill_detail_list">
+                    <app-reserve-cancel-page [page]="1" [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-reserve-cancel-page>
+                    <ng-container #pageBoxD></ng-container>
+                </ul>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <ul class="credit_card_bill_detail_list">
+                    <app-reserve-cancel-page [page]="1" [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-reserve-cancel-page>
+                    <ng-container #pageBoxA></ng-container>
+                </ul>
+            </ng-container>
+        </ng-container>
+    </section>
+</ng-container>
+<!-- 內容頁 -->
+<ng-container *ngIf="showContent=='listDetailPage'">
+    <app-reserve-cancel-content [setDataInfo]="fund_info" [setData]="contentDetail_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-reserve-cancel-content>
+</ng-container>

@@ -1,0 +1,16 @@
+<div class="bc_frame">
+	<h3 ng-if="activityList.length <= 0">{{'CTRL_ACTIVITY.NO_SEARCH_HAVE' | translate}}</h3><!-- 查無資料 -->
+	<div class="" ng-repeat="(tk , indata) in activityList">
+		<div class="checkbox_list checkbox_normal" >
+		<label for="checkbox_normal" class="original_checkbox option_for_group">
+			<span></span>
+			<b>{{indata.activityName}}<br>({{indata.activityPeriod}})</b>
+		</label>
+		</div>
+	</div>
+</div>
+<div class="bc_frame">
+	<div class="row_single2" >
+		<button class="button_confirm"  ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+	</div>
+</div>

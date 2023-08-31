@@ -1,0 +1,54 @@
+<section>
+  <ng-container *ngIf="!result_btn">
+    <div class="row_single">
+      <h4 class="simple_title">合作金庫商業銀行OTP推播服務條款</h4>
+    </div>
+    <div class="row_single" style="height: 50vh; overflow-y: scroll;">
+      <div class="inner_content">
+        <ol class="order_list">
+          <!-- 存戶同意啟用快速登入及裝置綁定服務，請詳閱以下約定事項，如您已經完全了解並同意遵守，請勾選同意條款<br> -->
+          <li>
+            存戶同意啟用本服務於　貴行網路銀行/行動網銀執行轉帳交易時(含繳費稅及消費扣款等交易)，原透過簡訊發送OTP密碼，將改由推播方式發送OTP密碼至存戶已完成裝置綁定之設備，且本服務僅限存戶於一台已完成綁定之行動裝置使用。
+          </li>
+          <li>本服務預設為關閉，存戶須先依「開戶總約定書」之約定方式啟用OTP轉帳安控機制，並登入行動網銀完成裝置綁定後，方得使用本服務；倘嗣後存戶關閉本服務，貴行則改以簡訊發送OTP密碼。</li>
+          <li>若存戶於執行交易時，輸入OTP密碼連續錯誤達五次(包含以簡訊或推播發送OTP密碼)，系統將自動停用OTP安控機制，如須恢復使用，您可登入網路銀行利用憑證進行OTP解鎖交易，或至各營業單位臨櫃辦理OTP解鎖服務。</li>
+          <li>
+            存戶請勿於已破解系統權限之行動裝置上使用本服務，且應自行妥善保管行動裝置勿交付他人使用，亦請勿將接收之推播訊息轉知他人，以防止有心人士盜用，並建議應先設定行動裝置之「螢幕鎖定密碼」或「開機密碼」保護後再啟用本服務，以確保帳戶及交易安全。
+          </li>
+          <li>存戶同意本約定事項如有未盡事宜均依　貴行「開戶總約定書」之相關約定辦理。
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="row_single">
+      <div class="inner_checkbox">
+        <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="agreeStatement">
+        <label for="inner_checkbox01">
+          <span><i></i></span>
+          <b>本人已閱讀並瞭解上述服務條款之內容。</b>
+        </label>
+      </div>
+    </div>
+    <div class="row_single">
+      <div class="double_button" style="margin-top: 10px;">
+        <!--不同意-->
+        <a (click)="disagree()">{{'PG_SECURITY.PATTERN_LOCK.DISAGREE' | translate}}</a>
+        <!--瞭解並同意-->
+        <a (click)="agree()">{{'BTN.AGREE.AGREE' | translate}}</a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="result_btn">
+    <div class="sub_info_frame result">
+      <div class="step_final_icon_frame ">
+        <i class="icon_success"></i>
+        <span class="step_final_info">設定成功</span>
+      </div>
+      <p class="sub_info_list" style="color:white">原交易驗證的OTP密碼，已改用推播到您已認證之行動裝置</p>
+    </div>
+    <div class="row_single"></div>
+    <div class="row_single">
+      <a class="button_confirm" href="javascript:void(0);" (click)="goMenu()">確認</a>
+    </div>
+  </ng-container>
+</section>

@@ -1,0 +1,32 @@
+<!--Added by Ivan 2018.5.10-->
+<div>
+<body>
+    <div class="header_bar" ng-class="{ios_header_bar:ios}" >
+        <header class="main_nav">
+            <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button>
+            <h2 class="header_title" style="opacity:1;top:25px;">快速登入/交易設定</h2>
+            <div class="no_bt" ></div>
+        </header> 
+    </div>
+        <section style="top:125px;">
+            <div class="row_single">
+                <h4 class="simple_title">快速登入(指紋/臉部)</h4>
+            </div>
+            <div class="row_single">
+                <div class="switch_opne_close">
+                    <input type="checkbox" name="toggle" ng-model="checkbox" id="setting_biometric" ng-click="goAgree()">
+                    <label for="toggle"><i></i></label>
+                </div>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">台灣Pay交易</h4>
+            </div>
+            <div class="row_single">
+                <div class="switch_opne_close">
+                    <input type="checkbox" name="toggle" ng-model="checkbox2" id="setting_pay" ng-click="goAgree()">
+                    <label for="toggle"><i></i></label>
+                </div>
+            </div>
+        </section>
+    </body>
+</div>

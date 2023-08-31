@@ -1,0 +1,176 @@
+<section>
+	<ng-container *ngIf="showNextPage=='edit'">
+		<div [hidden]="searchExchangeFlag=='search'">
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.填寫資料</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsfrOutAccnt.length!==0)}">
+					<li class="inner_table_cell">
+						綜存帳號
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="sendObj.trnsfrOutAccnt" (change)="onChange('acct')">
+							<option value="">請選擇綜存帳號</option>
+							<option *ngFor="let data of trnsObj.trnsAcnt" [ngValue]="data.trnsfrOutAccnt">
+								{{data.trnsfrOutAccnt | accountFormate}}</option>
+						</select>
+					</li>
+
+				</ul>
+				<!-- <i class="select_info" *ngIf='acctObj.balance'>{{acctObj.balance}}</i> -->
+				<i class="input_info_warnning">{{errorObj.trnsfrOutAccnt|translate}}</i>
+			</div>
+
+			<div class="row_single_2">
+				<ul class="inner_table_frame inner_table_frame_width" [ngClass]="{'active_warnning':(errorObj.trnsfrOutCurr.length!==0)}">
+					<li class="inner_table_cell">
+						轉存幣別
+					</li>
+					<li class="inner_table_cell">
+						<select name="" class="inner_select" [(ngModel)]="sendObj.trnsfrOutCurr" (change)="onChange('curr')" (click)="chgCurrency()">
+							<option value="">請選擇</option>
+							<option *ngFor="let item of trnsObj.trnsCurr" [ngValue]="item">{{item}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.trnsfrOutCurr}}</i>
+				<a href="javascript:void(0);" class="inner_button float_right_bt" (click)="depositInfomation()">
+					<span>轉存限制</span>
+				</a>
+			</div>
+
+			<!-- <hr class="divider"> -->
+			<!-- 
+			<div id="trans_date" class="row_single_2">
+				<ul id="date_input" class="inner_table_frame">
+					<li class="inner_table_cell">
+						轉存日期
+					</li>
+					<li class="inner_table_cell">
+						<input type="date" id="currentTime3" name="dateWithMinMax" min="2019/01/7" max="2019/06/26" class="inner_input_data">
+					</li>
+				</ul>
+				<i class="select_info" id="currentTime4" style="display:none">
+					目前設定
+					<i class="font_red">預約</i>
+					轉存日期為
+					<span id="currentTime5"></span>
+				</i>
+			</div> -->
+			<div class="row_single_2">
+				<ul class="inner_table_frame inner_table_frame_width" [ngClass]="{'active_warnning':(errorObj.transfrTimes.length!==0)}">
+					<li class="inner_table_cell">
+						轉存期別
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="sendObj.transfrTimes" (change)="onChange('trnsPeriod')">
+							<option value="">請選擇</option>
+							<!-- <option *ngFor="let key of objectKeys(selectObj['transfrTimes'])" [ngValue]="key">
+								{{selectObj['transfrTimes'][key]}}</option> -->
+							<option value="00">1星期</option>
+							<option value="01">1個月</option>
+							<option value="03">3個月</option>
+							<option value="06">6個月</option>
+							<option value="09">9個月</option>
+							<option value="12">12個月</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.transfrTimes}}</i>
+				<a href="javascript:void('0')" class="inner_button float_right_bt" (click)="searchExchange()">
+					<span>牌告利率</span>
+				</a>
+			</div>
+
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.autoTransCode.length!==0)}">
+					<li class="inner_table_cell">
+						續存方式
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="sendObj.autoTransCode" (change)="onChange('maturityInstruction')">
+							<option value="">請選擇續存方式</option>
+							<option *ngFor="let key of objectKeys(selectObj['autoTransCode'])" [ngValue]="key">
+								{{selectObj['autoTransCode'][key]}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.autoTransCode}}</i>
+			</div>
+
+			<div class="row_single_2">
+				<ul class="inner_table_frame inner_table_frame_width" [ngClass]="{'active_warnning':(errorObj.computeIntrstType.length!==0)}">
+					<li class="inner_table_cell">
+						計息方式
+					</li>
+					<li class="inner_table_cell">
+						<select name="cal_bill" class="inner_select" [(ngModel)]="sendObj.computeIntrstType" (change)="onChange('interestReceiptType')"
+						 [disabled]="disSelFlag">
+							<option value="">請選擇</option>
+							<option *ngFor="let key of objectKeys(selectObj['computeIntrstType'])" [ngValue]="key">
+								{{selectObj['computeIntrstType'][key]}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.computeIntrstType}}</i>
+				<a href="javascript:void(0);" class="inner_button float_right_bt" (click)="goOffer()">
+					<span>轉存優惠</span>
+				</a>
+			</div>
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.transfrAmount.length!==0)}">
+					<li class="inner_table_cell">
+						轉存金額
+					</li>
+					<li class="inner_table_cell">
+						<input type="number" oninput="value=value.replace(/[^\d.]/g,'');" class="inner_input" placeholder="請輸入金額" [(ngModel)]="sendObj.transfrAmount" (change)="onChange('transfrAmount')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.transfrAmount|translate}}</i>
+			</div>
+			<!-- 安控機制-->
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+			<!-- 安控機制-->
+
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+					<a href="javascript:void(0)" (click)="getRate()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">提醒您：</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_content">
+					<ol class="order_list">
+						<li>本交易限營業時間：星期一至星期五(例假日除外)上午九時至下午三時三十分。</li>
+						<li>計息方式為「按月領息」限轉存期別1個月(含)以上、總領息達新臺幣1000元且續存方式不可為本息續存。</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<ng-container *ngIf="searchExchangeFlag=='search'">
+			<div [hidden]="searchExchangeFlag!='search'">
+				<app-foreign-save-page [searchExchangeFlag]="searchExchangeFlag" (backExchange)="backExchange($event)">
+				</app-foreign-save-page>
+			</div>
+		</ng-container>
+	</ng-container>
+
+	<ng-container *ngIf="showNextPage=='confirm'">
+		<app-demand-to-time-confirm [showNextPage]="showNextPage" [formObj]="sendObj" (backPageEmit)="goResult($event)"
+		 (backToEdit)="toEditPage($event)"></app-demand-to-time-confirm>
+	</ng-container>
+	<ng-container *ngIf="showNextPage=='result'">
+		<app-demand-to-time-result [resultObj]="resultObj"></app-demand-to-time-result>
+	</ng-container>
+</section>

@@ -1,0 +1,140 @@
+<ng-container *ngIf="!showContent; else contentBox">
+    <section>
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar "></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar step_active"><span>5.確認</span></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+
+        <div class="sub_info_subtitle">
+            交易時間 :{{purchaseInfo.trnsDatetime | htDate}}
+        </div>
+
+        <ul class="table_info">
+            <li class="table_row">
+                <span>基金名稱</span>
+                <i>{{purchaseInfo.fundCode}}-{{purchaseInfo.fundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請日期</span>
+                <i>{{purchaseInfo.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>生效日期</span>
+                <i>{{purchaseInfo.effectDate | htDate:'date'}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>申購金額</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.amount| htMoney:purchaseInfo.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>申購手續費</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.serviceFee| htMoney:purchaseInfo.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>總扣款金額</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.totalAmnt| htMoney:purchaseInfo.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>扣款帳號</span>
+                <i>{{purchaseInfo.payAcnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>通知/出場</span>
+
+                <!-- 不設定 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == ''">
+                    <i>不設定</i>
+                </ng-container>
+
+                <!-- 自動贖回 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '1'">
+                    <i>自動贖回</i>
+                </ng-container>
+
+                <!-- 即時畫面 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '2'">
+                    <i>即時畫面</i>
+                </ng-container>
+
+                <!-- E-mail -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '3'">
+                    <i>E-mail</i>
+                </ng-container>
+
+                <!-- 即時畫面、E-mail -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '4'">
+                    <i>即時畫面、E-mail</i>
+                </ng-container>
+                <ng-container *ngIf="purchaseInfo.notiCD != '' && purchaseInfo.notiCD !='1' 
+				&& purchaseInfo.notiCD !='2' && purchaseInfo.notiCD !='3'&& purchaseInfo.notiCD !='4'">
+                    <i></i>
+                </ng-container>
+            </li>
+
+            <li class="table_row">
+                <span>停損點/停利點%</span>
+                <i>{{showBalanceLoss}}/{{showBalancePros}}%</i>
+            </li>
+            <li class="table_row">
+                <span>申購手續費基本費率</span>
+                <i>{{purchaseInfo.baseRate}}%</i>
+            </li>
+            <li class="table_row">
+                <span>申購手續費優惠費率</span>
+                <i>{{purchaseInfo.favorRate}}%</i>
+            </li>
+            <li class="table_row">
+                <span>本筆服務理專</span>
+                <i>{{purchaseInfo.salesName}}-{{purchaseInfo.salesId | identityMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>本筆轉介人員</span>
+                <i>{{purchaseInfo.introName}}-{{purchaseInfo.introId | identityMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>現金收益存入帳號</span>
+                <i>{{purchaseInfo.payAcnt}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+
+        <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void(0)" (click)="onCancel1()">上一步</a><a href="javascript:void(0)" (click)="onConfirm()">確定申購</a>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                1.如您按下確定後，本行將自動從您指定帳戶扣取投資金額及手續費。<br>
+                2.請確定約定扣款之存款帳上需有足夠的扣款金額，才能有效投資。<br>
+                3.如為預約交易，請於生效當日查詢「投資交易明細查詢」及扣款資料。<br>
+                4.如為預約交易，手續費將以生效日之實際手續費率計收。<br>
+                5.請您再次確認本次指定之生效日期等交易資料，如需修改，請點選取消，重新執行交易。<br>
+
+            </p>
+        </div>
+
+    </section>
+</ng-container>
+
+<!-- 結果頁 -->
+<ng-template #contentBox>
+    <app-purchase-single-result [setInfo]="setInfo" [resver_info]="resver_info" [setData]="purchaseInfo" [e]="safeE" [balanceData]="balanceData" [resvertype]="resvertype"></app-purchase-single-result>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="showstep step1">
+	<ul class="sublink_frame">
+		<li ng-repeat="(key, value) in cardList" ng-click="resultPage(key);">
+			<p>
+				<span>{{ 'BILL_MSG.MSG.CARD_NUMBER' | translate }}</span><!-- 卡號 -->
+				<span>{{value | accountMaskFilter}}</span>
+			</p>
+		</li>
+	</ul>
+
+	<!-- <ul class="sublink_frame" ng-if="menu_data">
+			<li ng-repeat="sub_menu in menu_data.sub_menu">
+				<a href="javascript:void(0);" ng-click="onMenuEvent(sub_menu)">{{sub_menu.name | translate }}</a>
+			</li>
+		</ul> -->
+</div>

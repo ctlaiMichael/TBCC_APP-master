@@ -1,0 +1,81 @@
+  <!-- section -->
+  <section class="background_a11y">
+    <div class="row_single_a11y"></div>
+    <!-- 卡片式總覽6 -->
+    <div class="row6_a11y">
+        <div class="row6_content_a11y" id="row6">
+            <div class="row7_black_a11y">存款帳號：<br>
+                <font class="font_money_a11y">{{ account }} <br>
+                    {{ account_state }}</font>
+            </div>
+            <div class="row6_space_a11y"></div>
+
+            <div class="row7_black_a11y" [title] = "myquerytime">查詢時間：<br>{{ querytime }}</div>
+            <div class="row6_space_a11y"></div>
+
+            <div class="row7_black_a11y" >實質餘額：<br>
+                <font class="font_money_a11y">NT$ {{ real_balance }}</font>
+            </div>
+            <div class="row6_space_a11y"></div>
+
+            <div class="row7_black_a11y" >可用餘額：<br>
+                <font class="font_money_a11y">NT$ {{ avbl_balance }}</font>
+            </div>
+            <div class="row6_space_a11y"></div>
+
+            <div id="more_detail" [ngStyle]="moredetail_style" >
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >今交票金額：<br>
+                    <font class="font_money_a11y">NT$ {{ payment_amt_today }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >明交票金額：<br>
+                    <font class="font_money_a11y">NT$ {{ payment_amt_tomo }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >扣押總額：<br>
+                    <font class="font_money_a11y">NT$ {{ detain_amt_tol }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >消費圈存：<br>
+                    <font class="font_money_a11y">NT$ {{ reload_amt_tol }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >凍結總額：<br>
+                    <font class="font_money_a11y">NT$ {{ frozen_amt_tol }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >營業時間後提款及轉出：<br>
+                    <font class="font_money_a11y">NT$ {{ rollout_amt }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >營業時間後存款及轉入：<br>
+                    <font class="font_money_a11y">NT$ {{ rollin_amt }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" [title] = "myfinance_rate">融資利率：<br>
+                    <font class="font_money_a11y">{{ finance_rate }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" >融資額度：<br>
+                    <font class="font_money_a11y">{{ finance_quota }}</font>
+                </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" [title] = "myfinance_date_start">融資期間(起)：</div>
+                <div class="row7_green_a11y">{{ finance_date_start }} </div>
+                <div class="row6_space_a11y"></div>
+                <div class="row7_black_a11y" [title] = "myfinance_date_end">融資期間(迄)：</div>
+                <div class="row7_green_a11y">{{ finance_date_end }} </div>
+            </div>
+        </div>
+         <button  id="drop_down" [title]="list_state" (click)="onchangelist()"
+         [ngClass]=" LIST_SHOW_FLAG !== true ? 'drop_down_a11y' : 'drop_up_a11y'" ></button>
+    </div>
+    <!-- 卡片式總覽6 End -->
+
+
+    <div class="row_single_a11y" >
+        <div (click)="goDetail()"><a class="button_confirm_a11y" role="button">回交易明細</a></div>
+    </div>
+</section>
+<!-- section End -->

@@ -1,0 +1,29 @@
+
+<div class="sub_info_frame result">
+  <div class="step_final_icon_frame">
+    <i ng-class="{'success': 'icon_success','error': 'icons_fault', 'warning': 'icons_fault icons_warring'}[message_type]"></i>
+    <span class="step_final_info">{{message_title}}</span>
+  </div>
+	<!-- <div class="sub_info_subtitle msgBox sub_info_list"></div> -->
+	<p class="sub_info_list">
+		<span class="sub_info_title msgBox no_content"></span>
+</p>
+</div>
+
+
+	<!-- <h3 class="row_single in_sub_title">{{message_title}}</h3>
+	<div class="row_single input_single">
+		<i class="input_name"></i>
+		<s class="input_comment"></s>
+	</div>
+	 -->
+	<div class="bc_frame"></div>
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+		</div>
+		<div class="row_single2">
+			<button ng-repeat="btn_member in message_btn" class="button_confirm" ui-sref="{{btn_member.sref}}">{{btn_member.name}}</button>
+		</div>
+	</div>
+</div>

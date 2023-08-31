@@ -1,0 +1,16 @@
+<ng-container>
+    <ng-container [ngSwitch]="assignPage">
+        <!-- 編輯頁 -->
+        <ng-container *ngSwitchCase="'edit_page'">
+            <app-foreign-to-foreign-edit (backPageEmit)="onBackPage($event)"></app-foreign-to-foreign-edit>
+        </ng-container>
+        <!-- 確認頁 -->
+        <!-- <ng-container *ngSwitchCase="'confirm_page'">
+            <app-foreign-to-foreign-confirm (backPageEmit)="onBackPage($event)" [formObj]="mainpageObj"></app-foreign-to-foreign-confirm>
+        </ng-container> -->
+        <!-- 結果頁 -->
+        <ng-container *ngSwitchCase="'result_page'">
+            <app-foreign-to-foreign-result [formObj]="mainpageObj" [securityResult]="securityResult"></app-foreign-to-foreign-result>
+        </ng-container>
+    </ng-container>
+</ng-container>

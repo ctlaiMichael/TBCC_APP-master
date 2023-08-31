@@ -1,0 +1,112 @@
+<!-- 處理中 -->
+<ng-container *ngIf="processing">
+	<section>
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame exclamation_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">處理中</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content">處理中請稍後。</span>
+			</p>
+		</div>
+	</section>
+</ng-container>
+<!-- 結果 -->
+<ng-container *ngIf="!processing">
+	<section>
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame {{showClass}}">
+				<i class="icon_success"></i>
+				<span class="step_final_info">{{ resTitle | translate }}</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content" style="text-align: center;" [innerHtml]="(resContent | translate) | safeHtml"></span>
+			</p>
+		</div>
+
+		<ng-container *ngIf="sucess">
+			<ul class="table_info">
+				<li class="table_row">
+					<li class="table_row">
+						<span>交易編號</span>
+						<i>{{info_data.transCode}}</i>
+					</li>
+					<li class="table_row">
+						<span>投資標的</span>
+						<i>{{info_data.fundCode}} {{info_data.fundName}}</i>
+					</li>
+					<li class="table_row">
+						<span>申請日期</span>
+						<i>{{info_data.enrollDate | htDate:'date'}}</i>
+					</li>
+
+					<li class="table_row">
+						<span>信託金額</span>
+						<i>{{info_data.inCurrency}} {{info_data.amount| htMoney:info_data.inCurrency}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>信託單位數</span>
+						<i>{{info_data.unit}}</i>
+					</li>
+
+					<li class="table_row">
+						<span>贖回信託金額</span>
+						<i>{{info_data.inCurrency}} {{info_data.redeemAmnt| htMoney:info_data.inCurrency}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>贖回單位數</span>
+						<i>{{info_data.redeemUnit}}</i>
+					</li>
+
+					<li class="table_row">
+						<span>贖回剩餘信託金額</span>
+						<i>{{info_data.inCurrency}} {{info_data.remainAmnt| htMoney:info_data.inCurrency}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>贖回款存入帳號</span>
+						<i>{{info_data.redeemAcnt}}</i>
+					</li>
+
+
+					<li class="table_row">
+						<span>信託管理費</span>
+						<i>{{info_data.inCurrency}} {{info_data.trustFee| htMoney:info_data.inCurrency}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>試算短線費用</span>
+						<i>{{info_data.inCurrency}} {{info_data.shortLineAmt| htMoney:info_data.inCurrency}}元</i>
+					</li>
+
+			</ul>
+			<!-- 雙欄位（一左一右）資訊範例 End -->
+			<div class="row_single">
+
+			</div>
+
+			<div class="row_single">
+				<a href="javascript:void(0)" class="button_confirm" (click)="onConfirm()">返回投資理財</a>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">提醒您</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					預約交易完成後，委託人如需查詢或取消預約交易可至「基金交易」項下之「預約作業查詢/取消預約」查詢作業狀態或取消預約交易。
+				</p>
+			</div>
+		</ng-container>
+
+		<ng-container *ngIf="!sucess">
+			<div class="row_single"></div>
+			<div class="row_single">
+				<a href="javascript:void(0);" class="button_confirm" (click)="onConfirm()">返回投資理財</a>
+			</div>
+		</ng-container>
+	</section>
+</ng-container>
+<!-- 結果 End -->

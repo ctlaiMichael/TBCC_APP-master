@@ -1,0 +1,26 @@
+<!--同意條款-->
+<div class="step_box step1" id="apply_agree" ng-if="showBoxStep > 0">
+	<temp-agree-information></temp-agree-information>
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ng-click="stepChangeToForm(1)"> {{'BTN.NEXT' | translate}}</button>
+			<!-- <button class="button button_submit" ng-click="stepChangeToForm(1)">{{'CTRL_APPLY.APPLY_BY_USER' | translate}}</button> --><!--卡友申請-->
+			<!-- <p>&nbsp;</p> -->
+			<!-- <button class="button button_submit" ng-click="stepChangeToForm(0)">{{'CTRL_APPLY.APPLY_BY_NEW' | translate}}</button> --><!--非卡友申請-->
+			
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p>*您可先行準備身分證及財力證明文件，或於7日內補件上傳。</p>
+		</div>
+		<!-- <div class="button_row">
+			<p>*您可先行準備身分證及財力證<br>明文件，或於7日內補件上傳。</p>
+		</div> -->
+	</div>
+
+</div>
+<!--補件上傳頁-->
+<!--簽名檔-->
+<!--確認頁-->

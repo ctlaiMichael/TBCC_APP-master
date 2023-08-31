@@ -1,0 +1,452 @@
+<section>
+    <ng-container [ngSwitch]="nowPage">
+        <!-- 同意事項Start -->
+        <!---------------------------------- 信貸 START ---------------------------------------->
+        <ng-container *ngIf="type == 'credit'">
+            <ng-container *ngSwitchCase="'agreePage'">
+                <div class="agree_info">
+                    <div class="row_single">
+                        <h4 class='simple_title'>線上申請信用貸款簡介及注意事項</h4>
+                    </div>
+                    <div class="row_single">
+                        <div class="inner_content">
+                            歡迎來到合庫商業銀行，本行提供您購置自用耐久性消費品、子女教育、結婚、家計週轉及其他正當消費之無擔保貸款，依專案別最高可貸50-200萬元。
+                            <br><br>
+                            申請條件
+                            <br>
+                            ●&nbsp;年滿20歲且年收入30萬元以上之國民。
+                            <br>
+                            ●&nbsp;銀行往來信用紀錄正常。
+                            <br>
+                            ●&nbsp;具正當職業固定收入來源。
+                            <ng-container *ngIf="type=='credit' && resver=='N'">
+                                <br>
+                                ●&nbsp;持有合庫網路銀行帳戶。
+                                <br>
+                                ●&nbsp;憑證或OTP：尚未辦理憑證或OTP者，請先至營業單位申請憑證或OTP服務。
+                                <!-- <br>
+                                <b style="color: red;">●&nbsp;勞工紓困貸款悉依勞動部規定辦理，並免收任何費用。</b> -->
+                                
+                            </ng-container>
+                            <br><br>
+
+                            申貸費用
+                            <br>
+                            ●&nbsp;開辦費依申貸額度千分之一計收，最低每筆5,000元。
+                            <br>
+                            ●&nbsp;信用查詢費(含票信查詢費用)每人收取新臺幣300元。
+                            <br><br>
+
+                            注意事項
+                            <br>
+                            <!-- 信貸(預填單) -->
+                            <ng-container *ngIf="resver=='Y'">
+                                <div class="inner_content_loan">●&nbsp;申請完成後，分行將與您聯絡，仍需請您至分行親簽。</div><br>
+                                ●&nbsp;貴行撥款時，倘經再次查詢聯徵中心後，發現申請人有其他新增核准應計入DBR22倍規範之授信額度，申請人同意 貴行保留核貸與否之權利。 DBR
+                                22倍規範：係指「金融機構對於債務人於全體金融機構之無擔保債務(包括信用卡、現金卡及信用貸款)歸戶後之總餘額除以平均月收入，不宜超過22倍」(簡稱DBR 22倍)。
+                                <br>
+                                ●&nbsp;依洗錢防制法規定，本行之新舊客戶應配合本行辦理相關身分確認事宜，倘客戶無法配合時，本行依法應拒絕業務往來、暫時停止交易、暫時停止或終止業務關係，請客戶配合辦理。
+                                <br>
+                                ●&nbsp;若您在申辦流程有任何業務相關問題，請洽本行客服中心0800-033-175 04-22273131洽詢。
+                                ●&nbsp;為保護您的權益，請詳細閱讀<a href="javascript:void(0)" (click)="resverHref()">&#60;合作金庫金融控股股份有限公司暨各子公司客戶資料保密措施&#62;</a>，當您填寫資料完成送出時，即視同您已充分了解並
+                                同意。
+                            </ng-container>
+
+                            <!-- 信貸(登入) -->
+                            <ng-container *ngIf="resver=='N'">
+                                ●&nbsp;貼心的提醒：請您在提出申請之前務必到本行的網站(或向本行服務人員索取)審閱相關的 契約條款內容 以及本行對於個資法所告知的 一切事項，
+                                並請您務必詳實的填寫以下的欄位，以免影響申請額度的權益。<br>
+                                ●&nbsp;貴行撥款時，倘經再次查詢聯徵中心後，發現申請人有其他新增核准應計入DBR22倍規範之授信額度，申請人同意 貴行保留核貸與否之權利。 DBR
+                                22倍規範：係指「金融機構對於債務人於全體金融機構之無擔保債務(包括信用卡、現金卡及信用貸款)歸戶後之總餘額除以平均月收入，不宜超過22倍」(簡稱DBR 22倍)。
+                                <br>
+                                ●&nbsp;於申貸過程，您可先行上傳財力證明影像檔，以加速申請流程，建議您開始操作前就先備妥身分證正反兩面、在職證明或相關證明文件及年收入證明等影像檔，可避免於上傳頁面再準備時，造成頁面可能因等待過久而逾時。
+                                <br>
+                                ●&nbsp;上傳檔案以JPG, TIF及GIF為限，總檔案大小不得超過4MB。
+                                <br>
+                                ●&nbsp;線上申請貸款僅限無涉保證人之本行往來既有客戶，且撥款撥付，限撥入本行活期客戶。若您申貸金額需徵求保證人，將由專人與您聯絡。
+                                <br>
+                                ●
+                                &nbsp;依洗錢防制法規定，本行之新舊客戶應配合本行辦理相關身分確認事宜，倘客戶無法配合時，本行依法應拒絕業務往來、暫時停止交易、暫時停止或終止業務關係，請客戶配合辦理。
+                                <br>
+                                ●&nbsp;若您在申辦流程有任何業務相關問題，請洽本行客服中心0800-033-175 04-22273131洽詢。
+                            </ng-container>
+                            <br>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="resver == 'N'">
+                        <div class="row_single">
+                            <dl class="inner_table_three">
+                                <dt class="inner_cell_three">
+                                    <a href="javascript:void(0);" class="inner_button bt_100" (click)="onCountForm()">
+                                        <span>{{buttonTitle}}</span>
+                                    </a>
+                                </dt>
+                                <dt class="inner_cell_three">
+                                    <a href="javascript:void(0);" class="inner_button bt_100" (click)="onProForm()">
+                                        <span>借款契約書</span>
+                                    </a>
+                                </dt>
+                            </dl>
+                        </div>
+                    </ng-container>
+                    <div class='row_single'>
+                        <a href="javascript:void(0);" class="button_confirm" (click)="onConfrim()">立即申請</a>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- 同意事項End -->
+
+            <!-- 借款契約Start -->
+            <ng-container *ngSwitchCase="'promisePage'">
+                <div class="row_single">
+                    <h4 class='simple_title'>信用貸款借款契約</h4>
+                </div>
+                <div class="row_single">
+                    <div class="inner_content">
+                        依消費者保護法第十一條之一及消費性無擔保貸款定型化契約範本規定，明定「個人信用貸款約定書」定型化契約條款之審閱期間至少五日，為保障您的權益，請確認以下事項：
+                    </div>
+                </div>
+                <div class="agree_info">
+                    <div class="row_single">
+                        <div class="inner_content loan_agree lock_agree" [innerHtml]="contract | safeHtml "></div>
+                        <!-- <p class="inner_content">
+                            借款契約全部內容(如附表四)
+                        </p> -->
+                    </div>
+                </div>
+
+                <div class="row_single">
+                    <div class="inner_checkbox">
+                        <input type="checkbox" [(ngModel)]="checkInfo.showCheck4">
+                        <label (click)="agree1('credit')">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+                                已取得「借款契約書」定型化契約條款
+                                詳細審閱至少五日，並同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+                            </b>
+                        </label>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack1()">上一步</a><a href="javascript:void(0)" (click)="onNext1()">下一步</a>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- 借款契約End -->
+
+            <!-- 約定條款2 Start -->
+            <ng-container *ngSwitchCase="'promisePage2'">
+                <div class="row_single">
+                    <h4 class='simple_title'>信用貸款約定條款</h4>
+                </div>
+                <!-- 於2019/11/29客戶提出刪除 -->
+                <!-- <div class="row_single">
+                    <p class="inner_content">
+                        依消費者保護法第十一條之一及消費性無擔保貸款定型化契約範本規定，明定「個人信用貸款約定書」定型化契約條款之審閱期間至少五日，為保障您的權益，請確認以下事項：
+                    </p>
+                </div> -->
+                <div class="agree_info">
+                    <div class="row_single">
+                        <div class="inner_content loan_agree" [innerHtml]="content | safeHtml "></div>
+                    </div>
+                </div>
+
+                <div class="row_single">
+                    <div class="inner_checkbox">
+                        <input type="checkbox" [(ngModel)]="checkInfo.showCheck5">
+                        <label (click)="agree2('credit')">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+                                已取得「貸款相關約定條款」等應說明事項詳細審閱至少五日，並同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+                            </b>
+                        </label>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack2()">上一步</a><a href="javascript:void(0)" (click)="onNext2()">下一步</a>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- 約定條款2 End -->
+        </ng-container>
+        <!---------------------------------- 信貸 END ---------------------------------------->
+
+        <!---------------------------------- 房貸 START---------------------------------------->
+        <ng-container *ngIf="type == 'mortgage' || type == 'house'">
+            <ng-container *ngSwitchCase="'agreePage-mortgage'">
+                <div class="agree_info">
+                    <div class="row_single">
+                        <h4 class='simple_title'>線上申請房屋貸款簡介及注意事項</h4>
+                    </div>
+                    <div class="row_single">
+                        <div class="inner_content">
+                            歡迎來到合庫商業銀行，本行提供您購置自用耐久性消費品、子女教育、結婚、家庭生活支出及理財投資用途之房屋貸款。
+                            <br><br>
+                            申請條件
+                            <br>
+                            ●&nbsp;年滿20歲以上，具還款能力之自然人。
+                            <br>
+                            ●&nbsp;銀行往來信用紀錄正常。
+                            <ng-container *ngIf="type=='mortgage' && resver=='N'">
+                                <br>
+                                ●&nbsp;提供本人所有之完整建物及其基地，並已設定首順位最高限額抵押權予本行者。
+                                <br>
+                                ●&nbsp;持有合庫網路銀行帳戶。
+                                <br>
+                                ●&nbsp;憑證或OTP：尚未辦理憑證或OTP者，請先至營業單位申請憑證或OTP服務。
+                            </ng-container>
+                            <br><br>
+
+                            申貸費用
+                            <br>
+                            ●&nbsp;開辦費依申貸額度千分之一計收，最低每筆5000元。
+                            <br>
+                            ●&nbsp;信用查詢費(含票信查詢費用)每人收取新臺幣300元。
+                            <br><br>
+
+                            注意事項<br>
+                            <!-- 房屋貸款(預填單) -->
+                            <ng-container *ngIf="resver=='Y'">
+                                <div class="inner_content_loan">●&nbsp;申請完成後，分行將與您聯絡，仍需請您至分行親簽。</div><br>
+                                ●&nbsp;依洗錢防制法規定，本行之新舊客戶應配合本行辦理相關身分確認事宜，倘客戶無法配合時，本行依法應拒絕業務往來、暫時停止交易、暫時停止或終止業務關係，請客戶配合辦理。
+                                <br>
+                                ●&nbsp;若您在申辦流程有任何業務相關問題，請洽本行客服中心0800-033-175 04-22273131洽詢。
+                                <br>
+                                ●&nbsp;為保護您的權益，請詳細閱讀<a href="javascript:void(0)" (click)="resverHref()">&#60;合作金庫金融控股股份有限公司暨各子公司客戶資料保密措施&#62;
+                                </a>，當您填寫資料完成送出時，即視同您已充分了解並
+                                同意。
+                            </ng-container>
+
+                            <!-- 房貸增貸(登入) -->
+                            <ng-container *ngIf="resver=='N'">
+                                ●&nbsp;貼心的提醒：請您在提出申請之前務必到本行的網站(或向本行服務人員索取)審閱相關的契約條款內容以及本行對於個資法所告知的一切事項，並請您務必詳實的填寫以下的欄位，以免影響申請額度的權益。
+                                <br>
+                                ●&nbsp;於申貸過程，您可先行上傳財力證明影像檔，以加速申請流程，建議您開始操作前就先備妥身分證正反兩面、在職證明或相關證明文件及年收入證明等影像檔，可避免於上傳頁面再準備時，造成頁面可能因等待過久而逾時。
+                                <br>
+                                ●&nbsp;上傳檔案以JPG, TIF及GIF為限，總檔案大小不得超過4MB。
+                                <br>
+                                ●&nbsp;線上申請貸款僅限無涉保證人之本行往來既有客戶，且本項貸款款項之撥付，限撥入原委託扣繳貸款本息之帳戶或撥入本行活期性存款帳戶。若您申貸金額需徵求保證人，將由專人與您聯絡。
+                                <br>
+                                ●&nbsp;依洗錢防制法規定，本行之新舊客戶應配合本行辦理相關身分確認事宜，倘客戶無法配合時，本行依法應拒絕業務往來、暫時停止交易、暫時停止或終止業務關係，請客戶配合辦理。
+                                <br>
+                                ●&nbsp;若您在申辦流程有任何業務相關問題，請洽本行客服中心 0800-033-175 04-22273131洽詢。
+                            </ng-container>
+                            <br>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="resver == 'N'">
+                        <div class="row_single">
+                            <dl class="inner_table_three">
+                                <dt class="inner_cell_three">
+                                    <a href="javascript:void(0);" class="inner_button bt_100" (click)="onCountForm()">
+                                        <span>金額試算表</span>
+                                    </a>
+                                </dt>
+                                <dt class="inner_cell_three">
+                                    <a href="javascript:void(0);" class="inner_button bt_100" (click)="onProForm()">
+                                        <span>借款契約書</span>
+                                    </a>
+                                </dt>
+                            </dl>
+                        </div>
+                    </ng-container>
+                    <div class='row_single'>
+                        <a href="javascript:void(0);" class="button_confirm" (click)="onConfrim()">立即申請</a>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- 房貸 借款契約START -->
+            <ng-container *ngSwitchCase="'promisePage-mortgage'">
+                <div class="row_single">
+                    <h4 class='simple_title'>房屋貸款借款契約</h4>
+                </div>
+                <div class="row_single">
+                    <div class="inner_content">
+                        依消費者保護法第十一條之一及個人房屋貸款定型化契約範本規定，明定「個人房屋貸款約定書」定型化契約條款之審閱期間至少五日，為保障您的權益，請確認以下事項：
+                    </div>
+                </div>
+                <div class="agree_info">
+                    <div class="row_single">
+                        <p class="inner_content loan_agree lock_agree" [innerHtml]="contract | safeHtml "></p>
+                        <!-- <p class="inner_content">
+                            借款契約全部內容(如附表四)
+                        </p> -->
+                    </div>
+                </div>
+
+                <div class="row_single">
+                    <div class="inner_checkbox">
+                        <input type="checkbox" [(ngModel)]="checkInfo.showCheck1">
+                        <label (click)="agree1('mortgage')">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+                                已取得「借款契約書」定型化契約條款(消費性C364)
+                                詳細審閱至少五日，並同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+                            </b>
+                        </label>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack1()">上一步</a><a href="javascript:void(0)" (click)="onNext1()">下一步</a>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- 房貸 借款契約END -->
+
+            <!-- 房貸 約定條款START -->
+            <ng-container *ngSwitchCase="'promisePage2-mortgage'">
+                <div class="row_single">
+                    <h4 class='simple_title'>房屋貸款約定條款</h4>
+                </div>
+                <!-- 2019/12/09依客戶需求 刪除 -->
+                <!-- <div class="row_single">
+                    <div class="inner_content">
+                        依消費者保護法第十一條之一及個人房屋貸款定型化契約範本規定，明定「個人房屋貸款約定書」定型化契約條款之審閱期間至少五日，為保障您的權益，請確認以下事項：
+                    </div>
+                </div> -->
+                <div class="agree_info">
+                    <div class="row_single">
+                        <div class="inner_content loan_agree" [innerHtml]="content | safeHtml "></div>
+                    </div>
+                </div>
+
+                <div class="row_single">
+                    <div class="inner_checkbox">
+                        <input type="checkbox" [(ngModel)]="checkInfo.showCheck2">
+                        <label (click)="agree2('mortgage')">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+                                已取得「貸款相關約定條款」等應說明事項詳細審閱至少五日，並同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+                            </b>
+                        </label>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack2()">上一步</a><a href="javascript:void(0)" (click)="onNext2()">下一步</a>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- 房貸 約定條款END -->
+        </ng-container>
+        <!---------------------------------- 房貸 END ---------------------------------------->
+
+        <!-- 共同行銷Start -->
+        <ng-container *ngSwitchCase="'salePage'">
+            <div class="row_single">
+                <h4 class='simple_title'>共同行銷同意事項</h4>
+            </div>
+            <div class="agree_info">
+                <div class="row_single">
+                    <div class="inner_content loan_agree" [innerHtml]="sale | safeHtml "></div>
+                </div>
+            </div>
+
+            <div class="row_single">
+                <div class="inner_checkbox">
+                    <input type="checkbox" [(ngModel)]="checkInfo.showAgree">
+                    <label (click)="agreeEvent('agree')">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>
+                            我已審閱、瞭解並同意上述第二項合作金庫商業銀行線上申請個人{{title}}共同行銷同意事項。
+                        </b>
+                    </label>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="inner_checkbox">
+                    <input type="checkbox" [(ngModel)]="checkInfo.showNotAgree">
+                    <label (click)="agreeEvent('notAgree')">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>
+                            我不同意上述第二項合作金庫商業銀行線上申請個人{{title}}共同行銷同意事項。
+                        </b>
+                    </label>
+                    <p class="inner_content">(勾選不同意者，將可能無法獲得合庫金控及其子公司提供之優惠及服務)</p>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="onSaleBack()">上一步</a><a href="javascript:void(0)" (click)="onSaleNext()">下一步</a>
+                </div>
+            </div>
+        </ng-container>
+        <!-- 共同行銷End -->
+
+        <!-- 聯徵查詢同意事項Start -->
+        <ng-container *ngSwitchCase="'joinPage'">
+            <div class="row_single">
+                <h4 class='simple_title'>聯徵查詢同意事項</h4>
+            </div>
+            <div class="agree_info">
+                <div class="row_single">
+                    <div class="inner_content loan_agree" [innerHtml]="joint | safeHtml "></div>
+                </div>
+            </div>
+
+            <div class="row_single">
+                <div class="inner_checkbox">
+                    <input type="checkbox" [(ngModel)]="checkInfo.showCheck3">
+                    <label (click)="agree3()">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>
+                            我已審閱、瞭解並同意上述個人{{title}}線上申請暨信用查詢同意事項
+                        </b>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row_single">
+                <h4 class='simple_title'>專人聯絡同意事項</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content">如當次未能順利完成線上申請資料填寫，本行將依申請人留存於行內之聯絡電話，於3日內指派專人來電服務，以利後續案件審核。</p>
+            </div>
+
+            <div class="row_single">
+                <div class="inner_radio radio_inline" (click)="selectExpert('agree')">
+                    <input type="radio" id="radio_button01" name="inner_s_radio" [checked]="checkExpert">
+                    <label for="radio_button01">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>同意</b>
+                    </label>
+                </div>
+                <div class="inner_radio radio_inline" (click)="selectExpert('not')">
+                    <input type="radio" id="radio_button02" name="inner_s_radio" [checked]="!checkExpert">
+                    <label for="radio_button02">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>不同意</b>
+                    </label>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="onJoinBack()">上一步</a><a href="javascript:void(0)" (click)="onJoinNext()">下一步</a>
+                </div>
+            </div>
+        </ng-container>
+        <!-- 聯徵查詢同意事項End -->
+    </ng-container>
+</section>

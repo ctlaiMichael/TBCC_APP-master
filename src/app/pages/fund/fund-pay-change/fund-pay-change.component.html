@@ -1,0 +1,53 @@
+<section *ngIf="!showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <!-- select -->
+    <!-- <div class="row_single">
+        <ul class="inner_table_frame">
+            <li class="inner_table_cell">
+                庫存狀況
+            </li>
+            <li class="inner_table_cell">
+                <select name="" class="inner_select" (change)="onChangeType()" [(ngModel)]="nowType">
+                    <option *ngFor="let menu of dataType" [ngValue]="menu">{{ menu.name }}</option>
+                </select>
+            </li>
+        </ul>
+    </div> -->
+    <ng-container [ngSwitch]="showListType">
+        <ng-container *ngSwitchCase="'N'">
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-pay-change-page [page]="1" [unitType]="'A'" [doReset]="count" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-pay-change-page>
+                <!-- Page other -->
+                <ng-container #pageBoxN></ng-container>
+            </ul>
+        </ng-container>
+        <ng-container *ngSwitchCase="'A'">
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-pay-change-page [page]="1" [unitType]="'A'" [doReset]="count" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-pay-change-page>
+                <!-- Page other -->
+                <ng-container #pageBoxA></ng-container>
+            </ul>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Y'">
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-pay-change-page [page]="1" [unitType]="'A'" [doReset]="count" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-pay-change-page>
+                <!-- Page other -->
+                <ng-container #pageBoxY></ng-container>
+            </ul>
+        </ng-container>
+    </ng-container>
+
+    <div class="row_single">
+        <div class="double_button">
+            <a href="javascript:void(0)" (click)="deleteFund()" >刪除勾選標的</a>
+            <a href="javascript:void(0);" (click)="backMenuPage()">返回投資理財</a>
+        </div>
+    </div>
+</section>
+
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <app-pay-change-content [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-pay-change-content>
+</ng-template>

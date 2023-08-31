@@ -1,0 +1,77 @@
+{
+
+  "sch:MNBResponse": {
+    "-xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "12345",
+      "sch:requestTime": "2013-02-07T17:31:12.471+08:00",
+      "sch:responseTime": "2013-02-07T17:31:14.780+08:00",
+      "sch:custId": "F121374529"
+    },
+    "sch:result": {
+      "@xmlns:f50": "http://mnb.hitrust.com/service/schema/f5000101",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "@xsi:type": "f50:f5000101ResultType",
+      "f50:businessType": "T",
+      "f50:trnsToken": "abcdefghijklmnopqrstuvwxyz123456",
+      "f50:trnsOutAccts": {
+        "f50:trnsOutAcct": [
+          { 
+            "f50:trnsfrOutAccnt": "1997705071012",
+            "f50:trnsfrOutName": "轉出戶名1",
+            "f50:trnsOutCurr": "NTD,USD"
+          },
+          { 
+            "f50:trnsfrOutAccnt": "5997705072012",
+            "f50:trnsfrOutName": "轉出戶名2",
+            "f50:trnsOutCurr": "NTD,USD"
+          },
+          { 
+            "f50:trnsfrOutAccnt": "99997705073012",
+            "f50:trnsfrOutName": "轉出戶名3",
+            "f50:trnsOutCurr": "NTD,USD"
+          }
+        ]
+      },
+      "f50:trnsInAccts": {
+        "f50:trnsInAcct": [
+          { 
+            "f50:trnsfrInAccnt": "2997705071012",
+            "f50:trnsfrInId": "F121374529",
+            "f50:trnsfrInName": "轉入戶名1",
+            "f50:trnsInCurr": "NTD,USD"
+          },
+          { 
+            "f50:trnsfrInAccnt": "4997705072012",
+            "f50:trnsfrInId": "F121374529",
+            "f50:trnsfrInName": "轉入戶名2",
+            "f50:trnsInCurr": "NTD,USD"
+          },
+          { 
+            "f50:trnsfrInAccnt": "88887705073012",
+            "f50:trnsfrInId": "F121374529",
+            "f50:trnsfrInName": "轉入戶名3",
+            "f50:trnsInCurr": "NTD,USD"
+          }
+        ]
+      },
+      "f50:trnsCurrs": {
+        "f50:trnsCurr": [
+          {
+            "f50:trnsCurrId": "USD",
+            "f50:trnsCurrDesc": "美金",
+            "f50:trnsCurrCode": "01",
+            "f50:trnsFdLimit": "100000"
+          },
+          {
+            "f50:trnsCurrId": "TWD",
+            "f50:trnsCurrDesc": "台幣",
+            "f50:trnsCurrCode": "02",
+            "f50:trnsFdLimit": "200000"
+          }
+        ]
+      }
+    }
+  }
+
+}

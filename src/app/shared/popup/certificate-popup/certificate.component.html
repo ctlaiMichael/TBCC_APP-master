@@ -1,0 +1,84 @@
+<ng-container *ngIf="check">
+  <div class="row_single">
+    <h4 class="simple_title">{{title|translate}}</h4>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">
+        憑證名稱(CN):
+      </li>
+      <li class="inner_table_cell">
+        <select name="" id="" class="inner_select" [(ngModel)]="pwdInfo.key">
+          <option *ngFor="let item of dataList" [value]="item.CertCN">{{item.CertCN}}</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">
+        憑證申請密碼
+      </li>
+      <li class="inner_table_cell">
+        <input type="text" id="newPw" name="newPw" class="inner_input" placeholder="請輸入憑證密碼"
+          [(ngModel)]="pwdInfo.certificate">
+      </li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="noPage1()">{{btnNoTitle|translate}}</a>
+      <a (click)="yesPage1()">{{btnYesTitle|translate}}</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content font_red">此密碼為您至本行營業單位申請憑證時，由櫃員交付給您。若未拿到此密碼通知書，或密碼通知書列印不清楚，請洽您辦理憑證的營業單位或重新申請憑證。
+    </p>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="!check">
+  <div class="row_single">
+    <h4 class="simple_title">憑證申請作業</h4>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">
+        憑證保護密碼
+      </li>
+      <li class="inner_table_cell">
+        <input type="text" id="newPw" name="newPw" class="inner_input" placeholder="憑證保護密碼"
+          [(ngModel)]="pwdInfo.certificate_protection">
+      </li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">
+        憑證保護密碼確認
+      </li>
+      <li class="inner_table_cell">
+        <input type="text" id="newPw" name="newPw" class="inner_input" placeholder="憑證保護密碼確認"
+          [(ngModel)]="pwdInfo.certificate_protectionCheck">
+      </li>
+    </ul>
+  </div>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="no()">{{btnNoTitle|translate}}</a>
+      <a (click)="yes()">{{btnYesTitle|translate}}</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content font_red">憑證保護密碼需為4~12位英數字(區分大小寫)請務必牢記新密碼，日後若忘記此密碼，需回本行營業單位重新申請憑證。
+    </p>
+  </div>
+
+</ng-container>

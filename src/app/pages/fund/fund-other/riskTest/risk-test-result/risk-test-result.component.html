@@ -1,0 +1,44 @@
+<section>
+    <ng-container [ngSwitch]="pageType">
+        <ng-container *ngSwitchCase="'result'">
+            <!-- 測驗結果 -->
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame">
+                    <span class="step_final_info">
+                        <i class="icon_success"></i>
+                        <span class="step_final_info">測驗成功</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">您的測驗結果為：{{result_data|fieldCheck:'rtTypeDesc'}}</h4>
+            </div>
+
+            <div class="row_single">
+                <p class="inner_content">
+                    {{result_data|fieldCheck:'detailDesc'}}
+                </p>
+            </div>
+
+            <div class="row_single">
+                <a href="javascript:void(0)" class="button_confirm" (click)="onClick('back')">返回投資理財</a>
+            </div>
+        </ng-container>
+
+
+
+
+    </ng-container>
+</section>
+<!-- section End -->
+<div id="Method" class="popup_window">
+    <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">總分數：{{result_data|fieldCheck:'score'}}，您是屬於{{result_data|fieldCheck:'rtType'}}</h4>
+        </div>
+        <div class="row_single">
+            <a href="javascript:void(0)" class="button_confirm">確定</a>
+        </div>
+    </div>
+</div>

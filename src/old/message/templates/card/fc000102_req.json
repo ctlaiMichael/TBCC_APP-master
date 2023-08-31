@@ -1,0 +1,15 @@
+{
+	"txNos" : {},
+	"funcId" : "",
+	"captchaValReqr" : "1",
+	"signatureReqr" : "0",
+	"idCopyReqr" : "0",
+	"finProofReqr" : "0",
+	"idCopy1" : "",
+	"idCopy2" : "",
+	"finProof1" : "",
+	"finProof2" : "",
+	"finProof3" : "",
+	"signature" : "",
+	"captchaVal" : ""
+}

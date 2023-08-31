@@ -1,0 +1,91 @@
+<!-- Page Start-->
+<!-- <li *ngFor="let item of data;"> -->
+<!-- title start -->
+<!-- <p class="credit_card_name">
+        <i>投資標的</i>
+        <i>{{ item | fieldCheck: 'fundName'}}</i>
+    </p>
+
+    <p>
+        <span>投資編號：</span>
+        <span>{{ item | fieldCheck: 'fundCode'}}</span>
+    </p>
+    <p>
+        <span>投資幣別/金額：</span>
+        <span>{{ item | fieldCheck: 'iNCurrency'}} &nbsp; {{ ((item | fieldCheck: 'invenAmount') | htMoney)}}</span>
+    </p>
+    <p>
+        <span>投資方式：</span>
+        <span>{{ item | fieldCheck: 'investDesc'}}</span>
+    </p> -->
+<!--  enrollDate	交易日期
+    effectDate	生效日期
+    reserveTransCode	預約編號
+    transType	交易項目
+    transTypeDesc 交易項目說明
+    fundCode	投資代碼
+    fundName	投資標的名稱
+    fundRisk	基金風險屬性
+    investDesc	投資型態說明
+    transCode 交易編號
+    currency  投資幣別
+    iNCurrency	基金幣別
+    purchAmnt	申購/轉換/贖回金額
+    serviceFee	手續費
+    payAccount	扣款帳號
+    redeemAccount 入帳帳號
+    lastChangeDate 處理日期    
+    status 處理結果(交易狀況)
+    statusDesc 處理結果說明
+    inFundCode 轉入基金代碼
+    inFundName 轉入基金名稱
+-->
+<!-- <a href="javascript:void(0)" (click)="onContentEvent(item)">變更現金收益存入帳號</a>
+</li> -->
+
+<ul *ngFor="let item of sData.data;" class="credit_card_bill_detail_list">
+    <!-- <li *ngIf="setData.status === item.status"> -->
+    <li>
+        <p class="credit_card_name">
+            <i>預約編號：</i>
+            <i>{{ item | fieldCheck: 'reserveTransCode'}}</i>
+        </p>
+        <p>
+            <span>投資代號：</span>
+            <span>{{ item | fieldCheck: 'fundCode'}}</span>
+        </p>
+        <p>
+            <span>投資標的：</span>
+            <span>{{ item | fieldCheck: 'fundName'}}</span>
+        </p>
+        <p>
+            <span>交易日期：</span>
+            <span>{{ item | fieldCheck: 'enrollDate' | htDate:'date'}}</span>
+        </p>
+        <p>
+            <span>生效日期：</span>
+            <span>{{ item | fieldCheck: 'effectDate' | htDate:'date'}}</span>
+        </p>
+        <p>
+            <span>申/轉/贖金額：</span>
+            <span>{{ item | fieldCheck: 'purchAmnt' | htMoney:item.currency}}</span>
+        </p>
+        <p>
+            <span>交易項目：</span>
+            <span>{{ item | fieldCheck: 'transTypeDesc'}}</span>
+        </p>
+        <div [hidden]="item.status ==='C'">
+            <p>
+                <span>交易狀況：</span>
+                <span>{{ item | fieldCheck: 'statusDesc'}}</span>
+            </p>
+        </div>
+        <div [hidden]="item.status !=='C'">
+            <p>
+                <span>交易狀況：</span>
+                <span class="font_red">{{ item | fieldCheck: 'statusDesc'}}</span>
+            </p>
+        </div>
+        <a href="javascript:void(0)" (click)="onContentEvent(item)">查詢</a>
+    </li>
+</ul>

@@ -1,0 +1,129 @@
+<ng-container [ngSwitch]="nowPage">
+    <!-- 編輯頁 -->
+    <ng-container *ngSwitchCase="'edit-page'">
+        <section>
+           <ng-container *ngIf="showFlag">
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active"><span>1.選擇繳費金額</span></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single">
+                <!-- 項目START -->
+                <div class="inner_radio">
+                    <input type="radio" id="inner_radio01" name="inner_radio"[(ngModel)]="selectItem" value="1">
+                    <label for="inner_radio01">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>全額繳清: 金額 ${{billObj.payableAmt}}</b>
+                    </label>
+                    <ng-container *ngIf="billObj.showNote">
+                        <i class="select_info epay_search_record">
+                            <i class="font_red">超商繳費上限為新臺幣2萬元整。</i>
+                        </i>
+                     </ng-container>
+                </div>
+                <div class="inner_radio">
+                    <input type="radio" id="inner_radio02" name="inner_radio" [(ngModel)]="selectItem"  value="2">
+                    <label for="inner_radio02">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>最低應繳: 金額 ${{billObj.lowestPayableAmt}}</b>
+                    </label>
+                </div>
+                <ul class="normal_table">
+                    <li class="normal_td w80">
+                        <div class="inner_radio radio_inline">
+                            <input type="radio" id="inner_radio03" name="inner_radio" [(ngModel)]="selectItem"  value="3">
+                            <label for="inner_radio03">
+                                <span>
+                                    <i></i>
+                                </span>
+                                <b>自行輸入</b>
+                            </label>
+                        </div>
+                    </li>
+                    <ng-container *ngIf="selectItem=='3'">
+                        <li class="normal_td">
+                            <ul class="inner_table_frame" [ngClass]="{'active_warnning': check_amount}">
+                                <li class="inner_table_cell">
+                                    台幣
+                                </li>
+                                <li class="inner_table_cell">
+                                    <input type="text" class="inner_input" placeholder="請輸入整數" [(ngModel)]="billObj.amount">
+                                </li>
+                                <li class="inner_table_cell third_td">元</li>
+                            </ul>
+                            <i class="input_info_warnning">{{ammount_errorMsg|translate}}</i>
+                        </li>
+                  </ng-container>
+                </ul>
+            </div>
+
+            <div class="row_single">
+                <a class="button_confirm" href="javascript:void(0)" (click)="onConfirm()">產生條碼</a>
+            </div>
+
+            <div class="row_single">
+					<h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+            <div class="inner_content">
+                <ol class="order_list">
+                    <li>「未繳金額」以本行實際入帳金額為準，如有任何問題請洽本行客服專線：0800-033-175。</li>
+                    <li>請留意您是否已辦理《自動扣繳卡費申請》，以避免重複扣款！</li>
+                    <li>超商繳費上限為新臺幣2萬元整。</li>
+                    <li>當日繳費明細資料，可於1-3個營業日於網路銀行查詢。</li>
+                    <li>超商繳費作業完成需3個工作天，如已繳費請勿重複繳納。</li>
+                    <li>若繳款3天後仍未銷帳，請提供繳款小白單致電本行客服0800-033-175以利查詢(若無小白單則無法查詢)。</li>
+                    <li>本行不會主動以電話等方式，告知您因設定錯誤需至ATM操作修正，或請您提供餘額查詢、交易序號、信用卡資料，若接獲相關來電，請與本行確認或撥打165 警政專線求證，以確保權益。</li>
+                </ol>
+            </div>
+        </div>
+       </ng-container>
+        </section>
+
+
+    </ng-container>
+
+   
+
+    <!-- 結果頁 -->
+    <ng-container *ngSwitchCase="'result-page'">
+        <ng-container *ngIf="genCardBarcode.code1.length>0 && genCardBarcode.code2.length>0 && genCardBarcode.code3.length>0 ">
+            <section>
+                <div style="text-align:right;padding: 0 20px;" id="time">{{limitTime}}秒</div>
+                <div class="row_single market_div2">
+                    <div class="market_word">適用超商</div>
+                        <div class="icon_711 market_div"></div>
+                        <div class="icon_familyMart market_div"></div>
+                        <div class="icon_hiLiftMart market_div"></div>
+                        </div>
+                        <div class="row_single" style="text-align: center;">提醒您，超商繳費上限為2萬元<div>
+                        </div></div>
+                <div class="row_single">
+                    <div class="main_info_block">
+                        <div class="main_info_innerblock">
+                            <ngx-barcode [bc-value]="genCardBarcode.code1" [bc-display-value]="false" [bc-format]="'CODE39'" [bc-width]="0.8" style="text-align: center;"
+                            bc-display-value="true"></ngx-barcode> 
+                            <div class="row_single row_code">{{genCardBarcode.code1}}</div>
+                            <ngx-barcode [bc-value]="genCardBarcode.code2" [bc-display-value]="false" [bc-format]="'CODE39'" [bc-width]="0.8" style="text-align: center;"
+                            bc-display-value="true"></ngx-barcode>    
+                            <div class="row_single row_code">{{genCardBarcode.code2}}</div>      
+                            <ngx-barcode [bc-value]="genCardBarcode.code3" [bc-display-value]="false" [bc-format]="'CODE39'" [bc-width]="0.8" style="text-align: center;"
+                            bc-display-value="true"></ngx-barcode>    
+                            <div class="row_single row_code">{{genCardBarcode.code3}}</div>        
+                        </div>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <a class="button_confirm" href="javascript:void(0)" (click)="backEdit()">返回</a>
+                </div>
+            </section>
+     </ng-container>
+    </ng-container>
+</ng-container>

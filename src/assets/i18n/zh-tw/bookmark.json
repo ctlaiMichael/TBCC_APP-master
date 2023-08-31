@@ -1,0 +1,56 @@
+{
+    "BOOK_MARK": {
+        "COMMON": {
+            "DETAIL": "交易明細",
+            "SUMMARY": "帳戶彙總",
+            "DETAIL_LOAN": "借款資料",
+            "CUSTOM": "自訂",
+            "PROFIT_OVERVIEW": "損益總覽",
+            "PROFIT_DETAIL": "損益明細",
+            "FUND_PROFIT": "基金損益",
+            "TRANSACTION_DETAIL": "交易明細",
+            "SINGLE_ONE": "單筆",
+            "REGULAR": "定期",
+            "REGULAR_QUOTA": "定期定額",
+            "REGULAR_NOT_QUOTA": "定期不定額",
+            "GROUP1":"投資組合1",
+            "GROUP2":"投資組合2",
+            "GROUP3":"投資組合3"
+        },
+        "FUND":{
+            "1D":"前日漲跌幅",
+            "1M": "最近一個月",
+            "6M": "最近六個月",
+            "12M": "最近一年"
+        },
+        "DEPOSIT_OVERVIEW": {
+            "7D": "最近1週",
+            "1M": "最近1個月"
+        },
+        "FOREX_DEPOSIT": {
+            "7D": "最近1週",
+            "1M": "最近1個月",
+            "3M": "最近3個月",
+            "6M": "最近6個月",
+            "12M": "最近一年"
+        },
+        "HAS_REALIZE": {
+            "7D": "近1週",
+            "1M": "近1月",
+            "3M": "近3月",
+            "CUSTOM": "自訂",
+            "6M": "近半年",
+            "1Y": "近一年"
+        },
+        "FUND_PURCHASE": {
+            "1M": "近1月",
+            "3M": "近3月",
+            "6M": "近6月",
+            "custom": "自訂"
+        },
+        "LOAN": {
+            "1M": "最近1個月",
+            "12M": "最近一年"
+        }
+    }
+}

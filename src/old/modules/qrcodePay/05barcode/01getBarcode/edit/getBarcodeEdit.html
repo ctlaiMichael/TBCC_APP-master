@@ -1,0 +1,78 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+    <header class="main_nav">
+        <div class="bank_logo" style="width:50px;height:50px; left:-50px;top:-5px;position: relative;" ng-click="clickMenuList(true)">
+            <img src="ui/images/i_smenu.png">
+        </div>
+        <!-- <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickMenuList(true)"><s class="menu_button_line"></s></button> -->
+        <h2 class="header_title" style="opacity:1;top:25px;">發票載具條碼</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<barcode-left-menu-directive></barcode-left-menu-directive>
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section style="top:125px;">
+        <div class="row_single">
+            <h4 class="simple_title">查詢手機條碼</h4>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    手機號碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" maxlength="10" ng-model="phoneNo" placeholder="請輸入手機號碼" required>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    手機條碼驗證碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" maxlength="16" ng-model="verificationCode" placeholder="請輸入手機條碼驗證碼" required>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single mobile">
+            <dl class="inner_table_double">
+                <dt class="inner_cell_double">
+                    <a ng-click="clickForgetVer()" class="inner_button bt_100">
+                        <span>查詢驗證碼</span>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a id="empty" href="javascript:void(0);" ng-click="clickClear()">清除</a><a ng-click="clickSubmit()">確定</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content" >
+                點選確認後，會收到財政部電子發票整合服務平台，取得手機載具號碼
+            </p>
+        </div>
+    </section>
+</div>
+
+<style>
+    .btnStyle {
+        text-align: center;
+        /* color: #f8a324; */
+        color: #08b889;
+        margin-top: 30px;
+        margin-bottom: 18px;
+    }
+    .pop_content{
+        width:55vw;
+    }
+</style>

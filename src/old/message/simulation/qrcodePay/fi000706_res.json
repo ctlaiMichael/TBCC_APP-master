@@ -1,0 +1,50 @@
+{
+  "sch:MNBResponse": {
+    "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "1481860700840-fi000706",
+      "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+      "sch:custId": "B1202812720"
+    },
+    "sch:result": {
+      "@xsi:type": "fi0:fi000706ResultType",
+      "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000706",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "fi0:trnsRsltCode": "0",
+      "fi0:hostCode": "4001",
+      "fi0:hostCodeMsg": "交易成功",
+      "fi0:custId": "F121374529",
+      "fi0:details": {
+        "fi0:detail": {
+          "0": {
+            "trustAcnt": "9997899222226",
+            "transCode": "CA000224044",
+            "fundCode": "7405",
+            "fundName": "永豐亞洲民生消費證券投資基金",
+            "capital": "00000010000000",
+            "incomePoint": "00000",
+            "profitPoint": "00000",
+            "webNotice": "Y",
+            "emailNotice": "Y",
+            "code": "",
+            "investType": "1"
+          },
+          "1": {
+            "trustAcnt": "0560888005191",
+            "transCode": "CA000249096",
+            "fundCode": "6909",
+            "fundName": "日盛亞洲機會基金",
+            "capital": "00000000000000",
+            "incomePoint": "00000",
+            "profitPoint": "00000",
+            "webNotice": "Y",
+            "emailNotice": "Y",
+            "code": "",
+            "investType": "1"
+          }
+        }
+      }
+    }
+  }
+}

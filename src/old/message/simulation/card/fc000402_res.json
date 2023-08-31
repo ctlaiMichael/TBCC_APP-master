@@ -1,0 +1,31 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000402",
+      "sch:requestTime" : "2011-01-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2011-01-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000402ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000402",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "上傳成功",
+      "fc0:trnsOutAccts" : {
+          "fc0:acctNo" : [
+            "09368000031",
+            "09368000032",
+            "09368000033",
+            "09368000034",
+            "09368000035",
+            "09368000036",
+            "09368000037",
+            "09368000038"
+          ]
+      }
+    }
+  }
+}

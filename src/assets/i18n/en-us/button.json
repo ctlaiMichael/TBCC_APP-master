@@ -1,0 +1,30 @@
+{
+    "BTN": {
+        "LOGIN": "Login",
+        "LOGOUT": "Logout",
+        "CHECK": "Check",
+        "CANCEL": "Cancel",
+        "CLOSE": "Close",
+        "CLEAR": "Clear",
+        "NEXT": "Next",
+        "PREVIOUS": "Previous",
+        "BACK": "Back",
+        "MORE": "More",
+        "RESET": "Reset",
+        "SEARCH": "Search",
+        "RETURN_HOME": "Back To Home",
+        "AGREE": {
+            "AGREE": "Agree",
+            "AGREE_CONTENT": "Agree",
+            "DISAGREE": "Disagree"
+        },
+        "APPLY": {
+            "NOW": "Now",
+            "WAIT": "Cancel"
+        },
+        "LOAN": {
+            "SELECT_BRANCH": "Select Branch"
+        },
+        "HAVE_READ": "I know"
+    }
+}

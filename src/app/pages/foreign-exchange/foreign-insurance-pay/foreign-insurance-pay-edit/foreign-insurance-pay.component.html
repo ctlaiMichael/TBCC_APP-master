@@ -1,0 +1,162 @@
+<ng-container [ngSwitch]="nowPage">
+    <ng-container *ngSwitchCase="'edit'">
+        <section>
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active"><span>1.填寫資料</span></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+
+            <!-- 現行的 -->
+            <div class="row_single_2">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_paymentObject) }">
+                    <li class="inner_table_cell">繳費對象</li>
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="life.insurance">
+                            <ng-container *ngIf="info_data.paymentObject == 'N'">
+                                <option value="">南山人壽保險股份有限公司</option>
+                            </ng-container>
+
+                            <ng-container *ngIf="info_data.paymentObject == 'S'">
+                                <option value="">新光人壽保險股份有限公司</option>
+                            </ng-container>
+
+                            <ng-container *ngIf="info_data.paymentObject == 'A'">
+                                <option value="">請選擇繳費對象</option>
+                                <option [ngValue]="1">南山人壽外幣保險</option>
+                                <option [ngValue]="2">新光人壽外幣保險</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">請選擇保險公司</i>
+            </div>
+
+            <ng-container *ngIf="info_data.paymentObject == 'N' || life.insurance == '1'">
+                <div class="row_single_2">
+                    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_insurance_type) }">
+                        <li class="inner_table_cell">保費種類</li>
+                        <li class="inner_table_cell">
+                            <select name="" class="inner_select" [(ngModel)]="life.insurance_type">
+                                <option value="">請選擇保費種類</option>
+                                <option [ngValue]="1">首期保費</option>
+                                <option [ngValue]="2">續期保費</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning">請選擇保費種類</i>
+                </div>
+            </ng-container>
+
+            <div class="row_single_2">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_acct) }">
+                    <li class="inner_table_cell">付款帳號</li>
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" (change)="onSelectAcct()" [(ngModel)]="reqData.trnsfrOutAcct">
+                            <option value="">請選擇</option>
+                            <ng-container *ngFor="let trust_item of data">
+                                <option [ngValue]="trust_item.acctNo">{{trust_item.acctNo}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">請選擇付款帳號</i>
+            </div>
+
+            <div class="row_single_2">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_curr) }">
+                    <li class="inner_table_cell">付款幣別</li>
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="reqData.trnsfrOutCurr">
+                            <option value="">請選擇付款幣別</option>
+                            <ng-container *ngFor="let curr_item of tmp">
+                                <option [ngValue]="curr_item">{{curr_item}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <!-- <i class="select_info">(限保單幣別原幣繳納，台幣繳款先由「結構存外存」結購後再執行本交易)</i> -->
+                <i class="input_info_warnning">請選擇付款幣別</i>
+            </div>
+
+            <div class="section_addition">
+                <div class="row_single_2">
+                    <ul class="inner_table_frame search_range_disable">
+                        <li class="inner_table_cell">轉入戶名</li>
+                        <li class="inner_table_cell">
+                            <ng-container *ngIf="info_data.paymentObject == 'N'">
+                                <input class="inner_input" type="text" name="inner_input_company" value="南山人壽保險股份有限公司">
+                            </ng-container>
+
+                            <ng-container *ngIf="info_data.paymentObject == 'S'">
+                                <input class="inner_input" type="text" name="inner_input_company" value="新光人壽保險股份有限公司">
+                            </ng-container>
+
+                            <ng-container *ngIf="life.insurance == '1'">
+                                <input class="inner_input" type="text" name="inner_input_company" value="南山人壽保險股份有限公司">
+                            </ng-container>
+
+                            <ng-container *ngIf="life.insurance == '2'">
+                                <input class="inner_input" type="text" name="inner_input_company" value="新光人壽保險股份有限公司">
+                            </ng-container>
+
+                            <ng-container *ngIf="life.insurance == '' && info_data.paymentObject == 'A'">
+                                <input class="inner_input" type="text" name="inner_input_company" value="尚未選擇繳費對象">
+                            </ng-container>
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning"></i>
+                </div>
+            </div>
+
+            <div class="row_single_2 shinkong">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_paymentNumber) }">
+                    <li class="inner_table_cell">保單編號/<br>繳款編號：<li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" name="" maxlength="14" placeholder="請輸入10或14碼繳款編號"
+                            [(ngModel)]="reqData.paymentNumber">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{numberError}}</i>
+            </div>
+
+            <div class="row_single_2 shinkong">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_trnsfrAmount) }">
+                    <li class="inner_table_cell">繳款金額<li>
+                    <li class="inner_table_cell">
+                        <input class="inner_input" type="text" name="" placeholder="請輸入繳款金額" [(ngModel)]="reqData.trnsfrAmount">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">未輸入繳款金額</i>
+            </div>
+
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="onBack()">取消</a>
+                    <a href="javascript:void(0)" (click)="onConfirm()">確定</a>
+                </div>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+                <div class="inner_content">
+                    <ol class="order_list">
+                        <li>本交易營業時間: 星期一至星期五 (例假日除外) 上午九時十分至下午三時三十分。</li>
+                        <li>注意!!為保障您的權益,請謹慎操作,錯誤轉帳或銷帳後續問題之處理,請洽原人壽保險公司辦理,並告知所輸入之繳費資訊。</li>
+                        <li>本轉帳交易申報匯款性質695Z:人身保險費。</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'confirm'">
+        <app-foreign-insurance-pay-confirm [reqData]="reqData" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-foreign-insurance-pay-confirm>
+    </ng-container>
+</ng-container>

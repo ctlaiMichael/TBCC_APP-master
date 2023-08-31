@@ -1,0 +1,45 @@
+{
+  "resHeader": {
+	"test": "123"
+  },
+  "t1000102ResultType": {
+	"details": [
+	  {
+		"url": "#/m1001",
+		"icon": "icon-A001",
+		"name": "M00"
+	  },
+	  {
+		"url": "#/m1002",
+		"icon": "icon-A003",
+		"name": "M1002_T"
+	  },
+	  {
+		"url": "#/m2002",
+		"icon": "icon-C002",
+		"name": "M2002_S"
+	  },
+	  {
+		"url": "#/m3001",
+		"icon": "icon-I004",
+		"name": "M30"
+	  },
+	  {
+		"url": "#/m4001",
+		"icon": "icon-I001",
+		"name": "M40"
+	  },
+	  {
+		"url": "#/n1001",
+		"icon": "icon-Sys007",
+		"name": "N1001"
+	  },
+	  {
+		"url": "#/n1002",
+		"icon": "glyphicon glyphicon-user",
+		"name": "N1002"
+	  }
+
+	]
+  }
+}

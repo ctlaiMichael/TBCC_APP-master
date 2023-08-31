@@ -1,0 +1,13 @@
+<section>
+  <div>
+    <div class="row_single">
+      <h4 class="simple_title">{{contentObj['Title']}}
+        <p> {{contentObj['DataTime']}}
+        </p>
+      </h4>
+    </div>
+    <div class="row_single">
+      <p class="inner_content_news" [innerHTML]="contentObj['Content'] | safeHtml"></p>
+    </div>
+  </div>
+</section>

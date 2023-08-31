@@ -1,0 +1,80 @@
+<section>
+    <!-- 交易成功 -->
+    <ng-container *ngIf="sucess">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!-- 交易失敗 -->
+    <ng-container *ngIf="failed">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}<br>{{hostCodeMsg}}</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="sucess">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>交易時間</span>
+                <i>{{info_data.trnsDateTime | htDate}}</i>
+            </li>
+            <li class="table_row">
+                <span>繳費對象</span>
+                <i>{{info_data.paymentObject}}</i>
+            </li>
+            <li class="table_row">
+                <span>付款帳號</span>
+                <i>{{info_data.trnsfrOutAcct}}</i>
+            </li>
+            <li class="table_row">
+                <span>付款幣別</span>
+                <i>{{info_data.trnsfrOutCurr}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉入戶名</span>
+                <i>{{info_data.trnsfrInAcctName}}</i>
+            </li>
+            <ng-container *ngIf="info_data.paymentObject !=='新光人壽外幣保險'">
+                <li class="table_row">
+                    <span>保費種類</span>
+                    <i>續期保費</i>
+                </li>
+            </ng-container>
+            <li class="table_row">
+                <span>保單號碼</span>
+                <i>{{info_data.paymentNumber}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>保險公司銷帳編號</span>
+                <i>{{info_data.insuraceNumber}}</i>
+            </li>
+            <li class="table_row">
+                <span>繳款金額</span>
+                <i>{{info_data.trnsfrAmount | htMoney}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易序號</span>
+                <i>{{info_data.trnsNo}}</i>
+            </li>
+
+        </ul>
+        <div class="row_single"></div>
+        <div class="row_single">
+            <a class="button_confirm" (click)="onBackMenu()">確定</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="failed">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <a href="javascript:void(0);" class="button_confirm" (click)="onHome()">返回行動網銀首頁</a>
+        </div>
+    </ng-container>
+</section>

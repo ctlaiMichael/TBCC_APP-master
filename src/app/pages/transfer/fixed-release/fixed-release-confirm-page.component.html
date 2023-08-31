@@ -1,0 +1,80 @@
+<section>
+	<div class="sub_info_frame">
+		<ul class="step_bar_frame">
+			<li class="step_bar step_active">
+				<span>1.交易確認</span>
+			</li>
+			<li class="step_bar"></li>
+		</ul>
+	</div>
+
+	<div class="sub_info_subtitle">
+		請確認轉帳資訊以及是否要繼續交易
+	</div>
+	<ul class="table_info">
+		<li class="table_row">
+			<span>定存帳號</span>
+			<i>{{(receivedObj | fieldCheck: ['fDAccNo' ,{zero_type:false, empty_str:'--'}])| accountFormate}}</i>
+		</li>
+		<li class="table_row">
+			<span>面額</span>
+			<i>{{(receivedObj | fieldCheck: ['balance' ,{zero_type:false, empty_str:'--'}])|currencyMoney:'TWD' }}</i>
+		</li>
+		<li class="table_row">
+			<span>開戶日</span>
+			<i>{{(receivedObj | fieldCheck: ['startAccountDay' ,{zero_type:false, empty_str:'--'}])|htDate:'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>到期日</span>
+			<i>{{(receivedObj | fieldCheck: ['endAccountDay' ,{zero_type:false, empty_str:'--'}])|htDate:'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>利率別</span>
+			<i>{{receivedObj | fieldCheck: ['rateTypeDesc' ,{zero_type:false, empty_str:'--'}]}}</i>
+		</li>
+		<li class="table_row">
+			<span>利率</span>
+			<i>{{receivedObj | fieldCheck: ['rate' ,{zero_type:false, empty_str:'--'}]}}%</i>
+		</li>
+		<li class="table_row">
+			<span>計息別</span>
+			<i>{{receivedObj | fieldCheck: ['interestTypeDesc' ,{zero_type:false, empty_str:'--'}]}}</i>
+		</li>
+		<li class="table_row">
+			<span>存款期間</span>
+			<i>{{receivedObj | fieldCheck: ['depositDay' ,{zero_type:false, empty_str:''}]}}個月</i>
+		</li>
+		<li class="table_row">
+			<span>到期續存方式</span>
+			<i>{{receivedObj | fieldCheck: ['autoTransCodeDesc' ,{zero_type:false, empty_str:''}]}}</i>
+		</li>
+		<li class="table_row">
+			<span>綜存帳號</span>
+			<i>{{(receivedObj | fieldCheck: ['mBAccNo' ,{zero_type:false, empty_str:''}])| accountFormate}}</i>
+		</li>
+	</ul>
+	<div class="row_single">
+            <h4 class="simple_title">定期性存款中途解約</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_content">
+                <ol style="padding: 0px 20px 0px 20px;">
+                    
+                    <li style="list-style: decimal;">適用之牌告利率：按其實際存滿月數之相當期別定期存款牌告利率八折單利計息，如無該期別牌告利率，則依較低期別之牌告利率 計息，前項牌告利率以存入當日之牌告利率為準。定期存款中途解約，若其存期未滿一個月者不予計息</li>
+					<li style="list-style: decimal;">採固定利率者計息如下： 本金 x {{'{'}}年利率 x [ 足月月數/12 + 畸零天數/365 ]{{'{'}} x 0.8。</li>
+					<li style="list-style: decimal;">採機動利率計息者：於實際存款期間內，如遇本行牌告利率調整，應按新牌告利率分段計息。</li>
+				
+                </ol>
+            </div>
+        </div>
+	
+
+	<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+	<div class="row_single">
+		<div class="double_button">
+			<a href="javasceipt:void(0)" (click)="cancelEdit()">{{'BTN.PREVIOUS' | translate }}</a>
+			<a href="javasceipt:void(0)" (click)="onNextPage()">{{'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+</section>

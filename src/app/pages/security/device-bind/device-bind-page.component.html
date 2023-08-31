@@ -1,0 +1,66 @@
+<section>
+    <!-- 步驟列 -->
+    <app-step-bar *ngIf="stepMenuData.length > 0" [setData]="stepMenuData" [setKey]="nowStep" (backPageEmit)="onStepBarEvent($event)"></app-step-bar>
+
+    <ng-container [ngSwitch]="editType">
+        <ng-container *ngSwitchCase="'apply'">
+            <!-- 申請 -->
+            <div class="row_single"></div>
+            <app-login-pswd [setData]="inpSetData" [errorStr]="error_data.pswd" (backValueEmit)="onInputBack($event)"></app-login-pswd>
+            <!-- BTN Box -->
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="cancelEdit()">{{ 'BTN.CANCEL' | translate }}</a>
+                    <!-- 確定: 送出後即產生授權碼，無法返回 -->
+                    <a href="javascript:void(0)" (click)="onSubmitEvent()">{{ 'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+            <!-- BTN Box End -->
+            <!-- INFO -->
+            <div class="row_single">
+                <!-- 提醒您： -->
+                <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+            </div>
+            <div class="row_single">
+                <!-- 裝置綁定服務配合OTP或SSL密碼可於行動網銀進行電子轉帳或交易指示類功能使用。 -->
+                <p class="inner_content">{{ 'PG_OTP.BIND.INFO.APPLY' | translate }}</p>
+            </div>
+            <!-- INFO END -->
+        </ng-container>
+        <ng-container *ngSwitchCase="'identity'">
+            <!-- 授權碼 -->
+            <!-- 裝置認證密碼 -->
+            <div class="sub_info_subtitle">{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY' | translate }}：{{ identity }}</div>
+            <div class="row_single"></div>
+            <!-- BTN Box -->
+            <div class="row_single">
+                <div class="double_button">
+                    <!-- 稍後認證 -->
+                    <a href="javascript:void(0)" (click)="cancelEdit()">{{ 'PG_OTP.BIND.FIELD.IDENTITY_CANCEL' | translate }}</a>
+                    <!-- 立即認證 -->
+                    <a href="javascript:void(0)" (click)="onChangePage('bind')">{{ 'PG_OTP.BIND.FIELD.IDENTITY_CHECK' | translate }}</a>
+                </div>
+            </div>
+            <!-- BTN Box End -->
+            <!-- INFO -->
+            <div class="row_single">
+                <!-- 提醒您： -->
+                <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+            </div>
+            <div class="row_single">
+                <!-- 您已取得裝置認證授權密碼。請務必記住此裝置認證密碼並於24小時內進行認證作業，否則裝置認證密碼將於24小時後失效。 -->
+                <p class="inner_content font_red">{{ 'PG_OTP.BIND.INFO.IDENTITY' | translate }}</p>
+            </div>
+            <!-- INFO END -->
+        </ng-container>
+        <ng-container *ngSwitchCase="'bind'">
+            <!-- 啟動 -->
+            <app-device-bind-send [setData]="identity" (backPageEmit)="onBackPage($event)"></app-device-bind-send>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <!-- 不顯示 -->
+            <div class="sub_info_subtitle">{{ 'ERROR.DEFAULT' | translate }}</div>
+        </ng-container>
+    </ng-container>
+
+</section>

@@ -1,0 +1,75 @@
+<style type="text/css">
+/*特殊處理 => 請art協助*/
+.info_select select {
+	font-size:17px;
+}
+.credit_card_bill_detail_list li p:last-child{
+	border-radius: 0 0 7px 7px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+</style>
+<div class="bc_frame">
+	<div class="row_single info_list info_select">
+		<div class="input_frame"><table><tr>
+				<td align="center"><select ng-model="selectCard" ng-change="changeCard(selectCard);" ng-options="option as option.name for option in cardOptions">
+						<option value="">{{ 'CTRL_LOST_CARD.INPUT.SELECT' | translate }}</option>
+					</select></td>
+				</tr></table></div>
+
+	</div>
+
+</div>
+<div ng-style="!selectCard && {'display':'none'}">
+	<div class="bc_frame" ng-if="selectCard.show_detail">
+		<img width="100%" height="100%" src="ui/data/card/{{selectCard.show_detail.img}}"/>
+	</div>
+	<ul class="credit_card_bill_detail_list" ng-if="selectCard">
+		<li>
+			<p ng-if="selectCard.show_detail">
+				<!-- 信用卡類別 -->
+				<span>{{'CTRL_LOST_CARD.INPUT.CARD_TYPE_NAME' | translate }}：</span>
+				<span>{{selectCard.show_detail.real_name}}</span>
+			</p>
+			<p>
+				<!-- 信用卡號 -->
+				<span>{{'FIELD.CARD.CARDNUM' | translate }}：</span>
+				<span>{{selectCard.creditCardNO | accountMaskFilter}}</span>
+			</p>
+			<p>
+				<!-- 正附卡類型 -->
+				<span>{{'FIELD.CARD.OWNER' | translate }}：</span>
+				<span>{{selectCard.cardTypeName}}</span>
+			</p>
+		</li>
+	</ul>
+	<div class="bc_frame"  ng-style="selectCard.isComboCard!=1 && {'display':'none'}">
+		<div class="row_single input_single address_group"
+			 ng-class="{input_error:(error_msg_list.branchId)}">
+			<!-- 往來分行 -->
+			<i class="input_name">{{'CTRL_APPLY.INPUT.branchName' | translate}}</i>
+			<input type="text" name="branch_id" ng-model="branch_id" placeholder="{{'INPUT_MSG.BRANCH.ID' | translate}}" />
+			<div class="address_select_group">
+				<select name="branch_city" id="branch_city">
+					<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+				</select>
+				<select name="branch" ng-model="branchId">
+					<option value="">{{'INPUT_MSG.BRANCH.NAME' | translate}}</option>
+				</select>
+			</div>
+			<s class="input_comment">
+				{{error_msg_list.branchId}}
+			</s>
+		</div>
+	</div>
+	<div class="bc_frame">
+		<check-captcha-directive ></check-captcha-directive>
+	</div>
+	<div class="bc_frame">
+		<div class="double_button">
+			<button class="button button_submit" ng-click="setTransfer('lostYresult')">{{'CTRL_LOST_CARD.BTN.LOST_Y_RESULT' | translate}}</button><!-- 掛失並補發 -->
+			<button class="button button_submit" ng-click="setTransfer('lostNresult')">{{'CTRL_LOST_CARD.BTN.LOST_N_RESULT' | translate}}</button><!-- 掛失不補發 -->
+		</div>
+	</div>
+
+</div>
+

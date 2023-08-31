@@ -1,0 +1,19 @@
+<section *ngIf="!showContent; else contentBox" class="accountSum_main_pg" paginatorCtrl [nowPage]="pageCounter"
+    [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+
+    <!-- 查詢時間：  -->
+    <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+        <span>{{ dataTime | htDate}}</span>
+    </div>
+    <div class="row_single"></div>
+    <!-- 分頁 -->
+    <app-day-remit-list-paginator [page]="'1'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+    </app-day-remit-list-paginator>
+    <ng-container #pageBox></ng-container>
+    <!-- 分頁 End -->
+</section>
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <!-- 定期存款 -->
+  <app-day-remit-detail-mainpage [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-day-remit-detail-mainpage>
+</ng-template>

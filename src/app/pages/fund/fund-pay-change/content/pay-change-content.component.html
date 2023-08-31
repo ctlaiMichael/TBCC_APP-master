@@ -1,0 +1,695 @@
+<ng-container [ngSwitch]="nowPageType">
+	<!-- 編輯頁 -->
+	<ng-container *ngSwitchCase="'editPage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.異動設定</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class='row_single'></div>
+			<div class="row_single">
+				<ul class="inner_table_frame search_range_disable">
+					<li class="inner_table_cell">
+						目前投資基金類別
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="fundTypeName">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single" style='margin-bottom: 0px'>
+				<ul class="inner_table_frame search_range_disable">
+					<li class="inner_table_cell">基金標的</li>
+					<li class="inner_table_cell">
+						<input class="inner_input" type="text" [(ngModel)]="fundName">
+					</li>
+				</ul>
+				<i class="input_info_warnning">錯誤訊息內容</i>
+				<div class="row_inner">
+					<a href="javascript:void(0);" *ngIf="radioVal=='1'" (click)="changeFund()" class="inner_button float_right_bt suspend">
+						<span>變更基金標的</span>
+					</a>
+					<a href="javascript:void(0);" *ngIf="radioVal=='2'" (click)="alertMsg()" class="inner_button float_right_bt suspend normal_disable" style="pointer-events:auto; opacity:0.5">
+						<span>變更基金標的</span>
+					</a>
+				</div>
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame suspend" [ngClass]="{'normal_disable':(radioVal=='2'), 'active_warnning':(errorMsg.money!='') }">
+					<li class="inner_table_cell">
+						每次投資金額
+						<br>
+						<div>{{fullData.INCurrency | htMoney}}</div>
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" value="{{purchAmnt}}" [(ngModel)]="purchAmnt" (change)="amntChange()">
+					</li>
+					<li class="inner_table_cell third_td">元</li>
+
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.money | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="radioVal=='2'?'normal_disable':''">
+					<li class="inner_table_cell">
+						扣款帳號
+					</li>
+					<li class="inner_table_cell">
+						<!-- 暫停扣款 radioVal==2 帶預設-->
+						<ng-container *ngIf="radioVal=='2'">
+							<select class="inner_select">
+								<option>{{df_trnsfrOutAccnt}}</option>
+							</select>
+						</ng-container>
+						<!-- 正常扣款 -->
+						<ng-container *ngIf="radioVal!='2'">
+							<select class="inner_select" [(ngModel)]="nowOutType.trnsfrOutAccnt">
+								<option value="" *ngIf="please_trnsfrOutAccnt">請選擇</option>
+								<option *ngFor="let acct of OutAC" [ngValue]="acct">{{ acct }}</option>
+							</select>
+						</ng-container>
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="radioVal=='2'?'normal_disable':''">
+					<li class="inner_table_cell">
+						現金收益帳號
+					</li>
+					<li class="inner_table_cell">
+						<!-- 暫停扣款 radioVal==2 帶預設-->
+						<ng-container *ngIf="radioVal=='2'">
+							<select class="inner_select">
+								<option>{{df_trnsfrInAccnt}}</option>
+							</select>
+						</ng-container>
+						<!-- 正常扣款 -->
+						<ng-container *ngIf="radioVal!='2'">
+							<select class="inner_select" [(ngModel)]="nowInType.trnsfrInAccnt">
+								<option value="" *ngIf="please_trnsfrInAccnt">請選擇</option>
+								<option *ngFor="let acct of InAC" [ngValue]="acct">{{ acct }}</option>
+							</select>
+						</ng-container>
+					</li>
+				</ul>
+			</div>
+
+			<div class="row_single">
+				<h4 class="simple_title">扣款狀態</h4>
+			</div>
+			<div class="row_single" style='margin-bottom: 0px'>
+				<div class="inner_radio radio_inline ">
+					<input type="radio" id="inner_radio01" name="radio_01" value="1" [(ngModel)]="radioVal">
+					<label for="inner_radio01" (click)="showDisabled('1')">
+						<span>
+							<i></i>
+						</span>
+						<b>正常扣款</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio02" name="radio_01" value="2" [(ngModel)]="radioVal">
+					<label for="inner_radio02" (click)="showDisabled('2')">
+						<span>
+							<i></i>
+						</span>
+						<b>暫停扣款</b>
+					</label>
+				</div>
+			</div>
+			<!--原page2-->
+
+			<!-- 投資標的 -->
+			<div class="row_single">
+				<h4 class="simple_title">扣款週期設定</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_radio radio_inline" [ngClass]="{ 'normal_disable':(monthDisable) }">
+					<input type="radio" id="inner_radio03" name="radio_02" value="1" [(ngModel)]="setRadio" (click)="switchRadio()"
+					 ngDefaultControl>
+					<label for="inner_radio03">
+						<span>
+							<i></i>
+						</span>
+						<b>每月扣款</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline" [ngClass]="{ 'normal_disable':(weekDisable) }">
+					<input type="radio" id="inner_radio04" name="radio_02" value="2" [(ngModel)]="setRadio" (click)="switchRadio()"
+					 ngDefaultControl>
+					<label for="inner_radio04">
+						<span>
+							<i></i>
+						</span>
+						<b>每週扣款</b>
+					</label>
+				</div>
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						扣款日
+					</li>
+					<li class="inner_table_cell">
+						<div class="inner_select" id="month_input" style="line-height:45px;word-break: break-all" [(ngModel)]="dateArr"
+						 (click)="dateSelect()" ngDefaultControl>
+							{{showDateStr}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!---->
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="backMenuPage()">取消</a>
+					<a href="javascript:void(0)" (click)="goToSetting()">下一步</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<!-- 編輯頁-基金選擇分頁 -->
+	<ng-container *ngSwitchCase="'fundSelectPage'">
+		<app-fund-subject [setData]="req" [search]="search" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-subject>
+	</ng-container>
+
+	<!-- 設定頁 -->
+	<!-- <ng-container *ngSwitchCase="'settingPage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar">
+					</li>
+					<li class="step_bar step_active">
+						<span>2.資料設定</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">扣款週期設定</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio03" name="radio_02" value="1" [(ngModel)]="setRadio" (click)="switchRadio()" ngDefaultControl>
+					<label for="inner_radio03">
+						<span>
+							<i></i>
+						</span>
+						<b>每月扣款</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio04" name="radio_02" value="2" [(ngModel)]="setRadio" (click)="switchRadio()" ngDefaultControl>
+					<label for="inner_radio04">
+						<span>
+							<i></i>
+						</span>
+						<b>每週扣款</b>
+					</label>
+				</div>
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						扣款日
+					</li>
+					<li class="inner_table_cell">
+						<div class="inner_select" id="month_input" style="line-height:45px" [(ngModel)]="dateArr" (click)="dateSelect()" ngDefaultControl>
+							{{showDateStr}}
+						</div>
+					</li>
+				</ul>
+			</div> -->
+	<!-- <div class="row_single"> -->
+	<!-- 20190626 依合庫需求改為非必填，請參考文件:轉置案UAT問題追蹤表@20190625.xls-問題編號353 -->
+	<!-- <ul class="inner_table_frame" [ngClass]="{'active_warnning':(salesChangeFlag) }"> -->
+	<!-- <ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						理財專員
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="nowSales" (change)="salesChange()">
+							<option *ngFor="let salelist of salesArr" [ngValue]="salelist">{{ salelist }}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">未指定理財專員</i>
+			</div> -->
+
+	<!-- <div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						轉介人員
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="nowIntro">
+							<option *ngFor="let introlist of introArr" [ngValue]="introlist">{{ introlist }}</option>
+						</select>
+					</li>
+				</ul>
+			</div> -->
+	<!-- <div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="goToEdit()">上一步</a> -->
+	<!-- code空值: 定期定額-不做假減碼，導到同意事項 -->
+	<!-- <ng-container *ngIf="fullData.code == ''">
+						<a href='javascript:void(0);' (click)="goToAgree()">下一步</a>
+					</ng-container> -->
+	<!-- code非空值: 定期不定額-導到加減碼設定 -->
+	<!-- <ng-container *ngIf="fullData.code != ''">
+						<a href='javascript:void(0);' (click)="goToVary()">下一步</a>
+					</ng-container> -->
+	<!-- </div>
+			</div>
+		</section>
+	</ng-container> -->
+	<!-- 設定頁-選擇日期分頁 -->
+	<ng-container *ngSwitchCase="'dateSelectPage'">
+		<app-date-select [dateType]="setRadio" [dateArr]="dateArr" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-date-select>
+	</ng-container>
+
+	<!-- 漲幅級距 -->
+	<ng-container *ngSwitchCase="'settinigVaryPage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar">
+					</li>
+					<li class="step_bar step_active">
+						<span>2.資料設定</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- 投資標的 -->
+			<div class="row_single">
+				<h4 class="simple_title">評價漲跌幅級距-加減碼金額設定</h4>
+			</div>
+			<div class="row_single">
+				<div class="switch_frame switch_frame_100">
+					<input type="radio" class="switch_input" name="view" value="week" id="week" (click)="goSwitchVary(true)" [checked]="showVaryFlag">
+					<label for="week" class="switch_label switch_label_off">跌幅級距</label>
+					<input type="radio" class="switch_input" name="view" value="month" id="month" (click)="goSwitchVary(false)" [checked]="!showVaryFlag">
+					<label for="month" class="switch_label switch_label_on">漲幅級距</label>
+					<span class="switch_selection"></span>
+				</div>
+			</div>
+			<ng-container *ngIf="showVaryFlag == true">
+				<div class="row_single fall">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.decline1) }">
+						<div class="transfer_td">-5% &ge; 評價 &ge; -10%&nbsp;&nbsp;
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.decline1Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.decline1" class="inner_input" placeholder="輸入加減碼金額" (change)="checkDecline1()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.decline1_msg | translate}}</i>
+				</div>
+				<div class="row_single fall">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.decline2) }">
+						<div class="transfer_td">-10% &ge; 評價 &ge;-15%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.decline2Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.decline2" class="inner_input" placeholder="輸入加減碼金額" (change)="checkDecline2()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.decline2_msg | translate}}</i>
+				</div>
+				<div class="row_single fall">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.decline3) }">
+						<div class="transfer_td">-15% &ge; 評價 &ge; -20%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.decline3Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.decline3" class="inner_input" placeholder="輸入加減碼金額" (change)="checkDecline3()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.decline3_msg | translate}}</i>
+				</div>
+				<div class="row_single fall">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.decline4) }">
+						<div class="transfer_td">-20% &ge; 評價 &ge; -25%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.decline4Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.decline4" class="inner_input" placeholder="輸入加減碼金額" (change)="checkDecline4()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.decline4_msg | translate}}</i>
+				</div>
+				<div class="row_single fall">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.decline5) }">
+						<div class="transfer_td">-25% &ge;評價 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.decline5Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.decline5" class="inner_input" placeholder="輸入加減碼金額" (change)="checkDecline5()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.decline5_msg | translate}}</i>
+				</div>
+			</ng-container>
+			<ng-container *ngIf="showVaryFlag == false">
+				<div class="row_single rise">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.gain1) }">
+						<div class="transfer_td">+5% &le; 評價 &le;+10%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.gain1Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.gain1" class="inner_input" placeholder="輸入加減碼金額" (change)="checkGain1()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.gain1_msg | translate}}</i>
+				</div>
+				<div class="row_single rise">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.gain2) }">
+						<div class="transfer_td">+10% &le; 評價 &le;+15%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.gain2Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.gain2" class="inner_input" placeholder="輸入加減碼金額" (change)="checkGain2()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.gain2_msg | translate}}</i>
+				</div>
+				<div class="row_single rise">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.gain3) }">
+						<div class="transfer_td">+15% &le; 評價 &le;+20%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.gain3Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.gain3" class="inner_input" placeholder="輸入加減碼金額" (change)="checkGain3()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.gain3_msg | translate}}</i>
+				</div>
+				<div class="row_single rise">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.gain4) }">
+						<div class="transfer_td">+20% &le; 評價 &le;+25%
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.gain4Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.gain4" class="inner_input" placeholder="輸入加減碼金額" (change)="checkGain4()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.gain4_msg | translate}}</i>
+				</div>
+				<div class="row_single rise">
+					<div class="transfer_frame" [ngClass]="{ 'active_warnning':(checkGain.gain5) }">
+						<div class="transfer_td">+25% &le; 評價 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div class="transfer_td">
+							<select class="inner_select" [(ngModel)]="fullData.gain5Cd">
+								<option *ngFor="let item of varyIcon" [ngValue]="item">{{ item }}</option>
+							</select>
+							<input type="tel" [(ngModel)]="fullData.gain5" class="inner_input" placeholder="輸入加減碼金額" (change)="checkGain5()">
+						</div>
+						<div class=""></div>
+					</div>
+					<i class="input_info_warnning">{{checkGain.gain5_msg | translate}}</i>
+				</div>
+			</ng-container>
+
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="goToEdit()">上一步</a>
+					<a href="javascript:void(0);" (click)="goToAgree()">下一步</a>
+				</div>
+			</div>
+
+		</section>
+	</ng-container>
+	<!-- 同意事項頁 -->
+	<ng-container *ngSwitchCase="'agreePage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar">
+					</li>
+					<li class="step_bar">
+
+					</li>
+					<li class="step_bar step_active">
+						<span>3.條款確認</span>
+					</li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">您本次變更扣款之基金 :</h4>
+			</div>
+
+			<div class="row_single">
+				<input type="text" class="inner_input_normal search_range_disable" placeholder="" value="{{fundCode}}-{{fundName}}">
+			</div>
+			<div class="row_single">
+				<div class="inner_checkbox">
+					<input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [checked]="agreeNote.note1" (click)="agreeNote1Click()">
+					<label for="inner_checkbox01">
+						<span>
+							<i></i>
+						</span>
+						<b>本人已自行至「<i class="attract_link fontw" (click)="goFundUrl('1')">境外基金資訊觀測站</i>」及「<i class="attract_link fontw"
+							 (click)="goFundUrl('2')">公開資訊觀測站</i>」下載並詳閱投資人須知及公開說明書中譯本等相關資訊。</b>
+					</label>
+				</div>
+				<div class="inner_checkbox">
+					<input type="checkbox" id="inner_checkbox02" name="inner_checkbox2" [checked]="agreeNote.note2" (click)="agreeNote2Click()">
+					<label for="inner_checkbox02">
+						<span>
+							<i></i>
+						</span>
+						<b>已瞭解<a class="attract_link fontw" (click)="linkToBook2()">基金通路報酬揭露資訊</a></b>
+					</label>
+				</div>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">定期(不)定額重要說明</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					委託人申請辦理定期定額/定期不定額信託投資或投資設定異動事項時，最遲應於指定委託扣款日之前一營業日(定期不定額為前二營業日)申請並經受託人受理完成後，當次扣款或異動始生效力。
+				</p>
+			</div>
+			<div class="row_single">
+				<div class="inner_checkbox">
+					<input type="checkbox" id="inner_checkbox03" name="inner_checkbox" [checked]="agreeNote.note3" (click)="agreeNote3Click()">
+					<label for="inner_checkbox03">
+						<span>
+							<i></i>
+						</span>
+						<b>本人已閱讀上開條款，並充分了解相關投資風險。</b>
+					</label>
+				</div>
+			</div>
+			<div class="row_single">
+				<div class="double_button">
+					<!-- <a id="confirm" onclick="checkAgreeBox()">確定</a><a href="index_fund.html">取消</a> -->
+					<!-- code空值: 定期定額-不做假減碼，導回設定頁 -->
+					<ng-container *ngIf="fullData.code == ''||fullData.code == null ">
+						<a href='javascript:void(0);' (click)="goToEdit()">上一步</a>
+					</ng-container>
+					<!-- code非空值: 定期不定額-導到加減碼設定 -->
+					<ng-container *ngIf="fullData.code != '' && fullData.code != null ">
+						<a href='javascript:void(0);' (click)="goToVary()">上一步</a>
+					</ng-container>
+					<a href="javascript:void(0);" (click)="goToConfirm()">下一步</a>
+				</div>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">提醒您：</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					若您尚未知悉上述資訊，請洽本行投資專員
+				</p>
+			</div>
+		</section>
+	</ng-container>
+
+	<!-- 資料確認頁 -->
+	<ng-container *ngSwitchCase="'confirmPage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar">
+					</li>
+					<li class="step_bar">
+
+					</li>
+					<li class="step_bar">
+					</li>
+					<li class="step_bar step_active">
+						<span>4.確認</span>
+					</li>
+				</ul>
+			</div>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>生效日期</span>
+					<i>{{todate | htDate:'date'}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易編號</span>
+					<i>{{setData.transCode}}</i>
+				</li>
+				<li class="table_row">
+					<span>基金名稱</span>
+					<i>{{fundCode}}-{{fundName}}</i>
+				</li>
+				<li class="table_row">
+					<span>每次投資金額</span>
+					<i>{{fullData.INCurrency | htMoney}} {{purchAmnt}}元</i>
+				</li>
+				<li class="table_row">
+					<span>每週/每月扣款日期</span>
+					<i>{{showDateStr}}</i>
+				</li>
+				<li class="table_row">
+					<span>扣款狀態</span>
+					<i>{{debitStatusName}}</i>
+				</li>
+				<li class="table_row">
+					<span>扣款帳號</span>
+					<i>{{nowOutType.trnsfrOutAccnt}}</i>
+				</li>
+				<li class="table_row">
+					<span>現金收益帳號</span>
+					<i>{{nowInType.trnsfrInAccnt}}</i>
+				</li>
+				<!-- code非空值: 定期不定額-顯示加減碼設定 -->
+				<ng-container *ngIf="fullData.code != '' && fullData.code != null ">
+					<li class="table_row">
+						<span>評價方式</span>
+						<i>{{fullData.evaCDText}}</i>
+					</li>
+					<!-- <li class="table_row">
+						<span>不定額加碼</span>
+						<i>
+							<div class="curreny_change_frame">
+								<div class="curreny_change">
+									<a href="javascript:void(0);" class="active">跌幅級距</a>
+									<a href="javascript:void(0);">漲幅級距</a>
+								</div>
+							</div>
+
+						</i>
+					</li> -->
+				</ng-container>
+
+			</ul>
+			<!-- code非空值: 定期不定額-顯示加減碼設定 -->
+			<ng-container *ngIf="fullData.code != '' && fullData.code != null ">
+				<ul class="table_info table_th_style">
+					<li class="table_row">
+						<span>評價跌幅級距%</span>
+						<i>加/減碼金額</i>
+					</li>
+					<li class="table_row">
+						<span>-5~-10</span>
+						<i>{{fullData.decline1Cd}}{{fullData.decline1}}</i>
+					</li>
+					<li class="table_row">
+						<span>-10~-15</span>
+						<i>{{fullData.decline2Cd}}{{fullData.decline2}}</i>
+					</li>
+					<li class="table_row">
+						<span>-15~-20</span>
+						<i>{{fullData.decline3Cd}}{{fullData.decline3}}</i>
+					</li>
+					<li class="table_row">
+						<span>-20~-25</span>
+						<i>{{fullData.decline4Cd}}{{fullData.decline4}}</i>
+					</li>
+					<li class="table_row">
+						<span>-25以下</span>
+						<i>{{fullData.decline5Cd}}{{fullData.decline5}}</i>
+					</li>
+				</ul>
+
+				<ul class="table_info table_th_style" id="upsDown2">
+					<li class="table_row">
+						<span>評價漲幅級距%</span>
+						<i>加/減碼金額</i>
+					</li>
+					<li class="table_row">
+						<span>+5~+10</span>
+						<i>{{fullData.gain1Cd}}{{fullData.gain1}}</i>
+					</li>
+					<li class="table_row">
+						<span>+10~+15</span>
+						<i>{{fullData.gain2Cd}}{{fullData.gain2}}</i>
+					</li>
+					<li class="table_row">
+						<span>+15~+20</span>
+						<i>{{fullData.gain3Cd}}{{fullData.gain3}}</i>
+					</li>
+					<li class="table_row">
+						<span>+20~+25</span>
+						<i>{{fullData.gain4Cd}}{{fullData.gain4}}</i>
+					</li>
+					<li class="table_row">
+						<span>+25以上</span>
+						<i>{{fullData.gain5Cd}}{{fullData.gain5}}</i>
+					</li>
+				</ul>
+			</ng-container>
+			<div class="row_single"></div>
+
+
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security>
+			<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+			<div class="row_single">
+				<p class="inner_content">
+					說明：<br>
+					委託人申請辦理定期定額/定期不定額信託投資或投資設定異動事項時，最遲應於指定委託扣款日之前一營業日(定期不定額為前二營業日)申請，當次扣款或異動始生效力。
+				</p>
+			</div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="goToAgree()">上一步</a>
+					<a href="javascript:void(0);" (click)="goToResult()">確定變更</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+
+	<!-- 變更結果頁 -->
+	<ng-container *ngSwitchCase="'resultPage'">
+		<app-pay-change-result [setData]="sendData" [code]='fullData.code' [e]="safeE"></app-pay-change-result>
+	</ng-container>
+</ng-container>

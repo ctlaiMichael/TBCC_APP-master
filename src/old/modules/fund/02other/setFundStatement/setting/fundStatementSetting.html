@@ -1,0 +1,60 @@
+<!--header-->
+<div class="row">
+    <header class="native_main_nav">
+        <div class="back_bt">
+            <p class="back_title" ng-click="clickBack()">返回</p>
+        </div>
+        <div class="page_title">信託對帳單寄送方式</div>
+        <div class="bank_logo">
+            <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+        </div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 扣款帳號設定頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+
+                <div class="main_input" style="border:none;">
+                    <div class="send_sec">
+                        <p class="send_title">對帳單寄送方式</p>
+                        <select class="send_sel" ng-model="fundNoticeTypeSelected" ng-options="fundNoticeType.Name for fundNoticeType in fundNoticeTypeList">
+                        </select>
+                    </div>
+                    <security-selector-directive></security-selector-directive>
+                </div>
+                <!--send_sec end-->
+                <div class="send_con">
+                    <p>
+                        說明:
+                        <br>申請異動為『寄發紙本』，受託人將以寄發交易確認單(含相關報表)書面資料至委託人之通訊處。
+                        <br>申請異動為『寄發電子郵件』，受託人將以寄發交易確認單(含相關報表)電子檔至委託人之電子郵件信箱。
+                    </p>
+                </div>
+                <div class="send_btarea">
+                    <button type="button" class="send_yes" ng-click="clickSubmit()">
+                        <i class="fa fa-check" aria-hidden="true"></i> 確定變更</button>
+                    <button type="button" class="send_back" ng-click="clickBack()">
+                        <i class="fa fa-undo" aria-hidden="true"></i> 回上頁</button>
+                </div>
+
+
+
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+
+    </section>
+    <!--main_sec end-->
+</div>
+<!--section 扣款帳號設定頁面 end-->
+<style>
+    .input[type=text]{
+        width:auto !important;
+    }
+</style>

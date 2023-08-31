@@ -1,0 +1,23 @@
+<section class="background_a11y" *ngIf="islogin && !showContent; else foreignBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages">
+  <!-- 卡片式總覽3 -->
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y">
+      <div class="result_state_a11y">查詢成功<br class="br_height_a11y"></div>
+      <div class="row3_area_a11y">
+          <p class="row3_sheet_a11y" [title]="myquerytime">查詢時間：<br>{{ querytime }}</p>
+      </div>
+  </div>
+  <!-- 卡片式總覽3 End -->
+  <!-- 卡片式總覽4 -->
+  <!-- Page1 -->
+  <app-foreign-deposit-pagebox-a11y-page [page]="1" (backPageEmit)="onBackPage($event)"
+  (errorPageEmit)="onErrorBackEvent($event)">
+  </app-foreign-deposit-pagebox-a11y-page>
+  <!-- 卡片式總覽4 End -->
+</section>
+<ng-template  #foreignBox>
+  <!-- <ng-container *ngIf="islogin && showContent && !isDetail; else detailBox"> -->
+  <app-foreign-search-a11y-page [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-foreign-search-a11y-page>
+  <!-- </ng-container> -->
+</ng-template>
+<router-outlet></router-outlet>

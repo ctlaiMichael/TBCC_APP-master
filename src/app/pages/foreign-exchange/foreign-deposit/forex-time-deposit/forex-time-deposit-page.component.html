@@ -1,0 +1,95 @@
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <!-- 帳戶資訊 -->
+    <app-account-content [acctObj]="acctObj" [acctGroup]="'FOREX'"></app-account-content>
+
+    <!-- 頁籤 Start -->
+    <app-bookmark [setData]="bookmarkData" [defaultKey]="'detail'" (backPageEmit)="onBookMarkBack($event)">
+    </app-bookmark>
+    <!-- 頁籤 End -->
+
+
+    <ng-container *ngIf="nowPageType === 'summary'; else detailBox">
+        <!-- 彙總 -->
+        <app-content-summary [acctObj]="acctObj" [itemData]="itemData" [acctGroup]="'FOREX'"></app-content-summary>
+    </ng-container>
+    <ng-template #detailBox>
+        <!-- 自訂搜尋box -->
+        <app-date-range-search [show]="showSearchBox" [dateObj]="searchBoxRule" [infoData]="searchInfoData"
+            (backPageEmit)="onSearchBack($event)"></app-date-range-search>
+        <!-- 自訂 -->
+        <div class="sub_info_subtitle font_align_left" *ngIf="detailReqObj.show">
+            <!-- 查詢區間： -->
+            <ng-container *ngIf="nowPageType !== 'custom'; else rangeBox;">
+                {{ 'FIELD.SEARCH_RANGE' | translate }}：
+                <span>{{ 'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}</span>
+                <br>
+            </ng-container>
+            <ng-template #rangeBox>
+                <a href="javascript:void(0);" class="search_range_btn mb_15" (click)="onChangePage('search-box')">{{
+                    'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}
+                    <i class="search_range_icon icon_search"></i>
+                </a>
+            </ng-template>
+            <!-- 查詢時間：  -->
+            <!-- 20190611 國外部要求隱藏查詢時間-->
+            <!-- {{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span> -->
+        </div>
+        <!-- Detail Start -->
+        <ul class="table_data_frame" *ngIf="detailReqObj.show">
+            <li class="table_data table_data_header">
+                <!-- 交易日 -->
+                <span class="data_cell">{{ 'PG_DEPOSIT.FOREX_DEPOSIT.TIME_TITLE.TITLE1' | translate }}</span>
+                <!-- 摘要 -->
+                <i class="data_cell">{{ 'PG_DEPOSIT.FOREX_DEPOSIT.TIME_TITLE.TITLE2' | translate }}</i>
+                <!-- 支出/存入 -->
+                <b class="data_cell">{{ 'PG_DEPOSIT.FOREX_DEPOSIT.TIME_TITLE.TITLE3' | translate }}</b>
+                <s class="data_cell"></s>
+            </li>
+            <ng-container [ngSwitch]="nowPageType">
+                <ng-container *ngSwitchCase="'1M'">
+                    <!-- 1M -->
+                    <app-forex-time-paginator [acctObj]="acctObj" [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                        (errorPageEmit)="onErrorBackEvent($event)">
+                    </app-forex-time-paginator>
+                    <ng-container #pageBox1></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="'6M'">
+                    <!-- 6M -->
+                    <app-forex-time-paginator [acctObj]="acctObj" [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                        (errorPageEmit)="onErrorBackEvent($event)">
+                    </app-forex-time-paginator>
+                    <ng-container #pageBox2></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="'12M'">
+                    <!-- 12M -->
+                    <app-forex-time-paginator [acctObj]="acctObj" [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                        (errorPageEmit)="onErrorBackEvent($event)">
+                    </app-forex-time-paginator>
+                    <ng-container #pageBox3></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="'custom'">
+                    <app-forex-time-paginator [acctObj]="acctObj" [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                        (errorPageEmit)="onErrorBackEvent($event)">
+                    </app-forex-time-paginator>
+                    <ng-container #pageBox></ng-container>
+                </ng-container>
+                <ng-container *ngIf="nowPageType=='1M'||nowPageType=='6M'||nowPageType=='12M'">
+                    <div class="row_single">
+                        <h4 class="simple_title">提醒您：</h4>
+                    </div>
+                    <div class="row_single">
+                        <p class="inner_content">{{'PG_DEPOSIT.FOREX_DEPOSIT.SEARCH_INFO.INFO3' | translate }}</p>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <!-- 不顯示 -->
+                </ng-container>
+            </ng-container>
+        </ul>
+        <!-- Detail End -->
+
+    </ng-template>
+
+
+</section>

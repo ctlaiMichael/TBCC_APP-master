@@ -1,0 +1,9 @@
+{
+    "custId":"",
+    "paymentObject":"",
+    "trnsfrOutAcct":"",
+    "trnsfrOutCurr":"",
+    "trnsfrAmount":"",
+    "paymentNumber":"",
+    "trnsToken":""  
+}

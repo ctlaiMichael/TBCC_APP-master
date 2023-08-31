@@ -1,0 +1,56 @@
+<section>
+    <ng-container *ngIf="resultFlag==false">
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['oldpwd']?'active_warnning':''">
+                <!-- 代號是帶入的 -->
+                <li class="inner_table_cell">
+                    舊SSL轉帳密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="oldPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userpw.OLD_SSL">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['oldpwd']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['newpwd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    新SSL轉帳密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="newPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userpw.NEW_SSL">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['newpwd']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['checkpwd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    確認<br>新SSL轉帳密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="ConfirmNewPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userpw.CHECK_SSL">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['checkpwd']|translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')"(click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content font_red">
+                SSL轉帳密碼必須為8-16位英數字，其中至少包含2位英文字，且區分大小寫。
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="resultFlag">
+        <app-result [successMsg]="successMsg" [successDetail]="successDetail"></app-result>
+    </ng-container>
+</section>

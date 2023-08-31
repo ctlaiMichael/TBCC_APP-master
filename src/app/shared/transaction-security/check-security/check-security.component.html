@@ -1,0 +1,12 @@
+<div class="row_single_ssl" *ngIf="returnObj.securityType==='1'" >
+  <ul class="inner_table_frame" [ngClass]="ulClass" >
+    <li class="inner_table_cell">
+      SSL轉帳密碼
+    </li>
+    <li class="inner_table_cell">
+      <input  maxlength='16' type="password" name="SSL_val" [(ngModel)]="SSL_val" class="inner_input" placeholder="請輸入SSL轉帳密碼">
+    </li>
+  </ul>
+  <i class="input_info_warnning">{{SSL_error_msg}}</i>
+</div>
+<div class="row_single"></div>

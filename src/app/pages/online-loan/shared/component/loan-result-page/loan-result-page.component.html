@@ -1,0 +1,91 @@
+<!-- <section>
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame" [ngClass]="{ 'exclamation_active':exectShow }">
+            <i class="icon_success"></i>
+            <span class="step_final_info">申請完成<br><br>
+                感謝您申請合庫銀行{{changeTitle}}，我們將儘速處理，您可透過行動網銀
+                查詢案件進度，或來電分行由專人為您服務。
+            </span>
+            <br><br>
+            <ng-container *ngIf="sucessStatus || remindStatus">
+                <p class="inner_content">
+                    如您需補傳，可透過「申請文件上傳」功能補齊文件資料。
+                </p>
+            </ng-container>
+
+            <ng-container *ngIf="errorStatus">
+                <p class="inner_content">
+                    另因上傳證明文件失敗，您可透過「申請文件上傳」功能補齊文件資料。
+                    ({{fullData.msg}})
+                </p>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row_single"></div>
+    <div class="row_single">
+        <a href="javascript:void(0)" (click)="backLoan()" class="button_confirm">{{'PG_ONLINE.BTN.BACKLOAN' |
+            translate}}</a>
+    </div>
+</section> -->
+
+
+
+<section>
+    <div class="sub_info_frame result">
+        <!-- 成功 -->
+        <ng-container *ngIf="!exectShow; else exectBox">
+            <div class="step_final_icon_frame" [ngClass]="{ 'fault_active':exectShow }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">申請完成</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content" style="text-align: center;">
+                    感謝您的申請，我們將儘速處理，您可透過行動網銀
+                    查詢案件進度，或來電分行由專人為您服務。
+                </span>
+            </p>
+        </ng-container>
+
+        <!-- 失敗 -->
+        <ng-template #exectBox>
+            <div class="step_final_icon_frame" [ngClass]="{ 'fault_active':exectShow }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">申請失敗</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content" style="text-align: center;">
+                    {{fullData.msg | translate}}
+                </span>
+            </p>
+        </ng-template>
+    </div>
+
+    <div class="row_single"></div>
+    <!-- 上傳成功顯示(內文) -->
+    <ng-container *ngIf="(sucessStatus || remindStatus) && resver=='N'">
+        <div class="row_single">
+            <div class="inner_content font_red">
+                如您需補傳，可透過「申請文件上傳」功能補齊文件資料。
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- 上傳失敗(內文) -->
+    <ng-container *ngIf="errorStatus">
+        <div class="row_single">
+            <div class="inner_content font_red">
+                另因上傳證明文件失敗，您可透過「申請文件上傳」功能補齊文件資料。
+                ({{fullData.msg | translate}})
+            </div>
+        </div>
+    </ng-container>
+    <div class="row_single"></div>
+    <div class="row_single" *ngIf="resver=='N' && !exectShow">
+        <a href="javascript:void(0)" (click)="onDownload()" class="button_confirm">{{'PG_ONLINE.BTN.APPLY_DOWNLOAD' |
+            translate}}</a>
+    </div>
+    <div class="row_single">
+        <a href="javascript:void(0)" (click)="backLoan()" class="button_confirm">{{'PG_ONLINE.BTN.BACKLOAN' |
+            translate}}</a>
+    </div>
+</section>

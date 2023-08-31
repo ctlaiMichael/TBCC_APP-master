@@ -1,0 +1,338 @@
+<section>
+	<ng-container *ngIf="pageType=='edit'">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar" [ngClass]="pageType=='edit'?'step_active':''"><span
+						*ngIf="pageType=='edit'">1.填寫資料</span></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<ng-container>
+			<div class="row_single"></div>
+			<!--  表單 START 申請帳號--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['account']">
+					<li class="inner_table_cell">申請帳號</li>
+					<li class="inner_table_cell">
+						<select name="account" class="inner_select" [(ngModel)]="sendData.account"
+							(change)=setData($event)>
+							<option value="">請選擇申請帳號</option>
+							<ng-container *ngIf="applyAccount">
+								<option *ngFor="let data of applyAccount['acntList']" value="{{data}}">{{data}}</option>
+							</ng-container>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['account'] | translate}}</i>
+			</div>
+			<!---中文姓名--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['chineseName']">
+					<li class="inner_table_cell">中文姓名</li>
+					<li class="inner_table_cell">
+						<input type="text" name="chineseName" class="inner_input" placeholder=""
+							[(ngModel)]="sendData.chineseName">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['chineseName'] | translate}}</i>
+			</div>
+			<!---英文姓名--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['englishName']">
+					<li class="inner_table_cell">英文姓名</li>
+					<li class="inner_table_cell">
+						<input type="text" maxlength="20" name="englishName" class="inner_input"
+							(change)=setData($event) oninput="value=value.replace(/[^a-zA-Z\-\ ]/g,'');"
+							placeholder="請輸入與護照相同英文名字" [(ngModel)]="sendData.englishName">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['englishName'] | translate}}</i>
+			</div>
+			<!--幣別-->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['currency']">
+					<li class="inner_table_cell">幣別</li>
+					<li class="inner_table_cell">
+						<select name="currency" class="inner_select" [(ngModel)]="sendData.currency"
+							(change)=setData($event)>
+							<option value="">請先選擇申請帳號</option>
+							<!-- <option *ngFor="let data of currencyList" value="{{data}}">{{data}}</option> -->
+							<option value='TWD'>TWD</option>
+							<option value='USD'>USD</option>
+							<option value='HKD'>HKD</option>
+							<option value='GBP'>GBP</option>
+							<option value='AUD'>AUD</option>
+							<option value='SGD'>SGD</option>
+							<option value='CHF'>CHF</option>
+							<option value='CAD'>CAD</option>
+							<option value='JPY'>JPY</option>
+							<option value='SEK'>SEK</option>
+							<option value='EUR'>EUR</option>
+							<option value='NZD'>NZD</option>
+							<option value='THB'>THB</option>
+							<option value='ZAR'>ZAR</option>
+							<option value='CNY'>CNY</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['currency'] | translate}}</i>
+			</div>
+			<!--金額表示方式-->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['moneyPresentType']">
+					<li class="inner_table_cell">金額表示方式</li>
+					<li class="inner_table_cell">
+						<select name="moneyPresentType" class="inner_select" [(ngModel)]="sendData.moneyPresentType"
+							(change)=setData($event)>
+							<option value="">請選擇金額表示方式</option>
+							<option value="1">中文</option>
+							<option value="2">英文</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['moneyPresentType'] | translate}}</i>
+			</div>
+			<!--餘額表示方式--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['balanceType']">
+					<li class="inner_table_cell">餘額表示方式</li>
+					<li class="inner_table_cell">
+						<select name="balanceType" class="inner_select" [(ngModel)]="sendData.balanceType"
+							(change)=setData($event)>
+							<option value="">請選擇餘額表示方式</option>
+							<option value="1">單帳號／單幣別／全部餘額</option>
+							<option value="2">單帳號／單幣別／部分餘額</option>
+							<option value="3">全部餘額（帳號所屬ID／分行歸戶）</option>
+							<option value="4">部分餘額（帳號所屬ID／分行歸戶）</option>
+							<option value="5">全部餘額（帳號所屬ID歸戶）</option>
+							<option value="6">部分餘額（帳號所屬ID歸戶）</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['balanceType'] | translate}}</i>
+			</div>
+			<!---申請金額 '2'||'4' 選部分show-->
+			<ng-container *ngIf="sendData.balanceType=='2' || sendData.balanceType=='4' || sendData.balanceType=='6'">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="domObj.class['applyAmount']">
+						<li class="inner_table_cell">申請金額</li>
+						<li class="inner_table_cell">
+							<input type="tel" maxlength="10" name="applyAmount" class="inner_input"
+								oninput="value=value.replace(/^(0+)|[^\d]+/g,'');" placeholder="請輸入申請金額"
+								[(ngModel)]="sendData.applyAmount" (change)=setData($event)>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{domObj.errorMsg['applyAmount'] | translate}}</i>
+				</div>
+			</ng-container>
+			<!--證明日期 部分=>前 1Y 與全部=>前 2M 條件不同-->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['applyPeriod']">
+					<li class="inner_table_cell">證明日期</li>
+					<li class="inner_table_cell">
+						<input type="date" [(ngModel)]="sendData.applyPeriod" name="applyPeriod" min="dateLimit.min" max="dateLimit.max" class="inner_input_data" (change)="setData($event)">
+						<!-- <input-date [min]="dateLimit.min" [max]="dateLimit.max" [(ngModel)]="sendData.applyPeriod"
+							(backValueEmit)="setData($event)"></input-date> -->
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['applyPeriod'] | translate}}</i>
+			</div>
+			<!--申請金額用途-->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['whyApply']">
+					<li class="inner_table_cell">申請金額用途</li>
+					<li class="inner_table_cell">
+						<select name="whyApply" class="inner_select" [(ngModel)]="sendData.whyApply"
+							(change)=setData($event)>
+							<option value="">請選擇申請金額用途</option>
+							<option value="驗資">驗資</option>
+							<option value="簽證">簽證</option>
+							<option value="財力證明">財力證明</option>
+							<option value="4">其它</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['whyApply'] | translate}}</i>
+			</div>
+			<!---其他 選其它顯示--->
+			<ng-container *ngIf="sendData.whyApply==='4'">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="domObj.class['otherApplyReason']">
+						<li class="inner_table_cell">其它</li>
+						<li class="inner_table_cell">
+							<input type="text" name="otherApplyReason" class="inner_input" placeholder="請輸入申請金額用途"
+								[(ngModel)]="sendData.otherApplyReason" (change)=setData($event)>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{domObj.errorMsg['otherApplyReason'] | translate}}</i>
+				</div>
+			</ng-container>
+			<!--指定收件地址-->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['receiveAddress']">
+					<li class="inner_table_cell">指定收件地址</li>
+					<li class="inner_table_cell">
+						<select name="receiveAddress" class="inner_select" [(ngModel)]="sendData.receiveAddress"
+							(change)=setData($event)>
+							<option value="">請選擇指定收件地址</option>
+							<ng-container *ngIf="userData">
+								<option value="1">戶籍地址:{{userData.residenceAddr}}</option>
+								<option value="2">通訊地址:{{userData.noticeAddr}}</option>
+								<option value="3">公司地址:{{userData.companyAddr}}</option>
+								<option value="4">其它</option>
+								<option value="5">自取</option>
+							</ng-container>
+
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['receiveAddress'] | translate}}</i>
+			</div>
+			<!---其他 選其它地址顯示--->
+			<ng-container *ngIf="sendData.receiveAddress==='4'">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="domObj.class['otherReceiveAddress']">
+						<li class="inner_table_cell">其它地址</li>
+						<li class="inner_table_cell">
+							<input type="text" name="otherReceiveAddress" class="inner_input" placeholder="請輸入指定地址"
+								[(ngModel)]="sendData.otherReceiveAddress" (change)=setData($event)>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{domObj.errorMsg['receiveAddressOther'] | translate}}</i>
+				</div>
+			</ng-container>
+			<!--自取縣市-->
+			<ng-container *ngIf="sendData.receiveAddress==='5'">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="domObj.class['city']">
+						<li class="inner_table_cell">自取縣市</li>
+						<li class="inner_table_cell">
+							<select name="city" class="inner_select" [(ngModel)]="sendData.city"
+								(change)=setData($event)>
+								<option value=''>請選擇縣市</option>
+								<option *ngFor="let data of addressList.city" value='{{data}}'>{{data}}</option>
+							</select>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{domObj.errorMsg['city'] | translate}}</i>
+				</div>
+				<!--自取分行-->
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="domObj.class['bankBranch']">
+						<li class="inner_table_cell">自取分行</li>
+						<li class="inner_table_cell">
+							<select name="bankBranch" class="inner_select" [(ngModel)]="sendData.bankBranchValue"
+								(change)=setData($event)>
+								<option value=''>請選擇分行</option>
+								<ng-container *ngIf="sendData.city!==''">
+									<option *ngFor="let data of addressList.list[sendData.city]"
+										value="{{data.branchId+','+data.branchName}}">{{data.branchName}}</option>
+								</ng-container>
+
+							</select>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{domObj.errorMsg['bankBranch'] | translate}}</i>
+				</div>
+			</ng-container>
+			<!---連絡電話--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['telNumber']">
+					<li class="inner_table_cell">連絡電話</li>
+					<li class="inner_table_cell">
+						<input type="tel" maxlength="10" name="telNumber" class="inner_input"
+							oninput="value=value.replace(/^[^\d]+/g,'');" placeholder="請輸入連絡電話"
+							[(ngModel)]="sendData.telNumber" (change)=setData($event)>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['telNumber'] | translate}}</i>
+			</div>
+			<!---行動電話--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['phoneNumber']">
+					<li class="inner_table_cell">行動電話</li>
+					<li class="inner_table_cell">
+						<input type="tel" maxlength="10" name="phoneNumber" class="inner_input"
+							oninput="value=value.replace(/^[^\d]+/g,'');" placeholder="請輸入行動電話"
+							[(ngModel)]="sendData.phoneNumber" (change)=setData($event)>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['phoneNumber'] | translate}}</i>
+			</div>
+			<!--份數1~20--->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['copyNumber']">
+					<li class="inner_table_cell">份數</li>
+					<li class="inner_table_cell">
+						<select name="copyNumber" class="inner_select" [(ngModel)]="sendData.copyNumber"
+							(change)=setData($event)>
+							<option value=''>請選擇份數</option>
+							<option *ngFor="let data of copyList" value="{{data}}">{{data}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['copyNumber'] | translate}}</i>
+			</div>
+			<!---手續費 只顯示不可修改--->
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable" [ngClass]="domObj.class['serviceCharge']">
+					<li class="inner_table_cell">手續費</li>
+					<li class="inner_table_cell">
+						<input type="text" name="serviceCharge" class="inner_input" [ngModel]="sendData.serviceCharge">
+					</li>
+				</ul>
+				<i class="input_info_warnning"></i>
+			</div>
+			<!---郵寄費 只顯示不可修改--->
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable" [ngClass]="domObj.class['mailFee']">
+					<li class="inner_table_cell">郵寄費</li>
+					<li class="inner_table_cell">
+						<input type="text" name="mailFee" class="inner_input" [(ngModel)]="sendData.mailFee">
+					</li>
+				</ul>
+				<i class="input_info_warnning"></i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['payAccount']">
+					<li class="inner_table_cell">扣款帳號</li>
+					<li class="inner_table_cell">
+						<select name="payAccount" class="inner_select" [(ngModel)]="sendData.payAccount"
+							(change)=setData($event)>
+							<option value="">請選擇扣款帳號</option>
+							<option *ngFor="let data of trnsOutAcnts" value="{{data}}">{{data}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['payAccount'] | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="domObj.class['e_mail']">
+					<li class="inner_table_cell">申請結果e-mail通知</li>
+					<li class="inner_table_cell">
+						<input type="text" name="e_mail" class="inner_input" placeholder="請輸入e-mail"
+							[(ngModel)]="sendData.e_mail" (change)=setData($event)>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{domObj.errorMsg['e_mail'] | translate}}</i>
+			</div>
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+
+			<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+			<!--  表單 END--->
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void('0')" (click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+					<a href="javascript:void('0')" (click)="checkEvent()">{{'BTN.CHECK' | translate }}</a>
+				</div>
+			</div>
+			<!---確認頁---------------------->
+		</ng-container>
+	</ng-container>
+	<ng-container *ngIf="pageType=='result'">
+		<app-acnt-bla-cert-result [formObj]="resultData"></app-acnt-bla-cert-result>
+	</ng-container>
+
+</section>

@@ -1,0 +1,17 @@
+<div class="bc_frame" ng-show="activityList.length <= 0">
+	<h3>{{'CTRL_ACTIVITY.NO_SEARCH' | translate}}</h3>
+</div>
+<div class="bc_frame" id="activityCheck" ng-show="activityList.length > 0">
+	<div class="inner_checkbox" ng-repeat="(tk , indata) in activityList" >
+		<input type="checkbox" name="activeityCheck" id="checkbox_agree{{tk}}" ng-model="indata.select" ng-true-value="true" ng-false-value="false" ng-checked="false"/>
+		<label for="checkbox_agree{{tk}}" class="original_checkbox option_for_group" style="position:-webkit-sticky;">
+			<span><i></i></span>
+			<b data-agree="{{tk}}" class="ng-binding">{{indata.activityName}}<br>({{indata.activityPeriod}})</b>
+		</label>
+	</div>
+	
+	<check-captcha-directive></check-captcha-directive>
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="setConfirm()">{{'CTRL_ACTIVITY.BTN_LOGIN' | translate}}</button>
+	</div>
+</div>

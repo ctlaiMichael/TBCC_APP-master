@@ -1,0 +1,154 @@
+/*
+Copyright (c) 2012, ReLoad. All rights reserved.
+Write By ReLoad
+Based on YUI http://developer.yahoo.com/yui/reset/
+and Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+and Shawphy http://shawphy.com/ | http://shawphy.com/2009/03/my-own-reset-css.html
+version: 3.7 | 2013
+*/
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing    : border-box;
+	-moz-box-sizing       : border-box;
+	-ms-box-sizing        : border-box;
+	box-sizing            : border-box;
+}
+
+input {
+	-webkit-appearance   : none;
+	-webkit-border-radius: 0;
+	-mos-appearance      : none;
+	-mos-border-radius   : 0;
+	@include border-radius(0);
+	outline              : none;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration,
+input[type="search"]::-moz-search-decoration,
+input[type="search"]::-moz-search-cancel-button,
+input[type="search"]::-moz-search-results-button,
+input[type="search"]::-moz-search-results-decoration {
+  display: none;
+}
+
+select {
+  border: none;
+  background: transparent;
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+select option {
+  padding: 0;
+}
+
+html,body { /*Height fit 100% - Open if it need*/
+	font-family               : "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+	width                     : 100% !important;
+	height                    : 100% !important;
+	font-smoothing            : antialiased;
+	-webkit-font-smoothing    : antialiased;
+	-webkit-overflow-scrolling: touch;
+	text-align                : justify;
+	text-justify              : distribute;
+	text-justify              : inter-ideograph;
+}
+
+body {
+	/*overflow-x: hidden;*/
+}
+
+html, body, div, h1, h2, h3, h4, h5, h6, textarea, input, button, span, applet,
+object, iframe, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike,
+strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav,
+section, summary, time, mark, audio, video
+{
+	margin        : 0px;
+	padding       : 0px;
+	border        : none;
+	font-size     : 100%;
+	font          : inherit;
+	outline       : none;
+	background    : transparent;
+	vertical-align: baseline;
+	font-style    : normal;
+	font-weight   : normal;
+}
+
+input, button, textarea, select, optgroup, option {
+	font-family: inherit;
+	font-size  : inherit;
+	font-style : inherit;
+	font-weight: inherit;
+}
+
+input, select {
+   vertical-align: middle;
+}
+
+article, aside, dialog, footer,
+header, section, footer, nav, figure, menu {
+	display:block
+}
+
+ol, ul, li {
+	list-style: none;
+}
+
+input, button, textarea, select {
+	*font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing : 0px;
+}
+
+hr {
+   border: none;
+   height: 1px;
+}
+
+:link, :visited {
+	text-decoration: none;
+}
+
+:focus {
+	outline: none;
+}
+
+figure {
+	padding: 0px;
+	margin : 0px;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+	display    : table;
+	line-height: 0;
+	content    : "";
+}
+.clearfix:after {
+  clear: both;
+}

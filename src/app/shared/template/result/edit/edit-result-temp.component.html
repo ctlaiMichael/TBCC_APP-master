@@ -1,0 +1,33 @@
+<!-- 結果 -->
+<div class="sub_info_frame result">
+    <div class="step_final_icon_frame {{showClass}}">
+        <i class="icon_success"></i>
+        <span class="step_final_info">{{ title | translate: title_params }}</span>
+    </div>
+    <p class="sub_info_list" *ngIf="showData.content">
+        <span class="sub_info_title no_content" style="text-align: center;" [innerHtml]="(content | translate: content_params) | safeHtml"></span>
+    </p>
+    <ng-container *ngIf="showData.mainInfo">
+        <p class="sub_info_list" *ngFor="let item of mainInfo">
+            <i class="sub_info_title" [innerHtml]="(mainInfo.title | translate) | safeHtml"></i>
+            <span class="sub_info_content color_yellow" [innerHtml]="(mainInfo.content | translate) | safeHtml"></span>
+        </p>
+    </ng-container>
+</div>
+<!-- 結果 End -->
+
+<!-- 雙欄位（一左一右）資訊 -->
+<ul class="table_info" *ngIf="showData.detail">
+    <li class="table_row" *ngFor="let detail of detailData">
+        <span [innerHtml]="(detail.title | translate) | safeHtml"></span>
+        <i [innerHtml]="(detail.content | translate) | safeHtml"></i>
+    </li>
+</ul>
+<!-- 雙欄位（一左一右）資訊 End -->
+<div class="row_single"></div>
+<!-- Button Box -->
+<div class="row_single">
+    <!-- 返回首頁 -->
+    <a href="javascript:void(0);" class="button_confirm" (click)="onMainClickEvent()">{{ buttonMain | translate }}</a>
+</div>
+<!-- Button Box End -->

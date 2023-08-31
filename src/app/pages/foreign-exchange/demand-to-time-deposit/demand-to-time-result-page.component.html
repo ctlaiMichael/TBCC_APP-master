@@ -1,0 +1,59 @@
+<section>
+  <!-- 步驟列 or 其他資訊框架 -->
+  <div class="sub_info_frame result">
+    <div class="step_final_icon_frame">
+      <i class="icon_success"></i>
+      <span class="step_final_info">交易成功</span>
+    </div>
+  </div>
+  <!-- 步驟列 or 其他資訊框架 //End -->
+
+  <!-- 雙欄位（一左一右）資訊範例 -->
+  <ul class="table_info">
+    <li class="table_row">
+      <span>交易時間</span>
+      <i>{{(resultObj | fieldCheck: ['trnsDateTime' ,{zero_type:false, empty_str:'--'}])|htDate}}</i>
+    </li>
+    <!-- <li class="table_row reservation">
+      <span>預約轉存日期</span>
+      <i>{{}}</i>
+    </li> -->
+    <li class="table_row">
+      <span>轉出帳號</span>
+      <i>{{resultObj | fieldCheck: ['trnsfrOutAccnt' ,{zero_type:false, empty_str:'--'}] }}</i>
+    </li>
+    <li class="table_row">
+      <span>轉入定存帳號</span>
+      <i>{{resultObj | fieldCheck: ['trnsfrInAccnt' ,{zero_type:false, empty_str:'--'}] }}</i>
+    </li>
+    <li class="table_row">
+      <span>轉存金額</span>
+      <i>{{(resultObj | fieldCheck: ['trnsfrOutCurr' ,{zero_type:false, empty_str:'--'}] )  }} {{(resultObj | fieldCheck: ['trnsfrAmount' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+      <span>轉存期別</span>
+      <i>{{resultObj | fieldCheck: ['transfrTimesDesc' ,{zero_type:false, empty_str:'--'}] }}</i>
+    </li>
+    <li class="table_row">
+      <span>成交利率</span>
+      <i>{{resultObj | fieldCheck: ['intrstRate' ,{zero_type:false, empty_str:'--'}] }} 年息(%)</i>
+    </li>
+    <li class="table_row">
+      <span>到期約定事項</span>
+      <i>{{resultObj | fieldCheck: ['autoTransCodeDesc' ,{zero_type:false, empty_str:'--'}] }}</i>
+    </li>
+    <li class="table_row">
+      <span>計息方式</span>
+      <i>{{resultObj | fieldCheck: ['computeIntrstTypeDsc' ,{zero_type:false, empty_str:'--'}] }}</i>
+    </li>
+    <li class="table_row">
+      <span>轉出帳號餘額</span>
+      <i>{{(resultObj | fieldCheck: ['trnsfrOutCurr' ,{zero_type:false, empty_str:'--'}] )  }} {{(resultObj.trnsfrOutAccntBal | fieldCheck: ['trnsfrOutCurr' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney }}</i>
+    </li>
+  </ul>
+  <!-- 雙欄位（一左一右）資訊範例 //End -->
+  <div class="row_single"></div>
+  <div class="row_single">
+    <a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK' | translate }}</a>
+  </div>
+</section>

@@ -1,0 +1,257 @@
+<section>
+	<ng-container *ngIf="processing == true">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame exclamation_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">處理中</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content">處理中請稍後。</span>
+			</p>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="processing == false">
+
+		<ng-container *ngIf="trnsRsltCode =='0'">
+			<!-- <ng-container *ngIf="trnsRsltCode=='0'"> -->
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame">
+					<i class="icon_success"></i>
+					<span class="step_final_info">{{ hostCodeMsg }}</span>
+				</div>
+				<p class="sub_info_list">
+					<i class="sub_info_title">信託金額</i>
+					<span class="sub_info_content color_yellow">{{setData.amount | htMoney:setData.inCurrency}} 元</span>
+				</p>
+			</div>
+			<!-- </ng-container> -->
+			<!-- <ng-container *ngIf="trnsRsltCode=='1'">
+				<div class="sub_info_frame result">
+					<div class="step_final_icon_frame exclamation_active">
+						<i class="icon_success"></i>
+						<span class="step_final_info">交易失敗</span>
+					</div>
+				</div>
+			</ng-container> -->
+			<ng-container *ngIf="convertTypeContent == 'SelectSingle'">
+				<ul class="table_info">
+					<li class="table_row">
+						<span>交易編號</span>
+						<i>{{fullData.transCode}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉出基金</span>
+						<i>{{fullData.fundCode}}{{fullData.fundName}}</i>
+					</li>
+					<li class="table_row">
+						<span>申請日期</span>
+						<i>{{fullData.enrollDate | htDate:'date'}}</i>
+					</li>
+					<li class="table_row">
+						<span>信託單位數</span>
+						<i>{{fullData.unit | htMoney}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉入基金</span>
+						<i>{{fullData.inFundCode}}{{fullData.inFundName}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉帳手續費扣款帳號</span>
+						<i>{{fullData.payAccount}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉換信託金額</span>
+						<i>{{fullData.outAmount | htMoney:fullData.inCurrency}}元</i>
+					</li>
+					<li class="table_row">
+						<span>轉換單位數</span>
+						<i>{{fullData.outUnit | htMoney}}</i>
+					</li>
+					<li class="table_row">
+						<span>本行手續費</span>
+						<i>{{fullData.bankSrvFee | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span>基金公司手續費</span>
+						<i>{{fullData.fndComSrvFee | htMoney:'TWD'}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>轉換手續費總額</span>
+						<i>{{fullData.totalFee | htMoney}}元</i>
+					</li>
+					<li class="table_row">
+						<span>試算短線費用</span>
+						<i>{{fullData.currency}} {{fullData.shortLineAmt | htMoney:fullData.currency}}元</i>
+					</li>
+				</ul>
+			</ng-container>
+			<ng-container *ngIf="convertTypeContent == 'SelectMultiple'">
+				<ul class="table_info">
+					<li class="table_row">
+						<span>交易編號</span>
+						<i>{{fullData2.transCode}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉出基金</span>
+						<i>{{fullData2.fundCode}}{{fullData2.fundName}}</i>
+					</li>
+					<li class="table_row">
+						<span>申請日期</span>
+						<i>{{fullData2.enrollDate | htDate:'date'}}</i>
+					</li>
+					<li class="table_row">
+						<span>信託單位數</span>
+						<i>{{fullData2.unit | htMoney}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉入基金</span>
+						<i>{{fullData2.inFundCode1}}{{fullData2.inFundName1}}</i>
+					</li>
+					<ng-container *ngIf="!inFundName2Empty; else fund2Empty">
+						<li class="table_row">
+							<span></span>
+							<i>{{fullData2.inFundCode2}}{{fullData2.inFundName2}}</i>
+						</li>
+					</ng-container>
+					<ng-template #fund2Empty>
+						<li class="table_row">
+							<span></span>
+							<i>- -</i>
+						</li>
+					</ng-template>
+					<ng-container *ngIf="!inFundName3Empty; else fund3Empty">
+						<li class="table_row">
+							<span></span>
+							<i>{{fullData2.inFundCode3}}{{fullData2.inFundName3}}</i>
+						</li>
+					</ng-container>
+					<ng-template #fund3Empty>
+						<li class="table_row">
+							<span></span>
+							<i>- -</i>
+						</li>
+					</ng-template>
+					<li class="table_row">
+						<span>轉帳手續費扣款帳號</span>
+						<i>{{fullData2.payAccount}}</i>
+					</li>
+					<li class="table_row">
+						<span>轉換信託金額</span>
+						<i>{{fullData2.outAmount1 | htMoney:fullData2.inCurrency}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.outAmount2 | htMoney:fullData2.inCurrency}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.outAmount3 | htMoney:fullData2.inCurrency}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>轉換單位數</span>
+						<i>{{fullData2.outUnit1 | htMoney}}</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.outUnit2 | htMoney}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.outUnit3 | htMoney}}元</i>
+					</li>
+					<li class="table_row">
+						<span>本行手續費</span>
+						<i>{{fullData2.bankSrvFee1 | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.bankSrvFee2 | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.bankSrvFee3 | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span>基金公司手續費</span>
+						<i>{{fullData2.fndComSrvFee1 | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.fndComSrvFee2 | htMoney:'TWD'}}元</i>
+					</li>
+					<li class="table_row">
+						<span></span>
+						<i>{{fullData2.fndComSrvFee3 | htMoney:'TWD'}}元</i>
+					</li>
+
+					<li class="table_row">
+						<span>轉換手續費總額</span>
+						<i>{{fullData2.totalFee | htMoney}}元</i>
+					</li>
+					<li class="table_row">
+						<span>試算短線費用</span>
+						<i>{{fullData2.currency}} {{fullData2.shortLineAmt | htMoney:fullData2.currency}}元</i>
+					</li>
+				</ul>
+
+			</ng-container>
+		</ng-container>
+
+		<ng-container *ngIf="erroMsg!=''">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame exclamation_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易失敗</span>
+				</div>
+				<p class="sub_info_list">
+					<span class="sub_info_title no_content">{{erroMsg}}</span>
+				</p>
+			</div>
+		</ng-container>
+		<!-- 交易失敗 END-->
+
+		<!-- 交易異常/失敗 -->
+		<ng-container *ngIf="fullData.trnsRsltCode=='1' || fullData2.trnsRsltCode=='1'">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame fault_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易失敗</span>
+				</div>
+				<p class="sub_info_list">
+					<span class="sub_info_title no_content" style="text-align: center;">{{ hostCodeMsg }}</span>
+				</p>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="fullData.trnsRsltCode=='X' || fullData2.trnsRsltCode=='X'">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame exclamation_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易異常</span>
+				</div>
+				<p class="sub_info_list">
+					<span class="sub_info_title no_content" style="text-align: center;">{{ hostCodeMsg }}</span>
+				</p>
+			</div>
+		</ng-container>
+		<!-- 交易異常 END-->
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a href="javascript:void(0)" class="button_confirm" (click)="backMenuPage()">確定</a>
+		</div>
+
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				1.提醒您，如有任何基金理財問題，可先洽詢本行服務理專(營業部 02-3118811 ) 或客服中心電話04-22273131，我們將竭誠為您服務。
+				<br> 2. 預約交易完成後，委託人如需查詢或取消預約交易可至「基金交易」項下之「預約作業查詢/取消預約」查詢作業狀態或取消預約交易。
+			</p>
+		</div>
+	</ng-container>
+
+
+</section>

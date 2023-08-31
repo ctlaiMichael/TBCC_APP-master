@@ -1,0 +1,83 @@
+{
+	"custId" : "",
+	"type" : "",
+	"eduLevel" : "",
+	"familyIncome" : "",
+	"custName" : "",
+	"custSex" : "",
+	"birthday" : "",
+	"age" : "",
+	"custTelOffice" : "",
+	"custTelHome" : "",
+	"custMobile" : "",
+	"custFax" : "",
+	"custAddr" : "",
+	"custEmail" : "",
+	"profession" : "",
+	"professionName" : "",
+	"illnessCrd" : "",
+	"childNum" : "",
+	"content" : "",
+	"trnsToken" : "",
+	"isFirstKYC" : "",
+	"resultList" : {
+		"detail" : [
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		},
+		{
+			"rtIndex" : "",
+			"rcIndex" : ""
+		}
+	]
+	}
+}

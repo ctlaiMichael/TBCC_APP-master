@@ -1,0 +1,32 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "resultCode": "4001"
+  },
+  "acctBelongCustCode" : "帳戶所屬ID",
+  "acctBelongName" : "帳戶所屬戶名",
+  "acctNo":"帳號",
+  "ediName":"企業戶名稱",
+  "dataCount" : "查詢筆數",
+  "details":  [
+      {
+       "seq": "序號",
+		"certNum": "9995-725-990230",
+		"termBeginDate": "2010/01/01",
+		"termEndDate" : "2020/01/01",
+		"termLength": "十年",
+		"termValue": "1000000",
+		"rate": "1.00%",
+		"rateInd": "按日計息",
+		"intFreq": "按月支付",
+		"isContinue": "是",
+		"status": "正常"
+      }
+    ]
+  
+}
+

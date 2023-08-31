@@ -1,0 +1,183 @@
+<!-- <frameset rows="," cols=",">
+	<frame src="" name="">
+	
+</frameset>header -->
+<link rel="stylesheet" href="ui/tcbbOldStyle/css/global2.css" />
+<div class="header_bar inner_page" ng-class="{ios_header_bar:ios}">
+    <header>
+        <span class="home_page_header header_close"></span>
+        <button class="nav_left_menu_button back_button" ng-click="clickBack()"><s class="menu_button_line"></s></button>
+        <div class="no_bt" ></div>
+        <h2 class="header_title">外幣繳保費</h2>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section style="top:125px;">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar step_active"><span>1.填寫資料</span></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+
+
+        <!-- 現行的 -->
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*繳費對象</li>
+                <li class="inner_table_cell">
+                    <select ng-show="paymentObject == 'N'" class="inner_select" disabled>
+                        <option>南山人壽外幣保險</option>
+                    </select>
+                    <select ng-show="paymentObject == 'S'" class="inner_select" disabled>
+                        <option>新光人壽外幣保險</option>
+                    </select>
+                    <select ng-show="paymentObject == 'A'" name="Accountselect" ng-model = "life5" class="inner_select">
+                        <option value="0">請選擇保險公司</option>
+                        <option value="1">南山人壽外幣保險</option>
+                        <option value="2">新光人壽外幣保險</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="row_single"  ng-show=" paymentObject == 'N' || life5 == '1' " >
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*保費種類</li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" name="Accountselect1" ng-model = "type11" ng-change ="clicktype()" >
+                        <option  value="">請選擇保費種類</option>
+                        <option value="1">首期保費</option>
+                        <option value="2">續期保費</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*付款帳號</li>
+                <li class="inner_table_cell">
+                    <select name="Accountselect" ng-model = "life" class="inner_select">
+                        <option  value="">請選擇</option>
+                        <option ng-repeat="actsOut in InAC" value="{{$index}}">{{actsOut.acctNo}}</option>
+                    </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">請選擇付款帳號</i>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*付款幣別</li>
+                <li class="inner_table_cell">
+                    <select name="Accountselect" ng-model = "life1" class="inner_select">
+                        <option value="">請選擇付款幣別</option>
+                        <option ng-repeat="k in kkk" value="{{$index}}">{{k}}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row_single ">
+            <ul class="inner_table_frame search_range_disable">
+                <li class="inner_table_cell">轉入戶名</li>
+                <li class="inner_table_cell">
+                    <input class="inner_input" type="text" name="inner_input_company" ng-show="paymentObject == 'N'" value="南山人壽保險股份有限公司">
+                    <input class="inner_input" type="text" name="inner_input_company" ng-show="paymentObject == 'S'" value="新光人壽保險股份有限公司">
+                    <input class="inner_input" type="text" name="inner_input_company" ng-show="life5 =='1'" value="南山人壽保險股份有限公司">
+                    <input class="inner_input" type="text" name="inner_input_company" ng-show="life5 =='2'" value="新光人壽保險股份有限公司">
+                </li>
+            </ul>
+        </div>
+ 
+
+        <div class="row_single nanshan">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*保單號碼/<br>繳款編號:</li>
+                <li class="inner_table_cell">
+                    <input class="inner_input" type="text" name="trnsAmountNum" oninput="value=value.replace(/[^A-Za-z0-9]/g,'')" ng-model="trnsAmountNum" placeholder="請輸入10或14碼繳款編號" maxlength="14">
+                </li>
+            </ul>
+        </div>
+        
+
+
+
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">*繳費金額</li>
+                <li class="inner_table_cell">
+                    <input class="inner_input" type="text" ng-model="trnsAmountStr" ng-change="clearNoNum1()" placeholder="請輸入繳款金額" maxlength="10">
+                </li>
+            </ul>
+            <i class="input_info_warnning">未輸入繳費金額</i>
+        </div>
+
+
+        <div class="row_single ">
+            <div class="double_button" id="btn_submit">
+                <a href="javascript:void(0)" ng-click="clickBack()">取消</a>
+                <a ng-click="clickSubmit()">確定</a>
+            </div>
+    
+        </div>
+
+    </section>
+
+    
+    <!--main_sec end-->
+</div>
+
+<div class="popup_window popup_open">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                <ol>
+                    <li>本交易營業時間：星期一至星期五（例假日除外）上午九時至下午三時三十分。</li>
+                    <li>注意！！為保障您的權益，請謹慎操作，錯誤轉帳或銷帳後續問題之處理，請洽原人壽保險公司辦理，並告知所輸入之繳費資訊。</li>
+                    <li>本轉帳交易申報匯款性質695Z:人身保險費。</li>
+                </ol>
+            </p>
+        </div>
+        <div class="row_single">
+            <a id="javascript:void(0);" href="javascript:void(0)" ng-click="closePopup()" class="button_confirm">確定</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // $('.button_confirm').click(function(){
+	// 		$('.popup_window').removeClass("popup_open");
+    //     })
+        
+    // $('#select_company').change(function(){
+    //     var company = $('#select_company').val();
+    //     console.log(company);
+    //     if(company==="1"){
+    //         $('.section_addition').show();
+    //         $('.nanshan').show();
+    //         $('.shinkong').hide();
+
+    //     }else if(company==="2"){
+    //         $('.section_addition').show();
+    //         $('.shinkong').show();
+    //         $('.nanshan').hide();
+    //     }else{
+    //         $('.section_addition').hide();
+    //     }
+
+    // });
+</script>
+

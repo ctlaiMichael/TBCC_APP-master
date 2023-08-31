@@ -1,0 +1,23 @@
+.not-active{
+		
+    cursor: default;
+    text-decoration: none;
+    color: black;
+} 
+/* 20191210 我的金庫 */
+.circle02 {
+    opacity: 1;
+}
+.circle02.disable{
+	opacity: 0.3;
+}
+
+.inner_news_list_td.disable:last-child:before, 
+.inner_news_list_td.disable:last-child:after {
+    background: transparent;
+}
+
+.asset_retry {
+    bottom: auto;
+    z-index: 100;
+}

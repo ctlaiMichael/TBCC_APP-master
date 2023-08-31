@@ -1,0 +1,358 @@
+<ng-container [ngSwitch]="searchExchangeFlag">
+	<!-- 牌告匯率 -->
+	<ng-container *ngSwitchCase="'search'">
+		<app-exchange-page [searchExchangeFlag]="searchExchangeFlag" (backExchange)="backExchange($event)">
+		</app-exchange-page>
+	</ng-container>
+
+	<!-- 結購用途說明 -->
+	<ng-container *ngSwitchCase="'use'">
+		<app-proportyType (backPageEmit)="backExchange($event)"></app-proportyType>
+	</ng-container>
+
+	<!-- 確認 -->
+	<ng-container *ngSwitchCase="'confirm'">
+		<app-twd-to-foreign-confirm [formObj]="formObj" (backPageEmit)="backcomfirm($event)">
+		</app-twd-to-foreign-confirm>
+	</ng-container>
+	<!-- 議價匯率 -->
+	<ng-container *ngSwitchCase="'bargain'">
+		<app-bargain [datas]="bargin_datas" (backPageEmit)="backbargain($event)">
+		</app-bargain>
+	</ng-container>
+	<!-- 議價匯率確認 -->
+	<ng-container *ngSwitchCase="'bargin_confirm'">
+		<app-bargain-confirm [formObj]="formObj" (backPageEmit)="backbargainconfirm($event)">
+		</app-bargain-confirm>
+	</ng-container>
+	<!-- edit -->
+	<ng-container *ngSwitchDefault>
+		<section>
+			<ng-container *ngIf="showNextPage==false">
+				<!-- <div class="sub_info_subtitle" *ngIf="nightType =='Y'">夜間交易不提供匯率優惠，實際成交匯率依交易當時本行牌告賣匯為準</div> -->
+				<div class="sub_info_frame">
+					<ul class="step_bar_frame">
+						<li class="step_bar step_active">
+							<span>1.填寫資料</span>
+						</li>
+						<li class="step_bar"></li>
+						<li class="step_bar"></li>
+					</ul>
+				</div>
+				<div class="row_single_2">
+					<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsDate.length!==0)}">
+						<li class="inner_table_cell">
+							轉帳日期
+						</li>
+						<li class="inner_table_cell">
+							<!-- <input type="date" min="{{minDay | htDate:'yyyy-MM-dd'}}" max="{{maxDay | htDate:'yyyy-MM-dd'}}"
+												class="inner_input_data" [(ngModel)]="trnsfrDate" (change)="TransferDate()"> -->
+							<input-date [min]="minDay" [max]="maxDay" [checkDate]="rate_radio.options" [(ngModel)]="trnsfrDate" (backValueEmit)="TransferDate($event)"></input-date>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{errorObj.trnsDate}}</i>
+					<ng-container *ngIf="isReservation && errorObj.trnsDate.length==0">
+						<i class="select_info">
+							<i class="font_red">預約</i>
+							未提供匯率優惠，轉帳日{{trnsfrDate | htDate:'yyyy/MM/dd'}}
+							<span></span>
+						</i>
+					</ng-container>
+					<ng-container *ngIf="nightType =='Y'">
+						<i class="select_info">
+							<i class="font_red">夜間交易</i>
+							未提供匯率優惠
+							<span></span>
+						</i>
+					</ng-container>
+				</div>
+
+				<div class="row_single_2">
+					<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsOutAcctsObj.length!==0)}">
+						<li class="inner_table_cell">
+							轉出帳號
+						</li>
+						<li class="inner_table_cell">
+							<ng-container *ngIf="trnsOutAccts.length!=1">
+								<select [(ngModel)]="trnsOutAcctsObj" class="inner_select" (change)="chgBalance()">
+									<option value=""> 請選擇轉出帳號 </option>
+									<option *ngFor="let trnsOutAcct of trnsOutAccts" [ngValue]="trnsOutAcct">
+										{{trnsOutAcct.trnsfrOutAccnt| accountFormate}}
+									</option>
+								</select>
+							</ng-container>
+							<ng-container *ngIf="trnsOutAccts.length==1">
+								<select [(ngModel)]="trnsOutAcctsObj" class="inner_select" (change)="chgBalance()">
+									<option value="">{{trnsOutAccts[0].trnsfrOutAccnt | accountFormate}}</option>
+								</select>
+							</ng-container>
+						</li>
+					</ul>
+					<i class="select_info" *ngIf="trnsOutAcctsObj != ''||trnsOutAccts.length==1">
+						<i class="font_red">可用餘額</i>
+						<ng-container *ngIf="balance != undefined ; else noData ">
+							{{balance | currencyMoney:'TWD'}}
+						</ng-container>
+						<ng-template #noData>
+							--
+						</ng-template>
+					</i>
+					<i class="input_info_warnning">未選擇轉出帳號</i>
+				</div>
+				<div class="row_single_2">
+					<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsInAcctsObj.length!==0)}">
+						<li class="inner_table_cell">
+							轉入帳號
+						</li>
+						<li class="inner_table_cell">
+							<ng-container *ngIf="trnsInAccts.length!=1">
+								<select name="trnsIn" class="inner_select" [(ngModel)]="trnsInAcctsObj" (change)="onChangeInAcct()">
+									<option value=""> 請選擇轉入帳號 </option>
+									<option *ngFor="let item of trnsInAccts" [ngValue]="item">
+										{{item.trnsInSetType=='1'?'臨櫃約定':'線上約定'}}<br>{{item.trnsfrInAccnt|accountFormate}}
+									</option>
+								</select>
+							</ng-container>
+							<ng-container *ngIf="trnsInAccts.length==1">
+								<select [(ngModel)]="trnsInAcctsObj" class="inner_select">
+									<option value="">
+										{{trnsInAccts[0].trnsInSetType=='1'?'臨櫃約定':'線上約定'}}<br>{{trnsInAccts[0].trnsfrInAccnt | accountFormate}}
+									</option>
+								</select>
+							</ng-container>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{errorObj.trnsInAcctsObj}}</i>
+				</div>
+				<!-- <ng-container *ngIf="trnsInCurr.length!=0; else selectCurr">
+						<div class="row_single">
+							<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.selectedCurr.length!==0)}">
+								<li class="inner_table_cell">
+									*轉入幣別
+								</li>
+								<li class="inner_table_cell">
+									<select name="currency" class="inner_select" [(ngModel)]="selectedCurr"  (click)="onCurrClick()">
+										<option value="">請選擇外幣幣別</option>
+										<option *ngFor="let item of trnsInCurr">{{item}}</option>
+									</select>
+								</li>
+							</ul>
+							<i class="input_info_warnning">{{errorObj.selectedCurr}}</i>
+	
+						</div>
+					</ng-container> -->
+				<!-- 由於click時 option會同時彈出造成畫面不適 因此在此做假的 -->
+				<!-- <ng-template #selectCurr> -->
+				<div class="row_single">
+					<ul class="inner_table_frame inner_table_frame_width" [ngClass]="{'active_warnning':(errorObj.selectedCurr.length!==0)}">
+						<li class="inner_table_cell">轉入幣別</li>
+						<li class="inner_table_cell">
+							<div class="inner_select" name="" style="line-height:45px" (click)="onCurrClick()">
+								{{selectedCurr==''?'請選擇':selectedCurr}}
+							</div>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{errorObj.selectedCurr}}</i>
+					<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="searchExchange()">
+						<span>牌告匯率</span>
+					</a>
+					<!-- <div class="row_inner">
+								<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="searchExchange()">
+									<span>牌告匯率</span>
+								</a>
+							</div> -->
+				</div>
+				<!-- </ng-template> -->
+
+				<!-- ===== -->
+				<div class="row_single_2">
+					<div class="inner_radio radio_inline">
+						<input type="radio" id="inner_radio02" name="curr_options" [(ngModel)]="curr_radio.options" value="2" class="inner_radio01 rd2"
+						 name="inner_radio">
+						<label for="inner_radio02">
+							<span>
+								<i></i>
+							</span>
+							<b>固定{{showCurr}}</b>
+						</label>
+					</div>
+					<div class="inner_radio radio_inline">
+						<input type="radio" id="inner_radio01" name="curr_options" [(ngModel)]="curr_radio.options" value="1" class="inner_radio01">
+						<label for="inner_radio01">
+							<span>
+								<i></i>
+							</span>
+							<b>固定TWD</b>
+						</label>
+					</div>
+				</div>
+				<div class="row_single_2">
+					<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsfrAmount.length!==0)}">
+						<li class="inner_table_cell">
+							<div *ngIf="curr_radio.options==='1';else elseTmpl">TWD</div>
+							<ng-template #elseTmpl>{{selectedCurr==''?'轉入幣別':selectedCurr}}</ng-template>
+						</li>
+						<li class="inner_table_cell">
+							<ng-container *ngIf="selectedCurr=='JPY' || selectedCurr=='TWD'">
+								<input type="number" [(ngModel)]="trnsfrAmount" class="inner_input" placeholder="請輸入轉帳金額" oninput="value=value.replace(/[^\d.]/g,'');">
+							</ng-container>
+							<ng-container *ngIf="selectedCurr!='JPY' && selectedCurr!='TWD'">
+								<input type="number" [(ngModel)]="trnsfrAmount" class="inner_input" placeholder="請輸入轉帳金額" oninput="value=value.replace(/[^\d.]/g,'');">
+							</ng-container>
+						</li>
+
+					</ul>
+					<i class="input_info_warnning">{{errorObj.trnsfrAmount|translate}}</i>
+					<p class="inner_content2">
+						每日累計結匯限額：TWD 499,999
+					</p>
+
+				</div>
+				<ng-container *ngIf="this.formObj.businessType=='T'&& !isReservation">
+					<div class="row_single_2 bargain_bot">
+						<div class="inner_radio radio_inline">
+							<input type="radio" id="inner_radio05" name="rate_options" [(ngModel)]="rate_radio.options" value="2" class="inner_radio01 rd2">
+							<label for="inner_radio05">
+								<span>
+									<i></i>
+								</span>
+								<b>即期匯率</b>
+							</label>
+						</div>
+						<div class="inner_radio radio_inline">
+							<input type="radio" id="inner_radio06" name="rate_options" [(ngModel)]="rate_radio.options" value="1" class="inner_radio01">
+							<label for="inner_radio06">
+								<span>
+									<i></i>
+								</span>
+								<b>議價匯率</b>
+							</label>
+						</div>
+					</div>
+					<ng-container *ngIf="rate_radio.options=='2'">
+						<i class="select_info epay_search_record bargain_i">
+							<i class="font_red">已議價者請選議價匯率，以免產生違約交割損失</i>
+						</i>
+					</ng-container>
+				</ng-container>
+				<ng-container *ngIf="this.formObj.businessType=='T'&& !isReservation && rate_radio.options=='1'">
+					<div class="row_single">
+						<div class="goldTransfer_frame" [ngClass]="{ 'active_warnning':(errorObj.bargain.length!==0) }">
+							<div class="goldTransfer_td">議價
+								<br>匯率
+							</div>
+							<div class="goldTransfer_td">
+								<li class="inner_table_cell" (click)="chgBargin()">
+									<div name="" class="inner_select" style="line-height:45px">
+										{{(bargain_req.negotiatedNo!='' && bargain_req.negotiatedNo!=undefined &&
+										bargain_req.negotiatedNo!=null)?bargain_req.negotiatedNo:'挑選議價編號'}}
+									</div>
+								</li>
+								<ul class="inner_input_l2_frame">
+									<li class="inner_l2_cell">
+										<input type="text" name="" id="" class="inner_input" placeholder="議價匯率" readonly [(ngModel)]="bargain_req.negotiatedRate">
+									</li>
+									<li class="inner_l2_cell second_td_l2"></li>
+								</ul>
+							</div>
+						</div>
+						<i class="input_info_warnning">{{errorObj.bargain}}</i>
+					</div>
+				</ng-container>
+				<div class="row_single">
+					<ul class="inner_table_frame inner_table_frame_width" [ngClass]="{'active_warnning':(errorObj.selectedSubType.length!==0)}">
+						<li class="inner_table_cell">
+							結購用途
+						</li>
+						<li class="inner_table_cell">
+
+							<select name="subTypeDscp" class="inner_select" [(ngModel)]="selectedSubType">
+								<!-- <option value="" disabled selected>請選擇結購性質別</option> -->
+								<option *ngFor="let key of objectKeys(propertyTypeTwToForeign)" value="{{key}}">
+									{{key}}{{propertyTypeTwToForeign[key]}}</option>
+							</select>
+						</li>
+
+					</ul>
+					<i class="input_info_warnning">{{errorObj.selectedSubType}}</i>
+					<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="searchUse()">
+						<span>用途說明</span>
+					</a>
+				</div>
+
+				<div class="row_single_2">
+					<div class="inner_radio radio_inline">
+						<input type="radio" id="inner_radio03" class="inner_radio01" name="note_options" [(ngModel)]="note_radio.options"
+						 value="1" (click)="chgNote('1')">
+						<label for="inner_radio03">
+							<span>
+								<i></i>
+							</span>
+							<b>成交匯率</b>
+						</label>
+					</div>
+					<div class="inner_radio radio_inline">
+						<input type="radio" id="inner_radio04" class="inner_radio01" name="note_options" [(ngModel)]="note_radio.options"
+						 value="2" (click)="chgNote('2')">
+						<label for="inner_radio04">
+							<span>
+								<i></i>
+							</span>
+							<b>自訂備註</b>
+						</label>
+					</div>
+
+					<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.note_input.length!==0)}">
+						<li class="inner_table_cell">
+							外幣帳號存摺備註
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" [disabled]="note_radio.options==='1'" name="inner_radio_input" [(ngModel)]="note_input" class="inner_input "
+							 placeholder={{notePlaceholder}} maxlength="18">
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{errorObj.note_input}}</i>
+					<p class="inner_content2">
+						自訂備註長度限18位英數字或8個中文字
+					</p>
+				</div>
+
+				<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+				</app-select-security>
+
+				<div class="row_single">
+					<div class="double_button">
+						<a href="javascript:void(0);" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+						<a href="javascript:void(0);" (click)="getRate()">{{'BTN.NEXT' | translate }}</a>
+					</div>
+				</div>
+				<div class="row_single">
+					<h4 class="simple_title">提醒您</h4>
+				</div>
+				<div class="row_single">
+					<div class="inner_content">
+						<ol class="order_list">
+							<li>營業時間:<br>即時→營業日09:10~15:30。<br>夜間→營業日15:30~23:00。<br>預約→全日，惟預約轉帳日限為營業日。</li>
+							<li>成交匯率依本行牌告賣匯計算如下：<br>
+								<p class="fontw normal_link color_fee" (click)="goOffer()">即時→匯率優惠承作，各幣別優惠詳情。</p>
+								夜間→依交易時牌告不提供優惠。<br>
+								預約→依轉帳日(約上午9:30)牌告不提供優惠。
+							</li>
+							<li>若因外匯市場匯價波動劇烈，造成優惠承作匯率優於成本匯率時，將以成本匯率承作。</li>
+							<li>夜間交易結匯金額併入次一營業日累計，限額TWD499,999臨櫃網銀併計。</li>
+							<li>夜間交易存入款項為次日帳，僅可於網路轉出，當日臨櫃無法提領。</li>
+							<li>交易幣別為人民幣，每人每日結購累計金額限人民幣2萬元(臨櫃網銀併計)。</li>
+							<li>單筆金額限等值TWD3000以上，結購 + 結售累計次數每日限30筆。</li>
+							<li>轉入帳號須事先約定或網路線上約定方可承作。</li>
+							<li>如因法令變更、本行外匯總量管制、市場流動性、市場波動劇烈或天災等因素發生時，本行有權停止或限制外匯交易服務。</li>
+						</ol>
+					</div>
+				</div>
+			</ng-container>
+		</section>
+	</ng-container>
+
+</ng-container>
+<ng-container *ngIf="popShow">
+	<app-currency-flag-popup [new_table]="new_table" (backPageEmit)="chooseOver($event)"></app-currency-flag-popup>
+</ng-container>

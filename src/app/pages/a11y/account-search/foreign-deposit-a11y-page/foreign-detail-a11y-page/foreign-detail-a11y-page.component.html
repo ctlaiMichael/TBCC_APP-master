@@ -1,0 +1,47 @@
+<section class="background_a11y">
+  <div class="row_single_a11y"></div>
+  <ng-container *ngIf="!isXFS; else XFSView">
+    <div class="row_twd_search_a11y">
+      <div class="result_state_a11y">查詢完成</div>
+      <div class="row3_area_a11y">
+        <p class="row3_sheet_a11y" [title]="myquerytime">查詢時間：<br>{{ querytime }}</p>
+        <p class="row3_sheet_a11y" [title]="mytimeintvl">查詢區間：<br>{{timeintvl_start}}~{{timeintvl_end}}</p>
+        <p class="row3_sheet_a11y">存款帳號：<br>
+          <font class="font_money_a11y">{{ deposit_account }}</font>
+        </p>
+        <p class="row3_sheet_a11y" [title]="myavbl_balance">可用餘額：<br>
+          <font class="font_money_a11y">{{ currency }}&nbsp;&nbsp;{{ avbl_balance }}</font>
+        </p>
+      </div>
+    </div>
+
+    <!-- page -->
+    <app-foreign-detail-pagebox-a11y-page [page]="1" [reqObj]="reqParams" [acctType]="acctType" [isXFS]="isXFS"
+      [acctObj]="acctObj" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+    </app-foreign-detail-pagebox-a11y-page>
+
+  </ng-container>
+
+  <ng-template #XFSView>
+    <div class="row_twd_search_a11y">
+      <div class="result_state_a11y">查詢完成</div>
+      <div class="row3_area_a11y">
+        <p class="row3_sheet_a11y" [title]="mylastTrnsDate">定存到期日：<br>{{ lastTrnsDate }}</p>
+        <p class="row3_sheet_a11y">開戶分行：<br>{{ openBranchName }}</p>
+        <p class="row3_sheet_a11y">定存帳號：<br>
+          <font class="font_money_a11y">{{ deposit_account }}</font>
+        </p>
+        <p class="row3_sheet_a11y" [title]="myavbl_balance">可用餘額：<br>
+          <font class="font_money_a11y">{{ currency }}&nbsp;&nbsp;{{ avbl_balance }}</font>
+        </p>
+      </div>
+    </div>
+
+    <!-- page -->
+    <app-foreign-detail-pagebox-a11y-page [page]="1" [reqObj]="reqParams" [acctType]="acctType" [isXFS]="isXFS"
+      [acctObj]="acctObj" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+    </app-foreign-detail-pagebox-a11y-page>
+  </ng-template>
+
+</section>
+<!-- section End -->

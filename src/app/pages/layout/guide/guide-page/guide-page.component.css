@@ -1,0 +1,70 @@
+.background {
+    background-image:url( '../../../../../assets/images/guide/a.png' );
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size:100% 100%; 
+
+    position: absolute;
+    z-index: 9999999999999999999;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+ }
+
+.row_guide{
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+
+.row_guide_top{
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    margin-top:60px;
+    text-align: center
+}
+
+.row_guide_bottom{
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 0 20px;
+}
+.skip{
+    float: right;
+    width: 25%;
+   
+}
+.startbt{
+    width: 70%;
+}
+.skipDiv{
+    top:50px;
+}
+.guide_one_imag {
+    width: 85%;
+}
+.guide_twd_imag {
+    width: 50%;
+}
+
+@media only screen and (min-width: 700px) {
+    .guide_one_imag {
+        width: 50%;
+    }
+    .guide_twd_imag {
+        width: 25%;
+    }
+    .startbt{
+        width: 50%;
+    }
+    .skipDiv{
+        top:100px;
+    }
+}

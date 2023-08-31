@@ -1,0 +1,40 @@
+<!-- section -->
+<section class="background_a11y" *ngIf="islogin && !showContent; else contentBox">
+  <!-- 卡片式總覽3 -->
+  <div class="row_single_a11y"></div>
+  <div class="row3_a11y" style="padding-top: 5%;">
+    <div class="result_state_a11y">查詢成功</div>
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" [title]="myquerytime">查詢時間：<br>{{ querytime }}</p>
+      <!-- <p class="row3_sheet" [attr.aria-label]="myquerytime">查詢時間：<br>{{ querytime }}</p> -->
+      <p class="row3_sheet_a11y">存款總金額：<br>
+        <font class="font_money_a11y">NT$ {{ deposit_money }}</font>
+      </p>
+      <p class="row3_sheet_a11y">活期存款總金額：<br>
+        <font class="font_money_a11y">NT$ {{ demanddeposit_money }}</font>
+      </p>
+    </div>
+  </div>
+  <!-- 卡片式總覽3 End -->
+  <!-- 卡片式總覽4 -->
+  <!-- Page1 -->
+  <app-taiwan-deposit-pagebox-a11y-page [page]="1" (backPageEmit)="onBackPage($event)"
+    (errorPageEmit)="onErrorBackEvent($event)">
+  </app-taiwan-deposit-pagebox-a11y-page>
+  <!-- 卡片式總覽4 End -->
+
+</section>
+<!-- section End -->
+
+<!-- 內容頁 -->
+<ng-template #detailBox>
+  <!-- <ng-container *ngIf="islogin; then detailBox"> -->
+  <app-detail-a11y-page [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-detail-a11y-page>
+  <!-- </ng-container> -->
+</ng-template>
+<ng-template #contentBox>
+  <ng-container *ngIf="islogin && showContent && !isDetail; else detailBox">
+    <app-search-a11y-page [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-search-a11y-page>
+  </ng-container>
+</ng-template>
+<router-outlet></router-outlet>

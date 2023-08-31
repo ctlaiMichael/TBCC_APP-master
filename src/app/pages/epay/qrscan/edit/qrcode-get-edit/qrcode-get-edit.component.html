@@ -1,0 +1,103 @@
+<section class="main_sec" >
+	<div class="sub_info_frame" style="margin-top: -100px">
+		<ul class="step_bar_frame">
+			<li class="step_bar step_active"><span>1.填寫資料</span></li>
+			<li class="step_bar"></li>
+		</ul>
+	</div>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉出帳號:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{form.trnsfrOutAcct}}" type="text" class="inner_input">
+
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉入行庫：
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcodeObj.transfereeBank}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉入帳號：
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcodeObj.transfereeAccount}}" type="text" class="inner_input">
+			</li>
+		</ul>
+		<i class="input_info_warnning"></i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame"
+			[ngClass]="{'normal_disable': disableAmountInput == true, 'active_warnning': (errorMsg['txnAmt'] != '')}">
+			<li class="inner_table_cell">
+				轉帳金額：
+			</li>
+			<li class="inner_table_cell">
+				<input [(ngModel)]='form.txnAmt' class="inner_input" placeholder="請輸入轉帳金額">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.txnAmt}}</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame" [ngClass]="errorMsg['note']?'active_warnning':''">
+			<li class="inner_table_cell">
+				付款人自我備註：
+			</li>
+			<li class="inner_table_cell">
+				<input [(ngModel)]='qrcodeObj.note' type="text" class="inner_input" placeholder="請輸入備註">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.note}}</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame" [ngClass]="errorMsg['noticeNbr22']?'active_warnning':''">
+			<li class="inner_table_cell">
+				給收款人訊息
+			</li>
+			<li class="inner_table_cell">
+				<input [(ngModel)]='qrcodeObj.noticeNbr22' type="text" class="inner_input" placeholder="請輸入備註">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.noticeNbr22}}</i>
+		<i class="select_info">限本行轉入帳號</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				目前轉帳機制：
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+					<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<div class="double_button" id="btn_submit">
+			<a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+			<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+		<!-- <div class="row">
+			<div class="content_bt">
+				<button type="button" class="confirm_bt" style="width:120px;height:30px" (click)="clickSubmit()">確認</button>
+				<button type="button" style="background: #DCDADA;height: 30px;width: 120px;border-radius: 10px;box-shadow: 0 2px 5px 0 #000000;border: solid 2px #696767;margin: 0 10px;" (click)="clickCancel()">取消</button>
+				
+			</div>
+			<p style="text-align:left;color:red;font-weight: bold;font-size:18px">抽獎活動說明:</p>
+			<p style="color: #22425A;font-size: 14px;font-family: sans-serif, 微軟正黑體;font-weight: bold;">1/15~2/29每筆「跨行」轉帳金額達888元(含)以上交易成功，即享有一次抽獎機會，惟每人最多5次抽獎機會。<br><br></p>
+		</div> -->
+	</div>
+</section>

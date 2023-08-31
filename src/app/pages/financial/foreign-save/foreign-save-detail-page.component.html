@@ -1,0 +1,59 @@
+
+    <ng-container *ngIf="showData; else noDataBox">
+        <div class="sub_info_subtitle">
+                查詢時間：{{(detailData | fieldCheck: ['searchTime',{zero_type:false,empty_str:'--'}]|htDate)}}
+            <!-- <br>{{detailData | fieldCheck: ['currName',{zero_type:false,empty_str:'--'}]}}({{detailData | fieldCheck: ['currency',{zero_type:false,empty_str:'--'}]}}) -->
+        </div>
+        <ul class="table_info table_th_style wid60">
+
+            <li class="table_row">
+                <span>期間</span>
+                <i>利率(年息)%</i>
+            </li>
+            <li class="table_row">
+                <span>活期存款</span>
+                <i>
+                    {{(detailData | fieldCheck: 'currentRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(一星期)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'weekRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(一個月期)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'oneMonRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(三個月期)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'trdMonRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(六個月期)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'sixMonRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(九個月)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'ninMonRate')|htFinancial}}
+                </i>
+            </li>
+            <li class="table_row">
+                <span>定期存款(一年期)</span>
+                <i>
+                    {{(detailData | fieldCheck: 'yearRate')|htFinancial}}
+                </i>
+            </li>
+        </ul>
+    </ng-container>
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>

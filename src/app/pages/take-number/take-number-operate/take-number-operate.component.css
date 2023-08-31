@@ -1,0 +1,34 @@
+.gold_refresh_btn {
+  bottom: 10px;
+}
+
+.sub_info_subtitle.font_align_left {
+  height: 60px;
+  line-height: 40px;
+}
+
+.inner_content {
+  padding-left: 14px;
+}
+
+.accountCard_frame {
+  height: 83px;
+}
+
+.accountCard_frame:first-child:before {
+  top: 30%;
+  height: 36px;
+}
+
+.accountCard_td:first-child {
+  padding-left: 27px;
+  width: 60%;
+}
+
+.accountCard_td:last-child {
+  width: 40%;
+}
+
+.title-normal {
+  margin-bottom: 5px;
+}

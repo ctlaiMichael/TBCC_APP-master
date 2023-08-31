@@ -1,0 +1,98 @@
+<section>
+    <div class="sub_info_frame result">
+        <!-- 成功 -->
+        <ng-container *ngIf="!exectShow; else exectBox">
+            <div class="step_final_icon_frame" [ngClass]="{ 'fault_active':exectShow }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">申請完成</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content" style="text-align: center;">
+                </span>
+            </p>
+        </ng-container>
+
+        <!-- 失敗 -->
+        <ng-template #exectBox>
+            <div class="step_final_icon_frame" [ngClass]="{ 'fault_active':exectShow }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">申請失敗</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content" style="text-align: center;">
+                    {{resultData.msg | translate}}
+                </span>
+            </p>
+        </ng-template>
+    </div>
+
+    <div class="row_single"></div>
+    <!-- 上傳成功顯示(內文) -->
+    <ng-container *ngIf="(sucessStatus || remindStatus)">
+        <div class="row_single">
+            <div class="inner_content font_red">
+                如您需補傳，可透過「申請文件上傳」功能補齊文件資料。
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- 上傳失敗(內文) -->
+    <ng-container *ngIf="errorStatus">
+        <div class="row_single">
+            <div class="inner_content font_red">
+                另因上傳證明文件失敗，您可透過「申請文件上傳」功能補齊文件資料。
+                ({{resultData.msg | translate}})
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!exectShow">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>中文姓名</span>
+                <i>{{resultData.data.chineseName}}</i>
+            </li>
+            <li class="table_row">
+                <span>身分證編號</span>
+                <i>{{resultData.data.custId}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請類別</span>
+                <i>{{resultData.data.applyType}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請日</span>
+                <i>{{resultData.data.applyDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請迄日</span>
+                <i>{{resultData.data.endDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請額度</span>
+                <i>新台幣&nbsp;{{resultData.data.applyAmount | htMoney:'TWD'}}</i>
+            </li>
+            <li class="table_row">
+                <span>申請原因</span>
+                <i>{{resultData.data.applyReason}}</i>
+            </li>
+            <li class="table_row">
+                <span>手機門號</span>
+                <i>{{resultData.data.cellPhone}}</i>
+            </li>
+            <li class="table_row">
+                <span>市內電話</span>
+                <i>{{resultData.data.cityPhone}}</i>
+            </li>
+            <li class="table_row">
+                <span>分機</span>
+                <i>{{resultData.data.applyTelExt}}</i>
+            </li>
+        </ul>
+    </ng-container>
+
+    <div class="row_single"></div>
+    <div class="row_single">
+        <a href="javascript:void(0)" (click)="backMenu()" class="button_confirm">返回信用卡首頁</a>
+    </div>
+</section>

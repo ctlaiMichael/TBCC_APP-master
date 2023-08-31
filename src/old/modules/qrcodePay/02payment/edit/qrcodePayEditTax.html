@@ -1,0 +1,131 @@
+<frameset rows="," cols=",">
+	<frame src="" name="">
+	<frame src="" name="">
+</frameset>
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">返回</p>
+        </div>
+        <div class="page_title">QRCode繳稅</div>
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="main_input">
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>繳款類別:</p>
+                        </div>						
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payCategory1" readonly></div>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>銷帳編號:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payNo" readonly></div>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>繳納截止日:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payEndDate1" readonly></div>
+                    </div>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>繳納金額:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.trnsfrAmount" readonly></div>
+                    </div>                    
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>交易帳號:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="form.trnsfrOutAcct" readonly></div>
+                    </div>
+
+                    <!-- <div class="content_infor">
+                        <div class="content_text">
+                            <p>訂單編號:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="form.orderNumber" ng-disabled="disableOrderNumberInput" placeholder="請輸入訂單編號" ></div>
+                    </div>
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>交易金額:</p>
+                        </div>
+                        <div class="input_warning"><input type="Number" class="content_input" ng-model="form.trnsAmount" ng-disabled="disableAmountInput" placeholder="請輸入轉帳金額" ></div>
+                    </div>
+                    <hr>
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>交易帳號:</p>
+                        </div>
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="form.trnsfrOutAcct" disabled="true"></div>
+                    </div> -->
+
+                    <div class="content_infor">
+                        <div class="content_text2" style="min-width: 125px;">
+                            <p>目前您的轉帳機制:</p>
+                        </div>
+                        <div class="input_warning2" style="width: 60px;"><input type="text"  class="content_input" ng-model="defaultSecurityType.name" readonly></div>
+                        <div class="content_text_chang" ng-click="clickChangeSceurityType(true)" ng-if="anotherSecurityType">
+                            <p style="width: 35px;">變更</p>
+                        </div>
+                        <div class="content_sign" ng-if="anotherSecurityType"><i class="fa fa-chevron-right " aria-hidden="true"></i></div>
+                    </div>
+
+                    <!--content_checkbt 按鈕組合-->
+                    <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()" ng-disabled="button_disable">確定</button>
+                            <button type="button" class="cancel_bt" ng-click="clickCancel()" ng-disabled="button_disable">取消</button>							
+                        </div>
+                    </div>
+					
+
+
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div>
+
+                <!--main_input end-->
+            </div>
+            <!--main_content end-->
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>
+
+<!-- 跳出繳費作業視窗 -->
+<div ng-if="onChangeSecurityType">
+<div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+<div class="row" >
+    <div class="pop_securityType" ng-style="popup_Height">
+        <a><div class="securityType" ng-repeat="element in anotherSecurityType" ng-click="changeSecurity(element.key)" ng-style="Type_border($last)">{{element.name}}</div>
+        </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出繳費作業視窗 End -->

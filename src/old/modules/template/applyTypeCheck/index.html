@@ -1,0 +1,11 @@
+<!--信用卡申請type選擇-->
+<div class="showstep step1">
+	<ul class="sublink_frame">
+		<li ng-repeat="(key, value) in applyTypeList" ng-click="doThePickedType(key)">
+			<p>
+				<span>{{value.title | translate }}</span> <!-- 主標 -->
+				<span>{{value.subtitle }}</span> <!--副標-->
+			</p>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,21 @@
+{
+    "sch:MNBResponse": {
+        "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+        "sch:resHeader": {
+            "sch:requestNo": "1481860700840-fi000708",
+            "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+            "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+            "sch:custId": "B1202812720"
+        },
+        "sch:result": {
+            "@xsi:type": "fi0:fi000708ResultType",
+            "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000708",
+            "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "fi0:trnsRsltCode": "0",
+            "fi0:hostCode": "",
+            "fi0:hostCodeMsg": "",
+            "fi0:custId": "",
+            "fi0:mailOut": "2"
+        }
+    }
+}

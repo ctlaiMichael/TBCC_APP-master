@@ -1,0 +1,83 @@
+
+<div class="sub_info_frame result">
+		<div class="step_final_icon_frame" ng-if="res.success == true">
+			<i class="icon_success"></i>
+			<span class="step_final_info">{{res.result | translate}}</span>
+		</div>
+		<div class="step_final_icon_frame" ng-if="res.success == false">
+			<i class="icons_fault"></i>
+			<span class="step_final_info">{{res.result | translate}}</span>
+		</div>
+	</div>
+<div class="">
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<!-- 銷帳編號 -->
+		<td align="left"><i class="info_title2">{{'FIELD.PAYMENT_ID' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt2">{{inp.cardnum}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 轉出銀行 -->
+			<td align="left"><i class="info_title2">{{'FIELD.CARD.BANK' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt2">{{ (res.payBank) ? res.payBank.bankNameAll : '--'}}</p></td>
+			</tr></table>
+		</div>
+	
+	<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title2">{{'FIELD.CARD.ACNT' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt2">{{res.payAcnt}}</p>
+			<!-- 轉出帳號 -->
+			</tr></table>
+		</div>
+		
+	<div class="row_single info_list" ng-if="paymentData && inp.selectAmt">
+			<table class="check_form"><tr>
+			<!-- 繳費方式 -->
+			<td align="left"><i class="info_title2">{{'FIELD.PAYAMT.SELECT' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt2">{{res.selectAmt}}</p>
+			</tr></table>
+		</div>
+
+	<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 繳費金額 -->
+			<td align="left"><i class="info_title2">繳費金額</i></td>
+			<td align="right"><p class="info_conetnt2">{{res.payAmt | currency:""}}</p>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 繳費狀態 -->
+			<td align="left"><i class="info_title2">{{'FIELD.PAYAMT.STATE' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt2" ng-class="{true:'',false:'color_red'}[success]">{{res.result}}</p>
+			</tr></table>
+		</div>
+		
+		<div class="row_single info_list" ng-if="!res.success">
+				<table class="check_form"><tr>
+				<!-- 錯誤訊息 -->
+				<td align="left"><i class="info_title2">{{ 'PAGE_TITLE.ERRORMESSAGE' | translate }}</i></td>
+				<td align="right"><p class="info_conetnt2" ng-class="{true:'',false:'color_red'}[success]">{{res.respCodeMsg}}</p>
+				</tr></table>
+			</div>
+
+
+		<div class="row_single info_list" ng-if="!res.success">
+				<table class="check_form"><tr>
+				<!-- 繳費日期 -->
+				<td align="left"><i class="info_title2">{{'FIELD.PAYAMT.TIME' | translate}}</i></td>
+				<td align="right"><p class="info_conetnt2" ng-class="{true:'',false:'color_red'}[success]">{{res.payDate | dateFilter }}</p>
+				</tr></table>
+			</div>
+
+</div>
+<div class="bc_frame">
+	<div class="row_single2">
+		<button class="button_confirm" ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+	</div>
+</div>

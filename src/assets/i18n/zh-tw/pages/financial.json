@@ -1,0 +1,85 @@
+{
+    "PG_FINANCIAL": {
+        "FIELD": {
+            "CURRENCY": "幣別",
+            "BUY": "買進",
+            "SELL": "賣出",
+            "BANK_BUY": "銀行買進",
+            "BANK_SELL": "銀行賣出",
+            "UNIT": "單位",
+            "UNIT_TWD": "新台幣(元)"
+        },
+        "FOREX_RATE": {
+            "FIELD": {
+                "TITLE1": "幣別",
+                "TITLE2": "買入",
+                "TITLE3": "賣出"
+            },
+            "INFO": {
+                "INFO1": "本匯率僅供參考，實際成交匯率係依本行最新掛牌牌告為準！"
+            }
+        },
+        "FOREX_LOAN": {
+            "FIELD": {
+                "TITLE1": "幣別",
+                "TITLE2": "利率(年息)%"
+            },
+            "INFO": {
+                "INFO1": "1. 公債買賣斷交易利率參照櫃檯買賣中心最新報價，實際承作利率請洽本行財務部債票券科。",
+                "INFO2": "2. 本行財務部債票券科聯絡電話：{{ tel }}。"
+            }
+        },
+        "EXCHANGE": {
+            "FIELD": {
+                "TITLE1": "幣別",
+                "TITLE2": "金額",
+                "BASE_CURRENCY": "請選擇基礎幣別(即期匯率)",
+                "INPUT_INFO": "請輸入試算金額"
+            }
+        },
+        "TWD_LOAN": {
+            "FIELD": {
+                "TITLE1": "類別",
+                "TITLE2": "利率(年息)%"
+            },
+            "INFO": {
+                "INFO1": "1. 實際放款利率另依個別信用條件、擔保品狀況、授信風險等情形訂定加碼幅度。",
+                "INFO2": "2. 基本放款利率 = 基準利率 + {{ loanAddRate1 }}%",
+                "INFO3": "3. 基本放款利率(原農民銀行) = 基準利率(原農民銀行) +  {{ loanAddRate2 }}%"
+            }
+        },
+        "TWD_SAVE": {
+            "FIELD": {
+                "TITLE1": "類別",
+                "TITLE2": "固定利率%",
+                "TITLE3": "機動利率%"
+            },
+            "INFO": {}
+        },
+        "BOND_RATE": {
+            "FIELD": {
+                "TITLE1": "期間",
+                "TITLE2": "R/P利率(年息)%"
+            },
+            "INFO": {
+                "INFO1": "1. 公債買賣斷交易利率參照櫃檯買賣中心最新報價，實際承作利率請洽本行財務部債票券科。",
+                "INFO2": "2. 本行財務部債票券科聯絡電話：{{ tel }}。"
+            }
+        },
+        "TICKET_RATE": {
+            "FIELD": {
+                "TITLE1": "次級市場(年息)%",
+                "TITLE2": "初級市場(年息)%",
+                "SUB_TITLE1": "買入(含RS)",
+                "SUB_TITLE2": "賣出(含R/P)",
+                "SUB_TITLE3": "CP2",
+                "SUB_TITLE4": "BA",
+                "TITLE_DAY":"天期"
+            },
+            "INFO": {
+                "INFO1": "1. 以上報價為本行參考利率，實際承作利率請洽本行財務部債票券科。",
+                "INFO2": "2. 票券業務洽詢電話：{{ tel }}。"
+            }
+        }
+    }
+}

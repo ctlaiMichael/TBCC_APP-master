@@ -1,0 +1,58 @@
+<section>
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame">
+            <i class="icon_success"></i>
+            <span class="step_final_info">{{formObj| fieldCheck:'hostCodeMsg'}}</span>
+        </div>
+    </div>
+    <ul class="table_info">
+        <li class="table_row">
+            <span>交易時間</span>
+            <i>{{(formObj| fieldCheck:'trnsDateTime')|htDate}}</i>
+        </li>
+
+        <li class="table_row">
+            <span>轉出帳號</span>
+            <i>{{(formObj| fieldCheck:'trnsfrOutAccnt')| accountFormate}}</i>
+        </li>
+        <li class="table_row">
+            <span>轉入帳號</span>
+            <i>{{(formObj| fieldCheck:'trnsfrInAccnt')| accountFormate}}</i>
+        </li>
+        <li class="table_row">
+            <span>轉出金額</span>
+            <i>{{(formObj| fieldCheck:'trnsfrOutCurr')}}&nbsp;{{(formObj| fieldCheck:'trnsfrOutAmount')|htMoney:formObj.trnsfrOutCurr}}</i>
+        </li>
+        <li class="table_row">
+            <span>轉入金額</span>
+            <i>{{(formObj| fieldCheck:'trnsfrInCurr')}}&nbsp;{{(formObj| fieldCheck:'trnsfrInAmount')|htMoney:formObj.trnsfrInCurr}}</i>
+        </li>
+        <li *ngIf="!isReservation" class="table_row">
+            <span>轉出匯率</span>
+            <i>{{formObj| fieldCheck:'trnsfrOutRate'}}</i>
+        </li>
+        <li *ngIf="!isReservation" class="table_row">
+            <span>轉入匯率</span>
+            <i>{{formObj| fieldCheck:'trnsfrInRate'}}</i>
+        </li>
+        <li *ngIf="!isReservation" class="table_row">
+            <span>轉出帳號餘額</span>
+            <i>{{(formObj| fieldCheck:'trnsfrOutAccntBal'|htMoney: showCurrency)}}</i>
+        </li>
+
+        <li class="table_row">
+            <span>備註</span>
+            <i>{{formObj| fieldCheck:'note'}}</i>
+        </li>
+
+    </ul>
+    <div class="row_single"></div>
+    <div class="row_single">
+        <a (click)="backMenu()" class="button_confirm">返回外匯業務選單</a>
+    </div>
+    <div class="row_single">
+		<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+			交易訊息分享
+		</a>
+	</div>
+</section>

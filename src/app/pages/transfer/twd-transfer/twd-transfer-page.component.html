@@ -1,0 +1,269 @@
+<section >
+	<ng-container *ngIf="'original' == showPage && selectFlag==true">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.填寫資料</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<div class="row_single_2"></div>
+		<div class="row_single_2">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrOutAccntError']?'active_warnning':''">
+				<li class="inner_table_cell">
+					轉出帳號
+				</li>
+				<li class="inner_table_cell">
+					<ng-container *ngIf="defaultTrnsOutAccts">
+						<select class="inner_select" (change)="onChangeType(allTransferData.trnsfrOutAccnt)"
+							[(ngModel)]="allTransferData.trnsfrOutAccnt">
+							<option value="" selected disabled>請選擇轉出帳號</option>
+							<option *ngFor="let menu of trnsOutAccts">{{ menu.acctNo | accountFormate }}</option>
+						</select>
+					</ng-container>
+					<ng-container *ngIf="!defaultTrnsOutAccts">
+						<select class="inner_select">
+							<option selected>{{ allTransferData.trnsfrOutAccnt | accountFormate }}</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+			<i class="select_info" *ngIf="allTransferData.trnsfrOutAccnt != ''">
+				<i class="font_red">可用餘額</i>
+				<ng-container *ngIf="balance != undefined ; else noData">
+					{{balance | currencyMoney:'TWD'}}
+				</ng-container>
+				<ng-template #noData>
+					--
+				</ng-template>
+			</i>
+			<i class="input_info_warnning">{{errorMsg['trnsfrOutAccntError'] | translate}}</i>
+		</div>
+		<div class="row_single_2">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrAmountError']?'active_warnning':''">
+				<li class="inner_table_cell">
+					轉帳金額
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" maxlength="13" class="inner_input" placeholder="請輸入轉帳金額"
+						[(ngModel)]="allTransferData.trnsfrAmount"
+						(change)="trnsfrAmountCheck(allTransferData.trnsfrAmount)">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['trnsfrAmountError'] | translate}}</i>
+		</div>
+		<div class="row_single_2">
+			<div class="transfer_frame" [ngClass]="trnsfrInBank_trnsfrInAccntError?'active_warnning':''">
+				<div class="transfer_td">
+					轉入<br>
+					帳號
+				</div>
+				<div class="transfer_td" [ngClass]="trnsfrInBank_trnsfrInAccnt?'normal_disable':''">
+					<input type="text" (click)="bankChoose()" class="inner_input" placeholder="請輸入銀行代碼"
+						[(ngModel)]="allTransferData.trnsfrInBank">
+					<input type="tel" minlength="13" maxlength="16" class="inner_input" (change)="addCommonSymbol()"
+						[(ngModel)]="allTransferData.trnsfrInAccnt" placeholder="輸入帳號">
+				</div>
+				<div class="transfer_td">
+					<ng-container *ngIf="addCommonAccount; else showButton">
+						<a href="javascript:void(0)" class="add_com_btn add_com_disable"></a>
+					</ng-container>
+					<!-- <ng-container *ngIf="!addCommonAccount">
+						<a href="javascript:void(0)" (click)="commonAccountAdd()" class="add_com_btn"></a>
+					</ng-container> -->
+					<ng-template #showButton>
+						<a href="javascript:void(0)" (click)="commonAccountAdd()" class="add_com_btn"></a>
+					</ng-template>
+					<!-- 「add_com_disable」為無法使用樣式 -->
+				</div>
+			</div>
+			<i class="input_info_warnning"
+				*ngIf="errorMsg['trnsfrInBankError'] != ''">{{errorMsg['trnsfrInBankError'] | translate}}</i>
+			<i class="input_info_warnning"
+				*ngIf="errorMsg['trnsfrInAccntError'] != ''">{{errorMsg['trnsfrInAccntError'] | translate}}</i>
+			<div class="row_inner">
+				<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="commonAccount()"
+					[ngClass]="commonIcon?'normal_disable':''">
+					<span>常用帳號</span>
+				</a>
+				<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="agreedAccount()"
+					[ngClass]="agreedIcon?'normal_disable':''">
+					<span>約定帳號</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="row_single_2">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					轉帳日期
+				</li>
+				<li class="inner_table_cell">
+					<!-- 2019/06/18原始寫法 start -->
+					<!-- <input type="date" min="{{minDay | htDate:'yyyy-MM-dd'}}" max="{{maxDay | htDate:'yyyy-MM-dd'}}"
+							class="inner_input_data" [(ngModel)]="allTransferData.trnsfrDate" (change)="TransferDate()"> -->
+					<!-- 2019/06/18原始寫法 end -->
+					<input-date [min]="minDay" [max]="maxDay" [(ngModel)]="allTransferData.trnsfrDate"
+						(backValueEmit)="TransferDate($event)"></input-date>
+				</li>
+			</ul>
+			<ng-container *ngIf="isCurrentTime">
+				<i class="select_info">
+					目前設定
+					<i class="font_red">預約</i>
+					轉帳日期為{{allTransferData.trnsfrDate | htDate:'yyyy/MM/dd'}}
+					<span></span>
+				</i>
+			</ng-container>
+		</div>
+		<div class="row_single_2">
+			<ng-container *ngIf="securityControl">
+				<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+				</app-select-security>
+			</ng-container>
+			<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="writingRemark()">
+				<span>編寫備註</span>
+			</a>
+		</div>
+		<ng-container *ngIf="remarks">
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="errorMsg['notePayerError']?'active_warnning':''">
+					<li class="inner_table_cell">
+						付款人自我備註
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" [(ngModel)]="allTransferData.notePayer" class="inner_input"
+							placeholder="{{'PG_TRANSFER.TEXT.NOTEPAYER' | translate}}" maxlength="18">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg['notePayerError'] | translate}}</i>
+			</div>
+			<div class="row_single_2">
+				<ul class="inner_table_frame"
+					[ngClass]="notePayeeFlag?'normal_disable':errorMsg['notePayeeError']?'active_warnning':''">
+					<li class="inner_table_cell">
+						給收款人訊息<br>
+						限本行轉入帳號
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="allTransferData.notePayee"
+							placeholder="{{'PG_TRANSFER.TEXT.NOTEPAYEE' | translate}}" maxlength="18">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg['notePayeeError'] | translate}}</i>
+			</div>
+			<div class="row_single_2">
+				<p class="inner_content">
+					{{'PG_TRANSFER.TEXT.NOTICE' | translate}}
+				</p>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="securityControl">
+		<div class="row_single_2">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="transferConfirm()">{{'BTN.NEXT' | translate }}</a>
+			</div>
+		</div>
+		<!-- <p style="text-align:left;color:red;font-weight: bold;font-size:18px;margin-left: 6px;">抽獎活動說明:</p>
+	<p style="color: #22425A;font-size: 14px;font-family: sans-serif, 微軟正黑體;font-weight: bold;margin-left: 6px;">1/15~2/29每筆「跨行」轉帳金額達888元(含)以上交易成功，即享有一次抽獎機會，惟每人最多5次抽獎機會。<br><br></p> -->
+		</ng-container>
+		<!-- </div> -->
+	</ng-container>
+
+	<!-- 銀行列表  -->
+	<ng-container *ngIf="'bankPage' == showPage">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.填寫資料</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<app-search-bank-page (backPageEmit)="getBankCode($event)"></app-search-bank-page>
+	</ng-container>
+
+	<!-- 約定帳號列表 -->
+	<ng-container *ngIf="'agreedAccountPage' == showPage">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.填寫資料</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<div class="row_single_2">
+			<h4 class="simple_title">選擇約定帳號</h4>
+		</div>
+		<a href="javascript:void(0)" class="inner_news_list" *ngFor="let accountList of trnsInAccts" (click)="getAgreedAccount(accountList)">
+			<span class="inner_news_list_td no_line">
+				<i class="inner_news_title">
+					{{accountList | acntNameMask}}
+				</i>
+				<b class="inner_news_info">
+					{{accountList.bankId}}-{{accountList.bankName}}({{accountList.trnsInSetType == '1' ?'臨櫃約定':'線上約定'}})
+				</b>
+				<b class="inner_news_info">
+					{{accountList.acctNo}}
+				</b>
+			</span>
+			<span class=""></span>
+		</a>
+	</ng-container>
+
+	<!-- 常用帳號列表 -->
+	<ng-container *ngIf="'commonAccountPage' == showPage">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.填寫資料</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<div class="row_single_2">
+			<h4 class="simple_title">選擇常用帳號</h4>
+		</div>
+		<a href="javascript:void(0)" class="inner_news_list" *ngFor="let accountList of commonTrnsInAccts"
+			(click)="getCommonAccount(accountList)">
+			<span class="inner_news_list_td no_line">
+				<i class="inner_news_title">
+					{{accountList.acctName}}
+				</i>
+				<b class="inner_news_info">
+					{{accountList.bankId}}-{{accountList.bankName}}({{accountList.commonInSetType == '1' ?'臨櫃約定':accountList.commonInSetType == '2' ?'線上約定':'非約定帳號'}})
+				</b>
+				<b class="inner_news_info">
+					{{accountList.acctNo}}
+				</b>
+			</span>
+			<span class=""></span>
+		</a>
+	</ng-container>
+
+	<!-- 確認頁 -->
+	<ng-container *ngIf="'confirmPage' == showPage">
+		<app-twd-transfer-confirm-page (backToEdit)="toEditPage($event)" (backPageEmit)="finalCheckData($event)"
+			[twdTransferConfirm]="allTransferData" [currentTimeData]="currentTimeData">
+		</app-twd-transfer-confirm-page>
+	</ng-container>
+	<!-- 結果頁 -->
+	<ng-container *ngIf="'resultPage' == showPage">
+		<app-twd-transfer-result-page [twdTransferResult]="transferResultData" [allTransferData]="allTransferData">
+		</app-twd-transfer-result-page>
+	</ng-container>
+</section>
+
+
+<!-- 加為常用帳號 -->
+<ng-container *ngIf="'addCommonAccountPage' == showPage">
+	<app-add-account-page (backToTWDTransfer)="showOriginalPage()" [goBackFlag]="goAddCommonAccount">
+	</app-add-account-page>
+</ng-container>

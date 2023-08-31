@@ -1,0 +1,37 @@
+		<div class="sub_info_subtitle">
+			請確認資訊以及是否要繼續交易！
+		</div>
+		<ul class="table_info">
+			<li class="table_row"><!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+				<span>{{inputContent.input_1}}</span>
+				<i *ngIf="userMail.TRANSFLAG!='1'">{{inputContent.inValue_1}}</i>
+				<i *ngIf="userMail.TRANSFLAG=='1'">{{inputContent.inValue_1}}</i>
+			</li>
+			<li class="table_row">
+				<span>{{inputContent.input_2}}</span> 
+                <i *ngIf="!(userMail.TRANSFLAG=='1'&&userMail.SAMEFLAG)">{{inputContent.inValue_2}}</i>                
+				<i *ngIf="userMail.TRANSFLAG=='1'&&userMail.SAMEFLAG">{{inputContent.inValue_2}}</i>
+				<!-- <i *ngIf="userMail.TRANSFLAG=='1'">{{inputContent.inValue_2}}</i> -->
+			</li>
+		</ul>
+		
+		<div class="row_single"></div>
+		
+		<!-- <div class="row_single" *ngIf="userMail.USER_SAFE=='1'">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					SSL轉帳密碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text"  name="SSLPw" class="inner_input" placeholder="請輸入SSL轉帳密碼">
+				</li>
+			</ul>
+		</div> -->
+		<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+	
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void('0')"(click)='cancelEdit()'>{{'BTN.PREVIOUS' | translate }}</a>
+				<a href="javascript:void('0')" (click)="goResult();">{{'BTN.CHECK' | translate }}</a>
+			</div>
+		</div>

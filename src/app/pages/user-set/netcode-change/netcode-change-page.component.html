@@ -1,0 +1,70 @@
+<section>
+    <ng-container *ngIf="resultFlag==false">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar step_active">
+                    <span>1.輸入資料</span>
+                </li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <!-- 代號是帶入的 -->
+                <li class="inner_table_cell">
+                    舊網路連線<br>代號
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="oldPw" class="inner_input" [(ngModel)]="usercode.OLD_CODE">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['newcode']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    新網路連線<br>代號
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="newPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}"  [(ngModel)]="userInput.newcode">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['newcode']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['netpswd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    連線密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="ConfirmNewPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" maxlength="16"  [(ngModel)]="userInput.userpw">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['netpswd']|translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <div class="double_button">
+                <!-- <a href="javascript:getPop('ConfirmChange')">確定</a><a href="menu.html">取消</a> -->
+                <a href="javascript:void('0')" (click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)='checkEvent()'>{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">網路連線代號設定規則</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content font_red">
+                1、6-16位英數字(不可設定與身分證字號及登入密碼相同)。<br>
+                2、不可使用相同的英、數字，如：111111、AAAAAA。<br>
+
+                3、不可使用連續的英、數字，如：123456、ABCDEF。<br>
+                4、使用英文字時，不區分大小寫。<br><br>
+                請務必牢記新連線代號，日後若忘記此代號，需回本行營業單位辦理網路連線代號重設，或至網路銀行使用本行晶片金融卡線上重設密碼。
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="resultFlag">
+        <app-result [successMsg]="successMsg"></app-result>
+    </ng-container>
+</section>

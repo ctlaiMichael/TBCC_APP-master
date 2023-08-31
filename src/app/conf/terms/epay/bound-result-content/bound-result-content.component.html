@@ -1,0 +1,24 @@
+<!-- 請參考 AppView/msg/FUND01.html -->
+<div class="row_single">
+    <h4 class='simple_title'>跨境電子支付交易-身分認證程序</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content | safeHtml "></div>
+</div>
+<div class="agree_info">
+    <div class="row_single">
+        <div class="inner_checkbox abc">
+            <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+                (click)="checkClick()">
+            <label for="inner_checkbox01">
+                <span>
+                    <i></i>
+                </span>
+                <b>我已了解並同意上述內容。</b>
+            </label>
+        </div>
+    </div>
+    <div class="row_single">
+        <a href="javascript:void(0);" class="button_confirm" (click)="onConfirm()">確定</a>
+    </div>
+</div>

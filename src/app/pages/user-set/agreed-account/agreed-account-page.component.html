@@ -1,0 +1,154 @@
+<section>
+    <ng-container *ngIf="pageType=='search'">
+        <div class="sub_info_subtitle  txt_align_lft pad_lft30 bg_none">
+            <div class="disp_inline txt_align_lft txt_time_search">
+                查詢時間：{{dataTime|htDate}}
+
+            </div>
+            <div class="disp_inline">
+                <a class="inner_button float_right_bt" style="float:right" (click)="modifyData();">
+                    <span>新增</span>
+                </a>
+            </div>
+        </div>
+
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+
+
+        <ng-container *ngIf="agreedArr!=''; else noDataBox">
+            <ul class="credit_card_bill_detail_list" *ngFor="let item of agreedArr">
+                <li>
+                    <p class="credit_card_name">
+                        <i>約定轉入帳號</i>
+                        <i>{{item | fieldCheck: ['trnsInAccnt' ,{zero_type:false, empty_str:''} ]}}</i>
+                    </p>
+                    <p>
+                        <span>轉入行庫：</span>
+                        <span>{{ ( item | fieldCheck: ['trnsInBank' ,{zero_type:false, empty_str:'--'}] ) | subStr: 3 }}</span>
+                    </p>
+                    <p>
+                        <span>帳號名稱：</span>
+                        <span>{{item | acntNameMask}}</span>
+                    </p>
+                    <p>
+                        <span>申請日期：</span>
+                        <span>{{(item | fieldCheck: ['createDate' ,{zero_type:false, empty_str:''} ]) | htDate: 'date' }}
+                        </span>
+                    </p>
+                    <p>
+                        <span>狀態：</span>
+                        <span>{{item.trnsInSetType=='1'?'臨櫃約定':'線上約定'}}</span>
+                    </p>
+                    <a (click)="modifyData(item);">註銷</a>
+                </li>
+
+            </ul>
+        </ng-container>
+        <ng-template #noDataBox>
+            <div class="sub_info_subtitle">查無資料</div>
+        </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="pageType=='modify'">
+        <app-confirm-account-remove-page [editData]="editData" (backPageEmit)="goResult($event)" (backToEdit)="toEditPage($event)"></app-confirm-account-remove-page>
+    </ng-container>
+
+    <ng-container *ngIf="pageType=='add'">
+        <app-add-agreed-acnt-page [editData]="editData"  (backToEdit)="toEditPage($event)"></app-add-agreed-acnt-page>
+    </ng-container>
+    <ng-container *ngIf="pageType=='result'">
+        <app-result [successMsg]="successMsg" [successContent]="successContent" [notice]="notice"></app-result>
+    </ng-container>
+</section>
+
+<!--  需使用憑證  -->
+<!-- <div class="popup_window" [ngClass]="popFlag.safe?'popup_open':''">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                新增約定轉入帳號設定需使用「憑證」轉帳機制始得進行交易。
+            </p>
+        </div>
+        <div class="row_single">
+            <a class="button_confirm" (click)="popClose('safe');">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</div> -->
+
+<!--  未認證 (現行本功能不開放OTP做設定 wei@20190821)  -->
+<!-- <div class="popup_window" [ngClass]="popFlag.attest?'popup_open':''">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您的裝置尚未完成認證作業，使用本交易功能必須啟用裝置認證，您是否欲直接申請裝置認證？
+            </p>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)="popClose('attestY');">立即申請</a>
+                <a href="javascript:void('0')" (click)="popClose('attestN');">稍後申請</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--  之後申請 (現行本功能不開放OTP做設定 wei@20190821)  -->
+<!-- <div class="popup_window" [ngClass]="popFlag.later?'popup_open':''">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您之後可至「裝置綁定服務」申請本項服務。
+            </p>
+        </div>
+        <div class="row_single">
+            <a class="button_confirm" (click)="popClose('later');">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</div> -->
+
+<!--  有密碼尚未啟用 (現行本功能不開放OTP做設定 wei@20190821)  -->
+<!-- <div class="popup_window" [ngClass]="popFlag.notyear?'popup_open':''">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您目前已取得一組裝置認證密碼尚未啟用，您是否要使用該裝置認證密碼啟用目前裝置？。
+            </p>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)="popClose('notyearY');">是</a>
+                <a href="javascript:void('0')" (click)="popClose('notyearN');">否</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--  超過綁定數量 (現行本功能不開放OTP做設定 wei@20190821)  -->
+<!-- <div class="popup_window" [ngClass]="popFlag.exceed?'popup_open':''">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您的裝置認證啟用程序已達五組裝置，若欲新增此裝置認證，請您對已申請五組裝置任一裝置進行取消作業。若您有任何問題，請洽客服中心：04-22273131。
+            </p>
+        </div>
+        <div class="row_single">
+            <a class="button_confirm" (click)="popClose('exceed');">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</div> -->

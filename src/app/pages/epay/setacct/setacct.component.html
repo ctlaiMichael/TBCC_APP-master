@@ -1,0 +1,115 @@
+<section>
+	<ng-container *ngIf='onePage'>
+		<div class="row_single">
+			<h4 class="simple_title">變更領獎帳號</h4>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					手機條碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" value="{{AcctInfo.cardNo}}">
+				</li>
+			</ul>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['cardEncrypt']?'active_warnning':''">
+				<li class="inner_table_cell">
+					驗證碼
+				</li>
+				<li class="inner_table_cell">
+					<input maxlength="16" type="password" class="inner_input" placeholder="請輸入驗證碼"
+						[(ngModel)]="AcctInfo.cardEncrypt">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['cardEncrypt'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					銀行帳號
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" [(ngModel)]="AcctInfo.trnsfrOutAccnt">
+						<option *ngFor="let accno of AcctInfo.acctNo" value="{{accno.trnsfrOutAccnt}}">
+							{{accno.trnsfrOutAccnt}}
+						</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['phoneNo']?'active_warnning':''">
+				<li class="inner_table_cell">
+					聯絡電話
+				</li>
+				<li class="inner_table_cell">
+					<input maxlength="10" type="text" class="inner_input" placeholder="請輸入聯絡電話"
+						[(ngModel)]="AcctInfo.phoneNo" (change)="phoneCheck()">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['phoneNo'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a (click)="clickClear()">{{ 'BTN.CLEAR' | translate }}</a>
+				<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+			</div>
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				1.您在此設定之金融帳戶，未來中獎獎金將入此金融帳戶。<br>
+				2.點選確認後，資訊將會送到財政部電子發票整合服務平台進行帳戶設定。<br>
+				3.若欲查詢已設定之金融帳戶，請至財政部網站。<br>
+				<a href="https://www.einvoice.nat.gov.tw/APMEMBERVAN/GeneralCarrier/generalCarrier">
+					https://www.einvoice.nat.gov.tw/APMEMBERVAN/<br>GeneralCarrier/generalCarrier
+				</a>
+			</p>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf='!onePage'>
+		<!-- 結果頁 -->
+		<app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+		<!-- <div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">{{ (!!resultData.status) ? '領獎帳號設定成功' : '領獎帳號設定失敗' }}</span>
+			</div>
+		</div>
+		<ul class="table_info">
+			<ng-container *ngIf="!!resultData.status; else errorResult">
+				<li class="table_row">
+					<span>手機條碼</span>
+					<i>{{AcctInfo.cardNo}}</i>
+				</li>
+				<li class="table_row">
+					<span>銀行帳號</span>
+					<i>{{AcctInfo.trnsfrOutAccnt}}</i>
+				</li>
+				<li class="table_row">
+					<span>聯絡電話</span>
+					<i>{{AcctInfo.phoneNo}}</i>
+				</li>
+			</ng-container>
+			<ng-template #errorResult>
+				<li class="table_row">
+					<span>錯誤代碼</span>
+					<i>{{ (!!resultData.hostCode) ? resultData.hostCode : '--' }}</i>
+				</li>
+				<li class="table_row">
+					<span>代碼訊息</span>
+					<i>{{ resultError }}</i>
+				</li>
+			</ng-template>
+		</ul>
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="Check()" class="button_confirm">{{ 'BTN.BACK_EPAY' | translate }}</a>
+		</div> -->
+	</ng-container>
+</section>

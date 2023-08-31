@@ -1,0 +1,176 @@
+<!--header-->
+<div class="header_bar">
+	<header class="main_nav">
+		<div class="no_bt"></div>
+		<div class="page_title">定期(不)定額查詢/異動</div>
+		<div class="bank_logo">
+			<img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<div class="result_title">
+					<p>定期(不)定額查詢/異動</p>
+				</div>
+				<div class="result_title2">
+					<p ng-if="result.respCode=='0'">交易成功</p>
+					<p ng-if="result.respCode=='1'">交易失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">交易異常</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="fund_css_table">
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left result_title tmpWidth" >錯誤代碼：</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="fund_css_tr">&nbsp;</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left result_title tmpWidth" >主機代碼訊息：</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				<!--main_input end-->
+
+				<div class="main_input" ng-if="result.respCode=='0'">
+					<div id="fund_css_table">
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">基金名稱</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="fundInfo"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">交易編號</div>
+							<div class="fund_css_td fund_css_td_right_nocolor" ng-bind="response.transCode"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">申請日期</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="todayDt"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">每次投資金額</div>
+							<div class="fund_css_td fund_css_td_right" >{{response.INCurrency}} {{numFmt(investAmnt)}}元</div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">{{debitDateTitle}}扣款日期</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="debitDate"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">扣款狀態</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="DebitStatusFlagStr"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">扣款帳號</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="response.payAcnt"></div>
+						</div>
+						<div class="fund_css_tr">
+							<div class="fund_css_td fund_css_td_left">現金收益帳號</div>
+							<div class="fund_css_td fund_css_td_right" ng-bind="response.profitAcnt"></div>
+						</div>
+                        <div class="fund_css_tr" ng-if="response.payEvaFlag === 'Y'">
+                            <div class="fund_css_td fund_css_td_left">不定額加碼</div>
+                            <div class="fund_css_td fund_css_td_right" ng-bind="keepData.evaCDText"></div>
+                        </div>
+					</div>
+                    <div class="keep_con" ng-if="response.payEvaFlag === 'Y'">
+                        <div class="invest_title" style="background-color:lightgrey">
+                            <p class="content_text" style="text-align:center;">跌幅級距</p>
+                            <p class="content_text" style="text-align:center;">加/減碼金額</p>
+                            <p class="content_text" style="text-align:center;">漲幅級距</p>
+                            <p class="content_text" style="text-align:center;">加/減碼金額</p>
+                        </div>
+
+                        <div class="invest">
+                            <div class="content_text" style="text-align:center;">-5% &ge;<br />評價結果<br />&gt; -10%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.decline1Cd}}{{response.decline1}}
+                            </div>
+                            <div class="content_text" style="text-align:center;">5% &le;<br />評價結果<br />&lt; 10%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.gain1Cd}}{{response.gain1}}
+                            </div>
+                        </div>
+                        <div class="invest2">
+                            <div class="content_text" style="text-align:center;">-10% &ge;<br />評價結果<br />&gt; -15%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.decline2Cd}}{{response.decline2}}
+                            </div>
+                            <div class="content_text" style="text-align:center;">10% &le;<br />評價結果<br />&lt; 15%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.gain2Cd}}{{response.gain2}}
+                            </div>
+                        </div>
+                        <div class="invest">
+                            <div class="content_text" style="text-align:center;">-15% &ge;<br />評價結果<br />&gt; -20%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.decline3Cd}}{{response.decline3}}
+                            </div>
+                            <div class="content_text" style="text-align:center;">15% &le;<br />評價結果<br />&lt; 20%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.gain3Cd}}{{response.gain3}}
+                            </div>
+                        </div>
+                        <div class="invest2">
+                            <div class="content_text" style="text-align:center;">-20% &ge;<br />評價結果<br />&gt; -25%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.decline4Cd}}{{response.decline4}}
+                            </div>
+                            <div class="content_text" style="text-align:center;">20% &le;<br />評價結果<br />&lt; 25%</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.gain4Cd}}{{response.gain4}}
+                            </div>
+                        </div>
+                        <div class="invest">
+                            <div class="content_text" style="text-align:center;">-25% &ge;<br />評價結果</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.decline5Cd}}{{response.decline5}}
+                            </div>
+                            <div class="content_text" style="text-align:center;">25% &le;<br />評價結果</div>
+                            <div class="content_text" style="text-align:center;">
+                                {{response.gain5Cd}}{{response.gain5}}
+                            </div>
+                        </div>
+                    </div>
+
+				</div>
+
+
+				<!--main_input end-->
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt2" ng-click="clickBack()">確定</button>
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+    .tmpWidth{
+        width:100px;
+		font-size: 14px;
+    }
+</style>

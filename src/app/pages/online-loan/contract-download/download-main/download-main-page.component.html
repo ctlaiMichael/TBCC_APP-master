@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="showPage">
+    <ng-container *ngSwitchCase="'queryPage'">
+        <section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+            <app-search [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-search>
+            <ng-container #pageBox></ng-container>
+        </section>
+    </ng-container>
+    <ng-container *ngSwitchCase="'detail-pages'">
+        <app-download-detail (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-download-detail>
+        </ng-container>
+</ng-container>

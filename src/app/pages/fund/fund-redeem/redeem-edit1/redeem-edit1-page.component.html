@@ -1,0 +1,32 @@
+<ul class="credit_card_bill_detail_list">
+    <!-- 列表start -->
+    <li *ngFor="let item of data">
+        <p class="credit_card_name">
+            <i>{{item.fundCode}}</i>
+            <i>{{item.fundName}}</i>
+        </p>
+
+        <p>
+            <span>交易編號：</span>
+            <span>{{item.transCode}}</span>
+        </p>
+        <p>
+            <span>投資方式：</span>
+            <span>{{item.investDesc}}</span>
+        </p>
+        <p>
+            <span>投資幣別：</span>
+            <span>{{item.iNCurrency}}</span>
+        </p>
+        <p>
+            <span>信託本金：</span>
+            <span>{{item.invenAmount | htMoney: item.iNCurrency}}</span>
+        </p>
+
+        <p>
+            <span>單位數：</span>
+            <span>{{item.unit}}</span>
+        </p>
+        <a href="javascript:void(0)" class="" (click)="onRedeem(item)">贖回</a>
+    </li>
+</ul>

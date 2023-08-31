@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div class="row_single">
+    <h4 class="simple_title">{{title|translate}}</h4>
+  </div>
+  <!--<div class="row_single">
+  <p class="inner_content">
+    請輸入憑證保護密碼
+  </p>
+</div>-->
+  <div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="validate('pwd')?'active_warnning':''">
+      <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+      <li class="inner_table_cell">
+        憑證保護密碼
+      </li>
+      <li class="inner_table_cell">
+        <input type="password" formControlName="pwd" class="inner_input">
+      </li>
+    </ul>
+    <i class="input_info_warnning" *ngIf="form?.get('pwd').errors?.required">請輸入密碼</i>
+    <i class="input_info_warnning" *ngIf="form?.get('pwd').errors?.rangeLength">密碼長度不可少於4碼或多於12碼</i>
+    <i class="input_info_warnning" *ngIf="form?.get('pwd').errors?.vaildSame">密碼不可設定為全部相同的文字</i>
+    <i class="input_info_warnning" *ngIf="form?.get('pwd').errors?.vaildContinuous">密碼不可設定為連續性文字</i>
+  </div>
+  <div class="row_single" *ngIf="!certUpdate">
+    <ul class="inner_table_frame"  [ngClass]="validate('pwdConfirm')?'active_warnning':''">
+      <li class="inner_table_cell">
+        憑證保護密碼確認
+      </li>
+      <li class="inner_table_cell">
+        <input type="password" formControlName="pwdConfirm" class="inner_input">
+      </li>
+    </ul>
+    <i class="input_info_warnning" *ngIf="form?.get('pwdConfirm').errors?.equalTo">密碼不一致</i>
+  </div>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="cancel()">取消</a>
+      <a (click)="submit()">確定</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content">
+      「憑證保護密碼」為您申請憑證時，自行設定之轉帳密碼(4-12位英數字、符號)，若忘記此密碼，需回本行營業單位重新申請憑證。
+    </p>
+  </div>
+</form>

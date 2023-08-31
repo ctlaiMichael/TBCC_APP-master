@@ -1,0 +1,22 @@
+{
+    "custId":"",
+    "applyAcct":"",
+    "applyCurr":"",
+    "custChName":"",
+    "custEnName":"",
+    "certDate":"",
+    "chooseAmt":"",
+    "applyAmount":"",
+    "amountLang":"",
+    "amountPurpose":"",
+    "addrItem":"",
+    "sendAddr":"",
+    "contactPhone":"",
+    "mobilePhone":"",
+    "fee":"",
+    "postFee":"",
+    "copy":"",
+    "trnsOutAcct":"",
+    "email":"",
+    "trnsToken":""
+}

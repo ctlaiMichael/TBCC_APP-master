@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ROOT>
+	<BUTTON>
+		<BACK>Back</BACK>
+		<OK>OK</OK>
+		<CANCEL>Cancel</CANCEL>
+		<YES>Yes</YES>
+		<NO>No</NO>
+	</BUTTON>
+
+	<MAIN>
+		<WELCOME>Welcome</WELCOME>
+		<WELCOMEMESSAGE>Welcome message</WELCOMEMESSAGE>
+		<WELCOMESENCHA>Welcome to Sencha Touch 2</WELCOMESENCHA>
+		<WELCOMETEXT1>You've just generated a new Sencha Touch 2 project. What you're looking at right now is the contents of</WELCOMETEXT1>
+		<WELCOMETEXT2> - edit that file and refresh to change what's rendered here.</WELCOMETEXT2>
+		<GETSTARTED>Get Started</GETSTARTED>
+		<GETTINGSTARTED>Getting Started</GETTINGSTARTED>
+	</MAIN>
+
+	<LOCALIZATION>
+		<CHANGELANGUAGE>Change Language</CHANGELANGUAGE>
+		<CHANGELANGUAGEQUESTION>You have to reload application in order to change to new language.</CHANGELANGUAGEQUESTION>
+	</LOCALIZATION>
+
+	<ITEM>
+		<TITLE>HtFramework Menu</TITLE>
+		<ITEM_0>NFC</ITEM_0>
+		<ITEM_1>Shake detect</ITEM_1>
+		<ITEM_2>File  detect</ITEM_2>
+		<ITEM_3>BLE</ITEM_3>
+		<ITEM_4>Send request</ITEM_4>
+		<ITEM_5>Location</ITEM_5>
+		<ITEM_6>Contact</ITEM_6>
+		<ITEM_7>Google Map</ITEM_7>
+		<ITEM_8>Console Log</ITEM_8>
+		<ITEM_9>Transient Page</ITEM_9>
+		<ITEM_10>Multilanguage(English)</ITEM_10>
+		<ITEM_11>QRCode scan</ITEM_11>
+		<ITEM_12>QRCode gen</ITEM_12>
+		<ITEM_13>Open camera</ITEM_13>
+		<ITEM_14>Open word</ITEM_14>
+		<ITEM_15>Open pdf</ITEM_15>
+		<ITEM_16>Send email</ITEM_16>
+		<ITEM_17>Send sms</ITEM_17>
+		<ITEM_18>Time zone</ITEM_18>
+
+	</ITEM>
+</ROOT>

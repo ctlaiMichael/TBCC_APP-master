@@ -1,0 +1,83 @@
+<section>
+	<ng-container *ngIf='onePage'>
+		<div class="row_single">
+			<h4 class="simple_title">變更手機條碼驗證碼</h4>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					手機條碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" value="{{barcode.cardNo}}">
+				</li>
+			</ul>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['oldVerify']?'active_warnning':''">
+				<li class="inner_table_cell">
+					原驗證碼
+				</li>
+				<li class="inner_table_cell">
+					<input [(ngModel)]="Verify.oldVerify" type="password" class="inner_input" placeholder="請輸入原驗證碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['oldVerify'] | translate}}</i>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['newVerify']?'active_warnning':''">
+				<li class="inner_table_cell">
+					新驗證碼
+				</li>
+				<li class="inner_table_cell">
+					<input [(ngModel)]="Verify.newVerify" type="password" class="inner_input" placeholder="請輸入新驗證碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['newVerify'] | translate}}</i>
+		</div>
+		<div class="row_single mobile">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['newVerify2']?'active_warnning':''">
+				<li class="inner_table_cell">
+					再次輸入新驗證碼
+				</li>
+				<li class="inner_table_cell">
+					<input [(ngModel)]="Verify.newVerify2" type="password" class="inner_input" placeholder="請輸入新驗證碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['newVerify2'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a (click)="clickClear()">{{ 'BTN.CLEAR' | translate }}</a>
+				<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+			</div>
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				[新驗證碼]須有數字與英文字母且長度需8~16碼
+			</p>
+		</div>
+	</ng-container>
+	<ng-container *ngIf='!onePage'>
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">變更成功</span>
+			</div>
+		</div>
+		<ul class="table_info">
+			<li class="table_row">
+				<!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+				<span>新驗證碼</span>
+				<i>{{Verify.newVerify}}</i>
+			</li>
+		</ul>
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="Check()" class="button_confirm">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</ng-container>
+</section>

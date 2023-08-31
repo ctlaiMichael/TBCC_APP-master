@@ -1,0 +1,122 @@
+<!-- section -->
+<section class="background1_a11y">
+  <div class="simple_discription_a11y">
+    帳號<br>
+    {{formatAccount(loanObj.acctNo)}}
+  </div>
+  <div class="row_single_a11y">
+    <p class="simple_title_a11y">請輸入查詢條件-選擇區間</p>
+  </div>
+  <div role="tablist" class="tab_table_a11y">
+    <ng-container *ngIf="platform === 'ios' else android_tab">
+      <!-- 選擇區間 -->
+      <a class="tab_three_cell_a11y" *ngIf="mychoose==1" role="tab" attr.aria-selected="{{mychoose==1}}"
+        aria-posinset="1" aria-setsize="3">
+        <div class="tab_button_a11y active_a11y">
+          最近1週
+        </div>
+      </a>
+      <div class="tab_three_cell_a11y" (click)="oneweekClick()" *ngIf="mychoose!==1" role="tab"
+        attr.aria-selected="{{mychoose==1}}" attr.aria-posinset="1" attr.aria-setsize="3">
+        <div class="tab_button_a11y">最近1週</div>
+      </div>
+
+      <a class="tab_three_cell_a11y" *ngIf="mychoose==2" role="tab" attr.aria-selected="{{mychoose==2}}"
+        attr.aria-posinset="2" attr.aria-setsize="3">
+        <div class="tab_button_a11y active_a11y">
+          最近1個月
+        </div>
+      </a>
+      <div class="tab_three_cell_a11y" (click)="onemonthClick()" *ngIf="mychoose!==2" role="tab"
+        attr.aria-selected="{{mychoose==2}}" attr.aria-posinset="2" attr.aria-setsize="3">
+        <div class="tab_button_a11y">最近1個月</div>
+      </div>
+
+      <a class="tab_three_cell_a11y" *ngIf="mychoose==3" role="tab" attr.aria-selected="{{mychoose==3}}"
+        attr.aria-posinset="3" attr.aria-setsize="3">
+        <div class="tab_button_a11y active_a11y">
+          最近2個月
+        </div>
+      </a>
+      <div class="tab_three_cell_a11y" (click)="twomonthClick()" *ngIf="mychoose!==3" role="tab"
+        attr.aria-selected="{{mychoose==3}}" attr.aria-posinset="3" attr.aria-setsize="3">
+        <div class="tab_button_a11y">最近2個月</div>
+      </div>
+    </ng-container>
+    <ng-template #android_tab>
+      <div class="tab_three_cell_a11y" (click)="oneweekClick()" role="tab" attr.aria-selected="{{mychoose==1}}"
+        attr.aria-posinset="1" attr.aria-setsize="3">
+        <div class="tab_button_a11y" [ngClass]="{'active_a11y': mychoose==1}">最近1週</div>
+      </div>
+      <div class="tab_three_cell_a11y" (click)="onemonthClick()" role="tab" attr.aria-selected="{{mychoose==2}}"
+        attr.aria-posinset="2" attr.aria-setsize="3">
+        <div class="tab_button_a11y" [ngClass]="{'active_a11y': mychoose==2}">最近1個月</div>
+      </div>
+      <div class="tab_three_cell_a11y" (click)="twomonthClick()" role="tab" attr.aria-selected="{{mychoose==3}}"
+        attr.aria-posinset="3" attr.aria-setsize="3">
+        <div class="tab_button_a11y" [ngClass]="{'active_a11y': mychoose==3}">最近2個月</div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row_single_2_a11y"></div>
+  <div class="row_single_a11y">
+    <div class="date_search_fit_a11y" id="start_date">開始：<br>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeSYear(startyear)" #startyear class="fix_select_a11y" [(ngModel)]="default_sY"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateYear of DateYears" [value]="DateYear">{{ DateYear }}</option>
+      </select>
+      <p class="title_space_a11y">年</p>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeSMonth(startmonth)" #startmonth class="fix_select_a11y" [(ngModel)]="default_sM"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateMonth of DateMonths" [value]="DateMonth.id">{{ DateMonth.num }}</option>
+      </select>
+      <p class="title_space_a11y">月</p>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeSDay(startday)" #startday class="fix_select_a11y" [(ngModel)]="default_sD"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateDay of DateDays" [value]="DateDay">{{ DateDay }}</option>
+      </select>
+      <p class="title_space_a11y">日</p>
+    </div>
+  </div>
+  <div class="row_single_a11y">
+    <div class="date_search_fit_a11y" id="end_date">結束：<br>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeEYear(endyear)" #endyear class="fix_select_a11y" [(ngModel)]="default_eY"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateYear of DateYears" [value]="DateYear">{{ DateYear }}</option>
+      </select>
+      <p class="title_space_a11y">年</p>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeEMonth(endmonth)" #endmonth class="fix_select_a11y" [(ngModel)]="default_eM"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateMonth of DateMonths" [value]="DateMonth.id">{{ DateMonth.num }}</option>
+      </select>
+      <p class="title_space_a11y">月</p>
+    </div>
+    <div class="date_search_a11y">
+      <select (change)="onChangeEDay(endday)" #endday class="fix_select_a11y" [(ngModel)]="default_eD"
+        onmousedown="if(this.options.length>4){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+        <option *ngFor="let DateDay of DateDays" [value]="DateDay"> {{ DateDay }}</option>
+      </select>
+      <p class="title_space_a11y">日</p>
+    </div>
+  </div>
+
+  <div class="row_single_a11y">
+    <div><a class="button_confirm_a11y" (click)="goDetail()" role="button">確定</a></div>
+  </div>
+  <div class="row_single">
+    <a class="button_confirm_a11y" (click)="gobackPage()">
+      <div class="button_cancel_a11y" role="button">回借款查詢</div>
+    </a>
+  </div>
+</section>
+<!-- section End -->

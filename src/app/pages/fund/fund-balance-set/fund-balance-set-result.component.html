@@ -1,0 +1,104 @@
+<section>
+    <!-- 交易成功 -->
+    <ng-container *ngIf="sucess">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame" [ngClass]="{ 'exclamation_active':(trust_failed) }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!-- 交易失敗 -->
+    <ng-container *ngIf="failed">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+    <!-- 處理中 -->
+    <ng-container *ngIf="processing">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">處理中</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content">處理中請稍後。</span>
+            </p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="sucess">
+        <div class="row_single result"></div>
+
+        <ul class="credit_card_bill_detail_list" *ngFor="let item of mappingData">
+            <ng-container *ngIf="item.incomePoint !== '0' && item.profitPoint !== '0'">
+                <!-- 列表start -->
+                <li>
+                    <!-- title start -->
+                    <p class="credit_card_name">
+                        <i>
+                            {{item.fundCode}}{{item.fundName}}
+                        </i>
+                    </p>
+                    <!-- row start -->
+                    <p>
+                        <span>停損點：</span>
+                        <span>{{item.sLossCD}}{{item.incomePoint}}</span>
+                    </p>
+
+                    <p>
+                        <span>獲利點：</span>
+                        <span>{{item.sProCD}}{{item.profitPoint}}</span>
+                    </p>
+
+                    <p class="no_border_bottom">
+                        
+                        <span style="float: left;">通知/贖回：</span>
+                        <span style="float: right;">
+                            <ng-container *ngIf="item.autoRed == 'Y'">
+                                <span>自動贖回</span> <span>&nbsp;/&nbsp;</span>
+                            </ng-container>
+                            <ng-container *ngIf="item['autoRed'] == 'Y' && item.continue == 'Y'">
+                                <span>續扣</span>
+                            </ng-container>
+
+                            <ng-container *ngIf="item['autoRed'] == 'Y' && item.continue == 'N'">
+                                <span>不續扣</span>
+                            </ng-container>
+
+                            <ng-container *ngIf="(item['webNotice'] == 'Y' || item['emailNotice'] == 'Y') && item['autoRed'] == 'Y'">
+                                <br>
+                            </ng-container>
+
+                            <ng-container *ngIf="item['webNotice'] == 'Y'">
+                                <span>即時畫面</span>
+                            </ng-container>
+                            <ng-container *ngIf="item['webNotice'] == 'Y' && item['emailNotice'] == 'Y'">
+                                <span>&nbsp;/&nbsp;</span>
+                            </ng-container>
+                            <ng-container *ngIf="item['emailNotice'] == 'Y'">
+                                <span>E-mail</span>
+                            </ng-container>
+                         </span>
+                    </p>
+                    <a href="javascript:void(0);" class="section_set"></a>
+                </li>
+            </ng-container>
+        </ul>
+        <div class="row_single"></div>
+
+        <div class="row_single result">
+            <a href="javascript:void(0);" class="button_confirm" (click)="onConfirmEnd()">確認</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="failed">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <a href="javascript:void(0);" class="button_confirm" (click)="onHome()">返回行動網銀首頁</a>
+        </div>
+    </ng-container>
+</section>

@@ -1,0 +1,54 @@
+<div class="row_single">
+    <h4 class="simple_title">請填寫基本資料</h4>
+</div>
+<div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="{'active_warnning':errorSelect.child}">
+        <li class="inner_table_cell">
+            子女數
+        </li>
+        <li class="inner_table_cell">
+            <select name="WireTransfer" class="inner_select" [(ngModel)]="baseData.child">
+                <option value="">請選擇</option>
+                <option value="0">無</option>
+                <option value="1">1人</option>
+                <option value="2">2人</option>
+                <option value="3">3人</option>
+                <option value="9">3人以上</option>
+
+            </select>
+        </li>
+    </ul>
+    <i class="input_info_warnning">請選擇子女數</i>
+</div>
+<div class="row_single">
+    <ul class="inner_table_frame" [ngClass]="{'active_warnning':errorSelect.injury}">
+        <li class="inner_table_cell">
+            是否領有全民健<br>保重大傷病證明
+        </li>
+        <li class="inner_table_cell">
+            <select name="WireTransfer" class="inner_select" [(ngModel)]="baseData.injury">
+                <option value="">請選擇</option>
+                <option value="Y">&nbsp;&nbsp;是</option>
+                <option value="N">&nbsp;&nbsp;否</option>
+            </select>
+        </li>
+    </ul>
+    <i class="input_info_warnning">請選擇是否領有全民健保重大傷病證明</i>
+</div>
+<ng-container *ngIf="info_data.isFirstKYC=='Y'">
+    <div class="row_single">
+        <div class="double_button" style="margin-top: 10px;">
+            <a href="javascript:void(0)" (click)="prevStep()">上一步</a><a href="javascript:void(0)"
+                (click)="nextStep()">下一步</a>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="info_data.isFirstKYC=='N'">
+    <div class="row_single">
+        <div class="double_button" style="margin-top: 10px;">
+            <a href="javascript:void(0)" (click)="goFund()">返回投資理財</a><a href="javascript:void(0)"
+                (click)="nextStep()">下一步</a>
+        </div>
+    </div>
+</ng-container>

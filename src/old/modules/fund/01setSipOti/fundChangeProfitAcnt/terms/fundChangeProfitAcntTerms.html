@@ -1,0 +1,81 @@
+<div class="wrapper">
+    <!--header-->
+    <div class="row">
+        <header class="main_nav">
+            <div class="back_bt" ng-click="clickBack()">
+                <p class="back_title">返回</p>
+            </div>
+            <div class="page_title">現金收益存入帳號異動</div>
+            <div class="bank_logo">
+                <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+            </div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+
+    <!--section 扣款帳號設定頁面-->
+    <div class="row">
+        <section class="main_sec">
+            <div class="row">
+                <div class="main_content">
+
+                    <div class="keep_sec">
+                        <p class="keep_title">庫存狀況:</p>
+                        <select class="keep_sel" 
+                                ng-model="fundStockTypeSelected" 
+                                ng-options="StockType.Type as StockType.Name for StockType in fundStockType" 
+                                ng-change="changeSelect(fundStockTypeSelected)">
+                        </select>
+                    </div>
+                    <!--keep_sec end-->
+
+                    <div class="keep_con">
+                        <div class="invest_title">
+                            <p class="">投資標的</p>
+                            <p class="">投資幣別/金額</p>
+                            <p class="">投資方式</p>
+                        </div>
+
+                        <div class="{{menu.trClass}}" ng-click="clickEdit(menu.fi000702Param)" ng-repeat="menu in funds track by $index" ng-cloak>
+                            <div class="invest_con">
+                                <p>{{menu.transCode}}</p>
+                                <p>{{menu.fundName}}</p>
+                            </div>
+                            <div class="invest_con2">{{menu.iNCurrency}} {{numFmt(menu.invenAmount)}}</div>
+                            <div class="invest_con3">{{menu.investDesc}}
+                                <i class="fa fa-chevron-circle-right loan_sign" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="invest_title" ng-if="showMoreFlag && !fundsCountLT0">
+                            <p class=""></p>
+                            <p class="" ng-click="clickMore()">更多</p>
+                            <p class=""></p>
+                        </div>
+
+                        <div class="invest_title" style="background:white; padding:30px;" ng-if="fundsCountLT0">
+                            <p class=""></p>
+                            <p class="" style="font-size: 20px;">查無相關基金資料</p>
+                            <p class=""></p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--main_content end-->
+            </div>
+            <!--row end-->
+
+        </section>
+        <!--main_sec end-->
+    </div>
+    <!--section 扣款帳號設定頁面 end-->
+
+
+    <!--end of footer-->
+
+
+</div>
+<!--wrapper end-->
+

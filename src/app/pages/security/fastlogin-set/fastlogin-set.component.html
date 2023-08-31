@@ -1,0 +1,50 @@
+<section>
+  <div class="row_single gray_underline_80">
+    <h4 class="simple_title" style="width: 50vw;">指紋/臉部</h4>
+  </div>
+  <div class="row_single gray_underline_80">
+    <h4 class="simple_title no_before" style="width: 50vw;">快速登入</h4>
+    <div class="switch_opne_close" style="float: right; top: 9px;" (click)="ftClick()">
+      <input type="checkbox" name="toggle" id="flag1" [checked]='check.ftlogin'>
+      <label for="toggle"><i></i></label>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title no_before" style="width: 50vw;">台灣Pay交易</h4>
+    <div class="switch_opne_close" style="float: right; top: 9px;" (click)="taiwanpayClick()">
+      <input type="checkbox" name="toggle" id="flag1" [checked]='check.taiwanpay'>
+      <label for="toggle"><i></i></label>
+    </div>
+  </div>
+
+  <div class="row_single gray_underline_80">
+    <h4 class="simple_title" style="width: 50vw;">圖形密碼</h4>
+  </div>
+  <div class="row_single gray_underline_80">
+    <h4 class="simple_title no_before" style="width: 50vw;">快速登入</h4>
+    <div class="switch_opne_close" style="float: right; top: 9px;" (click)="patternlockClick()">
+      <input type="checkbox" name="toggle" id="flag1" [checked]='check.hasPatternLock'>
+      <label for="toggle"><i></i></label>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title no_before" style="width: 50vw;">台灣Pay交易</h4>
+    <div class="switch_opne_close" style="float: right; top: 9px;" (click)="payPatternClick()">
+      <input type="checkbox" name="toggle" id="flag1" [checked]='check.payPattern'>
+      <label for="toggle"><i></i></label>
+    </div>
+  </div>
+
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <div class="inner_content">
+      <ol class="order_list">
+        <li >若您開啟快速登入功能，即可使用指紋/臉部/圖形密碼進行登入作業。</li>
+        <li >若您開啟台灣Pay交易，即可使用指紋/臉部/圖形密碼進行消費扣款、繳費繳稅交易。</li>
+        <li >每台裝置僅接受一位客戶進行設定，且每位客戶僅接受綁定一台裝置。</li>
+      </ol>
+    </div>
+  </div>
+</section>

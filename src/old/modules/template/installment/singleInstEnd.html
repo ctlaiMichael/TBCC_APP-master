@@ -1,0 +1,69 @@
+<div class="sub_info_frame result">
+		<div class="step_final_icon_frame">
+			<i class="icon_success"></i>
+			<span class="step_final_info">{{result}}</span>
+		</div>
+	</div>
+<div  ng-if="curStep == 6">
+<div class="">
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">消費日期</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.consumptionDate}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">卡別/卡號末四碼</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.cardLast4Num}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">明細</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.detail | cleanSpace }}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣折算日</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.foreignCurrencyDate}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣幣別</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.foreignCurrency}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">外幣金額</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.AmountForeignCurrency | currency:""}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">新臺幣金額</i></td>
+		<td align="right"><p class="info_conetnt2">{{instItem.NTDollarAmount | currency:""}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">期數</i></td>
+		<td align="right"><p class="info_conetnt2">{{selectBill.name}}</p></td>
+		</tr></table>
+	</div>
+	<!-- <div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title2">設定結果</i></td>
+		<td align="right"><p class="info_conetnt2">{{result}}</p></td>
+		</tr></table>
+	</div> -->
+</div>
+<div class="bc_frame">
+	<div class="row_single2">
+		<button class="button_confirm" ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+	</div>
+</div>
+</div>

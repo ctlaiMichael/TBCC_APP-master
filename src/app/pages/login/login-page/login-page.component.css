@@ -1,0 +1,47 @@
+/* 隱私權區塊 */
+.login_privacy_box{
+    padding: 0px 30px;
+    font-size: 12px;
+    text-align: center;
+    margin-top:15px
+}
+section{
+    overflow-y: auto;
+}
+
+.pattern-top-info{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pattern-top-caption{
+  font-size: 15px;
+}
+.inner_button > * a:first-child:before {
+	position: absolute;
+	top: 10px;
+	right: -2px;
+	bottom: 10px;
+	width: 1px;
+	height: auto;
+	content: '';
+  background: -webkit-linear-gradient(top, rgb(132, 134, 127) 0%,rgb(164, 181, 172) 100%);
+}
+	/**新增信用卡登入*/
+	.card_login_div{
+		text-align: center;
+		margin-bottom: 0px !important;
+	}
+	.card_login_btn{
+		box-shadow: 0 5px 15px 0 rgba(1,136,32,.2);
+		border: 0px;
+	}
+	.card_login_click{
+		color: #519d7a;
+		font-weight: bold;
+	}
+	.card_login_not_click{
+    color: #585858;
+    font-weight: normal;
+	}
+	/**新增信用卡登入 end*/

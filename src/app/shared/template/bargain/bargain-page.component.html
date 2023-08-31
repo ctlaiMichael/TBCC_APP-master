@@ -1,0 +1,31 @@
+<section>
+
+    <ng-container *ngIf="showData">
+
+      <ul class="credit_card_bill_detail_list" *ngFor="let data of datas">
+        <li>
+          <p class='credit_card_name'>
+            <span>議價分行 / 編號：</span>
+            <span>{{data | fieldCheck: 'negotiatedBranch' }}/{{data | fieldCheck: 'negotiatedNo' }}</span>
+          </p>
+          <p>
+            <span>議價金額：</span>
+            <span>{{data | fieldCheck: 'negotiatedCurr'}} {{ (data | fieldCheck: 'negotiatedAmount') | htMoney:data.negotiatedCurr}}</span>
+          </p>
+          <p>
+            <span>相對金額：</span>
+            <span>{{data | fieldCheck: 'correspdCurr'}} {{ (data | fieldCheck: 'correspdAmount') | htMoney:data.correspdCurr }}</span>
+          </p>
+          <p>
+            <span>可用餘額：</span>
+            <span>{{data | fieldCheck: 'negotiatedCurr'}} {{(data | fieldCheck: 'availableAmount') | htMoney:data.negotiatedCurr }}</span>
+          </p>
+           <a href="javascript:void(0)" (click)="onSelectEvent(data)">選擇</a>
+        </li>
+      </ul>
+<!-- 
+      <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+      </ng-template> -->
+    </ng-container>
+</section>

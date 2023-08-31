@@ -1,0 +1,86 @@
+<div id="tring">
+  <div class="row_single">
+    <h4 class="simple_title">預約中</h4>
+  </div>
+  <ul class="credit_card_bill_detail_list">
+    <li *ngIf="hasRsrvtnTrns; else empty">
+      <!-- 提款帳號 -->
+      <p class="credit_card_name">
+        <i>提款帳號</i>
+        <i>{{ bookData.applyAccno | accountFormate }}</i>
+      </p>
+      <!-- 銀行代號 -->
+      <p>
+        <span>銀行代號：</span>
+        <span>006</span>
+      </p>
+      <!-- 提款序號 -->
+      <p>
+        <span>提款序號：</span>
+        <span>{{ bookData.transTxno }}</span>
+      </p>
+      <!-- 提款金額 -->
+      <p>
+        <span>提款金額：</span>
+        <span>${{ bookData.applyAmt | htMoney:'TWD' }}</span>
+      </p>
+      <!-- 有效時間 -->
+      <p>
+        <span>有效時間：</span>
+        <span>{{ bookData.tdeadline | htDate }}</span>
+      </p>
+      <!-- 取消預約按鈕 -->
+      <a href="javascript:void(0);" class="" (click)="cancelTrns(bookData)">取消預約</a>
+    </li>
+  </ul>
+</div>
+<ng-template #empty>
+  <li>
+    <p class="search_empty" style="text-align: left;">
+      查無有效時間內之預約無卡提款交易，請按下方『預約無卡提款』預約一筆新的無卡提款交易。
+    </p>
+  </li>
+</ng-template>
+
+<ng-template [ngIf]="!hasRsrvtnTrns">
+  <div class="row_single">
+    <a class="button_confirm" (click)="goReservation()">預約無卡提款</a>
+  </div>
+  <hr class="divider">
+</ng-template>
+
+<div class="row_single">
+  <h4 class="simple_title">預約紀錄</h4>
+</div>
+<ul class="credit_card_bill_detail_list">
+  <li *ngFor="let item of items">
+    <!-- 預約時間 -->
+    <p class="credit_card_name">
+      <i>預約時間</i>
+      <i>{{ item.applyDateTime | htDate }}</i>
+    </p>
+    <!-- 提款序號 -->
+    <p>
+      <span>提款序號：</span>
+      <span>{{ item.transTxno }}</span>
+    </p>
+    <!-- 提款狀態 -->
+    <p>
+      <span>提款狀態：</span>
+      <span>{{ 'CARDLESS_FIELD.TRNS_STTS_' + item.transStatus | translate }}</span>
+    </p>
+    <!-- 提款金額 -->
+    <p>
+      <span>提款金額：</span>
+      <span>${{ item.applyAmt | htMoney:'TWD' }}</span>
+    </p>
+    <!-- 交易明細按鈕 -->
+    <a class="" (click)="onContentEvent(item)">交易明細</a>
+  </li>
+
+  <li *ngIf="!hasTrnsDatas">
+      <p class="search_empty">
+          您沒有近24小時內之預約紀錄
+      </p>
+  </li>
+</ul>

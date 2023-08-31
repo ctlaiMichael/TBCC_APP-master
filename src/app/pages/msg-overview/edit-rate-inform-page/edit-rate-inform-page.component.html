@@ -1,0 +1,183 @@
+<section id="resultTop">
+  <div [hidden]="showResult">
+    <!-- 進度條 -->
+    <div class="sub_info_frame mb-2" style="margin-bottom: 1em;">
+      <ul class="step_bar_frame">
+        <!-- 填寫資料 -->
+        <li class="step_bar step_active"><span>1.{{'STEP_BAR.COMMON.EDIT' | translate}}</span></li>
+        <li class="step_bar"></li>
+      </ul>
+    </div>
+
+    <!-- 編輯欄位 -->
+    <div class="row_single">
+      <div style="width:calc(100% - 105px); display: inline-block">
+        <ul class="inner_table_frame">
+          <li class="inner_table_cell">
+            <!-- 幣別 -->
+            {{ 'PG_FINANCIAL.FIELD.CURRENCY' | translate }}
+          </li>
+          <li class="inner_table_cell">
+            <ng-container *ngIf="!selectingCash">
+              <select class="inner_select" [(ngModel)]="rateInformObj.currency" (ngModelChange)="onCurrencyChange()">
+                <option selected disabled hidden value="-1">{{ 'CHECK.STRING.PLEASE_SELECT' | translate }}</option>
+                <!--請選擇-->
+                <option *ngFor="let option of currencyOption" value="{{option}}">{{option}}</option>
+              </select>
+            </ng-container>
+            <ng-container *ngIf="selectingCash">
+              <select class="inner_select" [(ngModel)]="rateInformObj.currency" (ngModelChange)="onCurrencyChange()">
+                <option selected disabled hidden value="-1">{{ 'CHECK.STRING.PLEASE_SELECT' | translate }}</option>
+                <!--請選擇-->
+                <option *ngFor="let option of cashCurrencyOption" value="{{option}}">{{option}}</option>
+              </select>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+      <div (click)="goFinancialExchange()"
+        style="width: 95px; display: inline-block; vertical-align: bottom; float: right; padding-top: 4px;">
+        <div class="msg_edit_button">牌告匯率</div>
+      </div>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          買賣
+        </li>
+        <li class="inner_table_cell">
+          <select class="inner_select" [(ngModel)]="rateInformObj.type">
+            <!-- <option selected disabled hidden value="-1">請選擇</option> -->
+            <option *ngFor="let option of typeOption" value="{{option.value}}">{{option.title}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          種類
+        </li>
+        <li class="inner_table_cell">
+          <ng-container *ngIf="!selectingPromptCurrency">
+            <select class="inner_select" [(ngModel)]="rateInformObj.exchangeType"
+              (ngModelChange)="onExchangeTypeChange()">
+              <!-- <option selected disabled hidden value="-1">請選擇</option> -->
+              <option *ngFor="let option of exchangeTypeOption" value="{{option.value}}">{{option.title}}</option>
+            </select>
+          </ng-container>
+          <ng-container *ngIf="selectingPromptCurrency">
+            <select class="inner_select" [(ngModel)]="rateInformObj.exchangeType"
+              (ngModelChange)="onExchangeTypeChange()">
+              <!-- <option selected disabled hidden value="-1">請選擇</option> -->
+              <option *ngFor="let option of onlyPromptExchangeTypeOption" value="{{option.value}}">{{option.title}}
+              </option>
+            </select>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          條件
+        </li>
+        <li class="inner_table_cell">
+          <select class="inner_select" [(ngModel)]="rateInformObj.condition">
+            <!-- <option selected disabled hidden value="-1">請選擇</option> -->
+            <option *ngFor="let option of conditionOption" value="{{option.value}}">{{option.title}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">匯率</li>
+        <li class="inner_table_cell">
+          <input type="number" step="0.01" class="inner_input" placeholder="請輸入目標值"
+            [(ngModel)]="rateInformObj.exchange">
+        </li>
+      </ul>
+      <i class="input_info_warnning"></i>
+    </div>
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          頻率
+        </li>
+        <li class="inner_table_cell">
+          <select class="inner_select" [(ngModel)]="rateInformObj.frequency">
+            <!-- <option selected disabled hidden value="-1">請選擇</option> -->
+            <option *ngFor="let option of frequencyOption" value="{{option.value}}">{{option.title}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row_single">
+      <div class="double_button">
+        <!-- 取消 -->
+        <a (click)="cancel()">{{ 'BTN.CANCEL' | translate }}</a>
+        <!-- 確定 -->
+        <a (click)="confirm()">{{ 'BTN.CHECK' | translate }}</a>
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="row_single">
+      <h4 class="simple_title">提醒您：</h4>
+    </div>
+    <div class="row_single">
+      <div class="inner_content">
+        <ol class="order_list">
+          <!-- 存戶同意啟用快速登入及裝置綁定服務，請詳閱以下約定事項，如您已經完全了解並同意遵守，請勾選同意條款<br> -->
+          <li>本服務最多僅能設定五筆到價通知。</li>
+          <li>通知頻率：<br>【只通知1次】表示當匯率達到您所設定的條件時，本行將以行動推播通知您一次，通知過後該功能將關閉。
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!showResult">
+
+    <div class="sub_info_frame result" style="margin-bottom: 2em;">
+      <div class="step_final_icon_frame">
+        <i class="icon_success"></i>
+        <span class="step_final_info">設定成功</span>
+      </div>
+    </div>
+
+    <ul class="credit_card_bill_detail_list" *ngFor="let rateInform of rateInformList; let i = index">
+      <li>
+        <p class="credit_card_name">
+          <i>
+            {{showTypeTitle(rateInform.type)}} -{{rateInform.currency}}
+          </i>
+        </p>
+        <p>
+          <span>買賣別：</span>
+          <span>{{showTypeRow(rateInform.type)}}</span>
+        </p>
+        <p>
+          <span>條件值：</span>
+          <span>{{showExchangeType(rateInform.exchangeType)}} {{showCondition(rateInform.condition)}}</span>
+        </p>
+
+        <p>
+          <span>匯率：</span>
+          <span>{{rateInform.currency}} {{rateInform.exchange}}</span>
+        </p>
+      </li>
+    </ul>
+
+    <div class="row_single">
+      <a class="button_confirm" (click)="backToRateInform()">確認</a>
+    </div>
+
+  </div>
+</section>

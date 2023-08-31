@@ -1,0 +1,58 @@
+<!-- 跳出OTP驗證碼輸入視窗 -->
+<div id="inputNonSet" class="row" style="display: none">
+    <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <div class="popup_content">
+        <!-- 副標列 -->
+        <div class="row_single">
+            <h4 class="simple_title">轉帳作業</h4>
+        </div>
+        <!-- 副標列 //End -->
+        <p class="inner_content">
+            <!-- 輸入欄位範例 -->
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        網頁檢核碼:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="" id='verifyCode' class="inner_input">
+                    </li>
+                </ul>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        有效時間:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="" id='effectTime' class="inner_input">
+                    </li>
+                </ul>
+            </div>
+            <!-- 輸入欄位範例 //End -->
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        OTP驗證碼:
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="" id="checkCode" class="inner_input" placeholder="請輸入OTP驗證碼">
+                    </li>
+                </ul>
+            </div>
+        </p>
+        <div class="row_single">
+            <div class="double_button">
+                <a id="nonSetCancel">取消</a>
+                <a id="nonSetOk">確定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#inputNonSet{
+    z-index: 1001;
+}
+</style>
+        

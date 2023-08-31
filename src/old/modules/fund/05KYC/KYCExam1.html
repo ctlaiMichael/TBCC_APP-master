@@ -1,0 +1,52 @@
+<div class="wrapper">
+        <!--header-->
+        <div class="row">
+            <header class="main_nav">
+                <div class="back_bt" ng-click="clickBack()">
+                    <p class="back_title">返回</p>
+                </div>
+                <div class="page_title">風險承受度測驗表</div>
+                <div class="bank_logo">
+                    <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+                </div>
+            </header>
+        </div>
+        <!--row-->
+        <!--header end-->
+    
+        <!--section 扣款帳號設定頁面-->
+        <div class="row" style="background-color:yellowgreen;height:55px;margin-top: 50px;">
+            <p style="font-size: 18px;color:white;padding: 5px;">請填寫以下問題，並按“下一題”進行<br>後續題目:(第1題/共14題)<br></p>
+            <!--main_sec end-->
+        
+
+            <p style="font-size: 18px;color:black;padding: 10px;">{{ww1}}<br></p>
+            <!-- <hr style="height: 12px;border: 0;box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);" /> -->
+
+            <div class="swiper-slide" ng-repeat="w in ww2 ">
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" ng-model="$parent.status2" ng-value="ww2.indexOf(w)">  {{w}}<p>&nbsp;</p></label>
+            </div>
+            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" name="payway"   ng-model="status" value="1">  已開通設定帳戶<p>&nbsp;</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" name="payway"   ng-model="status" value="1">  已開通設定帳戶<p>&nbsp;</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" name="payway"   ng-model="status" value="1">  已開通設定帳戶<p>&nbsp;</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="clontent_input" type="radio" name="payway"   ng-model="status" value="1">  已開通設定帳戶<p>&nbsp;</p> -->
+            <div class="row" style="margin-bottom:10px;">
+                <!-- <p style="font-size: 10px;margin-left:30px;font-weight: bold;">我以了解並同意上述內容。</p> -->
+                <div class="content_bt" style="height:35px">
+                    <button type="button" class="confirm_bt" style="background:orange;color:white" ng-click="clickSubmit()">下一題</button>
+                    <button ng-show="aaa1 != '0'" type="button" class="cancel_bt" style="background:orange;color:white" ng-click="clickBack()">上一題</button>							
+                </div>
+            </div>        
+            
+        </div>
+        
+        <!--section 扣款帳號設定頁面 end-->
+        
+    
+        <!--end of footer-->
+    
+    
+    </div>
+    <!--wrapper end-->
+    
+    

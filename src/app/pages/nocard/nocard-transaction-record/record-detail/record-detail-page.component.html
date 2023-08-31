@@ -1,0 +1,60 @@
+<section>
+  <div class="sub_info_subtitle">
+    {{ 'FIELD.SEARCH_TIME' | translate }}：{{ queryTime | htDate}}
+  </div>
+  <ul class="table_info ">
+    <li class="table_row">
+      <span></span>
+      <i></i>
+    </li>
+    <!-- 預約時間 -->
+    <li class="table_row">
+      <span>預約時間</span>
+      <i>{{ detailObj.applyDateTime | htDate }}</i>
+    </li>
+    <!-- 銀行代碼 -->
+    <li class="table_row">
+      <span>銀行代號</span>
+      <i>006</i>
+    </li>
+    <!-- 提款帳號 -->
+    <li class="table_row">
+      <span>提款帳號</span>
+      <i>{{ detailObj.applyAccno | accountFormate }}</i>
+    </li>
+    <!-- 提款序號 -->
+    <li class="table_row">
+      <span>提款序號</span>
+      <i>{{ detailObj.transTxno }}</i>
+    </li>
+    <!-- 提款金額 -->
+    <li class="table_row">
+      <span>提款金額</span>
+      <i>${{ detailObj.applyAmt | htMoney:'TWD' }}</i>
+    </li>
+    <!-- 提款狀態 -->
+    <li class="table_row">
+      <span>提款狀態</span>
+      <i>{{ 'CARDLESS_FIELD.TRNS_STTS_' + detailObj.transStatus | translate }}</i>
+    </li>
+    <!-- 提款時間 -->
+    <li class="table_row" *ngIf="isShowWithdrawTime(detailObj.transStatus)">
+      <span [ngSwitch]="detailObj.transStatus">
+        <ng-container *ngSwitchCase="0">預約中</ng-container>
+        <ng-container *ngSwitchCase="1">提款時間</ng-container>
+        <ng-container *ngSwitchCase="2">取消時間</ng-container>
+        <ng-container *ngSwitchCase="3">交易逾時</ng-container>
+        <ng-container *ngSwitchCase="4">取消時間</ng-container>
+        <ng-container *ngSwitchCase="5">取消時間</ng-container>
+        <ng-container *ngSwitchDefault>交易失敗</ng-container>
+      </span>
+      <i>{{ detailObj.transDateTime | htDate }}</i>
+    </li>
+  </ul>
+
+  <div class="row_single"></div>
+
+  <div class="row_single">
+    <a class="button_confirm" (click)="renewTrns()">重新預約</a>
+  </div>
+</section>

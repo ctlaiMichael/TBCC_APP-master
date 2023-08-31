@@ -1,0 +1,58 @@
+<section>
+  <div class="row_single">
+    <div style="float: right">
+      <div *ngIf="rateInformList.length < 5" class="msg_edit_button" (click)="createRateInform()">新增通知</div>
+    </div>
+  </div>
+  <ul class="credit_card_bill_detail_list" *ngFor="let rateInform of rateInformList; let i = index">
+    <li>
+      <p class="credit_card_name">
+        <i>
+          <span class="inner_checkbox checkbox_inline" style="float: left;" (click)="onDeleteItem(i)">
+            <input type="checkbox" name="inner_checkbox" [ngModel]="deleteSelected[i]">
+            <label>
+              <span>
+                <i></i>
+              </span>
+              <b>刪除</b>
+            </label>
+          </span>
+        </i>
+        <i>
+          {{showTypeTitle(rateInform.type)}} -{{rateInform.currency}}
+        </i>
+      </p>
+      <p>
+        <span>買賣別：</span>
+        <span>{{showTypeRow(rateInform.type)}}</span>
+      </p>
+      <p>
+        <span>條件值：</span>
+        <span>{{showExchangeType(rateInform.exchangeType)}} {{showCondition(rateInform.condition)}}</span>
+      </p>
+
+      <p>
+        <span>匯率：</span>
+        <span>{{rateInform.currency}} {{rateInform.exchange}}</span>
+      </p>
+      <a class="section_set" (click)="editRateInform(i)">變更</a>
+    </li>
+  </ul>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="cancel()">回上頁</a>
+      <a (click)="confirm()">確定變更</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您：</h4>
+  </div>
+  <div class="row_single">
+    <div class="inner_content">
+      <ol class="order_list">
+        <li>當您收到到價通知時，價格可能已經變動，本資料僅供參考，實際匯率以臨櫃或網路交易為準</li>
+        <li>本服務最多僅能設定五筆通知</li>
+      </ol>
+    </div>
+  </div>
+</section>

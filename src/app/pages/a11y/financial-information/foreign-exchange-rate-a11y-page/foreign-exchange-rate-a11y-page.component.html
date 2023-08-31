@@ -1,0 +1,61 @@
+<section class="background1_a11y small_top_padding_a11y">
+    <div class="row_single_a11y"></div>
+    <div class="row_white_a11y">
+        <div class="row3_area_a11y">
+            <p class="row3_sheet_a11y" [title]="mydataTime">{{ 'FIELD.FINANCIAL_TIME' | translate }}:<br>{{dataTime}}</p>
+        </div>
+    </div>
+    <!-- 頁籤 Start -->
+    <app-bookmark [setData]="bookmarkData" [defaultKey]="'spot'" (backPageEmit)="onBookMarkBack($event)"></app-bookmark>
+    <!--外幣匯率內容: 即期與現鈔一起出現  -->
+    <ng-container *ngIf="showData; else emptyBox;">
+        <!-- 現鈔 -->
+        <div class="table_four_hl_a11y" role="tabpanel">
+            <!-- 標題Start -->
+            <div>
+              <table class="Table_a11y">
+                <tr>
+                    <th>{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE1' | translate }}</th>
+                    <th>{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE2' | translate }}</th>
+                    <th>{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE3' | translate }}</th>
+                </tr>
+                <ng-container *ngFor="let item of data">
+                  <tr>
+                      <td>
+                          {{ item['currency'] | currencyName: item['currencyName']}}</td>
+                      <td class="firstTable_a11y"
+                          [style.display]="(active_menu['id']=='spot') ? 'table-cell' : 'none'">
+                          {{ item['spotBuy'] | htFinancial}}</td>
+                      <td class="firstTable_a11y"
+                          [style.display]="(active_menu['id']=='spot') ? 'table-cell' : 'none'">
+                          {{ item['spotSell'] | htFinancial }}</td>
+                      <td class="firstTable_a11y"
+                          [style.display]="(active_menu['id']=='cash') ? 'table-cell' : 'none'">
+                          {{ item['cashBuy'] | htFinancial}}</td>
+                      <td class="firstTable_a11y"
+                          [style.display]="(active_menu['id']=='cash') ? 'table-cell' : 'none'">
+                          {{ item['cashSell'] | htFinancial }}</td>
+                  </tr>
+                </ng-container>
+              </table>
+            </div>
+        </div>
+        <!--外幣匯率內容End-->
+
+        <!-- 注意事項 -->
+        <div class="row_single_a11y">
+            <!-- 提醒您 -->
+            <h4 class="simple_title_em_a11y">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single_a11y">
+            <!-- 本試算結果僅供參考，實際匯率以本行匯率或報價為準！ -->
+            <p class="simple_title_content_a11y">{{ 'PG_FINANCIAL.FOREX_RATE.INFO.INFO1' | translate }}</p>
+        </div>
+        <!-- 注意事項 End -->
+
+    </ng-container>
+    <ng-template #emptyBox>
+        <!-- 查無資料 -->
+        <div class="sub_info_subtitle_a11y">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+</section>

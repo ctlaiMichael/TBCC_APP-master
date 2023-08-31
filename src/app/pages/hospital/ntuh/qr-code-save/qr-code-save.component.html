@@ -1,0 +1,71 @@
+<section>
+    <ng-container [ngSwitch]="nowPage">
+        <ng-container *ngSwitchCase="'list'">
+            <div class="table_four_hl">
+                <!-- 標題Start -->
+                <div class="table_four_hl_tr">
+                    <p class="table_four_hl_th">繳費日期</p>
+                    <p class="table_four_hl_th">交易金額</p>
+                    <p class="table_four_hl_th"></p>
+                    <p class="table_four_hl_th"></p>
+                </div>
+                <!-- 標題 End -->
+                <ng-container *ngFor="let item of data">
+                    <div class="table_four_hl_tr" (click)="onDetail(item)">
+                        <p class="table_four_hl_td">{{item.trans_date | htDate}}</p>
+                        <p class="table_four_hl_td">{{item.trans_amount | htMoney:'TWD'}}元</p>
+                        <p class="table_four_hl_td"></p>
+                        <p class="table_four_hl_td">
+                            <a href="javascript:void(0)" class="arrow_link"></a>
+                        </p>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'detail'">
+            <ul class="table_info">
+                <li class="table_row">
+                    <span>交易時間</span>
+                    <i>{{choice_detail.trans_date | htDate}}</i>
+                </li>
+                <li class="table_row">
+                    <span>交易對象</span>
+                    <i>{{choice_detail.trans_person}}</i>
+                </li>
+                <li class="table_row">
+                    <span>交易金額</span>
+                    <i>{{choice_detail.trans_amount | htMoney:'TWD'}}元</i>
+                </li>
+            </ul>
+            <div class="row_single"></div>
+            <ul class="table_info table_th_style">
+                <li class="table_row">
+                    <span>看診時間</span>
+                    <i>金額</i>
+                </li>
+                <ng-container *ngFor="let detail_item of detail_data">
+                    <li class="table_row">
+                        <span>{{detail_item.treatment_date | htDate}}</span>
+                        <i>{{detail_item.treatment_amount | htMoney:'TWD'}}元</i>
+                    </li>
+                </ng-container>
+            </ul>
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a class="fontw normal_link color_fee" href="javascript:void('0')" style="float: left">
+                    單據列印QR Code
+                </a>
+            </div>
+
+            <div style="text-align: center">
+                <qr-code [value]="genQRCode" [size]="200"></qr-code>
+            </div>
+
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a href="javascript:void(0);" class="button_confirm" (click)="onDelete()">刪除此筆</a>
+            </div>
+        </ng-container>
+    </ng-container>
+</section>

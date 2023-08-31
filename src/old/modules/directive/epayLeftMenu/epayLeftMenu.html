@@ -1,0 +1,47 @@
+<!-- 跳出epay左側隱藏式選單視窗 -->
+<div ng-if="onepayLeftMenu" >
+    <div class="shadow" style="display: block" ng-click="clickMenuList(false)"></div>
+    <div class="pop_contentEpay" style="max-height:100vh;overflow:auto;">
+        <div style="border-bottom: 1px solid #dddddd;">
+            <img style="height:50px;margin-top:10px;" src="ui/tcbbOldStyle/image/logocmyk-02.png">
+        </div>
+        <div class="colStyle" ng-repeat="item in menu" ng-click="clickGO(item.url)" ng-bind="item.name"></div>
+    </div>
+</div>
+<!-- 跳出epay左側隱藏式選單視窗 // End -->
+
+<style>
+    .pop_contentEpay {
+        /*此行指定放置廣告的div */
+        width: 78vw; /*50vw;*/
+        /*此行設定div的寬度*/
+        height: 100vh;
+        /*此行設定div的高度*/
+        background-color: #ffffff;
+        /*此行設定div的背景圖形*/
+        box-shadow: 4px 4px 12px 4px rgba(20%, 20%, 40%, 0.5);
+        /*此行設定div的外框陰影*/
+        position: fixed;
+        /*此行設定div為不隨捲動而移動的模式*/
+        left: 42%; /*27%;*/
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        z-index: 1001;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .colStyle {
+        border-bottom: 1px solid #dddddd;
+        padding: 5px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .toLongColStyle{
+        line-height: 20px;
+    }
+
+</style>

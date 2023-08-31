@@ -1,0 +1,39 @@
+<section>
+<div class="row_single">
+  <div class="container-content flex-wrap">
+    <div class="item-75 branch-info">
+      <div class="branch-name">
+        <span class="margin-right-5">{{ serviceAddressShow[0].branchName }}</span>
+        <i class="icon favorite active" *ngIf="serviceAddressShow[0].active"></i>
+      </div>
+    </div>
+    <div class="item-25 branch-info"></div>
+    <div class="item-50 branch-info">
+      <div class="branch-address">{{ serviceAddressShow[0].branchAddr }}</div>
+      <div class="branch-phone" (click)="callphone()">{{ serviceAddressShow[0].telephone }}</div>
+    </div>
+    <!--  當「取號」按鈕隱藏時，將「前往」按鈕補空白位用  -->
+    <div class="item-25" *ngIf="!showTakeNumber"></div>
+    <div class="item-25 d-flex-center">
+      <div class="branch-operate-button w-90" (click)="gogooglemap()">
+        <!-- 前往 -->
+        {{'TAKE_NUMBER.COMMON.GO' | translate}}
+      </div>
+    </div>
+    <div class="item-25 d-flex-center" *ngIf="showTakeNumber">
+      <div class="branch-operate-button w-90 button-style-green" (click)="onTakeNumberClick()">
+        <!-- 取號 -->
+        {{'TAKE_NUMBER.COMMON.TAKE_NUMBER' | translate}}
+      </div>
+    </div>
+  </div>
+</div>
+
+  <ul>
+    <div id="map_canvas" style="position: fixed;
+    left: 0px;  top: 182px;  right: 0px;  bottom: 0px;  width: 100vw;  height: 67%;
+    overflow: hidden;">
+    </div>
+  </ul>
+
+</section>

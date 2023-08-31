@@ -1,0 +1,88 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}"  style="height: 0px;" >
+    <header class="main_nav">
+		<div class="back_bt" ng-click="clickBack()">
+            <p class="back_title" >返回</p>
+        </div>
+		<div class="page_title">發紅包</div>
+		<!-- <div class="back_bt" >
+            <p class="back_title" ng-click="logout()" >登出</p>
+        </div> -->
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<!-- <img src="ui/images/blank.gif" alt="" style="background-image: url(ui/data/ad/footer.jpg);" /> -->
+<!-- <div class="main_sec" style="height: 120%;margin-top: -40px;background-image: url('ui/newMainPage/image/ddd.png');"> -->
+
+<div class="row"  >
+	<!-- <section class="main_sec" style="margin-top: -50px"> -->
+	<section class="main_sec" style="top: 0px;padding-top: 50px;background-image: url('ui/newMainPage/image/ddd4.png');background-size: 100% 100%;background-attachment: fixed;background-position: top left;height:100%">
+
+		<div class="row" >
+				<div>
+					<button type="button" class="" style="width: 100%;height:50px;background:red;font-weight: bold;border:none;" ><p style="color:white;font-size:20px">發紅包</p></button>
+				</div>
+		</div>
+
+		<div class="result_sec">
+			<p style="text-align:center;font-weight: bold;font-size: 16px;color:red">2/4至2/10掃碼轉帳發紅包拿回饋</p>
+		
+		</div>
+
+		<!-- <div class="row">
+			<div class="content_bt">
+				<button type="button" class="confirm_bt" style="width: 200px;font-weight: bold" ><p style="color:yellow; display : inline">Step2.<p style="color:rgb(250, 250, 245); display : inline">選擇樣式</p></p></button>
+			</div>
+		</div> -->
+
+		<!-- <div ng-init="pic=6661"> -->
+		<!-- <label><input type="radio" style=" margin-left: 10px" ng-model="pic" value="7771"><img src="ui/newMainPage/image/7771.png" style="width: 40%;height:150px"></label> -->
+		<!-- <label><input type="radio" ng-model="pic" value="6661"><img src="ui/newMainPage/image/6661.png" style="width: 40%;height:150px"></label>
+		</div> -->
+
+		<div class="row">
+			<div class="content_bt">
+				<button type="button" class="confirm_bt" style="text-align: center;width: 200px;font-weight: bold" ><p style="display : inline;color:yellow">Step2.</p><p style="display : inline;color:white">寫下祝福</p></button>
+			</div>
+		</div>
+
+		<textarea style="margin-left:10px;word-wrap: break-word;" cols="40" rows="5" ng-model="write" placeholder="新年行大運！" ></textarea>
+		<p style="margin-left:10px;margin-top:5px;color:rgb(151, 151, 146)">在紅包上寫些吉祥話吧！(上限30中文字)</p>
+			<div class="result_sec" style="padding:0px">
+				
+				<div class="content_bt">
+					<button  type="button" style="width:160px;height:50px" style="font-weight: bold" ng-click="getDataUri1()">傳送祝福賀卡</button>
+				</div>	
+				<!-- <div style="text-align: center">
+				
+				<button type="button"  ng-click="getDataUri(data=1)"  ng-model="imgg" style="border:1ch;border-radius: 30px;background-color:transparent;"><img src="ui/newMainPage/image/line.png" style="width: 50px;height:50px" ></button>
+				<button type="button"  ng-click="getDataUri(data=2)" ng-model="imgg" style="border:0ch;border-radius: 30px;background-color:transparent;"><img src="ui/newMainPage/image/whatsapp.png" style="width: 50px;height:50px"></button>
+				<button type="button"  ng-click="getDataUri(data=3)" ng-model="imgg" style="border:1ch;border-radius: 30px;background-color:transparent;"><img src="ui/newMainPage/image/wechat.png" style="width: 50px;height:50px"></button>				
+				
+				</div> -->
+			</div>
+		
+		<!-- <div class="row" style="background-image: url(ui/newMainPage/image/ddd.png);"> -->
+			<!-- <div class="main_content"> -->
+				
+				
+						
+		
+								<!-- </section> main_sec end -->
+							<!-- </div> -->
+						
+							
+						<!-- </div> -->
+
+				
+			
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果

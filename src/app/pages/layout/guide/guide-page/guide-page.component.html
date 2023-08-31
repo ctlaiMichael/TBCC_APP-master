@@ -1,0 +1,94 @@
+<div class="guide_bak">
+
+    <!-- <div class="main_info_block"> -->
+    <div class="swiper-container swiper-ad-container">
+        <div class="swiper-wrapper">
+
+            <!-- 1 -->
+            <div class="swiper-slide">
+                <div class="row_single skipDiv" *ngIf="!showStart">
+                    <img src="assets/images/guide/skip.png" class="skip" (click)="skip()">
+                </div>
+                <div class="row_guide_top">
+                    <img src="assets/images/guide/1.gif" class="guide_twd_imag" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/1block.png" width="100%" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/1font.png" width="100%" />
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="swiper-slide">
+                <div class="row_single skipDiv" *ngIf="!showStart">
+                    <img src="assets/images/guide/skip.png" class="skip" (click)="skip()">
+                </div>
+                <div class="row_guide_top">
+                    <img src="assets/images/guide/2.gif" class="guide_twd_imag" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/2block.png" width="100%" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/2font.png" width="100%" />
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="swiper-slide">
+                <div class="row_single skipDiv" *ngIf="!showStart">
+                    <img src="assets/images/guide/skip.png" class="skip" (click)="skip()">
+                </div>
+                <div class="row_guide_top">
+                    <img src="assets/images/guide/3.gif" class="guide_one_imag" />
+                </div>
+
+                <div class="row_guide">
+                    <img src="assets/images/guide/3font.png" width="100%" />
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="swiper-slide">
+                <div class="row_single skipDiv" *ngIf="!showStart">
+                    <img src="assets/images/guide/skip.png" class="skip" (click)="skip()">
+                </div>
+                <div class="row_guide_top">
+                    <img src="assets/images/guide/5.gif" class="guide_one_imag" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/4font.png" width="100%" />
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="swiper-slide">
+                <div class="row_guide_top">
+                    <img src="assets/images/guide/4.gif" class="guide_one_imag" />
+                </div>
+                <div class="row_guide">
+                    <img src="assets/images/guide/5font.png" width="100%" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-ad-pagination"></div>
+        <div class="row_single">
+        </div>
+    </div>
+
+
+    <div class="row_single" *ngIf="!showStart">
+    </div>
+
+    <div class="row_guide_bottom" style="text-align: center" *ngIf="showStart">
+        <img src="assets/images/guide/bt2.png" class="startbt" (click)="onStart()">
+    </div>
+
+    <!-- </div> -->
+
+</div>
+
+<!-- </span> -->

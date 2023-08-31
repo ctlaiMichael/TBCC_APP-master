@@ -1,0 +1,37 @@
+<section>
+  <div class="update_info_subtitle">
+    {{'TAKE_NUMBER.COMMON.UPDATE_TIME' | translate}}：{{dateTime}}
+    <div class="refresh_btn" (click)="onUpdateTimeClick()"></div>
+  </div>
+  <div class="row_single">
+    <div class="simple_title">
+      <!-- 請選擇您要辦理的業務 -->
+      {{'TAKE_NUMBER.COMMON.CHOOSE_BUSINESS' | translate}}
+    </div>
+  </div>
+  <!--  服務內容 -->
+  <div class="row_single" *ngFor="let business of businessList; let i = index">
+    <div class="accountCard_frame" >
+      <div class="accountCard_td" >
+        <div class="title-normal">{{ business.saleName }}</div>
+        <div class="d-flex flex-direction-column">
+          <span class="text-normal item-100 d-inline-flex align-items-center">{{'TAKE_NUMBER.COMMON.CURRENT_NUMBER' | translate}}：<span class="text-large-number">{{ business.nowNumber }}</span></span>
+          <span class="text-normal item-100 d-inline-flex align-items-center">{{'TAKE_NUMBER.COMMON.WAIT_PERSON' | translate}}：<span class="number-green-bold">{{ business.waitperson }}</span></span>
+        </div>
+      </div>
+      <div class="accountCard_td padding-left-0">
+        <div class="branch-operate-button margin-auto" (click)="onTakeNumberTicketClick(business)">{{'TAKE_NUMBER.COMMON.GET_NUMBER' | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single">
+    <div class="simple_title">
+      <!-- 提醒您 -->
+      {{'RE_TAKE_NUMBER.POPUP.TITLE_NOTICE' | translate}}
+    </div>
+  </div>
+  <div class="row_single">
+    <!-- 每日取號上限次數為5次 -->
+    <div class="inner_content" [translate]="noticeNote" [translateParams] ="{'times':numLimit}"></div>
+  </div>
+</section>

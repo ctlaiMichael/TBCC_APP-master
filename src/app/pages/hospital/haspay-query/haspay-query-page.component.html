@@ -1,0 +1,60 @@
+<ng-container [ngSwitch]="nowPage">
+    <ng-container *ngSwitchCase="'queryPage'">
+        <section>
+            <!-- nav_first_page_frame -->
+            <div class="row_single">
+                <h4 class="simple_title">請選擇查詢區間</h4>
+            </div>
+
+            <div class="row_single">
+
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(start_error_flag) }">
+                    <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+                    <li class="inner_table_cell">
+                        查詢起日
+                    </li>
+                    <li class="inner_table_cell">
+                        <!-- <input type="date" name="dateWithMinMax" min="2001-01-01" max="2020-03-31" class="inner_input_data" [(ngModel)]="inp_data.startDate"> -->
+                        <input-date [min]="minDay" [max]="maxDay"  [(ngModel)]="inp_data.startDate"></input-date>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{start_error}}</i>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(endDate_error_flag) }">
+                    <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+                    <li class="inner_table_cell">
+                        查詢迄日
+                    </li>
+                    <li class="inner_table_cell">
+                        <!-- <input type="date" name="dateWithMinMax" min="2001-01-01" max="2020-03-31" class="inner_input_data" [(ngModel)]="inp_data.endDate"> -->
+                        <input-date [min]="minDay" [max]="maxDay" [(ngModel)]="inp_data.endDate"></input-date>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{endDate_error}}</i>
+            </div>
+            <div class="row_single">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a href="javascript:void(0)" (click)="onWeek()" class="inner_button bt_100">
+                            <span>最近一週</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a href="javascript:void(0)" (click)="onMonth()" class="inner_button bt_100">
+                            <span>最近一個月</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+            <div class="row_single">
+                <a href="javascript:void(0)" (click)="onQuery()" class="button_confirm">開始查詢</a>
+            </div>
+        </section>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'listPage'">
+        <app-haspay-query-list [queryInfo]="info_data" [queryData]="data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-haspay-query-list>
+    </ng-container>
+</ng-container>

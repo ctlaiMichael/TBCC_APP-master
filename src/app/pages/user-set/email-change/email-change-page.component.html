@@ -1,0 +1,66 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageType=='edit'?'step_active':''"><span *ngIf="pageType=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageType=='confirm'?'step_active':''"><span *ngIf="pageType=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <ng-container *ngIf="pageType=='edit'">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    原電子<br>郵件信箱
+                </li>
+                <li class="inner_table_cell ">
+                    <input type="text" name="oldEmail" class="inner_input" placeholder="" value="{{oldMail|emailMask}}">
+                    <!-- <input type="text" name="oldEmail" class="inner_input" placeholder="" value="{{oldMail}}"> -->
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['email']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    新電子<br>郵件信箱
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="newEmail" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="newMail">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['email']|translate}}</i>
+        </div>
+        <!-- <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    目前您的轉帳機制
+                </li>
+                <li class="inner_table_cell">
+                    <select name="WireTransfer"  class="inner_select"  [(ngModel)]="nowType">
+                        <option [ngValue]="item" *ngFor="let item of safeType">{{item.name}}</option>
+                    </select>
+                </li>
+            </ul>
+        </div> -->
+
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a><a href="javascript:void('0')" (click)="checkEvent()">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="pageType=='confirm'">
+        <app-confirm-email-page [userMail]="userMail" (backPageEmit)="goResult($event)" (backToEdit)="toEditPage($event)"></app-confirm-email-page>
+    </ng-container>
+    <ng-container *ngIf="pageType=='result'">
+        <app-result [successMsg]="successMsg"></app-result>
+    </ng-container>
+    <!-- </result> -->
+</section>
+<!-- </憑證> -->
+<ng-container *ngIf="popFlag">
+    <app-certify (verify)="onVerifyResult($event)"></app-certify>
+</ng-container>

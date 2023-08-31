@@ -1,0 +1,87 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageModify=='edit'?'step_active':''"><span *ngIf="pageModify=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageModify=='confirm'?'step_active':''"><span *ngIf="pageModify=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+
+
+    <ng-container *ngIf="pageModify=='edit'">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+                <li class="inner_table_cell">
+                    行庫代碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="code" class="inner_input" value="{{editData.trnsInBank}}-{{editData.trnsInBankName}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+                <li class="inner_table_cell">
+                    轉入帳號
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="account" class="inner_input" value="{{editData.trnsInAccnt}}" maxlength="16">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['easyName']?'active_warnning':''">
+                <!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+                <li class="inner_table_cell">
+                    *好記名稱
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="nickname" class="inner_input" placeholder="{{editData.accntName}}"
+                        [(ngModel)]="nickName">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['easyName']|translate}}</i>
+            <div class="row_inner">
+                <a class="inner_button float_right_bt" (click)="checkEvent('3');">
+                    <span>刪除此筆</span>
+                </a>
+            </div>
+        </div>
+<!-- 
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    目前您的轉帳機制：
+                </li>
+                <li class="inner_table_cell">
+                    <select name="WireTransfer" class="inner_select" [(ngModel)]="nowType">
+                        <option [ngValue]="item" *ngFor="let item of safeType">{{item.name}}</option>
+                    </select>
+                </li>
+            </ul>
+        </div> -->
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" 	(click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent('2');">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="pageModify=='confirm'">
+        <app-confirm-account-modify-page [editData]="editData" (backPageEmit)="goResult($event)" (backToEdit)="toEditPage($event)"></app-confirm-account-modify-page>
+    </ng-container>
+    <ng-container *ngIf="pageModify=='result'">
+        <app-result [successMsg]="successMsg"[successContent]="successContent" [notice]="notice"></app-result>
+    </ng-container>
+</section>
+<!-- </憑證> -->
+<ng-container *ngIf="popFlag">
+    <app-certify (verify)="onVerifyResult($event)"></app-certify>
+</ng-container>

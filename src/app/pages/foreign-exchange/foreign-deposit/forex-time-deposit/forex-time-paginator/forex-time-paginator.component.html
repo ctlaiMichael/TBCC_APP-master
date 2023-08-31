@@ -1,0 +1,57 @@
+<ng-container *ngIf="showData ; else noDataBox">
+    <ng-container *ngFor="let item of data;">
+        <li class="table_data" expandList>
+            <!-- 交易日: transDate -->
+            <span class="data_cell">{{ ((item | fieldCheck: ['transDate',{zero_type:false, empty_str:'--'}]) | htDate: 'MM/dd')}}</span>
+            <!-- 本金金額: balance1  -->
+            <i class="data_cell" listAmount [data]="( item | fieldCheck: ['balance1',{zero_type:false, empty_str:'--'}])"></i>
+            <!-- 續存本金: balance2 -->
+            <b class="data_cell" listAmount [data]="( item | fieldCheck: ['balance2',{zero_type:false, empty_str:'--'}])"></b>
+            <s class="data_cell">
+                <button class="sub_open"></button>
+            </s>
+        </li>
+
+        <div class="sub_open_info_frame" style="overflow: hidden;">
+            <dl class="sub_open_info">
+                <!-- 交易時間: transDate => 無完整日期時間 -->
+                <!-- 幣別 -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.currency' | translate }}</span>
+                    <span>{{ currency }}</span>
+                    <span></span>
+                </dt>
+                <!-- 原幣毛息: grossInterest -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.grossInterest' | translate }}</span>
+                    <span>{{ (item | fieldCheck: ['grossInterest',{zero_type:false, empty_str:'--'}]) | htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 原幣稅: tax -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.taxInterest' | translate }}</span>
+                    <span>{{ (item | fieldCheck: ['tax',{zero_type:false, empty_str:'--'}]) | htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 原幣淨息: interest -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.Interest' | translate }}</span>
+                    <span>{{ (item | fieldCheck: ['interest',{zero_type:false, empty_str:'--'}]) | htMoney}}</span>
+                    <span></span>
+                </dt>
+            </dl>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #noDataBox>
+    <li class="table_data">
+        <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+            {{ 'ERROR.EMPTY' | translate }}
+            <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+        </span>
+    </li>
+</ng-template>

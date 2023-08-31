@@ -1,0 +1,14 @@
+/**
+ * 主掃樣式
+ */
+.section_scan {
+    overflow-y: hidden !important;
+    /* background-color:#000;
+    background: rgba(0, 0, 0, 0.3); */
+}
+/* epay log 區塊 */
+.epay_logo_box {
+    text-align: center;
+    /* background-color:#000;
+    background: rgba(0, 0, 0, 0.3); */
+}

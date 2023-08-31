@@ -1,0 +1,29 @@
+
+<!-- Page Start-->
+<ul class="credit_card_bill_detail_list">
+    <li *ngFor="let item of data">
+        <p class="credit_card_name">
+            <i>帳號:</i>
+            <i>{{(item| fieldCheck:'account')| accountFormate}}</i>
+        </p>
+        <p>
+            <span>開戶分行</span>
+            <span>{{ (item| fieldCheck:'branch')  | branchName: false }}</span>
+        </p>
+        <p>
+            <span>存款類別</span>
+            <span>{{item| fieldCheck:'acctType'}}</span>
+        </p>
+
+        <p>
+            <span>餘額</span>
+            <span>{{(item| fieldCheck:'balence') |htMoney}}</span>
+        </p>
+        <p>
+            <span>最後交易日</span>
+            <span>{{(item| fieldCheck:'lastTransDay')|htDate: 'date'}}</span>
+        </p>
+        <a href="javascript:void(0)" (click)="onContentEvent(item)">查詢</a>
+    </li>
+</ul>
+<!-- Page End-->

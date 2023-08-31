@@ -1,0 +1,34 @@
+<section>
+    <ng-container *ngIf="pageType=='edit'">
+        <div class="sub_info_subtitle">
+            請填寫以下問題，並按「下一題」進行後續題目：<br>
+            (第{{counter+1}}題/共{{data.length}}題)
+        </div>
+
+        <app-risk-test-question [questions]="data[counter]" (backPageEmit)="onBackPage($event)" [prevFlag]="prevFlag"
+            [info_data]="info_data" [data]="data" [ansLists]="ansLists" [counter]="counter"></app-risk-test-question>
+
+        <div class="row_single" *ngIf="counter==0&&data.length!==1">
+            <a href="javascript:void(0)" class="button_confirm" (click)="onClick('next')">下一題</a>
+        </div>
+        <div class="row_single" *ngIf="data.length==1">
+            <a href="javascript:void(0)" class="button_confirm" (click)="onClick('result')">計算</a>
+        </div>
+
+        <div class="row_single">
+            <div *ngIf="counter!==0&&(counter!==data.length-1)&&data.length!==1" class="double_button">
+                <a href="javascript:void(0)" (click)="onClick('prev')">上一題</a><a href="javascript:void(0)" (click)="onClick('next')">下一題</a>
+            </div>
+
+            <div class="double_button" *ngIf="(counter==data.length-1&&data.length!==1)">
+                <a href="javascript:void(0)" (click)="onClick('prev')">上一題</a><a href="javascript:void(0)" (click)="onClick('result')">計算</a>
+            </div>
+        </div>
+        <ng-container >
+            <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="pageType=='result'">
+        <app-risk-test-result [result_data]='result_data'></app-risk-test-result>
+    </ng-container>
+</section>

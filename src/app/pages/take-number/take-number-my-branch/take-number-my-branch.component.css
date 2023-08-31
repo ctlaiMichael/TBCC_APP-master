@@ -1,0 +1,13 @@
+.tips-add-my-branch {
+  padding: 0 12px;
+  width: unset;
+  min-width: 130px;
+}
+
+.window-flow {
+  margin-bottom: 0;
+  position: absolute;
+  top: 116%;
+  float: none;
+  left: 0;
+}

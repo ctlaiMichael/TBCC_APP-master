@@ -1,0 +1,119 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+    <header class="main_nav">
+        <div class="bank_logo" style="width:50px;height:50px; left:-50px;top:-5px;position: relative;" ng-click="clickMenuList(true)">
+            <img src="ui/images/i_smenu.png">
+        </div>
+        <!-- <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button> -->
+        <h2 class="header_title" style="opacity:1;top:25px;">發票載具條碼</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<barcode-left-menu-directive></barcode-left-menu-directive>
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section style="top:110px;">
+        <div class="row_single"></div>
+        <!-- 捐贈碼 -->
+        <div class="sub_info_subtitle donation" ng-if="showLoveCode">
+           {{orgLoveCode}}<br>{{orgSocialWelfareName}}
+        </div>
+        <div class="row_single donation"  style="margin-top: 20px">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    捐贈碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" maxlength="20" ng-model="keyword" placeholder="請輸入關鍵字" ng-click="hideLvList()" required>
+                </li>
+            </ul>
+            <div class="row_inner donation">
+                <a id="search" href="javascript:void(0);" class="inner_button float_right_bt" ng-click="clickSearch()">
+                    <span>查詢</span>
+                </a>
+            </div>
+        </div>
+    
+        <ul class="ati_table donation_list" ng-if="ShowList=='Y'">
+            <li class="ati_tr">
+                <span class="ati_th">
+
+                </span>
+                <span class="ati_th">
+                    捐贈碼
+                </span>
+                <span class="ati_th">
+                    受捐贈機關或團體
+                </span>
+            </li>
+            <li class="ati_tr" ng-if="loveCodeCount > 0" ng-repeat="LV in queryLV">
+                <span class="ati_td">
+                    <div class="inner_radio">
+                        <input type="radio" id="{{LV}}" name="userIdType" ng-model="cuserIdType" value="{{LV.rowNum}}}" ng-click="selectLV(LV)">
+                        <label for="{{LV}}">
+                            <span><i></i></span>
+                            <b></b>
+                        </label>
+                    </div>
+                </span>
+                <span class="ati_td" ng-bind="LV.LoveCode"></span>
+                <span class="ati_td">
+                    {{LV.SocialWelfareName}}<br>
+                    {{LV.SocialWelfareBAN}}
+                </span>
+            </li>
+        </ul>
+        <div class="invest_title" ng-if="loveCodeCount <= 0">
+            <p class="" style="font-size: 20px;">查無相關資料</p>
+        </div>
+        <div class="row_single donation_list" style="margin-top: 20px;" ng-if="loveCodeCount > 0">
+            <a id="donation_list_check" href="javascript:void(0);" class="button_confirm" ng-click="clickSubmit(lc)">確定</a>
+        </div>
+    </section>
+</div>
+
+<style>
+    .btnStyle {
+        text-align: center;
+        color: #f8a324;
+        margin-top: 30px;
+        margin-bottom: 18px;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+
+
+    .lv_con {
+        font-size: 14px;
+        text-align: center;
+        width: 43%;
+    }
+
+    .lv_con2 {
+        font-size: 14px;
+        text-align: left;
+        padding-right: 5px;
+        width: 57%;
+    }
+
+    .checkedit1 {
+        width: 20%;
+        text-align: center;
+    }
+
+    .fund_checkbox {
+        width: 18px;
+        height: 18px;
+        margin: 0 18px;
+        border: solid 1px pink;
+    }
+    .pop_content{
+        width:55vw;
+    }
+</style>

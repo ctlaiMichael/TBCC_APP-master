@@ -1,0 +1,30 @@
+<section *ngIf="showListPage; else contentBox"
+  paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages"
+  (scrollEvent)="onScrollEvent($event)">
+  <!-- 查詢時間 -->
+  <div class="sub_info_subtitle">
+    {{ 'FIELD.SEARCH_TIME' | translate }}：{{ queryTime | htDate}}
+  </div>
+
+  <!-- 預約紀錄 -->
+  <app-record-list-paginator [page]="'1'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+  </app-record-list-paginator>
+  <ng-container #pageBox></ng-container>
+
+</section>
+
+<ng-template #contentBox>
+  <ng-container *ngIf="showDetlPage; else resultPage">
+    <!-- 交易明細 -->
+    <app-record-detail [detailObj]="detailObj" [queryTime]="queryTime" (backPageEmit)="onBackPage($event)"></app-record-detail>
+  </ng-container>
+
+  <!-- 交易結果頁 -->
+  <ng-template #resultPage>
+    <app-record-result-page [dataObj]="trnsTime"></app-record-result-page>
+  </ng-template>
+</ng-template>
+
+
+
+

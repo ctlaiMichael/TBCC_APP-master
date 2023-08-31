@@ -1,0 +1,137 @@
+<section>
+	<ng-container *ngIf="page==='edit'">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar step_active">
+					<span>1.填寫資料</span>
+				</li>
+				<li class="step_bar"></li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+		<div class="row_single"></div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['inteAccnt']!=''?'active_warnning':''">
+				<li class="inner_table_cell">綜存帳號</li>
+				<li class="inner_table_cell">
+					<ng-container>
+						<select class="inner_select" (change)="changeDate('inteAccnt',$event)" [(ngModel)]="currentFixedData.inteAccnt.value">
+							<option value="" selected disabled>請選擇綜存帳號</option>
+							<option  *ngFor="let menu of trnsOutAccts" value="{{menu.acctNo}}" >{{ menu.acctNo | accountFormate }}</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['inteAccnt'] | translate}}</i>
+		</div>
+		<div class="row_single" >
+			<ul class="inner_table_frame" [ngClass]="errorMsg['transfrType']!=''?'active_warnning':''">
+				<li class="inner_table_cell">轉存類別</li>
+				<li class="inner_table_cell">
+					<ng-container>
+						<select class="inner_select" (change)="changeDepositType($event)" [(ngModel)]="currentFixedData.transfrType.value"> 
+							<option value="">請選擇轉存類別</option>
+							<option *ngFor="let type of synthesDepositType ; let i = index" value="{{i}}" >{{type}}</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+				<i class="input_info_warnning">{{errorMsg['transfrType'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['transfrTimes']!=''?'active_warnning':''">
+				<li class="inner_table_cell">轉存期別</li>
+				<li class="inner_table_cell">
+					<ng-container>
+						<select class="inner_select" (change)="changeDate('transfrTimes',$event)" [(ngModel)]="currentFixedData.transfrTimes.value" >
+							<option value="">請選擇轉存期別</option>
+							<option *ngFor="let period of synthesDepositPeriod" value="{{period}}" >{{period}}個月</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['transfrTimes'] | translate}}</i>
+		</div>
+		<div class="row_single" >
+			<ul class="inner_table_frame" [ngClass]="errorMsg['transfrRateType']!=''?'active_warnning':''">
+				<li class="inner_table_cell">轉存利率別</li>
+				<li class="inner_table_cell">
+					<ng-container>
+						<select class="inner_select" (change)="changeDate('transfrRateType',$event)" [(ngModel)]="currentFixedData.transfrRateType.value">
+							<option value="" selected disabled>請選擇轉存利率別</option>
+							<option *ngFor="let ratetype of synthesDepositRateType ; let i = index" value="{{i}}" >{{ratetype}}</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['transfrRateType'] | translate}}</i>
+		</div>
+		<div class="row_single" >
+			<ul class="inner_table_frame" [ngClass]="errorMsg['autoTransCode']!=''?'active_warnning':''">
+				<li class="inner_table_cell">續存方式</li>
+				<li class="inner_table_cell">
+					<ng-container>
+						<select class="inner_select" (change)="changeDate('autoTransCode',$event)" [(ngModel)]="currentFixedData.autoTransCode.value">
+							<option value="" selected disabled>請選擇續存方式</option>
+							<option *ngFor="let savesWay of synthesDepositSavesWay ; let i = index" value="{{i}}" >{{savesWay}}</option>
+						</select>
+					</ng-container>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['autoTransCode'] | translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['transfrAmount']!=''?'active_warnning':''">
+				<li class="inner_table_cell">
+					轉存金額
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" maxlength="7" class="inner_input" placeholder="請輸入轉存金額" [(ngModel)]="currentFixedData.transfrAmount.value" >
+				</li>
+				<span class="input_info" ></span>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['transfrAmount'] | translate:transDataObj}}</i>
+			<!-- <li class="select_info" style="color:#f73002">(最高金額為一百萬)</li> -->
+			<li class="select_info" style="color:#f73002;text-align: left">(最低轉存金額壹萬元，最高金額壹佰萬元，每月限額(含eATM、電話語音)壹佰萬元)</li>
+			
+		</div>
+		<!--安控-->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+
+
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="transferConfirm()">{{'BTN.NEXT' | translate }}</a>
+			</div>
+		</div>
+
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<div class="inner_content">
+				<ol style="padding: 0px 20px 0px 20px;">
+					<li style="list-style: decimal;">本筆交易以扣帳日為起息日，並以扣帳日本行牌告利率為本筆存單利率。</li>
+					<li style="list-style: decimal;">定期存款：本存款按月採單利計息，存戶未領取之利息不得轉入本金內計息。存款期間最長不得超過三年，最短不得低於一個月。</li>
+					<li style="list-style: decimal;">存本取息儲蓄存款：本存款按月採單利計息，本金一次存入，按月分期支取利息，期滿提取本金。存款期間分一、二、三年期。</li>
+					<li style="list-style: decimal;">整存整付儲蓄存款：本存款利息依本行存款利率複利計息，本金一次存入，到期本息一併提取。存款期間分一、二、三年期。</li>
+				</ol>
+			</div>
+		</div>
+		<!-- </div> -->
+	</ng-container>
+	<!-- 確認頁 -->
+	<ng-container *ngIf="page==='confirm'">
+		<app-current-to-fixed-confirm-page (backToEdit)="toEditPage($event)" (backPageEmit)="finalCheckData($event)"
+			[currentToFixedConfirm]="currentFixedData">
+		</app-current-to-fixed-confirm-page>
+	</ng-container>
+	<!-- 結果頁 -->
+	<ng-container *ngIf="page==='result'">
+		<app-current-to-fixed-result-page [currentFixedResultData]="currentFixedResultData">
+		</app-current-to-fixed-result-page>
+	</ng-container>
+	
+</section>

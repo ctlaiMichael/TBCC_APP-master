@@ -1,0 +1,15 @@
+<!-- 步驟列 or 其他資訊框架 -->
+<div class="sub_info_frame result">
+  <div class="step_final_icon_frame {{className}}">
+    <i class="icon_success"></i>
+    <span class="step_final_info">{{resultObj.hostCodeMsg}}</span>
+  </div>
+  <div *ngIf="className==''" class="row_single"
+    style="font-weight: bold;font-size:1em;color:white;margin-top:0px;text-align: center;">
+    下次即可使用快速登入(圖形密碼)
+  </div>
+</div>
+<div class="row_single"></div>
+<div class="row_single">
+  <a (click)="clickBtn()" class="button_confirm">{{'BTN.CHECK' | translate}}</a>
+</div>

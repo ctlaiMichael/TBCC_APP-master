@@ -1,0 +1,96 @@
+<!-- 舊版 -->
+<!-- 請參考 AppView/msg/FUND01.html -->
+<!-- <div class="row_single">
+    <h4 class='simple_title'>約定事項</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content | safeHtml "></div>
+</div>
+<div class="row_single">
+    <h4 class='simple_title'>委託人聲明暨同意事項/風險預告</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content2 | safeHtml "></div>
+</div>
+<div class="row_single">
+    <h4 class='simple_title'>基金短線交易相關注意事項</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content3 | safeHtml "></div>
+</div>
+<div class="row_single">
+    <h4 class='simple_title'>防制洗錢及打擊資助恐怖主義注意事項</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content4 | safeHtml "></div>
+</div>
+<div class="row_single">
+    <h4 class='simple_title'>個人資料保護注意事項</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content5 | safeHtml "></div>
+</div>
+<div class="agree_info">
+    <div class="row_single">
+        <div class="inner_checkbox abc">
+            <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+                (click)="checkClick()">
+            <label for="inner_checkbox01">
+                <span>
+                    <i></i>
+                </span>
+                <b>我已閱讀完畢</b>
+            </label>
+        </div>
+    </div>
+    <div class='row_single'>
+        <div class='double_button'>
+            <a href='javascript:void(0);' (click)="agreeSend(false)">不同意</a>
+            <a href='javascript:void(0);' (click)="agreeSend(true)">瞭解並同意</a>
+        </div>
+    </div>
+</div> -->
+
+<!-- 於2019/08/21 修改 -->
+<div class="row_single inner_scroll_content">
+<div class="row_single_new">
+    <h4 class='simple_title'>約定事項</h4>
+</div>
+    <div class="inner_content" [innerHtml]="content | safeHtml "></div>
+<div class="row_single_new">
+    <h4 class='simple_title'>委託人聲明暨同意事項/風險預告</h4>
+</div>
+    <div class="inner_content" [innerHtml]="content2 | safeHtml "></div>
+<div class="row_single_new">
+    <h4 class='simple_title'>基金短線交易相關注意事項</h4>
+</div>
+    <div class="inner_content" [innerHtml]="content3 | safeHtml "></div>
+<div class="row_single_new">
+    <h4 class='simple_title'>防制洗錢及打擊資助恐怖主義注意事項</h4>
+</div>
+    <div class="inner_content" [innerHtml]="content4 | safeHtml "></div>
+<div class="row_single_new">
+    <h4 class='simple_title'>個人資料保護注意事項</h4>
+</div>
+    <div class="inner_content" [innerHtml]="content5 | safeHtml "></div>
+</div>
+<div class="agree_info">
+    <div class="row_single">
+        <div class="inner_checkbox abc">
+            <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+                (click)="checkClick()">
+            <label for="inner_checkbox01">
+                <span>
+                    <i></i>
+                </span>
+                <b>我已閱讀完畢</b>
+            </label>
+        </div>
+    </div>
+    <div class='row_single'>
+        <div class='double_button'>
+            <a href='javascript:void(0);' (click)="agreeSend(false)">不同意</a>
+            <a href='javascript:void(0);' (click)="agreeSend(true)">瞭解並同意</a>
+        </div>
+    </div>
+</div>

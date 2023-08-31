@@ -1,0 +1,13 @@
+<section>
+    <div>
+        <div class="row_single">
+            <h4 class="simple_title">{{ fullData.newsSubject }}
+                <p>{{ fullData.applyDateTime | htDate: 'date' }}
+                </p>
+            </h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content_news" [innerHTML]="fullData.newsBody | safeHtml"></p>
+        </div>
+    </div>
+</section>

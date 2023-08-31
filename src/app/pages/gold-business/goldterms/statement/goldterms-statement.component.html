@@ -1,0 +1,69 @@
+<ng-container *ngIf="pageType=='statement'">
+  <section>
+    <div class="sub_info_frame">
+      <ul class="step_bar_frame">
+        <li class="step_bar step_active"><span>1.同意事項</span></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <h4 class="simple_title">合作金庫銀行行動網銀辦理黃金存摺<br>定期定額買進聲明暨約定事項</h4>
+    </div>
+    <div class="row_single">
+      <p class="inner_content">
+        申請人透過合作金庫商業銀行股份有限公司(以下稱貴行)之網路銀行服務系統(以下簡稱本系統)辦理貴行黃金存摺業務(以下簡稱本業務)之定期定額買進事宜，並願遵守與貴行已簽訂之「黃金存摺開戶約定條款」、「網路銀行服務約定事項」及以下各條款：<br>
+        一、申請人線上申請定期定額投資約定，並以本人之新台幣活期、活儲及綜合存款帳戶辦理扣帳。<br>
+        二、申請人每次投資金額至少為新台幣3000元以上，並應為新台幣1000元之整倍數<br>
+        三、申請人若於投資日或投資日以後始申請定期定額投資者，自下一投資日起開始扣款。<br>
+        四、申請人應於投資日前一營業日，於指定帳戶留存足額投資款項，指定投資日存款餘額不敷扣款時，視為當次不委託辦理投資。<br>
+        五、申請人同意倘投資日指定帳戶同時有數筆款項待扣，而存款餘額不敷時，以貴行執行扣款作業之先後次序為準，申請人不得指定或有異議，每筆扣款成功收取手續費新台幣50元。<br>
+        六、貴行於扣款作業完成後，將投資金額依當日貴行基本掛牌單位第1次掛牌賣出價格買進黃金存摺申請人帳戶。<br>
+        七、申請人連續3次因指定帳戶餘額不足致未能完成扣款投資或已辦理結清銷戶者，定期定額投資申購即終止，本行不再代為扣款投資，若要再辦理扣款投資，需重新約定。<br>
+        八、申請人轉出帳戶如為新台幣綜合存款帳戶，且轉出之款項超過該帳戶活期性存款餘額時，依新台幣綜合存款特別約定事項，其超過之差額即為申請人之借款，應依借款之規定辦理。<br>
+        九、貴行對於申請人存放於黃金存摺帳戶內之黃金，不計付利息，申請人並明確瞭解國際黃金價格有漲有跌，可能產生投資本金收益或損失，上揭投資損失，均於申請人自行承擔投資風險。<br>
+        十、本業務非屬存款保險條例規定之標的，不受存款保險保障。
+      </p>
+    </div>
+    <div class="row_single">
+      <div class="inner_checkbox">
+        <input type="checkbox" name="inner_checkbox" [checked]="agree==true">
+        <label for="inner_checkbox01" (click)="haveReadStatus()">
+          <span><i></i></span>
+          <b>本人已閱讀上開條款，並充分了解相關投資風險。</b>
+        </label>
+      </div>
+    </div>
+    <div class="row_single">
+      <div class="double_button">
+        <a href="javascript:void(0);" (click)="doCancel()">{{'BTN.CANCEL' | translate }}</a>
+        <a href="javascript:void(0);" (click)="goNext()">{{'BTN.NEXT' | translate }}</a>
+      </div>
+    </div>
+  </section>
+</ng-container>
+<!-- <selectacct> -->
+<ng-container *ngIf="pageType=='selectacct'">
+  <app-goldterms-selectacct-page (goldtermsPage)="changePage($event)"></app-goldterms-selectacct-page>
+</ng-container>
+<!-- <selectacct> -->
+<!-- <edit> -->
+<ng-container *ngIf="pageType=='edit'">
+  <app-goldterms-edit-page [goldtermsInfo]="goldtermsInfo" (goldtermsPage)="changePage($event)">
+  </app-goldterms-edit-page>
+</ng-container>
+<!-- <edit> -->
+<!-- <confirm> -->
+<ng-container *ngIf="pageType=='confirm'">
+  <app-goldterms-confirm-page [goldtermsInfo]="goldtermsInfo" (goldtermsPage)="changePage($event)">
+  </app-goldterms-confirm-page>
+</ng-container>
+<!-- <confirm> -->
+<!-- <result> -->
+<ng-container *ngIf="pageType=='result'">
+  <app-goldterms-result-page [goldtermsInfo]="goldtermsInfo" (goldtermsPage)="changePage($event)">
+  </app-goldterms-result-page>
+</ng-container>
+<!-- </result> -->

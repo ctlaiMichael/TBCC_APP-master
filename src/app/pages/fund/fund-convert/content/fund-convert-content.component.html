@@ -1,0 +1,802 @@
+<ng-container [ngSwitch]="nowPageType">
+	<!-- 編輯(一轉一)頁 -->
+	<ng-container *ngSwitchCase="'editPageSingle'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.填寫資料</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class='row_single'></div>
+			<ul class="credit_card_bill_detail_list">
+				<li>
+					<p class="credit_card_name">
+						<i>{{setData.fundCode}} {{setData.fundName}}</i>
+						<i></i>
+					</p>
+					<p>
+						<span>交易編號：</span>
+						<span>{{setData.transCode}}</span>
+					</p>
+					<p>
+						<span>信託本金：</span>
+						<span>{{setData.iNCurrency}} {{ ((setData.invenAmount) | htMoney:setData.iNCurrency)}}</span>
+
+					</p>
+					<p class="">
+						<span>單位數：</span>
+						<span>{{setData.unit | htMoney}}</span>
+					</p>
+				</li>
+			</ul>
+
+			<div class="row_single">
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio01" name="inner_radio" value="1" [(ngModel)]="fundData.redeemType" (click)="convertAllClick()">
+					<label for="inner_radio01">
+						<span>
+							<i></i>
+						</span>
+						<b>全部轉換</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio02" name="inner_radio" value="2" [(ngModel)]="fundData.redeemType">
+					<label for="inner_radio02">
+						<span>
+							<i></i>
+						</span>
+						<b>部分轉換</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<p class="inner_content">
+						<a href="javascript:void(0);" class="fontw normal_link color_fee" (click)="showDescript()">
+							轉換方式說明
+						</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'normal_disable':(fundData.redeemType=='1'), 'active_warnning':(errorMsg.money!='') }">
+					<li class="inner_table_cell">
+						轉換金額({{setData.iNCurrency}})
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" [(ngModel)]="fundData.transAmount" (change)="amntCheck(fundData.transAmount, setData.iNCurrency, 'money')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.money | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						基金公司
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="fundData.compShowName" (click)="changeFund('')">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">基金標的</li>
+					<li class="inner_table_cell">
+						<input class="inner_input" type="text" [(ngModel)]="fundData.inFundShowName" (click)="changeFund('')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">錯誤訊息內容</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						轉換手續費
+						<br>約定扣款帳號
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="fundData.payAcnt">
+							<option *ngFor="let acct of trnsOutAccts" [ngValue]="acct">{{ acct.account }}</option>
+						</select>
+					</li>
+				</ul>
+			</div>
+			<!-- 一轉一顯示 設定轉換日期 -->
+			<ng-container *ngIf="convertTypeContent == 'SelectSingle'">
+				<div class="row_single">
+					<ul class="inner_table_frame mb_15">
+						<!-- 設定轉換日期 -->
+						<li class="inner_table_cell">設定轉換日期</li>
+						<li class="inner_table_cell">
+							<!-- <input type="date" class="inner_input_data" min="{{startDate.min}}" max="{{startDate.max}}"
+								[(ngModel)]="fundData.enrollDate" (change)="dateChange()"> -->
+							<input-date [min]="startDate.min" [max]="startDate.max" [(ngModel)]="fundData.enrollDate" (backValueEmit)="dateChange($event)"></input-date>
+						</li>
+					</ul>
+					<ng-container *ngIf="reservFlag==true">
+						<i class="select_info">
+							目前設定
+							<i class="font_red">預約</i>轉換日期為
+							<span>{{fundData.enrollDate}}</span>
+						</i>
+					</ng-container>
+					<!-- <i class="input_info_warnning">目前設定預約，轉換日期為{{fundData.enrollDate}}</i> -->
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="backStep('1')">取消</a>
+					<a href="javascript:void(0)" (click)="confirmPage()">確定轉換</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<!-- 編輯(一轉多)頁 -->
+	<ng-container *ngSwitchCase="'editPageMultiple'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.填寫資料</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class='row_single'></div>
+			<ul class="credit_card_bill_detail_list">
+				<li>
+					<p class="credit_card_name">
+						<i>{{setData.fundCode}} {{setData.fundName}}</i>
+						<i></i>
+					</p>
+					<p>
+						<span>交易編號：</span>
+						<span>{{setData.transCode}}</span>
+					</p>
+					<p>
+						<span>信託本金：</span>
+						<span>{{setData.iNCurrency}} {{ ((setData.invenAmount) | htMoney)}}</span>
+					</p>
+					<p class="">
+						<span>單位數：</span>
+						<span>{{setData.unit | htMoney}}</span>
+					</p>
+				</li>
+			</ul>
+
+			<div class="row_single">
+				<div class="inner_radio radio_inline normal_disable">
+					<input type="radio" id="inner_radio01" name="inner_radio" value="1" [(ngModel)]="fundData.redeemType">
+					<label for="inner_radio01">
+						<span>
+							<i></i>
+						</span>
+						<b>全部轉換</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio02" name="inner_radio" value="2" [(ngModel)]="fundData.redeemType">
+					<label for="inner_radio02">
+						<span>
+							<i></i>
+						</span>
+						<b>部分轉換</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<p class="inner_content">
+						<a href="javascript:void(0);" class="fontw normal_link color_fee" (click)="showDescript()">
+							轉換方式說明
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						轉換手續費
+						<br>約定扣款帳號
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="fundData.payAcnt">
+							<option *ngFor="let acct of trnsOutAccts" [ngValue]="acct">{{ acct.account }}</option>
+						</select>
+					</li>
+				</ul>
+			</div>
+			<!-- 轉換標的(1) -->
+			<div class="row_single">
+				<h4 class="simple_title">轉換標的(1)</h4>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'normal_disable':(fundData.redeemType=='1'), 'active_warnning':(errorMsg.money1!='') }">
+					<li class="inner_table_cell">
+						轉換金額
+						<br> ({{setData.iNCurrency}})
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" [(ngModel)]="fundData.transAmount1" (change)="amntCheck(fundData.transAmount1, setData.iNCurrency, 'money1')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.money1 | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						基金公司
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="fundData.compShowName1" (click)="changeFund('1')">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">基金標的</li>
+					<li class="inner_table_cell">
+						<input class="inner_input" type="text" [(ngModel)]="fundData.inFundShowName1" (click)="changeFund('1')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">錯誤訊息內容</i>
+			</div>
+			<div class="row_single"></div>
+			<!-- 轉換標的(2) -->
+			<div class="sub_info_subtitle" style="  text-align: left;padding-left: 30px">
+				<div style="display:inline;text-align:left;line-height:55px;font-size: 15px;font-weight: bold;">
+					轉換標的(2)
+				</div>
+				<div style="display:inline">
+					<a id='clear_02' class="inner_button float_right_bt" style="float:right" (click)="clearFund('2')">
+						<span>清除</span>
+					</a>
+				</div>
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'normal_disable':(fundData.redeemType=='1'), 'active_warnning':(errorMsg.money2!='') }">
+					<li class="inner_table_cell">
+						轉換金額
+						<br>({{setData.iNCurrency}})
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" [(ngModel)]="fundData.transAmount2" (change)="amntCheck(fundData.transAmount2, setData.iNCurrency, 'money2')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.money2 | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						基金公司
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="fundData.compShowName2" (click)="changeFund('2')">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">基金標的</li>
+					<li class="inner_table_cell">
+						<input class="inner_input" type="text" [(ngModel)]="fundData.inFundShowName2" (click)="changeFund('2')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">錯誤訊息內容</i>
+			</div>
+			<div class="row_single"></div>
+			<!-- 轉換標的(3) -->
+			<div class="sub_info_subtitle" style="  text-align: left;padding-left: 30px">
+				<div style="display:inline;text-align:left;line-height:55px;font-size: 15px;font-weight: bold;">
+					轉換標的(3)
+				</div>
+				<div style="display:inline">
+					<a id='clear_02' class="inner_button float_right_bt" style="float:right" (click)="clearFund('3')">
+						<span>清除</span>
+					</a>
+				</div>
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'normal_disable':(fundData.redeemType=='1'), 'active_warnning':(errorMsg.money3!='') }">
+					<li class="inner_table_cell">
+						轉換金額
+						<br>({{setData.iNCurrency}})
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" [(ngModel)]="fundData.transAmount3" (change)="amntCheck(fundData.transAmount3, setData.iNCurrency, 'money3')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.money3 | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						基金公司
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [(ngModel)]="fundData.compShowName3" (click)="changeFund('3')">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">基金標的</li>
+					<li class="inner_table_cell">
+						<input class="inner_input" type="text" [(ngModel)]="fundData.inFundShowName3" (click)="changeFund('3')">
+					</li>
+				</ul>
+				<i class="input_info_warnning">錯誤訊息內容</i>
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="backStep('1')">取消</a>
+					<a href="javascript:void(0)" (click)="confirmPage()">確定轉換</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<!-- 設定頁-選擇日期分頁 -->
+	<ng-container *ngSwitchCase="'dateSelectPage'">
+		<app-date-select [dateType]="setRadio" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-date-select>
+	</ng-container>
+	<!-- 編輯頁-基金選擇分頁 -->
+	<ng-container *ngSwitchCase="'fundSelectPage'">
+		<app-fund-subject [setData]="req" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-subject>
+	</ng-container>
+	<!-- 同意事項頁 -->
+	<ng-container *ngSwitchCase="'agreePage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.填寫資料</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<h4 class="simple_title">您本次轉入之基金</h4>
+			</div>
+			<ng-container *ngIf="convertTypeContent == 'SelectSingle'">
+				<div class="row_single">
+					<input type="text" class="inner_input_normal search_range_disable" value="{{fundData.inFundCode}}-{{fundData.inFundName}}">
+				</div>
+			</ng-container>
+			<ng-container *ngIf="convertTypeContent == 'SelectMultiple'">
+				<div class="row_single">
+					<input type="text" class="inner_input_normal search_range_disable" value="{{fundData.inFundCode1}}-{{fundData.inFundName1}}">
+				</div>
+				<ng-container *ngIf="fundData.inFundCode2 != ''">
+					<div class="row_single">
+						<input type="text" class="inner_input_normal search_range_disable" value="{{fundData.inFundCode2}}-{{fundData.inFundName2}}">
+					</div>
+				</ng-container>
+				<ng-container *ngIf="fundData.inFundCode3 != ''">
+					<div class="row_single">
+						<input type="text" class="inner_input_normal search_range_disable" value="{{fundData.inFundCode3}}-{{fundData.inFundName3}}">
+					</div>
+				</ng-container>
+			</ng-container>
+
+
+
+			<div class="row_single">
+				<h4 class="simple_title">請您確認</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_checkbox">
+					<input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [checked]="agreeNote.note1" (click)="agreeNote1Click()">
+					<label for="inner_checkbox01">
+						<span>
+							<i></i>
+						</span>
+						<b>本人已自行至「<i class="attract_link fontw" (click)="goFundUrl('1')">境外基金資訊觀測站</i>」及「<i class="attract_link fontw" (click)="goFundUrl('2')">公開資訊觀測站</i>」下載並詳閱投資人須知及公開說明書中譯本等相關資訊。</b>
+					</label>
+				</div>
+			</div>
+			<ng-container *ngIf="convertTypeContent == 'SelectSingle'">
+				<div class="row_single">
+					<div class="inner_checkbox">
+						<input type="checkbox" id="inner_checkbox02" name="inner_checkbox2" [checked]="agreeNote.note2" (click)="agreeNote2Click()">
+						<label for="inner_checkbox02">
+							<span>
+								<i></i>
+							</span>
+							<b>已瞭解<i class="attract_link fontw" (click)="linkToBook2()">基金通路報酬揭露資訊</i></b>
+						</label>
+					</div>
+				</div>
+			</ng-container>
+			<ng-container *ngIf="convertTypeContent == 'SelectSingle'">
+				<div class="row_single">
+					<div class="inner_checkbox">
+						<input type="checkbox" id="inner_checkbox22" name="inner_checkbox22" [checked]="agreeNote.note22" (click)="agreeNote22Click()">
+						<label for="inner_checkbox22">
+							<span>
+								<i></i>
+							</span>
+							<b>已瞭解<i class="attract_link fontw" (click)="linkToBook22()">基金近五年費用率及報酬率</i></b>
+						</label>
+					</div>
+				</div>
+			</ng-container>
+			
+			<ng-container *ngIf="convertTypeContent == 'SelectMultiple'">
+				<ng-container *ngIf="fundData.inFundCode1 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox03" name="inner_checkbox3" [checked]="agreeNote.note3" (click)="agreeNote3Click()">
+							<label for="inner_checkbox03">
+								<span>
+									<i></i>
+								</span>
+								<b>查閱<i class="attract_link fontw" (click)="linkToBook3(fundData.inFundCode1)">「{{fundData.inFundCode1}}-{{fundData.inFundName1}}」</i>基金通路報酬揭露資訊</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="fundData.inFundCode1 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox33" name="inner_checkbox33" [checked]="agreeNote.note33" (click)="agreeNote33Click()">
+							<label for="inner_checkbox33">
+								<span>
+									<i></i>
+								</span>
+								<b>已瞭解<i class="attract_link fontw" (click)="linkToBook33(fundData.inFundCode1)">「{{fundData.inFundCode1}}-{{fundData.inFundName1}}」</i>基金近五年費用率及報酬率</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+				<!-- <ng-container *ngIf="fundData.inFundCode1 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox33" name="inner_checkbox33" [checked]="agreeNote.note33" (click)="agreeNote33Click()">
+							<label for="inner_checkbox33">
+								<span>
+									<i></i>
+								</span>
+								<b>已瞭解<i class="attract_link fontw" (click)="linkToBook33(fundData.inFundCode1)">「{{fundData.inFundCode1}}-{{fundData.inFundName1}}」</i>基金近五年費用率及報酬率</b>
+							</label>
+						</div>
+					</div>
+				</ng-container> -->
+				<ng-container *ngIf="fundData.inFundCode2 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox04" name="inner_checkbox4" [checked]="agreeNote.note4" (click)="agreeNote4Click()">
+							<label for="inner_checkbox04">
+								<span>
+									<i></i>
+								</span>
+								<b>查閱<i class="attract_link fontw" (click)="linkToBook3(fundData.inFundCode2)">「{{fundData.inFundCode2}}-{{fundData.inFundName2}}」</i>基金通路報酬揭露資訊</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="fundData.inFundCode2 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox44" name="inner_checkbox44" [checked]="agreeNote.note44" (click)="agreeNote44Click()">
+							<label for="inner_checkbox44">
+								<span>
+									<i></i>
+								</span>
+								<b>已瞭解<i class="attract_link fontw" (click)="linkToBook33(fundData.inFundCode2)">「{{fundData.inFundCode2}}-{{fundData.inFundName2}}」</i>基金近五年費用率及報酬率</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+				<!-- <ng-container *ngIf="fundData.inFundCode2 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox44" name="inner_checkbox44" [checked]="agreeNote.note44" (click)="agreeNote44Click()">
+							<label for="inner_checkbox44">
+								<span>
+									<i></i>
+								</span>
+								<b>已瞭解<i class="attract_link fontw" (click)="linkToBook33(fundData.inFundCode2)">「{{fundData.inFundCode2}}-{{fundData.inFundName2}}」</i>基金近五年費用率及報酬率</b>
+							</label>
+						</div>
+					</div>
+				</ng-container> -->
+				<ng-container *ngIf="fundData.inFundCode3 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox05" name="inner_checkbox5" [checked]="agreeNote.note5" (click)="agreeNote5Click()">
+							<label for="inner_checkbox05">
+								<span>
+									<i></i>
+								</span>
+								<b>查閱<i class="attract_link fontw" (click)="linkToBook3(fundData.inFundCode3)">「{{fundData.inFundCode3}}-{{fundData.inFundName3}}」</i>基金通路報酬揭露資訊</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="fundData.inFundCode3 != ''">
+					<div class="row_single">
+						<div class="inner_checkbox">
+							<input type="checkbox" id="inner_checkbox55" name="inner_checkbox55" [checked]="agreeNote.note55" (click)="agreeNote55Click()">
+							<label for="inner_checkbox55">
+								<span>
+									<i></i>
+								</span>
+								<b>已瞭解<i class="attract_link fontw" (click)="linkToBook33(fundData.inFundCode3)">「{{fundData.inFundCode3}}-{{fundData.inFundName3}}」</i>基金通路報酬揭露資訊</b>
+							</label>
+						</div>
+					</div>
+				</ng-container>
+
+			</ng-container>
+			<ng-container *ngIf="hiIncome == 'Y'">
+				<div class="row_single">
+					<div class="inner_checkbox">
+						<input type="checkbox" id="inner_checkbox06" name="inner_checkbox6" [checked]="agreeNote.note6" (click)="agreeNote6Click()">
+						<label for="inner_checkbox06">
+							<span>
+								<i></i>
+							</span>
+							<b>已知<i class="attract_link fontw" (click)="linkToBook5()">申購高收益債券類型基金</i></b>
+						</label>
+					</div>
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="backStep('2')">上一步</a>
+					<a href="javascript:void(0)" (click)="goToConfirm()">下一步</a>
+				</div>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					若您尚未熟悉上述資訊，請洽本行理財專員
+				</p>
+			</div>
+		</section>
+	</ng-container>
+
+	<!-- 資料確認頁 單筆 -->
+	<ng-container *ngSwitchCase="'confirmPage'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active">
+						<span>2.確認</span>
+					</li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="sub_info_subtitle">
+				交易時間 :{{resultData.trnsDatetime | htDate}}
+			</div>
+			<ul class="table_info">
+				<li class="table_row">
+					<!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+					<span>交易編號</span>
+					<i>{{resultData.transCode}}</i>
+				</li>
+				<!-- <li class="table_row">
+					<span>信託帳號</span>
+					<i>{{resultData.trustAcnt}}</i>
+				</li> -->
+				<li class="table_row">
+					<!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+					<span>轉出基金</span>
+					<i>{{resultData.fundCode}}{{resultData.fundName}}</i>
+				</li>
+				<li class="table_row">
+					<span>申請日期</span>
+					<i>{{resultData.enrollDate | htDate:'date'}}</i>
+				</li>
+				<li class="table_row">
+					<span>信託金額</span>
+					<i>{{resultData.amount | htMoney:resultData.inCurrency}} 元</i>
+				</li>
+				<li class="table_row">
+					<span>信託單位數</span>
+					<i>{{resultData.unit | htMoney}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入基金</span>
+					<i>{{resultData.inFundCode}}{{resultData.inFundName}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉帳手續費扣款帳號</span>
+					<i>{{resultData.payAccount}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉換信託金額</span>
+					<i>{{resultData.outAmount | htMoney:resultData.inCurrency}}元</i>
+				</li>
+				<li class="table_row">
+					<span>轉換單位數</span>
+					<i>{{resultData.outUnit | htMoney}}</i>
+				</li>
+				<li class="table_row">
+					<span>本行手續費</span>
+					<i>{{resultData.bankSrvFee | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>基金公司手續費</span>
+					<i>{{resultData.fndComSrvFee | htMoney:'TWD'}}元</i>
+				</li>
+
+				<li class="table_row">
+					<span>轉換手續費總額</span>
+					<i>{{resultData.totalFee | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>試算短線費用</span>
+					<i>{{resultData.currency}} {{resultData.shortLineAmt | htMoney:resultData.currency}}元</i>
+				</li>
+			</ul>
+			<div class="row_single"></div>
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+			<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="backStep('3')">上一步</a>
+					<a href="javascript:void(0);" (click)="goToResult()">下一步</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<!-- 資料確認頁 一轉多 -->
+	<ng-container *ngSwitchCase="'confirmPageMultiple'">
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active">
+						<span>2.確認</span>
+					</li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<div class="sub_info_subtitle">
+				交易時間 :{{resultData.trnsDatetime | htDate}}
+			</div>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易編號</span>
+					<i>{{resultData.transCode}}</i>
+				</li>
+				<!-- <li class="table_row">
+					<span>信託帳號</span>
+					<i>{{resultData.trustAcnt}}</i>
+				</li> -->
+				<li class="table_row">
+					<span>轉出基金</span>
+					<i>{{resultData.fundCode}}{{resultData.fundName}}</i>
+				</li>
+				<li class="table_row">
+					<span>申請日期</span>
+					<i>{{resultData.enrollDate | htDate:'date'}}</i>
+				</li>
+				<li class="table_row">
+					<span>信託金額</span>
+					<i>{{resultData.amount | htMoney:resultData.inCurrency}} 元</i>
+				</li>
+				<li class="table_row">
+					<span>信託單位數</span>
+					<i>{{resultData.unit | htMoney}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入基金</span>
+					<i>{{resultData.inFundCode1}}{{resultData.inFundName1}}</i>
+				</li>
+				<ng-container *ngIf="resultData.inFundCode2 != '' && resultData.inFundCode2 != null">
+					<li class="table_row">
+						<span></span>
+						<i>{{resultData.inFundCode2}}{{resultData.inFundName2}}</i>
+					</li>
+				</ng-container>
+				<ng-container *ngIf="resultData.inFundCode3 != '' && resultData.inFundCode3 != null">
+					<li class="table_row">
+						<span></span>
+						<i>{{resultData.inFundCode3}}{{resultData.inFundName3}}</i>
+					</li>
+				</ng-container>
+				<li class="table_row">
+					<span>轉帳手續費扣款帳號</span>
+					<i>{{resultData.payAccount}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉換信託金額</span>
+					<i>{{resultData.outAmount1 | htMoney:resultData.inCurrency}}元</i>
+				</li>
+				<li class="table_row">
+					<span></span>
+					<i>{{resultData.outAmount2 | htMoney:resultData.inCurrency}}元</i>
+				</li>
+				<li class="table_row">
+					<span></span>
+					<i>{{resultData.outAmount3 | htMoney:resultData.inCurrency}}元</i>
+				</li>
+				<li class="table_row">
+					<span>轉換單位數</span>
+					<i>{{resultData.outUnit1 | htMoney}}</i>
+				</li>
+				<li class="table_row">
+					<span></span>
+					<i>{{resultData.outUnit2 | htMoney}}元</i>
+				</li>
+				<li class="table_row">
+					<span></span>
+					<i>{{resultData.outUnit3 | htMoney}}元</i>
+				</li>
+				<li class="table_row">
+					<span>本行手續費</span>
+					<i>{{resultData.bankSrvFee1 | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>本行手續費</span>
+					<i>{{resultData.bankSrvFee2 | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>本行手續費</span>
+					<i>{{resultData.bankSrvFee3 | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>基金公司手續費</span>
+					<i>{{resultData.fndComSrvFee1 | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>基金公司手續費</span>
+					<i>{{resultData.fndComSrvFee2 | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>基金公司手續費</span>
+					<i>{{resultData.fndComSrvFee3 | htMoney:'TWD'}}元</i>
+				</li>
+
+				<li class="table_row">
+					<span>轉換手續費總額</span>
+					<i>{{resultData.totalFee | htMoney:'TWD'}}元</i>
+				</li>
+				<li class="table_row">
+					<span>試算短線費用</span>
+					<i>{{resultData.currency}} {{resultData.shortLineAmt | htMoney:resultData.currency}}元</i>
+				</li>
+			</ul>
+			<div class="row_single">
+				<h4 class="simple_title">提醒您：</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					1.提醒您每筆交易編號每日可申請轉換一次，請再確認您本次轉換申請方式(全部轉換/部分轉換)及申請金額。
+					<br> 2.提醒您，外幣信託定期定額申請全部轉換後，扔以原約定金額扣款，如需變更每次扣款投資金額請至「異動服務」 項下之「定期定額投資異動」執行辦理。
+					<br> 3.轉換手續費(均以新台幣計收)=本行轉換手續費+基金公司手續費。
+					<br> 4.請確定約定扣款之存款帳上有維持足夠的扣款金額，才能有效轉換。
+					<br> 5.交易完成後請至 「查詢作業」之「投資交易明細查詢」及扣款帳戶查詢並確認本交易已成功無誤!
+					<br> (如為次日交易請於下一營業日查詢「偷資交易明細查詢」及扣款資料)
+					<br> 6.試算短線費用僅供參考，基金公司將以實際贖回淨值計收。
+				</p>
+			</div>
+			<div class="row_single"></div>
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+			<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="backStep('3')">上一步</a>
+					<a href="javascript:void(0);" (click)="goToResult()">確定轉換</a>
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<!-- 變更結果頁 -->
+	<ng-container *ngSwitchCase="'resultPage'">
+		<app-fund-convert-result [setData]="resultData" [reservFlag]="reservFlag" [convertTypeContent]="convertTypeContent" [e]="safeE"></app-fund-convert-result>
+	</ng-container>
+</ng-container>

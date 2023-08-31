@@ -1,0 +1,128 @@
+<section>
+    <!-- 步驟列 -->
+    <app-step-bar *ngIf="!hiddenStepBar" [setData]="stepMenuData" [defaultKey]="'1'" [setKey]="nowStep" (backPageEmit)="onStepBarEvent($event)"></app-step-bar>
+
+    <ng-container [ngSwitch]="nowStep">
+        <ng-container *ngSwitchCase="'read'">
+            <!-- 檢查 -->
+            <ul class="table_info">
+                <li class="table_row" *ngIf="info_data.phone.show">
+                    <span>{{ info_data.phone.oldtitle | translate }}</span>
+                    <i>{{ info_data.phone.oldval }}</i>
+                </li>
+                <li class="table_row" *ngIf="info_data.email.show">
+                    <span>{{ info_data.email.oldtitle | translate }}</span>
+                    <i>{{ info_data.email.oldval }}</i>
+                </li>
+            </ul>
+            <!-- BTN Box -->
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a href="javascript:void(0);" class="button_confirm" (click)="cancelEdit()">{{ 'BTN.CHECK' | translate }}</a>
+            </div>
+            <!-- BTN Box End -->
+            <!-- INFO -->
+            <!-- 提醒您： -->
+            <!-- <div class="row_single">
+                <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content font_red" *ngIf="readOnlyFlag">{{ 'PG_OTP.SERVICE.INFO.readOnlyFlag' | translate }}</p>
+            </div> -->
+            <!-- INFO END -->
+        </ng-container>
+        <ng-container *ngSwitchCase="'agree'">
+            <!-- 換約條款 -->
+            <app-one-provision [provisionOption]="agreeProvision" (backPageEmit)="onProvision($event)"></app-one-provision>
+        </ng-container>
+        <ng-container *ngSwitchCase="'form'">
+            <div class="row_single"></div>
+            <ng-container *ngIf="info_data.phone.show">
+                <div class="row_single" *ngIf="editFlag">
+                    <ul class="inner_table_frame normal_disable">
+                        <!-- 用戶手機號碼 -->
+                        <li class="inner_table_cell">{{ info_data.phone.oldtitle | translate }}</li>
+                        <li class="inner_table_cell">
+                            <input type="text" class="inner_input" value="{{ info_data['phone']['oldval'] }}">
+                        </li>
+                    </ul>
+                </div>
+                <!-- 手機輸入欄位 -->
+                <app-phone-temp [setData]="info_data['phone']" [valueStr]="inp_data['phone']" [errorStr]="error_data.phone" (backValueEmit)="onInputBack($event, 'phone')"></app-phone-temp>
+            </ng-container>
+
+            <ng-container *ngIf="info_data.email.show">
+                <div class="row_single" *ngIf="editFlag">
+                    <ul class="inner_table_frame normal_disable">
+                        <!-- 電子郵件信箱 -->
+                        <li class="inner_table_cell">{{ info_data.email.oldtitle | translate }}</li>
+                        <li class="inner_table_cell">
+                            <input type="text" class="inner_input" value="{{ info_data['phone']['oldval'] }}">
+                        </li>
+                    </ul>
+                </div>
+                <!-- 電子郵件信箱輸入欄位 -->
+                <app-email-temp [setData]="info_data['email']" [valueStr]="inp_data['email']" [errorStr]="error_data.email" (backValueEmit)="onInputBack($event, 'email')"></app-email-temp>
+            </ng-container>
+            <!-- BTN Box -->
+            <div class="row_single">
+                <div class="double_button">
+                    <!-- 取消 -->
+                    <a href="javascript:void(0)" (click)="cancelEdit()">{{ 'BTN.CANCEL' | translate }}</a>
+                    <!-- 下一步 -->
+                    <a href="javascript:void(0)" (click)="onChangePage('check')">{{ 'BTN.NEXT' | translate }}</a>
+                </div>
+            </div>
+            <!-- BTN Box End -->
+            <!-- INFO -->
+            <ng-container *ngIf="!editFlag">
+                <div class="row_single">
+                    <!-- 提醒您： -->
+                    <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+                </div>
+                <div class="row_single">
+                    <!-- 您可指定一組用戶手機號碼作為接收簡訊密碼，而電子郵件信箱目前暫不發送，正式開放時程及作業方式，本行將另行公告於官方網站及行動網銀或email通知。簡訊密碼可於行動網銀進行電子轉帳或交易指示類功能使用。惟每一次交易均會傳送不同的簡訊密碼。 -->
+                    <p class="inner_content font_red">{{ 'PG_OTP.SERVICE.INFO.APPLY' | translate }}</p>
+                </div>
+            </ng-container>
+            <!-- INFO END -->
+        </ng-container>
+        <ng-container *ngSwitchCase="'check'">
+            <!-- 檢查 -->
+            <ul class="table_info">
+                <li class="table_row" *ngIf="info_data.phone.show">
+                    <span [innerHtml]="info_data.phone.title | translate "></span>
+                    <i>{{ inp_data.phone }}</i>
+                </li>
+                <li class="table_row" *ngIf="info_data.email.show">
+                    <span [innerHtml]="info_data.email.title | translate "></span>
+                    <i>{{ inp_data.email }}</i>
+                </li>
+            </ul>
+            <!-- BTN Box -->
+            <div class="row_single"></div>
+            <div class="row_single">
+                <div class="double_button">
+                    <!-- 上一步 -->
+                    <a href="javascript:void(0)" (click)="onChangePage('form')">{{ 'BTN.PREVIOUS' | translate }}</a>
+                    <!-- 確定 -->
+                    <a href="javascript:void(0)" (click)="onSaveEvent()">{{ 'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+            <!-- BTN Box End -->
+        </ng-container>
+        <ng-container *ngSwitchCase="'result'">
+            <!-- 結果 -->
+            <app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+        </ng-container>
+        <ng-container *ngSwitchCase="'wait'">
+            <!-- 處理中，請稍後！ -->
+            <div class="sub_info_subtitle">{{ 'ERROR.WAIT' | translate }}</div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <!-- 不顯示 -->
+            <div class="sub_info_subtitle">{{ 'ERROR.DEFAULT' | translate }}</div>
+        </ng-container>
+    </ng-container>
+
+</section>

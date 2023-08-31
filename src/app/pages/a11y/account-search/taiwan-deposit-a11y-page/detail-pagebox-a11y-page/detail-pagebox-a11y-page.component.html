@@ -1,0 +1,22 @@
+<div *ngFor="let item of data">
+  <li class="row5_a11y">
+    <p class="row5_content_all_a11y text_align_right_a11y">
+      交易日<br>{{ item.transDate }}&nbsp;&nbsp;&nbsp;{{ item.transTime }}
+    </p>
+    <p *ngIf="item.isWithdraw" class="row5_content_all_a11y">
+      提款金額<br>NT$ {{ item.withdraw }}
+    </p>
+    <p *ngIf="item.isDeposit" class="row5_content_all_a11y">
+      存款金額<br>NT$ {{ item.deposit }}
+    </p>
+    <p class="row5_content_all_a11y">
+      結餘金額<br>NT$ {{ item.balance1 }}
+    </p>
+    <p class="row5_content_all_a11y">
+      交易行庫&nbsp;{{ item.rcvBankName }}
+    </p>
+    <p *ngIf="!item.isdigest" class="row5_content_all_a11y">
+      摘要&nbsp;{{ item.digest }}
+    </p>
+  </li>
+</div>

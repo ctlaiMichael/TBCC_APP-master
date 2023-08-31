@@ -1,0 +1,66 @@
+<div class="wrapper">
+        <div class="row">
+            <header class="main_nav">
+                <div class="page_title">跨境電子支付交易-身分認證程序</div>
+                <div class="bank_logo">
+                    <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+                </div>
+            </header>
+        </div>
+        
+        <div class="row">
+            <section class="main_sec">
+                <div class="row">
+                    <div class="main_content">
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">姓名：</div>
+                            <div class="css_td_content" ng-bind="result.cName"></div>
+                        </div>
+                        
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">國籍：</div>
+                            <div class="css_td_content" ng-bind="result.cGdpr"></div>
+                        </div>
+                    
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">身分證字號：</div>
+                            <div class="css_td_content" ng-bind="custId"></div>
+                        </div>
+
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">出生年月日：</div>
+                            <div class="css_td_content" ng-bind="result.birthDate"></div>
+                        </div>
+
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">手機號碼：</div>
+                            <div class="css_td_content" ng-bind="result.phoneMobile"></div>
+                        </div>
+
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title11">驗證方式：</div>
+                            <div class="css_td_content" >OTP</div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="row" style="margin-top:100px;">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+                            <button type="button" class="cancel_bt" ng-click="clickBack()">取消</button>							
+                        </div>
+                </div>
+                </div>
+    
+            </section>
+        </div>
+
+    </div>
+    
+    

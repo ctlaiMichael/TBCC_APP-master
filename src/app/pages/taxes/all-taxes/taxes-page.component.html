@@ -1,0 +1,20 @@
+<section>
+	<ng-container *ngIf="'first' == showPage">
+		<div class="inner_links_frame">
+			<a class="inner_link" *ngFor="let menu of menuData;" (click)="onGoEvent(menu)">{{ menu.taxName }}</a>
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您：</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				親愛的客戶:若您繳納稅別非上列核定類別，請至網路繳稅服務網站<br>
+				<span>(https://paytax.nat.gov.tw)</span>
+				繳納
+			</p>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="'original' == showPage">
+		<app-taxes-detail-page (backToFirst)="toFirstPage($event)" [taxesData]="taxesData"></app-taxes-detail-page>
+	</ng-container>
+</section>

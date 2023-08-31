@@ -1,0 +1,34 @@
+<section>
+  <div class="sub_info_frame result">
+    <div class="step_final_icon_frame">
+      <i class="icon_success"></i>
+      <span class="step_final_info">繳費成功</span>
+    </div>
+  </div>
+  <ul class="table_info">
+    <li class="table_row"><!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+      <span>扣款帳號</span>
+      <i>{{dataInput.debitAcnt}}</i>
+    </li>
+    <li class="table_row"><!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+      <span>申請日期</span>
+      <i>{{dataInput.caApplyDt}}</i>
+    </li>
+    <li class="table_row">
+      <span>到期日期</span>
+      <i>{{dataInput.caEndDt}}</i>
+    </li>
+    <li class="table_row">
+      <span>繳費金額</span>
+      <i>{{dataInput.caPaymentAmount}}</i>
+    </li>
+    <li class="table_row">
+      <span>轉出帳號餘額</span>
+      <i>{{dataInput.balanceAmount}}</i>
+    </li>
+  </ul>
+  <div class="row_single"></div>
+  <div class="row_single">
+    <a (click)="updateCertificate()" class="button_confirm">更新憑證</a>
+  </div>
+</section>

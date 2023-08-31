@@ -1,0 +1,15 @@
+<div class="row_single input_captcha">
+  <ul [ngClass]="ulClass" >
+    <li class="captcha_td">
+      <!-- <img src="../18/captcha_test.png" alt=""> -->
+      <canvas class="input_cp" width="100" height="50"></canvas>
+    </li>
+    <li class="captcha_td">
+      <input type="tel" maxlength="4" class="inner_input" placeholder="請輸入圖形驗證碼" [(ngModel)]="checkCaptchaData.input" [ngClass]="captchaErrormsg !== '' ?'notice-in':''" />
+    </li>
+    <li class="captcha_td">
+      <a href="javascript:void(0);" (click)="captchaChange()" class="captcha_refresh_btn"></a>
+    </li>
+  </ul>
+  <i class="input_info_warnning">{{captchaErrormsg}}</i>
+</div>

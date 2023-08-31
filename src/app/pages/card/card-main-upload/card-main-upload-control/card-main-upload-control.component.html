@@ -1,0 +1,18 @@
+<ng-container [ngSwitch]="showPage">
+    <!-- 查詢頁 -->
+    <ng-container *ngSwitchCase="'queryPage'">
+        <section>
+            <app-card-main-upload-query (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-card-main-upload-query>
+        </section>
+    </ng-container>
+
+    <!-- 編輯頁 -->
+    <ng-container *ngSwitchCase="'editPage'">
+        <app-card-upload [type]="'1'" [custId]="custId" [basicData]="selectData" (backPageEmit)="onPageBackEvent($event)"></app-card-upload>
+    </ng-container>
+
+    <!-- 結果頁 -->
+    <ng-container *ngSwitchCase="'resultPage'">
+        <app-card-main-upload-result></app-card-main-upload-result>
+    </ng-container>
+</ng-container>

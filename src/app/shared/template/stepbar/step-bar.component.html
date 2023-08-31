@@ -1,0 +1,8 @@
+<div class="sub_info_frame" [hidden]="hiddenData">
+    <ul class="step_bar_frame">
+        <ng-container *ngFor="let item of menuData;let item_index = index;">
+            <li *ngIf="(showType == item.id)" class="step_bar step_active"><span>{{ (item_index + 1) + '. ' }}{{ item.name | translate }}</span></li>
+            <li *ngIf="(showType != item.id)" class="step_bar"></li>
+        </ng-container>
+    </ul>
+</div>

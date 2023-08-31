@@ -1,0 +1,55 @@
+<div>
+	<div class="">
+		<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 本期帳單應繳金額 -->
+			<td align="left"><i class="info_title2">{{ 'BILL_MSG.INPUT.PERIOD_PAY_BILL' | translate }}</i></td>
+			<td align="right"><p class="info_conetnt2">{{payment.payableAmt | currency:""}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 本期最低應繳金額 -->
+			<td align="left"><i class="info_title2">{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}</i></td>
+			<td align="right"><p class="info_conetnt2">{{payment.lowestPayableAmt | currency:""}}</p></td>
+			</tr></table>
+		</div>
+		<div class="row_single info_list">
+			<table class="check_form"><tr>
+			<!-- 可設定帳單分期金額上限 -->
+			<td align="left"><i class="info_title2">{{ 'CTRL_INSTALLMENT.MSG.PAY_MAX' | translate }}</i></td>
+			<td align="right"><p class="info_conetnt2">{{payment.maxInstallmentAmt | currency:""}}</p></td>
+			</tr></table>
+		</div>
+		
+
+
+
+		<div class="row_single info_list" ng-if="selectBill && selectAvge">
+			<!-- 每期繳款本金試算金額(如除不盡則加入首期) -->
+			<i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PAY_TEST' | translate }}</i>
+			<!-- 第一期 -->
+			<p class="info_conetnt" ng-if="selectAvge.first != selectAvge.avg">{{ 'BILL_MSG.MSG.PERIOD_1' | translate }}：{{selectAvge.first | currency:""}}</p>
+			<!-- 每期 -->
+			<p class="info_conetnt">{{ 'BILL_MSG.MSG.PERIOD_EACH' | translate }}：{{selectAvge.avg | currency:""}}	</p>
+		</div>
+	</div>
+	
+	<div class="bc_frame">
+			<div id="selectBill" class="row_single info_list info_select accountselect">
+					<div class="input_frame"><table><tr>
+					<td align="center"><i class="info_title">期數與利率</i></td>
+					<td align="center"><select  ng-model="selectBill" ng-change="onChange(selectBill)"
+						ng-options="option.name for option in billOptions track by option.value" >
+					   <option value="">{{ 'CTRL_INSTALLMENT.INPUT.SELECT' | translate }}</option>
+				   </select></td>
+					</tr></table></div>
+					<!-- 請選擇分期期數與分期利率 -->
+				</div>
+
+		<div class="row_single2">
+			<button class="button_confirm" ng-click="onForm()">{{'BTN.NEXT' | translate}}</button>
+		</div>
+	</div>
+</div>

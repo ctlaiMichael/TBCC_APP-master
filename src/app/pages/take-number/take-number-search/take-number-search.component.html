@@ -1,0 +1,168 @@
+<section>
+  <!-- 頁籤 -->
+  <app-bookmark [setData]="bookmarkData" [defaultKey]="'take-number'" [setKey]="nowPage"
+                (backPageEmit)="onBookMarkBack($event)">
+  </app-bookmark>
+
+  <!-- 線上取號 -->
+  <ng-container *ngIf="showTakeNumber">
+
+    <!-- 自選縣市 -->
+    <ng-template [ngIf]="isEnabledGPS !='Y'">
+    <div class="row_single check margin-top-25">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          <!-- 縣市 -->
+          {{'TAKE_NUMBER.COMMON.COUNTY' | translate }}
+        </li>
+        <li class="inner_table_cell">
+          <select [(ngModel)]="selectServiceLocation" (change)="onServiceLocationChange(mySelect.value)" name=""
+                  id="service" class="inner_select" #mySelect>
+            <option *ngFor="let serviceLocation of serviceLocations" [value]="serviceLocation.id">
+              {{ serviceLocation.name }}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="row_single check" *ngIf="selectServiceLocation != '0'">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          <!-- 區域 -->
+          {{'TAKE_NUMBER.COMMON.REGION' | translate }}
+        </li>
+        <li class="inner_table_cell">
+          <select [(ngModel)]="selectServiceDistrct" (change)="onServiceDistributionChange($event.target.value)" name=""
+                  id="distribution" class="inner_select">
+            <option *ngFor="let serviceLocation of serviceDistrcts" [value]="serviceLocation.id">
+              {{ serviceLocation.regionName }}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <ul class="search_input">
+        <li class="search_td">
+          <input type="text" class="inner_input" placeholder="請輸入查詢名稱" [(ngModel)]="inputSearch">
+        </li>
+        <li class="search_td">
+          <a href="javascript:void(0)" class="search_btn" (click)="onSearchClick(inputSearch)"></a>
+        </li>
+      </ul>
+    </div>
+    <div class="row_single fastLink text-align-right">
+      <!-- 加入/移除常用分行提示 -->
+<!--      <div class="tips-add-my-branch d-inline-block margin-right-17"-->
+<!--           *ngIf="showFavoriteAddToast">{{textFavoriteAddToast}}</div>-->
+      <div class="btn-favorite-branch d-inline-block" (click)="onFavoriteBranchSwitchClick()">
+        {{'TAKE_NUMBER.COMMON.MYFAVE_BRANCH' | translate }}</div>
+    </div>
+    </ng-template>
+
+    <!-- GPS定位 -->
+    <ng-template [ngIf]="isEnabledGPS =='Y'">
+      <div class="row_single check margin-top-25">
+        <ul class="inner_table_frame">
+          <li class="inner_table_cell">
+            <!-- 縣市 -->
+            {{'TAKE_NUMBER.COMMON.COUNTY' | translate }}
+          </li>
+          <li class="inner_table_cell">
+            <select [(ngModel)]="selectServiceLocationGPS" (change)="onServiceLocationChange(mySelect.value)" name=""
+                    id="service" class="inner_select" #mySelect>
+              <option *ngFor="let serviceLocation of serviceLocations" [value]="serviceLocation.id">
+                {{ serviceLocation.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+      <div class="row_single check" *ngIf="selectServiceLocationGPS != '0'">
+        <ul class="inner_table_frame">
+          <li class="inner_table_cell">
+            <!-- 區域 -->
+            {{'TAKE_NUMBER.COMMON.REGION' | translate }}
+          </li>
+          <li class="inner_table_cell">
+            <select [(ngModel)]="selectServiceDistrct" (change)="onServiceDistributionChange($event.target.value)" name=""
+                    id="distribution" class="inner_select">
+              <option *ngFor="let serviceLocation of serviceDistrcts" [value]="serviceLocation.id">
+                {{ serviceLocation.regionName }}</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+      <div class="row_single">
+        <ul class="search_input">
+          <li class="search_td">
+            <input type="text" class="inner_input" placeholder="請輸入查詢名稱" [(ngModel)]="inputSearch">
+          </li>
+          <li class="search_td">
+            <a href="javascript:void(0)" class="search_btn" (click)="onSearchClick(inputSearch)"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="row_single fastLink text-align-right">
+        <!-- 加入/移除常用分行提示 -->
+<!--        <div class="tips-add-my-branch d-inline-block margin-right-17"-->
+<!--             *ngIf="showFavoriteAddToast">{{textFavoriteAddToast}}</div>-->
+        <div class="btn-favorite-branch d-inline-block" (click)="onFavoriteBranchSwitchClick()">
+          {{'TAKE_NUMBER.COMMON.MYFAVE_BRANCH' | translate }}</div>
+      </div>
+      </ng-template>
+
+    <div class="inner_location_take_number_list_frame">
+      <div class="inner_location_take_number_list"
+           *ngFor="let serviceAddress of serviceAddresses; let i = index">
+        <span class="favorite" (click)="onLocationAddFavoriteClick(serviceAddress, i)"
+              [ngClass]="{'active': !!serviceAddress.active}"></span>
+        <div class="container-content flex-wrap">
+          <div class="item-75 branch-info">
+            <div class="branch-name">{{ serviceAddress.branchName }}</div>
+          </div>
+          <div class="item-25 branch-info"><span class="branch-distance" *ngIf="isEnabledGPS == 'Y'">{{serviceAddress.distance}}KM</span></div>
+          <div class="item-50 branch-info">
+            <div class="branch-address">{{ serviceAddress.branchAddr }}</div>
+          </div>
+          <div class="item-25 d-flex-center">
+            <div class="branch-operate-button w-90" (click)="onGoMapClick(serviceAddress)">
+              <!-- 地圖 -->
+              {{'TAKE_NUMBER.COMMON.MAP' | translate}}
+            </div>
+          </div>
+          <div class="item-25 d-flex-center">
+            <div class="branch-operate-button w-90 button-style-green" (click)="onTakeNumberClick(serviceAddress)">
+              <!-- 取號 -->
+              {{'TAKE_NUMBER.COMMON.TAKE_NUMBER' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!--  取號查詢 -->
+  <ng-container *ngIf="!showTakeNumber">
+    <div class="update_info_subtitle">
+      {{'TAKE_NUMBER.COMMON.UPDATE_TIME' | translate}}：{{textTicketRecordUpdateTime}}
+      <div class="refresh_btn" (click)="onRefreshTicketRecordClick()"></div>
+    </div>
+
+    <!--  無取號紀錄  -->
+    <div class="row_single margin-top-25" *ngIf="ticketRecords.length === 0">
+      <div class="block-empty-icon">
+        <div class="icon ticket"></div>
+        <span>
+          <!-- 目前無任何取號紀錄 -->
+          {{'TAKE_NUMBER.COMMON.NO_TICKET_RECORD' | translate}}
+        </span>
+      </div>
+    </div>
+
+    <app-number-ticket [ticketList]="ticketRecords" [paramsItem]="paramsItem"></app-number-ticket>
+
+  </ng-container>
+</section>
+<!-- 加入/移除常用分行提示(畫面中央) -->
+<!-- 2020/03/06 客戶需求修改 -->
+<div class="tips-add-my-branch d-inline-block"
+     *ngIf="showFavoriteAddToast">{{textFavoriteAddToast}}
+</div>

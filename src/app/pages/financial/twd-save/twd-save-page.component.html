@@ -1,0 +1,51 @@
+<!-- <section>
+黃金資訊
+<div (click)="onRegetEvent()">Reget</div>
+{{ info_data.date }}
+</section> -->
+<section>
+    <div class="row_single">
+        <select name="" class="inner_select_normal" (change)="onChangeType()" [(ngModel)]="nowType">
+            <option *ngFor="let menu of dataType" [ngValue]="menu">{{ menu.name }}</option>
+        </select>
+    </div>
+    <ng-container *ngIf="showData; else noDataBox">
+
+        <!-- 牌告日期 -->
+        <div class="sub_info_subtitle">
+            {{ 'FIELD.RATE_DATE' | translate }}：{{ dataTime | htDate: 'date' }}
+        </div>
+        <div class="table_four_hl">
+            <!-- Title Start -->
+            <div class="table_four_hl_tr">
+                <!-- 類別 -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.TWD_SAVE.FIELD.TITLE1' | translate }}</p>
+                <!-- 固定利率% -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.TWD_SAVE.FIELD.TITLE2' | translate }}</p>
+                <!-- 機動利率% -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.TWD_SAVE.FIELD.TITLE3' | translate }}</p>
+            </div>
+            <!-- Title End -->
+            <!-- Item Start -->
+            <ng-container *ngFor="let item of data">
+                <div class="table_four_hl_tr">
+                    <p class="table_four_hl_td">{{item.range}}</p>
+                    <p class="table_four_hl_td font_money_blu">{{ (item | fieldCheck: 'normalFix')|htFinancial }}</p>
+                    <p class="table_four_hl_td font_money_blu">{{ (item | fieldCheck: 'normalChang')|htFinancial }}</p>
+
+                </div>
+                <div class="table_four_hl_tr" *ngIf="item.bigFix&&(item.bigFix != '0' || item.bigChang != '0')">
+                    <p class="table_four_hl_td">{{item.range}}(大額)</p>
+                    <p class="table_four_hl_td font_money_blu"> {{ (item | fieldCheck: 'bigFix')|htFinancial}}</p>
+                    <p class="table_four_hl_td font_money_blu"> {{ (item | fieldCheck: 'bigChang')|htFinancial}}</p>
+
+                </div>
+            </ng-container>
+            <!-- Item End -->
+        </div>
+    </ng-container>
+
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+</section>

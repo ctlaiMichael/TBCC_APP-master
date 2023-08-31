@@ -1,0 +1,12 @@
+.pop_securityType{
+    height: 24px;
+}
+
+input[type=text].content_input{
+    font-size: 11px;
+    padding: 0;
+}
+
+.securityType:nth-child(1){
+    border-bottom:none
+}

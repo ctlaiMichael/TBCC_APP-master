@@ -1,0 +1,47 @@
+<section>
+    <ng-container *ngIf="showData else noDataBox">
+        <!-- 牌告日期 -->
+        <div class="sub_info_subtitle">
+            {{ 'FIELD.RATE_DATE' | translate }}：{{dataTime | htDate: 'date'}}
+        </div>
+        <!-- 頁籤 Start -->
+        <app-bookmark [setData]="bookmarkData" [defaultKey]="'second'" (backPageEmit)="onBookMarkBack($event)"></app-bookmark>
+
+        <!-- 頁籤 End -->
+        <div class="table_four_hl">
+            <!-- 標題Start -->
+            <div class="table_four_hl_tr">
+                <!-- 天期 -->
+                <p class="table_four_hl_th table-th-align-l">{{ 'PG_FINANCIAL.TICKET_RATE.FIELD.TITLE_DAY' | translate }}</p>
+                <p class="table_four_hl_th">{{ active_menu.menu.left | translate}}</p>
+                <p class="table_four_hl_th">{{ active_menu.menu.right | translate}}</p>
+            </div>
+            <!-- 標題 End -->
+            <!-- 列表start -->
+
+            <div class="table_four_hl_tr" *ngFor="let item of data">
+                <p class="table_four_hl_td font_money_blu">{{ item | fieldCheck: ['duration',{zero_type:false, empty_str:'--'}]}}</p>
+                <p class="table_four_hl_td font_money_blu">{{ (item | fieldCheck: active_menu.data_key.left) | htFinancial }}</p>
+                <p class="table_four_hl_td font_money_blu">{{ (item | fieldCheck: active_menu.data_key.right) | htFinancial}}</p>
+            </div>
+        </div>
+        <div class="row_single">
+            <!-- 提醒您： -->
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <!-- 1. 以上報價為本行參考利率，實際承作利率請洽本行財務部債票券科。 -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.TICKET_RATE.INFO.INFO1' | translate }}</p>
+            <!-- 2. 票券業務洽詢電話：(02)21738888分機2153或2156。 -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.TICKET_RATE.INFO.INFO2' | translate: {tel:tel.show_tel} }}</p>
+        </div>
+    </ng-container>
+
+    <!-- 查無資料Box [noDataBox] Start -->
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+    <!-- 查無資料Box [noDataBox] End -->
+
+
+</section>

@@ -1,0 +1,64 @@
+{
+  "resHeader": {
+	"test": "123"
+  },
+  "t1000102ResultType": {
+	"details": [
+	  {
+		"url": "#/login",
+		"icon": "icon-A001",
+		"name": "M10",
+		"M10": [
+
+		]
+	  },
+	  {
+		"url": "#/login",
+		"icon": "icon-B001",
+		"name": "M20",
+		"M20": [
+
+		]
+	  },
+	  {
+		"url": "#/m30",
+		"icon": "icon-C001",
+		"name": "M30",
+		"M30": [
+		  {
+			"url": "#/m3001",
+			"icon": "icon-C002",
+			"name": "M3001"
+		  },
+		  {
+			"url": "#/m3002",
+			"icon": "icon-C003",
+			"name": "M3002"
+		  },
+		  {
+			"url": "#/m3003",
+			"icon": "icon-C002",
+			"name": "M3003"
+		  },
+		  {
+			"url": "#/m3004",
+			"icon": "icon-C003",
+			"name": "M3004"
+		  }
+		]
+	  },
+	  {
+		"url": "#/m40",
+		"icon": "icon-C001",
+		"name": "M40",
+		"M40": [
+		  {
+			"url": "#/m4001",
+			"icon": "icon-C002",
+			"name": "M4001"
+		  }
+		]
+	  }
+	]
+  }
+}

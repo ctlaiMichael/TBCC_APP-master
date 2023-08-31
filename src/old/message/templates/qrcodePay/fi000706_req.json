@@ -1,0 +1,44 @@
+{
+  "custId": "B120281272",
+  "trnsToken": "abcdefghijklmnopqrstuvwxyz123456",
+  "details": {
+    "detail": [
+      {
+        "trustAcnt": "信託帳號",
+        "transCode": "交易編號",
+        "fundCode": "基金代碼",
+        "capital": "信託本金",
+        "incomePoint": "停損點",
+        "profitPoint": "獲利點",
+        "webNotice": "網銀通知",
+        "emailNotice": "Email通知",
+        "code": "套餐代碼",
+        "investType": "信託型態"
+      },
+      {
+        "trustAcnt": "信託帳號",
+        "transCode": "交易編號",
+        "fundCode": "基金代碼",
+        "capital": "信託本金",
+        "incomePoint": "停損點",
+        "profitPoint": "獲利點",
+        "webNotice": "網銀通知",
+        "emailNotice": "Email通知",
+        "code": "套餐代碼",
+        "investType": "信託型態"
+      },
+      {
+        "trustAcnt": "信託帳號",
+        "transCode": "交易編號",
+        "fundCode": "基金代碼",
+        "capital": "信託本金",
+        "incomePoint": "停損點",
+        "profitPoint": "獲利點",
+        "webNotice": "網銀通知",
+        "emailNotice": "Email通知",
+        "code": "套餐代碼",
+        "investType": "信託型態"
+      }
+    ]
+  }
+}

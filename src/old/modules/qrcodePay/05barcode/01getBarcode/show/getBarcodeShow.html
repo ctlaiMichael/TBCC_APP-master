@@ -1,0 +1,217 @@
+
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+    <header class="main_nav">
+        <div class="bank_logo" style="width:50px;height:50px; left:-50px;top:-5px;position: relative;" ng-click="clickMenuList(true)">
+            <img src="ui/images/i_smenu.png">
+        </div>
+        <!-- <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickMenuList(true)"><s class="menu_button_line"></s></button> -->
+        <h2 class="header_title" style="opacity:1;top:25px;">發票載具條碼</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<barcode-left-menu-directive></barcode-left-menu-directive>
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section style="top:125px;">
+        <!-- 手機條碼 -->
+        <ul class="tab_table">
+            <li class="tab_two_cell">
+                <a id="tab01" href="javascript:void(0);" class="tab_button active">手機條碼</a>
+            </li>
+            <li class="tab_two_cell">
+                <a id="tab02" href="javascript:void(0);" class="tab_button">捐贈碼</a>
+            </li>
+        </ul>
+        <div class="row_single"></div>
+        <div ng-show="hasBarcode" class="mobile">
+            <div class="content_infor" style="padding: 0px 25px;">
+                <div style="width:100%;padding: 0px 25px;">
+                    <angular-barcode class="barcode" ng-model="mobileBarcode" bc-options="bc" bc-class="barcode"
+                        bc-type="svg" id="mobileBarcode"></angular-barcode>
+                </div>
+                <div style="position:absolute;">
+                    <input type="radio" ng-model="barcode" value="1" class="form-radio" ng-click="changeDefaultCode()" />
+                </div>
+            </div>
+            <div class="row_single mobile" ng-show="hasBarcode">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a ng-click="termBarcode()" class="inner_button bt_100">
+                            <span>修改條碼</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a id="submit" href="javascript:void(0);" class="inner_button bt_100" ng-click="deleteBarcode()">
+                            <span>刪除條碼</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <div class="row_single mobile" ng-show="!hasBarcode">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    手機條碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" placeholder="" value="938593">
+                </li>
+            </ul>
+        </div>
+
+        <div class="row_single mobile" ng-show="!hasBarcode">
+            <dl class="inner_table_double">
+                <dt class="inner_cell_double">
+                    <a ng-click="clickQuery()" class="inner_button bt_100">
+                        <span>查詢手機條碼</span>
+                    </a>
+                </dt>
+                <dt class="inner_cell_double">
+                    <a id="submit" href="javascript:void(0);" class="inner_button bt_100" ng-click="clickReg()">
+                        <span>註冊手機條碼</span>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+        <div class="row_single mobile" ng-show="!hasBarcode">
+            <a id="check_mobilePopup" href="javascript:void(0);" class="button_confirm">確定</a>
+        </div>
+
+        <!-- 捐贈碼 -->
+        <div ng-show="hasLoveCode" class="donation">
+            <div class="content_infor" style="padding: 0px 25px;">
+                <div style="width:100%;">
+                        <div class="sub_info_subtitle donation">
+                            {{socialWelfareName}}
+                        </div>
+                    <div class="result" style="text-align: center;"></div>
+                    <div>
+                        <angular-barcode class="barcode" ng-model="loveCode" bc-options="bc" bc-class="barcode"
+                            bc-type="svg" id="loveCode"></angular-barcode>
+                    </div>
+                </div>
+                <div style="position: absolute;align-self: center;">
+                    <input type="radio" ng-model="barcode" value="2" class="form-radio" ng-click="changeDefaultCode()" />
+                </div>
+            </div>
+            <div class="row_single">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a ng-click="clickGoToLoveCode()" class="inner_button bt_100">
+                            <span>修改條碼</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a id="submit" href="javascript:void(0);" class="inner_button bt_100" ng-click="deleteLoveCode()">
+                            <span>刪除條碼</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <div class="sub_info_subtitle donation" ng-show="!hasLoveCode">
+                未設定捐贈碼
+        </div>
+        <div class="row_single donation"  style="margin-top: 20px" ng-show="!hasLoveCode">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    查詢
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" maxlength="20" ng-model="loveCodeKeyword"
+                    placeholder="請輸入關鍵字" required>
+                </li>
+            </ul>
+            <div class="row_inner donation">
+                <a id="search" href="javascript:void(0);" class="inner_button float_right_bt" ng-click="toLoveCodeEdit()">
+                    <span>查詢</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+</div>
+
+<style>
+    .barcode {
+        width: 100%;
+    }
+
+    .btnStyle {
+        text-align: center;
+        color: #08b889;
+    }
+
+    .form-radio {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        position: relative;
+        background-color: #f1f1f1;
+        color: #08b889;
+        top: 10px;
+        height: 30px;
+        width: 30px;
+        border: 0;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-right: 7px;
+        outline: none;
+    }
+
+    .form-radio:checked::before {
+        position: absolute;
+        font: 13px/1 'Open Sans', sans-serif;
+        left: 11px;
+        top: 7px;
+        content: '\02143';
+        transform: rotate(40deg);
+    }
+
+    .form-radio:hover {
+        background-color: #f7f7f7;
+    }
+
+    .form-radio:checked {
+        background-color: #f1f1f1;
+    }
+    .pop_content{
+        width:55vw;
+    }
+</style>
+<script>
+		$('.donation_list').css('display', 'none');
+		// 手機條碼=true;
+		var tabFlag = true;
+		var tabswitch = function () {
+			if (tabFlag) {
+				$('.mobile').css('display', 'block')
+				$('.donation').css('display', 'none');
+			} else {
+				$('.mobile').css('display', 'none')
+				$('.donation').css('display', 'block');
+			}
+		}
+		tabswitch();
+		$('#tab01').click(function () {
+			$('#tab01').addClass('active');
+			$('#tab02').removeClass('active');
+			$('.donation_list').css('display', 'none');
+			tabFlag = true;
+			tabswitch();
+		});
+		$('#tab02').click(function () {
+			$('#tab01').removeClass('active');
+			$('#tab02').addClass('active');
+			$('.donation_list').css('display', 'none');
+			tabFlag = false;
+			tabswitch();
+		});
+
+
+	</script>

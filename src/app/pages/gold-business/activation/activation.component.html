@@ -1,0 +1,39 @@
+<ng-container *ngIf="activationPage=='activation'">
+  <section>
+    <form name="form1">
+      <div class="inner_news_list_frame">
+        <ul class="gold_ra_status">
+          <li class="gold_ra_status_td">
+            <img src="./assets/ui/images/blank.gif" alt="" [ngClass]="activation===true?'gold_ra_status_icon active':'gold_ra_status_icon'">
+          </li>
+          <li class="gold_ra_status_td">
+            <p class="gold_ra_status_info">
+              {{'GOLD.MAIN_TITLE' | translate}}
+              <span *ngIf="activation===true">{{'GOLD.ACTIVATION_STATUS.ON' | translate}}</span>
+              <span *ngIf="activation===false">{{'GOLD.ACTIVATION_STATUS.OFF' | translate}}</span>
+            </p>
+          </li>
+          <li class="gold_ra_status_td">
+            <a href="javascript:void(0);" (click)="doSwitch()" class="gold_ra_status_btn">
+              <span *ngIf="activation===true">{{'GOLD.ACTIVATION_STATUS.TURN_OFF' | translate}}</span>
+              <span *ngIf="activation===false">{{'GOLD.ACTIVATION_STATUS.TURN_ON' | translate}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+  
+    </form>
+  </section>
+</ng-container>
+<ng-container *ngIf="activationPage=='statement'">
+  <app-activation-statement  (activationPage)="changePage($event)"></app-activation-statement>
+</ng-container>
+
+<ng-container *ngIf="activationPage=='identity'">
+  <app-activation-identity  (activationPage)="changePage($event)" (stepObj)="goToResultPage($event)"></app-activation-identity>
+</ng-container>
+  
+<ng-container *ngIf="activationPage=='result' && !!successMsg">
+  <app-result [btnName]="'CHECK'" [successMsg]="successMsg" [successDetail]="successDetail" ></app-result>
+</ng-container>

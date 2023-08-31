@@ -1,0 +1,86 @@
+{
+  "sch:MNBResponse": {
+    "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "1481860700840-fq000304",
+      "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+      "sch:custId": "B1202812720"
+    },
+    "sch:result": {
+      "@xsi:type": "fq0:fq000304ResultType",
+      "@xmlns:fq0": "http://mnb.hitrust.com/service/schema/fq000304",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "fq0:trnsRsltCode": "0",
+      "fq0:hostCode": "4001",
+      "fq0:hostCodeMsg": "交易成功",
+      "fq0:startDate": "20180528",
+      "fq0:endDate": "20180528",
+      "fq0:type": "1",
+      "fq0:details": {
+        "fq0:detail": [
+          {
+            "fq0:logId": "1",
+            "fq0:trnsAcct": "0600888007480",
+            "fq0:trnsDate": "20180427174930",
+            "fq0:trnsAmount": "20000",
+            "fq0:trnsType": "3",
+            "fq0:mode": "1",
+            "fq0:status": "0",
+            "fq0:storeName": "麥當當",
+            "fq0:orderNo": "000053475",
+            "fq0:trnsNo": "7705073012"
+          },
+          {
+            "fq0:logId": "1",
+            "fq0:trnsAcct": "0600888007480",
+            "fq0:trnsDate": "20180425183411",
+            "fq0:trnsAmount": "18000",
+            "fq0:trnsType": "0",
+            "fq0:mode": "0",
+            "fq0:status": "0",
+            "fq0:storeName": "LOUISA",
+            "fq0:orderNo": "000053476",
+            "fq0:trnsNo": "7705073022"
+          },
+          {
+            "fq0:logId": "1",
+            "fq0:trnsAcct": "0060022663388",
+            "fq0:trnsDate": "20180428122157",
+            "fq0:trnsAmount": "19000",
+            "fq0:trnsType": "0",
+            "fq0:mode": "0",
+            "fq0:status": "1",
+            "fq0:storeName": "鬍鬚張",
+            "fq0:orderNo": "000053477",
+            "fq0:trnsNo": "7705073032"
+          },
+          {
+            "fq0:logId": "1",
+            "fq0:trnsAcct": "0060022663388",
+            "fq0:trnsDate": "20180428185120",
+            "fq0:trnsAmount": "550000",
+            "fq0:trnsType": "0",
+            "fq0:mode": "1",
+            "fq0:status": "3",
+            "fq0:storeName": "漢來海港漢來海港漢來海港",
+            "fq0:orderNo": "000053478",
+            "fq0:trnsNo": "7705073042"
+          },
+          {
+            "fq0:logId": "1",
+            "fq0:trnsAcct": "0600888007480",
+            "fq0:trnsDate": "20180526025734",
+            "fq0:trnsAmount": "5000000",
+            "fq0:trnsType": "1",
+            "fq0:mode": "1",
+            "fq0:status": "0",
+            "fq0:storeName": "鹽之華",
+            "fq0:orderNo": "000053479",
+            "fq0:trnsNo": "7705073052"
+          }
+        ]
+      }
+    }
+  }
+}

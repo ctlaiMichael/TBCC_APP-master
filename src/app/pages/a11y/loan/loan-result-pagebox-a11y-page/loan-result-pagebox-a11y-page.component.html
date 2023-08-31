@@ -1,0 +1,50 @@
+<div class="row_green_a11y" *ngFor="let element of data">
+  <div class="row4_top_white_a11y text_align_right_a11y" title="{{dateTitle(formatDate(element.transDay),'交易日')}}">
+    交易日<br>
+    {{formatDate(element.transDay)}}
+  </div>
+  <div class="row4_top_white_a11y">
+    摘要<br>
+    {{element.digest}}
+  </div>
+  <div class="row4_top_white_a11y">
+    本金餘額<br>
+    NT$ {{formateService.transMoney(element.capitalBal,'TWD')}}
+  </div>
+  <div class="row4_top_white_a11y">
+    繳還本金<br>
+    NT$ {{formateService.transMoney(element.captilPay,'TWD')}}
+  </div>
+  <div class="row4_top_white_a11y">
+    繳納利息<br>
+    NT$ {{formateService.transMoney(element.ratePay,'TWD')}}
+  </div>
+  <div class="row4_top_white_a11y">
+    違約金<br>
+    NT$ {{formateService.transMoney(element.breakFee,'TWD')}}
+  </div>
+  <div class="row4_top_white_a11y">
+    遲延利息<br>
+    NT$ {{formateService.transMoney(element.delayRate,'TWD')}}
+  </div>
+  <div class="row4_top_white_a11y" title="{{dateTitle(formatDate(element.startDate),'起息日')}}">
+    起息日<br>
+    {{formatDate(element.startDate)}}
+  </div>
+  <div class="row4_top_white_a11y">
+    計息日數<br>
+    {{element.rateCountdays}}天
+  </div>
+  <div class="row4_top_white_a11y">
+    利率<br>
+    {{element.rate}}
+  </div>
+  <div class="row4_top_white_a11y" title="{{dateTitle(formatDate(element.endDate),'訖息日')}}">
+    訖息日<br>
+    {{formatDate(element.endDate)}}
+  </div>
+  <div class="row4_top_white_a11y">
+    逾期日數<br>
+    {{element.delayDays}}天
+  </div>
+</div>

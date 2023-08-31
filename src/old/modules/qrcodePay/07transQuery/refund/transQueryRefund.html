@@ -1,0 +1,158 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<div class="back_bt" ng-click="clickBack()">
+			<p class="back_title">返回</p>
+		</div>
+		<div class="page_title">出示退款碼</div>
+		<div class="bank_logo">
+			<img src="ui/tcbbOldStyle/image/cobanklogo.png">
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div>
+			<div class="countSS" ng-bind="limitSec"></div>
+		</div>
+
+		<div class="result_sec" ng-if="result.respCode!=0">
+			<div class="result_location">
+				<div class="result_title2">
+					<p ng-if="result.respCode=='1'">條碼顯示失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">條碼顯示異常</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.respCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">主機代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+
+				<!--barcode show-->
+				<div class="result_input" ng-if="result.respCode=='0'">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="text-align: center;">
+								<img style="height:60px;" src="ui/newMainPage/image/logocmyk-02.png">
+							</div>
+						</div>
+						<div class="css_tr" ng-if="genQRCode.length>0">
+							<div class="css_td_title" style="text-align: center;">
+								<qr text="genQRCode" id="getqr" ng-click="showBigQrcode()"></qr>
+							</div>
+						</div>
+						<div class="css_tr" ng-if="genQRCode.length>0">
+							<div class="css_td_title" style="text-align: center;font-size:8px;">點圖放大
+							</div>
+						</div>
+						<div class="css_tr">
+							<div style="height:20px;"></div>
+						</div>
+						<div class="css_tr" ng-if="genBarcode.length>0 && result.QR.mode =='1'">
+							<angular-barcode class="barcode" ng-model="genBarcode" bc-options="bc128" bc-class="barcode" bc-type="img" ng-click="showBigBarcode()"
+							 id="getBarcode"></angular-barcode>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.countSS {
+		position: absolute;
+		top: -20px;
+		right: 20px;
+		font-size: 14px;
+	}
+
+	canvas {
+		width: 200px;
+		height: 200px;
+	}
+
+	qr {
+		text-align: center;
+	}
+
+	.barcode img {
+		/* max-width: 60vw; */
+		text-align: center;
+		width: 6.2cm;
+		height: 1.6cm;
+	}
+
+	.pop_content {
+		/*此行指定放置廣告的div */
+		width: 100vw;
+		/*此行設定div的寬度*/
+		height: auto;
+		max-height: 80%;
+		overflow-y: auto;
+		/*此行設定div的高度*/
+		/* background-color: #1dff1d; */
+		/*此行設定div的背景圖形*/
+		position: fixed;
+		/*此行設定div為不隨捲動而移動的模式*/
+		left: 50%;
+		top: 50%;
+		/* transform: translate(-50%, -50%); */
+		-webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+		z-index: 1001;
+		width: 100vw;
+		/* padding: 10px; */
+		text-align: center;
+	}
+
+	.pop_contentQR {
+		background-color: #1dff1d;
+		padding: 10px;
+	}
+
+	.pop_contentBar {
+		background-color: #ffffff;
+		padding: 5px;
+	}
+
+	.shadowMore {
+		display: block;
+		background: rgba(0, 0, 0, 1);
+	}
+</style>
+
+<!-- 跳出視窗 -->
+<div ng-if="onBigCode">
+	<div class="shadow shadowMore" ng-click="clickBigCode(false)"></div>
+	<div class="pop_content {{popShow}}">
+		<img ng-src="data:image/png;base64,{{outimg}}" style="width:95vw" ng-click="closeBigCode()">
+	</div>
+</div>
+<!-- 跳出視窗 // End -->

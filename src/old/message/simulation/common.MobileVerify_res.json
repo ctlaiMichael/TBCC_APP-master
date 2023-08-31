@@ -1,0 +1,13 @@
+{
+  "resHeader":{
+    "serviceId":"common.MobileVerify",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  }
+}

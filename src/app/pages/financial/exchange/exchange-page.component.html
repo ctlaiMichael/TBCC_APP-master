@@ -1,0 +1,94 @@
+<section>
+    <div class="sub_info_subtitle font_align_left" style="padding: 10px 10px 10px 20px;">
+        <!-- 掛牌時間 -->
+        {{ 'FIELD.FINANCIAL_TIME' | translate }}：{{dataTime|htDate}}
+        <span style="font-weight: bold;" *ngIf="nightType">{{ 'FIELD.NIGHT_TYPE' | translate }}</span>
+        <br>
+        <!-- 單位：新台幣(元) -->
+        <ng-container *ngIf="nowPageType!='count'">
+            {{ 'PG_FINANCIAL.FIELD.UNIT' | translate }}：{{ 'PG_FINANCIAL.FIELD.UNIT_TWD' | translate }}
+        </ng-container>
+    </div>
+
+    <!-- 頁籤 Start -->
+  	<div style="width:calc(100% - 105px);display: inline-block;">
+    <app-bookmark [setData]="bookmarkData" [defaultKey]="'spot'" (backPageEmit)="onBookMarkBack($event)"></app-bookmark>
+  	</div>
+	<div style="width: 95px;display: inline-block; vertical-align: top;margin-top: 5px;" (click)="goRateInform()">
+		<div class="msg_edit_button2">到價設定</div>
+  	</div>
+
+
+    <!--外幣匯率內容: 即期與現鈔一起出現  -->
+    <ng-container *ngIf="showData; else emptyBox;">
+        <!--匯率試算內容-->
+        <ng-container *ngIf="nowPageType=='count'">
+            <app-exchange-calculate-page [rateData]="data" [baseCurrency]="choosebaseCurrency" (backPageEmit)=popOpen($event)></app-exchange-calculate-page>
+        </ng-container>
+        <!--匯率試算內容結束-->
+        <!-- 現鈔 -->
+        <div class="table_four_hl" *ngIf="nowPageType!=='count'">
+            <!-- 標題Start -->
+            <div class="table_four_hl_tr">
+                <!-- 幣別 -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE1' | translate }}</p>
+                <!-- 買入 -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE2' | translate }}</p>
+                <!-- 賣出 -->
+                <p class="table_four_hl_th">{{ 'PG_FINANCIAL.FOREX_RATE.FIELD.TITLE3' | translate }}</p>
+            </div>
+            <!-- 標題 End -->
+            <div class="table_four_hl_tr" *ngFor="let item of data">
+                <ng-container *ngIf="nowPageType=='spot' && !item.spotFlag">
+                    <p class="table_four_hl_td">
+                        <i class="{{ item['currency'] | iconFlag }}"></i>{{ item['currency'] | currencyName:
+                        item['currencyName']}}
+                    </p>
+                </ng-container>
+                <ng-container *ngIf="nowPageType=='cash' && !item.cashFlag">
+                    <p class="table_four_hl_td">
+                        <i class="{{ item['currency'] | iconFlag }}"></i>{{ item['currency'] | currencyName:
+                        item['currencyName']}}
+                    </p>
+                </ng-container>
+
+                <ng-container *ngIf="!item.spotFlag">
+                    <!-- 即期列表start -->
+                    <p class="table_four_hl_td font_money_blu" [style.display]="(nowPageType=='spot') ? 'table-cell' : 'none'">{{
+                        item['spotBuy'] | htFinancial}}</p>
+                    <p class="table_four_hl_td font_money_blu" [style.display]="(nowPageType=='spot') ? 'table-cell' : 'none'">{{
+                        item['spotSell'] | htFinancial }}</p>
+                </ng-container>
+
+                <ng-container *ngIf="!item.cashFlag">
+                    <!-- 現鈔列表start -->
+                    <p class="table_four_hl_td font_money_blu" [style.display]="(nowPageType=='cash') ? 'table-cell' : 'none'">{{
+                        item['cashBuy'] | htFinancial}}</p>
+                    <p class="table_four_hl_td font_money_blu" [style.display]="(nowPageType=='cash') ? 'table-cell' : 'none'">{{
+                        item['cashSell'] | htFinancial }}</p>
+                    <!-- 現鈔列表 End  -->
+                </ng-container>
+            </div>
+        </div>
+        <!--外幣匯率內容End-->
+
+        <!-- 注意事項 -->
+        <div class="row_single">
+            <!-- 提醒您 -->
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <!-- 本匯率僅供參考，實際成交匯率係依本行最新掛牌牌告為準！，實際匯率以本行匯率或報價為準！ -->
+            <p class="inner_content font_red">{{ 'PG_FINANCIAL.FOREX_RATE.INFO.INFO1' | translate }}</p>
+        </div>
+        <!-- 注意事項 End -->
+
+    </ng-container>
+    <ng-template #emptyBox>
+        <!-- 查無資料 -->
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+</section>
+<ng-container *ngIf="popShow">
+    <app-currency-flag-popup [new_table]="new_table" (backPageEmit)="chooseOver($event)"></app-currency-flag-popup>
+</ng-container>

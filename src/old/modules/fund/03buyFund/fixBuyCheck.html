@@ -1,0 +1,64 @@
+<div class="wrapper">
+    <!--header-->
+    <div class="row">
+        <header class="main_nav">
+            <div class="back_bt" ng-click="clickBack()">
+                <p class="back_title">返回</p>
+            </div>
+            <div class="page_title">基金小額申購</div>
+            <div class="bank_logo">
+                <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+            </div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+
+    <div class="row">
+        <section class="main_sec">
+                <div class="row">
+                    <div class="main_content">
+
+        
+        <p style ="font-weight:bold;">您本次申購/轉入之基金:</p>
+        <p style ="width:100%;line-height: 24px;" >{{result.fundName}}</p>
+        
+        <div style="margin-top:20px;">
+            <p style = "font-weight:bold;">請您確認:</p><br>
+            已取得上述<a href="https://mops.twse.com.tw/mops/web/index">基金之公開說明書:</a><br>
+            <button  ng-class="{confirm_bt_L_off1:!(aaa), confirm_bt_L_on1:aaa}"  ng-click="changeCategory1()" >否</button>
+            <button ng-class="{confirm_bt_R_off1:aaa, confirm_bt_R_on1:!(aaa)}"  ng-click="changeCategory1()" >是</button><br><br>
+    
+            以暸解<a href="https://www.tcb-bank.com.tw/product/trust/Pages/fundchanneldetail.aspx?p=6201">基金通路報酬揭露訊息：</a><br>
+            <button  ng-class="{confirm_bt_L_off1:!(bbb), confirm_bt_L_on1:bbb}"  ng-click="changeCategory2()" >否</button>
+            <button ng-class="{confirm_bt_R_off1:bbb, confirm_bt_R_on1:!(bbb)}"  ng-click="changeCategory2()" >是</button><br><br>
+        </div>
+        
+    
+    
+        <div class="send_btarea" style="margin-top: 30px;">
+                <button type="button" class="send_yes" ng-click="clickSubmit()">
+                    <i class="fa fa-check" aria-hidden="true"></i> 確認</button>
+                <button type="button" class="send_back" ng-click="clickCancel()">
+                    <i class="fa fa-undo" aria-hidden="true"></i> 取消</button>
+        </div>
+        <p style="text-align:center"><br>若您尚未知悉上述資訊，請洽本行理財專員。</p>
+    
+    
+    
+    <!--section 扣款帳號設定頁面-->
+    
+    <!--section 扣款帳號設定頁面 end-->
+
+
+    <!--end of footer-->
+ </div>
+                <!--main_content end-->
+            </div>
+            <!--row end-->
+
+        </section>
+</div>
+</div>
+<!--wrapper end-->
+

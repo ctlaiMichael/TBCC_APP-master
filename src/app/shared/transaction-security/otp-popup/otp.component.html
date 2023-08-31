@@ -1,0 +1,70 @@
+<ng-container *ngIf="check && !ignorCheckInfo">
+    <div class="row_single_2">
+        <h4 class="simple_title">提醒您</h4>
+    </div>
+    <div class="row_single_2">
+        <p class="inner_content" [innerHtml]="content"></p>
+    </div>
+    <div class="row_single_2">
+        <div class="double_button">
+            <a (click)="onCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+            <a (click)="yes()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="otpView">
+
+    <div class="row_single_2">
+        <h4 class="simple_title">轉帳作業</h4>
+    </div>
+    <div class="inner_content">
+        <div class="row_single_2">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    網頁檢核碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" placeholder="{{resData.checkCode}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single_2">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    有效時間:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="effectiveTime" class="inner_input" placeholder="{{resData.OTP_SEC}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single_2">
+            <ul [ngClass]="ulClass">
+                <li class="inner_table_cell">
+                    OTP驗證碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="tel" maxlength="6" name="" [(ngModel)]="resData.OTP_val" class="inner_input" placeholder="請輸入OTP驗證碼">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{OTP_error_msg}}</i>
+        </div>
+        <app-captcha *ngIf="(transAccountType==='2' && showCaptcha===true)"></app-captcha>
+    </div>
+    <div class="row_single_2">
+        <div class="double_button">
+            <a (click)="otpNo()">{{ 'BTN.CANCEL' | translate }}</a>
+            <a (click)="otpYes()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="ignorCheckInfo">
+    <!-- 提醒區塊 -->
+    <div class="row_single">
+        <!-- 提醒您 -->
+        <h4 class="simple_title">{{ 'ERROR.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content" [innerHtml]="content"></p>
+    </div>
+</ng-container>

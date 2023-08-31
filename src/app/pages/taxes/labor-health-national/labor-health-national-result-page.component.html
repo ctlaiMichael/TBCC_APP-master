@@ -1,0 +1,57 @@
+<div class="sub_info_frame result">
+	<div class="step_final_icon_frame">
+		<i class="icon_success"></i>
+		<span class="step_final_info">交易成功</span>
+	</div>
+</div>
+<ul class="table_info">
+	<li class="table_row">
+		<span>交易序號</span>
+		<i>{{laborHealthNationalResult.trnsNo}}</i>
+	</li>
+	<li class="table_row">
+		<span>交易時間</span>
+		<i>{{laborHealthNationalResult.trnsDateTime | htDate}}</i>
+	</li>
+	<li class="table_row">
+		<span>記帳日期</span>
+		<i>{{laborHealthNationalResult.recordDate | htDate: 'yyyy/MM/dd'}}</i>
+	</li>
+	<li class="table_row">
+		<span>轉出帳號</span>
+		<i>{{laborHealthNationalResult.account | accountFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>條碼一</span>
+		<i>{{laborHealthNationalResult.barcode1}}</i>
+	</li>
+	<li class="table_row">
+		<span>條碼二</span>
+		<i>{{laborHealthNationalResult.barcode2}}</i>
+	</li>
+	<li class="table_row">
+		<span>條碼三</span>
+		<i>{{laborHealthNationalResult.barcode3}}</i>
+	</li>
+	<li class="table_row">
+		<span>應繳總金額</span>
+		<i>{{laborHealthNationalResult.trnsfrAmount | currencyMoney:'TWD'}}元</i>
+	</li>
+	<li class="table_row">
+		<span>扣款帳號餘額</span>
+		<i>{{laborHealthNationalResult.balance | currencyMoney}}</i>
+	</li>
+
+</ul>
+
+<div class="row_single"></div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+		交易訊息分享
+	</a>
+</div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="accountView()" class="button_confirm">
+		回帳戶總覽
+	</a>
+</div>

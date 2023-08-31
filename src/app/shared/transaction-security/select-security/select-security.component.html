@@ -1,0 +1,33 @@
+<ng-container>
+  <div class="row_single_ssl" [ngStyle]="ulStyle" *ngIf="showData.status===true">
+    <ul class="inner_table_frame_ssl" [ngClass]="ulClass">
+      <ng-container *ngIf="transactionObj.serviceId!='f4000102' && this.transactionObj.serviceId!='f4000101'">
+        <li class="inner_table_cell">
+          目前轉帳機制
+        </li>
+      </ng-container>
+      <ng-container *ngIf="transactionObj.serviceId=='f4000102' || this.transactionObj.serviceId=='f4000101'">
+        <li class="inner_table_cell">
+          轉帳機制
+        </li>
+      </ng-container>
+      <li class="inner_table_cell">
+        <select name="securityType" class="inner_select" (change)="onChange($event)">
+          <option *ngFor="let data of showData.list" value="{{data.securityType}}">{{data.name}}</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row_single_ssl" [ngStyle]="ulStyle" *ngIf="showData.status===false">
+    <ul class="inner_table_frame_ssl normal_disable active_warnning">
+      <li class="inner_table_cell">目前轉帳機制</li>
+      <li class="inner_table_cell">
+        <select name="securityType" class="inner_select">
+          <option value="">無可用安控機制</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+
+</ng-container>

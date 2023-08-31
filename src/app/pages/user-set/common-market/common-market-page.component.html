@@ -1,0 +1,114 @@
+<section>
+    <!-- 登入後第一頁-->
+    <ng-container *ngIf="resultFlag==false && loginPage == '1'">
+            <div class="row_single">
+                    <p class="inner_content">
+                            一、本人瞭解貴行得依「金融控股公司法」第43條及「金融控股公司子公司間 共同行銷管理辦法」相關規定，基於提供特定優惠、服務或行銷之目的，將本人姓名及地址之基本資料（不含交易資料及其他往來資料）提供予貴行所屬之合作金庫金融控股股份有限公司、合作金庫人壽保險股份有限公司、合作金庫證券投資信託股份有限公司、合作金庫證券股份有限公司、合作金庫資產管理股份有限公司、合作金庫票券金融股份有限公司、合作金庫創業投資股份有限公司為行銷建檔、揭露、轉介或交互運用。前開子公司若有新增或異動時，將於合庫金控之網站揭露公告之。<br>
+                            二、本人如不同意得隨時透過貴行提供之服務管道（如：電洽客服專線0800-033175、04-22273131、書面或親洽往來營業據點等）要求貴行停止交互運用本人資料進行行銷，貴行於接獲通知並確認本人身分後立即受理，並於系統及作業合理期間內停止交互運用。
+                    </p>
+                </div>
+                <div class="row_single">
+                    <div class="button_confirm">
+                        <a (click)="doNextStep()">下一頁</a>
+                    </div>
+                </div>
+    </ng-container>
+      <!-- 登入後第二頁-->
+    <ng-container *ngIf="resultFlag==false && loginPage == '2'">
+
+        <div class="row_single">
+            <p class="inner_content">
+                    親愛的客戶，您好：<br>
+                    為提供您更完整、更多元及更優惠之金融理財商品及服務，請  臺端詳閱以下內容；如蒙同意，本行將提供  臺端所同意之基本資料予合庫金控公司所屬各子公司交互運用：<br>
+                    一、本人同意貴行基於提供特定優惠、服務或行銷之目的，將本人姓名及地址以外之基本資料（包括出生年月日、身分證統一編號及電話等資料）提供予貴行所屬之合作金庫金融控股股份有限公司、合作金庫人壽保險股份有限公司、合作金庫證券投資信託股份有限公司、合作金庫證券股份有限公司、合作金庫資產管理股份有限公司、合作金庫票券金融股份有限公司、合作金庫創業投資股份有限公司為行銷建檔、揭露、轉介或交互運用，各該單位並應依法保密。前開子公司若有新增或異動時，將於合庫金控之網站揭露公告之。<br>
+                    二、本人得自由選擇是否提供相關個人資料，惟所拒絕提供之個人資料，本人瞭解將可能無法取得較完整之優惠及服務。<br>
+                    三、本人如不同意得隨時透過貴行提供之服務管道（如：電洽客服專線0800-033175、04-22273131、書面或親洽往來營業據點等）要求貴行停止交互運用本人資料進行行銷，貴行於接獲通知並確認本人身分後立即受理，並於系統及作業合理期間內停止交互運用。<br>
+            </p>
+        </div>
+        <div class="row_single">
+            <div class="inner_checkbox">
+                <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="agreeCheck">
+                <label for="inner_checkbox01">
+                    <span><i></i></span>
+                    <b>
+                        本人同意提供本人之出生年月日、身分證統一編號及電話等其他個人基本資料予貴行所屬之合庫金控公司所屬各子公司交互運用。
+                    </b>
+                </label>
+            </div>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a (click)="noAgree()">不同意</a>
+                <a (click)="sendData()">同意</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <div class="button_confirm">
+                <a (click)="leave()">下次再考慮</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--直接到近來-->
+    <ng-container *ngIf="resultFlag==false && loginPage == '0'">
+        <div class="row_single">
+                <p class="inner_content">
+                    一、本人過去如曾對貴行出具交互運用本人資料之意願表示，本人聲明均已本通知取代之。<br>
+                    二、本人就貴行與合作金庫金融控股股份有限公司所屬其他各子公司進行共同行銷，有關本人資料之建檔、揭露、轉介或交互運用(以下統稱交互運用)，本人意願如下：<br>
+                    1.同意提供本人之出生年月、身分證統一編號及電話等其他個人基本資料與貴行所屬之合庫金控及其各子公司交互運用：<br>
+                    *合作金庫金融控股股份有限公司<br>
+                    *合作金庫人壽保險股份有限公司<br>
+                    *合作金庫證券投資信託股份有限公司<br>
+                    *合作金庫證券股份有限公司<br>
+                    *合作金庫資產管理股份有限公司<br>
+                    *合作金庫票券金融股份有限公司<br>
+                    *合作金庫創業投資股份有限公司<br><br>
+                    前開子公司若有新增或異動時，將於合庫金控之網站揭露公告之。<br><br>
+                    2.不同意貴行所屬之合庫金控及其子公司交互運用本人個人基本資料。<br>
+                    三、本人得自由選擇是否提供相關個人資料，惟所拒絕提供之個人資料，本人瞭解將可能無法取得完整之優惠及服務。<br>
+                    四、如不同意交互運用，得隨時透過貴行提供之免費服務管道(如：電洽客服專線0800-033175、04-22273131、書面或親洽往來營業據點等)要求貴行停止交互運用本人資料進行行銷，貴行於接獲通知並確認本人身分後立即受理，並於系統及作業合理期間內停止交互運用。<br>
+                </p>
+            </div>
+            <div class="row_single">
+                <div class="inner_checkbox">
+                    <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="agreeCheck">
+                    <label for="inner_checkbox01">
+                        <span><i></i></span>
+                        <b>
+                            本人同意提供本人之出生年月日、身分證統一編號及電話等其他個人基本資料予貴行所屬之合庫金控公司所屬各子公司交互運用。
+                        </b>
+                    </label>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a (click)="noAgree()">不同意</a>
+                    <a (click)="sendData()">同意</a>
+                </div>
+            </div>
+    </ng-container>
+
+    <ng-container *ngIf="resultFlag">
+        <app-result [successMsg]="successMsg"  [successDetail]="successDetail"></app-result>
+    </ng-container>
+</section>
+
+
+<div  class="popup_window popup_open" *ngIf="popFlag">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p *ngIf="!agreeCheck" class="inner_content">
+                請先勾選同意事項。
+            </p>
+            <p *ngIf="agreeCheck" class="inner_content">
+                請勿勾選同意事項。
+            </p>
+        </div>
+        <div class="row_single">
+            <a class="button_confirm" (click)="popClose()">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+</div>

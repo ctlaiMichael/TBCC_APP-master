@@ -1,0 +1,96 @@
+<!-- Page Start-->
+<ul class="credit_card_bill_detail_list" *ngFor="let item of data; let i = index; ">
+    <ng-container *ngIf="item.debitStatus != 'T'">
+        <li class='fund_{{i}}'>
+            <!-- title start -->
+            <!-- <p class="credit_card_name">
+        <i>投資標的</i>
+        <i>{{ item | fieldCheck: 'fundName'}}</i>
+    </p> -->
+
+            <!-- 待改 待新基金測試的時候，把刪除功能打開(舊版) -->
+            <!-- <div class="checkbox_button credit_card_name normal_disable" [ngClass]="{'normal_disable': item.deleteFlag == 'N'}">
+            <input type="checkbox" id="checkbox_c_button{{page}}{{i}}" ng-bind="data" value="{{item.fundName}}" (click)="addToDeleteList(item.transCode, item.deleteFlag)">
+            <label for="checkbox_c_button{{page}}{{i}}">
+                <b>刪除</b>
+            </label>
+        </div> -->
+
+            <!-- 該筆資料可刪除才出現刪除紐 -->
+            <ng-container *ngIf="item.deleteFlag=='Y',else cantDelete">
+                <div class="checkbox_button credit_card_name">
+                    <input type="checkbox" id="checkbox_c_button{{page}}{{i}}" [ngModel]="item['selected']"
+                        value="{{item.fundName}}" (click)="addToDeleteList(item.transCode, item.deleteFlag,item)">
+                    <label for="checkbox_c_button{{page}}{{i}}">
+                        <b>刪除/終止</b>
+                    </label>
+                </div>
+            </ng-container>
+
+            <ng-template #cantDelete>
+                <div class="checkbox_button normal_disable">
+                    <input type="checkbox" id="checkbox_c_button{{page}}{{i}}" [ngModel]="item['selected']"
+                        value="{{item.fundName}}" (click)="addToDeleteList(item.transCode, item.deleteFlag,item)">
+                    <label for="checkbox_c_button{{page}}{{i}}">
+                        <b>不可刪除</b>
+                    </label>
+                </div>
+            </ng-template>
+            <p>
+                <span>投資標的：</span>
+                <span>{{ item | fieldCheck: 'fundName'}}</span>
+            </p>
+            <!-- <p>
+            <span>投資編號：</span>
+            <span>{{ item | fieldCheck: 'fundCode'}}</span>
+        </p> -->
+            <p>
+                <span>交易編號：</span>
+                <span>{{ item | fieldCheck: 'transCode'}} </span>
+            </p>
+            <p>
+                <span>投資幣別/金額：</span>
+                <span>{{ item | fieldCheck: 'iNCurrency'}} &nbsp; {{ ((item | fieldCheck: 'invenAmount') |
+                htMoney:item.iNCurrency)}}</span>
+            </p>
+
+            <ng-container *ngFor="let status of debitStatusName">
+                <ng-container *ngIf="status.value == item.debitStatus">
+                    <p>
+                        <span>扣款狀態：</span>
+                        <span>{{ status.name }}</span>
+                    </p>
+                </ng-container>
+            </ng-container>
+
+            <!-- fundCode	投資代碼
+        fundName	投資標的名稱
+        investType	投資型態
+        investDesc	投資型態說明
+        iNCurrency	投資幣別
+        invenAmount	庫存金額(信託本金)
+        transCode	交易編號
+        trustAcnt	信託帳號
+        unit	單位數
+        account	贖回預設存入帳號
+        code	定期不定額套餐代碼
+        debitStatus	扣款狀態    -->
+
+            <a href="javascript:void(0)" (click)="onContentEvent(item)">變更</a>
+        </li>
+    </ng-container>
+</ul>
+
+<!-- <a href="javascript:void(0)" class="inner_news_list" *ngFor="let item of data;" (click)="onContentEvent(item)">
+    <span class="inner_news_list_td">
+        <i class="inner_news_title">{{ item | fieldCheck: 'newsSubject'}}</i>
+        <b class="inner_news_info">{{ item | fieldCheck: 'newsBody'}}</b>
+    </span>
+    <span class="inner_news_list_td">
+        <i class="inner_news_data">
+            <s>{{ ((item | fieldCheck: 'applyDateTime') | htDate: 'yyyy')}}</s>
+            <s>{{ ((item | fieldCheck: 'applyDateTime') | htDate: 'MM/dd')}}</s>
+        </i>
+    </span>
+</a> -->
+<!-- Page End-->

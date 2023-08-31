@@ -1,0 +1,44 @@
+<div class="sub_info_frame result">
+	<div class="step_final_icon_frame">
+		<i class="icon_success"></i>
+		<span class="step_final_info">交易完成</span>
+	</div>
+</div>
+<div ng-if="curStep == 5">
+	<div class="">
+		<!-- <div class="row_single info_list"> -->
+			<!-- 本期帳單應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_BILL' | translate }}</i>
+			<p class="info_conetnt">{{payment.payableAmt}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 本期最低應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}</i>
+			<p class="info_conetnt">{{payment.lowestPayableAmt}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 可設定帳單分期金額上限 -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PAY_MAX' | translate }}</i>
+			<p class="info_conetnt">{{payment.maxInstallmentAmt | currency:""}}</p>
+		</div> -->
+		<div class="row_single info_list">
+			<!-- 分期期數 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PERIOD_NUM' | translate }}</i></td>
+			<td align="right"><p class="info_conetnt">{{selectBill.name}}</p></td>
+			</tr></table>
+		</div>
+		<div class="row_single info_list">
+			<!-- 設定結果 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.RESULT' | translate }}</i></td>
+			<td align="right"><p class="info_conetnt">{{result}}</p></td>
+			</tr></table>
+		</div>
+	</div>
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+		</div>
+	</div>
+</div>

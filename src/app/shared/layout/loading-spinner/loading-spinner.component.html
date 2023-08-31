@@ -1,0 +1,11 @@
+<div #spinnerContainer
+    [class]="showSpinner ? 'ht-c-visible ht-c-spinner ht-c-center' : 'ht-c-hidden ht-c-spinner ht-c-center'"
+    [innerHTML]="template">
+</div>
+<div id="loading-spinner-text"
+    class="ht-c-loading-spinner-text"
+    [style.zIndex]="zIndex"
+    [class]="showSpinner ? 'ht-c-visible ht-c-loading-text' : 'ht-c-hidden ht-c-loading-text'"> {{loadingText}} 
+</div>
+
+

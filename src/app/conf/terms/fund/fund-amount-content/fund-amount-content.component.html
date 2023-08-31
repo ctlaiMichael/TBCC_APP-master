@@ -1,0 +1,724 @@
+<!--OTP視窗彈出-->
+<!-- popup window -->
+<div class="popup_window popup_open">
+    <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <div class="popup_content">
+        <!-- 副標列 -->
+        <div class="row_single">
+            <h4 class="simple_title">投資金額說明</h4>
+        </div>
+        <!-- 副標列 //End -->
+        <!-- <div class="row_single"> -->
+        <ng-container *ngIf="type=='regular'">
+            <p class="inner_content_form">
+                1.定期定額申購投資金額<br>
+            </p>
+        </ng-container>
+
+        <ng-container *ngIf="type=='regular-not'">
+            <p class="inner_content_form">
+                1.定期不定額申購投資金額<br>
+            </p>
+        </ng-container>
+
+        <!-- <div class="table_four_hl"> -->
+        <!-- 標題Start -->
+        <!-- <div class="table_four_hl_tr">
+                    <p class="table_four_hl_th">幣別</p>
+                    <p class="table_four_hl_th">
+                        <i>每筆最低<br>申購金額</i>
+                    </p>
+                    <p class="table_four_hl_th">
+                        <i>增加單位</i>
+                    </p>
+                    <p class="table_four_hl_th">
+                        <i>依套餐公式<br>調整後之最低<br>扣款金額</i>
+                    </p>
+                </div>
+            </div> -->
+        <!-- 標題 //End -->
+        <!-- 列表start -->
+        <!-- <ng-container *ngIf="type=='regular'">
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_tw"></i>新台幣(NTD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_usa"></i>美金(USD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_aus"></i>澳幣(AUD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_canada"></i>加拿大幣(CAD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_swi"></i>瑞士法郎(CHF)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_eur"></i>歐元(EUR)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_eng"></i>英鎊(GBP)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_hk"></i>港幣(HKD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_jpn"></i>日圓(JPY)
+                    </p>
+                    <p class="table_four_hl_td">
+                        10,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        10,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        20,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_swe"></i>瑞典克朗(SEK)
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_china"></i>人民幣(CNY)
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_sa"></i>南非幣(ZAR)
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_nz"></i>紐西蘭幣(NZD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_si"></i>新加坡幣(SGD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="type=='regular-not'">
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_tw"></i>新台幣(NTD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        5,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_usa"></i>美金(USD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_aus"></i>澳幣(AUD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_canada"></i>加拿大幣(CAD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_swi"></i>瑞士法郎(CHF)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_eur"></i>歐元(EUR)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_eng"></i>英鎊(GBP)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_hk"></i>港幣(HKD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_jpn"></i>日圓(JPY)
+                    </p>
+                    <p class="table_four_hl_td">
+                        30,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        10,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        20,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_swe"></i>瑞典克朗(SEK)
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_china"></i>人民幣(CNY)
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_sa"></i>南非幣(ZAR)
+                    </p>
+                    <p class="table_four_hl_td">
+                        3,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        1,000元
+                    </p>
+                    <p class="table_four_hl_td">
+                        2,000元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_nz"></i>紐西蘭幣(NZD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+                <div class="table_four_hl_tr spot">
+                    <p class="table_four_hl_td">
+                        <i class="icon_currency icon_si"></i>新加坡幣(SGD)
+                    </p>
+                    <p class="table_four_hl_td">
+                        300元
+                    </p>
+                    <p class="table_four_hl_td">
+                        100元
+                    </p>
+                    <p class="table_four_hl_td">
+                        200元
+                    </p>
+                </div>
+            </ng-container> -->
+
+
+        <!-- new -->
+        <div class="table_four_hl_form">
+
+            <div class="table_four_hl_tr_form">
+                <p class="table_four_hl_th_form">幣別</p>
+                <p class="table_four_hl_th_form">每筆最低<br>申購金額</p>
+                <p class="table_four_hl_th_form">增加單位</p>
+                <p class="table_four_hl_th_form">依套餐公式<br>調整後之最低<br>扣款金額</p>
+            </div>
+
+            <ng-container *ngIf="type=='regular'">
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_tw"></i><br>新台幣<br>(NTD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_usa"></i><br>美金<br>(USD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_aus"></i><br>澳幣<br>(AUD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_canada"></i><br>加拿大幣<br>(CAD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_swi"></i><br>瑞士法郎<br>(CHF)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_eur"></i><br>歐元<br>(EUR)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_eng"></i><br>英鎊<br>(GBP)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_hk"></i><br>港幣<br>(HKD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_jpn"></i><br>日圓<br>(JPY)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">10,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">10,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">20,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_swe"></i><br>瑞典克朗<br>(SEK)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_china"></i><br>人民幣<br>(CNY)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_sa"></i><br>南非幣<br>(ZAR)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_nz"></i><br>紐西蘭幣<br>(NZD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_si"></i><br>新加坡幣<br>(SGD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="type=='regular-not'">
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_tw"></i><br>新台幣<br>(NTD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">5,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_usa"></i><br>美金<br>(USD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_aus"></i><br>澳幣<br>(AUD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_canada"></i><br>加拿大幣<br>(CAD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_swi"></i><br>瑞士法郎<br>(CHF)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_eur"></i><br>歐元<br>(EUR)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_eng"></i><br>英鎊<br>(GBP)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_hk"></i><br>港幣<br>(HKD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_jpn"></i><br>日圓<br>(JPY)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">30,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">10,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">20,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_swe"></i><br>瑞典克朗<br>(SEK)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_china"></i><br>人民幣<br>(CNY)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_sa"></i><br>南非幣<br>(ZAR)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">3,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">1,000元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">2,000元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_nz"></i><br>紐西蘭幣<br>(NZD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+
+                <div class="table_four_hl_tr_form">
+                    <p class="table_four_hl_td_2">
+                        <i class="icon_currency icon_si"></i><br>新加坡幣<br>(SGD)
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">300元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">100元</p>
+                    <p class="table_four_hl_td_2 font_money_blu">200元</p>
+                </div>
+            </ng-container>
+        </div>
+
+
+        <p class="inner_content_form">
+            但本行、 基金公司或信託投資標的對申購最低金額，另有規定者，從其所定。<br>
+            2.最低申購手續費：新台幣50元，或等值外幣。惟自99年6月1日起，基金業務之“對帳單寄發方式”選擇電子郵件
+            (email)之定期定額/定期不定額客戶，將採實際扣款投資金額*申購費率方式計算，不受最低收費50元之限制。
+        </p>
+
+
+        <!-- <div class="row_single"></div> -->
+        <div class="row_single">
+            <a href="javascript:void(0)" class="button_confirm" (click)="onConfirm()">確定</a>
+        </div>
+        <!-- </div> -->
+    </div>

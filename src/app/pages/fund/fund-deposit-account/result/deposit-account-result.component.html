@@ -1,0 +1,74 @@
+<section>
+	<ng-container *ngIf="trnsRsltCode =='0' || trnsRsltCode =='1'">
+		<ng-container *ngIf="trnsRsltCode=='0'">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame">
+					<i class="icon_success"></i>
+					<span class="step_final_info">{{ fullData.hostCodeMsg }}</span>
+				</div>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="trnsRsltCode=='1'">
+			<div class="sub_info_frame result">
+				<div class="step_final_icon_frame exclamation_active">
+					<i class="icon_success"></i>
+					<span class="step_final_info">交易失敗</span>
+				</div>
+			</div>
+		</ng-container>
+		<ul class="table_info">
+			<li class="table_row">
+				<span>基金名稱</span>
+				<i id='type'>{{fundName}}</i>
+			</li>
+			<li class="table_row">
+				<span>交易編號</span>
+				<i id='type'>{{ fullData.transCode }}</i>
+			</li>
+			<li class="table_row">
+				<span>申請日期</span>
+				<i id='type'>{{applyDate}}</i>
+			</li>
+			<li class="table_row">
+				<span>扣款帳號</span>
+				<i id='type'>{{fullData.oriProfitAcnt}}</i>
+			</li>
+			<li class="table_row">
+				<span>現金收益存入帳號</span>
+				<i id='type'>{{ fullData.profitAcnt }}</i>
+			</li>
+		</ul>
+	</ng-container>
+
+	<ng-container *ngIf="erroMsg!=''">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame exclamation_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易失敗</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content">{{erroMsg}}</span>
+			</p>
+		</div>
+	</ng-container>
+	<!-- 交易失敗 END-->
+
+	<!-- 交易異常 -->
+	<ng-container *ngIf="trnsRsltCode =='X'">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame fault_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">{{ fullData.hostCodeMsg }}</span>
+			</div>
+			<p class="sub_info_list">
+				<span class="sub_info_title no_content">系統連線異常，請稍後再試!如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。</span>
+			</p>
+		</div>
+	</ng-container>
+
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0)" class="button_confirm" (click)="backMenuPage()">確定</a>
+	</div>
+
+</section>

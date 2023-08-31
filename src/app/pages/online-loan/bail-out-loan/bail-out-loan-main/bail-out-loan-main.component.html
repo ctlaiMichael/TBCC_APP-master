@@ -1,0 +1,30 @@
+<!-- 主控頁面 -->
+<!-- type:判斷「信貸」or「房貸」，fullData:下一頁需要之資料，例:request -->
+<!-- resver:是否為預填單 -->
+<!-- action:'go':進入下一階段，'back':返回前一階段 -->
+
+<ng-container [ngSwitch]="nowPage">
+    <!-- 同意條款: 不要 -->
+    <!-- kyc -->
+    <ng-container *ngSwitchCase="'kyc-fill'">
+        <app-kyc-fill [type]="'credit'" [fullData]="fullData" [resver]="'Y'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-kyc-fill>
+    </ng-container>
+    <!-- 申請書 -->
+    <ng-container *ngSwitchCase="'consumer-apply'">
+        <app-consumer-apply [type]="'credit'" [fullData]="fullData" [resver]="'Y'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-consumer-apply>
+    </ng-container>
+    <!-- 同一關係人: 不要 -->
+    <!-- 證明文件上傳: 不要 -->
+    <!-- 選擇分行 -->
+    <ng-container *ngSwitchCase="'contact-branch'">
+        <app-contact-branch [type]="'credit'" [fullData]="fullData" [resver]="'Y'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-contact-branch>
+    </ng-container>
+    <!-- 結果頁 -->
+    <ng-container *ngSwitchCase="'result-page'">
+        <app-loan-result-page [type]="'credit'" [fullData]="fullData" [resver]="'Y'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-loan-result-page>
+    </ng-container>
+</ng-container>

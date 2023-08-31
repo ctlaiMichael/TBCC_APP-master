@@ -1,0 +1,89 @@
+<section>
+	<!-- <div class="sub_info_frame">
+		<ul class="step_bar_frame">
+			<li class="step_bar"></li>
+			<li class="step_bar"></li>
+			<li class="step_bar" [ngClass]="contractPageFlag =='draft'?'step_active':''">
+				<span *ngIf="contractPageFlag =='draft'">3.簽署借款契約-借款契約草稿</span>
+			</li>
+			<li class="step_bar" [ngClass]="contractPageFlag =='contract'?'step_active':''">
+				<span *ngIf="contractPageFlag =='contract'">4.簽署借款契約-借款契約</span>
+			</li>
+			<li class="step_bar"></li>
+			<li class="step_bar"></li>
+		</ul>
+	</div> -->
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ng-container *ngIf="contractPageFlag =='draft'">
+			<h4 class='simple_title'>簽署借款契約-借款契約</h4>
+		</ng-container>
+		<ng-container *ngIf="contractPageFlag =='normalContract'">
+			<h4 class='simple_title'>簽署借款契約-借款契約</h4>
+		</ng-container>
+		<ng-container *ngIf="contractPageFlag =='staffContract'">
+				<h4 class='simple_title'>員工貸款增補條款契約</h4>
+			</ng-container>
+	</div>
+	<ng-container *ngIf="contractPageFlag =='normalContract' || contractPageFlag =='draft' ">
+		<div class="loanAgree agree_info">
+			<div class="row_single">
+				<div id="contractDiv" class="inner_content loan_agree" [innerHtml]="contract | safeHtml " ></div>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="contractPageFlag =='staffContract'">
+		<div class="loanAgree agree_info">
+			<div class="row_single">
+				<div id="staffContractDiv" class="inner_content loan_agree" [innerHtml]="staffContract | safeHtml "></div>
+			</div>
+		</div>
+	</ng-container>
+
+	<!-- <div class="row_single">
+		<ng-container *ngIf="contractPageFlag =='draft'">
+			<div class="inner_checkbox">
+				<input type="checkbox" id="inner_checkbox01" name="inner_checkbox2" [(ngModel)]="checkdraft">
+				<label for="inner_checkbox01">
+					<span>
+						<i></i>
+					</span>
+					<b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+						已取得「借款契約書」定型化契約條款，詳細審閱至少五日，必同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式
+						確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+					</b>
+				</label>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="contractPageFlag =='contract'">
+			<div class="inner_checkbox">
+				<input type="checkbox" id="inner_checkbox01" name="inner_checkbox2" [(ngModel)]="checkContract">
+				<label for="inner_checkbox01">
+					<span>
+						<i></i>
+					</span>
+					<b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+						已取得「借款契約書」定型化契約條款，詳細審閱至少五日，必同意貴行於本借款撥款前以電話、書面或個人網路銀行檢核軌跡方式
+						確認申請人聲明已詳細審閱約定書條款，且已充分瞭解並同意全部條款後，方可撥款。
+					</b>
+				</label>
+			</div>
+		</ng-container>
+	</div> -->
+	<div class="row_single">
+		<div class="double_button">
+			<ng-container *ngIf="contractPageFlag =='draft'">
+				<a href="javascript:void(0)" (click)="contractCancel()">{{'BTN.CANCEL' | translate}}</a>
+				<a href="javascript:void(0)" (click)="goContract()">{{'BTN.NEXT' | translate}}</a>
+			</ng-container>
+			<ng-container *ngIf="contractPageFlag =='normalContract'">
+				<a href="javascript:void(0)" (click)="contractCancel('normal')">{{'BTN.PREVIOUS' | translate}}</a>
+				<a href="javascript:void(0)" (click)="goSecurity()">{{'BTN.NEXT' | translate}}</a>
+			</ng-container>
+			<ng-container *ngIf="contractPageFlag =='staffContract'">
+					<a href="javascript:void(0)" (click)="contractCancel('staff')">{{'BTN.PREVIOUS' | translate}}</a>
+					<a href="javascript:void(0)" (click)="goSecurity('end')">{{'BTN.NEXT' | translate}}</a>
+			</ng-container>
+		</div>
+	</div>
+</section>

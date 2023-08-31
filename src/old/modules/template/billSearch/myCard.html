@@ -1,0 +1,30 @@
+<div class="showstep step1" style="display: none;">
+	<ul class="credit_card_bill_detail_list">
+		<li ng-repeat="(key, value) in cardList">
+			<p class="credit_card_name">
+				<i>{{value.cardType}}</i><i>{{value.creditCardNo | accountMaskFilter}}</i>
+			</p>
+			<p>
+				<!-- 本期應繳金額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_PAY' | translate }}：</span>
+				<span ng-style="{'color':(value.payableAmt <0)?'red':''}">{{value.payableAmt | currency:"NT$":0}}</span>
+			</p>
+			<p>
+				<!-- 本期最低應繳金額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}：</span>
+				<span ng-style="{'color':(value.lowestPayableAmt <0)?'red':''}">{{value.lowestPayableAmt | currency:"NT$":0}}</span>
+			</p>
+			<p class="no_border_bottom">
+				<!-- 可用餘額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_BALANCE' | translate }}：</span>
+				<span ng-style="{'color':(value.usableAmt <0)?'red':''}">{{value.usableAmt | currency:"NT$":0}}</span>
+			</p>
+			<a href="javascript:void(0);" class=""></a>
+		</li>
+	</ul>
+</div>
+<div class="bc_frame">
+	<div class="row_single2">
+		<button onclick="location.href='index.html'" class="button_confirm">回信用卡服務</button>
+	</div>
+</div>

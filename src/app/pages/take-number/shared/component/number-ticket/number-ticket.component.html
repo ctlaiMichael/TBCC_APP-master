@@ -1,0 +1,78 @@
+<div class="row_single">
+  <div class="container-ticket margin-top-20" *ngFor="let ticketItem of ticketList">
+    <div class="row_single">
+      <div class="simple_title">
+        <!-- 您抽取的號碼牌 -->
+        {{'TAKE_NUMBER.COMMON.YOUR_NUMBER' | translate}}
+      </div>
+    </div>
+    <div class="row_single margin-bottom-0">
+      <div class="ticket-info">
+        <div class="ticket-department">{{ticketItem.ticketInfo.department}}</div>
+        <div class="ticket-no">{{ticketItem.ticketInfo.ticketNumber}}</div>
+      </div>
+      <div class="container-content margin-bottom-9" *ngIf="ticketItem.ticketInfo.isShowNumberPassed">
+        <div class="item-50 d-inline-flex align-items-center tips-red">
+          <!-- 已過號 -->
+          {{'TAKE_NUMBER.COMMON.OVER_NUMBER' | translate}}
+        </div>
+        <div class="item-50">
+          <div class="branch-operate-button margin-left-auto" (click)="onReTakeNumberClick(ticketItem)">
+            <!-- 重新取號 -->
+            {{'TAKE_NUMBER.COMMON.RE_TAKE_NUMBER' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row_single margin-bottom-9">
+      <hr class="mi_block_divider"/>
+      <div class="container-content">
+        <div class="item-100">
+          <div class="text-large department-info">
+            <!-- 目前號碼： -->
+            {{'TAKE_NUMBER.COMMON.CURRENT_NUMBER' | translate}}
+            <span class="tips-green">{{ticketItem.ticketInfo.currentNumber}}</span>
+            <!-- 號 -->
+            {{'TAKE_NUMBER.COMMON.NUMBER' | translate}}
+          </div>
+          <div class="text-large pending-info">
+            <!-- 等待人數： -->
+            {{'TAKE_NUMBER.COMMON.WAIT_PERSON' | translate}}
+            <span class="tips-green">{{ticketItem.ticketInfo.waitingSequence}}</span>
+            <!-- 人 -->
+            {{'TAKE_NUMBER.COMMON.PERSON' | translate}}
+          </div>
+        </div>
+      </div>
+      <hr class="mi_block_divider"/>
+    </div>
+    <div class="row_single padding-ticket-bottom margin-bottom-10">
+      <div class="container-content">
+        <div class="item-75 branch-info">
+          <div class="branch-name margin-bottom-0">{{ticketItem.branchInfo.branchName}}</div>
+          <div class="branch-address">{{ticketItem.branchInfo.branchAddr}}</div>
+          <div class="branch-phone" (click)="onPhoneCallClick(ticketItem.branchInfo.branchName, ticketItem.branchInfo.telephone)">{{ticketItem.branchInfo.telephone}}</div>
+        </div>
+        <div class="item-25 d-flex-center">
+          <div class="branch-operate-button" (click)="onGoMapClick(ticketItem.branchInfo)">
+            <!-- 地圖 -->
+            {{'TAKE_NUMBER.COMMON.MAP' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row_single padding-ticket-bottom margin-bottom-0">
+      <ul class="ticket-notice">
+        <li>{{'TAKE_NUMBER.COMMON.NOTICE.0001' | translate}}</li>
+        <li>{{'TAKE_NUMBER.COMMON.NOTICE.0002' | translate}}</li>
+        <li>{{'TAKE_NUMBER.COMMON.NOTICE.0003' | translate}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row_single margin-top-20" *ngIf="isShowConfirmButton">
+    <a href="javascript:void(0)" class="button_confirm" (click)="onConfirmClick()">
+      <!-- 確定 -->
+      {{'BTN.CHECK' | translate}}
+    </a>
+  </div>
+</div>

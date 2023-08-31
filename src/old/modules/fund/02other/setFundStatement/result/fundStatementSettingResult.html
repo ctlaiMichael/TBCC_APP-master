@@ -1,0 +1,52 @@
+<!--header-->
+<div class=" header_bar">
+    <header class="native_main_nav">
+        <div class="no_bt" ></div>
+        <div class="page_title">信託對帳單寄送方式</div>
+        <div class="bank_logo"><img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--header end-->
+<br><br><br><br><br><br>
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="main_input">
+
+                    <div class="result_title2" >
+                            <p>變更成功</p>
+                    </div>
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>對帳單寄送方式：</p>
+                        </div>
+						<!-- <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.merchantName" readonly></div> -->
+						<div >{{getMailOutName()}}</div>
+                    </div>
+                    <hr>
+                    <div class="content_infor">
+                        <div style="font-size:12px">
+                            <p>說明：</p>
+                            <p>申請異動為「寄發紙本」，受託人將以寄發交易確認單（含相關報表）書面資料至委託人之通訊處。<br>
+                               申請異動為「寄發電子郵件」，受託人將以寄發交易確認單（含相關報表）電子檔至委託人之電子郵件信箱。<br>
+                            </p>
+                        </div>
+                    </div>
+                    <!--content_checkbt 按鈕組合-->
+                    <div class="row">
+                        <div style="width:100%;height:50px;text-align:center;margin-top:10px;">
+                            <button type="button" class="confirm_bt2" ng-click="clickConfirm()">確定</button>
+                         </div>
+                    </div>
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div>
+                <!--main_input end-->
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>

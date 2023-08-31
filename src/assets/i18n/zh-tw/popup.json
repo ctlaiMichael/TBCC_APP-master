@@ -1,0 +1,73 @@
+{
+    "POPUP": {
+        "ALERT": {
+            "TITLE": "提示",
+            "OK_BTN": "確定"
+        },
+        "CONFIRM": {
+            "TITLE": "",
+            "OK_BTN": "確定",
+            "CANCEL_BTN": "取消"
+        },
+        "NOTICE": {
+            "TITLE": "訊息通知",
+            "VER_REMIND": "本行已提供新版手機APP，請直接至APP Store或Play商店更新APP(請勿移除手機裡的舊版APP，若移除APP，須回營業單位重新申請憑證)。",
+            "UPDATE_BTN": "更新"
+        },
+        "CERT": {
+            "UPDATE_BTN": "立即更新",
+            "DOWNLOAD_BTN": "立即下載",
+            "DOWNLOAD_LATTER_BTN": "稍後下載",
+            "CANCEL_BTN": "取消",
+            "WILL_EXPIRED": "提醒您：行動網銀憑證即將於{{dueDate}}到期，請按「立即更新」，進行憑證更新作業。",
+            "EXPIRED": "您已臨櫃申請憑證，請按「立即下載」，進行憑證下載作業，並同時刪除已過期的舊憑證。",
+            "HAS_CERT": "您已臨櫃申請憑證，請按「立即下載」，進行憑證下載作業。"
+        },
+        "LOGIN": {
+            "FIRST_LOGIN": "⾸次登入，請進行密碼變更。",
+            "AUTOLOGOUT_WARNING": "距離自動登出還有{{second}}秒。\n是否保持登入?",
+            "AUTOLOGOUT": "閒置時間過長，系統已自動將您登出。",
+            "NEED_CHANGE_PWD": "您的”網路銀行登入密碼”已經超過一年未做變更，基於網銀安全考量，建議您變更密碼。",
+            "PWD_TOO_SHORT": "密碼限制8-12碼，請修改密碼。"
+        },
+        "TELPHONE": {
+            "TEL_TITEL": "外撥提醒",
+            "TEL_NOTICE": "您要撥給{{telName}}嗎?\n{{telnumber}}"
+        },
+        "GPS": {
+            "GPS_TITEL": "轉至手機導航",
+            "GPS_NOTICE": "您是否要前往{{Name}}?",
+            "ALERT_TITLE": "提醒",
+            "ALERT_NOTICE": "將離開應用程式，是否確定？"
+        },
+        "SSL": {
+            "TITLE": "訊息通知",
+            "SSL_NOTICE": "提醒您：您已申請SSL轉帳密碼，若欲進行變更，請按「立即變更」。否則請按「稍後變更」，之後請至「其他服務」功能中，進行SSL轉帳密碼變更作業。",
+            "CHANGE_SSL": "立即變更",
+            "CANCEL_BTN": "稍後變更"
+        },
+        "LOCATION": {
+            "NO_HIGH_ACCURACY": "目前系統定位服務對於「合作金庫銀行」程式是處於不允許狀態，請至「設定->一般->定位服務」中進行允許定位服務!",
+            "NO_HIGH_ACCURACY_TITLE": "定位服務提醒",
+            "NO_POSTION": "GPS定位逾時，無法取得目前位置之經緯度！請檢查手機定位是否有開高精準",
+            "CALL_PHONE": "請打電話",
+            "NO_INFO": "無符合之據點資料\n請更換查詢條件！",
+            "NOT_FOUND": "查無符合資料"
+        },
+        "CANCEL_EDIT": {
+            "TITLE": "提醒您",
+            "CONTENT": "您是否放棄此次編輯？"
+        },
+        "RETURN": {
+            "UPDATE_NOW": "立即變更",
+            "REMIND_LATER": "下次提醒",
+            "EXIT_APP_TITLE": "離開程式",
+            "EXIT_APP": "您要離開程式嗎?",
+            "LOGOUT_TITLE": "登出",
+            "LOGOUT": "您要登出嗎?"
+        },
+        "CANCEL_ALERT": {
+            "CONTENT": "您是否確定要取消交易？"
+        }
+    }
+}

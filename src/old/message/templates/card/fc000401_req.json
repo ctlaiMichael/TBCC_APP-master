@@ -1,0 +1,10 @@
+{
+	"custId" : "",
+	"bussNO" : "",
+	"trnsfrOutBank" : "",
+	"trnsfrOutAccnt" : "",
+	"trnsfrAmount" : "",
+	"paymentType" : "",
+	"byPassage" : "",
+	"captchaVal" : ""
+}

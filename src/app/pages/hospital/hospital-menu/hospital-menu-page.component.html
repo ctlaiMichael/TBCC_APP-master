@@ -1,0 +1,42 @@
+<section>
+	<ul class="service_link_frame">
+		<li class="service_link_list">
+			<ng-container *ngIf="showData; else noDataBox">
+				<a  class="service_link" *ngFor="let menu of data;" (click)="onBranchEvent(menu)">
+					<img src="{{menu.url}}" alt="">
+					<span class="service_name">{{menu.hospitalName}}</span>
+				</a>
+			</ng-container>
+			<!--errorHandle-start-->
+			<ng-template #noDataBox>
+				<div class="sub_info_subtitle">
+					{{'ERROR.EMPTY' | translate}}
+				</div>
+			</ng-template>
+			<!--errorHandle-end-->
+		</li>
+	</ul>
+</section>
+
+<!-- popup window -->
+<div class="popup_window" [ngClass]="{ 'popup_open': (popupFlag) }">
+	<div class="popup_content">
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(select_branch) }">
+				<li class="inner_table_cell">
+					<select name="NTUH" class="inner_select" [(ngModel)]="choseHospital['branch']">
+						<option *ngFor="let sub_menu of hasBranchMenu" [ngValue]="sub_menu">{{sub_menu.showName}}</option>
+					</select>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{ 'PG_HOSPITAL.ERROR.BRANCH' | translate }}</i>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="onCancelEvent()">{{ 'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="onGoEvent()">{{ 'BTN.SEARCH' | translate }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- popup window End -->

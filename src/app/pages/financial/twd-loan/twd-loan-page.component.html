@@ -1,0 +1,68 @@
+<section>
+    <ng-container *ngIf="showData; else noDataBox">
+        <!-- 牌告日期 -->
+        <div class="sub_info_subtitle">
+            {{ 'FIELD.RATE_DATE' | translate }}：{{ dataTime | htDate: 'date' }}
+        </div>
+        <ul class="table_info table_th_style">
+            <li class="table_row">
+                <!-- 類別 -->
+                <span>{{ 'PG_FINANCIAL.TWD_LOAN.FIELD.TITLE1' | translate }}</span>
+                <!-- 利率(年息)% -->
+                <i>{{ 'PG_FINANCIAL.TWD_LOAN.FIELD.TITLE2' | translate }}</i>
+            </li>
+            <li class="table_row">
+                <span>基準利率</span>
+                <!-- <i>{{ (fullData| fieldCheck: ['BaseRate',{zero_type:false, empty_str:'--'}]}}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('BaseRate') && fullData.BaseRate != '') ? fullData.BaseRate : '--' )}}</i>
+            </li>
+            <li class="table_row">
+                <span>月基準利率</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('BaseRateM') && fullData.BaseRateM != '') ? fullData.BaseRateM : '--' }}</i>               -->
+                <i>{{ ((fullData.hasOwnProperty('BaseRateM') && fullData.BaseRateM != '') ? fullData.BaseRateM : '--' )|htFinancial}}</i>
+            </li>
+            <li class="table_row">
+                <span>定儲指數利率</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('FDRate') && fullData.FDRate != '') ? fullData.FDRate : '--' }}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('FDRate') && fullData.FDRate != '') ? fullData.FDRate : '--')|htFinancial }}</i>
+            </li>
+            <li class="table_row">
+                <span>定儲指數月指標利率</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('FDRateM') && fullData.FDRateM != '') ? fullData.FDRateM : '--' }}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('FDRateM') && fullData.FDRateM != '') ? fullData.FDRateM : '--' )|htFinancial}}</i>
+            </li>
+            <li class="table_row">
+                <span>基準利率(原農民銀行)</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('BaseRate2') && fullData.BaseRate2 != '') ? fullData.BaseRate2 : '--' }}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('BaseRate2') && fullData.BaseRate2 != '') ? fullData.BaseRate2 : '--')|htFinancial }}</i>
+            </li>
+            <li class="table_row">
+                <span>定儲指數利率(原農民銀行)</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('FDRate2') && fullData.FDRate2 != '') ? fullData.FDRate2 : '--' }}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('FDRate2') && fullData.FDRate2 != '') ? fullData.FDRate2 : '--')|htFinancial }}</i>
+            </li>
+            <li class="table_row">
+                <span>信用卡循環信用利率</span>
+                <!-- <i>{{ (fullData.hasOwnProperty('CreditCardRate') && fullData.CreditCardRate != '') ? fullData.CreditCardRate : '--' }}</i> -->
+                <i>{{ ((fullData.hasOwnProperty('CreditCardRate') && fullData.CreditCardRate != '') ? fullData.CreditCardRate
+                    : '--' )}}</i>
+            </li>
+        </ul>
+        <div class="row_single">
+            <!-- 提醒您： -->
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <!-- 1. 實際放款利率另依個別、信用條件擔保品狀況、授信風險等情形訂定加碼幅度。 -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.TWD_LOAN.INFO.INFO1' | translate }}</p>
+            <!-- 2. 基本放款利率 = 基準利率 + {{ loanAddRate1 }}% -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.TWD_LOAN.INFO.INFO2' | translate: fullData }}</p>
+            <!-- 3. 基本放款利率(原農民銀行) = 基準利率(原農民銀行) +  {{ loanAddRate2 }}% -->
+            <!-- <p class="inner_content">{{ 'PG_FINANCIAL.TWD_LOAN.INFO.INFO3' | translate: fullData }}</p> -->
+        </div>
+    </ng-container>
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+
+</section>

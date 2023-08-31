@@ -1,0 +1,95 @@
+<div class="bc_frame step_box2" >
+	<div class="radio_list radio_normal">
+	<p>申請人採用他行信用卡資料進行身分驗證申請 貴行信用卡，由 貴行將該資料經由聯合信用卡中心之「信用卡輔助持卡人身分驗證」平台傳輸至申請人所填之信用卡卡號所屬發卡銀行進行身分驗證(如不同意，或發卡銀行回應卡號所屬身份證字號與申請人不符則無法線上申請本行信用卡，請改用其他管道申請)。</p>
+	<br>
+		<div class="inner_checkbox">
+			<input type="checkbox"  id="radio_normal01"  name="radio_normal"/>
+			<label for="radio_normal01" class="original_checkbox option_for_group">
+			<span><i></i></span>
+			<b>{{ '本人已詳閱並同意上述事項' | translate }}</b>
+			</label>
+	</div>
+</div>	
+
+
+
+
+
+	<div class="double_button">
+		<button class="button button_submit" ng-click="goBackstepOne()">{{'BTN.PREVIOUS' | translate}}</button> 
+		<button class="button button_submit" ng-click="submitData('other')">{{'BTN.APPLYNOW' | translate}}</button> 
+	</div>
+</div>
+<div class="bc_frame step_box1">
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.idNo}">
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="input_name required" ng-class="{required:applyFormList.required.idNo}">持卡人<br>身分證號</i></td>
+			<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}"identity-mask-directive/></td>
+		
+			</tr></table></div><s class="input_comment">{{error_msg_list.idNo}}</s>
+		<!-- 持卡人身分證號 -->
+	</div>
+
+	<div class="row_single input_single input_data" ng-class="{input_error:error_msg_list.birthday}">
+		<!-- 出生年月日 -->
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="input_name required">{{'FIELD.DATE_BIRTHDAY' | translate }}</i></td>
+			<td align="center"><input maxlength="10" type="data" name="" id="birthday" ng-model="inp.birthday" placeholder="1997/10/10" date-mask-directive></td>
+		
+			</tr></table></div><s class="input_comment">{{error_msg_list.birthday}}</s>
+	</div>
+
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.cardNum}">
+			<!-- 信用卡號碼 -->
+			<div class="input_frame"><table><tr>
+			<td align="center" width="110px" style="vertical-align:middle"><i class="input_name required">{{'FIELD.CARD.CARDNUM' | translate }}</i></td>
+			<td align="center" style="display: flex;flex-wrap: nowrap;">
+			<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n1" name="card_num_1" style="width: 20%; display:inline" value="">
+			<span style="width: 7%;line-height: 45px;">-</span>
+			<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n2" name="card_num_2" style="width: 20%; display:inline" value="">
+			<span style="width: 7%;line-height: 45px;">-</span>
+			<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n3" name="card_num_3" style="width: 20%; display:inline" value="">
+			<span style="width: 7%;line-height: 45px;">-</span>
+			<input class="credit_card_no" maxlength="4" type="tel" ng-model="cardNumList.n4" name="card_num_4" style="width: 20%; display:inline" value="">
+			</td>
+			</tr></table></div>
+	<s class="input_comment">{{error_msg_list.cardNum}}</s>
+		</div>
+
+
+
+
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.ymData}">
+		<!-- 信用卡有效月年 -->
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="input_name required">信用卡<br>有效月年</i></td>
+			<td align="center"><input maxlength="5" type="tel" name="" id="ymData" ng-model="inp.ymData" placeholder="MM/YY" card-ym-mask-directive><b></td>
+		
+			</tr></table></div><s class="input_comment">{{error_msg_list.ymData}}</s>
+	</div>
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.checkCode}">
+			<!-- 信用卡檢核碼 -->
+			<div class="input_frame"><table><tr>
+			<td align="center" style="vertical-align:middle"><i class="input_name required">{{'背面檢核碼' | translate }}</i></td>
+			<td align="center"><input maxlength="3" type="tel" name="" id="checkCode" ng-model="inp.checkCode"></td>
+		
+			</tr></table></div><s class="input_comment">{{error_msg_list.checkCode}}</s>
+
+	</div>
+
+	<check-captcha-directive></check-captcha-directive>
+	<!--身分驗證注意事項-->
+	<div class="terms_frame">
+		<div><h3 class="row_single in_sub_title"  ng-click="openInfo()">{{'身分驗證事項說明' | translate}}</h3></div>
+		<div name="identityInfo"  ng-show="identityInfoStatus">
+		<p>您可以使用以下銀行所發行之信用卡進行身分驗證：<br>中國信託商業銀行、玉山商業銀行、台新國際商業銀行、花旗(台灣)銀行、台北富邦商業銀行、聯邦商業銀行、永豐商業銀行、遠東國際商業銀行、華南商業銀行、第一商業銀行、臺灣新光商業銀行、元大銀行、匯豐(台灣)商業銀行、星展(台灣)商業銀行、兆豐國際商業銀行、彰化銀行、台灣樂天信用卡股份有限公司、台灣中小企業銀行、臺灣土地銀行、臺灣銀行、日盛國際商業銀行、台中商業銀行、陽信商業銀行、台灣永旺信用卡股份有限公司、三信商業銀行、高雄銀行、華泰商業銀行等。</p>
+		</div>
+	</div>
+		
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ng-click="stepOne('other')">{{'BTN.NEXT' | translate}}</button> 
+		</div>
+	</div>
+</div>
+

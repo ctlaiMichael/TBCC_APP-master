@@ -1,0 +1,10 @@
+{
+	"custId" : "",
+	"creditCardType" : "",
+	"creditCardNO" : "",
+	"cardType" : "",
+	"replaceCard" : "",
+	"birthDate" : "",
+	"branchId" : "",
+	"captchaVal" : ""
+}

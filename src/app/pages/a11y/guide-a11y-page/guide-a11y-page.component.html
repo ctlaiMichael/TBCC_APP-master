@@ -1,0 +1,81 @@
+<!-- 功能導覽 -->
+<section class="background1_a11y">
+  <a (click)="loginLogout()">
+    <button class="feature_btn_login_a11y">
+      <p class="font_feature_a11y">{{login_move}}</p>
+      <!--登入/登出-->
+    </button>
+  </a>
+  <a (click)="go('a11ytaiwandepositkey')">
+    <button class="feature_btn_twd_a11y">
+      <p class="font_feature_a11y">台幣存款查詢</p>
+    </button>
+  </a>
+  <a (click)="go('a11yforeigndepositkey')">
+    <button class="feature_btn_for_a11y">
+      <p class="font_feature_a11y">外匯存款查詢</p>
+    </button>
+  </a>
+  <a (click)="go('a11yloankey')">
+    <button class="feature_btn_loan_a11y">
+      <p class="font_feature_a11y">借款查詢</p>
+    </button>
+  </a>
+  <a (click)="go('a11ypredesignatedtransferkey')">
+    <button class="feature_btn_predesignated_a11y">
+      <p class="font_feature_a11y">約定轉帳</p>
+    </button>
+  </a>
+  <a (click)="go('a11yNoPredesignatedTransferkey')">
+    <button class="feature_btn_no_predesignated_a11y">
+      <p class="font_feature_a11y">非約定轉帳</p>
+    </button>
+  </a>
+  <a (click)="go('a11yDeviceBind')">
+    <button class="feature_btn_device_bind_a11y">
+    <p class="font_feature_a11y">{{"FUNC_SUB.USER_SET.TRANS_DEVICE" | translate}}</p>
+    </button>
+  </a>
+  <a (click)="go('a11ychangenamekey')">
+    <button class="feature_btn_account_a11y">
+      <p class="font_feature_a11y">使用者代號變更</p>
+    </button>
+  </a>
+  <a (click)="go('a11ychangepwdkey')">
+    <button class="feature_btn_pwd_a11y">
+      <p class="font_feature_a11y">使用者密碼變更</p>
+    </button>
+  </a>
+  <a (click)="go('a11ychangesslpwdkey')">
+    <button class="feature_btn_SSL_a11y">
+      <p class="font_feature_a11y">SSL轉帳密碼變更</p>
+    </button>
+  </a>
+  
+  <a (click)="gowithoutlogin('a11yforeignexchangekey')">
+    <button class="feature_btn_foreignexchangerate_a11y">
+      <p class="font_feature_a11y">外幣匯率</p>
+    </button>
+  </a>
+  <a (click)="gowithoutlogin('a11ytaiwndepositskey')">
+    <button class="feature_btn_taiwandepositsrate_a11y">
+      <p class="font_feature_a11y">台幣存款利率</p>
+    </button>
+  </a>
+  <a (click)="gowithoutlogin('a11ytaiwnloankey')">
+    <button class="feature_btn_taiwanloanrate_a11y">
+      <p class="font_feature_a11y">台幣放款利率</p>
+    </button>
+  </a>
+  <a (click)="gowithoutlogin('a11yforeigndepositskey')">
+    <button class="feature_btn_foreigndepositsrate_a11y">
+      <p class="font_feature_a11y">外幣存款利率</p>
+    </button>
+  </a>
+  <a (click)="gowithoutlogin('a11yforeignloankey')">
+    <button class="feature_btn_foreignloanrate_a11y">
+      <p class="font_feature_a11y">外幣放款利率</p>
+    </button>
+  </a>
+  <div class="row_single_a11y"></div>
+</section>

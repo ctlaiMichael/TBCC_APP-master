@@ -1,0 +1,39 @@
+{
+	"PG_TRANSFER": {
+		"ERROR": {
+			"TRNSOUTACCT_1": "請選擇轉出帳號",
+			"TRNSOUTACCT_2": "您尚未設定約定轉出帳號，請洽本行營業單位辦理。",
+			"NOTE":"長度不得超過18位英數字或8個中文字。"
+		},
+		"TEXT":{
+			"NOTICE":"自訂備註長度限18位英數字或8個中文字",
+			"NOTEPAYER":"請輸入備註",
+			"NOTEPAYEE":"請輸入備註訊息(限本行帳號)"
+		}
+	},"CURRENT_FIXED":{
+		"NAME":{
+			"INTEACCNT":"綜存帳號",
+			"TRANSFRTYPE":"轉存類別" ,
+			"TRANSFRTIMES":"轉存期別",
+			"TRANSFRRATETYPE":"轉存利率別",
+			"TRANSFRAMOUNT":"轉存金額",
+			"AUTOTRANSCODE":"續存方式"
+		},
+		"ERROR_MSG": {
+			"EMPTY": {
+				"INTEACCNT":"尚未選取綜存帳號",
+				"TRANSFRTYPE":"尚未選取轉存類別" ,
+				"TRANSFRTIMES":"尚未選取轉存期別",
+				"TRANSFRRATETYPE":"尚未選取轉存利率別",
+				"TRANSFRAMOUNT":"尚未輸入轉存金額",
+				"AUTOTRANSCODE":"尚未選取續存方式"
+			},
+			"FORAMT":{
+				"AMOUNT_FORMAT":"轉存金額格式不符",
+				"AMOUNT_RANGE":"轉存金額需介於$1 ~ {{limitAmount}} 萬元之間！",
+				"OVER_MAXIMUM":"轉存金額不能超過{{limitAmount}}萬元"
+			}
+		
+		}
+	}
+}

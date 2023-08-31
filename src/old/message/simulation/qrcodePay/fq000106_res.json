@@ -1,0 +1,30 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1506407331192",
+      "sch:requestTime" : "2017-09-26T14:28:35.663+08:00",
+      "sch:responseTime" : "2017-09-26T14:28:43.713+08:00",
+      "sch:custId" : "F121374529"
+    },
+    "sch:result" : {
+      "@xsi:type" : "f70:f7000101ResultType",
+      "@xmlns:f70" : "http://mnb.hitrust.com/service/schema/f7000101",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "f70:custId" : "F121374529",
+      "f70:hostCode" : "4001",
+      "f70:trnsNo" : "170926095939",
+      "f70:trnsDateTime" : "1060926142853",
+      "f70:recordDate" : "1060926",
+      "f70:trnsfrOutAcct" : "9997899222226",
+      "f70:payCategory" : "11201",
+      "f70:payEndDate" : "061231",
+      "f70:payNo" : "7202900000012346",
+      "f70:trnsfrAmount" : "12346",
+      "f70:trnsfrFee" : "0",
+      "f70:trnsfrOutAccntBal" : "8826425124.07",
+      "f70:hostCodeMsg" : "交易成功",
+      "f70:trnsRsltCode" : "0"
+    }
+  }
+}

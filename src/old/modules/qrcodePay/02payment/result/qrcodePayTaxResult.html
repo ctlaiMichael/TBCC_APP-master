@@ -1,0 +1,178 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+		<div class="back_bt" ng-click="clickBack()">
+            <p class="back_title" >返回</p>
+        </div>
+		<div class="page_title">QRCode繳稅結果</div>
+		<!-- <div class="back_bt" >
+            <p class="back_title" ng-click="logout()" >登出</p>
+        </div> -->
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<!-- <div class="result_title">
+					<p>交易結果</p>
+				</div> -->
+				<div class="result_title2">
+					<p ng-if="result.respCode=='0'">交易成功</p>
+					<p ng-if="result.respCode=='1'">交易失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">交易異常</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">主機代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				<!--main_input end-->
+
+				<div class="result_input" ng-if="result.respCode=='0'">
+					<div id="css_table">
+						<!-- <div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">交易序號：</div>
+							<div class="css_td_content" ng-bind="result.trnsNo"></div>
+						</div> -->
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title11">交易時間：</div>
+							<div class="css_td_content" ng-bind="formatDate(result.trnsDateTime)"></div>
+						</div>
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title11">繳款類別：</div>
+							<div class="css_td_content" ng-bind="qrcode.payCategory1"></div>
+						</div>
+
+						<!-- <div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">銷帳編號：</div>
+							<div class="css_td_content" ng-bind="qrcode.payNo"></div>
+						</div> -->
+
+						<!-- <div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">繳納截止日：</div>
+							<div class="css_td_content" ng-bind="qrcode.payEndDate"></div>
+						</div> -->
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title11">繳稅金額：</div>
+							<div class="css_td_content" ><span ng-bind="numFmt(result.trnsAmount)"></span>元</div>
+						</div>
+
+						<!-- 15類所屬年度 -->
+						<div ng-if="result.payCategory == '15001'" class="css_tr">&nbsp;</div>
+						<div class="css_tr" ng-if="result.payCategory == '15001'">
+							<div class="css_td_title11"  ng-if="result.payCategory == '15001'">所屬年度：</div>
+							<div class="css_td_content"  ng-if="result.payCategory == '15001'">107</div>
+						</div>
+
+						<!-- 15類納稅義務人身份證字號 -->
+						<div class="css_tr" ng-if="result.payCategory == '15001'">&nbsp;</div>
+						<div class="css_tr" ng-if="result.payCategory == '15001'">
+							<div class="css_td_title11" ng-if="result.payCategory == '15001'">納稅義務人身<br>分證統一編號：</div>
+							<div class="css_td_content" ng-if="result.payCategory == '15001'" ng-bind="result.payId"></div>
+						</div>
+
+						<!-- 信用卡類授權碼 -->
+						<div class="css_tr" ng-if="result.authCode != null">&nbsp;</div>
+						<div class="css_tr" ng-if="result.authCode != null">
+							<div class="css_td_title11" ng-if="result.authCode != null">授權碼：</div>
+							<div class="css_td_content" ng-if="result.authCode != null" ng-bind="result.authCode"></div>
+						</div>
+
+						
+						<!-- 辨識11類銷帳編號 -->
+						<div class="css_tr" ng-if="result.num == '11'">&nbsp;</div>
+						<div class="css_tr" nng-if="result.num == '11'">
+							<div class="css_td_title11" ng-if="result.num == '11'">銷帳編號：</div>
+							<div class="css_td_content" ng-if="result.num == '11'" ng-bind="result.payNo"></div>
+						</div>
+
+						<div class="css_tr" ng-if="result.payCategory == '15001'">&nbsp;</div>
+						<div class="css_tr" ng-if="result.payCategory == '15001'">
+							<div class="css_td_title11" ng-if="result.payCategory == '15001'">交易序號：</div>
+							<div class="css_td_content" ng-if="result.payCategory == '15001'" ng-bind="result.txnStan"></div>
+						</div>
+						<!-- <div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">所屬年度：</div>
+							<div class="css_td_content" ></span>106</div>
+						</div> -->
+
+						<!-- <div ng-if="formatAcct(result.trnsfrOutAcct) != null" > -->
+						<div class="css_tr" ng-if="formatAcct(result.trnsfrOutAcct) != null">&nbsp;</div>
+						<div class="css_tr" ng-if="formatAcct(result.trnsfrOutAcct) != null">
+							
+							<div class="css_td_title11" ng-if="formatAcct(result.trnsfrOutAcct) != null">交易帳號：</div>
+							<div class="css_td_content" ng-bind="formatAcct(result.trnsfrOutAcct)" ng-if="formatAcct(result.trnsfrOutAcct) != null"></div>
+						</div>
+						<!-- </div> -->
+					    
+
+						<!-- <div ng-if="formatAcct(result.cardNo) != null" > -->
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title11" ng-if="result.cardNo != null">交易卡號：</div>
+							<div class="css_td_content" ng-bind="formatAcct11(result.cardNo)" ng-if="result.cardNo != null"></div>
+						</div>
+
+						
+						<!-- </div> -->
+					</div>
+
+				</div>
+				<!--main_input end-->
+
+				<div class="notice_infor">
+					<div class="notice_text"><p>提醒您:</p></div>
+					<div class="notice_text2">1.您可至財政部Paytax網站(https://paytax.nat.gov.tw)查詢繳稅紀錄。
+						<br>2.本行24小時客服專線，0800-033-175。</div>
+				</div>
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt2" ng-click="logout()">登出</button>
+						<!--<button type="button" class="cancel_bt">取消</button>-->
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果

@@ -1,0 +1,19 @@
+<section>
+
+  <!-- 步驟列 or 其他資訊框架 -->
+  <div class="sub_info_frame result">
+    <div class="step_final_icon_frame {{classType}}">
+      <i class="icon_success"></i>
+      <span class="step_final_info">{{sucTitle}}</span>
+    </div>
+    <p class="sub_info_list" *ngIf="content!='' && !sucFlag ">
+        <span class="sub_info_title no_content" style="text-align: center;" [innerHtml]="(content | safeHtml)"></span>
+    </p>
+  </div>
+  <div class="row_single" style="margin-top:20px;">
+    <div class="double_button">
+      <a (click)="cancel()">返回</a>
+      <a (click)="qrcode()">進行QRCode繳費</a>
+    </div>
+  </div>
+</section>

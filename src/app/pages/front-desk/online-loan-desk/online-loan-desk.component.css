@@ -1,0 +1,13 @@
+.swiper-pagination {
+  margin: 0 auto;
+  position: relative;
+}
+.dis-table-cell {
+	/* display: table-cell; */
+	display: inline-block;
+   }
+  @media only screen and (min-height: 700px) {
+    .inner_button > * {
+      font-size: 16.5px;
+    }
+  }

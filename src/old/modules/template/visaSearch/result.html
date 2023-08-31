@@ -1,0 +1,43 @@
+<div>
+	<h2 class="sub_title_inner table_title">{{creditCard.creditCardType}} : {{creditCard.creditCardID | accountMaskFilter}}</h2>
+	<div ng-show="cardDetails">
+		<div ng-show="!cardDetails.cardDetail">
+			<p style="text-align: center;">{{ 'BILL_MSG.NO_SEARCH' | translate }}</p>
+			<br />
+		</div>
+		<div ng-show="cardDetails.cardDetail">
+			<table class="table_colspan3">
+				<tr ng-repeat-start="cards in cardDetails.cardDetail">
+					<th>{{ 'BILL_MSG.MSG.PAY_DATE' | translate }}</th><!-- 消費日期 -->
+					<th>{{ 'BILL_MSG.MSG.SEARCH_TIME' | translate }}</th><!-- 查詢時間 -->
+				</tr>
+				<tr>
+					<td>{{cards.expendDate | dateFilter }}</td>
+					<td>{{cardDetails.requestTime | dateFilter }}</td>
+				</tr>
+				<tr>
+					<td colspan="3">{{'FIELD.REMARK' | translate}}：{{cards.expendDescription}}</td><!-- 備註 -->
+				</tr>
+				<tr class="tr_currency" ng-repeat-end>
+					<td>
+						<!-- 外幣金額,台幣金額 -->
+						{{ 'BILL_MSG.MSG.MONEY_F' | translate }}
+						<br>
+						{{ 'BILL_MSG.MSG.MONEY_TW' | translate }}
+					</td>
+					<td colspan="2">
+						<p class="row_currency">
+							<i><s><!--外幣幣別--></s><s>{{cards.foreignAmnt | currency:"":2}}</s></i>
+							<i><s>NT</s><s>{{cards.nTAmnt| currency:"":0}}</s></i>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ng-click="showPage(1)">{{'CTRL_BILL_SEARCH.BTN.BACK_VISA' | translate}}</button>
+		</div>
+	</div>
+</div>

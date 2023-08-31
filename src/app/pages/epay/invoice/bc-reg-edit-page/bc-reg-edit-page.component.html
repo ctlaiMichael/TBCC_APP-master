@@ -1,0 +1,40 @@
+<section >
+	<div class="row_single">
+		<h4 class="simple_title">註冊手機條碼</h4>
+	</div>
+	<div class="row_single mobile">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				手機號碼
+			</li>
+			<li class="inner_table_cell">
+				<input type="tel" class="inner_input" maxlength="10" [(ngModel)]="phoneNo" placeholder="請輸入手機號碼"
+					required>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single mobile">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				Email
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" class="inner_input" [(ngModel)]="email" placeholder="請輸入Email信箱" required>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<div class="double_button">
+			<a (click)="clickClear()">{{ 'BTN.CLEAR' | translate }}</a>
+			<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+	<div class="row_single">
+		<h4 class="simple_title">提醒您</h4>
+	</div>
+	<div class="row_single">
+		<p class="inner_content" style="color:red">
+			點選確認後，驗證碼(密碼)亦將以簡訊傳送至手機
+		</p>
+	</div>
+</section>

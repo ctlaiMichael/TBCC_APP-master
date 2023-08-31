@@ -1,0 +1,37 @@
+<section class="main_sec">
+	<div class="row">
+		<div class="main_content">
+			<div class="row_single mobile">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						手機條碼
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input normal_disable" [(ngModel)]="mobileBarcode" placeholder="請輸入手機條碼"
+							onfocus="this.mobileBarcode = ''" onblur="this.mobileBarcode='請輸入手機條碼，例：/AB56P5Q'" required>
+					</li>
+				</ul>
+			</div>
+
+			<div class="row_single mobile">
+				<dl class="inner_table_double">
+					<dt class="inner_cell_double">
+						<a (click)="clickQuery()" class="inner_button bt_100">
+							<span>查詢手機條碼</span>
+						</a>
+					</dt>
+					<dt class="inner_cell_double">
+						<a id="submit" href="javascript:void(0);" class="inner_button bt_100" (click)="clickReg()">
+							<span>註冊手機條碼</span>
+						</a>
+					</dt>
+				</dl>
+			</div>
+			<div class="row_single mobile">
+				<a id="check_mobilePopup" class="button_confirm" (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+			</div>
+		</div>
+		<!--main_content end-->
+	</div>
+	<!--row end-->
+</section>

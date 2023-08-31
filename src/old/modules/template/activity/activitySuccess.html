@@ -1,0 +1,30 @@
+<div class="sub_info_frame result">
+		<div class="step_final_icon_frame">
+			<i class="icon_success"></i>
+			<span class="step_final_info">登錄完成</span>
+		</div>
+	</div>
+
+
+<div class="">
+	<div class=""  ng-repeat="(tk , indata) in activityRegDetail">
+		<table class="check_form"><tr>
+			<!-- 銷帳編號 -->
+			<td align="left" class="info_td_left3"><i class="info_title3">{{
+					(activityKeyList[indata.activityId]) ?
+					activityKeyList[indata.activityId]['activityName']
+					: 'id:'+indata.activityId
+				}}</i></td>
+			<td align="right" class="info_td_right3"><p class="info_conetnt3">{{indata.message}}</p></td>
+			</tr></table>
+		<div ng-class="{true: 'row_single input_single', false: 'row_single input_single input_error'}[indata.registerStatus]">
+
+	  </div>
+	</div>
+</div>
+
+<div class="bc_frame">
+		<div class="row_single2">
+				<button class="button_confirm"  ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+		</div>
+</div>

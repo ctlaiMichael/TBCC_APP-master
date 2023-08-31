@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="utf-8">
+  <title>MobileStartup</title>
+  <base href="">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport"
+    content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, viewport-fit=cover">
+  <!-- 瀏覽器設定 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--iPhone button bar 隱藏-->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!--iPhone phone number 隱藏-->
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="./assets/css/global.css">
+  <link rel="stylesheet" href="./assets/css/slick.css">
+  <link rel="stylesheet" href="./assets/css/slick-theme.css">
+  <!-- 無障礙 css 暫時先 Mask, 以免影響轉置 -->
+  <link rel="stylesheet" href="./assets/css/a11y/friendly_global.css">
+  <link rel="stylesheet" href="./assets/css/a11y/friendly_original.css">
+
+  <link rel="stylesheet" href="./assets/css/nav_menu.css">
+  <link rel="stylesheet" href="./assets/css/nav.css">
+  <script src="./assets/js/jquery-1.7.2.min.js"></script>
+  <script src="./assets/js/slick.js"></script>
+  <!-- 網頁才需要放icon -->
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+  <script src="./assets/js/device-init.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script>
+    if (typeof sessionStorage.reload != 'undefined' && !!sessionStorage.reload) {
+      delete sessionStorage.reload;
+      window.location.reload();
+    }
+    document.addEventListener('deviceready',
+      function () {
+        document.addEventListener('backbutton', function () { }, false);
+        if (typeof MobileAccessibility != 'undefined' && !!MobileAccessibility) {
+          MobileAccessibility.usePreferredTextZoom(false);
+        }
+      }
+      , false);
+  </script>
+</head>
+<!-- 禁止選取 -->
+
+<body id="body" class="initial_page" unselectable="on"
+  style="-moz-user-select:none;-webkit-user-select:none;margin:0;position:fixed;" onselectstart="return false;">
+  <app-root>
+    <img style="height: 100vh;width: 100vw;">
+    <script>
+      if (typeof sessionStorage.capture != 'undefined' && !!sessionStorage.capture) {
+        var imgs = $(document).find('img')
+        imgs.attr('src', sessionStorage.capture);
+        $(document).find('img').attr('src', sessionStorage.capture);
+      } else {
+        $(document).find('img').attr('src', 'assets/images/splashscreen.png');
+      }
+    </script>
+    <div class="ht-c-visible ht-c-spinner ht-c-center">
+      <div class="ht-c-lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <style>
+      .ht-c-spinner {
+        position: fixed;
+        padding: 0px;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9998;
+        background: #000;
+        opacity: 0.6;
+        transition: opacity 0.3s linear;
+      }
+
+      .ht-c-center {
+        margin: auto;
+        width: 100%;
+      }
+
+      .ht-c-loading-text {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        color: #FFF;
+        font-family: sans-serif;
+        background: transparent;
+        text-align: center;
+        padding-top: 33%;
+      }
+
+      .ht-c-spinner img {
+        position: fixed;
+        padding: 0px;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        background: #000;
+        opacity: 0.6;
+        transition: opacity 0.3s linear;
+      }
+
+      .ht-c-hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 0.3s, opacity 0.3s linear;
+      }
+
+      .ht-c-visible {
+        visibility: visible;
+      }
+
+      .ht-c-lds-roller {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+        left: calc(50vw - 32px);
+        top: 45%;
+      }
+
+      .ht-c-lds-roller div {
+        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        transform-origin: 32px 32px;
+      }
+
+      .ht-c-lds-roller div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fff;
+        margin: -3px 0 0 -3px;
+      }
+
+      .ht-c-lds-roller div:nth-child(1) {
+        animation-delay: -0.036s;
+      }
+
+      .ht-c-lds-roller div:nth-child(1):after {
+        top: 50px;
+        left: 50px;
+      }
+
+      .ht-c-lds-roller div:nth-child(2) {
+        animation-delay: -0.072s;
+      }
+
+      .ht-c-lds-roller div:nth-child(2):after {
+        top: 54px;
+        left: 45px;
+      }
+
+      .ht-c-lds-roller div:nth-child(3) {
+        animation-delay: -0.108s;
+      }
+
+      .ht-c-lds-roller div:nth-child(3):after {
+        top: 57px;
+        left: 39px;
+      }
+
+      .ht-c-lds-roller div:nth-child(4) {
+        animation-delay: -0.144s;
+      }
+
+      .ht-c-lds-roller div:nth-child(4):after {
+        top: 58px;
+        left: 32px;
+      }
+
+      .ht-c-lds-roller div:nth-child(5) {
+        animation-delay: -0.18s;
+      }
+
+      .ht-c-lds-roller div:nth-child(5):after {
+        top: 57px;
+        left: 25px;
+      }
+
+      .ht-c-lds-roller div:nth-child(6) {
+        animation-delay: -0.216s;
+      }
+
+      .ht-c-lds-roller div:nth-child(6):after {
+        top: 54px;
+        left: 19px;
+      }
+
+      .ht-c-lds-roller div:nth-child(7) {
+        animation-delay: -0.252s;
+      }
+
+      .ht-c-lds-roller div:nth-child(7):after {
+        top: 50px;
+        left: 14px;
+      }
+
+      .ht-c-lds-roller div:nth-child(8) {
+        animation-delay: -0.288s;
+      }
+
+      .ht-c-lds-roller div:nth-child(8):after {
+        top: 45px;
+        left: 10px;
+      }
+
+      @keyframes lds-roller {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #loading-spinner-text {
+        font-size: 26px;
+      }
+
+      .ht-c-loading-spinner-text {
+        font-size: 26px;
+      }
+    </style>
+
+
+  </app-root>
+</body>
+
+</html>

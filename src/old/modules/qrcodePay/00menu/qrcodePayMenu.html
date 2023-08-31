@@ -1,0 +1,82 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <!-- <div class="back_bt">
+            <p class="back_title" ng-click="clickBack()">返回</p>
+        </div> -->
+        <!-- <div class="no_bt" ></div> -->
+        <div class="page_title"><img src="ui/tcbbOldStyle/image/logocmyk-01.png"></div>
+        <!-- <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div> -->
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 扣款帳號設定頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+
+                <div class="main_debit">
+                    <!-- <ul class="content_debit">
+                        <li class="content_debit_row" ng-repeat="item in menu" ng-click="clickMenu(item.url)">
+                            <p class="debit_title">{{item.name}}</p>
+                            <div><i class="fa fa-chevron-circle-right loan_sign" aria-hidden="true"></i></div>
+                        </li>
+                    </ul> -->
+                    <div class="inner_links_frame">
+                        <a onclick="location.href='../index.html#'" class="inner_link">首頁</a>
+                        <a class="inner_link" ng-repeat="item in menu" ng-click="clickMenu(item.url)">{{item.name}}</a>	
+                    </div>
+
+                    <div>
+                        <div style="width:25%;float: left;margin-top: 16px;margin-bottom:16px;padding-left: 18px;">
+                            <!-- <a class="inner_button" ng-click="logout()"><span>登出</span></a> -->
+                            <a class="inner_button" id="logout"><span>登出</span></a>
+                        </div>
+                        <div style="width:50%;margin-top: 2px;text-align: center;float: left;" ><img style="width:140px;" src="ui/newMainPage/image/logocmyk-02.png"></div>
+                        <div style="width:25%;float: left;"></div>
+                        
+                    </div>
+                </div>
+                <!--main_input end-->
+
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+
+    </section>
+    <!--main_sec end-->
+</div>
+<!--section 扣款帳號設定頁面 end-->
+<div class="popup_window back_popup" id="pop_leave">
+    <div class="popup_content">
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                您確定要登出嗎？
+            </p>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a id="cancel_btn" class="popup_cancel">取消</a>
+                <a ng-click="logout();">確定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#logout').click(function () {
+        $('#pop_leave').addClass("popup_open");
+    });
+    $('#cancel_btn').click(function () {
+        $('#pop_leave').removeClass("popup_open");
+    });
+
+</script>

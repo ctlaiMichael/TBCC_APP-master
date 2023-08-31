@@ -1,0 +1,23 @@
+<div class="bc_frame">
+
+	<h3 class="row_single in_sub_title">{{'CTRL_LOST_CARD.SUCCESS' | translate}}</h3>
+	<div class="terms_frame">
+		<i class="input_name" ng-if="show_status==1">
+			<font style="color: red;">如您於三日內拾回信用卡，請來電客服專線：</font><a href="tel:0422273131" style="color:blue; text-decoration: block;">(04)2227-3131</a>。<br/><br/>
+		</i>
+		<i class="input_name" ng-if="show_status==2">
+			<!--悠遊卡顯示下列-->
+			<font style="color: red;">本聯名信用卡因悠遊卡功能之特殊規定，掛失作業一經完成後卡片即失效，無法取消掛失作業。</font><br/><br/>
+		</i>
+		<i class="input_name" ng-if="show_status==3">
+			<!--一卡通顯示下列-->
+			<font style="color: red;">本聯名信用卡因一卡通功能之特殊規定，掛失作業一經完成後卡片即失效，無法取消掛失作業。</font><br/><br/>
+		</i>
+	</div>
+</div>
+
+<div class="bc_frame">
+	<div class="row_single2">
+		<button class="button_confirm" ui-sref="home">{{'BTN.BACK_TO_HOME' | translate}}</button>
+	</div>
+</div>

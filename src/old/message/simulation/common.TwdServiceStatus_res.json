@@ -1,0 +1,39 @@
+{
+  "resHeader":{
+    "rquId":"12345",
+    "transDttm":"20160425123022879",
+    "deviceId":"Gphone12345",
+    "ipAddress":"29.10.33.21",
+    "locale":"zh-TW",
+    "appVersion":"2.0",
+    "osType":"01",
+    "idNo":"20795222",
+    "userId":"user01",
+    "telegramName":"T1000105"
+  },
+  "t1000105ResultType": {
+    "details": [
+      {
+        "newsSubject": "行動網銀暫停服務",
+        "newsDigst": "預計於20160330 0000~201603300900 暫停服務",
+        "expireDateTime": 201603300000,
+        "applyDateTime": 201603302400,
+        "newsNo": "123456"
+      },
+      {
+        "newsSubject": "因應主管機關規範，國內外幣匯款性質別更新於2015/08/20生效，敬請配合辦理。",
+        "newsDigst": "台幣匯率升破20,重返60年代經濟起飛",
+        "expireDateTime": 201603290000,
+        "applyDateTime": null,
+        "newsNo": "123457"
+      }
+    ],
+    "paginatedInfo": {
+      "totalRowCount": 2,
+      "pageSize": 10,
+      "pageNumber": 2,
+      "sortColName": "applyDateTime",
+      "sortDirection": "DESC"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "resHeader": {
+	"test": "123"
+  },
+  "t1000102ResultType": {
+	"details": [
+	  {
+		"url": "#/m10",
+		"icon": "icon-A001",
+		"name": "M10",
+		"M10": [
+		  {
+			"url": "#/m1001",
+			"icon": "icon-A001",
+			"name": "M1001"
+		  },
+		  {
+			"url": "#/m1002",
+			"icon": "icon-A002",
+			"name": "M1002"
+		  },
+		  {
+			"url": "#/m1003",
+			"icon": "icon-A003",
+			"name": "M1003"
+		  },
+		  {
+			"url": "#/m1004",
+			"icon": "icon-A004",
+			"name": "M1004"
+		  },
+		  {
+			"url": "#/m1005",
+			"icon": "icon-A005",
+			"name": "M1005"
+		  },
+		  {
+			"url": "#/m1006",
+			"icon": "icon-A006",
+			"name": "M1006"
+		  },
+		  {
+			"url": "#/m1007",
+			"icon": "icon-A006",
+			"name": "M1007"
+		  }
+		]
+	  },
+	  {
+		"url": "#/m20",
+		"icon": "icon-B001",
+		"name": "M20",
+		"M20": [
+		  {
+			"url": "#/m2001",
+			"icon": "icon-B001",
+			"name": "M2001"
+		  },
+		  {
+			"url": "#/m2002",
+			"icon": "icon-B002",
+			"name": "M2002"
+		  },
+		  {
+			"url": "#/m2003",
+			"icon": "icon-B003",
+			"name": "M2003"
+		  },
+		  {
+			"url": "#/m2004",
+			"icon": "icon-B004",
+			"name": "M2004"
+		  },
+		  {
+			"url": "#/m2005",
+			"icon": "icon-B005",
+			"name": "M2005"
+		  },
+		  {
+			"url": "#/m2006",
+			"icon": "icon-B006",
+			"name": "M2006"
+		  },
+		  {
+			"url": "#/m2007",
+			"icon": "icon-B006",
+			"name": "M2007"
+		  },
+		  {
+			"url": "#/m2008",
+			"icon": "icon-B006",
+			"name": "M2008"
+		  },
+		  {
+			"url": "#/m2009",
+			"icon": "icon-B006",
+			"name": "M2009"
+		  }
+		]
+	  },
+	  {
+		"url": "#/m30",
+		"icon": "icon-C001",
+		"name": "M30",
+		"M30": [
+		  {
+			"url": "#/m3001",
+			"icon": "icon-C002",
+			"name": "M3001"
+		  },
+		  {
+			"url": "#/m3002",
+			"icon": "icon-C003",
+			"name": "M3002"
+		  },
+		  {
+			"url": "#/m3003",
+			"icon": "icon-C002",
+			"name": "M3003"
+		  },
+		  {
+			"url": "#/m3004",
+			"icon": "icon-C003",
+			"name": "M3004"
+		  }
+		]
+	  },
+	  {
+		"url": "#/m40",
+		"icon": "icon-C001",
+		"name": "M40",
+		"M40": [
+		  {
+			"url": "#/m4001",
+			"icon": "icon-C002",
+			"name": "M4001"
+		  }
+		]
+	  }
+	]
+  }
+}

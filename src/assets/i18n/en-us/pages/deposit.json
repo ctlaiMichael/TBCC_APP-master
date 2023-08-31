@@ -1,0 +1,119 @@
+{
+    "PG_DEPOSIT": {
+        "ERROR": {
+            "ERROR": "TEST",
+            "NOT_YET": "本功能即將提供!",
+            "ACCT_CONTENT": "很抱歉，您欲查詢的帳戶資訊不存在"
+        },
+        "FIELD": {
+            "acctTypeName_TW": "台幣{{value}}",
+            "totalAcctAmt": "存款總金額",
+            "totlSaveAcctAmt": "活期性存款",
+            "totlTimeDepositeAmt": "定期性存款",
+            "BALANCE": "可用餘額",
+            "dateNameField": "最後交易日/定存到期日",
+            "expirationDate": "定存到期日",
+            "lastTrnsDate": "最後交易日",
+            "openBranchName": "開戶分行",
+            "currency": "幣別",
+            "currencyGold": "GOLD(黃金)",
+            "transTime": "交易時間",
+            "checkNumber": "支票號碼",
+            "balance": "結餘金額",
+            "rcvBankName": "交易行庫",
+            "remarks": "備註",
+            "SEARCH_INFO": {
+                "INFO1": "輸入查詢之起始日期及終止日期，新臺幣活期性存款可查詢本月及前兩個月內資料。",
+                "INFO2": "輸入查詢之起始日期及終止日期，外幣活期性存款可查詢本月及前三個月內資料。",
+                "INFO3": "輸入查詢之起始日期及終止日期，黃金存摺帳戶可查詢本月及前五個月內資料。"
+            },
+            "textMark": "跨行附言"
+        },
+        "TIME_DEPOSIT": {
+            "depositNo": "存單號碼",
+            "saveListBal": "存單面額",
+            "rateTypeName": "利率別",
+            "rate": "利率(%)",
+            "depositDay": "存款期間",
+            "startInterestDay": "起息日",
+            "endAcctDate": "到期日",
+            "startAcctDate": "開戶日",
+            "interestTypeName": "計息別",
+            "rateInfo": "{{value1}}利率  {{value2}}",
+            "grossInterest": "原幣毛息",
+            "taxInterest": "原幣稅",
+            "Interest": "原幣淨息",
+            "SUMMARY": {
+                "rate": "存單利率(%)"
+            },
+            "rateTypeNameList": {
+                "type0": "固定",
+                "type1": "機動"
+            }
+        },
+        "OVERVIEW": {
+            "DETAIL_TITLE": {
+                "TITLE1": "交易日",
+                "TITLE2": "摘要",
+                "TITLE3": "支出/存入"
+            },
+            "TIME_TITLE": {
+                "TITLE1": "到期日",
+                "TITLE2": "利率(%)",
+                "TITLE3": "存單面額"
+            },
+            "SEARCH_INFO": {
+                "INFO1": "輸入查詢之起始日期及終止日期，新臺幣活期性存款可查詢兩年內資料，每次查詢不得超過兩個月。"
+            }
+        },
+        "SUMMARY": {
+            "NO_SERVICE": "很抱歉，您選擇的帳戶沒有帳戶彙總資訊!",
+            "saveBookBalance": "存款餘額",
+            "realBalance": "實質餘額",
+            "usefulBalance": "可用餘額",
+            "afterFDBalance": "轉定存總額",
+            "toFDAmt": "約定轉定存金額",
+            "todayCheckBalance": "今交票金額",
+            "tomCheckBalance": "明交票金額",
+            "distrainBalance": "扣押總額",
+            "icCard": "消費圈存",
+            "freezeBalance": "凍結總額",
+            "afterRunBalance": "營業時間後提款及轉出",
+            "afterRunPay": "營業時間後存款及轉入",
+            "financeRate": "融資利率(%)",
+            "financeAmount": "融資額度",
+            "financeStartDay": "融資期間(起)",
+            "financeEndDay": "融資期間(訖)",
+            "financeRate_ck": "透支利率(%)",
+            "financeAmount_ck": "透支額度",
+            "financeStartDay_ck": "透支契約期間(起)",
+            "financeEndDay_ck": "透支契約期間(訖)",
+            "GOLD": {
+                "realBalance": "新臺幣實際結存公克數",
+                "usefulBalance": "新臺幣可用結存公克數",
+                "distrainBalance": "扣押公克數",
+                "freezeBalance": "凍結公克數",
+                "realBalUS": "美元實際結存公克數",
+                "usefulBalUS": "美元可用結存公克數"
+            }
+        },
+        "FOREX_DEPOSIT": {
+            "DETAIL_TITLE": {
+                "TITLE1": "交易日",
+                "TITLE2": "摘要",
+                "TITLE3": "支出/存入"
+            },
+            "TIME_TITLE": {
+                "TITLE1": "交易日",
+                "TITLE2": "交易金額",
+                "TITLE3": "續存本金"
+            },
+            "SEARCH_INFO": {
+                "INFO1": "輸入查詢之起始日期及終止日期，外幣活期性存款可查詢本月及六個月內資料。",
+                "INFO2": "輸入查詢之起始日期及終止日期，外幣活期性存款可查詢本月及一年內資料。",
+                "INFO3": "若有利率調整影響存款積數時，最後交易日欄位將顯示調整日之日期，惟「交易明細查詢」功能查詢該日明細，則不顯示該筆明細。"
+            },
+            "BALANCE": "餘額"
+        }
+    }
+}

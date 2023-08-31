@@ -1,0 +1,33 @@
+<section>
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame">
+            <i class="icon_success"></i>
+            <span class="step_final_info">{{successMsg}}</span>
+        </div>
+        <p style="color:white">{{successDetail}}</p>
+    </div>
+    <ul class="table_info">
+        <li class="table_row" *ngFor="let item of successContent">
+            <span>{{item.title}}</span>
+            <i>{{item.detail}}</i>
+        </li>
+    </ul>
+    <div class="row_single"></div>
+    <div class="row_single">
+        <!-- <ng-container *ngIf="!toTwdTransfer.backToTWDTransfer"> -->
+            <a href="javascript:void(0)" class="button_confirm" (click)="onBackEvent();">{{btnName}}</a>
+        <!-- </ng-container> -->
+        <!-- <ng-container *ngIf="toTwdTransfer.backToTWDTransfer">
+            <a href="javascript:void(0)" class="button_confirm" (click)="onBackEvent();">返回台幣轉帳</a>
+        </ng-container> -->
+    </div>
+    <ng-container *ngIf="notice">
+        <div class="row_single">
+            <h4 class="simple_title">提醒您：</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">{{notice}}
+            </p>
+        </div>
+    </ng-container>
+</section>

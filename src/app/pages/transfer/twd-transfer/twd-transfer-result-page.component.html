@@ -1,0 +1,93 @@
+<section >
+	<div class="sub_info_frame result">
+		<!-- 失敗step_final_icon_frame 加上 fault_active -->
+		<div class="step_final_icon_frame" [ngClass]="twdTransferResult.trnsRsltCode != '0'?'fault_active':''">
+			<ng-container *ngIf="twdTransferResult.trnsRsltCode == '0'">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易成功</span>
+			</ng-container>
+		</div>
+		<p class="sub_info_list">
+			<i class="sub_info_title">轉入行庫</i>
+			<span
+				class="sub_info_content color_yellow">{{twdTransferResult.trnsfrInBank}}{{twdTransferResult.trnsfrInBankName}}</span>
+		</p>
+		<p class="sub_info_list">
+			<i class="sub_info_title">轉入帳號</i>
+			<ng-container *ngIf="trnsfrInAccntPipeChange ;else otherAccount">
+					<span class="sub_info_content color_yellow">{{twdTransferResult.trnsfrInAccnt | accountFormate}}</span>
+			</ng-container>
+			<ng-template #otherAccount>
+					<span class="sub_info_content color_yellow">{{twdTransferResult.trnsfrInAccnt}}</span>
+			</ng-template >
+		</p>
+		<p class="sub_info_list">
+			<i class="sub_info_title">轉帳金額</i>
+			<!-- <span
+                class="sub_info_content color_yellow big_font">{{twdTransferResult.trnsfrAmount | currencyMoney:'TWD'}}</span> -->
+            <!-- 移除金額放大的效果 -->
+			<span
+				class="sub_info_content color_yellow">{{twdTransferResult.trnsfrAmount | currencyMoney:'TWD'}}</span>
+		</p>
+	</div>
+	<ul class="table_info">
+		<li class="table_row">
+			<span>交易序號</span>
+			<i>{{twdTransferResult.trnsNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易時間</span>
+			<i>{{twdTransferResult.trnsDateTime | htDate}}</i>
+		</li>
+		<li class="table_row">
+			<span>轉出帳號</span>
+			<i>{{twdTransferResult.trnsfrOutAccnt | accountFormate }}</i>
+		</li>
+		<li class="table_row">
+			<span>轉帳方式</span>
+			<i>{{allTransferData.trnsfrType}}</i>
+		</li>
+		<li class="table_row">
+			<span>轉帳日期</span>
+			<ng-container *ngIf="twdTransferResult.recordDate">
+				<i>{{twdTransferResult.recordDate | htDate: 'yyyy/MM/dd'}}</i>
+			</ng-container>
+			<ng-container *ngIf="twdTransferResult.trnsfrDate">
+				<i>{{twdTransferResult.trnsfrDate | htDate: 'yyyy/MM/dd'}}</i>
+			</ng-container>
+		</li>
+		<ng-container *ngIf="twdTransferResult.recordDate">
+			<li class="table_row">
+				<span>手續費</span>
+				<i>{{twdTransferResult.trnsfrFee}}</i>
+			</li>
+			<li class="table_row">
+				<span>轉出帳號餘額</span>
+				<i>{{twdTransferResult.trnsfrOutAccntBal | currencyMoney:'TWD'}}</i>
+			</li>
+		</ng-container>
+		<li class="table_row">
+			<span>付款人自我備註</span>
+			<i> &nbsp; {{twdTransferResult.notePayer}}</i>
+		</li>
+		<li class="table_row">
+			<span>給收款人訊息</span>
+			<i> &nbsp; {{twdTransferResult.notePayee}}</i>
+		</li>
+	</ul>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+			訊息分享
+		</a>
+	</div>
+	<div class="row_single">
+		<a href="javascript:void(0)" (click)="accountView()" class="button_confirm">
+			返回台幣存款總覽
+		</a>
+	</div>
+
+	<!-- <div style="padding: 5px 5px;display: flex;flex-direction: row;justify-content: space-around;align-items: center;">
+			<a style="color:red;size:14px;text-decoration:underline" href="http://tcb-event.com.tw/mobileapp">~抽獎活動說明~</a>
+	</div> -->
+</section>

@@ -1,0 +1,56 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">返回</p>
+        </div>
+        <div class="page_title">信用卡交易使用條款</div>
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--header end-->
+
+<!--section -->
+<div class="row content">
+	<div class="main_content">
+		<h2>合作金庫商業銀行  合庫E Pay綁定信用卡服務約定條款</h2>
+		<div class="agree_content">您好，歡迎使用合庫E-Pay綁定信用卡服務，為保障您的權益，請您先詳閱合庫E-Pay綁定信用卡服務約定條款(下稱本約定條款)，您於行動裝置點選同意後，即表示您已詳閱下列條款，並同意遵守之：
+			<br>第一條 契約雙方之基本義務
+			<br>一、持卡人之信用卡及卡號資訊屬於本行之財產，持卡人應善盡保管及使用信用卡卡號資訊， 不得讓與、轉借、提供擔保或以其他方式將信用卡之占有轉讓予第三人或交其使用，並應防止他人獲悉持卡人之卡片相關資訊。
+			<br>二、持卡人對於約定接收簡訊密碼之行動電話及交易密碼，應負保管之責。
+			<br>第二條 合庫E-Pay綁定信用卡交易
+			<br>一、使用合庫E-Pay綁定信用卡交易時，須透過行動網銀設定之密碼驗證（包含但不限於OTP、指紋、圖形驗證碼、PIN 碼、虹膜辨識、或個人密碼等）方可進行交易，一旦通過密碼驗證，即視為持卡人之支付指示，持卡人應遵守本行信用卡約定條款所載之各項權利義務，不得以未簽名為理由，作為拒繳應付款項之抗辯。
+			<br>二、合庫E-Pay綁定信用卡之服務，無法使用於以下之交易：
+			<br>	(一)電子票證扣款交易(如：悠遊卡、一卡通、i cash、HappyCash)。
+			<br>	(二)須讀取晶片或磁條之信用卡交易(如：預借現金)。
+			<br>	(三)須持卡人提供完整卡號或過卡判別之卡友權益及優惠(如：市區停車、國際機場外圍停車)。
+			<br>三、合庫E-Pay綁定信用卡一般交易限額，每筆不超過新臺幣 5 萬元，每天累積不超過新臺幣 10 萬元，每月累積不超過新臺幣 20 萬元(不含稅費)。
+			<br>第三條 費用
+			<br>持卡人申請與使用合庫E-Pay綁定信用卡服務不需支付任何額外費用，但仍須負擔實體信用卡相關費用，依現行規定收費標準繳納服務費、手續費，並自信用卡帳單收取。
+			<br>第四條 終止事由
+			<br>一、合庫E-Pay綁定信用卡係實體信用卡之衍生服務，實體信用卡狀態如有異動(如：申請補發、掛失、停用)，本行將一併停用該實體信用卡對應之合庫E-Pay綁定信用卡。
+			<br>二、若持卡人要終止合庫E-Pay綁定信用卡服務之使用權利，可至APP內解除綁定。
+			<br>第五條 其他
+			<br>一、除本約定條款另有約定外，其他未約定事項悉依「合作金庫商業銀行個人信用卡約定條款」及其他相關公告辦理。
+			<br>二、本約定條款與「合作金庫商業銀行個人信用卡約定條款」之約定不同時，以本約定條款內容為優先。
+			<br>&nbsp;<br>&nbsp;
+			<br>&nbsp;<br>&nbsp;
+		</div>
+	</div>
+</div>
+<!--section end-->
+
+<!--agree button-->
+<div class="agree_location">
+	<div class="row">
+		<div class="agree_check">
+			<div class="agree_title">本人已詳閱及瞭解上開注意事項並遵守之。</div>
+			<div class="agree_check_bt">
+				<button type="button" class="agree_bt" ng-click="clickAgree()" ng-disabled="disable"><p>同意</p></button>
+				<button type="button" class="agree_bt" ng-click="clickDisAgree()" ng-disabled="disable"><p>不同意</p></button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--agree button end-->

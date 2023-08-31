@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8" />
+	<title>信用卡服務</title>
+	<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Apple -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=yes" />
+
+	<!-- All CSS -->
+	<link rel="stylesheet" href="ui/css/global.css" />
+	<script type="text/javascript" src="lib/html2canvas.min.js"></script>
+	<script>
+		delete sessionStorage.temp_auth_token;
+		delete sessionStorage.temp_hitrust_auth;
+	</script>
+</head>
+<body>
+
+	<!-- 頁面 loadong 的動畫框架 -->
+	<div class="loader-box" ng-controller="loadCtrl">
+		<div class="lable_loading">LOADING</div>
+		<div class="loader">
+			<div class="element-animation">
+				<img src="ui/images/loader.png" width="1180" height="70";>
+			</div>
+		</div>
+	</div>
+	<!-- 頁面 loadong 的動畫框架 //End -->
+
+	<!-- 內容主框架 -->
+	<article style="height:100vh" id="capture">
+
+		<!-- header(側邊欄按鈕、Logo與標題) -->
+		<header id="HeaderBox" ui-view="header"></header>
+		<!-- header //End -->
+
+		<!-- fix區塊 -->
+		<div id="FixBox" ui-view="fix_box"></div>
+		<!-- fix //End -->
+
+		<!-- 首頁框架專用的 class[menu_frame] -->
+		<section id="MainBox" ui-view="content" ng-cloak></section>
+		<!-- section //End -->
+
+		<!-- footer -->
+		<div ui-view="footer" ng-cloak></div>
+		<!-- footer //End -->
+	</article>
+	<!-- 內容主框架 //End -->
+
+	<!-- 左側選單 -->
+	<s class="aside_cover"></s>
+	<aside ui-view="menu-left" ng-cloak></aside>
+	<!-- 左側選單 //End -->
+
+	<!-- popup -->
+	<div ui-view="popup" ng-cloak></div>
+	<!-- popup //End -->
+
+	<script src="lib/jquery.min.js"></script>
+	<script src="ui/js/touchslider.js"></script>
+	<script src="ui/js/jquery.magnific-popup.min.js"></script>
+
+	<script src="ui/main_tool.js"></script>
+	<script src="ui/init.js"></script>
+	<script src="../cordova.js"></script>
+
+	<!--angular start-->
+	<script type="text/javascript" src="lib/require.js" data-main="main"></script>
+	<!--angular end-->
+	<script type="text/javascript" src="lib/readxml.js"></script>
+	<script type="text/javascript" src="lib/CelebrusInsert_tool.js"></script>
+</body>
+
+</html>

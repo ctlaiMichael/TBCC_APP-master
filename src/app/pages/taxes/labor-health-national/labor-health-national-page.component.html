@@ -1,0 +1,133 @@
+<section #labor_health>
+    <ng-container *ngIf="'result' != showPage">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar" [ngClass]="{'step_active':'original'== showPage}">
+                    <span *ngIf="'original'== showPage">1.填寫資料</span>
+                </li>
+                <li class="step_bar" [ngClass]="{'step_active':'confirm'== showPage}">
+                    <span *ngIf="'confirm'== showPage">2.確認</span>
+                </li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="'original' == showPage">
+        <div class="row_single">
+            <h4 class="simple_title" *ngIf="'health' == changePage">{{'PG_TAX.TITLE.HEALTH' | translate}}</h4>
+            <h4 class="simple_title" *ngIf="'labor' == changePage">{{'PG_TAX.TITLE.LABOR' | translate}}</h4>
+            <h4 class="simple_title" *ngIf="'national' == changePage">{{'PG_TAX.TITLE.NATIONAL' | translate}}</h4>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['account']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    扣款帳號:
+                </li>
+                <li class="inner_table_cell">
+                    <ng-container *ngIf="defaultAcctNoFlag;else otherShow">
+                        <select class="inner_select" (change)="onChangeType()"
+                            [(ngModel)]="allLaborHealthNationalData['account']">
+                            <option value="" selected disabled>請選擇扣款帳號</option>
+                            <option *ngFor="let item of acctNo">{{item.acctNo | accountFormate }}</option>
+                        </select>
+                    </ng-container>
+                    <ng-template #otherShow>
+                        <select class="inner_select">
+                            <option>{{allLaborHealthNationalData['account'] | accountFormate }}</option>
+                        </select>
+                    </ng-template>
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['account'] | translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['barcode1']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    條碼一:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" maxlength="9" class="inner_input" placeholder="請輸入條碼一資料"
+                        [(ngModel)]="allLaborHealthNationalData['barcode1']">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['barcode1'] | translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['barcode2']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    條碼二:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" maxlength="16" class="inner_input" placeholder="請輸入條碼二資料"
+                        [(ngModel)]="allLaborHealthNationalData['barcode2']">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['barcode2'] | translate}}</i>
+        </div>
+
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['barcode3']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    條碼三:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" maxlength="15" class="inner_input" placeholder="請輸入條碼三資料"
+                        [(ngModel)]="allLaborHealthNationalData['barcode3']">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['barcode3'] | translate}}</i>
+            <div class="row_inner">
+                <a class="inner_button float_right_bt" (click)="billExample(changePage)">
+                    <span>帳單範例說明</span>
+                </a>
+                <a class="inner_button float_right_bt" (click)="scanningBarcode();labor_health.scrollTop = 0;">
+                    <span>掃描條碼</span>
+                </a>
+            </div>
+        </div>
+        <!-- 安控機制start  -->
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+        <!-- 安控機制end  -->
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void(0)" (click)="goConfirm()">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您：</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                <ng-container *ngIf="'health' == changePage">
+                    *僅限繳納中央健康保險局健保費用
+                </ng-container>
+                <ng-container *ngIf="'labor' == changePage">
+                    *僅限繳納勞保局勞工保險費用
+                </ng-container>
+                <ng-container *ngIf="'national' == changePage">
+                    *僅限繳納勞保局國民年金保險費用
+                </ng-container>
+            </p>
+        </div>
+    </ng-container>
+
+    <!-- 確認頁-->
+    <ng-container *ngIf="'confirm' == showPage">
+        <app-labor-health-national-confirm-page (backToEdit)="toEditPage($event)"
+            (backPageEmit)="finalCheckData($event)" [laborHealthNationalConfirm]="allLaborHealthNationalData"
+            [trnsfrAmount]="trnsfrAmount">
+        </app-labor-health-national-confirm-page>
+    </ng-container>
+
+    <!-- 結果頁-->
+    <ng-container *ngIf="'result' == showPage">
+        <app-labor-health-national-result-page [type_name]="type_name"
+            [laborHealthNationalResult]="laborHealthNationalResultData">
+        </app-labor-health-national-result-page>
+    </ng-container>
+
+</section>

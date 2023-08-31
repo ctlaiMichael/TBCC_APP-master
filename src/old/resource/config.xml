@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+    <!-- <URL>http://210.200.4.12/MobileBank</URL> -->
+    <URL>http://210.200.4.11/MobileBankDev_P4</URL>
+    <OFFLINE>true</OFFLINE>
+    <SEND_TO_MF>true</SEND_TO_MF>
+    <SEND_TO_PO>true</SEND_TO_PO>
+    <LOGOUT_TIME>180</LOGOUT_TIME>
+    <SHUTCOUNT_TIME>60</SHUTCOUNT_TIME>
+    <REHANDSHAKE_TIME>300</REHANDSHAKE_TIME>
+    <PAGESIZE>20</PAGESIZE>
+    <APP_VERSION>1.0.0</APP_VERSION>
+    <QRCODE_DURATION_TIME>180</QRCODE_DURATION_TIME>
+    <QRCODE_CHECK_TIME>20</QRCODE_CHECK_TIME>
+    <!-- 測試設定 -->
+    <NACTIVE_OPEN>false</NACTIVE_OPEN>
+    <DEBUG_MODE_LOG>true</DEBUG_MODE_LOG>
+    <UAT_FLAG>true</UAT_FLAG>
+    <!-- <電文路徑> -->
+    <TELEGRAM_PATH>/mnbjsonrequest/command.rest</TELEGRAM_PATH>
+    <!-- <三段電文模組路徑> -->
+    <USE_INTERNEL_PUBLIC_KEY>true</USE_INTERNEL_PUBLIC_KEY>
+    <CRYPTO>true</CRYPTO>
+    <OTP_ENABLE>true</OTP_ENABLE>
+    <ONLINE_UPDATE>true</ONLINE_UPDATE>
+    <REGISTER>/mnb/challenge/register.rest</REGISTER>
+    <HAND_SHAKE>/mnb/challenge/handshake.rest</HAND_SHAKE>
+    <EXCHANGE_KEY>/mnb/challenge/exchange.rest</EXCHANGE_KEY>
+    <DOWNLOAD_PATCH>/mnb/downloadpatch/*.rest?t=/*</DOWNLOAD_PATCH>
+    <AUTHORIZATION_KEY>hitrust_auth</AUTHORIZATION_KEY>
+    <AUTH_TOKEN_KEY>auth_token</AUTH_TOKEN_KEY>
+    <ROBOT_URL>http://robot.tcb-test.com.tw:8080/wise?ch=app</ROBOT_URL>
+    <CELEBRUS_JS>lib/CelebrusInsert.js</CELEBRUS_JS>
+</CONFIG>

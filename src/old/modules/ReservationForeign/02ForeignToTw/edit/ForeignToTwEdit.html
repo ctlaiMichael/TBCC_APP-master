@@ -1,0 +1,197 @@
+<!-- <frameset rows="," cols=",">
+	<frame src="" name="">
+	
+</frameset>header -->
+<div class="row">
+    <header class="native_main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">預約外匯</p>
+        </div>
+        <div class="page_title">預約外幣轉台幣</div>
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></img></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="main_input">
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>預約轉帳日期:</p>
+                        </div>						
+                         <!-- <div class="input_warning"><input type="date"  max="{{date1}}" min="{{date2}}" class="content_input" ng-model="example.value"  value="" placeholder="yyyy-MM-dd"></div>  -->
+                         <!-- <input type= "text" onfocus="(this.type='date')" id="" name="" placeholder="請選擇時間" />  -->
+                         <!-- <div class="input_warning"><input type="text" placeholder="請選擇時間" id="birthday" max="{{date1}}" min="{{date2}}"/></div> -->
+                         <div class="input_warning"><input id="birthday" class="" type="date" ng-model="message" placeholder="請選擇時間"  style="height:21px;overflow: hidden;" max="{{date1}}" min="{{date2}}" ng-blur="checkDate()"></div>
+                         <!-- <div class="input_warning"><input id="birthday" class="" type="date" placeholder="請選擇時間"  style="height:21px;overflow: hidden;" max="{{date1}}" min="{{date2}}"></div> -->
+                    </div>
+                    <!-- https://msdn.microsoft.com/zh-tw/library/ee532932(v=vs.94).aspx -->
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>轉出帳號:</p>
+                        </div>
+                        <!-- <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payNo" placeholder="請選擇轉出帳號"></div>
+                         -->
+                         <select name="Accountselect" ng-model = "life" ng-change="clickOutAccnt()">
+                            <option  value="">請選擇</option> 
+                            <option ng-repeat="actsOut in InAC " value="{{$index}}">{{actsOut.acctNo}}
+                        </select>
+                    </div>
+
+                   
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>約定轉入帳號:</p>
+                        </div>
+                        <!-- <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.payEndDate1" placeholder="請選擇約定轉入帳號"></div> -->
+                        <select name="Accountselect" ng-model = "life1" >
+                        <option  value="">請選擇</option> 
+                        <option ng-repeat="actsIn in InAC11" value="{{$index}}">{{actsIn.acctNo}}
+                        </select>
+                    </div>
+					
+					<!-- <div class="content_infor">
+                                    <div class="content_text2" style="min-width: 125px;">
+                                        <p>目前您的轉帳機制:</p>
+                                    </div>
+                                    <div class="input_warning2" style="width: 60px;"><input type="text"  class="content_input" ng-model="defaultSecurityType.name" readonly></div>
+                                    <div class="content_text_chang" ng-click="clickChangeSceurityType(true)" ng-if="anotherSecurityType">
+                                        <p style="width: 35px;">變更</p>
+                                    </div>
+                                    <div class="content_sign" ng-if="anotherSecurityType"><i class="fa fa-chevron-right " aria-hidden="true"></i></div>
+                    </div> -->
+                    <!-- <security-selectorns-directive></security-selectorns-directive> -->
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>幣別選擇:</p>
+                        </div>
+                        <!-- <div class="input_warning33"><input type="text" class="content_input" ng-model="qrcode.trnsAmountStr" placeholder="請選擇轉入幣別"></div> -->
+                        <select name="Accountselect1" ng-model = "life2" >
+                            <option  value="">請先選擇轉出帳號</option> 
+                            <option ng-repeat="c in coin" value="{{$index}}" >{{c}}</option>
+                        </select>
+                        
+                        <div ><button type="button" class="confirm_bt44" ng-click="clickrate()">牌告匯率</button></div>
+                    </div> 
+					
+					<div class="content_infor">
+                        <div class="content_text2">
+                            <p>轉帳金額:</p>
+                        </div><div class="input_warning" style="color: red; font-size: 12px ;font-weight:bold">每日累計結匯限額結購/結售各TWD499999</div> 
+                       
+                    </div> 
+	
+					<div class="content_infor">
+                    <div class="content_text4">
+					<input type="radio" name="payway"  ng-model="color.name" value="1" ng-click="clickCard(cardds)">轉出幣{{coin[life2]}}<br>
+					<input type="radio" name="payway"  ng-model="color.name" value="2" ng-click="clickCard(cardds)">轉入幣TWD
+                    </div>
+                        
+                        <input type="tel"  class="content_input" ng-show="color.name == 2" style ="width:100px" ng-model="trnsAmountStr" placeholder="請輸入金額">
+                        <input type="tel"  style ="width:80px"  ng-show="color.name == 1" class="content_input"  ng-model="trnsAmountStr1" placeholder="請輸入金額"><input type="tel" placeholder="." style ="width:2px" ng-show="color.name == 1" readonly><input type="tel" ng-show="color.name == 1" style ="width:20px" class="content_input"  maxlength= "2" ng-model="trnsAmountStr2" placeholder="00">
+                    </div>  
+
+
+
+
+                    <!-- <div class="content_infor">
+                            <div class="content_text4">
+                        <input type="radio" name="payway"    ng-model="color.name" value="1" ng-click="clickCard(cardds)">轉出幣TWD
+                        <input type="radio" name="payway"  ng-model="color.name" value="2" ng-click="clickCard(cardds)">轉入幣{{coin[life2]}}</div>
+                     
+                        
+                        <input type="tel" class="content_input" ng-show="color.name == 1"  style ="width:100px" ng-model="trnsAmountStr" placeholder="請輸入金額">
+                        <input type="tel"  class="content_input" ng-show="color.name == 2"  style ="width:100px"   ng-model="trnsAmountStr1" placeholder="請輸入金額"><input type="tel" placeholder="." style ="width:2px" ng-show="color.name == 2" readonly><input type="tel"  style ="width:15px" ng-show="color.name == 2" class="content_input"  maxlength= "2" ng-model="trnsAmountStr2" placeholder="00">
+                    </div> -->
+
+					<!-- <div class="content_infor"  >
+
+                        <div class="input_warning"><input type="text" class="content_input" ng-model="qrcode.trnsAmountStr" placeholder="請轉入轉帳金額123"></div>
+                    </div>  -->
+
+                    <div class="content_infor">
+                        <div class="content_text2">
+                            <p>性質別：外存結售</p>
+                        </div>
+                        
+                        <!-- <div class="content_bt"><button type="button" class="confirm_bt33">查詢結購用途說明</button></div> -->
+                        <!-- <a href="http://210.200.4.11/MobileBankDev_P4/AppView/msg/F5000103_3.html" ><button type="button" class="confirm_bt33">查詢結購用途說明</button></a> -->
+                        <button ng-click="openWindow()" class="confirm_bt55">查詢結售<br>用途說明</button>
+                        
+                    </div> 
+
+                    
+
+
+
+
+
+					<select name="Accountselect4" ng-model = "life4" >
+                        <option  class="content_infor" value="">請選擇結售用途</option> 
+                        <option ng-repeat="c in config" value="{{$index}}">{{c}}
+                    </select>
+
+                    <div class="content_infor">
+                        <div class="content_text">
+                            <p>外幣帳號存摺備註:</p>
+                        </div>
+                        <input type="radio" name="payway1"  ng-model="color.aa" value="3" ng-click="clickCard(cardds)">成交匯率&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="payway1"  ng-model="color.aa" value="4" ng-click="clickCard(cardds)">自訂備註
+                    </div>
+
+                    
+                    <input type="text" style="text-align: center ; font-size: 14px"    ng-model="status"  placeholder="預設帶成交匯率" ng-show="color.aa == 3" readonly> 
+                    <input  type="text" style="text-align: center ; font-size: 14px ; background-color: rgb(231, 223, 223)"  ng-model="status"  ng-show="color.aa == 4" placeholder="輸入自訂備註" > 
+                    <font color="red" size= "2" style ="font-weight:bold">自訂備註長度限18位英數字或8個中文字。<br></font>
+                    
+
+
+                    
+                    
+                    <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+                            <button type="button" class="cancel_bt" ng-click="clickBack()">取消</button>							
+                        </div>
+                    </div>
+					
+                    
+
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div>
+
+                <!--main_input end-->
+            </div>
+            <!--main_content end-->
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>
+
+<!-- 跳出繳費作業視窗 -->
+<div ng-if="onChangeSecurityType">
+<div class="shadow" style="display: block" ng-click="clickChangeSceurityType(false)"></div>
+<div class="row" >
+    <div class="pop_securityType">
+        <a><div class="securityType" ng-click="changeSecurity(anotherSecurityType.key)" >{{anotherSecurityType.name}}</div>
+    </div> <!--pop_pay end-->
+</div>
+</div>
+<!-- 跳出繳費作業視窗 End -->

@@ -1,0 +1,44 @@
+<section *ngIf="showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <ul class="tab_table">
+        <li class="tab_two_cell">
+            <a href="javascript:void(0)" (click)="onOverview()" class="tab_button" [ngClass]="{ 'active':(goChangeTag) }">智富庫存總覽</a>
+        </li>
+        <li class="tab_two_cell">
+            <a href="javascript:void(0)" (click)="onDetail()" class="tab_button" [ngClass]="{ 'active':(!goChangeTag) }">智富庫存明細</a>
+        </li>
+    </ul>
+
+    <!--智富庫存總覽 Start-->
+    <ng-container *ngIf="goChangeTag">
+        <app-rich-overview (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-rich-overview>
+    </ng-container>
+    <!--智富庫存總覽 End-->
+
+    <!--智富庫存明細 Start-->
+    <ng-container *ngIf="!goChangeTag">
+        <table class="table_fund_font rich_table">
+            <thead class="rich_bak_color">
+                <tr>
+                    <td colspan="3" class="rich_pad_top">投資標的</td>
+                </tr>
+                <tr class="rich_bod_bot">
+                    <td class="rich_pad_bot rich_align_ri">交易日期<br>投資金額</td>
+                    <td class="rich_font_pad_cen">參考損益<br>參考報酬率</td>
+                    <td>本階段停利點<br>本階段停損點</td>
+                </tr>
+            </thead>
+        </table>
+        <!-- <table class="table_fund_font" style="width:100%"> -->
+            <app-rich-detail [page]="'1'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-rich-detail>
+            <ng-container #pageBox></ng-container>
+        <!-- </table> -->
+    </ng-container>
+    <!--智富庫存明細 End-->
+</section>
+
+<!--智富庫存明細查詢 Start-->
+<ng-template #contentBox>
+    <app-rich-detail-query [inputData]="content_data" [backData]="backData"
+    (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-rich-detail-query>
+</ng-template>
+<!--智富庫存明細查詢 End-->

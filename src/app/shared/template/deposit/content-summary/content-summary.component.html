@@ -1,0 +1,257 @@
+<ng-container [ngSwitch]="showContent">
+    <ng-container *ngSwitchCase="'TW'">
+        <!-- 台幣 -->
+        <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span>
+        </div>
+
+        <div>
+            <ul class="table_info">
+                <!-- 實質餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.realBalance' | translate }}</span>
+                    <i>{{ data['realBalance'] | htMoney }}</i>
+                </li>
+                <!-- 可用餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.usefulBalance' | translate }}</span>
+                    <i>{{ data['usefulBalance'] | htMoney }}</i>
+                </li>
+                <!-- 顯示轉定存資料 Start -->
+                <ng-container *ngIf="data['_showFD']">
+                    <!-- 轉定存總額 -->
+                    <li class="table_row">
+                        <span>{{ 'PG_DEPOSIT.SUMMARY.afterFDBalance' | translate }}</span>
+                        <i>{{ data['afterFDBalance'] | htMoney }}</i>
+                    </li>
+                    <!-- 約定轉定存金額 -->
+                    <li class="table_row">
+                        <span>{{ 'PG_DEPOSIT.SUMMARY.toFDAmt' | translate }}</span>
+                        <i>{{ data['toFDAmt'] | htMoney }}</i>
+                    </li>
+                </ng-container>
+                <!-- 顯示轉定存資料 End -->
+                <!-- 今交票金額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.todayCheckBalance' | translate }}</span>
+                    <i>{{ data['todayCheckBalance'] | htMoney }}</i>
+                </li>
+                <!-- 明交票金額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.tomCheckBalance' | translate }}</span>
+                    <i>{{ data['tomCheckBalance'] | htMoney }}</i>
+                </li>
+                <!-- 扣押總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.distrainBalance' | translate }}</span>
+                    <i>{{ data['distrainBalance'] | htMoney }}</i>
+                </li>
+                <!-- 消費圈存 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.icCard' | translate }}</span>
+                    <i>{{ data['icCard'] | htMoney }}</i>
+                </li>
+                <!-- 凍結總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.freezeBalance' | translate }}</span>
+                    <i>{{ data['freezeBalance'] | htMoney }}</i>
+                </li>
+
+                <!-- 營業時間後提款及轉出 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.afterRunBalance' | translate }}</span>
+                    <i>{{ data['afterRunBalance'] | htMoney }}</i>
+                </li>
+
+                <!-- 營業時間後存款及轉入 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.afterRunPay' | translate }}</span>
+                    <i>{{ data['afterRunPay'] | htMoney }}</i>
+                </li>
+                <!-- 顯示轉定存資料 Start -->
+                <ng-container *ngIf="data['_showFinance'] ">
+                    <ng-container *ngIf="data['_isPB']">
+                        <!-- 融資利率(%) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeRate' | translate }}</span>
+                            <i>{{ data['financeRate'] | htFinancial }}</i>
+                        </li>
+                        <!-- 融資額度 -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeAmount' | translate }}</span>
+                            <i>{{ data['financeAmount'] | htMoney }}</i>
+                        </li>
+                        <!-- 融資期間(起) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeStartDay' | translate }}</span>
+                            <i>{{ data['financeStartDay'] | htDate: 'date' }}</i>
+                        </li>
+                        <!-- 融資期間(訖) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeEndDay' | translate }}</span>
+                            <i>{{ data['financeEndDay'] | htDate: 'date' }}</i>
+                        </li>
+                    </ng-container>
+                    <!-- 顯示轉定存資料 End -->
+                    <!-- 顯示支存資料 Start -->
+                    <ng-container *ngIf="!data['_isPB']">
+                        <!-- 透支利率(%) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeRate_ck' | translate }}</span>
+                            <i>{{ data['financeRate'] | htFinancial }}</i>
+                        </li>
+                        <!-- 透支額度 -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeAmount_ck' | translate }}</span>
+                            <i>{{ data['financeAmount'] | htMoney }}</i>
+                        </li>
+                        <!-- 透支契約期間(起) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeStartDay_ck' | translate }}</span>
+                            <i>{{ data['financeStartDay'] | htDate: 'date' }}</i>
+                        </li>
+                        <!-- 透支契約期間(訖) -->
+                        <li class="table_row">
+                            <span>{{ 'PG_DEPOSIT.SUMMARY.financeEndDay_ck' | translate }}</span>
+                            <i>{{ data['financeEndDay'] | htDate: 'date' }}</i>
+                        </li>
+                    </ng-container>
+                    <!-- 顯示支存資料 End -->
+                </ng-container>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'FOREX'">
+        <!-- 外幣-活存 -->
+        <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span>
+        </div>
+        <div>
+            <ul class="table_info">
+                <!-- 實質餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.realBalance' | translate }}</span>
+                    <i>{{ data['realBalance'] | htMoney }}</i>
+                </li>
+                <!-- 可用餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.usefulBalance' | translate }}</span>
+                    <i>{{ data['usefulBalance'] | htMoney }}</i>
+                </li>
+                <!-- 存摺餘額 -->
+                <!-- <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.saveBookBalance' | translate }}</span>
+                    <i>{{ data['saveBookBalance'] | htMoney }}</i>
+                </li> -->
+                <!-- 扣押總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.distrainBalance' | translate }}</span>
+                    <i>{{ data['distrainBalance'] | htMoney }}</i>
+                </li>
+                <!-- 凍結總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.freezeBalance' | translate }}</span>
+                    <i>{{ data['freezeBalance'] | htMoney }}</i>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'FOREX_TIME'">
+        <!-- 外幣-定存 -->
+        <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span>
+        </div>
+        <div>
+            <ul class="table_info">
+                <!-- 存單號碼 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.depositNo' | translate }}</span>
+                    <i>{{ data['saveListNo'] }}</i>
+                </li>
+                <!-- 存單面額 (幣別顯示?) -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.saveListBal' | translate }}</span>
+                    <i>{{ data['saveListBalance'] | htMoney }}</i>
+                </li>
+                <!-- 扣押總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.distrainBalance' | translate }}</span>
+                    <i>{{ data['distrainBalance'] | htMoney }}</i>
+                </li>
+                <!-- 存款期間 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.depositDay' | translate }}</span>
+                    <i>{{ data['depositDay'] }}</i>
+                </li>
+                <!-- 起息日 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.depositDay' | translate }}</span>
+                    <i>{{ data['startInterestDay'] | htDate: 'date' }}</i>
+                </li>
+                <!-- 到期日 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.depositDay' | translate }}</span>
+                    <i>{{ data['endAccountDay'] | htDate: 'date' }}</i>
+                </li>
+                <!-- 利率別 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.rateTypeName' | translate }}</span>
+                    <i>{{ data['rateType'] }}利率</i>
+                </li>
+                <!-- 存單利率(%) -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.TIME_DEPOSIT.SUMMARY.rate' | translate }}</span>
+                    <i>{{ data['rate'] | htFinancial }}</i>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'GOLD'">
+        <!-- 黃金 -->
+        <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span>
+        </div>
+        <div>
+            <ul class="table_info">
+                <!-- 新臺幣實際結存公克數: 實質餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.realBalance' | translate }}</span>
+                    <i>{{ data['realBalance'] | htMoney }}</i>
+                </li>
+                <!-- 新臺幣可用結存公克數: 可用餘額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.usefulBalance' | translate }}</span>
+                    <i>{{ data['usefulBalance'] | htMoney }}</i>
+                </li>
+                <!-- 扣押公克數: 扣押總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.distrainBalance' | translate }}</span>
+                    <i>{{ data['distrainBalance'] | htMoney }}</i>
+                </li>
+                <!-- 凍結公克數: 凍結總額 -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.freezeBalance' | translate }}</span>
+                    <i>{{ data['freezeBalance'] | htMoney }}</i>
+                </li>
+                <!-- 美元實際結存公克數 (黃金特殊欄位) -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.realBalUS' | translate }}</span>
+                    <i>{{ data['realBalUS'] | htMoney }}</i>
+                </li>
+                <!-- 美元可用結存公克數 (黃金特殊欄位) -->
+                <li class="table_row">
+                    <span>{{ 'PG_DEPOSIT.SUMMARY.GOLD.usefulBalUS' | translate }}</span>
+                    <i>{{ data['usefulBalUS'] | htMoney }}</i>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'EMPTY'">
+        <!-- 查無資料 -->
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <!-- 很抱歉，您欲查詢的帳戶資訊不存在 -->
+        <div class="sub_info_subtitle">{{ 'PG_DEPOSIT.ERROR.ACCT_CONTENT' | translate }}</div>
+    </ng-container>
+</ng-container>

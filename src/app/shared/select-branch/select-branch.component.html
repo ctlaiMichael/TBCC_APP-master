@@ -1,0 +1,47 @@
+<!-- popup window -->
+<div class="popup_window popup_open">
+    <div class="popup_content">
+        <div class='row_single'>
+
+            <h4 class="simple_title">選擇往來分行</h4>
+
+            <div class="row_single"></div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning': checkSelect.error_city!='' }">
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="bindData.city" (change)="cityChange()">
+                            <option value="">請選擇</option>
+                            <ng-container *ngFor="let item of cityData">
+                                <option [ngValue]="item">{{item}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{checkSelect.error_city | translate}}</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning': checkSelect.error_branchName!='' }">
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="bindData.branchName" (change)="onNameChange()">
+                            <option value="">請選擇</option>
+                            <ng-container *ngFor="let item of nameData">
+                                <option [ngValue]="item">{{item?item:""}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{checkSelect.error_branchName | translate}}</i>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <div class="double_button">
+                <a class="popup_cancel" href="javascript:void(0)" (click)="onCancel()">取消</a><a href="javascript:void(0)"
+                    (click)="onPopConfirm()">確認</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup window //End -->

@@ -1,0 +1,70 @@
+<section>
+	<div class="sub_info_frame" *ngIf="'result' != showPage ">
+		<ul class="step_bar_frame">
+			<li class="step_bar" [ngClass]="{'step_active':'original'==showPage}">
+				<span *ngIf="'original' == showPage ">1.註銷選擇</span>
+			</li>
+			<li class="step_bar" [ngClass]="{'step_active':'confirm'==showPage}">
+				<span *ngIf="'confirm' == showPage ">2.確認</span>
+			</li>
+			<li class="step_bar"></li>
+		</ul>
+	</div>
+
+
+	<ng-container *ngIf="'original'== showPage">
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+		<ul class="credit_card_bill_detail_list" *ngFor="let item of reservationList">
+			<li>
+				<p class="credit_card_name">
+					<i>轉帳日期</i>
+					<i>{{item.trnsfrDate | htDate: 'yyyy/MM/dd'}}</i>
+				</p>
+				<p>
+					<span>轉出帳號</span>
+					<span>{{item.trnsfrOutAccnt | accountFormate}}</span>
+				</p>
+				<p>
+					<span>轉入帳號</span>
+					<!-- 轉入帳號需要用到pipe。轉入帳號總共16位，不足時由前方遞補0直至16位-->
+					<span>
+						({{item.trnsfrInBank}})<br>
+						{{item.trnsfrInAccnt}}
+					</span>
+				</p>
+				<p>
+					<span>轉帳金額</span>
+					<span>{{item.trnsfrAmount | currencyMoney:'TWD'}}</span>
+				</p>
+				<p class="">
+					<span>處理狀態</span>
+					<span>{{item.statusDesc}}</span>
+				</p>
+				<p class="">
+					<span>付款人自我備註</span>
+					<span >{{item.notePayer==''?'-----':item.notePayer}}</span>
+				</p>
+				<!-- 有按鈕最後一個項目要加上 no_border_bottom -->
+				<p class="" [ngClass]="{'no_border_bottom':item.status == '0'}">
+					<span>給收款人訊息</span>
+					<span class="longString_width">{{item.notePayee==''?'-----':item.notePayee}}</span>
+				</p>
+				<ng-container *ngIf="item.status == '0'">
+					<a href="javascript:void(0)" class="" (click)="goConfirmPage(item)" [ngClass]="{'normal_disable':item.status != '0'}">註銷</a>
+				</ng-container>
+			</li>
+		</ul>
+	</ng-container>
+	<!-- 確認頁 -->
+	<ng-container *ngIf="'confirm'== showPage">
+		<app-reservation-search-writeoff-confirm-page (backPageEmit)="finalCheckData($event)"
+			(backToEdit)="toEditPage($event)" [reservationConfirm]="allReservationData">
+		</app-reservation-search-writeoff-confirm-page>
+	</ng-container>
+	<!-- 結果頁 -->
+	<ng-container *ngIf="'result'== showPage">
+		<app-reservation-search-writeoff-result-page [reservationResultData]="reservationResultData"
+			[reservationRusultInfo]="allReservationData"></app-reservation-search-writeoff-result-page>
+	</ng-container>
+</section>

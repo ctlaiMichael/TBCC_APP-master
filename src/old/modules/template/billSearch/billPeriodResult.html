@@ -1,0 +1,60 @@
+<div>
+	<h2 class="sub_title_inner_card table_title" ng-show="cardShow.cardType">{{cardShow.cardType}} : {{cardShow.creditCardNo | accountMaskFilter}}
+	</h2>
+	<h2 class="sub_title_inner_card table_title" ng-show="!cardShow.cardType">{{cardShow.creditCardNo | accountMaskFilter}}
+	</h2>
+	<div ng-show="details">
+		<div ng-show="!details.cardDetail">
+			<p style="text-align: center;">{{ 'BILL_MSG.NO_SEARCH' | translate }}</p>
+			<br />
+		</div>
+		<div ng-show="details.cardDetail">
+			<table class="table_colspan3">
+				<tr ng-repeat-start="cards in details.cardDetail">
+					<th>{{ 'BILL_MSG.MSG.PAY_DATE' | translate }}</th><!-- 消費日期 -->
+					<th>{{ 'BILL_MSG.MSG.CARD_TYPE' | translate }}</th><!-- 正附卡別 -->
+					<th>{{ 'BILL_MSG.MSG.FOREIGN_CURRENCY_DATE' | translate }}</th><!-- 外幣折算日 -->
+				</tr>
+				<tr>
+					<td>
+						{{cards.expendDate ? (cards.expendDate | dateFilter) : '&nbsp;' }}
+					</td>
+					<td>{{cards.cardApplyTypeName ? cards.cardApplyTypeName : '&nbsp;' }}</td>
+					<td>{{cards.frgnValueDate ? (cards.frgnValueDate | dateFilter) : '&nbsp;' }}</td>
+				</tr>
+				<tr>
+					<td colspan="3">{{'FIELD.REMARK' | translate}}：{{cards.expendDesc}}</td><!-- 備註 -->
+				</tr>
+				<tr class="tr_currency" ng-repeat-end>
+					<td>
+						<!-- 外幣金額,台幣金額 -->
+						{{ 'BILL_MSG.MSG.MONEY_F' | translate }}
+						<br>
+						{{ 'BILL_MSG.MSG.MONEY_TW' | translate }}
+					</td>
+					<td colspan="2">
+						<p class="row_currency">
+							<i><s><!--外幣幣別--></s><s>{{cards.frgnAmt | currency:"":2}}</s></i>
+							<i><s>NT</s><s>{{cards.twdAmt | currency:"":0}}</s></i>
+						</p>
+					</td>
+				</tr>
+				<!-- 台幣加總金額 -->
+				<!-- <tr class="tr_currency" ng-show="details.twdTotalAmt && details.twdTotalAmt > 0">
+					<td>{{ 'CTRL_BILL_SEARCH.AMOUNT_TW' | translate }}</td>
+					<td colspan="2">
+						<p class="row_currency">
+							<i><s>NT</s><s>{{details.twdTotalAmt | currency:"":0}}</s></i>
+						</p>
+					</td>
+				</tr> -->
+			</table>
+		</div>
+	</div>
+	<div class="bc_frame">
+		<div class="row_single2">
+			<button class="button_confirm" ui-sref="select({menu_type:'billSearch'})">{{'CTRL_BILL_SEARCH.BTN.BACK_MENU' | translate}}</button>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,444 @@
+<!--            inner.investType = data.investType[i];// 投資型態
+				inner.investDesc = data.investDesc[i];// 投資型態說明
+				inner.transType = data.transType[i];// 異動性質
+				inner.transTypeDesc = data.transTypeDesc[i];// 異動性質說明
+
+				inner.enrollDate = data.enrollDate[i];// 交易日期
+				inner.iNCurrency = data.iNCurrency[i];// 投資幣別
+				inner.vACurrency = data.vACurrency[i];// 計價幣別
+				inner.purchRate = data.purchRate[i];// 申購匯率
+				inner.unit1 = data.unit1[i];// 單位數
+				inner.netValue = data.netValue[i];// 申購淨值
+				inner.purchAmnt = data.purchAmnt[i];// 申購金額
+				inner.serviceFee1 = data.serviceFee1[i];// 手續費
+				inner.purchTotalAmnt = data.purchTotalAmnt[i];// 申購總金額
+				inner.redeemType = data.redeemType[i];// 轉換方式
+				inner.outFundCode = data.outFundCode[i];// 轉出標的代碼
+				inner.outFundName = data.outFundName[i];// 轉出標的名稱
+				inner.inFundCode = data.inFundCode[i];// 轉入標的代碼
+				inner.inFundName = data.inFundName[i];// 轉出標的名稱
+				inner.inNetValue = data.inNetValue[i];// 轉入淨值
+				inner.unit2 = data.unit2[i];// 轉入單位數
+				inner.shortLineAmt = data.shortLineAmt[i];// 短線費用
+				inner.deferredAmt = data.deferredAmt[i];// 遞延費用
+				inner.serviceFee2 = data.serviceFee2[i];// 違約金
+				inner.redeemAcnt = data.redeemAcnt[i];// 贖回入帳帳號
+				inner.distrDate = data.distrDate[i];// 分配日期
+				inner.distrAmount = data.distrAmount[i];// 每單位分配數
+				inner.beforeUnit = data.beforeUnit[i];// 除權前庫存單位數
+				inner.afterUnit = data.afterUnit[i];// 除權後庫存單位數
+				inner.mergerRate = data.mergerRate[i];// 合併比率
+				inner.divideFactor = data.divideFactor[i];// 分割係數 -->
+
+
+
+<section>
+    <!-- 贖回 Start -->
+    <div class="sub_info_frame">
+
+        <p class="sub_info_list">
+            <i class="sub_info_title">產品代號</i>
+            <span class="sub_info_content ">{{queryInfoData.fundCode}}</span>
+        </p>
+        <p class="sub_info_list">
+            <i class="sub_info_title">基金名稱</i>
+            <span class="sub_info_content">{{queryInfoData.fundName}} ({{queryInfoData.riskRank}})</span>
+        </p>
+        <p class="sub_info_list">
+            <i class="sub_info_title">交易編號</i>
+            <span class="sub_info_content">{{queryInfoData.transCode}}</span>
+        </p>
+    </div>
+
+    <!-- 贖回 Start -->
+    <ng-container *ngIf="transType == '30'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>贖回方式</span>
+                <i>{{queryData.redeemType}}</i>
+            </li>
+            <li class="table_row">
+                <span>贖回金額</span>
+                <i>{{queryData.purchAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>贖回淨值</span>
+                <i>{{queryData.netValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>贖回匯率</span>
+                <i>{{queryData.purchRate}}</i>
+            </li>
+            <li class="table_row">
+                <span>贖回單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>信託管理費</span>
+                <i>{{queryData.serviceFee1}}</i>
+            </li>
+            <li class="table_row">
+                <span>短線費用</span>
+                <i>{{queryData.shortLineAmt}}</i>
+            </li>
+            <li class="table_row">
+                <span>短線遞延費用</span>
+                <i>{{queryData.deferredAmt}}</i>
+            </li>
+            <li class="table_row">
+                <span>違約金</span>
+                <i>{{queryData.serviceFee2}}</i>
+            </li>
+            <li class="table_row">
+                <span span>贖回入帳金額</span>
+                <i span>{{queryData.purchTotalAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span span>贖回入帳帳號</span>
+                <i span>{{queryData.redeemAcnt | accountFormate}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 贖回 End -->
+
+
+    <!-- 申購 Start -->
+    <ng-container *ngIf="transType == '10'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>投資幣別</span>
+                <i>{{queryData.iNCurrency}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>投資型態</span>
+                <i>{{queryData.investDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>計價幣別</span>
+                <i>{{queryData.vACurrency}}</i>
+            </li>
+            <li class="table_row">
+                <span>申購匯率</span>
+                <i>{{queryData.purchRate}}</i>
+            </li>
+            <li class="table_row">
+                <span>單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>申購淨值</span>
+                <i>{{queryData.netValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>申購金額</span>
+                <i>{{queryData.purchAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>手續費</span>
+                <i>{{queryData.serviceFee1}}</i>
+            </li>
+            <li class="table_row">
+                <span>申購總金額</span>
+                <i>{{queryData.purchTotalAmnt}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 申購 End -->
+
+    <!-- 轉換 Start -->
+    <ng-container *ngIf="transType == '20'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉換方式</span>
+                <i>{{queryData.redeemType}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉出標的代碼</span>
+                <i>{{queryData.outFundCode}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉出標的名稱</span>
+                <i>{{queryData.outFundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉入標的代碼</span>
+                <i>{{queryData.inFundCode}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉入標的名稱</span>
+                <i>{{queryData.inFundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉出淨值</span>
+                <i>{{queryData.netValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉出單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉入淨值</span>
+                <i>{{queryData.inNetValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉入單位數</span>
+                <i>{{queryData.unit2}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉換總金額</span>
+                <i>{{queryData.purchAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉換手續費</span>
+                <i>{{queryData.serviceFee1}}</i>
+            </li>
+            <li class="table_row">
+                <span>短線費用</span>
+                <i>{{queryData.shortLineAmt}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 轉換 End -->
+
+    <!-- 除息 Start -->
+    <ng-container *ngIf="transType == '40'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>基準日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>分配日期</span>
+                <i>{{queryData.distrDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>信託單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>每單位分配數</span>
+                <i>{{queryData.distrAmount}}</i>
+            </li>
+            <li class="table_row">
+                <span>除息金額</span>
+                <i>{{queryData.purchAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>除息匯率</span>
+                <i>{{queryData.purchRate}}</i>
+            </li>
+            <li class="table_row">
+                <span>扣稅金額</span>
+                <i>{{queryData.serviceFee2}}</i>
+            </li>
+            <li class="table_row">
+                <span>入帳金額</span>
+                <i>{{queryData.purchTotalAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>入帳帳號</span>
+                <i>{{queryData.redeemAcnt | accountMask}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 除息 End -->
+
+    <!-- 除權 Start -->
+    <ng-container *ngIf="transType == '50'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>基準日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>分配日期</span>
+                <i>{{queryData.distrDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>除權單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>每單位分配數</span>
+                <i>{{queryData.distrAmount}}</i>
+            </li>
+            <li class="table_row">
+                <span>扣稅金額</span>
+                <i>{{queryData.serviceFee2}}</i>
+            </li>
+            <li class="table_row">
+                <span>信託管理費</span>
+                <i>{{queryData.serviceFee1}}</i>
+            </li>
+            <li class="table_row">
+                <span>除權前庫存單位數</span>
+                <i>{{queryData.beforeUnit}}</i>
+            </li>
+            <li class="table_row">
+                <span>除權後庫存單位數</span>
+                <i>{{queryData.afterUnit}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 除權 End -->
+
+    <!-- 合併 Start -->
+    <ng-container *ngIf="transType == '60'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>併出標的</span>
+                <i>{{queryData.outFundCode}}</i>
+            </li>
+            <li class="table_row">
+                <span>併出標的名稱</span>
+                <i>{{queryData.outFundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>併入標的</span>
+                <i>{{queryData.inFundCode}}</i>
+            </li>
+            <li class="table_row">
+                <span>併入標的名稱</span>
+                <i>{{queryData.inFundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>合併比率</span>
+                <i>{{queryData.mergerRate}}</i>
+            </li>
+            <li class="table_row">
+                <span>併出淨值</span>
+                <i>{{queryData.netValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>併出單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>併入淨值</span>
+                <i>{{queryData.inNetValue}}</i>
+            </li>
+            <li class="table_row">
+                <span>併入單位數</span>
+                <i>{{queryData.unit2}}</i>
+            </li>
+            <li class="table_row">
+                <span>併出總金額</span>
+                <i>{{queryData.purchAmnt}}</i>
+            </li>
+            <li class="table_row">
+                <span>併入總金額</span>
+                <i>{{queryData.purchTotalAmnt}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 合併 End -->
+
+    <!-- 分割 Start -->
+    <ng-container *ngIf="transType == '70'">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>信託業務別</span>
+                <i>{{queryInfoData.fundType}}</i>
+            </li>
+            <li class="table_row">
+                <span>基準日期</span>
+                <i>{{queryData.enrollDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>異動性質</span>
+                <i>{{queryData.transTypeDesc}}</i>
+            </li>
+            <li class="table_row">
+                <span>分割前單位數</span>
+                <i>{{queryData.unit1}}</i>
+            </li>
+            <li class="table_row">
+                <span>分割後單位數</span>
+                <i>{{queryData.unit2}}</i>
+            </li>
+            <li class="table_row">
+                <span>分割係數</span>
+                <i>{{queryData.divideFactor}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+    </ng-container>
+    <!-- 分割 End -->
+</section>

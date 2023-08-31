@@ -1,0 +1,18 @@
+<section *ngIf="!showContent" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages"
+  (scrollEvent)="onScrollEvent($event)">
+  <div class="inner_news_list_frame">
+    <div class="sub_info_subtitle">
+      存款不足票據總金額：<i class="bl_money">{{totalAmount | htMoney}}</i><br>
+      查詢時間：<span>{{ requestTime | htDate }}</span>
+    </div>
+    <div class="row_single"></div>
+    <!-- Page1 -->
+    <app-insufficient-bill-paginator [page]="1" (backPageEmit)="onBackPage($event)"
+      (errorPageEmit)="onErrorBackEvent($event)">
+    </app-insufficient-bill-paginator>
+    <!-- Page other -->
+    <ng-container #pageBox></ng-container>
+  </div>
+</section>
+
+

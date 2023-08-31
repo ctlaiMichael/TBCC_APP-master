@@ -1,0 +1,62 @@
+<section>
+
+  <ng-container *ngIf="showNextPage=='edit'">
+    <ng-container *ngIf="showData; else noDataBox">
+      <div class="sub_info_subtitle">
+        查詢時間：{{ requestTime | htDate }}
+      </div>
+      <div class="row_single"></div>
+      <!--安控-->
+      <!-- <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security> -->
+
+      <ul class="credit_card_bill_detail_list" *ngFor="let data of datas">
+        <li>
+          <p class='credit_card_name'>
+            <span>帳號：</span>
+            <span>{{(data | fieldCheck: ['account' ,{zero_type:false, empty_str:''}])| accountFormate }}</span>
+          </p>
+          <p>
+            <span>存款種類：</span>
+            <span>{{data | fieldCheck: ['autoTransType' ,{zero_type:false, empty_str:''}] }}</span>
+          </p>
+          <p>
+            <span>起息日：</span>
+            <span>{{(data | fieldCheck: ['startAccountDay' ,{zero_type:false, empty_str:''}] )| htDate:'date'}}</span>
+          </p>
+          <p>
+            <span>到期日：</span>
+            <span>{{(data | fieldCheck: ['endAccountDay' ,{zero_type:false, empty_str:''}] )| htDate:'date'}}</span>
+          </p>
+          <p>
+            <span>金額：</span>
+            <span>{{(data | fieldCheck: ['balance' ,{zero_type:false, empty_str:''}])|currencyMoney }}</span>
+          </p>
+          <p>
+            <span>幣別：</span>
+            <span>{{data | fieldCheck: ['currencyEng' ,{zero_type:false, empty_str:''}] }}</span>
+          </p>
+          <p>
+            <span>自轉設定：</span>
+            <span>{{data | fieldCheck: ['autoTransSet' ,{zero_type:false, empty_str:''}] }}</span>
+          </p>
+          <a href="javascript:void(0)" (click)="onSelectEvent(data)">解約</a>
+        </li>
+      </ul>
+
+      <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security>
+      
+      <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+  <!--確認-->
+  <ng-container *ngIf="showNextPage=='confirm'">
+    <app-time-deposit-terminate-confirm [receivedObj]="sendObj" [security]="securityObj" (backPageEmit)="goResult($event)"
+      (backToEdit)="toEditPage($event)"></app-time-deposit-terminate-confirm>
+  </ng-container>
+  <!--結果-->
+  <ng-container *ngIf="showNextPage=='result'">
+    <app-time-deposit-terminate-result [resultObj]="info_data"></app-time-deposit-terminate-result>
+  </ng-container>
+</section>

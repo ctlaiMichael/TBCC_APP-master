@@ -1,0 +1,112 @@
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <ng-container *ngIf="!goQuery">
+        <!-- 頁籤 Start -->
+        <app-bookmark [setData]="bookmarkData" [defaultKey]="'detail'" (backPageEmit)="onBookMarkBack($event)">
+        </app-bookmark>
+        <!-- 頁籤 End -->
+        <ng-container *ngIf="nowPageType === 'summary'; else detailBox">
+            <!-- 總覽 -->
+            <app-has-realize-overview [reqObj]="detailReqObj" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-overview>
+        </ng-container>
+
+        <ng-template #detailBox>
+            <!-- 自訂搜尋box -->
+            <ng-container *ngIf="showNewType; else oldRangBox">
+                <app-date-range-search [show]="showSearchBox" [dateObj]="searchBoxRule"
+                     [infoData]="searchInfoData" (backPageEmit)="onSearchBack($event)"></app-date-range-search>
+                <!-- 自訂 -->
+                <div class="sub_info_subtitle font_align_left" *ngIf="detailReqObj.show">
+                    <!-- 查詢區間： -->
+                    <ng-container *ngIf="nowPageType !== 'custom'; else rangeBox;">
+                        {{ 'FIELD.SEARCH_RANGE' | translate }}：
+                        <span>{{ 'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}</span>
+                        <br>
+                    </ng-container>
+                    <ng-template #rangeBox>
+                        <a href="javascript:void(0);" class="search_range_btn mb_15" (click)="onChangePage('search-box')">{{ 'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}
+                            <i class="search_range_icon icon_search"></i>
+                        </a>
+                    </ng-template>
+                    <!-- 查詢時間：  -->
+                    <!-- {{ 'FIELD.SEARCH_TIME' | translate }}：
+                <span>{{ dataTime | htDate}}</span> -->
+                </div>
+            </ng-container>
+            <ng-template #oldRangBox>
+                <div class="sub_info_subtitle">查詢期間：{{ queryDuring }}</div>
+            </ng-template>
+            <!-- Detail Start -->
+            <div class="table_data_frame" *ngIf="detailReqObj.show">
+                <!-- <div class="table_four_hl">
+                    <div class="table_four_hl_tr">
+                        <p class="table_four_hl_th font_align_left">贖回標的</p>
+                        <p class="table_four_hl_th epay_search_record fund_has_th">贖回日期<br>投資幣別</p>
+                        <p class="table_four_hl_th fund_has_th_pad">全年損益</p>
+                        <p></p>
+                    </div>
+                </div> -->
+                
+                <table class="table_fund_font rich_table">
+                    <thead class="rich_bak_color">
+                        <tr>
+                            <td colspan="3" class="rich_pad_top">贖回標的</td>
+                        </tr>
+                        <tr class="rich_bod_bot">
+                            <td class="rich_pad_bot font_align_left">贖回日期</td>
+                            <td class="">贖回金額</td>
+                            <td>全年損益</td>
+                        </tr>
+                    </thead>
+                </table>
+                <ng-container [ngSwitch]="nowPageType">
+                    <ng-container *ngSwitchCase="'7D'">
+                        <!-- 7D -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox7D></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'1M'">
+                        <!-- 1M -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox1M></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'3M'">
+                        <!-- 3M -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox3M></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'custom'">
+                        <!-- 自訂 -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'6M'">
+                        <!-- 6M -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox6M></ng-container>
+                    </ng-container>
+
+                    <!-- <ng-container *ngSwitchCase="'12M'"> -->
+                    <ng-container *ngSwitchCase="checkTypeKey">
+                        <!-- 12M -->
+                        <app-has-realize-detail [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail>
+                        <ng-container #pageBox12M></ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <!-- 不顯示 -->
+                    </ng-container>
+                </ng-container>
+            </div>
+            <!-- Detail End -->
+        </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="goQuery">
+        <app-has-realize-detail-query [inputData]="onQueryData" [queryDuring]="queryDuring" (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-detail-query>
+    </ng-container>
+
+</section>

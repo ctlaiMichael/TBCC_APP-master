@@ -1,0 +1,103 @@
+<div>
+    <div class="sub_info_subtitle">查詢期間：{{ info_data | fieldCheck: 'queryDuring' }}</div>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>全年損益：</span>
+            <i>(給付總額+交易所得)</i>
+        </li>
+        <ng-container *ngFor="let item of data.incomeState">
+            <li class="table_row">
+                <span>{{ item.currency }}</span>
+                <i class="{{ item.class }}">{{ item.formate }}</i>
+            </li>
+        </ng-container>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>給付總額：</span>
+            <i></i>
+        </li>
+        <ng-container *ngFor="let item of data.payAmt">
+            <li class="table_row">
+                <span>{{ item.currency }}</span>
+                <i class="{{ item.class }}">{{ item.formate }}</i>
+            </li>
+        </ng-container>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>交易所得(虧損)：</span>
+            <i>贖回金額-原始信託金額</i>
+        </li>
+        <ng-container *ngFor="let item of data.intAmt">
+            <li class="table_row">
+                <span>{{ item.currency }}</span>
+                <i class="{{ item.class }}">{{ item.formate }}</i>
+            </li>
+        </ng-container>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>贖回金額：</span>
+            <i></i>
+        </li>
+        <ng-container *ngFor="let item of data.terminateAmount">
+            <li class="table_row">
+                <span>{{ item.currency }}</span>
+                <i class="{{ item.class }}">{{ item.formate }}</i>
+            </li>
+        </ng-container>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>原始信託金額：</span>
+            <i></i>
+        </li>
+        <ng-container *ngFor="let item of data.amount">
+            <li class="table_row">
+                <span>{{ item.currency }}</span>
+                <i class="{{ item.class }}">{{ item.formate }}</i>
+            </li>
+        </ng-container>
+    </ul>
+    <!-- <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>淨損益：</span>
+            <i>(含息損益-申購手續費-扣繳稅款-信託管理費)</i>
+        </li>
+        <li class="table_row">
+            <span>NTD</span>
+            <i class="font_red">+19,766</i>
+        </li>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span style="width: 100%;">申購手續費+扣繳稅額+信託管理費</span>
+            <i></i>
+        </li>
+        <li class="table_row">
+            <span>NTD</span>
+            <i>752</i>
+        </li>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>含息損益：</span>
+            <i>交易損益+配息金額</i>
+        </li>
+        <li class="table_row">
+            <span>NTD</span>
+            <i class="font_red">+19,024</i>
+        </li>
+    </ul>
+    <ul class="table_info table_th_style">
+        <li class="table_row">
+            <span>交易損益：</span>
+            <i>贖回金額-投資金額</i>
+        </li>
+        <li class="table_row">
+            <span>NTD</span>
+            <i class="font_red">+19,024</i>
+        </li>
+    </ul> -->
+</div>

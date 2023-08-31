@@ -1,0 +1,14 @@
+.dev_server_box {
+    color: #DDD;
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.login_privacy_box{
+    padding: 0px 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+

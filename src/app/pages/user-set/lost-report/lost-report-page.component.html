@@ -1,0 +1,195 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageType=='edit'?'step_active':''"><span *ngIf="pageType=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageType=='confirm'?'step_active':''"><span *ngIf="pageType=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <ng-container *ngIf="pageType=='edit'">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    戶名
+                </li>
+                <li class="inner_table_cell ">
+                    <input type="text" name="custName" class="inner_input" placeholder="" value="{{showData.custName}}">
+                 </li>
+            </ul>
+        </div>
+<!--  表單 START--->        
+        <!-- 種類 -->
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg.lostType.className"> 
+                <li class="inner_table_cell">
+                種類
+                </li>
+                <li class="inner_table_cell">
+                <select  name="lostType"  class="inner_select" (change)="onChange($event)"  [(ngModel)]="lostType">
+                    <option *ngFor="let data of showData.lostType" value="{{data.type}}">{{data.name}}</option>
+                </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg.lostType.message}}</i>
+        </div>
+        <!--帳號/卡號 -->
+        <ng-container *ngIf="accountFlag===true">
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="errorMsg.accountNo.className"> 
+                    <li class="inner_table_cell">
+                    帳號/卡號
+                    </li>
+                    <li class="inner_table_cell">
+                    <select  name="accountNo"  class="inner_select" (change)="onChangeAccount($event)"  [(ngModel)]="selectAccountIndex">
+                        <option *ngFor="let data of accountList; let accIndex = index" value="{{accIndex}}">{{data.accountNo}}</option>
+                    </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.accountNo.message}}</i>
+            </div>
+        </ng-container>
+        
+        <ng-container *ngIf="canReplacementFlag===true">
+        <!-- 是否補發 -->
+        <div class="row_single">
+            <h4 class="simple_title">是否補發</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_radio radio_inline">
+                <input type="radio" id="inner_radio01"  name="inner_radio" value='1' [(ngModel)]="replacementRadio" (click)="onchangeRadio('1')">
+                <label for="inner_radio01">
+                    <span><i></i></span>
+                    <b>是</b>
+                </label>
+            </div>
+            <div class="inner_radio radio_inline">
+                <input type="radio" id="inner_radio02"  name="inner_radio" value='0' [(ngModel)]="replacementRadio" (click)="onchangeRadio('0')">
+                <label for="inner_radio02">
+                    <span><i></i></span>
+                    <b>否</b>
+                </label>
+            </div>
+        </div>
+        <ng-container *ngIf="selectReplacementFlag===true">
+        <!-- 補發方式 -->
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg.reissueType.className"> 
+                <li class="inner_table_cell">
+                補發方式
+                </li>
+                <li class="inner_table_cell">
+                <select  name="replacement"  class="inner_select" (change)="onChangeReplace($event)" [(ngModel)]="reissueType">
+                    <option *ngFor="let data of replacementList" value="{{data}}">{{data==='0'?"請選擇補發方式":data==='1'?"親洽":"郵寄"}}</option>
+                </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg.reissueType.message}}</i>
+        </div>
+        <ng-container *ngIf="sendAreaFlag===true">
+        <!-- 寄達區域 -->
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg.cityName.className"> 
+                <li class="inner_table_cell">
+                寄達區域
+                </li>
+                <li class="inner_table_cell">
+                <select  name="cityName"  class="inner_select" (change)="onChangeArea($event)" [(ngModel)]="cityVal">
+                    <option *ngFor="let data of showData.city;let areaIndex = index" value="{{areaIndex}}">{{data}}</option>
+                </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg.cityName.message}}</i>
+        </div>
+        <ng-container *ngIf="branchFlag===true">
+             <!-- 寄達地址 -->
+            <div class="row_single" *ngIf="reissueType==='1'">
+                    <ul class="inner_table_frame" > 
+                        <li class="inner_table_cell">
+                        寄達地址
+                        </li>
+                        <li class="inner_table_cell">
+                        <select  name="address"  class="inner_select" (change)="onChangeBranch($event)" [(ngModel)]="selectBranchIndex">
+                            <option *ngFor="let data of this.branchList;let branchIndex=index" value="{{branchIndex}}">{{data.branchName}}</option>
+                        </select>
+                        </li>
+                    </ul>
+            </div>
+        </ng-container>
+        </ng-container>
+        <ng-container *ngIf="reissueType==='2'">
+        <div class="row_single" >
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    寄達地址
+                </li>
+                <li class="inner_table_cell ">
+                    <input type="text" name="address" class="inner_input" placeholder="" value="通訊地址">
+                 </li>
+            </ul>
+        </div>
+        </ng-container>
+        </ng-container>
+        </ng-container>
+<!--  表單 END--->
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <a id="callphone" class="button_confirm" (click) = 'callService();'>撥打客服專線</a>
+        </div>
+
+    <!---確認頁---------------------->
+    </ng-container>
+
+    <ng-container *ngIf="pageType==='confirm'">
+        <div class="sub_info_subtitle">
+            請確認資訊以及是否要繼續交易！
+        </div>
+        <ul class="table_info" *ngFor="let data of confirmListData">
+            <li class="table_row">
+                <span>{{data.title}}</span>
+                <i>{{data.detail}}</i>
+            </li>
+        </ul>
+        
+        <div class="row_single"></div>
+        <app-login-pswd [setData]="inpSetData" [errorStr]="error_data.pswd" (backValueEmit)="onInputBack($event)"></app-login-pswd>
+       
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')"(click)="toEditPage()">{{'BTN.PREVIOUS' | translate }}</a>
+                <a href="javascript:void('0')" (click)="goResult();">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+        </div>
+    </ng-container>
+
+
+
+    <ng-container *ngIf="pageType=='result'">
+        <app-result [successContent]="finalListData" [successMsg]="successMsg"></app-result>
+    </ng-container>
+    <ng-container *ngIf="pageType!=='result'">
+      <!-- 注意事項 -->
+      <div class="row_single">
+        <!-- 提醒您 -->
+        <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <!-- 本試算結果僅供參考，實際匯率以本行匯率或報價為準！ -->
+        <p class="inner_content">
+            一、金融卡、信用卡可線上掛失/補發。<br>
+            二、存摺、印鑑、存單可線上掛失(補發作業請親洽本行各營業單位臨櫃辦理)。<br>
+            三、掛失、補發之相關手續費詳如本行存匯款業務各項服務手續費收費標準表。</p>
+    </div>
+    <!-- 注意事項 End -->
+    <!-- </result> -->
+    </ng-container>
+</section>

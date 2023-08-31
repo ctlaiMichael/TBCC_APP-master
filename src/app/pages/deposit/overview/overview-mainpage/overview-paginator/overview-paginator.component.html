@@ -1,0 +1,43 @@
+<!-- Page Start-->
+<div *ngFor="let item of data" class="row_single_deposit">
+    <div class="accountCard_frame" (click)="onContentEvent(item)">
+
+        <div class="accountCard_td">
+            <ul class="accountCard_inner_table more_row">
+                <li class="accountCard_inner_row">
+                    <!-- 帳戶別名稱 -->
+                    <span class="accountCard_inner_td accountCard_inner_td_l accountCard_name">
+                        {{(item | fieldCheck:'openBranchName') | branchName}}<br>
+                        {{(item | fieldCheck:'acctType') | acctTypeNickName: ['TW_list', (item | fieldCheck:'acctTypeName')]}}</span>
+                    <!-- 帳號(dddd-ddd-dddddd) -->
+                    <span class="accountCard_inner_td accountCard_inner_td_r">{{ 
+                        (item | fieldCheck:'acctNo') | accountFormate 
+                    }}</span>
+                </li>
+
+                <li class="accountCard_inner_row">
+                    <!-- 可用餘額 -->
+                    <span
+                        class="accountCard_inner_td accountCard_inner_td_l">{{ 'PG_DEPOSIT.FIELD.BALANCE' | translate }}</span>
+                    <span class="accountCard_inner_td accountCard_inner_td_r accountCard_money">{{
+                         (item | fieldCheck:'balance') | htMoney: showCurrency
+                    }}</span>
+                </li>
+                <li class="accountCard_inner_row">
+                    <!-- 最後交易日/定存到期日 -->
+                    <span class="accountCard_inner_td accountCard_inner_td_l ">{{
+                        ((item | fieldCheck:'acctType') | lastTransType: 'TW') | translate
+                    }}</span>
+                    <span class="accountCard_inner_td accountCard_inner_td_r">{{
+                        (item | fieldCheck:'lastTrnsDate') | htDate:'date'
+                    }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="accountCard_td accountCard_td_arrow">
+            <a href="javascript:void(0)" class="arrow_link"></a>
+        </div>
+    </div>
+</div>
+<!-- Page End-->

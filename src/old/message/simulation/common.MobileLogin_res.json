@@ -1,0 +1,18 @@
+{
+  "resHeader":{
+    "serviceId":"common.MobileLogin",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "sessionTimeout",
+    "subCode" : "",
+    "rtnMsg" : "回應說明"
+  },
+  "ediName":"Hand Shake Ramdon Number",
+  "optName":"是否為懶人密碼",
+  "lastLoginMsg":"前次登入結果訊息",
+  "locale" : "語系代碼",
+  "token" : "token"
+}

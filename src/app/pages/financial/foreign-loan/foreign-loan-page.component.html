@@ -1,0 +1,34 @@
+<section>
+    <ng-container *ngIf="showData; else noDataBox">
+        <!-- 查詢時間 -->
+        <div class="sub_info_subtitle">
+            {{ 'FIELD.SEARCH_TIME' | translate }}：{{ searchTime | htDate }}
+        </div>
+        <ul class="table_info table_th_style wid60">
+            <!-- <ul class="table_row"> -->
+                <li class="table_row">
+                    <!-- 幣別 -->
+                    <!-- <span class="fer_th">{{ 'PG_FINANCIAL.FOREX_LOAN.FIELD.TITLE1' | translate }}</span> -->
+                    <!-- 一般外幣放款利率(年息)% -->
+                    <!-- <span class="fer_th">{{ 'PG_FINANCIAL.FOREX_LOAN.FIELD.TITLE2' | translate }}</span> -->
+
+                    <span>{{ 'PG_FINANCIAL.FOREX_LOAN.FIELD.TITLE1' | translate }}</span>
+                    <i>{{ 'PG_FINANCIAL.FOREX_LOAN.FIELD.TITLE2' | translate }}</i>
+                </li>
+                <li class="table_row" *ngFor="let item of data">
+                    <span class="fer_td">
+                        <i class="{{item.currency |iconFlag}}"></i>{{ item['currency'] | currencyName: item['currencyName']}}
+                    </span>
+                    <span class="fer_td">{{ (item | fieldCheck: 'rate') | htFinancial }}</span>
+                    <!-- <span>{{ item['currency'] | currencyName: item['currencyName']}}</span> -->
+                    <!-- <i>{{ (item | fieldCheck: 'rate') | htFinancial }}</i> -->
+                </li>
+            <!-- </ul> -->
+        </ul>
+    </ng-container>
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+    <!-- 資料欄位範例 End -->
+
+</section>

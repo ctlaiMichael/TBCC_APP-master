@@ -1,0 +1,442 @@
+<section *ngIf="detail ==='qrcodeGetResult'" class="main_sec" style="background-image: url('assets/images/b1.jpg');background-size: 100%">
+	<ng-container *ngIf="'0'===result.trnsRsltCode">
+		<!-- 副標列 -->
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易成功</span>
+			</div>
+		</div>
+
+		<ng-container>
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易序號</span>
+					<i>{{result.trnsNo}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號</span>
+					<i>{{result.trnsfrOutAcct | accountFormate }}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫代號</span>
+					<i>{{result.trnsfrInBank}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫名稱</span>
+					<i>{{result.trnsfrInBankName}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入帳號</span>
+					<i>{{result.trnsfrInAcct}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉帳金額</span>
+					<i>{{result.trnsfrAmount|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>手續費</span>
+					<i>{{result.trnsfrFee|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號餘額</span>
+					<i>{{result.trnsfrOutAccntBal}}</i>
+				</li>
+				<li class="table_row">
+					<span>付款人備註</span>
+					<i>{{result.notePayer}}</i>
+				</li>
+				<li class="table_row">
+					<span>給收款人訊息</span>
+					<i>{{result.notePayee}}</i>
+				</li>
+			</ul>
+		</ng-container>
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="clickBtn()" class="button_confirm">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+
+		<div class="row">
+			<div style="padding: 5px 5px;display: flex;flex-direction: row;justify-content: space-around;align-items: center;">
+				<button type="button" style="width:200px;height:50px;font-size: 20px;border-radius: 10px;border: solid 1px #80A4DD;box-shadow: 0 0 5px 0 #B1B8C0;margin-left:10px;background: #BDD2FF;"
+				 (click)="getred2()">訊息分享/祝福賀卡</button>
+			</div>
+		</div>
+		<div style="padding: 5px 5px;display: flex;flex-direction: row;justify-content: space-around;align-items: center;">
+			<a style="color:red;size:14px;text-decoration:underline" href="http://tcb-event.com.tw/mobileapp">~抽獎活動說明~</a>
+		</div>
+
+		<ng-container *ngIf="detail ==='qrcodePayTaxResult'">
+			<div class="row_single">
+				<h4 class="simple_title">提醒您</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					1.您可至財政部Paytax網站(https://paytax.nat.gov.tw)查詢繳稅紀錄。<br>
+					2.本行24小時客服專線，0800-033-175。<br>
+				</p>
+			</div>
+		</ng-container>
+	</ng-container>
+	<ng-container *ngIf="'1'===result.trnsRsltCode">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame fault_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易失敗<br>{{result.hostCodeMsg}}</span>
+			</div>
+		</div>
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="clickBtn()" class="button_confirm">返回EPay</a>
+		</div>
+	</ng-container>
+
+</section>
+
+
+
+
+<section *ngIf="detail !=='qrcodeGetResult'">
+	<!-- section //End -->
+	<!-- 交易成功顯示頁面 -->
+	<ng-container *ngIf="'0'==result.trnsRsltCode">
+		<!-- 副標列 -->
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易成功</span>
+			</div>
+		</div>
+		<!-- 副標列 //End -->
+		<ng-container *ngIf="detail =='qrcodePayResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易序號</span>
+					<i>{{result.trnsNo}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>店家名稱</span>
+					<i>{{result.merchantName}}</i>
+				</li>
+				<li class="table_row" *ngIf="mean=='financial'">
+					<span>訂單編號</span>
+					<i>{{result.orderNumber}}</i>
+				</li>
+				<li class="table_row" *ngIf="mean=='financial'">
+					<span>交易帳號</span>
+					<i>{{result.trnsfrOutAcct | accountFormate }}</i>
+				</li>
+				<li class="table_row" *ngIf="mean=='card'">
+					<span>交易卡號</span>
+					<i>{{result.cardNo}}</i>
+				</li>
+				<li class="table_row" *ngIf="mean=='card'">
+					<span>幣別</span>
+					<i>台幣</i>
+				</li>
+				<li class="table_row">
+					<span>交易金額</span>
+					<i>{{result.trnsAmount|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row" *ngIf="mean=='card'">
+					<span>交易授權碼</span>
+					<i>{{result.authCode}}</i>
+				</li>
+			</ul>
+		</ng-container>
+		<ng-container *ngIf="detail =='qrcodeBuyResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+					<span>交易序號</span>
+					<i>{{result.trnsNo}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號</span>
+					<i>{{result.trnsfrOutAcct | accountFormate }}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫代號</span>
+					<i>{{result.trnsfrInBank}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫名稱</span>
+					<i>{{result.trnsfrInBankName}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入帳號</span>
+					<i>{{result.trnsfrInAcct}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉帳金額</span>
+					<i>{{result.trnsfrAmount|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>手續費</span>
+					<i>{{result.trnsfrFee|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號餘額</span>
+					<i>{{result.trnsfrOutAccntBal|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>付款人備註</span>
+					<i>{{result.notePayer}}</i>
+				</li>
+				<li class="table_row">
+					<span>給收款人訊息</span>
+					<i>{{result.notePayee}}</i>
+				</li>
+			</ul>
+		</ng-container>
+		<!-- <ng-container *ngIf="detail =='qrcodeGetResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易序號</span>
+					<i>{{result.trnsNo}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime  | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號</span>
+					<i>{{result.trnsfrOutAcct | accountFormate }}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫代號</span>
+					<i>{{result.trnsfrInBank}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入行庫名稱</span>
+					<i>{{result.trnsfrInBankName}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉入帳號</span>
+					<i>{{result.trnsfrInAcct}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉帳金額</span>
+					<i>{{result.trnsfrAmount|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>手續費</span>
+					<i>{{result.trnsfrFee|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>轉出帳號餘額</span>
+					<i>{{result.trnsfrOutAccntBal|currencyMoney:'TWD'}}</i>
+				</li>
+				<li class="table_row">
+					<span>付款人備註</span>
+					<i>{{result.notePayer}}</i>
+				</li>
+				<li class="table_row">
+					<span>給收款人訊息</span>
+					<i>{{result.notePayee}}</i>
+				</li>
+			</ul>
+		</ng-container> -->
+
+		<ng-container *ngIf="detail =='qrcodePayTaxResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>繳款類別</span>
+					<i>{{qrcodeObj.payCategory1}}</i>
+				</li>
+				<li class="table_row">
+					<span>繳稅金額</span>
+					<i>{{result.trnsAmount}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>所屬年度</span>
+					<i>107</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>納稅義務人身分證統一編號</span>
+					<i>{{result.payId}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.authCode != ''">
+					<span>授權碼</span>
+					<i>{{result.authCode}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.num == '11'">
+					<span>銷帳編號</span>
+					<i>{{result.payNo}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>交易序號</span>
+					<i>{{result.txnStan}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.trnsfrOutAcct != ''">
+					<span>交易帳號</span>
+					<i>{{result.trnsfrOutAcct}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.cardNo != ''">
+					<span>交易卡號</span>
+					<i>{{result.cardNo}}</i>
+				</li>
+			</ul>
+		</ng-container>
+
+		<!-- 2020/02/24新增綜所稅 -->
+		<ng-container *ngIf="detail =='qrcodeAllTaxResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsDateTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>繳款類別</span>
+					<i>{{qrcodeObj.payCategory1}}</i>
+				</li>
+				<li class="table_row">
+					<span>繳稅金額</span>
+					<i>{{result.trnsAmount}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>所屬年度</span>
+					<i>{{result.belongYear}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>納稅義務人<br>身分證統一編號</span>
+					<i>{{result.payId}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.authCode != ''">
+					<span>授權碼</span>
+					<i>{{result.authCode}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.num == '11'">
+					<span>銷帳編號</span>
+					<i>{{result.payNo}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.payCategory == '15001'">
+					<span>交易序號</span>
+					<i>{{result.txnStan}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.trnsfrOutAcct != '' && result.paytype == 'ic'">
+					<span>交易帳號</span>
+					<i>{{result.trnsfrOutAcct}}</i>
+				</li>
+				<li class="table_row" *ngIf="result.cardNo != '' && result.paytype == 'credit'">
+					<span>交易卡號</span>
+					<i>{{result.cardNo}}</i>
+				</li>
+			</ul>
+		</ng-container>
+
+		<ng-container *ngIf="detail =='qrcodePayBeScanResult'">
+			<ul class="table_info">
+				<li class="table_row">
+					<span style="width:150px">交易序號</span>
+					<i>{{result.TSN}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易時間</span>
+					<i>{{result.trnsCompleteTime | htDate}}</i>
+				</li>
+				<li class="table_row">
+					<span>交易帳號/卡號</span>
+					<i>{{showAcnt}}</i>
+				</li>
+				<!-- <li class="table_row" >
+                    <span>交易授權碼</span>
+                    <i>{{result.authCode}}</i>
+                </li> -->
+				<li class="table_row">
+					<span>交易金額</span>
+					<i>{{result.trnsAmount}}</i>
+				</li>
+			</ul>
+		</ng-container>
+
+		<!-- 已廢除 -->
+		<!-- <ng-container *ngIf="detail =='referenceResult'">
+	<ul class="table_info">
+	  <li class="table_row">
+		<span>推薦人編號</span>
+		<i>{{result.referenceNo}}</i>
+	</ul>
+  </ng-container> -->
+		<div class="row_single"></div>
+
+		<!-- 訊息分享 -->
+		<ng-container *ngIf="detail =='qrcodeGetResult'">
+			<div class="row_single">
+				<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+					交易訊息分享
+				</a>
+			</div>
+		</ng-container>
+		<!-- 訊息分享 -->
+
+		<div class="row_single">
+			<a (click)="clickBtn()" class="button_confirm">{{ 'EPAY.FIELD.BACK_EPAY' | translate }}</a>
+		</div>
+		<div class="row_single">
+			<a (click)="epayScanBtn()" class="button_confirm">{{ 'FUNC_SUB.EPAY.ONSCAN' | translate }}</a>
+		</div>
+		<ng-container *ngIf="detail =='qrcodePayTaxResult'">
+			<div class="row_single">
+				<h4 class="simple_title">提醒您</h4>
+			</div>
+			<div class="row_single">
+				<p class="inner_content">
+					1.您可至財政部Paytax網站(https://paytax.nat.gov.tw)查詢繳稅紀錄。<br>
+					2.本行24小時客服專線，0800-033-175。<br>
+				</p>
+			</div>
+		</ng-container>
+	</ng-container>
+	<ng-container *ngIf="'1'==result.trnsRsltCode">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame fault_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易失敗<br>{{result.hostCodeMsg}}</span>
+			</div>
+		</div>
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="clickBtn()" class="button_confirm">{{ 'EPAY.FIELD.BACK_EPAY' | translate }}</a>
+		</div>
+		<div class="row_single">
+			<a (click)="epayScanBtn()" class="button_confirm">{{ 'FUNC_SUB.EPAY.ONSCAN' | translate }}</a>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="'X'==result.trnsRsltCode">
+		<div class="sub_info_frame result">
+			<div class="step_final_icon_frame fault_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易異常<br>{{result.hostCodeMsg}}</span>
+			</div>
+		</div>
+
+		<div class="row_single"></div>
+		<div class="row_single">
+			<a (click)="clickBtn()" class="button_confirm">{{ 'EPAY.FIELD.BACK_EPAY' | translate }}</a>
+		</div>
+		<div class="row_single">
+			<a (click)="epayScanBtn()" class="button_confirm">{{ 'FUNC_SUB.EPAY.ONSCAN' | translate }}</a>
+		</div>
+	</ng-container>
+</section>

@@ -1,0 +1,225 @@
+<!-- section -->
+<ng-container *ngIf="showSubject">
+	<section>
+		<ng-container [ngSwitch]="nowPageType">
+			<ng-container *ngIf="showTag">
+				<ng-container *ngIf="!search">
+					<ul class="tab_table">
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('in-subject')" class="tab_button" [ngClass]="{ 'active':(flag) }">國內標的</a>
+						</li>
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('out-subject')" class="tab_button" [ngClass]="{ 'active':(!flag) }">國外標的</a>
+						</li>
+					</ul>
+				</ng-container>
+				<!--只能選國內-->
+				<ng-container *ngIf="setData.investType=='D' && setData.fundType=='C' && search=='1'">
+					<ul class="tab_table">
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('in-subject')" class="tab_button" [ngClass]="{ 'active':(flag) }">國內標的</a>
+						</li>
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('out-subject')" class="tab_button normal_disable">國外標的</a>
+						</li>
+					</ul>
+				</ng-container>
+				<!--只能選國外-->
+				<ng-container *ngIf="setData.investType=='D' && setData.fundType=='D' && search=='2'">
+					<ul class="tab_table">
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('in-subject')" class="tab_button normal_disable">國內標的</a>
+						</li>
+						<li class="tab_two_cell">
+							<a href="javascript:void(0)" (click)="onChangeTag('out-subject')" class="tab_button" [ngClass]="{ 'active':(!flag) }">國外標的</a>
+						</li>
+					</ul>
+				</ng-container>
+
+				<ul class="sub_tab_table sub_tab_two">
+					<li class="sub_td_cell">
+						<a href="javascript:void(0)" (click)="onChangeTag('feature')" class="" [ngClass]="{ 'active':(flag2) }">精選基金標的</a>
+					</li>
+					<li class="sub_td_cell">
+						<a href="javascript:void(0)" (click)="onChangeTag('optional')" class="" [ngClass]="{ 'active':(!flag2) }">自選基金標的</a>
+					</li>
+				</ul>
+				<div class="row_single"></div>
+			</ng-container>
+
+			<!-- 顯示基金列表(國內精選) Start -->
+			<ng-container *ngSwitchCase="'in-fundLists'">
+				<div>
+					<a class="inner_news_list" href="javascript:void(0)" *ngFor="let item of in_feature">
+						<span class="inner_news_list_td no_line" (click)="onSelectSub(item)">
+							<i class="inner_news_title">
+								{{item.fundCode}}
+							</i>
+							<b class="inner_news_info">
+								{{item.fundName}}({{item.risk}})
+							</b>
+						</span>
+						<span class="">
+						</span>
+					</a>
+				</div>
+			</ng-container>
+			<!-- 顯示基金列表(國內精選) End -->
+
+			<!-- 顯示基金列表(國外精選) Start -->
+			<ng-container *ngSwitchCase="'out-fundLists'">
+				<div>
+					<a class="inner_news_list" href="javascript:void(0)" *ngFor="let item of out_feature">
+						<span class="inner_news_list_td no_line" (click)="onSelectSub(item)">
+							<i class="inner_news_title">
+								{{item.fundCode}}
+							</i>
+							<b class="inner_news_info">
+								{{item.fundName}}({{item.risk}})
+							</b>
+						</span>
+						<span class="">
+						</span>
+					</a>
+				</div>
+			</ng-container>
+			<!-- 顯示基金列表(國外精選) End -->
+
+			<!-- 自選 Start-->
+			<ng-container *ngSwitchCase="'optional'">
+				<div class="row_single">
+					<ul class="inner_table_frame" (click)="onSelectCompany()">
+						<li class="inner_table_cell">基金公司</li>
+						<li class="inner_table_cell">
+							<div name="" class="inner_select_fund"></div>
+						</li>
+					</ul>
+					<i class="input_info_warnning">未選擇基金標的</i>
+				</div>
+			</ng-container>
+			<!-- 自選 End-->
+
+
+			<!-- 顯示基金列表(代號查詢) Start -->
+			<ng-container *ngSwitchCase="'fundListsQuery'">
+
+				<div class="row_single">
+					<ul class="inner_table_frame" (click)="onSelectCompany()">
+						<li class="inner_table_cell">基金公司</li>
+						<li class="inner_table_cell">
+							<div name="" class="inner_select_fund">
+								{{fundCompany.compCode}}{{fundCompany.compName}}
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div>
+					<a class="inner_news_list" href="javascript:void(0)" *ngFor="let compItem of compData">
+						<span class="inner_news_list_td no_line" (click)="onSelectSub(compItem)">
+							<i class="inner_news_title">
+								{{compItem.fundCode}}
+							</i>
+							<b class="inner_news_info">
+								{{compItem.fundName}}({{compItem.risk}})
+							</b>
+						</span>
+						<span class="">
+						</span>
+					</a>
+				</div>
+			</ng-container>
+			<!-- 顯示基金列表(代號查詢) End -->
+
+
+			<!-- 顯示「轉換」，基金公司(選單查基金公司) Start -->
+			<!-- <ng-container *ngSwitchCase="'converComp'">
+				<div id="inner_fund">
+					<a class="inner_news_list" href="javascript:void(0)" *ngFor="let converCompItem of converCompData">
+						<span class="inner_news_list_td no_line" (click)="onSelectSub(converCompItem)">
+							<i class="inner_news_title">
+								{{converCompItem.compCode}}
+							</i>
+							<b class="inner_news_info">
+								{{converCompItem.compName}}
+							</b>
+						</span>
+						<span class="">
+						</span>
+					</a>
+				</div>
+			</ng-container> -->
+
+
+
+			<ng-container *ngSwitchCase="'converComp'">
+				<a class="inner_news_list" href="javascrit:void(0);" (click)="chooseConverOver(converCompItem)" *ngFor="let converCompItem of converCompData">
+					<span class="inner_news_list_td no_line">
+						<i class="inner_news_title">
+							{{converCompItem.compCode}}{{converCompItem.compName}}
+						</i>
+					</span>
+					<span class="">
+					</span>
+				</a>
+			</ng-container>
+			<!-- 顯示「轉換」，基金公司(選單查基金公司) End -->
+
+
+			<!-- 顯示「轉換」，基金選單(基金公司查選單) Start -->
+			<ng-container *ngSwitchCase="'converFund'">
+				<div>
+					<a class="inner_news_list" href="javascript:void(0)" *ngFor="let converFundItem of converFundData">
+						<span class="inner_news_list_td no_line" (click)="onSelectSub(converFundItem)">
+							<i class="inner_news_title">
+								{{converFundItem.fundCode}}
+							</i>
+							<b class="inner_news_info">
+								{{converFundItem.fundName}}({{converFundItem.risk}})
+							</b>
+						</span>
+						<span class="">
+						</span>
+					</a>
+				</div>
+			</ng-container>
+			<!-- 顯示「轉換」，基金選單(基金公司查選單) End -->
+
+
+		</ng-container>
+	</section>
+</ng-container>
+
+<!-- 顯示基金公司 Start -->
+<ng-container *ngIf="!showSubject">
+	<section>
+		<!-- 國內基金公司 Start-->
+		<ng-container *ngIf="showInOut">
+			<a class="inner_news_list" href="javascrit:void(0);" (click)="chooseOver(item)" *ngFor="let item of in_optional">
+				<span class="inner_news_list_td no_line">
+					<i class="inner_news_title">
+						{{item.compCode}}{{item.compName}}
+					</i>
+				</span>
+				<span class="">
+				</span>
+			</a>
+		</ng-container>
+		<!-- 國內基金公司 End-->
+
+		<!-- 國外基金公司 Start -->
+		<ng-container *ngIf="!showInOut">
+			<a class="inner_news_list" href="javascrit:void(0);" (click)="chooseOver(item)" *ngFor="let item of out_optional">
+				<span class="inner_news_list_td no_line">
+					<i class="inner_news_title">
+						{{item.compCode}}{{item.compName}}
+					</i>
+				</span>
+				<span class="">
+				</span>
+			</a>
+		</ng-container>
+		<!-- 國外基金公司 End -->
+	</section>
+</ng-container>
+<!-- 顯示基金公司 End -->

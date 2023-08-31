@@ -1,0 +1,67 @@
+<ng-container [ngSwitch]="showContent">
+    <ng-container *ngSwitchCase="'LOAN'">
+        <!-- 台幣 -->
+        <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span>
+        </div>
+
+        <div>
+            <ul class="table_info">
+                <!-- 目前利率 -->
+                <li class="table_row">
+                    <span>目前利率</span>
+                    <i>{{ data['nowRate'] | htFinancial:true }}</i>
+                </li>
+                <!-- 委託繳息帳號 -->
+                <li class="table_row">
+                    <span>委託繳息帳號</span>
+                    <i>{{ data['aupayAccount'] | accountFormate }}</i>
+                </li>
+
+                <!-- 現欠本金 -->
+                <li class="table_row">
+                    <span>現欠本金</span>
+                    <i>{{ data['balance'] | htMoney }}</i>
+                </li>
+                <!-- 借款額度 -->
+                <li class="table_row">
+                    <span>借款額度</span>
+                    <i>{{ data['loanCredit'] | htMoney }}</i>
+                </li>
+                <!-- 每月攤還本息 -->
+                <li class="table_row">
+                    <span>每月攤還本息</span>
+                    <i>{{ data['anuMonPay'] | htMoney }}</i>
+                </li>
+                <!-- 上次利息收訖日 -->
+                <li class="table_row">
+                    <span>上次利息收訖日</span>
+                    <i>{{ data['ltrateDueDate'] | htDate:'date' }}</i>
+                </li>
+                <!-- 借款日 -->
+                <li class="table_row">
+                    <span>借款日</span>
+                    <i>{{ data['loanDate'] | htDate:'date' }}</i>
+                </li>
+                <!-- 保險到期日 -->
+                <li class="table_row">
+                    <span>保險到期日</span>
+                    <i>{{ data['isranDueDate'] | htDate:'date' }}</i>
+                </li>
+                <!-- 到期日 -->
+                <li class="table_row">
+                    <span>到期日</span>
+                    <i>{{ data['expirDate'] | htDate :'date'}}</i>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'EMPTY'">
+        <!-- 查無資料 -->
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <!-- 很抱歉，您欲查詢的帳戶資訊不存在 -->
+        <div class="sub_info_subtitle">{{ 'PG_DEPOSIT.ERROR.ACCT_CONTENT' | translate }}</div>
+    </ng-container>
+</ng-container>

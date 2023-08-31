@@ -1,0 +1,53 @@
+<section>
+
+    <!--個資條款-->
+    <ng-container *ngIf="showPage=='personal-capital'">
+        <app-person-capital (backPageEmit)="onBackPage($event)"></app-person-capital>
+    </ng-container>
+
+
+    <!--選擇安控機制-->
+    <ng-container *ngIf="showPage=='safe-check'">
+        <div class="row_single">
+            <h4 class="simple_title">安控認證</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                親愛的客戶!<br>
+                您為首次辦理認識客戶作業(KYC)或風險承受度測驗，為了您交易上的安全，本交易需要辦理安控驗證
+            </p>
+        </div>
+
+        <!-- <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security> -->
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="{'active_warnning':safeTypeEmpty}">
+                <li class="inner_table_cell">
+                    目前您的轉帳機制：
+                </li>
+                <li class="inner_table_cell">
+                    <select name="WireTransfer" class="inner_select" [(ngModel)]="safeType">
+                        <option value="">請選擇轉帳機制</option>
+                        <option *ngFor="let item of safeArr" [ngValue]="item">{{item=='2'?'憑證':'OTP'}}</option>
+                    </select>
+                </li>
+            </ul>
+            <i class="input_info_warnning">請選擇轉帳機制</i>
+        </div>
+
+        <div class="row_single">
+            <div class="double_button" style="margin-top: 10px;">
+                <a href="javascript:void(0)" (click)="cancelBack()">取消</a><a href="javascript:void(0)" (click)="securutyCheck()">確定</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <!--填寫基本資料-->
+    <ng-container *ngIf="showPage=='base-data'">
+        <app-base-data-page [info_data]="info_data" (backPageEmit)="onBackBaseData($event)" (backPageEmitLeft)="changePage($event)"></app-base-data-page>
+    </ng-container>
+
+    <!--題目頁-->
+    <ng-container *ngIf="showPage=='reskTest'">
+        <app-reskTest [info_data]="info_data" [data]="data" [baseData]="baseData" [safeType]="safeType" (backPageEmitLeft)="changePage($event)"></app-reskTest>
+    </ng-container>
+</section>

@@ -1,0 +1,44 @@
+<div class="showstep step1">
+	<ul class="credit_card_bill_detail_list">
+
+
+		<li >
+				<p class="credit_card_name">
+						<i>總各卡帳單</i>
+					</p>
+					<p>
+						<!-- 本期應繳總金額 -->
+						<span>本期應繳總金額：</span>
+						<span ng-style="{'color':(totalpayableAmt <0)?'red':''}">{{totalpayableAmt | currency:"NT$":0}}</span>
+					</p>
+					<p>
+						<!-- 本期最低應繳金額 -->
+						<span>本期最低應繳總金額：</span>
+						<span ng-style="{'color':(totallowestPayableAmt <0)?'red':''}">{{totallowestPayableAmt | currency:"NT$":0}}</span>
+					</p>
+		</li>
+
+	
+		<li ng-repeat="(key, value) in cardList">
+			<p class="credit_card_name">
+				<i>{{value.cardType}}</i><i>{{value.creditCardNo | accountMaskFilter}}</i>
+			</p>
+			<p>
+				<!-- 本期應繳金額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_PAY' | translate }}：</span>
+				<span ng-style="{'color':(value.payableAmt <0)?'red':''}">{{value.payableAmt | currency:"NT$":0}}</span>
+			</p>
+			<p>
+				<!-- 本期最低應繳金額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}：</span>
+				<span ng-style="{'color':(value.lowestPayableAmt <0)?'red':''}">{{value.lowestPayableAmt | currency:"NT$":0}}</span>
+			</p>
+			<p class="no_border_bottom">
+				<!-- 可用餘額 -->
+				<span>{{ 'BILL_MSG.INPUT.PERIOD_BALANCE' | translate }}：</span>
+				<span ng-style="{'color':(value.usableAmt <0)?'red':''}">{{value.usableAmt | currency:"NT$":0}}</span>
+			</p>
+			<a href="javascript:void(0);" ng-click="resultPage(key);">{{'BTN.SEARCH' | translate}}</a>
+		</li>
+	</ul>
+</div>

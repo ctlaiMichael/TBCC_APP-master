@@ -1,0 +1,13 @@
+<section *ngIf="!showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <div class="inner_news_list_frame">
+        <!-- Page1 -->
+        <news-board-page [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></news-board-page>
+        <!-- Page other -->
+        <ng-container #pageBox></ng-container>
+    </div>
+</section>
+
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <app-news-board-content [setData]="content_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-news-board-content>
+</ng-template>

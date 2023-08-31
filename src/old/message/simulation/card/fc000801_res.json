@@ -1,0 +1,31 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000801",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000801ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000801",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "查詢成功",
+      "fc0:activityDetails" : {
+        "fc0:activityDetail" : [
+          {"fc0:activityId" : "1001", "fc0:activityName" : "刷合庫卡‧漫遊吧首日免費", "fc0:activityPeriod" : "自105.10.01~105.12.31", "fc0:isRecord" : "0"},
+          {"fc0:activityId" : "1002", "fc0:activityName" : "全新卡戶申辦合庫世界卡，享首刷禮優惠", "fc0:activityPeriod" : "自105.10.15~105.12.31", "fc0:isRecord" : "0"},
+          {"fc0:activityId" : "1003", "fc0:activityName" : "刷合庫卡繳交地價稅免手續費", "fc0:activityPeriod" : "自105.11.01~105.11.30", "fc0:isRecord" : "0"},
+          {"fc0:activityId" : "1004", "fc0:activityName" : "刷合庫卡，輕鬆旅遊享回饋金", "fc0:activityPeriod" : "自105/11/1~106/2/28", "fc0:isRecord" : "0"},
+          {"fc0:activityId" : "1005", "fc0:activityName" : "(已登錄)刷合庫卡‧漫遊吧首日免費", "fc0:activityPeriod" : "自105.10.01~105.12.31", "fc0:isRecord" : "1"},
+          {"fc0:activityId" : "1006", "fc0:activityName" : "(已登錄)全新卡戶申辦合庫世界卡，享首刷禮優惠", "fc0:activityPeriod" : "自105.10.15~105.12.31", "fc0:isRecord" : "1"},
+          {"fc0:activityId" : "1007", "fc0:activityName" : "(已登錄)刷合庫卡繳交地價稅免手續費", "fc0:activityPeriod" : "自105.11.01~105.11.30", "fc0:isRecord" : "1"},
+          {"fc0:activityId" : "1008", "fc0:activityName" : "(已登錄)刷合庫卡，輕鬆旅遊享回饋金", "fc0:activityPeriod" : "自105/11/1~106/2/28", "fc0:isRecord" : "1"}
+         ]
+      }
+    }
+  }
+}

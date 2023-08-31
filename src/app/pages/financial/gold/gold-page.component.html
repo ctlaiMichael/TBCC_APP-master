@@ -1,0 +1,41 @@
+<section>
+    <!--待歷史牌價中台完成後再解開註解-->
+    <ul class="tab_table">
+        <li class="tab_two_cell" (click)="onTabClick(item)" *ngFor="let item of menu_data">
+            <a href="javascript:void(0)" class="tab_button"
+                [ngClass]="{'active': (active_menu==item) }">{{item.name}}</a>
+        </li>
+    </ul>
+
+    <ng-container *ngIf="active_menu.id=='now'">
+        <app-gold-now-page></app-gold-now-page>
+    </ng-container>
+    <!--待歷史牌價中台完成後再解開註解-->
+    <ng-container *ngIf="active_menu.id=='history'">
+        <app-gold-history-page (btnflag)="onBtnflag($event)"></app-gold-history-page>
+    </ng-container>
+
+    <div class="row_single"></div>
+    <div class="row_single">
+        <div class="double_button" *ngIf="!btnflag">
+            <a href="javascript:void(0)" (click)="onGoToEvent('gold-buy')">買進</a>
+            <a href="javascript:void(0)" (click)="onGoToEvent('gold-sell')">回售</a>
+        </div>
+    </div>
+
+    <ng-container *ngIf="active_menu.id=='now'">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_content">
+                <ol class="order_list">
+                    <!-- 1.「黃金存摺轉換條塊應補繳款」為黃金條塊賣出價格扣除「黃金存摺1公克賣出價格乘以轉換公克數」。 -->
+                    <li>{{ 'PG_GOLD.RATE.INFO.INFO1' | translate }}</li>
+                    <!-- 2.如「黃金存摺轉換條塊應補繳款」無補繳款金額時，表示該產品規格已缺貨，請勿提出申請。 -->
+                    <li>{{ 'PG_GOLD.RATE.INFO.INFO2' | translate }}</li>
+                </ol>
+            </div>
+        </div>
+    </ng-container>
+</section>

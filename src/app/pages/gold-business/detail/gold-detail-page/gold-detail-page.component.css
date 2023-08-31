@@ -1,0 +1,105 @@
+.accountCard_frame_new {
+    display: table;
+    width: 100%;
+    position: relative;
+
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.accountCard_td_new {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 10px;
+}
+
+.accountCard_inner_table_new {
+    display: table;
+    width: 100%;
+    /*padding: 0 5px;*/
+}
+
+.accountCard_inner_row_new {
+    display: table-row;
+}
+
+.accountCard_inner_td_new {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.accountCard_td_arrow_new {
+    width: 1px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.accountCard_inner_td_l_new,
+.accountCard_inner_td_r_new {
+    display: inline-block;
+    padding: 15px 6px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    color: #6a6a6a;
+}
+
+.accountCard_inner_td_l_new {
+    width: 40%;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.accountCard_inner_td_r_new {
+    width: 60%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.accountCard_inner_td_r_new.accountCard_money_new {
+    color: #007680;
+}
+
+.accountCard_inner_td_l.accountCard_name_new {
+    font-size: 15px;
+}
+
+.accountCard_inner_td_new:not(:first-child):after {
+    /* background-color: white; */
+    content: '';
+    width: auto;
+    /* height: 1px; */
+    position: absolute;
+    top: 50%;
+    background: transparent;
+    right: 15px;
+    left: 0px;
+    border: .5px dashed rgba(0, 0, 0, .1);
+}
+
+.accountCard_frame_new:first-child:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 12px;
+    height: 30px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+    background: linear-gradient(-238deg, #D4FC89 11%, #64E0C8 100%);
+    ;
+}
+
+section.accountSum_main_pg {
+    background-attachment: fixed;
+    background-image: url('../../../../../assets/images/container_bk_green.png');
+    background-position: center 425px;
+    background-size: 150%;
+    background-repeat: no-repeat;
+}

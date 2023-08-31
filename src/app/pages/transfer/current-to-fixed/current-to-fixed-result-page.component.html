@@ -1,0 +1,68 @@
+<section>
+	<div class="sub_info_frame result">
+		<!-- 失敗step_final_icon_frame 加上 fault_active -->
+		<div class="step_final_icon_frame" [ngClass]="currentFixedResultData.trnsRsltCode != '0'?'fault_active':''">
+			<i class="icon_success"></i>
+			<span class="step_final_info">{{currentFixedResultData.hostCode}}</span>
+			<span class="step_final_info">{{currentFixedResultData.hostCodeMsg}}</span>
+		</div>
+		
+	</div>
+	<div class="row_single" ></div>
+	<div class="row_single" *ngIf="currentFixedResultData.trnsRsltCode != '0'">
+			<a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">返回轉帳服務</a>
+	</div>
+	<ng-container  *ngIf="currentFixedResultData.trnsRsltCode == '0'">
+	<ul class="table_info">
+		<li class="table_row">
+			<span>交易序號</span>
+			<i>{{currentFixedResultData.trnsNo}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易時間</span>
+			<i>{{( currentFixedResultData | fieldCheck: ['trnsDateTime' ,{zero_type:false, empty_str:'--'}] ) | htDate}}</i>
+		</li>
+		<li class="table_row">
+			<span>記帳日期</span>
+			<i>{{currentFixedResultData.recordDate | htDate: 'date'}}</i>
+		</li>
+		<li class="table_row">
+			<span>轉存類別</span>
+			<i>{{currentFixedResultData.transfrTypeDesc}}</i>
+		</li>
+		<li class="table_row">
+			<span>轉存期別</span>
+			<i>{{currentFixedResultData.transfrTimes}}個月</i>
+		</li>
+		<li class="table_row">
+			<span>轉存利率別</span>
+			<i>{{currentFixedResultData.transfrRateTypeDesc}}利率</i>
+		</li>
+		<li class="table_row">
+			<span>轉存金額</span>
+			<i>{{currentFixedResultData.trnsfrBal | currencyMoney:'TWD' }}</i>
+		</li>
+		<li class="table_row">
+			<span>定存帳號</span>
+			<i>{{currentFixedResultData.fixDepositAccnt | accountFormate}}</i>
+		</li>
+		<li class="table_row">
+			<span>定存利率</span>
+			<i>{{currentFixedResultData.fixDepositRate}}%</i>
+		</li>
+		<li class="table_row">
+			<span>續存方式</span>
+			<i>{{currentFixedResultData.autoTransCodeDesc}}</i>
+		</li>
+		<li class="table_row">
+			<span>綜存帳號餘額</span>
+			<i>{{currentFixedResultData.inteDepositBal | currencyMoney:'TWD' }}</i>
+		</li>
+		
+	</ul>
+	<div class="row_single"></div>
+	<div class="row_single">
+			<a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK' | translate }}</a>
+	</div>
+	</ng-container>
+</section>

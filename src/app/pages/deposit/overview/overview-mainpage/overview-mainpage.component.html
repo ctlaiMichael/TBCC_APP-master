@@ -1,0 +1,56 @@
+<section *ngIf="!showContent; else contentBox" class="accountSum_main_pg"
+     paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <div class="inner_news_list_frame">
+        <!-- 存款總覽帳戶資產 -->
+        <div class="row_single_deposit row_info_accountSum_block">
+            <div class="info_accountSum_block">
+                <div class="info_accountSum_innerblock">
+                    <div class="info_accountSum_content">
+                        <!-- 存款總金額 -->
+                        <p>{{ 'PG_DEPOSIT.FIELD.totalAcctAmt' | translate }}</p>
+                        <span>{{ (accountData | fieldCheck:'totalAcctAmt') | htMoney: showCurrency }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row_single_deposit"></div>
+        <div class="accountSum_main_info">
+            <a href="javascript:void(0)" class="accountSum_mi_btn">
+                <!-- 活期性存款 -->
+                <span class="accountSum_mi_title">{{ 'PG_DEPOSIT.FIELD.totlSaveAcctAmt' | translate }}</span>
+                <i class="accountSum_mi_number">{{ (accountData | fieldCheck:'totlSaveAcctAmt') | htMoney: showCurrency}}</i>
+            </a>
+            <a href="javascript:void(0)" class="accountSum_mi_btn">
+                <!-- 定期性存款 -->
+                <span class="accountSum_mi_title">{{ 'PG_DEPOSIT.FIELD.totlTimeDepositeAmt' | translate }}</span>
+                <i class="accountSum_mi_number">{{ (accountData | fieldCheck:'totlTimeDepositeAmt')  | htMoney: showCurrency}}</i>
+            </a>
+        </div>
+        <!-- 存款總覽帳戶資產 End -->
+        <div class="row_single_deposit"></div>
+        <!-- 本月成長率 -->
+        <!-- <div class="row_single">
+            <p class="accountSum_growth_rate">
+                本月成長率
+                <span>+10%</span>
+            </p>
+        </div> -->
+        <!-- 本月成長率 End -->
+
+        <!-- 分頁 -->
+        <app-overview-paginator [page]="'1'" (backPageEmit)="onBackPage($event)"  (errorPageEmit)="onErrorBackEvent($event)"></app-overview-paginator>
+        <ng-container #pageBox></ng-container>
+        <!-- 分頁 End -->
+    </div>
+</section>
+<!-- 內容頁 -->
+<ng-template #contentBox>
+    <!-- 定期存款 -->
+    <ng-container *ngIf="!showDemandDeposit; else otherAcctType">
+        <app-time-deposit [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-time-deposit>
+    </ng-container>
+    <!-- 活期存款(活存/支存/綜活存) -->
+    <ng-template #otherAcctType>
+        <app-overview-content [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-overview-content>
+    </ng-template>
+</ng-template>

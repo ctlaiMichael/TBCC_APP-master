@@ -1,0 +1,46 @@
+<section class="background_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y" style="padding-bottom:1em;">
+      <ul>
+          <li class="simple_title_a11y simple_title_em_without_before_a11y">
+              提醒您，輸入碼錯誤連續達5次時,及自動停止本服務,若需恢復使用請至本行各營業單位臨櫃辦理OTP解鎖服務。
+          </li>
+          <li class="simple_title_a11y simple_title_em_without_before_a11y">
+              有*為必填欄位
+          </li>
+      </ul>
+  </div>
+
+  <div class="row_white_a11y">
+    <div class="row_content_black_a11y">網頁檢核碼<br class="br_height_a11y">
+      <font class="row_content_green_a11y">{{resData.checkCode}}
+      </font>
+    </div>
+
+    <div class="row_content_black_a11y">有效時間<br class="br_height_a11y">
+      <font class="row_content_green_a11y">{{ resData.otp_sec }} 秒</font>
+    </div>
+
+    <div class="inner_table_frame_a11y">
+      <div class="row_content_black_a11y" >*OTP驗證碼</div>
+        <div>
+          <input type="tel" 
+          [ngClass]="checkTransOTP?'inner_input_a11y':'red_border_a11y inner_input_a11y_wrong'" 
+          [(ngModel)]="resData.OTP_val" placeholder="請輸入OTP驗證碼"  maxlength="6" (change)="transOtpChange()" />
+        </div>
+        <div *ngIf="!checkTransOTP" class="check_wrong_str_a11y">{{TransOTPStr}}</div>
+    </div>
+    <br>
+  
+  </div>
+  <!-- 卡片式總覽8 End -->
+  <div class="row_single_2_a11y"></div>
+  <div class="row_single_a11y" >
+    <div><a class="button_confirm_a11y" (click)="doSubmitOtp()" role="button">確定</a></div>
+  </div>
+  <div class="row_single_a11y" >
+    <a class="button_confirm_a11y" (click)="cancel()">
+      <div class="button_cancel_a11y" role="button">取消</div>
+    </a>
+  </div>
+</section>

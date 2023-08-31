@@ -1,0 +1,153 @@
+<section>
+  <div class="sub_info_frame">
+    <ul class="step_bar_frame">
+      <li class="step_bar step_active"><span>1.填寫資料</span></li>
+      <li class="step_bar"></li>
+      <li class="step_bar"></li>
+    </ul>
+  </div>
+
+
+  <!-- 現行的 -->
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">*繳費對象</li>
+      <li class="inner_table_cell">
+        <select id="select_company" name="" class="inner_select">
+          <option value="0">請選擇保險公司</option>
+          <option value="1">南山人壽外幣保險</option>
+          <option value="2">新光人壽外幣保險</option>
+        </select>
+      </li>
+    </ul>
+    <i class="input_info_warnning">請選擇保險公司</i>
+  </div>
+  <div class="row_single">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">*付款帳號</li>
+      <li class="inner_table_cell">
+        <select name="" class="inner_select">
+          <option value="0">1058188010301</option>
+          <option value="1">1058188010302</option>
+          <option value="2">1058188010303</option>
+          <option value="3">1058188010304</option>
+        </select>
+      </li>
+    </ul>
+    <i class="input_info_warnning">請選擇付款帳號</i>
+  </div>
+  <div class="row_single" id="txn_type">
+    <ul class="inner_table_frame">
+      <li class="inner_table_cell">*付款幣別</li>
+      <li class="inner_table_cell">
+        <select name="" class="inner_select">
+          <option value="0">請選擇付款幣別</option>
+          <option value="1">USD</option>
+          <option value="2">CNY</option>
+          <option value="3">JPY</option>
+        </select>
+      </li>
+    </ul>
+    <a id="section_info" class="fontw normal_link color_fee" style="float: right">
+      付款幣別說明
+    </a>
+    <!-- <i class="select_info">(限保單幣別原幣繳納，台幣繳款先由「結購存外存」結購後再執行本交易)</i> -->
+    <i class="input_info_warnning">錯誤訊息內容</i>
+  </div>
+  <div class="section_addition">
+    <hr class="divider ">
+    <div class="row_single ">
+      <ul class="inner_table_frame search_range_disable">
+        <li class="inner_table_cell">轉入戶名</li>
+        <li class="inner_table_cell">
+          <input class="inner_input" type="text" name="inner_input_company" value="南山人壽保險股份有限公司">
+        </li>
+      </ul>
+      <i class="input_info_warnning">錯誤訊息內容</i>
+    </div>
+
+    <div class="row_single nanshan">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">*保費種類</li>
+        <li class="inner_table_cell">
+          <select name="" class="inner_select">
+            <option value="0">首期保費</option>
+            <option selected value="1">續期保費</option>
+          </select>
+        </li>
+      </ul>
+      <!-- <i class="select_info">(注意!!「保單號碼」請依「南山人壽保險費通知書」謹慎輸入，資料錯誤將造成誤銷或無法銷帳，應洽南山人壽辦理。)</i> -->
+      <i class="input_info_warnning">請選擇保費種類</i>
+    </div>
+
+    <div class="row_single nanshan">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">*保單號碼</li>
+        <li class="inner_table_cell">
+          <input class="inner_input" type="text" name="" placeholder="請輸入保單號碼">
+        </li>
+      </ul>
+      <i class="input_info_warnning">未輸入保單號碼</i>
+    </div>
+
+    <div class="row_single shinkong">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">*繳款編號</li>
+        <li class="inner_table_cell">
+          <input class="inner_input" type="text" name="" placeholder="請輸入繳款編號">
+        </li>
+      </ul>
+      <i class="input_info_warnning">未輸入繳款編號</i>
+    </div>
+
+
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">*繳費金額</li>
+        <li class="inner_table_cell">
+          <input class="inner_input" type="text" name="" placeholder="請輸入繳費金額">
+        </li>
+      </ul>
+      <i class="input_info_warnning">未輸入繳費金額</i>
+    </div>
+    <div class="row_single">
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          *目前安控方式
+        </li>
+        <li class="inner_table_cell">
+          <select name="" id="security" class="inner_select">
+            <option value="1">SSL</option>
+            <option value="2">憑證</option>
+            <option value="3">OTP</option>
+          </select>
+        </li>
+      </ul>
+      <i class="input_info_warnning">錯誤訊息內容</i>
+    </div>
+  </div>
+
+
+  <div class="row_single ">
+    <div class="double_button" id="btn_submit">
+      <a id="dest">取消</a>
+      <a href="index.html">確定</a>
+    </div>
+
+  </div>
+  <div class="section_addition">
+    <div class="row_single">
+      <h4 class="simple_title">提醒您</h4>
+    </div>
+    <div class="row_single nanshan">
+      <p class="inner_content">
+        注意!!「保單號碼」請依「南山人壽保險費通知書」謹慎輸入，資料錯誤將造成誤銷或無法銷帳，應洽南山人壽辦理
+      </p>
+    </div>
+    <div class="row_single shinkong">
+      <p class="inner_content">
+        請輸入新光人壽繳費通知指示之14碼合庫虛擬帳號。轉出帳號限為要保人帳號，非要保人帳號限臨櫃辦理
+      </p>
+    </div>
+  </div>
+</section>

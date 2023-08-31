@@ -1,0 +1,210 @@
+.login_body{
+  background-image: url('../../modules/login/image/logo_bk_large.png');
+  background-position: -180px 220px;
+  background-repeat: no-repeat;
+}
+
+.login_navigation{
+  height: 50px;
+  background-image: url('../../modules/login/image/navi.png');
+  background-size: cover;
+  text-align: center;
+}
+.login_navigation img{
+  padding-top:20px; 
+  height:32px;
+}
+
+.login_navigation2{
+  height: 70px;
+  background-image: url('../../modules/login/image/navi2.png');
+  background-size: contain;
+}
+
+
+.login_select{
+  width: 285px;
+  height: 80px;
+  margin: auto;
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.left_select{
+  width: 50%;
+  float: left;
+  opacity: 0.8;
+  font-family: PingFangTC-Medium;
+  font-size: 15px;
+  color: #009274;
+  letter-spacing: 1.25px;
+}
+
+.left_select h2{
+  background: #2CB2B2;
+  border-radius: 100px;
+  color:white;
+  height: 27px;
+  line-height: 27px;
+}
+
+.left_select img{
+  width: 50px;
+  height:50px;
+}
+
+.right_select{
+  width: 50%;
+  float:right;
+  opacity: 0.8;
+  font-family: PingFangTC-Medium;
+  font-size: 15px;
+  color: #009274;
+  letter-spacing: 1.25px;
+}
+
+.right_select h2{
+  border-radius: 100px;
+  height: 27px;
+  line-height: 27px;
+}
+
+.right_select img{
+  width: 50px;
+  height:50px;
+}
+
+.login_textfield{
+  width: 90%;
+  height: 40px;
+  box-shadow: 0 10px 25px 0 rgba(123,123,123,0.35), inset 0 1px 19px 0 rgba(255,255,255,0.50);
+  border-radius: 100px;
+  margin: auto;
+  margin-bottom: 30px;
+  font-size: 14px;
+  background-color:white
+
+}
+
+::placeholder{
+  color:#4A4A4A;
+  font-size: 14px;
+}
+
+.login_textfield #login_name{
+  width: 60%;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  font-size: 14px;
+  font-family: PingFangTC-Medium;
+  letter-spacing: 1.17px;
+  color: #009274;
+  z-index: -99
+}
+.login_textfield #login_user{
+  width: 60%;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  font-size: 14px;
+  font-family: PingFangTC-Medium;
+  letter-spacing: 1.17px;
+  color: #009274;
+  z-index: -99
+
+}
+.login_textfield #login_password{
+  width: 60%;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  font-size: 14px;
+  font-family: PingFangTC-Medium;
+  letter-spacing: 1.17px;
+  color: #009274;
+  z-index: -99
+
+}
+
+input[type=text].login_input{
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+input[type=password].login_input{
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 20px;
+
+}
+
+.login_textfield img{
+  position: absolute;
+  float:right;
+  right: 10%;
+  margin-top: 13px;
+  width: 20px;
+  z-index:1
+}
+
+.remember_text{
+  position: absolute;
+  float:right;
+  right: 20%;
+  margin-top: 10px;
+  color:#009274;
+}
+
+.remember_text input{
+  border-color: #009274;
+  margin-right: 5px;
+  border-radius: 0; 
+  z-index:1
+}
+
+
+
+.login_button{
+    text-align: center;
+    font-size: 50px;
+    width: 285px;
+    margin: auto;
+    margin-top: -20px;
+
+}
+
+.login_button button{
+  width: 285px;
+  height: 40px;
+  box-shadow: 0 10px 25px 0 rgba(123,123,123,0.35), inset 0 1px 19px 0 rgba(255,255,255,0.50);
+  border-radius: 100px;
+  font-size: 18px;
+  border:none;
+  font-family: PingFangTC-Medium;
+  letter-spacing: 1.5px;
+}
+  
+.left_button{
+  background-color: #2CB2B2;
+  color: white;
+}
+
+.right_button{
+  background-color: white;
+}
+
+
+input[type="checkbox"]:checked {
+  background: #009274;
+}
+
+
+
+input[type="checkbox"]:checked:after {
+  display: block;
+}
+
+

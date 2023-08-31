@@ -1,0 +1,59 @@
+<!-- 基金損益 -->
+    <ul class="table_info">
+        <li class="table_row">
+            <span>交易日期</span>
+            <i>{{lossData.enrollDate | htDate:'date'}}</i>
+        </li>
+        <li class="table_row">
+            <span>投資幣別</span>
+            <i>{{lossData.iNCurrency}}</i>
+        </li>
+        <li class="table_row">
+            <span>投資金額</span>
+            <i>{{lossData.invenAmount | htMoney: lossData.iNCurrency }}</i>
+        </li>
+        <li class="table_row">
+            <span>單位數</span>
+            <i>{{lossData.unit | htFinancial: [false, true]}}</i>
+        </li>
+        <li class="table_row">
+            <span>淨值日期</span>
+            <i>{{lossData.netValueDate | htDate:'date'}}</i>
+        </li>
+        <li class="table_row">
+            <span>參考淨值</span>
+            <i>{{lossData.refNetValue | htFinancial: [false, true]}}</i>
+        </li>
+        <li class="table_row">
+            <span>參考匯率</span>
+            <i>{{lossData.refRate | htFinancial: [false, true]}}</i>
+        </li>
+        <li class="table_row">
+            <span>參考現值</span>
+            <i>{{lossData.refAmount | htMoney: lossData.iNCurrency}}</i>
+        </li>
+        <li class="table_row">
+            <span>累計配息</span>
+            <i>{{lossData.addIntAmount | htMoney: lossData.iNCurrency}}</i>
+        </li>
+        <li class="table_row">
+            <span>參考損益</span>
+            <i class="{{ lossData.refProfit | fundAmtClass }}">{{lossData.refProfit | htMoney: lossData.iNCurrency }}</i>
+        </li>
+        <li class="table_row">
+            <span>參考報酬%</span>
+            <i class="{{ lossData.reward | fundAmtClass }}">{{lossData.reward}}%</i>
+        </li>
+        <li class="table_row">
+            <span>在途金額</span>
+            <i>{{lossData.onTheWayPrice | htMoney: lossData.iNCurrency}}</i>
+        </li>
+        <li class="table_row">
+            <span>預出金額</span>
+            <i>{{lossData.aheadAmount | htMoney: lossData.iNCurrency}}</i>
+        </li>
+    </ul>
+
+<div class="row_single">
+
+</div>

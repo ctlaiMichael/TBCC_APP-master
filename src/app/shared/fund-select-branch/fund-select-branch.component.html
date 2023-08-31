@@ -1,0 +1,56 @@
+<!-- popup window -->
+<!-- <div class="popup_window popup_open">
+    <div class="popup_content"> -->
+    <section>    
+        <div class='row_single'>
+
+            <h4 class="simple_title">選擇行政區</h4>
+
+            <div class="row_single"></div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="bindData.city" (change)="cityChange()">
+                            <option value="">請選擇</option>
+                            <ng-container *ngFor="let item of cityData">
+                                <option [ngValue]="item">{{item}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="bindData.branchName" (change)="onNameChange()">
+                            <option value="">請選擇</option>
+                                <ng-container *ngFor="let item of nameData">
+                                    <option [ngValue]="item">{{item?item:""}}</option>
+                                </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+        </div>
+
+        <!-- <div class="row_single">
+            <div class="double_button">
+                <a class="popup_cancel" href="javascript:void(0)" (click)="onCancel()">取消</a><a href="javascript:void(0)"
+                    (click)="onPopConfirm()">確認</a>
+            </div>
+        </div> -->
+
+        <div class="row_single">
+            <div class="double_button" style="margin-top: 10px;">
+                <a href="javascript:void(0)" (click)="onCancel()">{{'BTN.PREVIOUS' | translate}}</a>
+                <a href="javascript:void(0)" (click)="onPopConfirm()">{{'BTN.CHECK' | translate}}</a>
+            </div>
+        </div>
+    </section>
+    <!-- </div>
+</div> -->
+<!-- popup window //End -->

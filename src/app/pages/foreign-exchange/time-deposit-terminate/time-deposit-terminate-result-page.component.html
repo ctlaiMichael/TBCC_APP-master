@@ -1,0 +1,92 @@
+<div class="sub_info_frame result">
+    <div class="step_final_icon_frame">
+        <i class="icon_success"></i>
+        <span class="step_final_info">交易成功</span>
+    </div>
+</div>
+<ul class="table_info">
+    <li class="table_row">
+        <span>交易時間</span>
+        <i>{{( resultObj | fieldCheck: ['trnsDateTime' ,{zero_type:false, empty_str:'--'}] ) | htDate}}</i>
+    </li>
+    <li class="table_row">
+        <span>轉出帳號</span>
+        <i>{{(resultObj | fieldCheck: ['xFaccount' ,{zero_type:false, empty_str:'--'}])| accountFormate}}</i>
+    </li>
+    <li class="table_row">
+        <span>匯率</span>
+        <i>{{resultObj | fieldCheck: ['trnsfrRate' ,{zero_type:false, empty_str:'--'}]}}</i>
+    </li>
+    <li class="table_row">
+        <span>起訖息日</span>
+        <i>{{resultObj.startDate|htDate:'date'}}~<br>{{resultObj.maturityDate|htDate:'date'}}</i>
+    </li>
+    <li class="table_row">
+        <span>解約利率</span>
+        <i>{{resultObj | fieldCheck: ['cancelRate' ,{zero_type:false, empty_str:'--'}] }}%</i>
+    </li>
+    <li class="table_row">
+        <span>轉入綜活存帳號</span>
+        <i>{{(resultObj | fieldCheck: ['destAccount' ,{zero_type:false, empty_str:'--'}])| accountFormate}}</i>
+    </li>
+    <li class="table_row">
+        <span>解約本金</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['amount' ,{zero_type:false, empty_str:'--'}]) | currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>按月領息已領息</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['interestIncome' ,{zero_type:false, empty_str:'--'}]) | currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>中途解約息</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['midInt' ,{zero_type:false, empty_str:'--'}] )| currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>毛息</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['margin' ,{zero_type:false, empty_str:'--'}] )| currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>稅</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['tax' ,{zero_type:false, empty_str:'--'}] )| currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>補充保費</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['insuAmt' ,{zero_type:false, empty_str:'--'}] )| currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>淨息</span>
+        <i>{{ resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck:
+            ['profit' ,{zero_type:false, empty_str:'--'}] )| currencyMoney}}</i>
+    </li>
+    <li class="table_row">
+        <span>台幣稅</span>
+        <i> {{ (resultObj.taxTW | fieldCheck: ['profit' ,{zero_type:false, empty_str:'--'}] )| currencyMoney : 'TWD'}}</i>
+    </li>
+    <li class="table_row">
+        <span>台幣毛息</span>
+        <i> {{ (resultObj | fieldCheck: ['intTW' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney : 'TWD'}}</i>
+    </li>
+    <li class="table_row">
+        <span>台幣補充保費</span>
+        <i> {{ (resultObj | fieldCheck: ['insuAmtTw' ,{zero_type:false, empty_str:'--'}] ) | currencyMoney : 'TWD'}}</i>
+    </li>
+    <li class="table_row">
+        <span>保費費率</span>
+        <i>{{ resultObj | fieldCheck: ['insuRate' ,{zero_type:false, empty_str:'--'}] }}%</i>
+    </li>
+    <li class="table_row">
+        <span>原幣解約本息(入活存)</span>
+        <i>{{resultObj | fieldCheck: ['currencyName' ,{zero_type:false, empty_str:''}]}} {{ (resultObj | fieldCheck: 
+            ['total' ,{zero_type:false, empty_str:'--'}]) | currencyMoney}}</i>
+    </li>
+</ul>
+<div class="row_single"></div>
+<div class="row_single">
+    <a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK' | translate }}</a>
+</div>

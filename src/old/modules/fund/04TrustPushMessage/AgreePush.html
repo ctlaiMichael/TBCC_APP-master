@@ -1,0 +1,54 @@
+<div class="wrapper">
+        <!--header-->
+        <div class="row">
+            <header class="main_nav">
+                <!-- <div class="back_bt" ng-click="clickBack()">
+                    <p class="back_title">返回</p>
+                </div> -->
+                <div class="page_title">同意信託業務推介</div>
+                <div class="bank_logo">
+                    <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+                </div>
+            </header>
+        </div>
+        <!--row-->
+        <!--header end-->
+    
+        <!--section 扣款帳號設定頁面-->
+        <div class="row">
+            <section class="main_sec">
+                <div class="row">
+                    <div class="main_content" >
+                        
+                    <p ng-show="state=='2'" style="font-size: 18px; font-weight: bold;color:red;">設定完成! 您已終止推介!!<br></p>
+                     <!-- <p style="color:red; font-weight: bold;">對已簽訂信託契約之客戶，得就特定投資標的已當面洽談、電話或電子郵件連繫、寄發商品說明書之方式進行推介。但不包含年齡為七十歲以上、教育程度為國中畢業以下或有全民健康保險重大傷病證明之非專業投資人。</p>   -->
+                    <p ng-show="state=='1'" style="font-size: 18px; font-weight: bold;color:red;">設定完成! 您已同意推介!!<br></p>
+  
+                   
+    
+                    </div>
+                    <!--main_content end-->
+    
+                    <div class="row" style="margin-top:100px;">
+                        <!-- <p style="font-size: 10px;margin-left:30px;font-weight: bold;">我以了解並同意上述內容。</p> -->
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+                            <!-- <button type="button" class="cancel_bt" ng-click="clickBack()">不同意</button>							 -->
+                        </div>
+                </div>
+                </div>
+                <!--row end-->
+    
+            </section>
+            <!--main_sec end-->
+        </div>
+        <!--section 扣款帳號設定頁面 end-->
+    
+    
+        <!--end of footer-->
+    
+    
+    </div>
+    <!--wrapper end-->
+    
+    

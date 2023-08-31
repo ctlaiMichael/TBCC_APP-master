@@ -1,0 +1,70 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y">
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" [title]="mydataTime">
+        {{ 'FIELD.SEARCH_TIME' | translate }}:<br>{{detailData.searchTime}}</p>
+    </div>
+  </div>
+  <!--外幣匯率內容: 即期與現鈔一起出現  -->
+  <!-- 標題Start -->
+  <!-- <div class="input_area_a11y"> -->
+    <div>
+    <table class="Table3_a11y">
+      <tr>
+        <th>期間</th>
+        <th>利率(年息)%</th>
+      </tr>
+      <tr>
+        <td>
+          活期存款</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['currentRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(一星期)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['weekRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(一個月期)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['oneMonRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(三個月期)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['trdMonRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(六個月期)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['sixMonRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(九個月)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['ninMonRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+      <tr>
+        <td>
+          定期存款(一年期)</td>
+        <td class="firstTable_a11y">
+          {{detailData | fieldCheck: ['yearRate',{zero_type:false,empty_str:'--'}]}}</td>
+      </tr>
+
+    </table>
+  </div>
+  <!--外幣匯率內容End-->
+  <ng-template #emptyBox>
+    <!-- 查無資料 -->
+    <div class="sub_info_subtitle_a11y">{{ 'ERROR.EMPTY' | translate }}</div>
+  </ng-template>
+
+
+</section>

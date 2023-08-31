@@ -1,0 +1,154 @@
+<ng-container [ngSwitch]="showPage">
+
+    <ng-container *ngSwitchCase="'redeem-edit2'">
+        <section>
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active">
+                        <span>1.填寫資料</span>
+                    </li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+
+            <div class="row_single"></div>
+
+            <ul class="credit_card_bill_detail_list">
+                <li>
+                    <p class="credit_card_name">
+                        <i>{{inputData.fundCode}} {{inputData.fundName}}</i>
+                        <i></i>
+                    </p>
+
+                    <p>
+                        <span>交易編號：</span>
+                        <span>{{inputData.transCode}}</span>
+                    </p>
+
+                    <ng-container *ngIf="inputData.iNCurrency == 'NTD' || inputData.iNCurrency == 'JPY'; else currBox">
+                        <p>
+                            <span>信託本金：</span>
+                            <span>{{inputData.iNCurrency}} {{inputData.invenAmount | htMoney:'TWD'}}</span>
+                        </p>
+                    </ng-container>
+
+                    <ng-template #currBox>
+                        <p>
+                            <span>信託本金：</span>
+                            <span>{{inputData.iNCurrency}} {{inputData.invenAmount | htMoney}}</span>
+                        </p>
+                    </ng-template>
+
+                    <p class="">
+                        <span>單位數：</span>
+                        <span>{{inputData.unit}}</span>
+                    </p>
+                </li>
+            </ul>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_redeemType) }">
+                    <li class="inner_table_cell">贖回方式</li>
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="inp_data.redeemType" (change)="onChangeRedeem(event)">
+                            <option value="">請選擇</option>
+                            <option [ngValue]="item_redeem" *ngFor="let item_redeem of redeem_obj">{{item_redeem.mode}}</option>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{'CHECK.REDEEM_TYPE' | translate}}</i>
+                <div class="row_inner">
+                    <a href="jvascript:void(0);" class="inner_button float_right_bt" (click)="onRedeemRestrictPopoup()">
+                        <span>贖回限制說明</span>
+                    </a>
+                </div>
+            </div>
+
+            <ng-container *ngIf="show_deduction">
+                <div class="row_single">
+                    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_isContinue) }">
+                        <li class="inner_table_cell">繼續扣款</li>
+                        <li class="inner_table_cell">
+                            <select name="" class="inner_select" [(ngModel)]="inp_data.isContinue" (change)="onChangeDeduction(event)">
+                                <option value="">請選擇</option>
+                                <option [ngValue]="item_continue" *ngFor="let item_continue of redeem_continue">{{item_continue.mode}}</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning">{{'CHECK.ISCONTINUE' | translate}}</i>
+                </div>
+            </ng-container>
+
+
+            <div class="row_single">
+                <ul id='ul_amount' class="inner_table_frame" [ngClass]="{ 'normal_disable':show_disable, 'active_warnning':check_redeemAmnt }">
+                    <li class="inner_table_cell">
+                        贖回金額{{inputData.iNCurrency}}
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="tel" name="" [(ngModel)]="inp_data.redeemAmnt" class="inner_input">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{amount_error | translate}}</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_redeemAcnt) }">
+                    <li class="inner_table_cell">
+                        存入帳號
+                    </li>
+                    <li class="inner_table_cell">
+                        <select name="" class="inner_select" [(ngModel)]="inp_data.redeemAcnt">
+                            <option value="">請選擇存入帳號</option>
+                            <option [ngValue]="inAct_item" *ngFor="let inAct_item of data">{{inAct_item.account}}</option>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{'CHECK.REDEEM_ACNT' | translate}}</i>
+            </div>
+
+            <div id="trans_date" class="row_single">
+                <ul id="date_input" class="inner_table_frame" [ngClass]="{ 'active_warnning':(check_date) }">
+                    <li class="inner_table_cell">
+                        設定贖回日期
+                    </li>
+                    <li class="inner_table_cell">
+                        <!-- <input type="date" name="dateWithMinMax" min="2019/01/7" max="2019/06/26" class="inner_input_data" [(ngModel)]="inp_data.date"> -->
+                        <input-date [min]="minDay" [max]="maxDay" [checkBusinessDay]=true [valueStr]="inp_data.date" (backValueEmit)="onInputBack($event)"></input-date>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{date_error | translate}}</i>
+                <ng-container *ngIf="onTrnsType=='2' || nowToResver == true;">
+                    <i class="select_info">
+                        目前設定
+                        <i class="font_red">預約</i>贖回日期為
+                        <span>{{inp_data.date}}</span>
+                    </i>
+                </ng-container>
+                <!-- <i class="select_info" id="currentTime4" style="display:none">
+            目前設定
+            <i class="font_red">預約</i>
+            贖回日期為
+            <span id="currentTime5"></span>
+        </i> -->
+            </div>
+
+            <div class="row_single">
+                <div class="double_button">
+
+                    <a href="javascript:void(0)" (click)="onCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+                    <a href="javascript:void(0)" (click)="onNext()">{{ 'BTN.NEXT' | translate }}</a>
+                </div>
+            </div>
+
+            <!-- section //End -->
+        </section>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'redeem-confirm'">
+        <app-redeem-confirm [inputData]="appli_info_data" [onTrnsType]="onTrnsType" [nowToResver]="nowToResver" (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorPageEvent($event)"></app-redeem-confirm>
+    </ng-container>
+
+</ng-container>

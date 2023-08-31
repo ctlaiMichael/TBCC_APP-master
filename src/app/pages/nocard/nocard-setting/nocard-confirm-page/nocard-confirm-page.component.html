@@ -1,0 +1,45 @@
+<section>
+
+  <!-- 進度條 -->
+  <div class="sub_info_frame" id="nocard_close">
+    <ul class="step_bar_frame" *ngIf="firstTime; else notFirstTime">
+      <li class="step_bar" id="s_bar1"></li>
+      <li class="step_bar" id="s_bar2"><span id="s_p2"></span></li>
+      <li class="step_bar step_active" id="s_bar3">
+        <span id="s_p3">3.新增確認</span>
+      </li>
+    </ul>
+    <ng-template #notFirstTime>
+      <ul class="step_bar_frame">
+        <li class="step_bar" id="s_bar1"></li>
+        <li class="step_bar step_active" id="s_bar2">
+          <span id="s_p2">2.新增確認</span>
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+  <div class="sub_info_subtitle">
+    請確認申請資料是否正確
+  </div>
+  <!-- 雙欄位（靠左靠右）資訊範例 -->
+  <ul class="table_info">
+    <li class="table_row">
+      <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+      <span>身分證字號</span>
+      <i>{{custId}}</i>
+    </li>
+    <li class="table_row" *ngFor="let details of confirmData.accounts; let index = index">
+      <span *ngIf="index == 0">提款帳號</span>
+      <span *ngIf="index != 0"></span>
+      <i>{{details.account | accountFormate}}</i>
+    </li>
+    <!-- <li class="table_row"><span></span><i>0560-766-500701</i></li> -->
+    <li class="table_row"><span>認證機制</span><i>{{verifyMethod}}</i></li>
+  </ul>
+  <div class="row_single"></div>
+  <div class="row_single">
+    <a class="button_confirm" id="button_confirm" (click)="confirm()">確定</a>
+  </div>
+</section>
+
+

@@ -1,0 +1,21 @@
+<div class="bc_frame"  ng-if="showBoxStep === 2" id="dividend_check">
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'CTRL_DIVIDEND.MSG.EXCHANGE' | translate}}</i></td><!-- 兌換點數 -->
+		<td align="right"><p class="info_conetnt">{{dividend_trans}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list">
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'CTRL_DIVIDEND.MSG.TRANSFER_MONEY' | translate}}</i></td><!-- 折抵新臺幣 -->
+		<td align="right"><p class="info_conetnt">{{money}}{{'MONEY.DOLLAR' | translate}}</p></td>
+		</tr></table>
+	</div>
+
+
+	
+	<div class="double_button">
+		<button class="button button_cancel" ng-click="cancelBack()">{{'BTN.CANCEL' | translate}}</button>
+		<button class="button button_submit" ng-click="submitBtn()">{{'CTRL_DIVIDEND.BTN.EXCHANGE' | translate}}</button><!--確認兌換-->
+	</div>
+</div>

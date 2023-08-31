@@ -1,0 +1,35 @@
+		
+    <!-- 步驟列 or 其他資訊框架 -->
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame">
+            <i class="icon_success"></i>
+            <span class="step_final_info">變更成功</span>
+        </div>
+    </div>
+
+
+    <!-- 雙欄位（一左一右）資訊範例 -->
+    <ul class="table_info">
+        <li class="table_row">
+            <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+            <span>對帳單寄送方式</span>
+            <i>{{mailOut=='2'?'紙本寄送':'電子郵件'}}</i>
+        </li>
+    </ul>
+    <!-- 雙欄位（一左一右）資訊範例 End -->
+    <div class="row_single">
+        
+    </div>
+
+    <div class="row_single">
+        <a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK'|translate}}</a>
+    </div>
+    <div class="row_single">
+        <h4 class="simple_title">提醒您</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content">
+            1.申請異動為寄發紙本，受託人將以寄發交易確認單(含相關報表)書面資料至委託人之通訊處<br>
+            2.申請異動為寄發電子郵件，受託人將以寄發交易確認單(含相關報表)電子檔至委託人之電子郵件信箱
+        </p>
+    </div>

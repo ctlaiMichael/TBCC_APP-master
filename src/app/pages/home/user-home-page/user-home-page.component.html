@@ -1,0 +1,86 @@
+<ng-container *ngIf="operateFlag">
+  <canvas id="myCanvas" (click)="operateClick()" class="operate_canvas operate_bak">
+  </canvas>
+</ng-container>
+<div [hidden]="count!=0 || !operateFlag" class="operateImg_5" id="operateImg_5" (click)="operateClick()"></div>
+<div [hidden]="count!=1 || !operateFlag" class="operateImg_6" id="operateImg_6" (click)="operateClick()"></div>
+<div [hidden]="count!=2 || !operateFlag" class="operateImg_7" id="operateImg_7" (click)="operateClick()"></div>
+<div [hidden]="count!=3 || !operateFlag" class="operateImg_8" id="operateImg_8" (click)="operateClick()"></div>
+<div [hidden]="count!=4 || !operateFlag" class="operateImg_9" id="operateImg_9" (click)="operateClick()"></div>
+<div [hidden]="(count!=0&&count!=1&&count!=2&&count!=3&&count!=4) || !operateFlag" class="operateBtn_2" id="operateBtn_2" (click)="operateClick()"></div>
+<div [hidden]="count!=5 || !operateFlag" class="operateBtn_3" id="operateBtn_3" (click)="operateClick()"></div>
+<section>
+    <div *ngIf="!leftMenu.setOpened" class="row_single fastLink">
+      <dl class="inner_table_four">
+        <dt class="inner_cell_four">
+          <a class="inner_button bt_100" href="javascript:void(0);" appLink="twd-transfer">
+            <!-- 台幣轉帳 -->
+            <span>{{ 'HOME.FAST_LINK.ITEM1' | translate }}</span>
+          </a>
+        </dt>
+        <dt class="inner_cell_four">
+          <a class="inner_button bt_100" href="javascript:void(0);" appLink="taxes">
+            <!-- 繳稅費 -->
+            <span>{{ 'HOME.FAST_LINK.ITEM2' | translate }}</span>
+          </a>
+        </dt>
+        <dt class="inner_cell_four">
+          <a class="inner_button bt_100" href="javascript:void(0);" appLink="foreign-exchange-twd-to-foreign">
+            <!-- 買外幣 -->
+            <span>{{ 'HOME.FAST_LINK.ITEM3' | translate }}</span>
+          </a>
+        </dt>
+      </dl>
+    </div>
+    <div class="info_block_area">
+      <!-- 主畫面塊狀區域範例 -->
+      <div class="row_single info_block">
+        <div class="main_info_block">
+          <div class="main_info_innerblock">
+            <!-- 外幣匯率 -->
+            <app-home-forex-rate (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onPageBackEvent($event)"></app-home-forex-rate>
+          </div>
+        </div>
+      </div>
+      <!-- 主畫面塊狀區域範例 End -->
+      <!-- 主畫面塊狀區域範例(優惠基金) -->
+      <div class="row_single info_block">
+        <div class="main_info_block">
+          <div class="main_info_innerblock">
+            <!-- 黃金存摺 -->
+            <app-home-gold (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onPageBackEvent($event)"></app-home-gold>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主畫面塊狀區域範例(信用卡) -->
+      <div class="row_single info_block">
+        <div class="main_info_block">
+          <div class="main_info_innerblock">
+            <!-- 信用卡 -->
+            <app-home-card (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onPageBackEvent($event)"></app-home-card>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row_single">
+			<dl class="inner_table_double">
+				<dt class="inner_cell_double">
+					<a href="edit_mainBlock.html" class="inner_button bt_100">
+						<span>
+							<i class="icon_windows"></i>
+						</span>
+					</a>
+				</dt>
+				<dt class="inner_cell_double">
+					<a href="javascript:void(0);" class="inner_button bt_100" id="goTop">
+						<span>
+							<i class="icon_moveup"></i>
+						</span>
+					</a>
+				</dt>
+
+			</dl>
+		</div> -->
+    </div>
+</section>

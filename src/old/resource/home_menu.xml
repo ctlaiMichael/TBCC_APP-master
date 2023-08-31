@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <navbtn1>
+        <funcid>S011</funcid>
+    </navbtn1>
+    <navbtn2>
+        <funcid>Q100</funcid>
+    </navbtn2>
+    <navbtn3>
+        <funcid>DEMO02</funcid>
+    </navbtn3>
+    <navbtn4>
+        <funcid>DEMO03</funcid>
+    </navbtn4>
+    <navbtn5>
+        <funcid>O001</funcid>
+    </navbtn5>
+
+    <menu>
+        <funcid>MENU_01</funcid>
+    </menu>
+    <menu>
+        <funcid>MENU_02</funcid>
+    </menu>
+    <menu>
+        <funcid>MENU_03</funcid>
+    </menu>
+    <menu>
+        <funcid>MENU_04</funcid>
+    </menu>
+
+</root>

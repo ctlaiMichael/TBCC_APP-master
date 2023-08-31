@@ -1,0 +1,10 @@
+{
+	"custId" : "",
+	"appInputFlag" : "",
+	"paginator" : {
+		"pageSize" : "100",
+		"pageNumber" : "0",
+		"sortColName" : "creditCardNo",
+		"sortDirection" : "ASC"
+	}
+}

@@ -1,0 +1,26 @@
+<div aria-live="assertive" aria-atomic="true">
+  <div *ngIf="isAndroid;else ios_content" >
+    <div class="row_single_a11y" >
+      <div class="simple_title_a11y" tabindex="0" #alertTitle>{{title|translate}}</div>
+    </div>
+    <div class="row_single_a11y">
+      <div class="inner_content_a11y simple_title_em_without_before_a11y"> {{content|translate}}</div>
+    </div>
+    <div class="row_single_a11y" >
+      <div class="button_confirm_a11y" (click)="ok()" role="button">{{btnTitle|translate}}</div>
+  </div>
+  </div>
+</div>
+<ng-template #ios_content>
+    <div>
+      <div class="row_single_a11y">
+      <div class="simple_title_a11y" tabindex="0" #alertTitle>{{title|translate}}</div>
+      </div>
+      <div class="row_single_a11y">
+      <div class="inner_content_a11y simple_title_em_without_before_a11y">{{content|translate}}</div>
+      </div>
+    </div>
+  <div class="row_single_a11y" >
+    <div class="button_confirm_a11y" (click)="ok()" role="button">{{btnTitle|translate}}</div>
+  </div>
+</ng-template>

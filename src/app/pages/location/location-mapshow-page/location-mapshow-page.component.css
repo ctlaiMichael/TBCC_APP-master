@@ -1,0 +1,13 @@
+    agm-map {
+      height:  calc(100vh - 200px);
+    }
+    map_canvas { /* Must bigger size than 100x100 pixels */
+      position: fixed;
+      left: 0px;
+      top: 187px;
+      right: 0px;
+      bottom: 0px;
+      width: 100vw;
+      height: 67%;
+      overflow: hidden;
+    }

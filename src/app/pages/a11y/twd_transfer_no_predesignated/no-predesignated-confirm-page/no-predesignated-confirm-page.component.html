@@ -1,0 +1,50 @@
+<section class="background_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y" style="padding-bottom:1em;">
+    <ul>
+    <li class="row8_space_a11y"></li>
+    <li class="simple_title_em_a11y">請確認轉帳資料，以及是否要繼續交易。</li>
+    </ul>
+  </div>
+
+  <div class="row_white_a11y">
+    <div class="row_content_black_a11y">轉出帳號<br class="br_height_a11y">
+      <font class="row_content_green_a11y">{{formatAccount(transferObj.trnsOutAccts[transferObj.selectTrnsOutAcct].acctNo)}}
+      </font>
+    </div>
+
+    <div class="row_content_black_a11y">非約定轉入帳號<br class="br_height_a11y">
+      <font class="row_content_green_a11y">
+        {{transferObj.selectbankFullName}}<br>
+    
+        {{formateTrnsInAcct(transferObj.inputTrnsInAcct)}}</font>
+    </div>
+
+    <div class="row_content_black_a11y" >轉帳金額<br class="br_height_a11y">
+      <font class="row_content_green_a11y">NT$ {{formateService.transMoney(transferObj.trnsfrAmount,'TWD')}}</font>
+    </div>
+    <div class="row_content_black_a11y">轉帳機制<br class="br_height_a11y">
+      <font class="row_content_green_a11y">OTP</font>
+    </div>
+    <div class="row_content_black_a11y">付款人備註<br class="br_height_a11y">
+      <font class="row_content_green_a11y">{{transferObj.notePayer}}</font>
+    </div>
+
+    <div class="row_content_black_a11y">給收款人訊息<br class="br_height_a11y">
+      <font class="row_content_green_a11y">{{transferObj.notePayee}}</font>
+    </div>
+
+  </div>
+
+
+  <!-- 卡片式總覽8 End -->
+  <div class="row_single_2_a11y"></div>
+  <div class="row_single_a11y" >
+    <div><a class="button_confirm_a11y" (click)="confirm()" role="button">確定</a></div>
+  </div>
+  <div class="row_single_a11y" >
+    <a class="button_confirm_a11y" (click)="cancel()">
+      <div class="button_cancel_a11y" role="button">取消</div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,167 @@
+<section>
+    <!-- 手機條碼 -->
+    <!-- 頁籤 Start -->
+    <app-bookmark [setData]="bookmarkData" [defaultKey]="'mobile'" [setKey]="nowPage" (backPageEmit)="onBookMarkBack($event)">
+    </app-bookmark>
+    <!-- 頁籤 End -->
+    <div class="row_single"></div>
+    <div *ngIf="!showLove">
+        <div *ngIf="hasBarcode" class="mobile">
+            <div class="content_infor" style="padding: 0px 25px;">
+                <div style="width:100%;padding: 0px 25px;">
+                    <ngx-barcode [bc-width]="barcodeWidth"  [bc-format]="'CODE39'" [bc-value]="mobileBarcode" bc-display-value="true" style="text-align: center;"></ngx-barcode>
+                </div>
+                <div style="position:absolute;">
+                    <input type="radio" [(ngModel)]="defaultBarcode" value="1" class="form-radio" (click)="changeDefaultCode('1')" id='radio01'
+                        checked="checked" />
+                </div>
+
+            </div>
+            <div class="row_single mobile" *ngIf="hasBarcode">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a (click)="termBarcode()" class="inner_button bt_100">
+                            <span>修改條碼</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a id="submit" class="inner_button bt_100" (click)="deleteBarcode()">
+                            <span>刪除條碼</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <!-- 依據合庫1080620需求移除手機條碼Input欄位 -->
+        <!-- <div class="row_single mobile" *ngIf="!hasBarcode">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    手機條碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" placeholder="" [(ngModel)]="mobileBarcode">
+                </li>
+            </ul>
+        </div> -->
+
+        <div class="row_single mobile" *ngIf="!hasBarcode">
+            <dl class="inner_table_double">
+                <dt class="inner_cell_double">
+                    <a (click)="clickQuery()" class="inner_button bt_100">
+                        <span>查詢手機條碼</span>
+                    </a>
+                </dt>
+                <dt class="inner_cell_double">
+                    <a id="submit" class="inner_button bt_100" (click)="clickReg()">
+                        <span>註冊手機條碼</span>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+        <!-- 依據合庫1080620需求移除手機條碼Input欄位，同時移除 -->
+        <!-- <div class="row_single mobile" *ngIf="!hasBarcode">
+            <a id="check_mobilePopup" class="button_confirm" (click)="clickSubmit()">確定</a>
+        </div> -->
+    </div>
+    <!-- 捐贈碼 -->
+    <div *ngIf="showLove">
+        <div *ngIf="hasLoveCode" class="donation">
+            <div class="content_infor" style="padding: 0px 25px;">
+                <div style="width:100%;">
+                    <div class="sub_info_subtitle donation">
+                        {{socialWelfareName}}
+                    </div>
+                    <div class="result" style="text-align: center;"></div>
+                    <div style="text-align:center;">
+                        <ngx-barcode [bc-width]="barcodeWidth" [bc-value]="loveCode" [bc-format]="'CODE39'" bc-display-value="true" style="text-align: center;display: inline-block">
+                        </ngx-barcode>
+                    </div>
+
+                </div>
+                <div style="position: absolute;align-self: center;">
+                    <input type="radio" [(ngModel)]="defaultBarcode" value="2" class="form-radio" (click)="changeDefaultCode('2')" id="radio02"
+                    />
+                </div>
+            </div>
+            <div class="row_single">
+                <dl class="inner_table_double">
+                    <dt class="inner_cell_double">
+                        <a (click)="clickGoToLoveCode()" class="inner_button bt_100">
+                            <span>修改條碼</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a id="submit" class="inner_button bt_100" (click)="deleteLoveCode()">
+                            <span>刪除條碼</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <div class="sub_info_subtitle donation" *ngIf="!hasLoveCode">
+            未設定捐贈碼
+        </div>
+
+        <div class="row_single donation" style="margin-top: 20px" *ngIf="!hasLoveCode">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    查詢
+                </li>
+                <li class="inner_table_cell">
+                    <input (click)="hideLvList()" type="text" name="" id="" class="inner_input" maxlength="20" [(ngModel)]="keyword" placeholder="請輸入關鍵字"
+                        required>
+                </li>
+            </ul>
+            <!-- <div class="row_inner donation"> -->
+            <div class="row_inner">
+                <a id="search" class="inner_button float_right_bt" (click)="toLoveCodeSearch()">
+                    <span>查詢</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 醫療繳費(三欄範例) -->
+    <div class="table_chbox_frame" *ngIf="ShowList=='Y' && showLove">
+
+        <div class="table_chbox_row">
+            <div class="table_chbox_th table_th_checkbox_column charityCode">
+
+            </div>
+            <div class="table_chbox_th">捐贈碼</div>
+            <div class="table_chbox_th">受捐贈機關或團體</div>
+        </div>
+        <ng-container *ngIf="loveCodeCount > 0;">
+            <div class="table_chbox_row " *ngFor="let LV of queryLV;" (click)="selectLV(LV.rowNum)">
+                <div class="table_chbox_td">
+                    <div class="inner_radio">
+                        <input type="radio" [attr.id]="LV.LoveCode" name="userIdType" [(ngModel)]="selectedLV" [value]="LV.rowNum">
+                        <label [attr.for]="LV.LoveCode">
+                            <span>
+                                <i></i>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="table_chbox_td">{{LV.LoveCode}}</div>
+                <div class="table_chbox_td charityCode">
+                    {{LV.SocialWelfareName}}
+                    <br> {{LV.SocialWelfareBAN}}
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+    <!-- 無資料畫面Strat -->
+    <ng-container *ngIf="loveCodeCount == 0 && ShowList=='Y' && showLove">
+        <div class="row_single"></div>
+        <div class="invest_title">
+            <p class="" style="font-size: 20px;text-align: center; color: red;margin-top: 10px;">查無相關資料</p>
+        </div>
+    </ng-container>
+    <!-- 無資料畫面End -->
+    <div class="row_single donation_list" style="margin-top: 20px;" *ngIf="loveCodeCount > 0 && showLove && ShowList=='Y'">
+        <a id="donation_list_check" class="button_confirm" (click)="clickSubmitLv()">{{ 'BTN.CHECK' | translate }}</a>
+    </div>
+</section>

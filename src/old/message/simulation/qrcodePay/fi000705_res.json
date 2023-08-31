@@ -1,0 +1,110 @@
+{
+  "sch:MNBResponse": {
+    "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "1481860700840-fi000706",
+      "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+      "sch:custId": "B1202812720"
+    },
+    "sch:result": {
+      "@xsi:type": "fi0:fi000706ResultType",
+      "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000706",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "fi0:trnsRsltCode": "0",
+      "fi0:hostCode": "",
+      "fi0:hostCodeMsg": "",
+      "fi0:custId": "N",
+      "fi0:trnsToken": "abcdefghijklmnopqrstuvwxyz123456",
+      "fi0:email": "006022663388",
+      "fi0:details": {
+        "fi0:detail": {
+          "0": {
+            "trustAcnt": "信託帳號",
+            "transCode": "3939889",
+            "fundCode": "00300011",
+            "fundName": "貝萊德世界礦業基金",
+            "capital": "5000",
+            "incomePoint": "5",
+            "profitPoint": "0",
+            "webNotice": "Y",
+            "emailNotice": "Y",
+            "code": "006",
+            "investType": "",
+            "incomeState": ""
+          },
+          "1": {
+            "trustAcnt": "信託帳號",
+            "transCode": "8825252",
+            "fundCode": "01300049",
+            "fundName": "富蘭克林坦伯頓全球投資系列－生技領航基金",
+            "capital": "1000",
+            "incomePoint": "0",
+            "profitPoint": "5",
+            "webNotice": "N",
+            "emailNotice": "Y",
+            "code": "007",
+            "investType": "",
+            "incomeState": ""
+          },
+          "2": {
+            "trustAcnt": "信託帳號",
+            "transCode": "8825252",
+            "fundCode": "01300049",
+            "fundName": "富蘭克林坦伯頓全球投資系列－生技領航基金",
+            "capital": "1000",
+            "incomePoint": "0",
+            "profitPoint": "5",
+            "webNotice": "N",
+            "emailNotice": "Y",
+            "code": "007",
+            "investType": "",
+            "incomeState": ""
+          },
+          "3": {
+            "trustAcnt": "信託帳號",
+            "transCode": "8825252",
+            "fundCode": "01300049",
+            "fundName": "富蘭克林坦伯頓全球投資系列－生技領航基金",
+            "capital": "1000",
+            "incomePoint": "0",
+            "profitPoint": "5",
+            "webNotice": "N",
+            "emailNotice": "Y",
+            "code": "007",
+            "investType": "",
+            "incomeState": ""
+          },
+          "4": {
+            "trustAcnt": "信託帳號",
+            "transCode": "8825252",
+            "fundCode": "01300049",
+            "fundName": "富蘭克林坦伯頓全球投資系列－生技領航基金",
+            "capital": "1000",
+            "incomePoint": "0",
+            "profitPoint": "5",
+            "webNotice": "N",
+            "emailNotice": "Y",
+            "code": "007",
+            "investType": "",
+            "incomeState": ""
+          },
+          "5": {
+            "trustAcnt": "信託帳號",
+            "transCode": "8825252",
+            "fundCode": "01300049",
+            "fundName": "富蘭克林坦伯頓全球投資系列－生技領航基金",
+            "capital": "1000",
+            "incomePoint": "0",
+            "profitPoint": "5",
+            "webNotice": "N",
+            "emailNotice": "Y",
+            "code": "007",
+            "investType": "",
+            "incomeState": ""
+          }
+        }
+      }
+    }
+  }
+}

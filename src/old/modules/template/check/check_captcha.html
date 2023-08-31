@@ -1,0 +1,7 @@
+<div class="row_single input_single input_captcha">
+	<i class="input_name required">{{'FIELD.CAPTCHA' | translate}}</i><!-- 圖形驗證 -->
+	<input type="text" placeholder="{{'FIELD.CAPTCHA_CHANGE' | translate}}"  ng-model="checkCaptchaData.input"  /><!-- 點圖可更換圖形驗證 -->
+	<b></b>
+	<a href="javascript:void(0);" ng-click="captchaChange()" class="input_cp" style="background: url({{checkCaptchaData.captcha}});"></a>
+	<s class="input_comment">{{'INPUT_CHECK.CAPTCHA' | translate}}</s>
+</div>

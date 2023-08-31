@@ -1,0 +1,33 @@
+<!-- 第一層頁籤 -->
+<ul class="tab_table" *ngIf="menuData">
+  <li class="tab_four_cell" *ngFor="let menu of menuData" (click)="onGoEvent(menu)">
+    <a href="javascript:void(0);" class="tab_button" [ngClass]="{'active' : (showType==menu['id']) }">{{ (menu | fieldCheck: 'name') | translate }}</a>
+  </li>
+</ul>
+<!-- 第一層頁籤 End -->
+
+<!-- 第二層頁籤 -->
+<ng-container *ngFor="let submenu of subMenuData">
+  <ng-container *ngIf="showType==submenu['id']">
+    <ng-container *ngIf="data_length <= 4; else moreBox">
+      <ul class="sub_tab_table sub_tab_four">
+        <li class="sub_td_cell" *ngFor="let item of submenu['data']" (click)="onSubGoEvent(item)">
+          <a href="javascript:void(0);" [ngClass]="{'active' : (showSubType==item['id']) }">{{ (item | fieldCheck: 'name') | translate }}</a>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #moreBox>
+        <!-- 最多提供8個子選單 -->
+        <ul class="sub_tab_table sub_tab_four">
+          <li class="sub_td_cell" *ngFor="let item of submenu['data'].slice(0, 4)" (click)="onSubGoEvent(item)">
+            <a href="javascript:void(0);" [ngClass]="{'active' : (showSubType==item['id']) }">{{ (item | fieldCheck: 'name') | translate }}</a>
+          </li>
+        </ul>
+        <ul class="sub_tab_table sub_tab_four">
+          <li class="sub_td_cell" *ngFor="let item of submenu['data'].slice(4)" (click)="onSubGoEvent(item)">
+            <a href="javascript:void(0);" [ngClass]="{'active' : (showSubType==item['id']) }">{{ (item | fieldCheck: 'name') | translate }}</a>
+          </li>
+        </ul>
+    </ng-template>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,118 @@
+<div class="wrapper">
+    <!--header-->
+    <div class="row">
+        <header class="main_nav">
+            <div class="back_bt" ng-click="clickBack()">
+                <p class="back_title">返回</p>
+            </div>
+            <div class="page_title">外幣繳保費確認</div>
+            <div class="bank_logo">
+                <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+            </div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+
+    <!--section 扣款帳號設定頁面-->
+    <div class="row">
+        <section class="main_sec">
+            <div class="row">
+                <div class="main_content">
+                   
+                         <p class=""  style=" color : red; text-align:center; font-weight: bold;font-size: 14px">請確認外幣繳保費資訊<br>以及是否要繼續交易<br></p>
+                         <div class="css_tr">&nbsp;</div> 
+                        <!-- <font align="center" color="red" >請確認預約轉帳以及是否要繼續交易<br></font> -->
+                        
+                        <!-- <select class="keep_sel" 
+                                ng-model="fundStockTypeSelected" 
+                                ng-options="StockType.Type as StockType.Name for StockType in fundStockType" 
+                                ng-change="changeSelect(fundStockTypeSelected)">
+                        </select> -->
+                   
+                    <!--keep_sec end-->
+                <div class="main_input">
+                        <p style="text-align:center;font-weight: bold;font-size: 16px">外幣繳保費</p>
+                        
+
+                           
+					<div id="css_table">
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title22">繳費對象:</div>
+                            <div class="css_td_content" ng-bind="form9.paymentObject1"></div>
+                        </div>
+                        <div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title22">付款帳號:</div>
+							<div class="css_td_content" ng-bind="form9.trnsfrOutAcct"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title22">付款幣別:</div>
+							<div class="css_td_content" ng-bind="form9.trnsfrOutCurr"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr" >
+							<div class="css_td_title22">轉入戶名:</div>
+                           <p ng-show="form9.paymentObject == 'N'">南山人壽保險股份有限公司</p>
+                           <p ng-show="form9.paymentObject == 'S'">新光人壽保險股份有限公司</p>
+                            <!-- <div class="css_td_content" style="white-space:nowrap" ng-bind="form9.trnsAmount"></div> -->
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title22">保單號碼:</div>
+							<div class="css_td_content" ng-bind="form9.paymentNumber"></div>
+                        </div>
+                        
+                        <div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title22">繳款金額:</div>
+							<div class="css_td_content" ng-bind="form9.trnsfrAmount"></div>
+						</div>
+						
+					</div>
+                    
+                    <security-selector-directive></security-selector-directive>
+
+                    
+                </div>
+                
+                    <!-- <div class="main_input">
+                      
+						<div class="css_tr">
+							<div class="css_td_title">SSL轉帳密碼：</div>    
+							<div class="css_td_content" ><input ng-bind="sslkey"></div>
+						</div>     
+                    </div>   -->
+                    
+                   
+                    <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+                            <button type="button" class="cancel_bt" ng-click="clickBack()">取消</button>							
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--main_content end-->
+            </div>
+
+
+
+            <!--row end-->
+
+        </section>
+        <!--main_sec end-->
+    </div>
+    <!--section 扣款帳號設定頁面 end-->
+
+
+    <!--end of footer-->
+
+
+</div>
+<!--wrapper end-->
+

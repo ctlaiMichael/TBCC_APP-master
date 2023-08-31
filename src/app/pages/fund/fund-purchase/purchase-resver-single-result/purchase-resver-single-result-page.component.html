@@ -1,0 +1,112 @@
+<section>
+    <!-- 交易成功 -->
+    <ng-container *ngIf="sucess">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame" [ngClass]="{ 'exclamation_active':(trust_failed) }">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+        <!-- 交易異常 -->
+    <ng-container *ngIf="failed_x">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+     <!-- 交易失敗 -->
+     <ng-container *ngIf="failed_1">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame fault_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">{{resTitle}}</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- 處理中 -->
+    <ng-container *ngIf="processing">
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame exclamation_active">
+                <i class="icon_success"></i>
+                <span class="step_final_info">處理中</span>
+            </div>
+            <p class="sub_info_list">
+                <span class="sub_info_title no_content">處理中請稍後。</span>
+            </p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="sucess">
+        <ul class="table_info">
+            <li class="table_row">
+
+                <span>投資方式</span>
+                <i id='type'>{{info_data.item}}</i>
+            </li>
+            <li class="table_row">
+                <span>基金名稱</span>
+                <i>{{info_data.fundCode}}-{{info_data.fundName}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>申請日期</span>
+                <i>{{info_data.enrollDate | htDate:'date'}}</i>
+            </li>
+
+            <li class="table_row reservation">
+                <span>生效日期</span>
+                <i>{{info_data.effectDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>申購金額</span>
+                <i>{{info_data.currency}} {{info_data.amount| htMoney:info_data.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>申購手續費優惠費率</span>
+                <i>{{info_data.favorRate}}%</i>
+            </li>
+
+            <li class="table_row">
+                <span>申購手續費</span>
+                <i>{{info_data.currency}} {{info_data.serviceFee| htMoney:info_data.currency}}元</i>
+            </li>
+
+            <li>
+            <li class="table_row">
+                <span>總扣款金額</span>
+                <i>{{info_data.currency}} {{info_data.totalAmnt| htMoney:info_data.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>扣款帳號/<br>現金收益帳號</span>
+                <i>{{info_data.payAcnt}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>本筆服務理專</span>
+                <i>{{info_data.salesName}}-{{info_data.salesId | identityMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>本筆轉介人員</span>
+                <i>{{info_data.introName}}-{{info_data.introId | identityMask}}</i>
+            </li>
+        </ul>
+
+        <div class="row_single"></div>
+
+        <div class="row_single">
+            <a href="javascript:void(0);" class="button_confirm" (click)="sucessEnd()">{{'BTN.CHECK' | translate }}</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="failed">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <a href="javascript:void(0);" class="button_confirm" (click)="onHome()">返回行動網銀首頁</a>
+        </div>
+    </ng-container>
+
+</section>

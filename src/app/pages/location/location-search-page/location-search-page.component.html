@@ -1,0 +1,109 @@
+<section>
+    <div class="row_single">
+        <ul class="inner_table_frame">
+            <li class="inner_table_cell">
+                服務
+            </li>
+            <li class="inner_table_cell">
+                <select [(ngModel)]="serviceMethodFirstOption" (change)="onChange_Method(mySelect)" name="" id="service"
+                    class="inner_select" #mySelect>
+                    <option *ngFor="let serviceMethod of serviceMethods" [value]="serviceMethod.id">
+                        {{ serviceMethod.name }}</option>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <ng-container *ngIf="showlocation">
+        <div class="row_single check">
+            <ul class="inner_table_frame">
+
+                <li class="inner_table_cell">
+                    地區據點
+                </li>
+                <li class="inner_table_cell">
+                    <select [(ngModel)]="serviceMethodFirstOption2" (change)="onChange_location(mySelect)" name=""
+                        id="service" class="inner_select" #mySelect>
+                        <option *ngFor="let serviceLocation of serviceLocations" [value]="serviceLocation.id">
+                            {{ serviceLocation.name }}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <!-- 
+    <div class="row_single phone">
+        <ul class="inner_table_frame">
+            <li class="inner_table_cell">
+                客服專線
+            </li>
+            <li class="inner_table_cell">
+                <select name="" id="position" class="inner_select">
+                    <option value="">請選擇</option>
+                    <option value="1">合作金庫服務專線</option>
+                    <option value="2">軟體使用諮詢專線</option>
+                </select>
+            </li>
+        </ul>
+    </div> -->
+
+    <ng-container *ngIf="showsearch">
+        <div class="row_single search">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    搜尋
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" placeholder="請輸入查詢名稱" [(ngModel)]="scearch">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <a href="javascript:void(0);" class="button_confirm" (click)="scearch_data(scearch)">搜尋</a>
+        </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="showresult">
+        <div class="inner_location_list_frame">
+            <a (click)="goMap(serviceAddress)" class="inner_location_list"
+                *ngFor="let serviceAddress of serviceAddresss" #serviceAddress.id>
+                <i class="inner_location_title">{{ serviceAddress.name }}</i>
+                <b class="inner_location_info">{{ serviceAddress.address }}</b>
+            </a>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="show09result">
+        <div class="inner_location_list_frame">
+            <a (click)="callservicePhone(servicePhone.id)" class="inner_location_list"
+                *ngFor="let servicePhone of servicePhones" #servicePhone.id>
+                <i class="inner_location_title">{{ servicePhone.name }}</i>
+                <b class="inner_location_info">{{ servicePhone.tel }}</b>
+            </a>
+        </div>
+    </ng-container>
+    <!-- popup window -->
+    <div id="phoneopen" class="popup_window">
+        <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+        <div class="popup_content">
+            <div class="row_single">
+                <h4 class="simple_title">外撥提醒</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content" id="text">
+                    <!-- 你要撥給合作金庫服務專線嗎?02-23118811
+                    你要撥給軟體使用諮詢專線嗎?02-23118811 -->
+                </p>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a id="popupcancel">取消</a>
+                    <a href="tel:0422273131" id="popupcheck">確定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="quickLoginBox" class="popup_window popup_open"> -->
+    <!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+    <!-- <img style="width:80%;" src="phone.PNG"> -->
+    <!-- </div> -->
+</section>

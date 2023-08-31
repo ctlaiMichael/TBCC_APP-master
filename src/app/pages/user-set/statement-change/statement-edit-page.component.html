@@ -1,0 +1,68 @@
+<section>
+    <div class="sub_info_frame">
+        <ul class="step_bar_frame">
+            <li class="step_bar" [ngClass]="pageType=='edit'?'step_active':''"><span *ngIf="pageType=='edit'">1.填寫資料</span></li>
+            <li class="step_bar" [ngClass]="pageType=='confirm'?'step_active':''"><span *ngIf="pageType=='confirm'">2.確認</span></li>
+            <li class="step_bar"></li>
+        </ul>
+    </div>
+    <ng-container *ngIf="pageType=='edit'">
+        <div class="row_single"></div>
+        <div class="row_single">
+            <ul class="inner_table_frame normal_disable">
+                <li class="inner_table_cell">
+                    {{inputContent.input_1}}
+                </li>
+                <li class="inner_table_cell">
+                    <input  *ngIf="pageType=='confirm'"type="text" name="type" class="inner_input" value="{{inputContent.inValue_1|emailMask}}">
+                    <input type="text" name="type" class="inner_input" value="{{inputContent.inValue_1}}">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['email']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    {{inputContent.input_2}}
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="email" class="inner_input" value="{{inputContent.inValue_2|emailMask:applyType.id}}"
+                        placeholder="請輸入電子郵件" [(ngModel)]="newMail" (click)="changeMail();">
+                        <!-- <input type="text" name="email" class="inner_input" value="{{inputContent.inValue_2}}"
+                        placeholder="請輸入電子郵件" [(ngModel)]="newMail"> -->
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['email']|translate}}</i>
+        </div>
+        <ng-container *ngIf="applyType.id=='0'">
+            <div class="row_single">
+                <div class="inner_checkbox" (click)="onSameOld();">
+                    <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="sameMail">
+                    <label for="inner_checkbox01">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>同原留存電子郵件</b>
+                    </label>
+                </div>
+            </div>
+        </ng-container>
+    
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')"(click)='cancelEdit()'>{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')" (click)="checkEvent();">{{'BTN.NEXT' | translate }}</a>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="pageType=='confirm'">
+        <app-confirm-statement-page [userMail]="userMail" [inputContent]="inputContent" (backPageEmit)="goResult($event)" (backToEdit)="toEditPage($event)"></app-confirm-statement-page>
+    </ng-container>
+    <ng-container *ngIf="pageType=='result'">
+        <app-result [successMsg]="successMsg" [successContent]="successContent"></app-result>
+    </ng-container>
+</section>
+<ng-container *ngIf="popFlag">
+    <app-certify (verify)="onVerifyResult($event)"></app-certify>
+</ng-container>

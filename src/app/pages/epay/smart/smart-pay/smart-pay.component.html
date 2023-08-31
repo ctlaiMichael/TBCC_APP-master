@@ -1,0 +1,171 @@
+<section>
+  <!-- popup window -->
+  <ng-container *ngIf="!openpwd">
+    <ng-container *ngIf="!popup_open">
+      <a href="javascript:void(0);" class="final_stpe_button">
+        請選擇預設帳號
+      </a>
+      <div class="row_single"></div>
+      <div class="row_single">
+        <div class="inner_radio" *ngFor="let acct of accts;let index = index">
+          <input type="radio" id="inner_radio+{{index}}" name="inner_radio" [checked]="acct.selected === true" (click)="selectAcct(acct)">
+          <label for="inner_radio+{{index}}">
+            <span>
+              <i></i>
+            </span>
+            <b>{{acct.acctNo}}</b>
+          </label>
+        </div>
+      </div>
+      <div class="row_single">
+        <div class="double_button">
+          <!-- 取消 -->
+          <a (click)="clickDisAgree()">{{ 'BTN.CANCEL' | translate }}</a>
+          <!-- 確定 -->
+          <a (click)="clickNextStep()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="openpwd">
+    <app-login-pswd [setData]="inpSetData" [valueStr]="verifyCodeInput" [errorStr]="errorMsg.verifyCode"
+      (backValueEmit)="onInputBack($event)" (click)="fastLogin()"></app-login-pswd>
+    <div class="row_single">
+      <div class="double_button">
+        <!-- 取消 -->
+        <a (click)="clickDisAgree()">{{ 'BTN.CANCEL' | translate }}</a>
+        <!-- 確定 -->
+        <a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+      </div>
+    </div>
+  </ng-container>
+</section>
+
+<!-- popup_open -->
+
+
+<ng-container *ngIf="popup_flag">
+  <section>
+    <div class="agree_info">
+      <div class="row_single">
+        <h4 class='simple_title'>合庫E Pay約定帳號條款</h4>
+      </div>
+      <div class="row_single">
+          <p class="inner_content">
+              <i style="font-weight:bolder;color: #525252;">一、合庫E Pay (下稱本服務)功能說明</i>
+              <br>1. 存戶同意啟用於合作金庫商業銀行所約定之網路銀行轉出帳號消費扣款功能，並可透過使用本服務掃描QR Code或出示條碼進行購物、繳稅、繳費及轉帳交易，憑約定之安控機制進行上述交易指示，均視為存戶所為，與憑存摺及填具取款憑條加蓋原留印鑑之提款具同等效力。
+              <br>2. 本服務可使用於有標示「台灣Pay QR Code 共通支付標準」之實體 / 網路特約商店，並透過密碼、指紋/臉部或圖形密碼等約定之方式進行驗證，完成消費扣款交易。本存戶進行上述交易時，應自行留存交易單據或電子訊息。
+              <br><i style="font-weight:bolder;color: #525252;">二、 申請及限制</i>
+              <br>1. 存戶欲使用本服務，應向貴行提出申請網路銀行開通非約定轉帳功能及相關安控機制(OTP、行動網銀憑證)，並設有約定轉出帳號。
+              <br>2. 存戶於特約商店使用本服務並依約定之安控機制驗證後，視為同意啟用消費扣款服務。
+              <br>3. 存戶同意申請本服務掃描QR Code或出示條碼進行交易，依「合作金庫商業銀行網路銀行服務約定事項」規定辦理。
+              <br><i style="font-weight:bolder;color: #525252;">三、 交易限額</i>
+              <br> 存戶同意於合庫E Pay掃描QR Code或出示條碼進行交易之限額，依「合作金庫商業銀行網路銀行服務約定事項」之相關約定辦理。
+              <br><i style="font-weight:bolder;color: #525252;">四、 責任之限制與排除</i>
+              <br>1. 存戶與貴行間具有委任契約之性質，存戶以本服務於特約商店端進行消費扣款指示時，為委託貴行自本存戶帳戶內扣款，並將款項即時轉入指定帳戶之行為。
+              <br>2. 存戶明確瞭解此約定之網路銀行轉出帳號，於特約商店進行消費扣款交易或事業單位(企業)掃描QR Code 繳稅、費，與現金交易並無不同，如與特店或事業單位(企業)發生相關爭議（包括但不限於商品或服務之品質、數量、金額等），皆應向特店或事業單位(企業)尋求解決，不得以此作為向貴行請求返還帳款之依據。本存戶亦不得以與特約商店或事業單位(企業)間交易所生糾紛對抗貴行。
+              <br><i style="font-weight:bolder;color: #525252;">五、 個人資料之提供與處理</i>
+              <br> 存戶同意貴行及財金資訊股份有限公司、與該中心往來之金融機構於其各該特定目的範圍內，得蒐集、電腦處理、國際傳遞及利用存戶之個人資料。
+              <br><i style="font-weight:bolder;color: #525252;">六、 存戶同意本約定事項如有未盡事宜，悉依中華民國相關法令辦理。</i>
+            </p>
+        <!-- <p class="inner_content">
+          存戶同意啟用於合作金庫商業銀行所約定之網路銀行轉出帳號(含晶片金融卡)消費扣款功能，並可透過行動網銀掃描QR Code進行消費扣款、繳稅、繳費及轉帳交易。
+          <br>一、消費扣款功能說明
+          <br>1. 憑約定之轉出帳號(含晶片金融卡) 及密碼進行消費扣款交易，均視為本存戶所為，與憑存摺及填具取款憑條加蓋原留印鑑之提款具同等效力。
+          <br>2.
+          具晶片金融卡消費扣款之晶片金融卡可於國內、外貼有金融資訊系統跨行業務標章之實體或網路特約商店，透過晶片密碼驗證購買/取消商品或服務。本存戶進行上述交易時，應自行留存交易單據或電子訊息（此功能於國外交易僅限於日本地區使用）。
+          <br>二、 申請及限制
+          <br>1. 存戶欲使用消費扣款功能，應向貴行提出申請。
+          <br>2. 存戶須年滿十五歲其所持有之金融卡始可具備國外交易功能。凡未滿十五歲之存戶，其所領用之卡片雖已申請晶片金融卡消費扣款，仍無法於國外執行消費扣款交易。
+          <br>3. 持卡人於國內、外金融卡指定商店（貼有台灣金融卡、金融卡及SMART PAY標誌）進行消費扣款交易，經使用金融卡並輸入約定密碼後，視為同意啟用當次消費扣款服務功能以完成交易。
+          <br>4. 持卡人透過行動網銀掃描QR Code進行消費扣款交易，依行動網銀安控機制完成交易。
+          <br>5. 存戶同意申請行動網銀掃描QR Code進行交易，依「合作金庫商業銀行網路銀行服務約定事項」規定辦理。
+          <br>三、 交易限額
+          <br>1. 存戶同意於行動網銀掃描QR Code進行交易之限額，依「合作金庫商業銀行網路銀行服務約定事項」第十條第五項規定辦理。
+          <br>四、 消費限額及外幣匯率授權結算
+          <br>1. 本存戶於國內、外使用約定之轉出帳號(含晶片金融卡)消費扣款總金額每日不得逾新臺幣壹拾萬元或等值外幣。
+          <br>2.
+          本存戶進行跨國交易時，應自行控管不得超過中央銀行規定之外匯額度，並授權貴行為中華民國境內之結匯代理人，依據中央銀行有關規定辦理持卡交易之結匯手續。如本存戶已超出得使用之外匯額度時，應即依貴行之要求以外幣支付超額部分。
+          <br>五、 其他
+          <br>1. 本存戶與貴行間具有委任契約之性質，本存戶使用行動網銀台灣Pay於特約商店端輸入消費扣款指示時，為委託貴行自本存戶帳戶內扣款，並將消費款項即時轉入指定帳戶之行為。
+          <br>2. 本存戶明確瞭解此約定之網路銀行轉出帳號(含晶片金融卡)，於特約商店進行消費扣款交易或事業單位(企業)掃描QR Code
+          繳稅、費，與現金交易並無不同，如與特店或事業單位(企業)發生相關爭議（包括但不限於商品或服務之品質、數量、金額等），皆應向特店或事業單位(企業)尋求解決，不得以此作為向貴行請求返還帳款之依據。本存戶亦不得以與特約商店或事業單位(企業)間交易所生糾紛對抗貴行。
+          <br>六、 存戶同意銀行及財金資訊股份有限公司、與該中心往來之金融機構於其各該特定目的範圍內，得蒐集、電腦處理、國際傳遞及利用存戶之個人資料。
+          <br>七、 存戶同意本約定事項如有未盡事宜均依 貴行開戶總約定書、一般金融業務慣例及有關法令辦理。
+        </p> -->
+      </div>
+      <!-- <div class="row_single">
+      <div class="inner_checkbox abc">
+        <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+          (click)="checkClick()">
+        <label for="inner_checkbox01">
+          <span>
+            <i></i>
+          </span>
+          <b>我已暸解並同意上述之內容</b>
+        </label>
+      </div>
+    </div> -->
+      <div class='row_single'>
+        <div class="double_button">
+          <!-- 不同意 -->
+          <a (click)="clickDisAgree()">{{ 'BTN.AGREE.DISAGREE' | translate }}</a>
+          <!-- 同意 -->
+          <a (click)="clickAgree()">{{ 'BTN.AGREE.AGREE' | translate }}</a>
+        </div>
+      </div>
+      <ng-container *ngIf="cancelBtn">
+        <div class="row_single">
+          <a (click)="cancelAgree()" class="button_confirm">取消約定</a>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</ng-container>
+<!-- ================
+<div id="qrcode" class="popup_window" [ngClass]="{ 'popup_open':(popup_flag) }">
+  <div class="popup_content" [style.marginTop.px]="popupcontent_MarginTop">
+    <div class="row_single">
+      <h4 class="simple_title">QRcode使用條例</h4>
+    </div>
+    <div class="row_single" style="overflow: scroll;" [ngStyle]="{'height.px': popupheight}">
+      <p class="inner_content">
+        存戶同意啟用於合作金庫商業銀行所約定之網路銀行轉出帳號(含晶片金融卡)消費扣款功能，並可透過行動網銀掃描QR Code進行消費扣款、繳稅、繳費及轉帳交易。
+        <br>一、消費扣款功能說明
+        <br>1. 憑約定之轉出帳號(含晶片金融卡) 及密碼進行消費扣款交易，均視為本存戶所為，與憑存摺及填具取款憑條加蓋原留印鑑之提款具同等效力。
+        <br>2.
+        具晶片金融卡消費扣款之晶片金融卡可於國內、外貼有金融資訊系統跨行業務標章之實體或網路特約商店，透過晶片密碼驗證購買/取消商品或服務。本存戶進行上述交易時，應自行留存交易單據或電子訊息（此功能於國外交易僅限於日本地區使用）。
+        <br>二、 申請及限制
+        <br>1. 存戶欲使用消費扣款功能，應向貴行提出申請。
+        <br>2. 存戶須年滿十五歲其所持有之金融卡始可具備國外交易功能。凡未滿十五歲之存戶，其所領用之卡片雖已申請晶片金融卡消費扣款，仍無法於國外執行消費扣款交易。
+        <br>3. 持卡人於國內、外金融卡指定商店（貼有台灣金融卡、金融卡及SMART PAY標誌）進行消費扣款交易，經使用金融卡並輸入約定密碼後，視為同意啟用當次消費扣款服務功能以完成交易。
+        <br>4. 持卡人透過行動網銀掃描QR Code進行消費扣款交易，依行動網銀安控機制完成交易。
+        <br>5. 存戶同意申請行動網銀掃描QR Code進行交易，依「合作金庫商業銀行網路銀行服務約定事項」規定辦理。
+        <br>三、 交易限額
+        <br>1. 存戶同意於行動網銀掃描QR Code進行交易之限額，依「合作金庫商業銀行網路銀行服務約定事項」第十條第五項規定辦理。
+        <br>四、 消費限額及外幣匯率授權結算
+        <br>1. 本存戶於國內、外使用約定之轉出帳號(含晶片金融卡)消費扣款總金額每日不得逾新臺幣壹拾萬元或等值外幣。
+        <br>2.
+        本存戶進行跨國交易時，應自行控管不得超過中央銀行規定之外匯額度，並授權貴行為中華民國境內之結匯代理人，依據中央銀行有關規定辦理持卡交易之結匯手續。如本存戶已超出得使用之外匯額度時，應即依貴行之要求以外幣支付超額部分。
+        <br>五、 其他
+        <br>1. 本存戶與貴行間具有委任契約之性質，本存戶使用行動網銀台灣Pay於特約商店端輸入消費扣款指示時，為委託貴行自本存戶帳戶內扣款，並將消費款項即時轉入指定帳戶之行為。
+        <br>2. 本存戶明確瞭解此約定之網路銀行轉出帳號(含晶片金融卡)，於特約商店進行消費扣款交易或事業單位(企業)掃描QR Code
+        繳稅、費，與現金交易並無不同，如與特店或事業單位(企業)發生相關爭議（包括但不限於商品或服務之品質、數量、金額等），皆應向特店或事業單位(企業)尋求解決，不得以此作為向貴行請求返還帳款之依據。本存戶亦不得以與特約商店或事業單位(企業)間交易所生糾紛對抗貴行。
+        <br>六、 存戶同意銀行及財金資訊股份有限公司、與該中心往來之金融機構於其各該特定目的範圍內，得蒐集、電腦處理、國際傳遞及利用存戶之個人資料。
+        <br>七、 存戶同意本約定事項如有未盡事宜均依 貴行開戶總約定書、一般金融業務慣例及有關法令辦理。
+      </p>
+    </div>
+
+    <div class="row_single">
+      <div class="double_button">
+
+        <a (click)="clickDisAgree()">{{ 'BTN.AGREE.DISAGREE' | translate }}</a>
+
+        <a (click)="clickAgree()">{{ 'BTN.AGREE.AGREE' | translate }}</a>
+      </div>
+    </div>
+    <div class="row_single">
+      <a (click)="cancelAgree()" class="button_confirm">取消約定</a>
+    </div>
+  </div>
+</div> -->

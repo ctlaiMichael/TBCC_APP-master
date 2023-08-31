@@ -1,0 +1,30 @@
+<div class="sub_info_subtitle">
+	請確認轉帳資訊以及是否要繼續交易
+</div>
+<ul class="table_info">
+	<li class="table_row">
+		<span>扣款帳號</span>
+		<i>{{taipeiWaterConfirm.account | accountFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>水號</span>
+		<i>{{taipeiWaterConfirm.waterNumber | waterNumberFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>收費年月</span>
+		<i>{{billDate}}</i>
+		<!-- <i>2019/06</i> -->
+	</li>
+	<li class="table_row">
+		<span>應繳總金額</span>
+		<i>{{taipeiWaterConfirm.payAmount | currencyMoney:'TWD'}}元</i>
+	</li>
+</ul>
+<div class="row_single"></div>
+<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+<div class="row_single">
+	<div class="double_button">
+		<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.PREVIOUS' | translate }}</a>
+		<a href="javascript:void(0)" (click)="finalCheck()">{{'BTN.CHECK' | translate }}</a>
+	</div>
+</div>

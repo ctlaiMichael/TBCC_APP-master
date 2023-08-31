@@ -1,0 +1,159 @@
+<section>
+  <!-- <div style="margin-left: 10px;">
+    <a class="inner_link_toggle msg-setting">
+      通知提醒設定
+      <div class="switch_opne_close" style="float: right;">
+        <input type="checkbox" name="toggle" (change)="onPushSetting()" [(ngModel)]="blockType.TCB_PUSH_SETTING">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div> -->
+
+  <!-- <div class="row_single marginb_0 paddong_0">
+    <h4 class="inner_title">各項訊息通知</h4>
+  </div>
+  <div class="inner_links_frame">
+    <a class="inner_link_toggle no_before" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING}">
+      帳務通知
+      <div class="switch_opne_close" style="float: right;">
+        <input (change)="onAccountChange()" type="checkbox" name="toggle"
+          [attr.disabled]="!blockType.TCB_PUSH_SETTING ? '' : null" [(ngModel)]="blockType.TCB_ACCOUNT">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div> -->
+
+  <div (click)="expandAccount = !expandAccount;">
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,no_before:expandAccount}">
+      帳務通知
+      <div [ngClass]="{arrow_up:expandAccount, arrow_down:!expandAccount}" style="float: right; margin-right: 2px;">
+      </div>
+    </a>
+  </div>
+  <ng-container *ngIf="expandAccount">
+    <a class="inner_link custom_link no_after enable_font">OTP推播服務
+      <div class="switch_opne_close" style="float: right;">
+        <input (change)="onOtpAlertChange()" type="checkbox" name="toggle" [(ngModel)]="blockType.OTP_PWD_ALERT">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+    <a class="inner_link custom_link no_after enable_font"
+     >外匯匯款入/扣帳通知
+      <div class="switch_opne_close" style="float: right;">
+        <input (change)="onAlertChange('1');" type="checkbox" name="toggle" [(ngModel)]="blockType.TCB_ACCOUNT_FEREMIT">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+    <div class="inner_link_toggle" style="padding: 0;">
+      <a class="inner_link custom_link no_after enable_font"
+        >外匯定存到期通知
+        <div class="switch_opne_close" style="float: right;">
+          <input (change)="onAlertChange('2');" type="checkbox" name="toggle" [(ngModel)]="blockType.TCB_ACCOUNT_FDREGULAR">
+          <label for="toggle"><i></i></label>
+        </div>
+      </a>
+    </div>
+  </ng-container>
+
+  <div (click)="expandReminderNotice = !expandReminderNotice;">
+    <a class="inner_link_toggle"
+      [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,no_before:expandReminderNotice}">
+      提醒通知
+      <div [ngClass]="{arrow_up:expandReminderNotice, arrow_down:!expandReminderNotice}"
+        style="float: right; margin-right: 2px;"> </div>
+    </a>
+  </div>
+  <ng-container *ngIf="expandReminderNotice">
+    <a class="inner_link custom_link"
+      [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,enable_font:blockType.TCB_PUSH_SETTING}"
+      (click)="goRateInfom()">匯率到價設定</a>
+    <div class="inner_link_toggle" style="padding: 0;">
+      <a class="inner_link custom_link no_before"
+        [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,enable_font:blockType.TCB_PUSH_SETTING}"
+        (click)="goFundBalance()">基金停損/獲利點設定</a>
+    </div>
+  </ng-container>
+
+  <div>
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING}">
+      優惠通知
+      <div class="switch_opne_close" style="float: right;">
+        <input (change)="onPromoteChange()" type="checkbox" name="toggle"
+          [attr.disabled]="!blockType.TCB_PUSH_SETTING ? '' : null" [(ngModel)]="blockType.TCB_PROMOTE">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div>
+
+  <div (click)="expandSilent = !expandSilent;">
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,no_before:expandSilent}">
+      通知靜音
+      <div [ngClass]="{arrow_up:expandSilent, arrow_down:!expandSilent}" style="float: right; margin-right: 2px;">
+      </div>
+    </a>
+  </div>
+  <ng-container *ngIf="expandSilent">
+    <a class="inner_link custom_link no_after"
+      [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,enable_font:blockType.TCB_PUSH_SETTING}">09:00~21:00
+      <div class="switch_opne_close" style="float: right;">
+        <input (change)="onActiveChange()" type="checkbox" name="toggle" [(ngModel)]="blockType.daySilent">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+    <div class="inner_link_toggle" style="padding: 0;">
+      <a class="inner_link custom_link no_after"
+        [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING,enable_font:blockType.TCB_PUSH_SETTING}">21:00~09:00
+        <div class="switch_opne_close" style="float: right;">
+          <input (change)="onActiveChange()" type="checkbox" name="toggle" [(ngModel)]="blockType.nightSilent">
+          <label for="toggle"><i></i></label>
+        </div>
+      </a>
+    </div>
+  </ng-container>
+
+  <!-- <div class="row_single marginb_0 paddong_0">
+    <h4 class="inner_title">通知靜音</h4>
+  </div>
+  <div class="inner_links_frame">
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING}">
+      通知靜音設定
+      <div class="switch_opne_close" style="float: right;">
+        <input type="checkbox" name="toggle" [attr.disabled]="!blockType.TCB_PUSH_SETTING ? '' : null"
+          [(ngModel)]="blockType.notificationSilent" (change)="onNotificationSilentChange()">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div>
+  <div class="row_single marginb_0 paddong_0">
+    <h4 class="inner_title">訊息接收時段</h4>
+  </div>
+  <div class="inner_links_frame">
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING}">
+      09:00~21:00
+      <div class="switch_opne_close" style="float: right;">
+        <input type="checkbox" name="toggle" [attr.disabled]="!blockType.TCB_PUSH_SETTING ? '' : null"
+          [(ngModel)]="blockType.dayActive" (change)="onActiveChange(true)">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div>
+  <div class="inner_links_frame">
+    <a class="inner_link_toggle" [ngClass]="{disabled_font: !blockType.TCB_PUSH_SETTING}">
+      21:00~09:00
+      <div class="switch_opne_close" style="float: right;">
+        <input type="checkbox" name="toggle" [attr.disabled]="!blockType.TCB_PUSH_SETTING ? '' : null"
+          [(ngModel)]="blockType.nightActive" (change)="onActiveChange(false)">
+        <label for="toggle"><i></i></label>
+      </div>
+    </a>
+  </div> -->
+
+  <div class="row_single">
+    <h4 class="simple_title">提醒您：</h4>
+    <div class="inner_content" style="padding-top: 15px;">
+      一、訊息通知設定完成後，將自動由您的手機接收通知。若不需要，可經由手機設定取消通知設定功能。<br>
+      二、如需開啟OTP密碼通知，必須要有OTP非約轉的權限才可啟用OTP密碼通知。
+    </div>
+  </div>
+
+</section>

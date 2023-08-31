@@ -1,0 +1,29 @@
+<ng-container *ngIf="!goRealizeTag">
+    <section>
+        <div class="inner_links_frame">
+            <!-- 本年度已實現損益 -->
+            <a href="javascript:void(0)" (click)="onThisYear()" class="inner_link">{{ 'PG_FUND.TITLE.REALIZE_NOW' | translate }}</a>
+            <!-- 前一年度已實現損益 -->
+            <a href="javascript:void(0)" (click)="onBefore()" class="inner_link">{{ 'PG_FUND.TITLE.REALIZE_PRE' | translate }}</a>
+        </div>
+
+        
+        <div class="row_single"></div>
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_content">
+                <ol class="order_list">
+                    <li>{{ 'PG_FUND.REALIZE.INFO.ITEM1' | translate }}</li>
+                    <li>{{ 'PG_FUND.REALIZE.INFO.ITEM2' | translate }}</li>
+                    <li>{{ 'PG_FUND.REALIZE.INFO.ITEM3' | translate }}</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+</ng-container>
+
+<ng-container *ngIf="goRealizeTag">
+    <app-has-realize-tag [inputType]="toRealizeTag" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-has-realize-tag>
+</ng-container>

@@ -1,0 +1,35 @@
+<!-- Page Start-->
+<div *ngIf="editable && !editing" class="row_single fixed_edit_bar" style="z-index:4;">
+  <div class="msg_edit_button_home" (click)="edit()">編輯</div>
+</div>
+<div *ngIf="editable && editing" class="row_single fixed_edit_bar" style="z-index: 4">
+  <div class="" style="display: inline-block;margin-top: 15px;margin-left: -10px; padding-right: 5px;">
+    <label class="container" [ngClass]="{visibility_hidden:!editing || !editable}">
+      <input type="checkbox" (change)="onClickSelectAll()" [ngModel]="isSelectAll()">
+      <span class="checkmark"></span>
+    </label>
+  </div>全選
+  <div style="float: right">
+    <div class="msg_edit_button_home" (click)="read()">已讀</div>
+    <div class="msg_edit_button_home" (click)="delete()">刪除</div>
+  </div>
+</div>
+<div style="z-index: 3;" [ngClass]="editable? 'has_edit_bar':'no_edit_bar'">
+  <a  class="inner_news_list" [ngClass]="deviceOS=='ios'? 'inner_news_table':''" *ngFor="let item of data; let i = index;">
+    <span class="inner_msg_list_td" style="padding-left: 10px;" *ngIf="editing">
+      <label class="container" [ngClass]="{visibility_hidden:!editing || !editable}">
+        <input type="checkbox" [(ngModel)]="selectedMsg[i]">
+        <span class="checkmark"></span>
+      </label>
+    </span>
+    <span class="inner_news_list_td" (click)="onContentEvent(item,i)" [ngClass]="editing? 'pl-7':'pl-15'">
+      <i class="inner_news_data">
+        <s style="font-size: 0.9rem"
+          [ngClass]="{read: !!item.IsReadContent && item.IsReadContent == '1' && editable}">{{ ((item | fieldCheck: 'DataTime') )}}</s>
+        <s style="font-size: 1.1rem"
+          [ngClass]="{read: !!item.IsReadContent && item.IsReadContent == '1' && editable,not_read:!item.IsReadContent || item.IsReadContent == '0' || !editable}">{{ item | fieldCheck: 'Title'}}</s>
+      </i>
+    </span>
+  </a>
+</div>
+<!-- Page End-->

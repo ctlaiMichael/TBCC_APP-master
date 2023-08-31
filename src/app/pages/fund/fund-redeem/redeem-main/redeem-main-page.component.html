@@ -1,0 +1,51 @@
+<ng-container [ngSwitch]="showPage">
+
+    <!-- 贖回列表 [Step2] Start -->
+    <ng-container *ngSwitchCase="'redeem-edit1'">
+        <section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+            <div class="row_single">
+                <h4 class="simple_title" (click)="onEnterContent()">
+                    <a href="javascript:void(0)" class="fontw normal_link color_fee">
+                        基金贖回說明
+                    </a>
+                </h4>
+            </div>
+
+            <!-- 基金贖回編輯頁1 -->
+            <app-redeem-edit1 [page]="'1'" [trnsType]="trnsType" (backPageEmit)="onListBackEvent($event)"
+                (errorPageEmit)="onErrorBackEvent($event)"></app-redeem-edit1>
+            <ng-container #pageBox></ng-container>
+
+            <div class="row_single">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+                <div class="inner_content">
+                    <ol class="order_list">
+                        <li>外幣結構型債券（即交易編號為YS-XXXXXXXXX）、三合一保險金信託之定期定額基金投資(即交易編號為IB-XXXXXXXXX）目前僅限於臨櫃辦理。</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+    <!-- 贖回列表 [Step2] End -->
+
+    <!-- 贖回申請 [Step3] -->
+    <ng-container *ngSwitchCase="'redeem-edit2'">
+        <app-redeem-edit2 [inputData]="onRedeemData" [onTrnsType]="onRedeemTrnsType" (backPageEmit)="onBackPage($event)"
+            (errorPageEmit)="onErrorBackEvent($event)">
+        </app-redeem-edit2>
+    </ng-container>
+    <!-- 贖回申請 [Step3] End -->
+
+    <!-- 同意選單 [Step1] (default agree) -->
+    <ng-container *ngSwitchDefault>
+        <section>
+            <ul class="credit_card_bill_detail_list">
+                <app-enter-agree-content (backPageEmit)="onEnterAgree($event)" (errorPageEmit)="onEnterAgree($event)">
+                </app-enter-agree-content>
+            </ul>
+        </section>
+    </ng-container>
+    <!-- 同意選單 [Step1] //End-->
+</ng-container>

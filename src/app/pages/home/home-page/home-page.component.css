@@ -1,0 +1,6 @@
+.home_ad_area {
+    overflow: hidden;
+}
+section {
+    overflow-y: auto;
+}

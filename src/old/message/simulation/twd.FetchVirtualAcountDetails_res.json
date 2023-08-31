@@ -1,0 +1,90 @@
+{
+  "resHeader":{
+    "serviceId":"Twd.FetchVirtualAcountDetails",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "acctBelongCustCode":"16313302",
+  "acctBelongName":"帳號戶名",
+  "acctNo":"04864705444550",
+  "ediName":"企業戶名稱",
+  "beginDate" : "2016/05/05",
+  "endDate": "2016/05/11",
+  "totalCount": "2",
+  "totalAmt": "3,000",
+  "currPage" : "1",
+  "totalPage" : "2",
+  "details": [
+    {
+      "seqNo": "001",
+      "dDate": "2016/03/26",
+      "systemDate": "2016/03/21",
+      "time": "08:12:30",
+      "amt": "1,000,000,000",
+      "trnActno": "190213800001",
+      "txnCode": "A",
+      "outBank": "台新銀行",
+      "outActno": "81204864717108196",
+      "outName": "匯款人 1",
+      "memo":"備註 1"
+    },
+    {
+      "seqNo": "002",
+      "dDate": "2016/03/28",
+      "systemDate": "2016/03/21",
+      "time": "22:03:00",
+      "amt": "2,000",
+      "trnActno": "190213800002",
+      "txnCode": "B",
+      "outBank": "台新銀行",
+      "outActno": "81204864717108200",
+      "outName": "匯款人 2",
+      "memo":"備註 2"
+    },
+    {
+      "seqNo": "001",
+      "dDate": "2016/03/26",
+      "systemDate": "2016/03/21",
+      "time": "08:12:30",
+      "amt": "1,000,000,000",
+      "trnActno": "190213800001",
+      "txnCode": "A",
+      "outBank": "台新銀行",
+      "outActno": "81204864717108196",
+      "outName": "匯款人 1",
+      "memo":"備註 1"
+    },
+    {
+      "seqNo": "002",
+      "dDate": "2016/03/28",
+      "systemDate": "2016/03/21",
+      "time": "22:03:00",
+      "amt": "2,000",
+      "trnActno": "190213800002",
+      "txnCode": "B",
+      "outBank": "台新銀行",
+      "outActno": "81204864717108200",
+      "outName": "匯款人 2",
+      "memo":"備註 2"
+    },
+    {
+      "seqNo": "001",
+      "dDate": "2016/03/26",
+      "systemDate": "2016/03/21",
+      "time": "08:12:30",
+      "amt": "1,000,000,000",
+      "trnActno": "190213800001",
+      "txnCode": "A",
+      "outBank": "台新銀行",
+      "outActno": "81204864717108196",
+      "outName": "匯款人 1",
+      "memo":"備註 1"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<!-- A11y Page Start-->
+<ng-container>
+  <div *ngFor="let element of data; let i = index;">
+    <div class="row_loan_a11y">
+      <div class="row4_top_a11y">
+        <div class="row4_top_left_a11y">
+          到期日：{{formatDate(element.expirDate)}}
+        </div>
+      </div>
+      <div class="row_loan_center_a11y">
+        <div class="row_loan_top_a11y">
+          <div class="row_center_user_icon_a11y"></div>
+          <div class="row_loan_center_title1_a11y">帳號<br>
+            {{(element.acctNo)|accountFormate}}</div>
+        </div>
+        <div class="row_loan_bot_a11y">
+          <div class="row_loan_center_money_icon_a11y"></div>
+          <div class="row_loan_center_title1_a11y">現欠餘額<br>
+            <font class="font_money_a11y">
+              NT$ {{element.balence|htMoney:'TWD'}}</font>
+
+          </div>
+        </div>
+        <div class="row_loan_bot_a11y">
+          <div class="row_loan_center_money_icon_a11y"></div>
+          <div class="row_loan_center_title1_a11y"
+            title="{{dateTitle(formatDate(element.lastInterRecDate),'上次利息收訖日')}}">
+            上次利息收訖日<br>
+            <font class="font_money_a11y">{{formatDate(element.lastInterRecDate)}}</font>
+          </div>
+        </div>
+        <div class="row_loan_bot_a11y">
+          <div class="row_loan_center_money_icon_a11y"></div>
+          <div class="row_loan_center_title1_a11y">目前利率<br>
+            <font class="font_money_a11y">{{element.rate}}%</font>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row_white_a11y" style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+      <button class="button_confirm_a11y" (click)="onContentEvent(element,i)">
+        詳細資訊
+      </button>
+    </div>
+  </div>
+</ng-container>
+<!-- A11yPage End-->

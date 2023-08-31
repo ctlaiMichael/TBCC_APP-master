@@ -1,0 +1,41 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y">
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" title="{{
+          dateTitle(searchTime.split(' ')[0], '查詢時間') +
+            timeTitle(searchTime.split(' ')[1])
+        }}">
+        查詢時間:
+        <br />{{ searchTime }}
+      </p>
+    </div>
+  </div>
+  <ng-container *ngIf="showData; else emptyBox">
+    <div class="table_four_hl_a11y">
+      <!-- <div class="input_area_a11y"> -->
+          <div>
+        <table class="Table2_a11y">
+          <tbody>
+            <tr>
+              <th>{{'PG_FINANCIAL.FIELD.CURRENCY' | translate}}</th>
+              <th>一般外幣放款利率(年息)%</th>
+            </tr>
+            <ng-container *ngFor="let item of data">
+              <tr>
+                <td>{{ item.currName }}<br/>({{ item.currency }})</td>
+                <td class="firstTable_a11y">
+                  {{ item.rate | htFinancial }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <!-- 查無資料 -->
+  <ng-template #emptyBox>
+    <div class="sub_info_subtitle_a11y">{{ "ERROR.EMPTY" | translate }}</div>
+  </ng-template>
+</section>

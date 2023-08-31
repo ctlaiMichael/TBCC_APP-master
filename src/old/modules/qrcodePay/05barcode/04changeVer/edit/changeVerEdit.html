@@ -1,0 +1,82 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+    <header class="main_nav">
+        <div class="bank_logo" style="width:50px;height:50px; left:-50px;top:-5px;position: relative;" ng-click="clickMenuList(true)">
+            <img src="ui/images/i_smenu.png">
+        </div>
+        <!-- <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button> -->
+        <h2 class="header_title" style="opacity:1;top:25px;">發票載具條碼</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<barcode-left-menu-directive></barcode-left-menu-directive>
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section style="top:110px;">
+        <div class="row_single">
+            <h4 class="simple_title">變更手機條碼驗證碼</h4>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    手機條碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" name="" id="" class="inner_input" ng-bind="result.cardNo">
+                </li>
+            </ul>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    原驗證碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="" id="" class="inner_input" maxlength="16" ng-model="oldVerify" placeholder="請輸入原驗證碼" required>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    新驗證碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="" id="" class="inner_input" maxlength="16" ng-model="newVerify" placeholder="請輸入新驗證碼" required>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single mobile">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    再次輸入新驗證碼:
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="" id="" class="inner_input" maxlength="16" ng-model="newVerify2" placeholder="請輸入新驗證碼" required>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a id="empty" ng-click="clickClear()">清除</a><a ng-click="clickSubmit()">確定</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content" style="color:red">
+                [新驗證碼]須有數字與英文字母且長度需8~16碼
+            </p>
+        </div>
+    </section>
+</div>
+
+<style>
+.pop_content{
+        width:55vw;
+    }
+</style>

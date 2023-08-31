@@ -1,0 +1,93 @@
+<ng-container *ngIf="!showNextPage && showNextPage!='overdue'">
+	<section>
+		<ng-container *ngIf="showData ; else noDataBox">
+			<div [hidden]=" hiddenFlag">
+				<div class="sub_info_frame">
+					<ul class="step_bar_frame">
+						<li class="step_bar "></li>
+						<li class="step_bar step_active"><span>2.填寫資料</span></li>
+						<li class="step_bar"></li>
+						<li class="step_bar"></li>
+					</ul>
+				</div>
+				<div class="row_single">
+					<h4 class="simple_title">繳款設定</h4>
+				</div>
+				<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+					<div class="row_single">
+						<ul class="inner_table_frame" [ngClass]="errorMsg['trnsAcnt']?'active_warnning':''">
+							<li class="inner_table_cell">
+								轉出帳號
+							</li>
+							<li class="inner_table_cell">
+								<select name="account" class="inner_select" [(ngModel)]="inputView.trnsAcnt">
+									<option value="">請選擇轉出帳號</option>
+									<option *ngFor="let account of account_list" [ngValue]="account.trnsfrAccount">{{(account.trnsfrAccount)| accountFormate}}</option>
+								</select>
+							</li>
+						</ul>
+						<i class="input_info_warnning">{{errorMsg['trnsAcnt']|translate}}</i>
+					</div>
+
+					<div class="row_single">
+						<ul class="inner_table_frame" [ngClass]="errorMsg['money']?'active_warnning':''">
+							<li class="inner_table_cell">
+								繳納金額
+							</li>
+							<li class="inner_table_cell">
+								<input type="tel" name="amount" class="inner_input" [readonly]="disFlag||data.payType=='1'||data.payType=='3'"
+								 [(ngModel)]="inputView.money" placeholder="請輸入金額">
+							</li>
+						</ul>
+						<i class="input_info_warnning">{{errorMsg['money']|translate}}</i>
+					</div>
+					<div class="row_single">
+						<div class="switch_frame">
+							<input type="radio" class="switch_input" name="view" value="1" id="week" checked [(ngModel)]="inputView.repayRadio"
+							 (change)="radioChg()">
+							<label for="week" class="switch_label switch_label_off">還本息</label>
+							<input type="radio" class="switch_input" name="view" value="2" id="month" [(ngModel)]="inputView.repayRadio"
+							 (change)="radioChg()" [disabled]="data.payType=='1'||data.payType=='3'">
+							<label for="month" class="switch_label switch_label_on">還本金</label>
+							<span class="switch_selection"></span>
+						</div>
+						<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="goOverdue()" *ngIf="data.payType=='1'||data.payType=='3'">
+							<span>逾期資訊</span>
+						</a>
+					</div>
+
+					<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+					</app-select-security>
+				</form>
+
+				<div class="row_single">
+					<div class="double_button" style="margin-top: 10px;">
+						<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a><a href="javascript:void(0)"
+						 (click)="onNextPage()">{{'BTN.NEXT' | translate }}</a>
+					</div>
+				</div>
+				<div class="row_single">
+					<h4 class="simple_title">提醒您</h4>
+				</div>
+				<div class="row_single">
+					<p class="inner_content">若帳戶狀態為逾期時僅能選擇繳納本息</p>
+				</div>
+			</div>
+			<ng-container *ngIf="showOverdue">
+				<div [hidden]="!hiddenFlag">
+					<app-payment-overdue [info_data]="info_data" (backPageEmit)="selectRepay($event)"></app-payment-overdue>
+				</div>
+			</ng-container>
+		</ng-container>
+		<ng-template #noDataBox>
+			<div class="sub_info_subtitle">資料處理中，請稍後</div>
+		</ng-template>
+	</section>
+</ng-container>
+
+<ng-container *ngIf="showNextPage=='confirm'">
+	<app-payment-confirm [data]="data" [inputView]="inputView" [infodata]="info_data" (backPageEmit)="goResult($event)"  (backToEdit)="toEditPage($event)"></app-payment-confirm>
+</ng-container>
+<ng-container *ngIf="showNextPage=='result'">
+	<app-payment-result [success_data]="success_data"></app-payment-result>
+</ng-container>

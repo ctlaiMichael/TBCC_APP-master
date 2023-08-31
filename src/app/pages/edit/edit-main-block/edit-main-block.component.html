@@ -1,0 +1,39 @@
+<!-- section -->
+<section>
+  <ul class="tab_table">
+    <li class="tab_three_cell">
+      <a class="tab_button active">首頁區塊編輯</a>
+    </li>
+    <!-- <li class="tab_three_cell">
+      <a (click)="go('edit_hotKey')" class="tab_button">我的快捷編輯</a>
+    </li> -->
+    <li class="tab_three_cell">
+      <a (click)="go('edit_slider')" class="tab_button">快捷選單編輯</a>
+    </li>
+  </ul>
+  <div class="row_single">
+    <h4 class="simple_title">上下拖曳以更動卡片順序</h4>
+  </div>
+  <div class="row_single " [sortablejs]="menuOrder" [sortablejsOptions]="normalOptions">
+    <!-- <img src="edit1.png" width="100%"> -->
+    <div class="quicklink_margin ui-state-default" *ngFor="let item of menuOrder">
+      <div style="position:relative">
+        <div class="quicklink_info">
+          <div style="right: 0px;top: 0px; width: 60px;height: 48px;" class="drag_img">
+            <img src="assets/images/icons/icon_drag.png" style="padding-left: 21px;
+            padding-top: 19px;" />
+          </div>
+          <div>{{ item.title|translate }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row_single">
+    <a (click)="save()" class="button_confirm">儲存設定</a>
+  </div>
+</section>
+<!-- section End -->
+<!-- 側邊選單 -->
+<nav id="leftBox"></nav>
+<!-- 側邊選單 End -->
+<div id="topBox"></div>

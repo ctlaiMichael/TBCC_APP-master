@@ -1,0 +1,45 @@
+<div class="sub_info_frame result">
+	<div class="step_final_icon_frame">
+		<i class="icon_success"></i>
+		<span class="step_final_info">交易成功</span>
+	</div>
+</div>
+
+<ul class="table_info">
+	<li class="table_row">
+		<span>交易時間</span>
+		<i>{{hinetFeeResult.trnsDateTime | htDate}}</i>
+	</li>
+	<li class="table_row">
+		<span>轉出帳號</span>
+		<i>{{hinetFeeResult.trnsfrOutAccnt | accountFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>電話號碼</span>
+		<i>{{hinetFeeResult.phone}}</i>
+	</li>
+	<li class="table_row">
+		<span>列帳年月</span>
+		<i>{{hinetFeeResult.billDt}}</i>
+	</li>
+	<li class="table_row">
+		<span>繳費期限</span>
+		<i>{{hinetFeeResult.dueDt | htDate:'yyyy/MM/dd'}}</i>
+	</li>
+	<li class="table_row">
+		<span>應繳金額</span>
+		<i>{{hinetFeeResult.trnsfrAmount | currencyMoney:'TWD'}}元</i>
+	</li>
+</ul>
+
+<div class="row_single"></div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="socialSharing()" class="button_confirm">
+		交易訊息分享
+	</a>
+</div>
+<div class="row_single">
+	<a href="javascript:void(0)" (click)="accountView()" class="button_confirm">
+		回帳戶總覽
+	</a>
+</div>

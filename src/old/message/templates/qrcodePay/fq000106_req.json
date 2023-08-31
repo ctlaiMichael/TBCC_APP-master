@@ -1,0 +1,12 @@
+{
+	"custId" : "",
+	"trnsfrOutAcct" : "",
+	"payCategory" : "",
+	"payNo" : "",
+	"payEndDate" : "",
+	"trnsfrAmount" : "",
+	"businessType" : "",
+	"trnsToken" : "",
+	"identificationCode" : "",
+	"periodCode" : ""
+}

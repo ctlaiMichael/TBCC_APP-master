@@ -1,0 +1,78 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<div class="no_bt" ></div>
+		<div class="page_title">發票載具條碼</div>
+		<div class="bank_logo">
+			<img src="ui/tcbbOldStyle/image/cobanklogo.png">
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<div class="result_title2">
+					<p ng-if="result.respCode!=0">查詢手機條碼失敗</p>
+					<p ng-if="result.respCode==0">查詢手機條碼成功</p>
+				</div>
+			</div>
+		</div>
+		<div class="result_sec" ng-if="result.respCode!=0">
+			<div class="result_location">
+				<div id="css_table" style="margin: 10px 10px 10px -10px;">
+					<div class="css_tr">
+						<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+						<div class="css_td_content" ng-bind="result.hostCode"></div>
+					</div>
+					<div class="css_tr">&nbsp;</div>
+					<div class="css_tr">
+						<div class="css_td_title">代碼訊息：</div>
+						<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="result_sec" ng-if="result.respCode==0">
+			<div class="result_location">
+				<div class="result_title">
+					<p>手機條碼</p>
+				</div>
+				<div class="page_title" style="text-align: center;" >
+					<angular-barcode class="barcode" ng-model="mobileBarcode" bc-options="bc" bc-class="barcode" bc-type="img"></angular-barcode>
+				</div>
+				<div style="text-align: center; margin:10px; " ng-bind="mobileBarcode"></div>
+			</div>
+		</div>
+
+		<!--content_checkbt 按鈕組合-->
+		<div class="row">
+			<div class="content_bt">
+				<button type="button" class="confirm_bt" ng-click="clickSubmit()">確定</button>
+			</div>
+		</div>
+		<!--content_checkbt 按鈕組合 end-->
+		<div class="row" style="text-align: center;margin-top:15px;" ng-if="result.respCode==0">
+			<span style="color:red;text-align: center;font-size:16px;">已成功儲存您的手機條碼</span>
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.barcode img {
+		/* max-width: 60vw; */
+		text-align: center;
+		width:6.2cm;
+		height: 1.6cm;
+	}
+</style>

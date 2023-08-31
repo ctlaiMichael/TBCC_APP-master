@@ -1,0 +1,59 @@
+<section>
+    <ng-container *ngIf="showPage=='edit'">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar step_active">
+                    <span>1.填寫資料</span>
+                </li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+        <div class="row_single"></div>
+        <div class="row_single">
+            <h4 class="simple_title">設定對帳單寄送方式</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_radio radio_inline">
+                <input type="radio" id="inner_s_radio01" name="inner_s_radio" value="3" [(ngModel)]="mailOut">
+                <label for="inner_s_radio01">
+                    <span>
+                        <i></i>
+                    </span>
+                    <b>寄發電子郵件</b>
+                </label>
+            </div>
+            <div class="inner_radio radio_inline">
+                <input type="radio" id="inner_s_radio02" name="inner_s_radio" value="2" [(ngModel)]="mailOut">
+                <label for="inner_s_radio02">
+                    <span>
+                        <i></i>
+                    </span>
+                    <b>寄發紙本</b>
+                </label>
+            </div>
+        </div>
+
+
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security>
+        <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')" (click)="goMenu()">回上頁</a><a href="javascript:void(0)" (click)="goResult()">確定變更</a>
+            </div>
+        </div>
+
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                1.申請異動為寄發紙本，受託人將以寄發交易確認單(含相關報表)書面資料至委託人之通訊處<br>
+                2.申請異動為寄發電子郵件，受託人將以寄發交易確認單(含相關報表)電子檔至委託人之電子郵件信箱
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showPage=='result'">
+        <app-fund-statement-result [mailOut]="mailOut"></app-fund-statement-result>
+    </ng-container>
+</section>

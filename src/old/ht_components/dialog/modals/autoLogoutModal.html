@@ -1,0 +1,26 @@
+<div class="mfp-content">
+  <div class="zoom-anim-dialog popup_message_frame">
+    <ul class="popup_message_frame_main">
+      <li class="popup_title">
+        <h4 class="popup_title_word">登出倒數</h4>
+      </li>
+      <li class="popup_content">
+        <p ng-show="$root.loginOuTime.counter>0">
+          <span>距離登出時間剩餘</span>
+          <b>{{$root.loginOuTime.counter}}</b>秒
+        </p>
+        <p ng-hide="$root.loginOuTime.counter>0">
+          <span>閒置時間過長系統已自動將您登出</span>
+        </p>
+      </li>
+      <li class="popup_footer">
+        <div class="row_main align_ceter">
+          <a href="" class="btn popup-modal-dismiss" ng-click="logout()" ng-show="$root.loginOuTime.counter>0"><i>登出</i></a>
+          <a href="" class="btn popup-modal-dismiss" ng-click="staySigned()" ng-show="$root.loginOuTime.counter>0"><i>繼續使用</i></a>
+          <a href="" class="btn popup-modal-dismiss" ng-click="ok()" ng-hide="$root.loginOuTime.counter>0"><i>確定</i></a>
+        </div>
+      </li>
+    </ul>
+    <!--<button title="Close (Esc)" type="button" class="mfp-close" ng-click="close()">×</button>-->
+  </div>
+</div>

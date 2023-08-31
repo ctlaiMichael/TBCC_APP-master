@@ -1,0 +1,24 @@
+<ng-container *ngIf="showData; else noDataBox">
+  <ng-container *ngIf="showType!='2'; else groupBox">
+    <!-- 基本版型 -->
+    <div class="inner_links_frame">
+      <a class="inner_link" *ngFor="let menu of menuData;" (click)="onGoEvent(menu)">{{menu.name | translate}}</a>
+    </div>
+    <!-- 基本版型 End -->
+  </ng-container>
+  <ng-template #groupBox>
+    <!-- 群組版型 -->
+    <ng-container *ngFor="let main_menu of menuData;">
+      <div class="row_single marginb_0 paddong_0">
+        <h4 class="inner_title">{{main_menu.titleName | translate}}</h4>
+      </div>
+      <div class="inner_links_frame">
+        <a class="inner_link" *ngFor="let menu of main_menu.content;"(click)="onGoEvent(menu)">{{menu.name | translate}}</a>
+      </div>
+      <!-- 群組版型 End -->
+    </ng-container>
+  </ng-template>
+</ng-container>
+<ng-template #noDataBox>
+  <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate}}</div>
+</ng-template>

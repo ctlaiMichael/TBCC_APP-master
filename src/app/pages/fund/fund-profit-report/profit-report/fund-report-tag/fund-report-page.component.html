@@ -1,0 +1,47 @@
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+    <ng-container *ngIf="!moreOverview">
+    <ng-container *ngIf="!goQuery">
+        <ul class="tab_table">
+            <li class="tab_two_cell">
+                <a href="javascript:void(0)" (click)="onOverview()" class="tab_button" [ngClass]="{ 'active':(goChangeTag) }">投資損益總覽</a>
+            </li>
+            <li class="tab_two_cell">
+                <a href="javascript:void(0)" (click)="onDetail()" class="tab_button" [ngClass]="{ 'active':(!goChangeTag) }">投資明細</a>
+            </li>
+        </ul>
+
+        <!-- 基金庫存總覽 -->
+        <ng-container *ngIf="goChangeTag">
+            <app-stock-overview (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-stock-overview>
+        </ng-container>
+
+        <!-- 基金庫存明細 -->
+        <ng-container *ngIf="!goChangeTag">
+            <table class="table_fund_font rich_table">
+                <thead class="rich_bak_color">
+                    <tr>
+                        <td colspan="3" class="rich_pad_top">投資標的</td>
+                    </tr>
+                    <tr class="rich_bod_bot">
+                        <td class="rich_pad_bot font_align_left">投資方式</td>
+                        <td class="">投資金額</td>
+                        <td>含息報酬率</td>
+                    </tr>
+                </thead>
+            </table>
+            <app-stock-detail [page]="'1'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-stock-detail>
+            <ng-container #pageBox></ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container>
+</section>
+
+<!-- 基金庫存總覽(更多) -->
+<ng-container *ngIf="moreOverview">
+    <app-stock-overview-more [inputData]="onQueryData" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-stock-overview-more>
+</ng-container>
+
+<!-- 第二層(tag主控) -->
+<ng-container *ngIf="goQuery">
+    <app-fund-detail-tag [inputData]="onQueryData" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-tag>
+</ng-container>

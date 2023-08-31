@@ -1,0 +1,24 @@
+<section>
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame">
+            <i *ngIf="isSuccess" class="icon_success"></i>
+            <i *ngIf="!isSuccess" class="icons_fault"></i>
+            <span class="step_final_info">{{successMsg}}</span>
+        </div>
+        <p style="color:white; text-align: center">{{successDetail}}</p>
+    </div>
+    <ng-container *ngIf="isSuccess">
+        <ul class="table_info">
+            <li class="table_row" *ngFor="let item of successContent">
+                <span>{{item.title}}</span>
+                <i>{{item.detail}}</i>
+            </li>
+        </ul>
+    </ng-container>
+    <div class="row_single"></div>
+    <div class="row_single">
+        <a href="javascript:void(0)" class="button_confirm" (click)="onBackEvent();">
+            {{ btnName | translate }}
+        </a>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "rtnCode": "ok",
+    "subCode": ""
+  },
+  "acctNo" : "9991737600032",
+  "acctBelongCustCode" : "16313302",
+  "acctBelongName" : "網際威信股份有限公司",
+  "dataQueryTime" : "2016/05/05 13:00:12",
+  "regularAcountBalInfo" :
+  [
+    {
+      "seq" : "001",
+      "depositNo" : "000001",
+      "ccy" : "CNY",
+      "amt" : "2,400,000.00",
+      "opnDate":"2016/03/31",
+      "endDate":"2016/05/01",
+      "fixRate":"1.7",
+      "status":"A",
+      "statusDesc":"新單"
+
+    }
+  ]
+}
+

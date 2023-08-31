@@ -1,0 +1,30 @@
+<ng-container *ngIf="show">
+    <div class="sub_info_subtitle">
+        <ul class="inner_table_frame mb_15" [ngClass]="{'active_warnning': showError.error }">
+            <!-- 查詢起日 -->
+            <li class="inner_table_cell">*{{ 'FIELD.SEARCH_START_DATE' | translate }}</li>
+            <li class="inner_table_cell">
+                <!-- <input type="date" class="inner_input_data" min="{{startDate.min}}" max="{{startDate.max}}" [(ngModel)]="startDate.data"> -->
+                <input-date [min]="startDate.min" [max]="startDate.max" [(ngModel)]="startDate.data"></input-date>
+            </li>
+        </ul>
+        <ul class="inner_table_frame mb_15" [ngClass]="{'active_warnning': showError.error}">
+            <!-- 查詢迄日 -->
+            <li class="inner_table_cell">*{{ 'FIELD.SEARCH_END_DATE' | translate }}</li>
+            <li class="inner_table_cell">
+                <!-- <input type="date" class="inner_input_data" min="{{endDate.min}}" max="{{endDate.max}}" [(ngModel)]="endDate.data"> -->
+                <input-date [min]="endDate.min" [max]="endDate.max" [(ngModel)]="endDate.data"></input-date>
+            </li>
+        </ul>
+        <i class="input_info_warnning font_align_left">{{ showError.msg | translate }}</i>
+        <a href="javascript:void(0)" class="button_confirm" (click)="onSearch()">{{ 'BTN.SEARCH' | translate }}</a>
+    </div>
+    <ng-container *ngIf="showInfo">
+        <div class="row_single">
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content" *ngFor="let item of showInfoData;" [innerHtml]="item | safeHtml"></p>
+        </div>
+    </ng-container>
+</ng-container>

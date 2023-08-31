@@ -1,0 +1,45 @@
+<section>	
+  <a class="gold_refresh_btn asset_retry" href="javascript:void(0)" (click)="onRetry()"></a>
+  <div class="circle_area">
+      <!-- 中：No1 -->
+    <a href="javascript:void(0)" class="not-active" (click)="onGoEvent(percentData[0])">
+      <div class="circle01" [ngClass]="{'disable': !percentData[0].status}">
+        <p class="persent1" *ngIf="percentData[0].status">{{percentData[0].percentage}}％</p><p class="money1">{{percentData[0].name}}</p>
+      </div>
+    </a>
+    <!-- 左：No3 -->
+    <a href="javascript:void(0)" class="not-active" (click)="onGoEvent(percentData[2])">
+      <div class="circle02" [ngClass]="{'disable': !percentData[2].status}">
+        <p class="persent2" *ngIf="percentData[2].status">{{percentData[2].percentage}}％</p><p class="money2">{{percentData[2].name}}</p>
+      </div>
+    </a>
+    <!-- 右：No2 -->
+    <a href="javascript:void(0)" class="not-active" (click)="onGoEvent(percentData[1])">
+      <div class="circle03" [ngClass]="{'disable': !percentData[1].status}">
+        <p class="persent3" *ngIf="percentData[1].status">{{percentData[1].percentage}}％</p><p class="money3">{{percentData[1].name}}</p>
+      </div>
+    </a>
+    <!-- 帳戶總資產 -->
+    <div class="ALLproperty"><p >帳戶總資產:&nbsp;{{(closeAssets) ? '- -' : (showTotalAmount | htMoney: 'TWD') }}</p></div>
+    <!-- 資訊列表 -->
+    <div class="inner_news_list_frame" *ngIf="showData">
+      <ng-container *ngFor="let data of listData; let i = index">
+      <a href="javascript:void(0)" class="inner_news_list sum not-active" (click)="onGoEvent(data)">
+        <span class="pointBlock pointBlock-{{i}}"></span>
+        <span class="inner_news_list_td" [ngClass]="{'disable': (data.path == '')}">
+            <i class="inner_news_data1">
+                <s>{{data.name}}</s>          
+                <s *ngIf="data.id!='twd'">折台幣</s>
+            </i>
+          <i class="inner_news_data2">
+            <s>{{data.percentage}}%</s>
+            <s>{{data.amount | htMoney: 'TWD'}}</s>
+          </i>
+        </span>
+      </a>
+      </ng-container>
+    </div>
+  </div>
+
+
+</section>

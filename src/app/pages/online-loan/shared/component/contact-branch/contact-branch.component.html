@@ -1,0 +1,387 @@
+<!-- 房貸增貸 START-->
+<ng-container *ngIf="type=='mortgage'; else creditBox">
+    <section>
+        <ng-container [ngSwitch]="nowPage">
+            <ng-container *ngSwitchCase="'commission'">
+                <div class="sub_info_frame">
+                    <ul class="step_bar_frame">
+                        <li class="step_bar"></li>
+                        <li class="step_bar step_active"><span>2.確認委託扣款帳號</span></li>
+                        <li class="step_bar"></li>
+                    </ul>
+                </div>
+
+                <div class="row_single">
+                    <h4 class='simple_title'>撥入暨委託扣款帳號</h4>
+                </div>
+                <!-- 有委託扣款帳號 帶預設 -->
+                <ng-container *ngIf="hasAccount">
+                    <div class="row_single">
+                        <div class="transfer_frame normal_disable">
+                            <div class="transfer_td">存款
+                                <br>分行
+                            </div>
+                            <div class="transfer_td">
+                                <input type="text" name="" id="" class="inner_input" placeholder="{{bindData.outBrch2}}{{bindData.outBrchName2}}">
+                                <input type="text" name="" id="" class="inner_input" placeholder="{{bindData.outLargn | accountFormate}}">
+                            </div>
+                            <div class=""></div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- 無委託扣款帳號 下拉選單 -->
+                <ng-container *ngIf="!hasAccount">
+                    <div class="row_single">
+                        <div class="goldTransfer_frame" [ngClass]="{ 'active_warnning':(check_hasAccount) }">
+                            <div class="goldTransfer_td">存款
+                                <br>分行
+                            </div>
+                            <div class="goldTransfer_td">
+                                <ul class="inner_input_l2_frame normal_disable">
+                                    <li class="inner_l2_cell">
+                                        <input type="text" name="" id="" class="inner_input" placeholder="{{bindData.outBrch2}}{{bindData.outBrchName2}}">
+                                    </li>
+                                    <li class="inner_l2_cell second_td_l2"></li>
+                                </ul>
+                                <select class="inner_select" [(ngModel)]="accountBind" (change)="onAccountChange(accountItem)">
+                                    <option value="">請選擇</option>
+                                    <ng-container *ngFor="let accountItem of accountData_505">
+                                        <ng-container *ngIf="accountItem['acctNo']!='' && accountItem['acctNo']!=null">
+                                            <option [ngValue]="accountItem">{{accountItem.acctNo}}</option>
+                                        </ng-container>
+                                    </ng-container>
+                                </select>
+                                <i class="input_info_warnning">{{error_hasAccount}}</i>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="dfAccountFlag">
+                    <div class="row_single">
+                        <ul class="inner_table_frame normal_disable">
+                            <li class="inner_table_cell">存款科目</li>
+                            <li class="inner_table_cell">
+                                <input class="inner_input" type="text" name="" placeholder="{{bindData.accountcd}}">
+                            </li>
+                        </ul>
+                        <i class="input_info_warnning">錯誤訊息內容</i>
+                    </div>
+                    <div class="row_single">
+                        <ul class="inner_table_frame normal_disable">
+                            <li class="inner_table_cell">餘額</li>
+                            <li class="inner_table_cell">
+                                <input class="inner_input" type="text" name="" placeholder="{{bindData.outGnamt | htMoney}}">
+                            </li>
+                        </ul>
+                        <i class="input_info_warnning">錯誤訊息內容</i>
+                    </div>
+                </ng-container>
+
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack2()">上一步</a><a href="javascript:void(0)" (click)="onNext2()">下一步</a>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        該帳號作為本貸款之撥入帳號及委託扣款帳號(自動扣繳)
+                    </p>
+                </div>
+            </ng-container>
+
+            <!-- 確認頁 -->
+            <ng-container *ngSwitchCase="'confirmPage'">
+                <div class="sub_info_frame">
+                    <ul class="step_bar_frame">
+                        <li class="step_bar"></li>
+                        <li class="step_bar"></li>
+                        <li class="step_bar step_active"><span>3.資料確認</span></li>
+                    </ul>
+                </div>
+
+                <div class="row_single">
+                    <h4 class='simple_title'>確認分行資料</h4>
+                </div>
+
+                <ul class="table_info loan_1 loan_2">
+                    <li class="table_row">
+                        <span>放款帳號</span>
+                        <i>{{bindData.outLaran | accountFormate}}</i>
+                    </li>
+                    <li class="table_row">
+                        <span>放款帳號分行</span>
+                        <i>{{bindData.outBrch1}}{{bindData.outBrchname1}}</i>
+                    </li>
+                    <li class="table_row">
+                        <span>額度</span>
+                        <i>{{bindData.outLarpm | htMoney}}</i>
+                    </li>
+                    <li class="table_row">
+                        <span>現欠餘額</span>
+                        <i>{{bindData.outLaral | htMoney}}</i>
+                    </li>
+                    <li class="table_row">
+                        <span>可增貸金額</span>
+                        <i>{{bindData.increaseAmount | htMoney}}</i>
+                    </li>
+                    <li class="table_row">
+                        <span>當下利率</span>
+                        <i>{{bindData.outRate}}%</i>
+                    </li>
+                    <div class="row_single"></div>
+                    <li class="table_row">
+                        <span>撥貸及委扣帳號</span>
+                        <ng-container *ngIf="bindData.outLargn !=''; else outLargnEmpty">
+                            <i>{{bindData.outLargn | accountFormate}}</i>
+                        </ng-container>
+                        <ng-template #outLargnEmpty><i>--</i></ng-template>
+                    </li>
+                    <li class="table_row">
+                        <span>撥貸及委扣帳號分行</span>
+                        <ng-container *ngIf="bindData.outBrch2 != ''; else outBrchName2Empty">
+                            <i>{{bindData.outBrch2}}{{bindData.outBrchName2}}</i>
+                        </ng-container>
+                        <ng-template #outBrchName2Empty><i>--</i></ng-template>
+                    </li>
+                    <li class="table_row">
+                        <span>存款科目</span>
+                        <ng-container *ngIf="bindData.accountcd !=''; else accountcdEmpty">
+                            <i>{{bindData.accountcd}}</i>
+                        </ng-container>
+                        <ng-template #accountcdEmpty><i>--</i></ng-template>
+                    </li>
+                    <li class="table_row">
+                        <span>撥貸及委扣帳號餘額</span>
+                        <i>{{bindData.outGnamt | htMoney}}</i>
+                    </li>
+                </ul>
+                <div class="row_single"></div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack3()">上一步</a><a href="javascript:void(0)" (click)="onNext3()">確定</a>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </section>
+</ng-container>
+<!-- 房貸增貸   END-->
+
+
+
+<!-- 信貸 START-->
+<ng-template #creditBox>
+    <ng-container [ngSwitch]="nowPage">
+        <ng-container *ngSwitchCase="'commission'">
+
+            <!-- 原存款分行 START -->
+            <ng-container *ngIf="branckCheck">
+                <section>
+
+                    <div class="sub_info_frame">
+                        <ul class="step_bar_frame">
+                            <li class="step_bar step_active"><span>2.請選擇本次往來分行</span></li>
+                            <li class="step_bar"></li>
+                        </ul>
+                    </div>
+
+                    <div class="row_single">
+                        <div class="inner_radio radio_inline" (click)="selectBranch('original')">
+                            <input type="radio" [checked]="branckCheck">
+                            <label for="radio_button01">
+                                <span>
+                                    <i></i>
+                                </span>
+                                <b>原存款往來分行</b>
+                            </label>
+                        </div>
+                        <!-- 上線先關閉之後開啟 2020/01/10 -->
+                        <div class="inner_radio" style="margin-top:10px;" (click)="selectBranch('select')">
+                            <input type="radio" [checked]="!branckCheck">
+                            <label for="radio_button02">
+                                <span>
+                                    <i></i>
+                                </span>
+                                <b>自行選擇分行並臨櫃簽約對保</b>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- 卡片式(原存款) -->
+                    <div class="row_single">
+                        <h4 class='simple_title'>原存款往來分行</h4>
+                    </div>
+
+                    <app-credit-branch-case (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-credit-branch-case>
+                    <div class="row_single">
+                        <a href="javascript:void(0);" class="button_confirm" (click)="onBack2()">上一步</a>
+                    </div>
+                </section>
+            </ng-container>
+            <!-- 原存款分行 END -->
+
+
+            <!-- 自行選 START-->
+            <ng-container *ngIf="!branckCheck">
+                <section>
+                    <div class="sub_info_frame">
+                        <ul class="step_bar_frame">
+                            <li class="step_bar step_active"><span>2.請選擇本次往來分行</span></li>
+                            <li class="step_bar"></li>
+                        </ul>
+                    </div>
+
+                    <!-- 信貸(登入)才有原存款分行 -->
+                    <ng-container *ngIf="resver == 'N'">
+                        <div class="row_single">
+                            <div class="inner_radio radio_inline" (click)="selectBranch('original')">
+                                <input type="radio" [checked]="branckCheck">
+                                <label for="radio_button01">
+                                    <span>
+                                        <i></i>
+                                    </span>
+                                    <b>原存款往來分行</b>
+                                </label>
+                            </div>
+
+                            <div class="inner_radio" style="margin-top:10px;" (click)="selectBranch('select')">
+                                <input type="radio" [checked]="!branckCheck">
+                                <label for="radio_button02">
+                                    <span>
+                                        <i></i>
+                                    </span>
+                                    <b>自行選擇分行並臨櫃簽約對保</b>
+                                </label>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- 卡片式(自行選擇) -->
+                    <div class="row_single">
+                        <h4 class='simple_title'>選擇下列分行為往來分行</h4>
+                    </div>
+                    <div class="row_single" (click)="onReSelect()">
+                        <a href="javascript:void(0)" class="inner_button float_right_bt">
+                            <span>重新選擇分行</span>
+                        </a>
+                    </div>
+                    <ul class="credit_card_bill_detail_list loan">
+                        <li>
+                            <p>
+                                <span>縣市：</span>
+                                <ng-container *ngIf="returnData.city == '' || returnData.city == null; else hasCity">
+                                    <span>--</span>
+                                </ng-container>
+                                <ng-template #hasCity>
+                                    <span>{{returnData.city}}</span>
+                                </ng-template>
+                            </p>
+                            <p>
+                                <span>分行代號：</span>
+                                <ng-container *ngIf="returnData.branchId == '' || returnData.branchId == null; else hasIdBox">
+                                    <span>--</span>
+                                </ng-container>
+                                <ng-template #hasIdBox>
+                                    <span>{{returnData.branchId}}</span>
+                                </ng-template>
+                            </p>
+                            <p>
+                                <span>存款行：</span>
+                                <ng-container *ngIf="returnData.branchName == '' || returnData.branchName == null; else hasName">
+                                    <span>--</span>
+                                </ng-container>
+                                <ng-template #hasName>
+                                    <span>{{returnData.branchName}}</span>
+                                </ng-template>
+                            </p>
+                            <a href="javascript:void(0)" class="" (click)="onGoSelect('select')">{{'BTN.LOAN.SELECT_BRANCH'
+                                | translate}}</a>
+                        </li>
+                    </ul>
+                    <div class="row_single">
+                        <a href="javascript:void(0);" class="button_confirm" (click)="onBack2()">上一步</a>
+                    </div>
+                </section>
+            </ng-container>
+            <!-- 自行選 END-->
+        </ng-container>
+
+        <!-- 自行選擇 -->
+        <ng-container *ngIf="!branchSelect">
+            <app-select-branch (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-select-branch>
+        </ng-container>
+        <!-- 信貸 END-->
+
+        <!-- 確認頁 -->
+        <ng-container *ngSwitchCase="'confirmPage'">
+            <section>
+                <div class="sub_info_frame">
+                    <ul class="step_bar_frame">
+                        <li class="step_bar"></li>
+                        <li class="step_bar step_active"><span>2.資料確認</span></li>
+                    </ul>
+                </div>
+
+                <ul class="table_info loan_1 loan_2">
+                    <ng-container *ngIf="!branckCheck">
+                        <li class="table_row">
+                            <span>縣市</span>
+                            <i>{{returnData.city}}</i>
+                        </li>
+                    </ng-container>
+                    <li class="table_row">
+                        <span>分行代號</span>
+                        <ng-container *ngIf="selectData.openBranchId!=''; else branchIdEmpty">
+                            <i>{{selectData.openBranchId}}</i>
+                        </ng-container>
+                        <ng-template #branchIdEmpty><i>--</i></ng-template>
+                    </li>
+                    <li class="table_row">
+                        <span>存款行</span>
+                        <ng-container *ngIf="selectData.openBranchName!=''; else branchNameEmpty">
+                            <i>{{selectData.openBranchName}}</i>
+                        </ng-container>
+                        <ng-template #branchNameEmpty><i>--</i></ng-template>
+                    </li>
+                    <ng-container *ngIf="branckCheck">
+                        <li class="table_row">
+                            <span>存款科目</span>
+                            <ng-container *ngIf="selectData.accountcd!=''; else accountcdEmpty">
+                                <i>{{selectData.accountcd}}</i>
+                            </ng-container>
+                            <ng-template #accountcdEmpty><i>--</i></ng-template>
+                        </li>
+                        <li class="table_row">
+                            <span>存款帳號</span>
+                            <ng-container *ngIf="selectData.acctNo!=''; else acctNoEmpty">
+                                <i>{{selectData.acctNo | accountFormate}}</i>
+                            </ng-container>
+                            <ng-template #acctNoEmpty><i>--</i></ng-template>
+                        </li>
+                        <li class="table_row">
+                            <span>餘額</span>
+                            <ng-container *ngIf="selectData.balance!=''; else balanceEmpty">
+                                <i>{{selectData.balance | htMoney}}</i>
+                            </ng-container>
+                            <ng-template #balanceEmpty><i>--</i></ng-template>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div class="row_single"></div>
+                <!-- 若為預填單，需有圖形驗證碼 -->
+                <ng-container *ngIf="resver=='Y'">
+                    <app-captcha></app-captcha>
+                </ng-container>
+
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack3()">上一步</a><a href="javascript:void(0)" (click)="onNext3()">確定</a>
+                    </div>
+                </div>
+            </section>
+        </ng-container>
+    </ng-container>
+</ng-template>

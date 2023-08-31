@@ -1,0 +1,29 @@
+<ng-container [ngSwitch]="nowPage">
+    <ng-container *ngSwitchCase="'list'">
+        <div class="table_four_hl">
+            <!-- 標題Start -->
+            <div class="table_four_hl_tr">
+                <p class="table_four_hl_th">繳費日期</p>
+                <p class="table_four_hl_th">單據列印序號</p>
+                <p class="table_four_hl_th">狀態</p>
+                <p class="table_four_hl_th"></p>
+            </div>
+            <!-- 標題 End -->
+            <ng-container *ngFor="let item of queryData">
+                <div class="table_four_hl_tr" (click)="onDetail(item)">
+                    <p class="table_four_hl_td">{{item.trnsDttm | htDate}}</p>
+                    <p class="table_four_hl_td">{{item.trnsNo}}</p>
+                    <p class="table_four_hl_td">{{item.status}}</p>
+                    <p class="table_four_hl_td">
+                        <a href="javascript:void(0)" class="arrow_link"></a>
+                    </p>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'detail'">
+        <app-haspay-query-detail [listData]="data" [listInfoData]="info_data" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-haspay-query-detail>
+    </ng-container>
+</ng-container>

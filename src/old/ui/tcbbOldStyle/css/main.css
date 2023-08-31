@@ -1,0 +1,1122 @@
+/* header button footer 按鍵 共用元素  （QRCode掃描後輸入頁面 顯示帳號選單頁面 css） */
+
+body{
+    font-family: sans-serif, "微軟正黑體";
+}
+
+.wrapper{
+    height: 100vh;
+}
+/*<!--header nav-->*/
+
+
+.main_nav{
+    background-color: #00835E;
+    position: fixed;
+    z-index: 888;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.back_bt{
+    width: 76px;
+    /* height: 35px; */
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 6px;
+    background-color: #30695A;
+    border: solid 1px #555454;
+    box-shadow: 0 1px 1px 0 #000000;
+
+}
+
+.page_title{
+    font-size: 18px;
+    color: white;
+    /* padding-right: 10px; */
+}
+
+.back_title{
+    /* margin-top: 10px;
+    margin-left: 6px; */
+    margin: 5px 5px;
+    color: white;
+}
+
+.bank_logo{
+    width: 20px;
+    height: 20px;
+    /*border-radius: 6px;*/
+    /*background-color: white;*/
+}
+
+.bank_logo img{
+    width: 100%;
+}
+
+.page_title img {
+    height: 75px;
+}
+/*<!--header nav end-->*/
+
+/*<!--section pay-->*/
+
+.main_sec{
+    width:100vw;
+    height:100vh;
+    /*background-color: green;*/
+    /*border: solid 1px #555454;*/
+    position: absolute;
+    top: 85px;
+    top: 75px;
+}
+
+.content_title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.main_content{  padding: 0px 20px;}
+
+.confirm_content{
+    padding: 10px 20px;
+}
+
+.main_input{
+    display: flex;
+    padding: 10px 20px;
+    /*overflow: scroll;*/
+    /* width: 90vw; */
+    /*height: 280px;*/
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: solid 1px #DBDEE4;
+    /*box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);*/
+    flex-direction:column;
+}
+
+.content_input{
+    height: 30px;
+    border-color: #D6D9E0;
+    border-radius: 6px;
+}
+
+.input_warning{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.input_warning2{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.content_text{
+    font-weight: bold;
+    color: #3d4953;
+    width: 25%;
+    font-size: 14px;
+}
+
+.content_text2{
+    font-weight: bold;
+    color: #3d4953;
+    width: 40%;
+    font-size: 14px;
+}
+
+.content_text3{
+    font-weight: bold;
+    color: red;
+    width: 25%;
+    font-size: 14px;
+}
+
+.content_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
+    /*padding-top: 15px;*/
+    padding: 10px;
+}
+
+.content_note{
+    font-weight: bold;
+    color: #3d4953;
+    width: 35%;
+    font-size: 14px;
+}
+
+.content_text_chang{
+    font-weight: bold;
+    color: #8482DC;
+    width: 25%;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.content_sign{
+    width: 20%;
+}
+
+.content_bt{
+    padding: 15px 5px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.confirm_bt{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FF8077, #992621); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF8077, #992621); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF8077, #992621); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF8077, #992621); /* Standard syntax */
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #000000;
+    border: solid 2px #696767;
+}
+
+.cancel_bt{
+    background: #696767; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#DCDADA, #696767); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#DCDADA, #696767); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#DCDADA, #696767); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#DCDADA, #696767); /* Standard syntax */
+
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 #000000;
+    border: solid 2px #696767;
+}
+
+
+.confirm_bt2{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FF8077, #992621); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF8077, #992621); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF8077, #992621); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF8077, #992621); /* Standard syntax */
+    height: 30px;
+    width: 250px;
+    border-radius: 10px;
+    border: solid 1px #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+.confirm_color{ color: white;  }
+
+.cancel_color{  color: white;  }
+/*<!--section pay end-->*/
+
+/*<!--shadow-->*/
+.shadow{
+    visibility: visible;
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    /*display: none;*/
+    transition: all .5s cubic-bezier(0.000, 0.995, 0.990, 1.000);
+    z-index: 1000;
+}
+
+/*<!--shadow end-->*/
+
+/*<!-- 跳出選擇帳號視窗 -->*/
+
+.pop_account{
+    background: #696767; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(circle,#ffffff, #DCDADA, #696767); /* Safari */
+    background: -o-radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Firefox 3.6 to 15 */
+    background: radial-gradient(circle, #ffffff, #DCDADA, #696767); /* Standard syntax */
+    z-index: 1001;
+    border-radius: 15px;
+    position: fixed;
+    /*min-width: 295px;*/
+    min-height: 240px;
+    height: 220px;
+    left: 5vw;
+    right: 5vw;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 3px #C2C4C7;
+    /*padding: 10px 20px;*/
+}
+
+.pop_account_location{
+    display: flex;
+    padding: 10px 20px;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.pop_title{
+    text-align: center;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    /*padding-bottom: 10px;*/
+    padding: 10px;
+}
+
+.pop_account_bt{
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#373636,#696767,#DCDADA, #DBD4D4, #696767 ,#373636); /* Standard syntax */
+    height: 80px;
+    width: 260px;
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 15px;
+    border: solid 5px #8C8B8B;
+    text-align: center;
+    justify-content:center;
+
+}
+
+.pop_ac_text{  padding-top: 25px;  }
+
+.pop_check{
+    margin-top: 20px;
+    border-radius: 15px;
+    height: 60px;
+    width: 280px;
+    background-color: #818181;
+    border: solid 3px #C2C4C7;
+}
+
+
+
+/*<!-- 跳出選擇帳號視窗 end-->*/
+
+/*header button 按鍵 共用元素  （QRCode掃描後輸入頁面 顯示帳號選單頁面 css）end*/
+
+
+
+
+
+/*轉帳確認頁面*/
+
+/*<!--確認轉帳注意事項-->*/
+
+.notice_location{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #D3000D;
+    margin: 10px;
+}
+
+/*<!--確認轉帳注意事項-->*/
+
+/*<!--確認轉帳資訊外框-->*/
+.confirm_input{
+    display: flex;
+    padding: 10px 20px;
+    /*overflow: scroll;*/
+    /* width: 90vw; */
+    /*height: 280px;*/
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    /*box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5);*/
+    flex-direction:column;
+    border: solid 1px #8C8B8B;
+}
+
+.ac_purple{
+    color: #6D64E7;
+    padding-left: 10px;
+}
+/*<!--確認轉帳資訊外框-->*/
+/*轉帳確認頁面 end*/
+
+
+
+/*<!--繳費作業 popup-->*/
+.pop_pay{
+    background: #FFFFC4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left,  #B8EC7D ,  #FFFFC4); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right,  #B8EC7D,  #FFFFC4); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right,  #B8EC7D,  #FFFFC4); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,  #B8EC7D ,  #FFFFC4); /* Standard syntax */
+    z-index: 1001;
+    border-radius: 15px;
+    position: fixed;
+    /* min-width: 295px; */
+    min-height: 240px;
+    height: 320px;
+    left: 5vw;
+    right: 5vw;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 3px #ffffff;
+    padding: 10px 20px;
+}
+
+
+.pop_pay_location{
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+    z-index: 1001;
+    background-color: white;
+    /*position: fixed;*/
+    /* min-width: 295px; */
+    /*min-height: 200px;*/
+    /*height: 230px;*/
+    /*left: 10vw;*/
+    /*right: 10vw;*/
+    /*top: 160px;*/
+    /*margin: auto;*/
+    /*border: solid 3px #ffffff;*/
+
+}
+
+.pop_pay_title{
+    text-align: center;
+    /*font-weight: bold;*/
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.pop_note{
+    display: flex;
+    justify-content:flex-start;
+    flex-direction:column;
+    margin: 10px;
+}
+
+.password_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
+    /*padding-top: 10px;*/
+}
+
+.password_text{
+    font-weight: bold;
+    color: #3d4953;
+    width: 40%;
+    font-size: 14px;
+}
+
+.notice_infor{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:flex-start;
+    padding-top: 10px;
+}
+
+.notice_text{
+    /*font-weight: bold;*/
+    color: #D0021B;
+    width: 25%;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.notice_text2{
+    /*font-weight: bold;*/
+    color: #D0021B;
+    width: 75%;
+    font-size: 13px;
+    padding-top: 10px;
+    align-content: flex-start;
+}
+
+.pop_pay_ckeck{  padding-top: 5px;  }
+
+.pop_line{
+    padding-top: 25px;
+    border-bottom: 1px #C5D697 solid;
+}
+
+/*<!--繳費作業 popup end-->*/
+
+/*<!--交易結果欄位-->*/
+
+.result_location{
+    /*display: flex;*/
+    /*margin: 0 auto;*/
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: solid 1px #8C8B8B;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+}
+
+.result_sec{
+    padding: 10px 20px;
+}
+
+.result_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+    margin: 10px;
+}
+
+.result_title2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #D3000D;
+    margin: 10px;
+}
+
+/*<!--交易結果欄位 end-->*/
+
+
+/*<!--交易內容欄位 -->*/
+
+.result_input{
+    display: flex;
+    padding: 10px 20px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    /* box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.5); */
+    border: solid 1px #8C8B8B;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.result_text{  padding: 5px;  }
+
+.result_number{
+    float: right;
+    color: #FF0120;
+    font-size: 14px;
+}
+
+.result_number2{
+    float: right;
+    color: #594DE5;
+    font-size: 14px;
+}
+
+
+.result_infor{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 10px;
+    font-size: 14px;
+
+}
+
+.result_infor_number{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* padding-top: 15px; */
+    padding: 10px;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+/*<!--交易內容欄位 end-->*/
+
+/*<!--注意事項-->*/
+
+.main_agree {
+    padding: 20px 0px;
+}
+
+.agree_main{
+    font-weight: bold;
+    font-size: 16px;
+    /*padding: 5px 5px;*/
+    display: flex;
+    /* padding-top: 85px; */
+}
+
+.agree_content{
+    /*border: solid 3px #C2C4C7;*/
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    padding-top: 10px;
+    overflow: scroll;
+    height: 426px;
+    /*padding: 10px;*/
+}
+
+.agree_location{
+
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    height: 90px;
+    background-color: #78BA34;
+}
+
+.agree_check{
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.agree_check_bt{
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.agree_title{
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.agree_bt{
+
+    background-color: #FEAD32;
+    height: 30px;
+    width: 90px;
+    border-radius: 6px;
+    border: solid 1px #FEAD32;
+
+}
+
+.agree_bt p{  color: white;  }
+
+.disagree_bt{
+    background-color: #F4F4F4;
+    height: 30px;
+    width: 90px;
+    border-radius: 6px;
+    border: solid 1px #F4F4F4;
+}
+
+.disagree_bt p{  color: #818181;  }
+
+/*<!--注意事項 end-->*/
+
+
+
+
+/*授信業務 扣款帳號設定 兩頁表格共用*/
+
+.content_title_debit{
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.main_debit{
+    display: flex;
+    padding: 10px ;
+    margin: 0 auto;
+    background-color: #ffffff;
+    /*border-radius: 15px;*/
+    /*border: solid 1px #DBDEE4;*/
+    flex-direction: column;
+}
+
+.content_debit{
+    border: solid 1px #DBDEE4;
+    border-radius: 5px;
+}
+
+
+
+.content_debit_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #d5dde1;
+}
+
+.debit_content{
+    padding-top: 80px;
+}
+
+.debit_title{
+    font-weight: bold;
+    color: #3d4953;
+    font-size: 16px;
+}
+
+.debit_check{
+    /*position: fixed;*/
+    bottom: 0px;
+    width: 100vw;
+    height: 70px;
+}
+
+
+.loan_sign{
+    font-size: 24px;
+    color: #696767;
+}
+
+
+
+
+
+
+/*--------------------checkbox*/
+
+
+.debit_sign_box { position: absolute; display: none; }
+
+
+.debit_sign_box[disabled] { cursor: not-allowed; }
+
+.fbo-radio + label,
+.debit_sign_box + label { position: relative;display: block; padding-left: 30px;cursor: pointer;vertical-align: middle; }
+.fbo-radio + label:hover:before,
+.debit_sign_box + label:hover:before {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color; }
+.fbo-radio + label:before,
+.debit_sign_box + label:before { position: absolute; top: -5px; right: 5px; display: inline-block; width: 20px; height: 20px; content: ''; background:#fff; border:2px solid #c0c0c0 }
+.fbo-radio + label:after,
+.debit_sign_box + label:after { position: absolute; display: none; content: ''; }
+
+.fbo-radio[disabled] + label,
+.debit_sign_box[disabled] + label {cursor: not-allowed; color: #e4e4e4; }
+.fbo-radio[disabled] + label:hover, .debit_sign_box[disabled] + label:before, .fbo-radio[disabled] + label:after,
+.debit_sign_box[disabled] + label:hover,
+.debit_sign_box[disabled] + label:before,
+.debit_sign_box[disabled] + label:after { cursor: not-allowed; }
+.fbo-radio[disabled] + label:hover:before, .debit_sign_box [disabled] + label:hover:before { border: 1px solid #e4e4e4; animation-name: none; }
+.fbo-radio[disabled] + label:before,
+.debit_sign_box [disabled] + label:before { border-color: #e4e4e4; }
+
+.fbo-radio:checked + label:before,
+.debit_sign_box:checked + label:before { animation-name: none; }
+
+.fbo-radio:checked + label:after,.debit_sign_box:checked + label:after { display: block; }
+.fbo-radio + label:before { border-radius: 50%; }
+.fbo-radio + label:after { top: 7px; right: 12px; width: 11px; height: 11px; border-radius: 50%; background: #3e97eb; }
+.fbo-radio:checked + label:before { border: 2px solid #3e97eb; }
+.fbo-radio:checked[disabled] + label:before { border: 1px solid #c9e2f9; }
+.fbo-radio:checked[disabled] + label:after { background: #c9e2f9; }
+.debit_sign_box + label:before { border-radius:0; }
+.debit_sign_box + label:after { top: -3px;
+    right: 15px;
+    box-sizing: border-box;
+    width: 8px;
+    height: 17px;
+    transform: rotate(45deg);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #23A230;
+    border-top: 0;
+    border-left: 0; }
+.debit_sign_box:checked + label:before { background: #fff;  border: solid 2px #DBDEE4; }
+.debit_sign_box:checked[disabled] + label:before { border: #c9e2f9; background: #c9e2f9; }
+
+.pull-right {
+    float: right!important;
+}
+
+
+/*--------------------checkbox*/
+
+
+/*授信業務 扣款帳號設定兩頁表格共用*/
+
+/*tw pay trans beg*/
+.invest_title {
+    /*border: solid 1px #8C8B8B;*/
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest_title p {
+    font-weight: bold;
+}
+
+.invest {
+    height: 60px;
+    background-color: #D4E9E6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest2 {
+    height: 60px;
+    background-color: #E3F4F1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.con {
+    background-color: #AAD5CA;
+    border-radius: 10px;
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.qr_con {
+    font-size: 14px;
+    text-align: center;
+    width: 35%;
+}
+
+.qr_con2 {
+    font-size: 14px;
+    text-align: left;
+    width: 35%;
+}
+
+.qr_con3 {
+    font-size: 14px;
+    text-align: right;
+    padding-right: 10px;
+    width: 30%;
+}
+
+.confirm_bt3 {
+    background: #BDD2FF;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#DCE6FF, #A6C2FD);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#DCE6FF, #A6C2FD);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#DCE6FF, #A6C2FD);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#DCE6FF, #A6C2FD);
+    /* Standard syntax */
+    height: 22px;
+    width: 50px;
+    border-radius: 10px;
+    border: solid 1px #80A4DD;
+    box-shadow: 0 0 5px 0 #B1B8C0;
+    margin-left:10px;
+}
+
+.confirm_bt_L_on {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-left: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-right: solid 0px #0E7173;
+    color:white;
+}
+.confirm_bt_L_off {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-left: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-right: solid 0px #E1E0E3;
+}
+
+.confirm_bt_R_on {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-right: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-left: solid 0px #0E7173;
+    color:white;
+    margin-left:-4px;
+}
+.confirm_bt_R_off {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-right: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-left: solid 0px #E1E0E3;
+    margin-left:-4px;
+}
+
+.title2 {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.paddingLeft5 {
+    padding-left: 5px;
+}
+/*tw pay trans end*/
+
+
+
+/*----------------------------------------------*/
+
+/*以下針對320畫面調整*/
+
+@media screen and (max-width: 321px){
+
+    /*共用元素 確認取消 按鈕*/
+    .confirm_bt{
+        width: 100px;
+    }
+    .cancel_bt{
+        width: 100px;
+    }
+    /*共用元素 確認取消 按鈕 end*/
+
+
+
+    /*QR Code繳費*/
+    .content_text{
+        width: 30%;
+    }
+
+    .content_text2{
+        width: 80%;
+    }
+
+    .input_warning2{
+        width: 45%;
+    }
+
+
+    .content_text_chang{
+        width: 40%;
+    }
+    /*QR Code繳費 end*/
+
+
+    /*繳費作業*/
+    .password_text{
+        width: 45%;
+    }
+    /*繳費作業 end*/
+
+    /*轉帳確認*/
+    .content_note{
+        width: 45%;
+    }
+    /*轉帳確認 end*/
+
+    /*注意事項*/
+    .agree_title{
+        font-size: 13px;
+    }
+    /*注意事項 end*/
+
+    /*轉帳結果*/
+    .result_infor{
+        padding: 10px 4px;
+        line-height: 16px;
+    }
+    .balance_money{
+        width: 120%;
+    }
+    .result_infor_number{
+        line-height: 19px;
+    }
+    .result_number2{
+        width: 105%;
+    }
+
+    /*轉帳結果 end*/
+
+    /*注意事項*/
+
+    .agree_main{
+        font-size: 15px;
+    }
+
+    .agree_bt{
+        width: 70px;
+    }
+    .disagree_bt{
+        width: 70px;
+    }
+
+    .agree_content {
+        height: 100%;
+        padding-bottom: 200px;
+    }
+
+    header {
+        position: absolute;
+        z-index: 51;
+        top: 0;
+        left: 0;
+        box-shadow: 0 3px 30px 0 rgba(100,224,110,.6);
+        display: table;
+      
+        width: 100%;
+        height: 90px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        -webkit-transition: all .4s ease;
+           -moz-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+             -o-transition: all .4s ease;
+                transition: all .4s ease;
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+      
+        background: linear-gradient(45deg, #19ddb7 30% ,#d4fc89 100%);
+      
+      }
+
+      header > * {
+        display: table-cell;
+      
+        -webkit-transition: all .4s ease;
+           -moz-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+             -o-transition: all .4s ease;
+                transition: all .4s ease;
+        vertical-align: baseline;
+        padding-top: 24px;
+      
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+      header a {
+        -webkit-transition: all .4s ease;
+           -moz-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+             -o-transition: all .4s ease;
+                transition: all .4s ease;
+      }
+      
+      header h1 {
+        -webkit-transition: all .4s ease;
+           -moz-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+             -o-transition: all .4s ease;
+                transition: all .4s ease;
+        text-align: center;
+      }
+      header h1 span {
+        font-size: 21px;
+        font-weight: bold;
+        position: relative;
+      
+        padding: 0;
+      
+        -webkit-transition: all .4s ease;
+           -moz-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+             -o-transition: all .4s ease;
+                transition: all .4s ease;
+        
+        color: #fff;
+      }
+
+
+
+
+    /*注意事項*/
+
+
+
+}
+/*以下針對320畫面調整 end*/
+

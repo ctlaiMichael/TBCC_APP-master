@@ -1,0 +1,46 @@
+<section>
+<ng-container *ngIf="detailFlag==false">
+    <ng-container *ngIf="showData&&!detailFlag; else noDataBox">
+        <div class="sub_info_subtitle font_align_left">
+            查詢時間：{{ searchTime | htDate }}
+            <br>
+            單位：(年息)%
+        </div>
+        <div class="table_four_hl">
+            <!-- 標題Start -->
+            <div class="table_four_hl_tr">
+                <p class="table_four_hl_th">幣別</p>
+                <p class="table_four_hl_th">活期利率</p>
+                <p class="table_four_hl_th">1個月</p>
+                <p class="table_four_hl_th">3個月</p>
+                <p class="table_four_hl_th"></p>
+            </div>
+            <!-- 標題 End -->
+            <!-- 列表start -->
+            <ng-container *ngFor="let item of data;index as i">
+                <div class="table_four_hl_tr" (click)="goDetails(i)">
+                    <p class="table_four_hl_td_2">
+                        <i class="{{ item.currency | iconFlag}}"></i><br>{{item.currency?item.currency:'--'}}&nbsp;{{item.currName?item.currName:'--'}}
+                    </p>
+                    <p class="table_four_hl_td_2 font_money_blu">{{(item | fieldCheck: 'currentRate')|htFinancial}}</p>
+                    <p class="table_four_hl_td_2 font_money_blu">{{(item | fieldCheck: 'oneMonRate')|htFinancial}}</p>
+                    <p class="table_four_hl_td_2 font_money_blu">{{(item | fieldCheck: 'trdMonRate')|htFinancial}}</p>
+                    <p class="table_four_hl_td_2">
+                        <a href="javascript:void(0)" class="arrow_link"></a>
+                    </p>
+                </div>
+            </ng-container>
+            <!-- 列表 End  -->
+        </div>
+       
+    </ng-container>
+    <ng-template #noDataBox>
+            <div class="sub_info_subtitle">查無資料</div>
+    </ng-template>
+</ng-container>
+    <!-- 資料欄位範例 End -->
+
+    <ng-container *ngIf="detailFlag">
+        <app-foreign-save-detail-page [detailData]="detailData" (backPageEmit)="onBackPage($event)"></app-foreign-save-detail-page>
+    </ng-container>
+</section>

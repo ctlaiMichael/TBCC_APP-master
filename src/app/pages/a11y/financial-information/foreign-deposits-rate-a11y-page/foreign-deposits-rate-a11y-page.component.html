@@ -1,0 +1,46 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y">
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" [title]="mydataTime">{{ 'FIELD.SEARCH_TIME' | translate }}:<br>{{dataTime}}</p>
+    </div>
+  </div>
+  <!--外幣匯率內容: 即期與現鈔一起出現  -->
+  <ng-container *ngIf="showData; else emptyBox;">
+    <!-- 標題Start -->
+    <!-- <div class="input_area_a11y"> -->
+      <div>
+      <table class="Table2_a11y">
+        <tr>
+          <th>幣別</th>
+          <th>活期存款</th>
+          <th>1個月(年息%)</th>
+          <th>執行項目</th>
+        </tr>
+        <ng-container *ngFor="let item of data;index as i">
+          <tr>
+            <td>
+              {{item.currName?item.currName:'--'}}<br>({{item.currency?item.currency:'--'}})</td>
+            <td class="firstTable_a11y">
+              {{item | fieldCheck: ['currentRate',{zero_type:false,
+                    empty_str:'--'}]}}</td>
+            <td class="firstTable_a11y">
+              {{item | fieldCheck: ['oneMonRate',{zero_type:false, empty_str:'--'}]}}
+              <!-- <div class="firstTable_a11y" (click)="goDetails(i)" role="button">更多</div> -->
+            </td>
+            <td class="firstTable_a11y" (click)="goDetails(i)">更多
+              <!-- <button (click)="goDetails(i)">更多</button> -->
+            </td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+    <!--外幣匯率內容End-->
+  </ng-container>
+  <ng-template #emptyBox>
+    <!-- 查無資料 -->
+    <div class="sub_info_subtitle_a11y">{{ 'ERROR.EMPTY' | translate }}</div>
+  </ng-template>
+
+
+</section>

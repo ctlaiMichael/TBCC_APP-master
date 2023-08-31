@@ -1,0 +1,56 @@
+<section>
+  <div class="row_single">
+    <div class="simple_title">
+      <!-- 常用分行清單 -->
+      {{'TAKE_NUMBER.COMMON.FAVE_BRANCH_LIST' | translate}}
+    </div>
+    <!-- 加入/移除常用分行提示 -->
+<!--    <div class="row_single window-flow text-align-center" *ngIf="showFavoriteAddToast">-->
+<!--      <div class="tips-add-my-branch d-inline-block" [translate]="textFavoriteAddToast">-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+  <div class="row_single" *ngIf="myBranchList.length < 1">
+    <div class="block-empty-icon">
+      <div class="icon place"></div>
+      <span>
+        <!-- 尚無任何常用分行 -->
+        {{'TAKE_NUMBER.COMMON.NO_FAVE_BRANCH' | translate}}
+      </span>
+    </div>
+  </div>
+  <div class="inner_location_take_number_list_frame" *ngIf="myBranchList.length > 0">
+    <div class="inner_location_take_number_list" *ngFor="let serviceAddress of myBranchList;  let i = index">
+      <span class="favorite" [ngClass]="{'active': serviceAddress.active}"
+        (click)="onLocationAddFavoriteClick(serviceAddress, i)"></span>
+      <div class="container-content flex-wrap">
+        <div class="item-75 branch-info">
+          <div class="branch-name">{{ serviceAddress.branchName }}</div>
+        </div>
+        <div class="item-25 branch-info">
+          <span class="branch-distance" *ngIf="isEnabledGPS == 'Y'">{{serviceAddress.distance}}KM</span>
+        </div>
+        <div class="item-50 branch-info">
+          <div class="branch-address">{{ serviceAddress.branchAddr }}</div>
+        </div>
+        <div class="item-25 d-flex-center">
+          <div class="branch-operate-button w-90" (click)="onGoMapClick(serviceAddress)">
+            <!-- 地圖 -->
+            {{'TAKE_NUMBER.COMMON.MAP' | translate}}
+          </div>
+        </div>
+        <div class="item-25 d-flex-center">
+          <div class="branch-operate-button w-90 button-style-green" (click)="onTakeNumberClick(serviceAddress)">
+            <!-- 取號 -->
+            {{'TAKE_NUMBER.COMMON.TAKE_NUMBER' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 加入/移除常用分行提示(畫面中央) -->
+<!-- 2020/03/06 客戶需求修改 -->
+<div class="tips-add-my-branch d-inline-block"
+     *ngIf="showFavoriteAddToast"  [translate]="textFavoriteAddToast">
+</div>

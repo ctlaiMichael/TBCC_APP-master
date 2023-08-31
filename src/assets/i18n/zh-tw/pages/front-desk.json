@@ -1,0 +1,28 @@
+{
+    "PG_FRONT_DESK":{
+        "ERROR_MSG": {
+            "account": "請輸入申請帳號",
+            "applyAmount": "請輸入申請金額",
+            "currency": "請輸入幣別",
+            "moneyPresentType": "請輸入金額表示方式",
+            "balanceType": "請輸入餘額表示方式",
+            "chineseName": "請輸入中文姓名",
+            "englishName": "請輸入英文姓名",
+            "applyPeriod": "請輸入申請日期",
+            "whyApply": "請輸入申請金額用途",
+            "otherApplyReason": "請輸入申請金額用途其他",
+            "receiveAddress": "請輸入指定收件地址",
+            "otherReceiveAddress": "請輸入指定收件地址",
+            "city": "請輸入自取縣市",
+            "bankBranch": "請輸入自取分行",
+            "copyNumber": "請選擇份數",
+            "telNumber": "請輸入聯絡電話",
+            "phoneNumber": "請輸入行動電話",
+            "serviceCharge": "",
+            "mailFee": "",
+            "payAccount": "請輸入扣款帳",
+            "e_mail": "請輸入Email",
+            "e_mail_format": "請輸入正確email格式"
+        }
+    }
+}

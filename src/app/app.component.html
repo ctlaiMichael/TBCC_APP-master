@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div #bodyBox>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-left-menu *ngIf="!isA11y"></app-left-menu>
+    <app-top-box className="inner_nav_slider_frame" *ngIf="!isA11y"></app-top-box>
+    <app-nav-slider-frame *ngIf="!isA11y"></app-nav-slider-frame>
+</div>
+<app-scan #scanBox style="display:none;" ></app-scan>
+<app-loading-spinner></app-loading-spinner>
+<app-micro-interaction></app-micro-interaction>
+<div #cloneBox class="cloneBox" style="display:none;"></div>

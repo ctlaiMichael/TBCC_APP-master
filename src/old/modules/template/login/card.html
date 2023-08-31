@@ -1,0 +1,41 @@
+<div>
+				<div class="row_single input_single"  ng-class="{input_error:loginSet.login_error_msg.idNo}">
+					<div class="input_frame"><table><tr>
+					<td class="input_card_width" align="center"><i class="input_name required input_card_pad">{{'FIELD.IDENTITY' | translate}}</i></td>
+					<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}" ng-model="login_inp.show.idNo"
+						identity-mask-directive /><b></b></td>
+					</tr></table></div>
+					<s class="input_comment">{{loginSet.login_error_msg.idNo}}</s>
+				</div>
+				
+
+				<div class="row_single input_single"  ng-class="{input_error:loginSet.login_error_msg.userida}">
+					<div class="input_frame"><table><tr>
+					<td class="input_card_width" align="center"><i class="input_name required input_card_pad">使用代號</i></td>
+					<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.USERIDA' | translate}}" ng-model="login_inp.userida" /><b></b></td>
+					</tr></table></div>
+					<s class="input_comment">{{loginSet.login_error_msg.password}}</s>
+				</div>
+
+				<div class="row_single input_single"  ng-class="{input_error:loginSet.login_error_msg.password}">
+					<div class="input_frame"><table><tr>
+					<td class="input_card_width2" align="center"><i class="input_name required input_card_pad">{{'FIELD.PASSWORD' | translate}}</i></td>
+					<td align="center"><input  type="password" name="" placeholder="{{'INPUT_MSG.PASSWORD' | translate}}" ng-model="login_inp.password" /><b></b></td>
+					</tr></table></div>
+					<s class="input_comment">{{loginSet.login_error_msg.password}}</s>
+				</div>
+	
+	<!-- <div class="button_row"> -->
+	<div class="row_single">
+		<div class="double_button">
+		<button class="button button_cancel" ng-click="loginSet.closeLogin()">{{'BTN.CANCEL' | translate}}</button>
+		<button class="button button_submit" ng-click="loginSet.loginCardEvent()">{{'LOGIN' | translate}}</button>
+		</div>
+	</div>
+	<!-- </div> -->
+</div>
+
+<p>*為強化資訊安全，自即日起請舊會員
+	<!-- <a class="btn btn-primary" target="_blank" ng-href="{{url}}" ng-click="openTab()">按這裡</a> -->
+	<a href="https://cobank.tcb-bank.com.tw/TCB.TWNB.IDV.WEB/general/ccardApply.faces?__menu=TWNCUT05">按這裡</a>
+	重新註冊會員且設定使用者代號後，始可登入信用卡會員專區！若造成您的不便，敬請見諒。</p>

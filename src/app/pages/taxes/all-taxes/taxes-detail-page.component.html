@@ -1,0 +1,150 @@
+<section>
+	<ng-container *ngIf="'result' != showPage">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar" [ngClass]="{'step_active':'original'== showPage}">
+					<span *ngIf="'original'== showPage">1.填寫資料</span>
+				</li>
+				<li class="step_bar" [ngClass]="{'step_active':'confirm'== showPage}">
+					<span *ngIf="'confirm'== showPage">2.確認</span>
+				</li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="'original' == showPage">
+		<div class="row_single">
+			<h4 class="simple_title">{{taxesData.taxName}}</h4>
+		</div>
+		<ng-container *ngIf="'open' == fuelFee">
+			<div class="row_single">
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						繳款類別
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input normal_disable" placeholder="40005">
+					</li>
+				</ul>
+			</div>
+		</ng-container>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrOutAccnt']?'active_warnning':''">
+				<li class="inner_table_cell">
+					扣款帳號
+				</li>
+				<li class="inner_table_cell">
+					<ng-container *ngIf="defaultAcctNoFlag;else otherShow">
+						<select class="inner_select" (change)="onChangeType()"
+							[(ngModel)]="allTaxesData['trnsfrOutAccnt']">
+							<option value="" selected disabled>請選擇扣款帳號</option>
+							<option *ngFor="let item of trnsfrOutAccnt">{{item.acctNo | accountFormate }}</option>
+							<!-- <option *ngFor="let item of trnsfrOutAccnt">{{item.acctNo}}</option> -->
+						</select>
+					</ng-container>
+					<ng-template #otherShow>
+						<select class="inner_select">
+							<option>{{allTaxesData['trnsfrOutAccnt'] | accountFormate }}</option>
+						</select>
+					</ng-template>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['trnsfrOutAccnt'] | translate}}</i>
+		</div>
+		<ng-container *ngIf="'close' == fuelFee">
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="errorMsg['payCategory']?'active_warnning':''">
+					<li class="inner_table_cell">
+						繳款類別
+					</li>
+					<li class="inner_table_cell">
+						<ng-container *ngIf="defaultPayCategorys">
+							<select class="inner_select" (change)="payCategoryChange()"
+								[(ngModel)]="allTaxesData['payCategory']">
+								<option value="" selected disabled>請選擇繳款類別</option>
+								<option *ngFor="let item of taxesList">{{item.atmCode}}-{{item.subName}}</option>
+							</select>
+						</ng-container>
+						<ng-container *ngIf="!defaultPayCategorys">
+							<select class="inner_select">
+								<option selected>{{allTaxesData['payCategory']}}</option>
+							</select>
+						</ng-container>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg['payCategory'] | translate}}</i>
+			</div>
+		</ng-container>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['payNo']?'active_warnning':''">
+				<li class="inner_table_cell">
+					銷帳編號
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" maxlength="16" class="inner_input"
+						placeholder="{{'open' != fuelFee?'':'PG_TAX.PLACEHOLDER.PAYNO' | translate}}"
+						[(ngModel)]="allTaxesData['payNo']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['payNo'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['payEndDate']?'active_warnning':''">
+				<li class="inner_table_cell">
+					繳納截止日
+				</li>
+				<li class="inner_table_cell">
+					<ng-container *ngIf="'open' == fuelFee ; else showOther">
+						<input type="tel" maxlength="8" class="inner_input"
+							placeholder="{{'PG_TAX.PLACEHOLDER.PAYENDDATE' | translate}}"
+							[(ngModel)]="allTaxesData['payEndDate']">
+					</ng-container>
+					<ng-template #showOther>
+						<input type="tel" maxlength="6" class="inner_input" [(ngModel)]="allTaxesData['payEndDate']">
+					</ng-template>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['payEndDate'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['trnsfrAmount']?'active_warnning':''">
+				<li class="inner_table_cell">
+					繳納金額
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" maxlength="7" class="inner_input"
+						placeholder="{{'open' != fuelFee?'':'PG_TAX.PLACEHOLDER.TRNSFRAMOUNT' | translate}}"
+						[(ngModel)]="allTaxesData['trnsfrAmount']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['trnsfrAmount'] | translate}}</i>
+		</div>
+		<!-- 安控機制start  -->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+		<!-- 安控機制end  -->
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="goConfirm()">{{'BTN.NEXT' | translate }}</a>
+			</div>
+		</div>
+	</ng-container>
+	<!-- 確認頁-->
+	<ng-container *ngIf="'confirm' == showPage">
+		<app-taxes-detail-confirm-page (backToEdit)="toEditPage($event)" (backPageEmit)="finalCheckData($event)"
+			[taxesConfirm]="allTaxesData" [allFuelFee]="allFuelFee" [taxesDetailConfirm]="taxesDetail">
+		</app-taxes-detail-confirm-page>
+	</ng-container>
+
+	<!-- 結果頁-->
+	<ng-container *ngIf="'result' == showPage">
+		<app-taxes-detail-result-page [taxesData]="taxesData" [taxesResult]="taxesResultData">
+		</app-taxes-detail-result-page>
+	</ng-container>
+
+</section>

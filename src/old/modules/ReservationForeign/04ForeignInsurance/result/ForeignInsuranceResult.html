@@ -1,0 +1,151 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+		<!-- <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title" >返回</p>
+        </div> -->
+		<div class="page_title">外幣繳保費結果</div>
+		<!-- <div class="back_bt" >
+            <p class="back_title" ng-click="logout()" >登出</p>
+        </div> -->
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+				<p style="text-align:center;font-weight: bold;font-size: 16px">外幣繳保費</p>
+			<div class="result_location">
+				<!-- <div class="result_title">
+					<p>交易結果</p>
+                </div> -->
+                
+				<div class="result_title2">
+					<p ng-if="result.respCode=='0'">交易成功</p>
+					<p ng-if="result.respCode=='1'">交易失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">交易異常</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">主機代碼：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				<!--main_input end-->
+
+				<div class="result_input" ng-if="result.respCode == 0">
+				<!-- <div class="result_input" > -->
+					<div id="css_table">
+						<!-- <div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">交易序號：</div>
+							<div class="css_td_content" ng-bind="result.trnsNo"></div>
+						</div> -->
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">交易時間：</div>
+							<div class="css_td_content" ng-bind="result.trnsDateTime"></div>
+						</div>
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">繳費對象:</div>
+							<div class="css_td_content" ng-bind="result.paymentObject"></div>
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">付款帳號:</div>
+							<div class="css_td_content" ng-bind="result.trnsfrOutAcct"></div>
+						</div>
+
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">付款幣別:</div>
+							<div class="css_td_content" ng-bind="result.trnsfrOutCurr"></div>
+                        </div>
+                        
+                        <div class="css_tr">&nbsp;</div>
+						<div class="css_tr" >
+							<div class="css_td_title33">轉入戶名:</div>
+							<div class="css_td_content" ng-bind="result.trnsfrInAcctName"></div>
+						</div>
+						
+						<div class="css_tr" ng-show="result.paymentObject != '新光人壽外幣保險'">&nbsp;</div>
+						<div class="css_tr" ng-show="result.paymentObject != '新光人壽外幣保險'">
+							<div class="css_td_title33">保費種類:</div>
+							<p>續期保費</p>
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">保單號碼:</div>
+							<div class="css_td_content" ng-bind="result.paymentNumber"></div>
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">保險公司銷帳編號:</div>
+							<div class="css_td_content" ng-bind="result.insuraceNumber"></div>
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">繳款金額:</div>
+							<div class="css_td_content" ng-bind="result.trnsfrAmount"></div>
+						</div>
+						
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title33">交易序號:</div>
+							<div class="css_td_content" ng-bind="result.trnsNo"></div>
+                        </div>
+                        
+					</div>
+
+				</div>
+				<!--main_input end-->
+
+				<!-- <div class="notice_infor">
+					<div class="notice_text"><p>提醒您:</p></div>
+					<div class="notice_text2">1.您可至財政部Paytax網站(https://paytax.nat.gov.tw)查詢繳稅紀錄。
+						<br>2.本行24小時客服專線，0800-033-175。</div>
+				</div> -->
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt2" ng-click="clickSubmit()">確定</button>
+						<!--<button type="button" class="cancel_bt">取消</button>-->
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果

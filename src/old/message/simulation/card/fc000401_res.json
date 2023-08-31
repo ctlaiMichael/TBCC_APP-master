@@ -1,0 +1,24 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000401",
+      "sch:requestTime" : "2011-01-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2011-01-13T18:27:40.671+08:00",
+      "sch:custId" : "A123123123"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000401ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000401",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "成功",
+      "fc0:bussNO" : 9966601123456788,
+      "fc0:trnsfrOutBank" : "006",
+      "fc0:trnsfrOutAccnt" : "00111100982333",
+      "fc0:paymentType" : "1",
+      "fc0:trnsfrAmount" : "1999"
+    }
+  }
+}

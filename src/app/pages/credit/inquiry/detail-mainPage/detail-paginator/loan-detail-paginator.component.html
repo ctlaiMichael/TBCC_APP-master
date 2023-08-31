@@ -1,0 +1,90 @@
+<ng-container *ngIf="showData ; else noDataBox">
+    <ng-container *ngFor="let item of data;">
+        <li class="table_data" expandList>
+            <!-- 交易日: transDate -->
+            <span class="data_cell">{{ ((item | fieldCheck: 'transDay') | htDate: 'MM/dd')}}</span>
+            <!-- 摘要: digest  -->
+            <i class="data_cell">{{ item | fieldCheck: 'digest'}}</i>
+            <!-- 本金餘額 -->
+            <b class="data_cell">{{ (item | fieldCheck: 'capitalBal')|htMoney}}</b>
+            <s class="data_cell">
+                <button class="sub_open"></button>
+            </s>
+        </li>
+        <div class="sub_open_info_frame" style="overflow: hidden;">
+            <dl class="sub_open_info">
+                <!-- 繳還本金: captilPay -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>繳還本金</span>
+                    <span>{{ (item| fieldCheck: 'captilPay') | htMoney }}</span>
+                    <span></span>
+                </dt>
+                <!-- 繳納利息: ratePay -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>繳納利息</span>
+                    <span>{{ (item | fieldCheck: 'ratePay')| htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 違約金: breakFee -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>違約金</span>
+                    <span>{{ (item | fieldCheck: 'breakFee') | htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 遲延利息: delayRate -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>遲延利息</span>
+                    <span>{{ (item | fieldCheck: 'delayRate')| htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 利率: rate -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>利率</span>
+                    <span>{{ (item | fieldCheck: 'rate') | htFinancial:true }}</span>
+                    <span></span>
+                </dt>
+                <!-- 起息日: startDate -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>起息日</span>
+                    <span>{{ (item | fieldCheck: 'startDate')|htDate:'date'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 訖息日: endDate -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>訖息日</span>
+                    <span>{{ (item | fieldCheck: 'endDate')|htDate:'date'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 計息日數: rateCountdays -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>計息日數</span>
+                    <span>{{ item | fieldCheck: 'rateCountdays'}}&nbsp;日</span>
+                    <span></span>
+                </dt>
+                <!-- 逾期日數: delayDays -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>逾期日數</span>
+                    <span>{{ item | fieldCheck: 'delayDays'}}&nbsp;日</span>
+                    <span></span>
+                </dt>
+            </dl>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #noDataBox>
+    <li class="table_data">
+        <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+            {{ 'ERROR.EMPTY' | translate }}
+            <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+        </span>
+    </li>
+</ng-template>

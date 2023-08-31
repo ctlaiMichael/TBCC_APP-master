@@ -1,0 +1,20 @@
+<section class="background_a11y">
+  <div class="row_white_a11y" style="margin-top: 20px;">
+    <div class="row3_area_a11y">
+      <p class="row3_sheet_a11y" title={{searchTimeTitle}}>
+        查詢時間：<br>{{dataTime}}</p>
+
+      <p class="row3_sheet_a11y">
+        借貸總額度：<br>
+        <font class="font_money_a11y">
+          NT$ {{totalAmount|htMoney:'TWD'}}</font>
+      </p>
+    </div>
+  </div>
+  <!-- 卡片式總覽3 End -->
+
+  <!-- Page1 -->
+  <app-loan-pagebox-a11y-page [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+  </app-loan-pagebox-a11y-page>
+
+</section>

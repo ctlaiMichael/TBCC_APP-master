@@ -1,0 +1,163 @@
+.date_select .select_area .day div {
+    flex-basis: 14% !important;    
+}
+   
+.date_select .select_area .day div{font-size: 20px !important;}
+.date_select .select_area .day div{font-size: 20px !important;}
+.date_select .control .date_month {font-size: 24px !important;}
+.date_select .select_area .day div{line-height: 10vw !important;}
+.date_select .select_area .day div{line-height: 11.5vw !important;} 
+
+.date_select .date_header{background:#6CCE9E;}
+
+.date_select{position:relative;background: #F9F9F9;color:#000;}
+.date_select .date_header{
+    /* 日期區塊縮小，避免熱點資訊出現時按鈕消失 */
+    /* padding:20px; */
+    padding: 10px 20px;
+}
+.date_select span{color:#fff;}
+.date_select .year_part{
+    font-size: 21px;
+}
+.date_select h1{color:#fff;margin:0.5vh 0;font-weight:lighter;font-size:10vw }
+.bottom_area>div{color:#6CCE9E;}
+.date_select .control{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -WEBKIT-flex; 
+    display: flex;
+    text-align: center;
+    line-height: 50px;
+}
+.date_select .control .pre,
+.date_select .control .next {
+    -WEBKIT-box-flex: none;    
+       -moz-box-flex: none;
+        -WEBKIT-flex: none;     
+            -ms-flex: none;  
+                flex: none; 
+    width:50px;
+    height:50px
+}
+.date_select .control .pre.disable .arrow_link,
+.date_select .control .next.disable .arrow_link {
+    opacity: 0.4;
+}
+
+.date_select .control .date_month{
+    -WEBKIT-box-flex: 1;    
+       -moz-box-flex: 1;
+        -WEBKIT-flex: 1;     
+            -ms-flex: 1;  
+                flex: 1;   
+}
+.date_select .select_area{
+    /* 日期區塊縮小，避免熱點資訊出現時按鈕消失 */
+    /* padding:0 10px 10px 10px; */
+    padding:0 10px 0px 10px;
+}
+.date_select .select_area .week{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -WEBKIT-flex; 
+    display: flex;
+}
+.date_select .select_area .week span{
+    -WEBKIT-box-flex: 1;    
+       -moz-box-flex: 1;
+        -WEBKIT-flex: 1;     
+            -ms-flex: 1;  
+                flex: 1;   
+    -WEBKIT-align-items: center;
+            align-items: center;
+    color:#7F7F7F;
+    font-size:14px;
+    line-height:12vw;
+    text-align: center;
+}
+.date_select .select_area .week span:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}
+.date_select .select_area .day{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -WEBKIT-flex; 
+    display: flex;
+	-WEBKIT-flex-flow: wrap;
+	    -ms-flex-flow: wrap;
+	        flex-flow: wrap;
+}
+.date_select .select_area .day div{
+    font-size:14px;
+	-WEBKIT-flex-basis: 14%;
+	    -ms-flex-basis: 14%;
+	        flex-basis: 14%;
+    text-align:center;
+	-WEBKIT-flex-grow: 1;
+	    -ms-flex-grow: 1;
+	        flex-grow: 1;
+    line-height:12vw
+}
+.date_select .select_area .day div span{
+    /* 顏色色系統一 */
+    color:#000;
+    /* color:#585858; */
+    display:block;
+}
+.date_select .select_area .day div:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}
+.date_select .select_area .day div span.selected{background:#6CCE9E;border-radius: 50%;color:#fff;display:block}
+.date_select .select_area .day div span.disable{
+    /* 顏色色系統一 */
+    color:#9C9C9C;
+    /* color:#e0e0e0; */
+    display:block;
+}
+.date_select .bottom_area{
+    padding:15px;
+    text-align:right;
+}
+.date_select .bottom_area div{
+    display:inline-block;
+    font-size:21px;
+    font-weight:normal;
+    text-align:center; 
+    padding: 0 10px;
+}
+.date_select  .yearSelect{height:80vw;overflow:scroll;overflow-x: hidden;
+    padding: 4vw;
+    font-size: 16px;
+    text-align: center;
+}
+.date_select .yearSelect div{padding:2.5vw;}
+.date_select .yearSelect div.selected{font-size:25px;color:#6CCE9E;padding:2.5vw;font-weight:bold}
+.date_select .arrow_link {
+	width: 50px;
+	height: 50px;
+}
+.date_select .arrow_link.arrow_left {
+	-webkit-transform: rotate(-180deg);
+	   -moz-transform: rotate(-180deg);
+	    -ms-transform: rotate(-180deg);
+	     -o-transform: rotate(-180deg);
+	        transform: rotate(-180deg);
+}
+
+@media only screen and (max-height: 1367px) and (min-width: 767px){
+    .date_select .bottom_area div{font-size:24px;}
+    .date_select .select_area .week span{font-size:24px;}
+    
+}    
+/* iPhone 5 */
+@media only screen and (max-height: 580px) {
+
+}    

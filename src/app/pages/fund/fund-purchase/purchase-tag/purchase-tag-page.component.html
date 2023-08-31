@@ -1,0 +1,214 @@
+<!-- 第一層(tag控制)，基金申購第一頁 -->
+<ng-container [ngSwitch]="goSubject">
+    <ng-container *ngSwitchCase="'select-page'">
+        <section>
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active">
+                        <span>1.選擇標的</span>
+                    </li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+
+            <ng-container [ngSwitch]="nowPageType">
+                <ng-container *ngSwitchCase="'single-one'">
+                    <div class="sub_info_subtitle">
+                        您的投資風險屬於
+                        <!-- 無轉預約動作 -->
+                        <ng-container *ngIf="resverFlag == false">
+                            <i class="font_money_blu">{{single_info.rtTypeDesc}}</i>
+                        </ng-container>
+
+                        <!-- 有轉預約動作 -->
+                        <ng-container *ngIf="resverFlag == true">
+                            <i class="font_money_blu">{{resver_info.rtTypeDesc}}</i>
+                        </ng-container>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'regular'">
+                    <div class="sub_info_subtitle">
+                        您的投資風險屬於
+                        <i class="font_money_blu">{{regular_info.rtTypeDesc}}</i>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+
+            <ng-container [ngSwitch]="nowPageType">
+                <!-- Tag 單筆 -->
+                <ng-container *ngSwitchCase="'single-one'">
+                    <ul class="tab_table">
+                        <li class="tab_two_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('single-one')" class="tab_button"
+                                [ngClass]="{ 'active':(flag) }">單筆</a>
+                        </li>
+                        <li class="tab_two_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('regular')" class="tab_button"
+                                [ngClass]="{ 'active':(!flag) }">定期</a>
+                        </li>
+                    </ul>
+                </ng-container>
+
+                <!-- Tag 定期 -->
+                <ng-container *ngSwitchCase="'regular'">
+                    <ul class="tab_table">
+                        <li class="tab_two_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('single-one',1)" class="tab_button"
+                                [ngClass]="{ 'active':(flag) }">單筆</a>
+                        </li>
+                        <li class="tab_two_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('regular',1)" class="tab_button"
+                                [ngClass]="{ 'active':(!flag) }">定期</a>
+                        </li>
+                    </ul>
+
+                    <ul class="sub_tab_table sub_tab_two">
+                        <li class="sub_td_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('regular',2)" class="" [ngClass]="{ 'active':(flag2) }">定期定額</a>
+                        </li>
+                        <!-- 2019/09/18 定期不定額 依需求先關閉-->
+                        <li class="sub_td_cell">
+                            <a href="javascript:void(0)" (click)="onChangePurchase('regular_not',2)" class="" [ngClass]="{ 'active':(!flag2) }">定期不定額</a>
+                        </li>
+                    </ul>
+                </ng-container>
+            </ng-container>
+
+            <ng-container [ngSwitch]="nowPageType">
+                <!-- 單筆申購 -->
+                <ng-container *ngSwitchCase="'single-one'">
+                    <div class="row_single">
+                        <h4 class="simple_title">
+                            <a href="javascript:void(0)" class="fontw normal_link color_fee" (click)="onSinglePopoup()">
+                                基金單筆申購說明
+                            </a>
+                        </h4>
+                    </div>
+                </ng-container>
+
+                <!-- 定期 -->
+                <ng-container *ngSwitchCase="'regular'">
+                    <div class="row_single">
+                        <h4 class="simple_title">
+                            <a href="javascript:void(0)" class="fontw normal_link color_fee" (click)="onRegularPopoup()">
+                                定期(不)定額申購說明
+                            </a>
+                        </h4>
+                        <!-- <h4 class="simple_title">
+                            <a href="javascript:void(0)" class="fontw normal_link color_fee" (click)="onRegularCodePopoup()">
+                                定期不定額套餐說明
+                            </a>
+                        </h4> -->
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <div class="row_single">
+                <h4 class="simple_title">* 基金標的</h4>
+                <div class="row_single"></div>
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkFlag) }" (click)="onSelectSub()">
+                    <!-- <li class="inner_table_cell">* 基金標的</li> -->
+                    <li class="inner_table_cell">
+                        <ng-container *ngIf="checkFlag2">
+                            <div name="" class="inner_select" style="line-height:45px">
+                                {{'CHECK.STRING.PLEASE_SELECT' | translate}}
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="!checkFlag2">
+                            <div name="" class="inner_select_new" style="line-height:45px">
+                                {{fundSubject.fundCode}}{{fundSubject.fundName}}({{fundSubject.risk}})
+                            </div>
+                        </ng-container>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">未選擇基金標的</i>
+            </div>
+
+
+            <!-- 測試 -->
+            <!-- <div class="row_single">
+                    <input type="text" name="" class="inner_input_normal" placeholder="輸入提示">
+                    <i class="input_info_warnning">未選擇基金標的</i>
+                </div> -->
+
+            <div class="row_single">
+                <div class="double_button" style="margin-top: 10px;">
+                    <a href="javascript:void(0)" (click)="onCanel()">取消</a>
+                    <a href="javascript:void(0)" (click)="onPurchase()">開始申購</a>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+
+    <!-- 選擇基金標的 -->
+    <ng-container *ngSwitchCase="'select-subject'">
+        <app-fund-subject [setData]="req" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-subject>
+    </ng-container>
+
+    <!-- 單筆申購 -->
+    <ng-container *ngSwitchCase="'go-single'">
+        <app-purchase-single [setInfo]="single_info" [resver_info]="resver_info" [set_twAcnt]="single_twAcnt_data" [set_frgn]="single_frgn_data"
+            [set_trust]="single_trust_data" [fundSubject]="fundSubject" [fundStatus]="fundStatus" [resverFlag]="resverFlag"
+            [single_twAcnt_data_resver]="single_twAcnt_data_resver" [single_frgn_data_resver]="single_frgn_data_resver"
+            [resver_twAcnt_data]="resver_twAcnt_data" [resver_frgn_data]="resver_frgn_data" [resver_trust_data]="resver_trust_data" (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-purchase-single>
+    </ng-container>
+
+    <!-- 定期定額 -->
+    <ng-container *ngSwitchCase="'go-regular'">
+        <app-purchase-regular [setInfo]="regular_info" [set_twAcnt]="regular_twAcnt_data" [set_frgn]="regular_frgn_data"
+            [set_trust]="regular_trust_data" [set_pkg]="regular_pkg_data" [fundSubject]="fundSubject" [fundStatus]="fundStatus"
+            (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-purchase-regular>
+    </ng-container>
+
+    <!-- 定期不定額 -->
+    <ng-container *ngSwitchCase="'go-regular-not'">
+        <app-purchase-regular-not [setInfo]="regular_info" [set_twAcnt]="regular_twAcnt_data" [set_frgn]="regular_frgn_data"
+            [set_trust]="regular_trust_data" [set_pkg]="regular_pkg_data" [fundSubject]="fundSubject" [fundStatus]="fundStatus"
+            (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-purchase-regular-not>
+    </ng-container>
+
+    <!-- 預約單筆 -->
+    <!-- <ng-container *ngSwitchCase="'go-resver-single'">
+        <app-purchase-resver-single [setInfo]="resver_info" [set_twAcnt]="resver_twAcnt_data" [set_frgn]="resver_frgn_data" [set_trust]="resver_trust_data"
+            [fundSubject]="fundSubject" [fundStatus]="fundStatus" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-purchase-resver-single>
+    </ng-container> -->
+
+    <!-- 同意選單(default) -->
+    <ng-container *ngSwitchDefault>
+        <section>
+            <ul class="credit_card_bill_detail_list">
+                <!-- Page1 -->
+                <app-enter-agree-content (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+                </app-enter-agree-content>
+                <!-- Page other -->
+                <ng-container #pageBoxY></ng-container>
+            </ul>
+        </section>
+    </ng-container>
+
+    <!-- 單筆申購說明(popoup) -->
+    <!-- <ng-container *ngSwitchCase="'single-popoup'">
+        <app-single-purchase-content (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-single-purchase-content>
+    </ng-container> -->
+
+    <!-- 定期定額(不定額)申購說明 -->
+    <!-- <ng-container *ngSwitchCase="'regular-popuop'">
+        <app-regular-purchase-content (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-regular-purchase-content>
+    </ng-container> -->
+
+    <!-- 定期定額(不定額)套餐說明 -->
+    <!-- <ng-container *ngSwitchCase="'regular-code-popuop'">
+        <app-regular-purchase-code (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+        </app-regular-purchase-code>
+    </ng-container> -->
+
+</ng-container>

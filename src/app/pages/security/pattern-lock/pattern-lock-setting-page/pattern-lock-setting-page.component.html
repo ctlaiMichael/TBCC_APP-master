@@ -1,0 +1,14 @@
+<section>
+  <ng-container *ngIf="!result">
+    <div class="patternlock_caption">
+      <p *ngFor="let caption of captionTitle">{{caption | translate}}</p>
+    </div>
+    <app-pattern-lock (getPatternEmit)="getPattern($event)"></app-pattern-lock>
+    <div class="login_privacy_box" style="text-align: center;" *ngIf="step === 1" >
+      <i class="attract_link" (click)="resetPattern()">{{ 'PG_SECURITY.PATTERN_LOCK.RESET' | translate}}</i>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="result">
+    <app-result-page [resultObj]="resultObj"></app-result-page>
+  </ng-container>
+</section>

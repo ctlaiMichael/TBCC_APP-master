@@ -1,0 +1,105 @@
+<section>
+  <style>
+    .redContent {
+      color: red;
+    }
+  </style>
+  <!-- 成功結果 -->
+  <div class="sub_info_frame result">
+    <!-- 失敗step_final_icon_frame 加上 fault_active -->
+    <div class="step_final_icon_frame" id="resultTitleDiv">
+      <ng-container [ngSwitch]="iconType">
+        <ng-container *ngSwitchCase="0">
+          <i class="icons_fault"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="1">
+          <i class="icon_success"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+          <i class="icons_exclamation"></i>
+        </ng-container>
+      </ng-container>
+      <span class="step_final_info">
+        <span>{{ resultTitle }}</span>
+      </span>
+
+    </div>
+
+    <p class="something_info" *ngIf="showAccountList;">
+      <span *ngFor="let element of resultData.resultContent" [ngClass]="element['showError']?'redContent':''">
+        {{element.resultStr}} <br>
+      </span>
+    </p>
+
+    <p class="something_info" [ngStyle]="resultContStyle" *ngIf="!showAccountList;">
+      {{ resultContent }}
+    </p>
+
+    <p class="sub_info_list" *ngIf="isReserve">
+      <i class="sub_info_title">提款序號</i>
+      <span class="sub_info_content color_yellow big_font">{{ resultData.trnsTxNo }}</span>
+    </p>
+  </div>
+  <!-- 成功結果 //End -->
+
+  <!-- 預約無卡提款交易欄位 -->
+  <div *ngIf="isReserve">
+    <ul class="table_info">
+      <!-- 有效時間 -->
+      <li class="table_row">
+        <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+        <span>有效時間</span>
+        <i>{{ resultData.deadlineTime }}</i>
+      </li>
+      <!-- 銀行代號 -->
+      <li class="table_row">
+        <span>銀行代號</span>
+        <i>{{ resultData.bankId }}</i>
+      </li>
+      <!-- 提款帳號 -->
+      <li class="table_row">
+        <span>提款帳號</span>
+        <i>{{ resultData.trnsAccnt | accountFormate}}</i>
+      </li>
+      <!-- 提款序號 -->
+      <!-- <li class="table_row">
+        <span>提款序號</span>
+        <i>{{ resultData.withdrawSerNo }}</i>
+      </li> -->
+      <!-- 提款金額 -->
+      <li class="table_row">
+        <span>提款金額</span>
+        <i>${{ _formateService.transMoney(resultData.transAmt,'TWD') }}</i>
+      </li>
+    </ul>
+  </div>
+  <!-- 預約無卡提款交易欄位 // End-->
+
+  <!-- 雙欄位（一左一右）資訊範例 //End -->
+  <div class="row_single"></div>
+  <div class="row_single" *ngIf="isReserve;else accountSet">
+    <div class="double_button" style="margin-top: 10px;" *ngIf="isReserve">
+      <a (click)="goBack()">返回無卡提款</a><a (click)="goLocation()">服務據點</a>
+    </div>
+    <a *ngIf="!isReserve" class="button_confirm" (click)="goBack()">返回無卡提款</a>
+  </div>
+  <ng-template #accountSet>
+    <div class="row_single">
+      <div *ngIf="resultData.hasOwnProperty('oneButton'); else twoButton">
+        <ng-container [ngSwitch]="resultData.oneButton">
+          <ng-container *ngSwitchCase="0">
+            <a class="button_confirm" (click)="goBack()">返回無卡提款</a>
+          </ng-container>
+          <ng-container *ngSwitchCase="1">
+            <a class="button_confirm" (click)="goLocation()">服務據點</a>
+          </ng-container>
+        </ng-container>
+      </div>
+      <ng-template #twoButton>
+        <div class="double_button" style="margin-top: 10px;">
+          <a (click)="goBack()">返回無卡提款</a><a (click)="goLocation()">服務據點</a>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</section>

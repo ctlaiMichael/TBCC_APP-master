@@ -1,0 +1,12 @@
+<div class="row_single">
+    <h4 class="simple_title">{{ title | translate }}</h4>
+</div>
+<a class="inner_news_list" href="javascrit:void(0);" (click)="onClickEvent(item)" *ngFor="let item of menu">
+    <span class="inner_news_list_td no_line inner_news_title">{{ item | fieldCheck: 'name' }}</span>
+    <span class=""></span>
+</a>
+
+<div class="row_single"></div>
+<div class="row_single">
+    <a href="javascript:void(0)" class="button_confirm" (click)="onCancleEvent()">{{ 'BTN.CANCEL' |translate}}</a>
+</div>

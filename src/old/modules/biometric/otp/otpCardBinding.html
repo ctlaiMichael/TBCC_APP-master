@@ -1,0 +1,20 @@
+<header class="otp_navigation">
+    <img src="modules/setting/image/i_back_arrow.png" ng-click="clickBackCard()">
+    <div class="otp_page-title">綁定信用卡</div>
+</header> 
+
+<div class="otp_text">
+    <h2>已發送驗證碼至你的手機</h2>
+    <p>驗證碼將在<span class="otp_number" id="otp_count"></span>後失效</p>
+</div>
+
+<div class="otp_input">
+    <div class="otp_textfield">
+        <input type="text" ng-model="otp_number" id="otp_name" placeholder="請輸入簡訊驗證碼" class="otp_inputfield">
+    </div>
+    <button id="resend" ng-click="resend()" disabled>重新發送驗證碼</button>
+</div>
+
+<div class="otp_button">
+    <button class="left_button" ng-click="clickBinding()">確定</button>
+</div>

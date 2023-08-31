@@ -1,0 +1,34 @@
+<section>
+	<div class="sub_info_frame result">
+		<div class="step_final_icon_frame">
+			<ng-container *ngIf="resultPage =='failed'">
+				<i class="icons_fault"></i>
+				<span class="step_final_info">交易失敗<br><br>
+					({{resultInfo['info_data']['respCode']}}){{resultInfo['info_data']['respCodeMsg']}}
+				</span>
+			</ng-container>
+			<ng-container *ngIf="resultPage =='success'">
+				<i class="icon_success"></i>
+				<span class="step_final_info">交易成功<br><br>
+					您已於{{signDate[0]}}年{{signDate[1]}}月{{signDate[2]}}日完成簽約對保，您可於指定撥款日後第二個營業日至個人網銀下載授信約據留存。本行將於您指定撥款日撥款，謝謝您的申請。
+				</span>
+			</ng-container>
+			<ng-container *ngIf="resultPage =='disagree'">
+				<i class="icon_success"></i>
+				<span class="step_final_info">
+					請與受理分行授信經辦聯絡，謝謝。
+				</span>
+			</ng-container>
+			<ng-container *ngIf="resultPage =='goto'">
+				<i class="icon_success"></i>
+				<span class="step_final_info">
+					分行將與您聯絡或請您與分行聯絡對保時間，並請備妥雙證件及印章至分行辦理簽約對保。
+				</span>
+			</ng-container>
+		</div>
+	</div>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<a href="javascript:void(0)" (click)="backLoan()" class="button_confirm">{{'PG_ONLINE.BTN.BACKLOAN' | translate}}</a>
+	</div>
+</section>

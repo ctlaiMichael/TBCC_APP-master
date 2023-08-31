@@ -1,0 +1,191 @@
+.btn {
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+
+
+/* header的按鈕背景大小樣式 */
+.btn_h {
+  width: 60px;
+
+  background-size: 40px 55px !important;
+}
+
+
+
+/* 首頁主選單的按鈕背景大小樣式 */
+.btn_m {
+  width: 60px;
+  height: 60px;
+
+  background-size: 70px 70px !important;
+}
+
+
+
+/* footer的按鈕背景大小樣式 */
+.btn_f {
+  width: 30px;
+  height: 25px;
+  margin: 0 0 -1px 0;
+
+  background-size: 30px 25px !important;
+}
+
+
+/* 登出按鈕 */
+.btn_logout {
+  font-size: 16px;
+
+  text-align: center;
+  letter-spacing: 3px;
+
+  color: #fff;
+}
+
+/* 登出按鈕  信用卡專用*/
+.btn_logout_credit {
+  font-size: 16px;
+
+  text-align: center;
+  letter-spacing: 3px;
+
+  color: #fff;
+}
+
+/* 登出按鈕  信用卡專用*/
+.border_credit{
+  border-style: solid;
+  margin-right: 10px;
+  padding-right: 0px;
+  padding-left: 3px;
+  background-color: white;
+  border-radius: 100px;
+}
+
+/* @group [Header 選單 icon] ----------------------------------------------------------------------------------------*/
+/* 開啟左側選單(三條槓) */
+
+.i_smenu {
+  left: 20px;
+  position: absolute;
+  background: url(../images/i_smenu.png);
+  width: 20px;
+  top: 26px;
+  border-radius: 0 0 30px 0;
+}
+/* 回上一頁 */
+.i_back_arrow {
+  background: url('../images/i_back_arrow.png');
+  height: 90px;
+  position: absolute;
+}
+/* End [Header 選單 icon] */
+
+
+
+/* @group [首頁九宮格選單 icon] ----------------------------------------------------------------------------------------*/
+/* 繳卡費 */
+.m_i_pay {
+  background: url('../images/m_i_pay.png');
+}
+/* 申請_補件 */
+.m_i_upload {
+  background: url('../images/m_i_upload.png');
+}
+/* 分期付款 */
+.m_i_ins {
+  background: url('../images/m_i_ins.png');
+}
+/* QR code 繳卡費 */
+.m_i_qrc {
+  background: url('../images/m_i_qrc.png');
+}
+/* 紅利專區 */
+.m_i_divid {
+  background: url('../images/m_i_divid.png');
+}
+/* 行銷活動 */
+.m_i_mark {
+  background: url('../images/m_i_mark.png');
+}
+/* 我的信用卡 */
+.m_i_mc {
+  background: url('../images/m_i_mc.png');
+}
+/* 開卡＿掛失 */
+.m_i_or {
+  background: url('../images/m_i_or.png');
+}
+/* 帳單查詢 */
+.m_i_bl {
+  background: url('../images/m_i_bl.png');
+}
+/* 總覽 */
+.m_i_ov {
+  background: url('../images/m_i_ov.png');
+}
+/* End [首頁九宮格選單 icon] */
+
+
+
+/* @group [Footer 選單 icon] ----------------------------------------------------------------------------------------*/
+/* 回到首頁 */
+.f_i_home {
+  background: url('../images/f_i_home.png');
+}
+/* 線上客服 */
+.f_i_ocs {
+  background: url('../images/f_i_ocs.png');
+}
+/* 服務據點 */
+.f_i_sl {
+  background: url('../images/f_i_sl.png');
+}
+/* 優惠搜尋 */
+.f_i_search {
+  background: url('../images/f_i_search.png');
+}
+/* 更多選項 */
+.f_i_more {
+  background: url('../images/f_i_more.png');
+}
+/* 信用卡服務 */
+.f_i_cr {
+  background: url('../images/f_i_cr.png');
+}
+/* 帳單查詢 */
+.f_i_bill {
+  background: url('../images/f_i_bill.png');
+}
+/* 繳卡費 */
+.f_i_pay {
+  background: url('../images/f_i_pay.png');
+}
+/* 單筆分期 */
+.f_i_staging {
+  background: url('../images/f_i_staging.png');
+}
+/* 活動登錄 */
+.f_i_al {
+  background: url('../images/f_i_al.png');
+}
+/* End [Footer 選單 icon] */
+
+
+
+/* @group [上傳照片選單 icon] ----------------------------------------------------------------------------------------*/
+/* 開啟相機 */
+.i_ca_camera {
+  background: url('../images/i_ca_camera.png');
+}
+/* 確認上傳 */
+.i_ca_upload {
+  background: url('../images/i_ca_upload.png');
+}
+/* 開啟相簿 */
+.i_ca_album {
+  background: url('../images/i_ca_album.png');
+}
+/* End [上傳照片選單 icon] */

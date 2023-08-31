@@ -1,0 +1,29 @@
+<div ng-if="curStep == 1">
+		<ul class="credit_card_bill_staging_list">
+			<li ng-repeat="x in billDetails">
+				<p>
+					<!-- 消費日期 -->
+					<span>{{'BILL_MSG.MSG.PAY_DATE' | translate }}：</span>
+					<span>{{x.consumptionDate}}</span>
+				</p>
+				<p>
+					<!-- 卡別/卡號末四碼 -->
+					<span>{{'BILL_MSG.MSG.CARD_NAME' | translate }}：</span>
+					<span>{{x.cardLast4Num}}</span>
+				</p>
+				<p>
+					<!-- 新臺幣金額 -->
+					<span>{{'BILL_MSG.MSG.MONEY' | translate }}：</span>
+					<span>{{x.NTDollarAmount | currency:"NT$"}}</span>
+
+				</p>
+				<!-- 消費明細 -->
+				<p class="no_border_bottom">
+					<!-- {{'BILL_MSG.MSG.PAY_DETAIL' | translate }}：{{x.detail}} -->
+					<span>{{'BILL_MSG.MSG.PAY_DETAIL' | translate }}：</span>
+					<span>{{x.detail | cleanSpace  }}</span>
+				</p>
+				<a class="" href="javascript:void(0);"  ng-click="setInst(x)">{{'CTRL_INSTALLMENT.INSTALLMENT' | translate }}</a><!-- 分期 -->
+			</li>
+		</ul>
+</div>

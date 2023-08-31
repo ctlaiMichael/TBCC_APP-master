@@ -1,0 +1,30 @@
+<!-- Page Start-->
+<ul class="credit_card_bill_detail_list" *ngFor="let item of data; let i = index; ">
+    <li class='fund_{{i}}'>
+        <p class="credit_card_name">
+            <i></i>
+            <i>{{ item | fieldCheck: 'fundCode'}} {{ item | fieldCheck: 'fundName'}}</i>
+        </p>
+        <p>
+            <span>交易編號：</span>
+            <span>{{ item | fieldCheck: 'transCode'}}</span>
+        </p>
+        <p>
+            <span>投資幣別：</span>
+            <span>{{ item | fieldCheck: 'iNCurrency'}}</span>
+        </p>
+        <p>
+            <span>信託本金：</span>
+            <span>{{ ((item | fieldCheck: 'invenAmount') | htMoney:item.iNCurrency)}}</span>
+        </p>
+        <p>
+            <span>投資方式：</span>
+            <span>{{ item | fieldCheck: 'investDesc'}}</span>
+        </p>
+        <p>
+            <span>單位數：</span>
+            <span>{{ item | fieldCheck: 'unit' | htMoney}}</span>
+        </p>
+        <a href="javascript:void(0)" (click)="onContentEvent(item)">轉換</a>
+    </li>
+</ul>

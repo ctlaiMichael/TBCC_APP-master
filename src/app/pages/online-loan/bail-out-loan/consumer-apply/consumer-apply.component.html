@@ -1,0 +1,1033 @@
+<section>
+	<ng-container [ngSwitch]="nowPage">
+		<!-- 資料 Start -->
+		<ng-container *ngSwitchCase="'normalPage'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active"><span>1.填寫申請資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>勞工紓困貸款</h4>
+			</div>
+
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable" [ngClass]="{ 'active_warnning':(checkError['check_giveAmt']) }">
+					<li class="inner_table_cell">
+						*申請金額(萬元)
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入金額" maxlength="2" [(ngModel)]="showData.showGiveAmt">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError['giveAmt'] | translate }}</i>
+			</div>
+			<div class="row_single">
+				<!-- <ul class="inner_table_frame" [ngClass]="checkError['giveDurYymm']?'active_warnning':''">
+					<li class="inner_table_cell">
+						*貸款期間(年)
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" [(ngModel)]="showData.showGiveDurYymm">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError['giveDurYymm'] | translate }}</i> -->
+
+
+				<ul class="inner_table_frame" [ngClass]="checkError['giveDurYymm']?'active_warnning':''">
+					<li class="inner_table_cell">
+						*貸款期間(年)
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="showData.showGiveDurYymm">
+							<option value="" selected disabled>請選擇</option>
+							<ng-container *ngFor="let giveItem of giveDurData">
+								<option [ngValue]="giveItem">{{giveItem}}</option>
+							</ng-container>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError['giveDurYymm'] | translate}}</i>
+
+
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="checkError['error_loanUsage']?'active_warnning':''">
+					<li class="inner_table_cell">
+						*資金用途
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="reqData.loanUsage">
+							<option value="" selected disabled>請選擇</option>
+							<ng-container *ngFor="let usageItem of usageData.usageTemp">
+								<option [ngValue]="usageItem.type">{{usageItem.name}}</option>
+							</ng-container>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_loanUsage | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<h4 class="simple_title">*償還方式</h4>
+			</div>
+			<div class="row_single">
+
+				<div class="inner_radio radio_inline" (click)="selectRepay('1')">
+					<input type="radio" [checked]="repayCheck">
+					<label for="radio_button01">
+						<span>
+							<i></i>
+						</span>
+						<b>第1-6個月本金寬緩，第7-12個月按月攤還本金，第2年起本息平均攤還。</b>
+					</label>
+				</div>
+
+				<ng-container *ngIf="!refundWay_flag">
+					<div class="inner_radio radio_inline" (click)="selectRepay('2')">
+						<input type="radio" [checked]="!repayCheck">
+						<label for="radio_button02">
+							<span>
+								<i></i>
+							</span>
+							<b>本金寬限期</b>
+						</label>
+					</div>
+				</ng-container>
+
+			</div>
+			<ng-container *ngIf="repayFlag">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="checkError['check_graveYymm']?'active_warnning':''">
+						<li class="inner_table_cell">本金寬限期</li>
+						<li class="inner_table_cell">
+							<select class="inner_select" [(ngModel)]="reqData.graveYymm">
+								<option value="" selected disabled>請選擇</option>
+								<option *ngFor="let graveItem of showData.grave" [ngValue]="graveItem.range">
+									{{graveItem.name}}</option>
+							</select>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{checkError.error_graveYymm | translate}}</i>
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onBack()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onNext()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 資料 End -->
+
+		<!-- 基本資料 Start -->
+		<ng-container *ngSwitchCase="'basicPage'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>2.填寫基本資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>{{'PG_ONLINE.TITLE.LOANAPPLE_BAIL_OUT' | translate }}</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+
+			<!-- 預填單START -->
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="{ 'active_warnning': checkError.error_name !='' }">
+						<li class="inner_table_cell">
+							*申請人姓名
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" class="inner_input" [(ngModel)]="reqData.name" value="" maxlength="50" placeholder="請輸入姓名">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning"></i>
+				</div>
+
+				<!-- 出生年月日改為帶入kyc設定值，且不可修改(預填單) -->
+				<div class="row_single">
+					<ul class="inner_table_frame normal_disable">
+						<li class="inner_table_cell">
+							*出生年月日
+						</li>
+						<li class="inner_table_cell">
+							<input type="tel" class="inner_input" [(ngModel)]="reqData.applyBir" value="" maxlength="8" placeholder="YYYYMMDD">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning">{{checkError.error_applyBir | translate}}</i>
+				</div>
+
+				<!-- 2020/02/21 出生年月日欄位 依客戶需求改為日期套件 -->
+				<!-- <div id="trans_date" class="row_single">
+					<ul class="inner_table_frame" [ngClass]="{ 'active_warnning': checkError.error_applyBir !='' }">
+						<li class="inner_table_cell">
+							*出生年月日
+						</li>
+						<li class="inner_table_cell">
+							<input-date [min]="minDay" [max]="maxDay" [(ngModel)]="reqData.applyBir" (backValueEmit)="onInputBack($event)"></input-date>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{checkError.error_applyBir | translate}}</i>
+				</div> -->
+
+				<!-- 11/20依需求改為帶入值 -->
+				<div class="row_single">
+					<ul class="inner_table_frame normal_disable">
+						<li class="inner_table_cell">
+							*性別
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" class="inner_input" value="{{showData.sex}}">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning"></i>
+				</div>
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="{ 'active_warnning': checkError.error_id_no !='' }">
+						<li class="inner_table_cell">
+							*身分證字號
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" class="inner_input" [(ngModel)]="reqData.id_no" placeholder="請輸入身分證" maxlength="10" (change)="idChange()"
+							 value="">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning">{{checkError.error_id_no | translate}}</i>
+				</div>
+
+			<!-- 預填單END -->
+
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_marital_status) }">
+					<li class="inner_table_cell">*婚姻狀況</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="showData.marital_status">
+							<option value="">請選擇</option>
+							<option [ngValue]="'1'">單身</option>
+							<option [ngValue]="'2'">已婚</option>
+							<option [ngValue]="'3'">其他</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_marital_status | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_child) }">
+					<li class="inner_table_cell">
+						*受扶養未成年子女數
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="2" [(ngModel)]="showData.support_children">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_child | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_level) }">
+					<li class="inner_table_cell">*教育程度</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="showData.level_of_education">
+							<option value="">請選擇</option>
+							<option value="1">研究所以上</option>
+							<option value="2">大學</option>
+							<option value="3">專科</option>
+							<option value="4">高中職</option>
+							<option value="5">中學以下</option>
+							<option value="6">其他</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_level | translate}}</i>
+			</div> -->
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onBasicBack()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onBasicNext()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 基本資料 End -->
+
+		<!-- 基本資料2 Start -->
+		<ng-container *ngSwitchCase="'basicPage2'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>2.填寫基本資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>{{'PG_ONLINE.TITLE.LOANAPPLE_BAIL_OUT_BASIC' | translate }}</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single">
+				<h4 class='simple_title'>*戶籍地址</h4>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_code_home1) }">
+					<li class="inner_table_cell">
+						郵遞區號
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" (change)="checkBasicData('postalCode',personalData.code_home)"
+						 maxlength="6" [(ngModel)]="personalData.code_home" oninput="value=value.replace(/[^\d.]/g,'');">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_code_home1 | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_homeAdrr1) }">
+					<li class="inner_table_cell">
+						地址
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入地址" (change)="checkBasicData('adress',personalData.home_addr)"
+						 maxlength="40" [(ngModel)]="personalData.home_addr">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_homeAdrr1 | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<h4 class='simple_title'>*通訊地址</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_radio radio_inline" (click)="selectAddress('same')">
+					<input type="radio" [checked]="adressCheck">
+					<label for="radio_button01">
+						<span>
+							<i></i>
+						</span>
+						<b>同戶籍地</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline" (click)="selectAddress('enter')">
+					<input type="radio" [checked]="!adressCheck">
+					<label for="radio_button02">
+						<span>
+							<i></i>
+						</span>
+						<b>輸入地址</b>
+					</label>
+				</div>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'normal_disable':adressDisable, 'active_warnning':checkError.check_code_home2 }">
+					<li class="inner_table_cell">
+						郵遞區號
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="6" [(ngModel)]="oldAdress['region']" oninput="value=value.replace(/[^\d.]/g,'');">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_code_home2 | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'normal_disable':adressDisable, 'active_warnning':checkError.check_homeAdrr2 }">
+					<li class="inner_table_cell">
+						地址
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" maxlength="40" placeholder="請輸入地址" [(ngModel)]="oldAdress['adress']">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_homeAdrr2 | translate}}</i>
+			</div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onBasicBack2()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onBasicNext2()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 基本資料2 End -->
+
+		<!-- 基本資料3 Start -->
+		<ng-container *ngSwitchCase="'basicPage3'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>2.填寫基本資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>勞工紓困貸款申請書-基本資料</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyTelSun) }">
+					<li class="inner_table_cell">
+						*戶籍電話
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="12" [(ngModel)]="reqData.applyTelSun">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelSun | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyTelNight) }">
+					<li class="inner_table_cell">
+						*現住電話
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="12" [(ngModel)]="reqData.applyTelNight">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelNight | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyTelWalk) }">
+					<li class="inner_table_cell">
+						*行動電話
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="12" [(ngModel)]="reqData.applyTelWalk">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelWalk | translate}}</i>
+			</div>
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':checkError.error_applyTelFax!='' }">
+					<li class="inner_table_cell">
+						傳真
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="12" [(ngModel)]="reqData.applyTelFax">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelFax | translate}}</i>
+			</div> -->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_eMail) }">
+					<li class="inner_table_cell">
+						*電子信箱
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入信箱" [(ngModel)]="reqData.eMail">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_eMail}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_houseStatus) }">
+					<li class="inner_table_cell">*房屋狀況</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="reqData.houseStatus" (change)="houseChange(event)">
+							<option value="">請選擇</option>
+							<ng-container *ngFor="let houseItem of houseData['houseTemp']">
+								<option [ngValue]="houseItem.type">{{houseItem['name']}}</option>
+							</ng-container>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_houseStatus | translate}}</i>
+			</div>
+			<ng-container *ngIf="houseFlag">
+				<div class="row_single">
+					<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_homeownership2) }">
+						<li class="inner_table_cell">*設定情形</li>
+						<li class="inner_table_cell">
+							<select class="inner_select" [(ngModel)]="reqData.homeownership2">
+								<option value="">請選擇</option>
+								<option value="1">無設定</option>
+								<option value="2">設定予本行</option>
+								<option value="3">設定予他行</option>
+							</select>
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{checkError.error_homeownership2 | translate}}</i>
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_houseDurYymm) }">
+					<li class="inner_table_cell">
+						*已居住年數
+					</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="reqData.houseDurYymm">
+							<option value="">請選擇</option>
+							<option [ngValue]="yearItem" *ngFor="let yearItem of homeYearData">{{yearItem}}年</option>
+						</select>
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_houseDurYymm | translate}}</i>
+			</div>
+
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onBasicBack3()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onBasicNext3()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 基本資料3 End -->
+
+		<!-- 職業資料1 Start -->
+		<ng-container *ngSwitchCase="'careerPage1'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>2.填寫職業資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>勞工紓困貸款申請書-職業資料</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyServeUnit) }">
+					<li class="inner_table_cell">
+						*任職公司
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請公司名稱" value="" maxlength="20" [(ngModel)]="reqData.applyServeUnit">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyServeUnit | translate}}</i>
+			</div>
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_companyId) }">
+					<li class="inner_table_cell">
+						公司統編
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入統編" value="" maxlength="10" [(ngModel)]="reqData.companyId">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_companyId | translate}}</i>
+				<ng-container *ngIf="type == 'credit'">
+					<i class="select_info" style="text-align: left">輸入公司統編，可對於額度判斷更精確</i>
+				</ng-container>
+			</div> -->
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':checkError.error_applyBussitem!='' }">
+					<li class="inner_table_cell">
+						營業項目
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入營業項目" value="" maxlength="30" [(ngModel)]="reqData.applyBussitem">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyBussitem | translate}}</i>
+			</div> -->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':checkError.error_applyFirmAddr!='' }">
+					<li class="inner_table_cell">
+						公司地址
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入地址" value="" maxlength="55" [(ngModel)]="reqData.applyFirmAddr">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyFirmAddr | translate}}</i>
+			</div>
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.error_applyWorker!='') }">
+					<li class="inner_table_cell">
+						員工人數
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入人數" value="" maxlength="8" [(ngModel)]="reqData.applyWorker">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyWorker | translate}}</i>
+			</div> -->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyTelFirm) }">
+					<li class="inner_table_cell">
+						*聯絡電話
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入電話" value="" maxlength="12" [(ngModel)]="reqData.applyTelFirm">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelFirm | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.error_applyTelExt!='') }">
+					<li class="inner_table_cell">
+						分機
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入分機" value="" maxlength="5" [(ngModel)]="reqData.applyTelExt">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyTelExt | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.error_applyDept!='') }">
+					<li class="inner_table_cell">
+						所屬部門
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="請輸入部門" value="" maxlength="10" [(ngModel)]="reqData.applyDept">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyDept | translate}}</i>
+			</div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onCareerBack1()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onCareerNext1()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 職業資料1 End -->
+
+		<!-- 職業資料2 Start -->
+		<ng-container *ngSwitchCase="'careerPage2'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>3.確認職業資料</span></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>勞工紓困貸款申請書-職業資料</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyPost) }">
+					<li class="inner_table_cell">
+						*職稱
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="" maxlength="7" [(ngModel)]="reqData.applyPost">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyPost}}</i>
+			</div>
+
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyServeYymm) }">
+					<li class="inner_table_cell">*服務年資</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="reqData.applyServeYymm">
+							<option value="">請選擇</option>
+							<option [ngValue]="yearItem" *ngFor="let yearItem of yearData">{{yearItem}}年</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyServeYymm}}</i>
+			</div>
+			<!-- 2019 11/29 新增服務年資(月) -->
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyServeMm) }">
+					<li class="inner_table_cell">*服務年資(月)</li>
+					<li class="inner_table_cell">
+						<select class="inner_select" [(ngModel)]="reqData.applyServeMm">
+							<option value="">請選擇</option>
+							<option [ngValue]="'0'">0</option>
+							<option [ngValue]="'1'">1</option>
+							<option [ngValue]="'2'">2</option>
+							<option [ngValue]="'3'">3</option>
+							<option [ngValue]="'4'">4</option>
+							<option [ngValue]="'5'">5</option>
+							<option [ngValue]="'6'">6</option>
+							<option [ngValue]="'7'">7</option>
+							<option [ngValue]="'8'">8</option>
+							<option [ngValue]="'9'">9</option>
+							<option [ngValue]="'10'">10</option>
+							<option [ngValue]="'11'">11</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_applyServeMm}}</i>
+			</div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onCareerBack2()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onCareerNext2()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 職業資料2 End -->
+
+		<!-- 財務資料 Start -->
+		<ng-container *ngSwitchCase="'financePage'">
+			<!-- stepbar Start-->
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>4.確認財務資料</span></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+			<!-- stepbar End-->
+			<div class="row_single">
+				<h4 class='simple_title'>勞工紓困貸款申請書-財務資料</h4>
+			</div>
+			<div class="sub_info_subtitle">
+				您的申請資料 *表示必填
+			</div>
+			<div class="row_single"></div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.error_mYear!='') }">
+					<li class="inner_table_cell">*財務收支年度</li>
+					<li class="inner_table_cell">
+						<select name="" class="inner_select" [(ngModel)]="reqData.mYear">
+							<option value="">請選擇</option>
+							<ng-container *ngFor="let myearItem of mYearData">
+								<option [ngValue]="myearItem">{{myearItem}}年</option>
+							</ng-container>
+						</select>
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_mYear | translate}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkError.check_applyNt) }">
+					<li class="inner_table_cell">
+						*本人年收入(萬元)
+					</li>
+					<li class="inner_table_cell">
+						<input type="tel" class="inner_input" placeholder="請輸入數字" maxlength="5" value="" (change)="spouseChange()"
+						 [(ngModel)]="reqData.applyNt">
+					</li>
+					<li class="inner_table_cell"></li>
+				</ul>
+				<i class="input_info_warnning">{{checkError.error_appplyNt | translate}}</i>
+			</div>
+
+			<ng-container *ngIf="type=='mortgage'">
+				<div class="row_single">
+					<h4 class='simple_title'>勞工紓困貸款申請書-撥款帳號</h4>
+				</div>
+				<div class="row_single">
+					<ul class="inner_table_frame normal_disable">
+						<li class="inner_table_cell">
+							放款帳號分行
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" class="inner_input" placeholder="{{reqData.branchName}}" value="">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning"></i>
+				</div>
+				<div class="row_single">
+					<ul class="inner_table_frame normal_disable">
+						<li class="inner_table_cell normal_disable">
+							放款帳號
+						</li>
+						<li class="inner_table_cell">
+							<input type="text" class="inner_input" placeholder="{{reqData.acctno | accountFormate}}" value="">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning"></i>
+				</div>
+
+				<div class="row_single">
+					<ul class="inner_table_frame normal_disable">
+						<li class="inner_table_cell">
+							撥貸/<br>委扣帳號
+						</li>
+						<li class="inner_table_cell normal_disable">
+							<input type="text" class="inner_input" placeholder="{{reqData.account | accountFormate}}" value="">
+						</li>
+						<li class="inner_table_cell"></li>
+					</ul>
+					<i class="input_info_warnning"></i>
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onFinBack()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onFinNext()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 財務資料 End -->
+
+		<!-- 確認頁 Start-->
+		<ng-container *ngSwitchCase="'confirmPage'">
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+					<li class="step_bar step_active"><span>5.資料確認</span></li>
+				</ul>
+			</div>
+
+			<ul class="table_info loan_1 loan_2">
+				<li class="table_row">
+					<span>申請金額</span>
+					<i>{{showData.showGiveAmt | htMoney:'TWD'}}萬元</i>
+				</li>
+				<li class="table_row">
+					<span>貸款期間</span>
+					<i>{{showData.showGiveDurYymm}}年</i>
+				</li>
+
+				<li class="table_row">
+					<span>資金用途</span>
+					<i>{{select_loage.name}}</i>
+				</li>
+				<li class="table_row">
+					<span>償還方式</span>
+					<i>{{reqData.refundName}}</i>
+				</li>
+				<ng-container *ngIf="reqData.graveYymm !=''">
+					<li class="table_row">
+						<span>本金寬緩期</span>
+						<i>{{showData.showGraveYymm}}年</i>
+					</li>
+				</ng-container>
+			</ul>
+
+			<div class="row_single">
+				<h4 class='simple_title'>基本資料</h4>
+			</div>
+			<ul class="table_info loan_1 loan_2">
+				<li class="table_row">
+					<span>申請人姓名</span>
+					<i>{{reqData.name}}</i>
+				</li>
+				<li class="table_row">
+					<span>出生年月日</span>
+					<i>{{reqData.applyBir}}</i>
+				</li>
+				<li class="table_row">
+					<span>性別</span>
+					<i>{{reqData.sexName}}</i>
+				</li>
+				<li class="table_row">
+					<span>身分證字號</span>
+					<i>{{reqData.id_no}}</i>
+				</li>
+				<!-- <li class="table_row">
+					<span>教育程度</span>
+					<i>{{showData.level_of_education_name}}</i>
+				</li> -->
+				<li class="table_row">
+					<span>戶籍地址</span>
+					<i>{{personalData.code_home}}{{personalData.home_addr}}</i>
+				</li>
+				<li class="table_row">
+					<span>通訊地址</span>
+					<i>{{oldAdress.region}}{{oldAdress.adress}}</i>
+				</li>
+				<li class="table_row">
+					<span>戶籍電話</span>
+					<i>{{reqData.applyTelSun}}</i>
+				</li>
+				<li class="table_row">
+					<span>現住電話</span>
+					<i>{{reqData.applyTelNight}}</i>
+				</li>
+				<li class="table_row">
+					<span>行動電話</span>
+					<i>{{reqData.applyTelWalk}}</i>
+				</li>
+				<li class="table_row">
+					<span>電子信箱</span>
+					<i>{{reqData.eMail}}</i>
+				</li>
+				<li class="table_row">
+					<span>房屋狀況</span>
+					<ng-container *ngIf="showData.houseStatus!=''; else houseStatusEmpty">
+						<i>{{showData.houseStatus}}</i>
+					</ng-container>
+					<ng-template #houseStatusEmpty><i>--</i></ng-template>
+				</li>
+				<li class="table_row">
+					<span>已居住年數</span>
+					<ng-container *ngIf="reqData.houseDurYymm!=''; else houseDurYymmEmpty">
+						<i>{{reqData.houseDurYymm}}年</i>
+					</ng-container>
+					<ng-template #houseDurYymmEmpty><i>--</i></ng-template>
+				</li>
+				<ng-container *ngIf="houseFlag">
+					<li class="table_row">
+						<span>設定情形</span>
+						<ng-container *ngIf="showData.homeownership2!=''; else homeownership2Empty">
+							<i>{{showData.homeownership2}}</i>
+						</ng-container>
+						<ng-template #homeownership2><i>--</i></ng-template>
+					</li>
+				</ng-container>
+			</ul>
+
+			<!-- <div class="row_single">
+				<h4 class='simple_title'>職業資料</h4>
+			</div> -->
+
+			<ul class="table_info loan_1 loan_2">
+				<li class="table_row">
+					<span>任職公司</span>
+					<i>{{reqData.applyServeUnit}}</i>
+				</li>
+				<li class="table_row">
+					<span>公司地址</span>
+					<ng-container *ngIf="reqData.applyFirmAddr !=''; else FirmAddrEmpty">
+						<i>{{reqData.applyFirmAddr}}</i>
+					</ng-container>
+					<ng-template #FirmAddrEmpty><i>--</i></ng-template>
+				</li>
+				<li class="table_row">
+					<span>聯絡電話</span>
+					<i>{{reqData.applyTelFirm}}</i>
+				</li>
+				<li class="table_row">
+					<span>分機</span>
+					<ng-container *ngIf="reqData.applyTelExt !=''; else TelExtEmpty">
+						<i>{{reqData.applyTelExt}}</i>
+					</ng-container>
+					<ng-template #TelExtEmpty><i>--</i></ng-template>
+				</li>
+				<li class="table_row">
+					<span>所屬部門</span>
+					<ng-container *ngIf="reqData.applyDept !=''; else DeptEmpty">
+						<i>{{reqData.applyDept}}</i>
+					</ng-container>
+					<ng-template #DeptEmpty><i>--</i></ng-template>
+				</li>
+				<li class="table_row">
+					<span>職稱</span>
+					<i>{{reqData.applyPost}}</i>
+				</li>
+				<li class="table_row">
+					<span>服務年資</span>
+					<i>{{reqData.applyServeYymm}}年</i>
+				</li>
+				<li class="table_row">
+					<span>服務年資(月)</span>
+					<i>{{reqData.applyServeMm}}</i>
+				</li>
+			</ul>
+
+			<div class="row_single">
+				<h4 class='simple_title'>財務資料</h4>
+			</div>
+			<ul class="table_info loan_1 loan_2">
+				<li class="table_row">
+					<span>財務收支年度</span>
+					<ng-container *ngIf="reqData.mYear!=''; else mYearEmpty">
+						<i>{{reqData.mYear}}年</i>
+					</ng-container>
+					<ng-template #mYearEmpty><i>--</i></ng-template>
+				</li>
+				<li class="table_row">
+					<span>本人年收入</span>
+					<i>{{reqData.applyNt | htMoney:'TWD'}}萬元</i>
+				</li>
+			</ul>
+			<!-- <ng-container *ngIf="type=='mortgage'">
+				<div class="row_single">
+					<h4 class='simple_title'>撥款帳號</h4>
+				</div>
+				<ul class="table_info loan_1 loan_2">
+					<li class="table_row">
+						<span>放款帳號分行</span>
+						<ng-container *ngIf="reqData.accountbrcn!=''; else accountbrcnEmpty">
+							<i>{{reqData.branchName}}</i>
+						</ng-container>
+						<ng-template #accountbrcnEmpty><i>--</i></ng-template>
+					</li>
+					<li class="table_row">
+						<span>放款帳號</span>
+						<ng-container *ngIf="reqData.acctno!=''; else acctnoEmpty">
+							<i>{{reqData.acctno | accountFormate}}</i>
+						</ng-container>
+						<ng-template #acctnoEmpty><i>--</i></ng-template>
+					</li>
+					<li class="table_row">
+						<span>撥貸及委扣帳號</span>
+						<ng-container *ngIf="reqData.account!=''; else accountEmpty">
+							<i>{{reqData.account | accountFormate}}</i>
+						</ng-container>
+						<ng-template #accountEmpty><i>--</i></ng-template>
+					</li>
+				</ul>
+			</ng-container>-->
+			<div class="row_single"></div>
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="onCancel()">{{'BTN.PREVIOUS' | translate }}</a>
+					<a href="javascript:void(0)" (click)="onConfirm()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+		</ng-container>
+		<!-- 確認頁 End-->
+	</ng-container>
+</section>

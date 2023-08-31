@@ -1,0 +1,61 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y">
+      <div class="simple_title_a11y">提醒您，變更使用者代號需依循以下規則</div>
+  </div>
+  <div class="row_single_a11y">
+    <ul>
+      <li class="simple_title_a11y simple_title_em_without_before_a11y">
+        請輸入變更資料有*為必填欄位。
+      </li>
+      <li class="simple_title_a11y simple_title_em_without_before_a11y">
+        長度限6-16位英數字。
+      </li>
+      <li class="simple_title_a11y simple_title_em_without_before_a11y">
+        不可設定與統一編號、身份證字號、帳號及登入密碼相同。
+      </li>
+      <li class="simple_title_a11y simple_title_em_without_before_a11y">
+        不可設相同的英數字、連續英文字或連號數字(連6位)。
+      </li>
+    </ul>
+
+  </div>
+  <div class="row_single3_a11y">
+    <div class="inner_table_frame_a11y normal_disable_a11y">
+      <li class="inner_title_content_a11y">舊使用者代號</li>
+      <input type="text" name="oldPw" class="account_input_a11y" placeholder="請輸入舊使用者代號" id="no_talkback"
+        [(ngModel)]="usercode.OLD_CODE" />
+    </div>
+  </div>
+  <div class="row_single_a11y"></div>
+  <div class="row_single3_a11y">
+    <li class="inner_title_content_a11y">*新使用者代號</li>
+    <div class="td_like_a11y" [ngClass]="errorMsg['newcode']?'input_error_a11y':''">
+
+      <li class="ai_frame_a11y" style="width: 100%; height: 120%;">
+        <input type="text" name="newPw" class="account_input_a11y" placeholder="請輸入新使用者代號" id="no_talkback"
+          [(ngModel)]="userInput.newcode" />
+      </li>
+    </div>
+    <i class="data_error_a11y">{{errorMsg['newcode']|translate}}</i>
+  </div>
+
+  <div class="row_single3_a11y">
+    <li class="inner_title_content_a11y">*驗證使用者密碼</li>
+    <div class="td_like_a11y" [ngClass]="errorMsg['netpswd']?'input_error_a11y':''">
+      <li class="ai_frame_a11y" style="width: 100%; height: 120%;">
+        <input type="password" name="ConfirmNewPw" class="account_input_a11y" placeholder="請輸入使用者密碼"
+          [(ngModel)]="userInput.userpw" />
+      </li>
+    </div>
+    <i class="data_error_a11y">{{errorMsg['netpswd']|translate}}</i>
+  </div>
+
+  <div class="row_single_a11y" >
+    <div><a class="button_confirm_a11y" (click)='checkEvent()' role="button">確定</a></div>
+  </div>
+  <div class="row_single_a11y" >
+    <a class="button_confirm_a11y">
+      <div class="button_cancel_a11y" (click)="cancelEdit()"  role="button">取消</div>
+    </a>
+  </div>
+</section>

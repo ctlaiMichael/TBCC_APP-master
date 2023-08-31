@@ -1,0 +1,236 @@
+<ng-container *ngIf="!showContent; else contentBox">
+    <section>
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar ">
+                </li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar"></li>
+                <li class="step_bar step_active"><span>5.確認</span></li>
+                <li class="step_bar"></li>
+            </ul>
+        </div>
+
+        <!-- 新api無交易時間欄位，待確認，先放申請日期 -->
+        <div class="sub_info_subtitle">
+            交易時間 :{{purchaseInfo.enrollDate | htDate:'date'}}
+        </div>
+
+        <ul class="table_info">
+            <li class="table_row">
+                <span>生效日期</span>
+                <i>{{purchaseInfo.effectDate | htDate:'date'}}</i>
+            </li>
+            <li class="table_row">
+                <span>基金名稱</span>
+                <i id='fund_target'>{{purchaseInfo.currency}}-{{purchaseInfo.fundName}}</i>
+            </li>
+            <li class="table_row">
+                <span>投資幣別/金額</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.amount|htMoney:purchaseInfo.currency}}元</i>
+            </li>
+            <li class="table_row">
+                <span>基本手續費率</span>
+                <i>{{purchaseInfo.baseRate}}%</i>
+            </li>
+            <li class="table_row">
+                <span>優惠手續費率</span>
+                <i>{{purchaseInfo.favorRate}}%</i>
+            </li>
+            <li class="table_row">
+                <span>申購手續費</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.serviceFee|htMoney:purchaseInfo.currency}}元</i>
+            </li>
+            <!-- 新api無扣款總金額，待確認 -->
+            <!-- <li class="table_row">
+                <span>扣款總金額</span>
+                <i>{{purchaseInfo.currency}} {{purchaseInfo.totalAmnt}}元</i>
+            </li> -->
+            <li class="table_row VA">
+                <span>投資方式</span>
+                <i>定期不定額</i>
+            </li>
+
+            <!-- 於新規格上限移除 -->
+            <!-- <li class="table_row VA">
+                <span>套餐名稱</span>
+                <i>{{purchaseInfo.codeDesc}}</i>
+            </li> -->
+
+            <li class="table_row VA">
+                <span>評價方式</span>
+                <ng-container *ngIf="purchaseInfo.code == '01'">
+                    <i>前五個營業日淨值<br>/平均成本</i>
+                </ng-container>
+                <ng-container *ngIf="purchaseInfo.code == '02'">
+                    <i>前五日平均淨值<br>/年平均淨值</i>
+                </ng-container>
+            </li>
+        </ul>
+
+        <!-- 新規格，於新中台上線更改，目前使用舊規格欄位 -->
+        <!-- 新增漲跌幅欄位 Start -->
+        <ul class="table_info table_th_style">
+            <li class="table_row">
+                <span>評價漲幅級距%</span>
+                <i>加/減碼金額</i>
+            </li>
+            <li class="table_row">
+                <span>+5~+10</span>
+                <i>{{purchaseInfo.gain1Cd}}{{purchaseInfo.gain1}}</i>
+            </li>
+            <li class="table_row">
+                <span>+10~+15</span>
+                <i>{{purchaseInfo.gain2Cd}}{{purchaseInfo.gain2}}</i>
+            </li>
+            <li class="table_row">
+                <span>+15~+20</span>
+                <i>{{purchaseInfo.gain3Cd}}{{purchaseInfo.gain3}}</i>
+            </li>
+            <li class="table_row">
+                <span>+20~+25</span>
+                <i>{{purchaseInfo.gain4Cd}}{{purchaseInfo.gain4}}</i>
+            </li>
+            <li class="table_row">
+                <span>+25以上</span>
+                <i>{{purchaseInfo.gain5Cd}}{{purchaseInfo.gain5}}</i>
+            </li>
+        </ul>
+        <ul class="table_info table_th_style VA">
+            <li class="table_row">
+                <span>評價跌幅級距%</span>
+                <i>加/減碼金額</i>
+            </li>
+            <li class="table_row">
+                <span>-5~-10</span>
+                <i>{{purchaseInfo.decline1Cd}}{{purchaseInfo.decline1}}</i>
+            </li>
+            <li class="table_row">
+                <span>-10~-15</span>
+                <i>{{purchaseInfo.decline2Cd}}{{purchaseInfo.decline2}}</i>
+            </li>
+            <li class="table_row">
+                <span>-15~-20</span>
+                <i>{{purchaseInfo.decline3Cd}}{{purchaseInfo.decline3}}</i>
+            </li>
+            <li class="table_row">
+                <span>-20~-25</span>
+                <i>{{purchaseInfo.decline4Cd}}{{purchaseInfo.decline4}}</i>
+            </li>
+            <li class="table_row">
+                <span>-25以下</span>
+                <i>{{purchaseInfo.decline5Cd}}{{purchaseInfo.decline5}}</i>
+            </li>
+        </ul>
+        <!-- 新增漲跌幅欄位 End -->
+
+        <ul class="table_info">
+            <li class="table_row">
+                <ng-container *ngIf="purchaseInfo.payDate31 !== '' && purchaseInfo.payDate5W == ''">
+                    <span>每月扣款日</span>
+                    <i>{{purchaseInfo.payDate31}}日</i>
+                </ng-container>
+
+                <ng-container *ngIf="purchaseInfo.payDate5W != '' && purchaseInfo.payDate31 == ''">
+                    <span>每週扣款日</span>
+                    <i>週{{purchaseInfo.payDate5W }}</i>
+                </ng-container>
+            </li>
+
+            <li class="table_row">
+                <span>扣款帳號/現金收益帳號</span>
+                <i>{{purchaseInfo.payAcnt}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>通知/出場</span>
+
+                <!-- 不設定 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == ''">
+                    <i>不設定</i>
+                </ng-container>
+
+                <!-- 自動贖回 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '1'">
+                    <ng-container *ngIf="purchaseInfo.continue == 'Y'">
+                        <i>自動贖回-續扣</i>
+                    </ng-container>
+                    <ng-container *ngIf="purchaseInfo.continue == 'N'">
+                        <i>自動贖回-不續扣</i>
+                    </ng-container>
+                </ng-container>
+
+                <!-- 即時畫面 -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '2'">
+                    <i>即時畫面</i>
+                </ng-container>
+
+                <!-- E-mail -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '3'">
+                    <i>E-mail</i>
+                </ng-container>
+
+                <!-- 即時畫面、E-mail -->
+                <ng-container *ngIf="purchaseInfo.notiCD == '4'">
+                    <i>即時畫面、E-mail</i>
+                </ng-container>
+            </li>
+
+            <li class="table_row">
+                <span>停損點/停利點%</span>
+                <i>{{showBalanceLoss}}/{{showBalancePros}}%</i>
+            </li>
+            <li class="table_row">
+                <span>服務理專</span>
+                <i>{{purchaseInfo.salesName}}-{{purchaseInfo.salesId | identityMask}}</i>
+            </li>
+            <li class="table_row">
+                <span>轉介人員</span>
+                <i>{{purchaseInfo.introName}}-{{purchaseInfo.introId | identityMask}}</i>
+            </li>
+        </ul>
+
+
+        <div class="row_single">
+        </div>
+        <!-- 安控 -->
+        <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+        </app-select-security>
+
+        <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+
+        <!-- 安控END -->
+
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void(0)" (click)="onCancel1()">上一步</a><a href="javascript:void(0)" (click)="onConfirm()">確定申購</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">注意事項</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                1、定期(不)定額申購手續費以扣款日當時，實際收取手續費率為準！<br>
+                2、為保障您的權益，請您確認並詳閱「定期定額/定期不定額申購約定事項」如下。<br>
+                (1)定期不定額: 以授權扣帳方式，於指定委託扣款日自存款帳戶內扣取不固定金額投資於指定之基金商品，其每次投資金額將隨著委託人選定之評價公式所計算之評價結果，並依評價結果對應委託人原預設加減碼金額扣款。<br>
+                (2)同一交易編號於例假日逢一次以上之扣款日，則順延至次營業日扣款，受託人將依期間應扣次數及金額分別扣款。<br>
+                (3)為確保扣款投資成功，委託人應於指定委託扣款日之前一日，於指定扣款帳戶內留存足額投資款項(含增減額後之投資金額及申購手續費)，並授權受託人於指定委託扣款日（遇例假日順延）自動扣除投資款項，不需另行開具取款憑條，若未依約留存足額投資款項致扣款失敗，以扣款失敗一次計算，並視為該日不委託投資；連續扣款失敗六次，視同委託人暫停投資。<br>
+                (4)倘因委託人同時有二筆以上之信託投資扣款或有其他委託代扣繳款項時，受託人得指定扣款之先後順序，如扣款帳戶餘額不足時視為扣款失敗。<br>
+                (5)委託人申請辦理定(不)定額信託投資或投資設定異動事項時，最遲應於指定委託扣款日之前一營業日16:00前申請並經受託人受理完成後，當次扣款或異動始生效力。<br>
+                (6)因電腦系統故障或其他不可抗力事由（包含但不限於颱風、淹水等天災）致未能進行扣款作業時，委託人同意將順延至障礙事由排除後進行扣款。<br>
+                (7)委託人同意定期不定額共同基金使用「前5日營業日淨值/平均成本」評價方式者不得申請轉換扣款投資標的。<br>
+                (8)委託人同意定期投資型態一經成立即無法變更，即定期定額扣款不得變更為定期不定額扣款，反之亦同。<br>
+            </p>
+        </div>
+    </section>
+</ng-container>
+
+<ng-template #contentBox>
+    <app-purchase-regular-not-result [setData]="purchaseInfo" [e]="safeE" [investAttribute]="investAttribute" [riskLvl]="riskLvl"
+        [serviceBranch]="serviceBranch">
+    </app-purchase-regular-not-result>
+</ng-template>

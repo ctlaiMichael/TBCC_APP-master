@@ -1,0 +1,26 @@
+<div class="sub_info_subtitle">
+	請確認轉帳資訊以及是否要繼續交易
+</div>
+
+<ul class="table_info">
+	<li class="table_row">
+		<span>轉出帳號</span>
+		<i>{{tuitionConfirm.account| accountFormate }}</i>
+	</li>
+	<li class="table_row">
+		<span>銷帳編號</span>
+		<i>{{tuitionConfirm.bussNO}}</i>
+	</li>
+	<li class="table_row">
+		<span>應繳金額</span>
+		<i>{{tuitionConfirm.payAmount| currencyMoney:'TWD'}}元</i>
+	</li>
+</ul>
+<div class="row_single"></div>
+<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+<div class="row_single">
+	<div class="double_button">
+		<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.PREVIOUS' | translate }}</a>
+		<a href="javascript:void(0)" (click)="finalCheck()">{{'BTN.CHECK' | translate }}</a>
+	</div>
+</div>

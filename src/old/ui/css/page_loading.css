@@ -1,0 +1,190 @@
+.loader-box{
+  position: fixed;
+  z-index: 99999;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, .7);
+}
+
+.lable_loading {
+  font-size: 15px;
+  line-height: 30px;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 30px;
+  margin: 55px 0 0 0;
+
+  -webkit-animation: 3s lable_loading ease-in infinite;
+          animation: 3s lable_loading ease-in infinite;
+  text-align: center;
+  letter-spacing: 3px;
+
+  color: #fff;
+}
+@-webkit-keyframes lable_loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes lable_loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.gif_loading {
+  font-size: 15px;
+  line-height: 30px;
+
+  position: absolute;
+  top: 45%;
+  left: 0;
+
+  width: 100%;
+  height: 64px;
+  margin: 0 auto;
+  margin-top: 35px;
+
+  -webkit-animation: 3s gif_loading ease-in infinite;
+          animation: 3s gif_loading ease-in infinite;
+  text-align: center;
+  letter-spacing: 3px;
+
+  color: #fff;
+}
+@-webkit-keyframes gif_loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes gif_loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.loader{
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  overflow: hidden;
+
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+
+  border: 6px solid #5dba9d;
+  -webkit-border-radius: 100%;
+     -moz-border-radius: 100%;
+          border-radius: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0 1px 15px 0 rgba(255, 255, 255, .5);
+     -moz-box-shadow: 0 1px 15px 0 rgba(255, 255, 255, .5);
+          box-shadow: 0 1px 15px 0 rgba(255, 255, 255, .5);
+}
+
+.element-animation{
+  -webkit-animation: animationFrames linear 3s;
+     -moz-animation: animationFrames linear 3s;
+      -ms-animation: animationFrames linear 3s;
+       -o-animation: animationFrames linear 3s;
+          animation: animationFrames linear 3s;
+  -webkit-animation-iteration-count: infinite;
+     -moz-animation-iteration-count: infinite;
+      -ms-animation-iteration-count: infinite;
+       -o-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+
+          animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+     -moz-animation-fill-mode: forwards;
+       -o-animation-fill-mode: forwards;
+      -ms-animation-fill-mode: forwards;
+}
+
+
+@keyframes animationFrames{
+  0% {
+    transform: translate(-1160px,15px)  ;
+  }
+  100% {
+    transform: translate(0px,15px)  ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    transform: translate(-1160px,15px)  ;
+  }
+  100% {
+    transform: translate(0px,15px)  ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    transform: translate(-1160px,15px)  ;
+  }
+  100% {
+    transform: translate(0px,15px)  ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    transform: translate(-1160px,15px)  ;
+  }
+  100% {
+    transform: translate(-0px,15px)  ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    transform: translate(-1160px,15px)  ;
+  }
+  100% {
+    transform: translate(0px,15px)  ;
+  }
+}

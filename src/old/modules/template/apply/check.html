@@ -1,0 +1,195 @@
+<div class="">
+	<div class="row_single info_list">
+		<!-- 身分證字號 -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'FIELD.IDENTITY' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt">{{inp.idNo ? inp.show.idNo : '--'}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<!-- 中文姓名 -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.NAME_CHINESE' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt">{{inp.cnName ? inp.cnName : '--'}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list" ng-if="inp.enName">
+		<!-- 英文姓名 -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.NAME_ENGLISH' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt">{{inp.enName ? inp.enName : '--'}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<!-- 生日 -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'FIELD.BIRTHDAY' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt">{{inp.birthday ? inp.birthday : '--'}}</p></td>
+		</tr></table>
+	</div>
+
+	<div class="row_single info_list">
+		<!-- E-mail -->
+		<table class="check_form"><tr>
+		<td align="left"><i class="info_title">{{'FIELD.EMAIL' | translate}}</i></td>
+		<td align="right"><p class="info_conetnt">{{inp.email ? inp.email : '--'}}</p></td>
+		</tr></table>
+	</div>
+	<div class="row_single info_list" ng-show="inp.ebillApply==='1'?true:false">
+			<!-- 電子帳單-->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">電子帳單</i></td>
+			<td align="right"><p class="info_conetnt">同意申請並以Email方式寄至電子信箱</p></td>
+			</tr></table>
+		</div>
+
+	<div class="row_single info_list">
+		<!-- 行動電話 -->
+		<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'FIELD.MOBILE' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.mobile ? inp.mobile : '--'}}</p></td>
+			</tr></table>
+	</div>
+
+	<div ng-show="!applyUserType">
+		<div class="row_single info_list">
+			<!-- 住家電話 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'FIELD.TELPHONE' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt" ng-if="inp.currentTelArea || inp.currentTel">
+					{{inp.currentTelArea ? '('+inp.currentTelArea +')' : '' }}{{inp.currentTel}}
+				</p></td>
+			<td align="right"><p class="info_conetnt" ng-if="!inp.currentTelArea && !inp.currentTel">--</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 通訊地址 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.ADDR_CURRENT' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.currentPost ? inp.show.currentPost : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.currentCity ? inp.show.currentCity : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.currentTown ? inp.show.currentTown : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.currentAddr ? inp.currentAddr : '&nbsp;'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 教育程度 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.EDUCATION' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.education ? inp.show.education : '--'}}</p></td>
+			</tr></table>
+		</div>
+</div>
+		<div class="row_single info_list">
+			<!-- 畢業國小名稱 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.ELEMSCHOOL' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.elemSchool ? inp.elemSchool : '--'}}</p></td>
+			</tr></table>
+		</div>
+	<div ng-show="!applyUserType">
+		<div class="row_single info_list">
+			<!-- 公司名稱 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.COMP_NAME' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.compName ? inp.compName : '--'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 公司地址 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.ADDR_COMP' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.compPost ? inp.show.compPost : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.compCity ? inp.show.compCity : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.compTown ? inp.show.compTown : '&nbsp;'}}</p></td>
+			<td align="right"><p class="info_conetnt">{{inp.compAddr ? inp.compAddr : '&nbsp;'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 統一編號 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.COMP_ID' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.compId ? inp.compId : '--'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 公司電話 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.COMP_PHONE' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt" ng-if="inp.compTelArea || inp.compTel">
+					{{inp.compTelArea ? '('+inp.compTelArea +')' : '' }}{{inp.compTel}}
+				</p></td>
+			<td align="right"><p class="info_conetnt" ng-if="!inp.compTelArea && !inp.compTel">--</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 行業別 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.industryText' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt" ng-if="inp.industryType">
+					{{inp.industryType!=='other' ? inp.industryType : inp.industryText}}
+				</p></td>
+			<td align="right"><p class="info_conetnt" ng-if="!inp.industryType">--</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 職稱 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.posTitle' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.posTitle ? inp.posTitle : '--'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 年資 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.workYear' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.workYear ? inp.workYear+'年' : '--'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 平均月收入(萬) -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.avgSalary' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.avgSalary ? inp.avgSalary+'萬' : '--'}}</p></td>
+			</tr></table>
+		</div>
+
+		<div class="row_single info_list">
+			<!-- 帳單寄收地址 -->
+			<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.billMailAddr' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.billMailAddr ? inp.show.billMailAddr : '--'}}</p></td>
+			</tr></table>
+		</div>
+	</div>
+
+	<div class="row_single info_list">
+		<!-- 往來分行 -->
+		<table class="check_form"><tr>
+			<td align="left"><i class="info_title">{{'CTRL_APPLY.INPUT.branchName' | translate}}</i></td>
+			<td align="right"><p class="info_conetnt">{{inp.branchId ? inp.show.branchId.city + '-' + inp.show.branchId.branchName : '--'}}</p></td>
+			</tr></table>
+	</div>
+
+	<!-- <check-captcha-directive></check-captcha-directive>
+	<br>您申請的卡片為{{card_data.name}} -->
+</div>
+<div class="bc_frame">
+		<check-captcha-directive></check-captcha-directive>
+		<br>您申請的卡片為{{card_data.name}}
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="applySend()">{{'BTN.CHECK' | translate}}</button>
+	</div>
+</div>

@@ -1,0 +1,117 @@
+<section>
+	<ng-container *ngIf="showPage==='page'">
+
+		<!-- 現行的 -->
+		<div class="row_single_2" id="txn_type">
+			<ul [ngClass]="exchangeClass">
+				<li class="inner_table_cell">交易類型</li>
+				<li class="inner_table_cell">
+					<select name="" class="inner_select" [(ngModel)]="exchangeType" (change)="changeType($event)">
+						<option value="0">請選擇交易類型</option>
+						<option value="P">台幣轉外幣</option>
+						<option value="S">外幣轉台幣</option>
+					</select>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{exchangeErrorMsg}}</i>
+		</div>
+
+		<div class="row_single_2">
+			<ul [ngClass]="starDay.starClass">
+				<li class="inner_table_cell">扣款期間起日</li>
+				<li class="inner_table_cell">
+					<!-- <input type="date" [(ngModel)]="starDay.date" name="starDay" id="currentTime2" min="starDay.min"
+					 max="starDay.max" class="inner_input_data" (change)="dateChange('s')"> -->
+					<input-date [min]="starDay.min" [max]="starDay.max" 
+					[(ngModel)]="starDay.date" (backValueEmit)="dateChange('s')"></input-date>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{starDay.starErrorMsg}}</i>
+		</div>
+		<div class="row_single">
+			<ul [ngClass]="endDay.endClass">
+				<li class="inner_table_cell">扣款期間迄日</li>
+				<li class="inner_table_cell">
+					<!-- <input type="date" [(ngModel)]="endDay.date" name="endDay" id="currentTime3" min="endDay.min"
+						max="endDay.max" class="inner_input_data" (change)="dateChange('e')"> -->
+						<input-date [min]="endDay.min" [max]="endDay.max" 
+					[(ngModel)]="endDay.date" (backValueEmit)="dateChange('e')"></input-date>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{endDay.endErrorMsg}}</i>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0);" (click)="cancelEdit()">取消</a>
+				<a href="javascript:void(0);" (click)="oncheckEvent()">確定</a>
+			</div>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="showPage==='list'">
+
+		<div class="sub_info_frame">
+			<p class="sub_info_list">
+				<i class="sub_info_title">交易類型</i>
+				<span class="sub_info_content">{{exchangeType=='P'?'結購存外存':'外存結售'}}</span>
+			</p>
+			<p class="sub_info_list">
+				<i class="sub_info_title">查詢區間</i>
+				<span
+					class="sub_info_content">{{ starDay.date | htDate: 'yyyy/MM/dd'}}~{{endDay.date | htDate: 'yyyy/MM/dd'}}</span>
+			</p>
+			<p class="sub_info_list">
+				<i class="sub_info_title">查詢時間</i>
+				<span class="sub_info_content" id="currentTime2">{{dataTime|htDate}}</span>
+			</p>
+		</div>
+	
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+
+		<ul class="credit_card_bill_detail_list" *ngFor="let item of formObj">
+			<li>
+				<p class="credit_card_name">
+					<i>轉帳日期</i>
+					<i>{{item.trnsfrDate | htDate: 'yyyy/MM/dd'}}</i>
+				</p>
+				<p>
+					<span>轉出帳號</span>
+					<span>{{item.trnsfrOutAccnt | accountFormate}}</span>
+				</p>
+				<p>
+					<span>轉入帳號</span>
+					<!-- 轉入帳號需要用到pipe。轉入帳號總共16位，不足時由前方遞補0直至16位-->
+					<span>
+						{{(item| fieldCheck: ['trnsfrInAccnt' ,{zero_type:false, empty_str:'--'}]) | accountFormate}}
+					</span>
+				</p>
+				<p>
+					<span>轉帳金額</span>
+					<span>{{item.trnsfrAmount | currencyMoney:item.trnsfrCurr}}</span>
+				</p>
+				<p class="">
+					<span>處理狀態</span>
+					<span>{{statusConvert[item.status]}}</span>
+				</p>
+				<!-- <p class="">
+						<span>付款人自我備註</span>
+						<span>{{item.notePayer==''?'-----':item.notePayer}}</span>
+					</p> -->
+				<!-- 有按鈕最後一個項目要加上 no_border_bottom -->
+				<!-- <p class="no_border_bottom">
+						<span>給收款人訊息</span>
+						<span>{{item.notePayee==''?'-----':item.notePayee}}</span>
+					</p> -->
+				<ng-container *ngIf="item.status==='0'">
+					<a (click)="goConfirmPage(item)">註銷</a>
+				</ng-container>
+			</li>
+		</ul>
+	</ng-container>
+	<ng-container *ngIf="showPage==='confirm'">
+		<app-reservation-confirm [sendData]='sendData' (backPageEmit)='backPageEmit($event)'></app-reservation-confirm>
+	</ng-container>
+	<ng-container *ngIf="showPage==='result'">
+		<app-reservation-result [formObj]='resultData'></app-reservation-result>
+	</ng-container>
+</section>

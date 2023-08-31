@@ -1,0 +1,9 @@
+{
+	"custId" : "",
+	"creditCardNO" : "",
+	"ValidMonthYear" : "",
+	"checkCode" : "",
+	"birthDate" : "",
+	"captchaVal" : "",
+	"isSelf" : ""
+}

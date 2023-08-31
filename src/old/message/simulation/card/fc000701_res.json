@@ -1,0 +1,31 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000701",
+      "sch:requestTime" : "2011-01-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2011-01-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000701ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000701",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "查詢成功",
+      "fc0:billDetails" : {
+  		"fc0:billDetail" : [
+  	        {"fc0:consumptionDate":"20161001","fc0:cardLast4Num":"V2221(正卡)","fc0:foreignCurrencyDate":"2016/10/01",
+  	        "fc0:detail":"大O發                 ","fc0:foreignCurrency":"000","fc0:AmountForeignCurrency":"0","fc0:NTDollarAmount":"1000.00"},
+  	        {"fc0:consumptionDate":"20161002","fc0:cardLast4Num":"V2222(附卡)","fc0:foreignCurrencyDate":"2016/10/02",
+  	        "fc0:detail":"           O發","fc0:foreignCurrency":"000","fc0:AmountForeignCurrency":"0","fc0:NTDollarAmount":"6000.00"},
+  	        {"fc0:consumptionDate":"20161003","fc0:cardLast4Num":"V2223(正卡)","fc0:foreignCurrencyDate":"2016/10/03",
+  	        "fc0:detail":"大O           ","fc0:foreignCurrency":"000","fc0:AmountForeignCurrency":"0","fc0:NTDollarAmount":"3000"},
+  	        {"fc0:consumptionDate":"20161004","fc0:cardLast4Num":"V2224(附卡)","fc0:foreignCurrencyDate":"2016/10/04",
+  	        "fc0:detail":"            OO發","fc0:foreignCurrency":"000","fc0:AmountForeignCurrency":"0","fc0:NTDollarAmount":"8000.01"}
+  		]
+      }
+    }
+  }
+}

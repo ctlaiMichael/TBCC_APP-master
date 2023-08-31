@@ -1,0 +1,59 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+        <div class="no_bt" ></div>
+        <div class="page_title">QRCode消費扣款</div>
+        <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row">
+	<section style="top:70px;">
+		<!-- 步驟列 or 其他資訊框架 -->
+		<div class="sub_info_frame result" ng-if="result.respCode==0" style="margin-top: -50px;">
+			<div class="step_final_icon_frame">
+				<i class="icon_success"></i>
+				<span class="step_final_info">設定成功</span>
+			</div>
+		</div>
+		<div class="sub_info_frame result" ng-if="result.respCode!=0" style="margin-top: -50px;margin-bottom: 20px;">
+			<div class="step_final_icon_frame fault_active">
+				<i class="icon_success"></i>
+				<span class="step_final_info" ng-if="result.respCode=='1'">設定失敗</span>
+				<span class="step_final_info" ng-if="result.respCode!='0'&&result.respCode!='1'">設定異常</span>
+			</div>
+		</div>
+		<!-- 錯誤訊息 -->
+		<div class="row_single" style="margin-top:20px;" ng-if="result.respCode!=0">
+			<div class="main_info_block">
+				<div class="main_info_innerblock">
+					<div id="css_table" style="margin: 10px 10px 10px -10px;">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row_single" style="margin-top:20px;">
+			<div class="double_button" ng-if="result.respCode==0 && isAgreeQRCode=='Y'">
+				<a ng-click="clickBack()">返回</a><a ng-click="clickPay()">進行QRCode繳費</a>
+			</div>
+			<div class="double_button" ng-if="result.respCode!=0 || isAgreeQRCode=='N'" style="width: 50%;margin-left:20vw;">
+				<a ng-click="clickBack()" style="width: 100%;">返回</a>
+			</div>
+		</div>
+	</section>
+</div>
+<!--section 轉帳結果-->

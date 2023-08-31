@@ -1,0 +1,27 @@
+<!-- 請參考 AppView/msg/FUND01.html -->
+<div class="row_single">
+    <h4 class='simple_title'>線上申請簡介與注意事項</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content | safeHtml "></div>
+</div>
+<div class="agree_info">
+    <div class="row_single">
+        <div class="inner_checkbox abc">
+            <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [ngModel]="agreeChecked" [checked]="agreeChecked==true"
+                (click)="checkClick()">
+            <label for="inner_checkbox01">
+                <span>
+                    <i></i>
+                </span>
+                <b>我已了解並同意上述內容。</b>
+            </label>
+        </div>
+    </div>
+    <div class='row_single'>
+        <div class='double_button'>
+            <a href='javascript:void(0);' (click)="notAgree()">不同意</a>
+            <a href='javascript:void(0);' (click)="agreeSend()">瞭解並同意</a>
+        </div>
+    </div>
+</div>

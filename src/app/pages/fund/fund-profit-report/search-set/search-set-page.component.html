@@ -1,0 +1,124 @@
+<section>
+    <div [hidden]="page=='add'||page=='investType'">
+        <ng-container  *ngIf="page=='edit'">
+            <div class="row_single_2">
+                <ul class="inner_table_frame">
+                    <li class="inner_table_cell">
+                        <select name="mySet" class="inner_select" (change)="chgGroup()" [(ngModel)]="nowPageType">
+                            <option value="0">我的投資組合一</option>
+                            <option value="1">我的投資組合二</option>
+                            <option value="2">我的投資組合三</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row_single">
+                <dl class="inner_table_double">
+                    <!-- 組合內無基金時 normal_disable -->
+                    <dt class="inner_cell_double">
+                        <a href="javascript:void('0')" class="inner_button bt_100" [ngClass]="{'normal_disable':!showData}"
+                            (click)="onDelSelect()">
+                            <span>刪除標的</span>
+                        </a>
+                    </dt>
+                    <dt class="inner_cell_double">
+                        <a href="javascript:void('0')" class="inner_button bt_100" (click)="onAddFund()">
+                            <span>增加標的</span>
+                        </a>
+                    </dt>
+                </dl>
+            </div>
+
+
+            <ul class="table_data_frame">
+                <li class="table_data">
+                    <span class="data_cell">
+                        <div class="inner_checkbox" [ngClass]="{'normal_disable':!showData}" style="display:inline;padding-bottom:0px;">
+                            <input type="checkbox" id="inner_checkbox00" name="inner_checkbox" [(ngModel)]="allSelect">
+                            <label for="inner_checkbox00" (click)="selectAll()">
+                                <span><i></i></span>
+                            </label>
+                        </div>
+                    </span>
+                    <i class="data_cell">基金名稱</i>
+                    <i class="data_cell"></i>
+                    <b class="data_cell" style="position: absolute;right: 40px;">參考淨值</b>
+                    <s class="data_cell"></s>
+                </li>
+                <ng-container *ngIf="showData ; else noDataBox">
+                    <ng-container *ngFor="let item of group_data.wishList;index as i">
+                        <li class="table_data">
+                            <!-- checkbox -->
+                            <i class="data_cell fundset_tablecell fundset_datacell">
+                                <div class="inner_checkbox">
+                                    <input type="checkbox" id="inner_checkbox{{i}}" name="inner_checkbox" [(ngModel)]="item['showCheck']">
+                                    <label for="inner_checkbox{{i}}" style="top:15px;display:inline;" (click)="selectChg()">
+                                        <span><i></i></span>
+                                    </label>
+                                </div>
+                            </i>
+                            <!-- checkbox end-->
+                            <i class="data_cell fundset_table">{{item | fieldCheck: 'fundCode'}} &nbsp; {{item |
+                                fieldCheck:'fundName'}}</i>
+                            <b class="data_cell  font_money_blu">{{(item|fieldCheck:'netValue')|htFundSetNumber}}</b>
+                            <s class="data_cell">
+                                <!-- <button class="sub_open"></button> -->
+                            </s>
+                        </li>
+                        <div class="sub_open_info_frame">
+                            <dl class="sub_open_info">
+                                <dt class="sub_open_row">
+                                    <span></span>
+                                    <span>標的型態</span>
+                                    <span>{{ item | fieldCheck: 'fundStyle'}}</span>
+                                    <span></span>
+                                </dt>
+                                <dt class="sub_open_row">
+                                    <span></span>
+                                    <span>計價幣別</span>
+                                    <span>{{ item | fieldCheck: 'currency'}}</span>
+                                    <span></span>
+                                </dt>
+                                <dt class="sub_open_row">
+                                    <span></span>
+                                    <span>淨值日期</span>
+                                    <span>{{ (item | fieldCheck: 'netDate') | htDate: 'date'}}</span>
+                                    <span></span>
+                                </dt>
+                            </dl>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noDataBox>
+                    <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+                </ng-template>
+            </ul>
+
+            <div class="row_single">
+                <div class="double_button" style="margin-top: 10px;">
+                    <a href="javascript:void('0')" (click)="onCancel()">取消</a>
+                    <a href="javascript:void('0')" (click)="onSave()">儲存</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="row_single">
+                    <h4 class="simple_title">說明：</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        1. 部分基金公司淨值係採雙向報價(即：＂申購價格＂、＂贖回價格＂不同)。<br>
+                        2. 部分基金無法於網路銀行執行申購或轉換等申請(基金公司已停止新申購或轉入)
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <ng-container *ngIf="page=='add'">
+        <div [hidden]="page=='edit'">
+            <app-fund-subject [setData]="req" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-subject>
+        </div>
+    </ng-container>
+</section>

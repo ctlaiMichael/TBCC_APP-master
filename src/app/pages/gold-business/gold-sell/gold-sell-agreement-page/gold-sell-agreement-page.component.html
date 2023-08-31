@@ -1,0 +1,65 @@
+<section>
+
+  <!-- 使用者條款 開始 -->
+  <ng-container *ngIf="pageType=='statement'">
+    <div class="sub_info_frame">
+      <ul class="step_bar_frame">
+        <li class="step_bar step_active"><span>1.同意事項</span></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+        <li class="step_bar"></li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <h4 class="simple_title">合作金庫銀行行動網銀辦理黃金存摺<br>回售聲明暨約定事項</h4>
+    </div>
+    <div class="row_single">
+      <p class="inner_content">
+        　　申請人透過合作金庫商業銀行股份有限公司(以下簡稱貴行)之網路銀行服務系統(以下簡稱本系統)辦理貴行黃金存摺業務(以下簡稱本業務)之黃金回售事宜，並願遵守與貴行已簽訂之「黃金存摺開戶約定條款」、「網路銀行服務約定事項」及下列各條款:<br>
+        1、本業務交易時間，自每一營業日本行黃金存摺第一次掛牌起，至下午三時三十分止。<br>
+        2、申請人線上辦理黃金回售時，其回售款項限存入網路銀行約定轉出帳號(新臺幣活期性存款帳戶)。<br>
+        3、每次回售黃金之數量最低為1公克以上，並應為1公克之整倍數，但將帳戶餘額全數回售者不在此限。<br>
+        4、貴行對於申請人存放於黃金存摺帳戶內之黃金，不計付利息，申請人並明確瞭解國際黃金價格有漲有跌，可能產生投資本金收益或損失，上揭投資損失，均由申請人自行承擔投資風險。<br>
+        5、本業務非屬存款保險條例規定之標的，不受存款保險保障。
+      </p>
+    </div>
+    <div class="row_single">
+      <div class="inner_checkbox">
+        <input type="checkbox" id="inner_checkbox01" name="inner_checkbox" [(ngModel)]="agree">
+        <label for="inner_checkbox01">
+          <span><i></i></span>
+          <b>本人已閱讀上開條款，並充分了解相關投資風險。</b>
+        </label>
+      </div>
+    </div>
+    <div class="row_single">
+      <div class="double_button">
+        <a (click)="cancel()">{{'BTN.CANCEL' | translate }}</a>
+        <a (click)="nextStep()">{{'BTN.NEXT' | translate }}</a>
+      </div>
+    </div>
+  </ng-container>
+  <!-- 使用者條款 結束 -->
+
+  <!-- 編輯 開始 -->
+  <ng-container *ngIf="pageType=='edit'">
+    <app-gold-sell-edit-page (goldsellPage)="changePage($event)" (goldsellConfirm)="getGoldsellConfrim($event)">
+    </app-gold-sell-edit-page>
+  </ng-container>
+  <!-- 編輯 結束 -->
+
+  <!-- 確認 開始 -->
+  <ng-container *ngIf="pageType=='confirm'">
+    <app-gold-sell-confirm-page [goldsellInfo]="goldsellInfo" (goldsellPage)="changePage($event)"
+      (goldsellResult)="getGoldsellResult($event)">
+    </app-gold-sell-confirm-page>
+  </ng-container>
+  <!-- 確認 結束 -->
+
+  <!-- 結果 開始 -->
+  <ng-container *ngIf="pageType=='result'">
+    <app-result [btnName]="'RETURN'" [successMsg]="successMsg" [successDetail]="successDetail"
+      [successContent]="successContent" [isSuccess]="isSuccess"></app-result>
+  </ng-container>
+  <!-- 結果 結束 -->
+</section>

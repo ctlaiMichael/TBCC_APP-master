@@ -1,0 +1,132 @@
+<div class="bc_frame">
+	<div class="row_single input_single" ng-class="{input_error:error_msg_list.idNo}" ng-if="byPassage==1">
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name required">{{'FIELD.IDENTITY' | translate}}</i></td>
+		<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}"
+		 identity-mask-directive ng-blur="getChnum()"/></td>
+		</tr></table></div>
+		 
+		 <b></b>
+		<s class="input_comment">{{error_msg_list.idNo}}</s>
+	</div>
+	<div class="row_single info_list">
+		<!-- 銷帳編號 -->
+		<div class="input_frame"><table><tr>
+			<td align="center"><i class="info_title">{{'FIELD.PAYMENT_ID' | translate}}</i></td>
+			<td align="center"><p class="info_conetnt">{{(inp.cardnum) ? inp.cardnum : '&nbsp;'}}</p></td>
+			</tr></table></div>		
+		<!-- <i class="info_title">{{'FIELD.PAYMENT_ID' | translate}}</i>
+		<p class="info_conetnt">{{(inp.cardnum) ? inp.cardnum : '&nbsp;'}}</p> -->
+	</div>
+
+
+	<div class="row_single info_list full_table_col">
+	<div class="input_frame">
+		<table class="full_table">
+			<tr>
+				<td rowspan="2" width="60px" align="center"><i class="info_title info_title4">轉出帳號</i></td>
+				<td align="center">
+						<div class="row_single input_single info_select info_select_padding full_table_col bottom_line">
+						   <!-- 請選擇轉出銀行 -->
+						   <!--i class="input_name required">{{'INPUT_MSG.CARD.SELECT_BANK' | translate}}</i>
+						   <input name="brank_id" placeholder="{{'INPUT_MSG.CARD.BANK_CODE' | translate}}" type="tel"-->
+						   <select width="100%" id="bank_list" name="bank_select" ng-model="inp.selectBank" ng-change="onSelectBank(inp.selectBank)"></select>
+					   </div>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+						<div id="acnt_box_select" class="row_single info_list info_select full_table_col accountselect"
+	 ng-if="acntOptions && byPassage==2">
+		<!-- 請選擇轉出帳號 -->
+		<!--i class="info_title">{{'INPUT_MSG.CARD.SELECT_ACNT' | translate}}</i-->
+		<select ng-model="inp.selectAcnt" ng-init="inp.selectAcnt==''">
+			<option value="">{{'INPUT_MSG.CARD.SELECT_ACNT' | translate}}</option>
+			<option ng-repeat="option in acntOptions" value="{{option}}">{{ option }}</option>
+		</select>
+
+	</div>
+	<div id="acnt_box" class="row_single input_single full_table_col">
+		<!-- 請輸入轉出帳號 -->
+		<!--i class="input_name required">{{'INPUT_MSG.CARD.ACNT' | translate}}</i-->
+		<input type="tel" ng-intl-tel-input name="payAcnt" ng-model="inp.payAcnt" maxlength="16" placeholder="{{'INPUT_MSG.CARD.ACNT' | translate}}" />
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<b></b>
+	</div>
+	<div class="row_single input_single" ng-class="{input_error:(error_msg_list.payAcnt||error_msg_list.selectBank)}">
+			<s class="input_comment">{{error_msg_list.payAcnt}}</s>
+	</div>
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row_single input_single" ng-if="byPassage==1 || !paymentData">
+		<!-- 請輸入繳費金額 -->
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name required">繳費金額</i></td>
+		<td align="center"><input type="tel" name="payAmt" ng-model="inp.payAmt" maxlength="9" placeholder="{{'INPUT_MSG.PAYAMT.INPUT' | translate}}" /></td>
+		</tr></table></div><s class="input_comment">{{error_msg_list.payAmt}}</s>
+	</div>
+
+
+
+	<div class="row_single input_single" ng-if="paymentData">
+		<!-- 請選擇繳費金額 -->
+		<i class="input_name required">{{'INPUT_MSG.PAYAMT.SELECT' | translate}}</i>
+		<br>
+		<div class="radio_list radio_normal" ng-repeat="(key, payment_radio) in applyFormList.paymentType" ng-if="paymentData[payment_radio.key]">
+			<input type="radio" ng-model="inp.selectAmt" id="radio_normal{{key}}" name="radio_normal" value="{{key}}" />
+			<label for="radio_normal{{key}}" class="original_checkbox option_for_group">
+				<span></span>
+				<b>{{payment_radio.name}}:{{'CTRL_PAY.INPUT.MONEY' | translate}} {{paymentData[payment_radio.key] | currency:"$"}}</b>
+			</label>
+		</div>
+		<div class="radio_list radio_normal">
+			<!-- 自行輸入 -->
+			<input type="radio" ng-model="inp.selectAmt" id="radio_normal3" name="radio_normal" value="3" ng-click="showInput()"/>
+			<label for="radio_normal3" class="original_checkbox option_for_group">
+				<span></span>
+				<b>{{'CTRL_PAY.INPUT.PAY_SELF' | translate}}</b>
+			</label>
+			<div class="row_single input_single" ng-if="inp.selectAmt =='3'">
+				<div class="input_frame"><table><tr>
+				<td align="center"><input type="tel" name="payAmt" ng-model="inp.payAmt" maxlength="9" placeholder="{{'INPUT_MSG.PAYAMT.INPUT' | translate}}" /><b></b></td>
+			
+			</tr></table></div><s class="input_comment">{{error_msg_list.payAmt}}</s></td>
+			</div>
+		</div>
+	</div>
+
+	<div class="button_row">
+		<button class="button_confirm" ng-click="checkData();">{{'CTRL_PAY.BTN.PAY_SUBMIT' | translate}}</button><!-- 立即繳卡費 -->
+	</div>
+	
+
+	<div class="terms_frame">
+		<!-- 說明 -->
+		<h3 class="row_single in_sub_title">{{'FIELD.NOTE' | translate}}</h3>
+		<p>
+			{{'CTRL_PAY.NOTE.PAYFORM_NOTE1' | translate}}<br>
+			{{'CTRL_PAY.NOTE.PAYFORM_NOTE2' | translate}}<br>
+			{{'CTRL_PAY.NOTE.PAYFORM_NOTE3' | translate}}
+		</p>
+	</div>
+</div>

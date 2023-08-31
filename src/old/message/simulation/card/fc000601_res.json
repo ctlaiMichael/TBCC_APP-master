@@ -1,0 +1,34 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc000601",
+      "sch:requestTime" : "2011-01-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2011-01-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc000601ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc000601",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "查詢成功",
+      "fc0:cardDetails" : {
+          "fc0:detail" : [
+            {"creditCardType":200,"creditCardNO":4907060200011104,"cardType":1,"isComboCard":0},
+            {"creditCardType":298,"creditCardNO":4054300010003102,"cardType":1,"isComboCard":0},
+            {"creditCardType":551,"creditCardNO":5468511000148106,"cardType":1,"isComboCard":1},
+            {"creditCardType":600,"creditCardNO":4057590010008112,"cardType":1,"isComboCard":0},
+            {"creditCardType":600,"creditCardNO":4057590010008419,"cardType":0,"isComboCard":0},
+            {"creditCardType":601,"creditCardNO":4057590050003122,"cardType":1,"isComboCard":0},
+            {"creditCardType":604,"creditCardNO":4057590080002102,"cardType":1,"isComboCard":0},
+            {"creditCardType":653,"creditCardNO":4987460100036107,"cardType":1,"isComboCard":1},
+            {"creditCardType":654,"creditCardNO":5242680000062105,"cardType":1,"isComboCard":1},
+            {"creditCardType":880,"creditCardNO":3567430010005104,"cardType":1,"isComboCard":0},
+            {"creditCardType":700,"creditCardNO":5405200000009106,"cardType":1,"isComboCard":0}
+          ]
+      }
+    }
+  }
+}

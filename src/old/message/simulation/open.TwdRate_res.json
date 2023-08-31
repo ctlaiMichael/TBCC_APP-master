@@ -1,0 +1,151 @@
+{
+  "resHeader": {
+    "serviceId":"open.TwdRate",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "rates": [
+    {
+      "groupName": "活期性存款利率",
+      "groupDesc": "可按月定額存入，隨時自由提取。方便資金靈活運用，還能讓您獲取更高的利息回報。",
+      "groupUnit": "(單位：年息%)",
+      "lastUpdate": "2016/04/08 12:33:35",
+      "details": [
+        {
+          "item": "雲端帳戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.250"
+        },
+        {
+          "item": "Money Market Rate 活儲存款(50萬~100萬)",
+          "fixed": "-",
+          "floatRate": "0.450"
+        },
+        {
+          "item": "Money Market Rate 活儲存款(100萬以上)",
+          "fixed": "-",
+          "floatRate": "0.730"
+        },
+        {
+          "item": "活期存款",
+          "fixed": "-",
+          "floatRate": "0.110"
+        },
+        {
+          "item": "活期儲蓄存款",
+          "fixed": "-",
+          "floatRate": "0.210"
+        },
+        {
+          "item": "薪資戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.250"
+        },
+        {
+          "item": "證券戶活期存款",
+          "fixed": "-",
+          "floatRate": "0.010"
+        },
+        {
+          "item": "證券戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.010"
+        },
+        {
+          "item": "頭家專屬活存帳戶(20萬)",
+          "fixed": "-",
+          "floatRate": "0.210"
+        },
+        {
+          "item": "頭家專屬活存帳戶(50萬)",
+          "fixed": "-",
+          "floatRate": "0.310"
+        },
+        {
+          "item": "頭家專屬活存帳戶(100萬)",
+          "fixed": "-",
+          "floatRate": "0.360"
+        },
+        {
+          "item": "頭家專屬活存帳戶(300萬)",
+          "fixed": "-",
+          "floatRate": "0.410"
+        }
+      ]
+    },
+    {
+      "groupName": "軍公教人員新臺幣活期儲蓄存款",
+      "groupDesc": "可按月定額存入，隨時自由提取。方便資金靈活運用，還能讓您獲取更高的利息回報。",
+      "groupUnit": "(單位：年息%)",
+      "lastUpdate": "2016/04/08 12:33:35",
+      "details": [
+        {
+          "item": "雲端帳戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.250"
+        },
+        {
+          "item": "Money Market Rate 活儲存款(50萬~100萬)",
+          "fixed": "-",
+          "floatRate": "0.450"
+        },
+        {
+          "item": "Money Market Rate 活儲存款(100萬以上)",
+          "fixed": "-",
+          "floatRate": "0.730"
+        },
+        {
+          "item": "活期存款",
+          "fixed": "-",
+          "floatRate": "0.110"
+        },
+        {
+          "item": "活期儲蓄存款",
+          "fixed": "-",
+          "floatRate": "0.210"
+        },
+        {
+          "item": "薪資戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.250"
+        },
+        {
+          "item": "證券戶活期存款",
+          "fixed": "-",
+          "floatRate": "0.010"
+        },
+        {
+          "item": "證券戶活儲存款",
+          "fixed": "-",
+          "floatRate": "0.010"
+        },
+        {
+          "item": "頭家專屬活存帳戶(20萬)",
+          "fixed": "-",
+          "floatRate": "0.210"
+        },
+        {
+          "item": "頭家專屬活存帳戶(50萬)",
+          "fixed": "-",
+          "floatRate": "0.310"
+        },
+        {
+          "item": "頭家專屬活存帳戶(100萬)",
+          "fixed": "-",
+          "floatRate": "0.360"
+        },
+        {
+          "item": "頭家專屬活存帳戶(300萬)",
+          "fixed": "-",
+          "floatRate": "0.410"
+        }
+      ]
+    }
+  ]
+}

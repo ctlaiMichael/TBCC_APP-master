@@ -1,0 +1,97 @@
+
+.loanAgree inner_content{
+height:350px;
+}
+.loan_agree input { 
+    appearance:checkbox;
+    -moz-appearance:checkbox; /* Firefox */
+    -webkit-appearance:checkbox; /* Safari 和 Chrome */
+}
+.loan_agree .b2{margin: 0.19722222in 0.49097222in 0.4923611in 0.0in;}
+.loan_agree .s1{font-weight:bold;color:#339933;}
+.loan_agree .s2{color:black;}
+.loan_agree .s3{font-weight:bold;}
+.loan_agree .s4{font-weight:bold;color:black;}
+.loan_agree .s5{font-weight:bold;color:blue;text-decoration:underline;}
+.loan_agree .s6{text-decoration:underline;}
+.loan_agree .s7{font-weight:bold;color:black;text-decoration:underline;}
+.loan_agree .s8{font-family:標楷體;font-size:12pt;}
+.loan_agree .s9{font-size:9pt;font-weight:bold;}
+.loan_agree .p1{text-align:center;hyphenate:auto;font-family:新細明體;font-size:16pt;}
+.loan_agree .p2{text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p3{text-align:center;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p4{text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p5{margin-right:0.023611112in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p6{margin-right:1.2784722in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p7{margin-left:0.2951389in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p8{text-indent:-0.2777778in;margin-left:0.2777778in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p9{text-indent:-0.19583334in;margin-left:0.45069444in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p10{text-indent:-0.4097222in;margin-left:0.4097222in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p11{margin-left:0.09861111in;margin-right:0.11111111in;text-align:end;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p12{margin-left:0.09861111in;text-align:end;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p13{text-indent:-0.39305556in;margin-left:0.45in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p14{margin-left:0.45in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p15{text-indent:-0.2625in;margin-left:0.2625in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p16{text-indent:0.0069444445in;margin-left:0.27847221in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p17{margin-left:0.28680557in;text-align:justify;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p18{text-indent:-0.29166666in;margin-left:0.28819445in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p19{text-indent:-0.2888889in;margin-left:0.2888889in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p20{text-indent:-0.3861111in;margin-left:0.6493056in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p21{text-indent:-0.19583334in;margin-left:0.74444443in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p22{text-indent:-0.38472223in;margin-left:0.6479167in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p23{text-indent:-0.19583334in;margin-left:0.74583334in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p24{text-indent:-0.21805556in;margin-left:0.51319444in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p25{text-indent:-0.2986111in;margin-left:0.2986111in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p26{margin-left:0.29583332in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p27{margin-left:0.0013888889in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p28{text-indent:0.125in;margin-left:0.25in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p29{margin-left:0.375in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p30{text-indent:-0.25in;margin-left:0.5in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p31{margin-left:0.25in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p32{text-indent:-0.50069445in;margin-left:0.50069445in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p33{text-indent:-0.37430555in;margin-left:0.37430555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p34{margin-left:0.37361112in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p35{text-indent:-0.031944446in;margin-left:0.40555555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p36{text-indent:-0.0013888889in;margin-left:0.37291667in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p37{text-indent:-0.37569445in;margin-left:0.37569445in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p38{text-indent:-0.21944444in;margin-left:0.59305555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p39{text-indent:-0.23055555in;margin-left:0.60555553in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p40{text-indent:-0.23055555in;margin-left:0.60694444in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p41{text-indent:-0.25694445in;margin-left:0.63055557in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p42{text-align:center;hyphenate:auto;font-family:新細明體;font-size:8pt;}
+.loan_agree .p43{text-align:center;hyphenate:auto;font-family:新細明體;font-size:7pt;}
+.loan_agree .p44{text-indent:-0.103472225in;margin-left:0.103472225in;text-align:center;hyphenate:auto;font-family:新細明體;font-size:8pt;}
+.loan_agree .p45{margin-left:-0.05in;text-align:center;hyphenate:auto;font-family:新細明體;font-size:8pt;}
+.loan_agree .p46{margin-left:0.008333334in;text-align:center;hyphenate:auto;font-family:新細明體;font-size:8pt;}
+.loan_agree .p47{margin-left:0.41666666in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p48{margin-left:0.39305556in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p49{text-indent:-0.6951389in;margin-left:0.6951389in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p50{text-align:justify;hyphenate:auto;font-family:新細明體;font-size:9pt;}
+.loan_agree .p51{text-indent:-0.1388889in;margin-left:0.5138889in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p52{text-indent:-0.38194445in;margin-left:0.775in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p53{margin-left:0.37430555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p54{text-indent:-0.21805556in;margin-left:0.6111111in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p55{text-indent:-0.22916667in;margin-left:0.62222224in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p56{text-indent:-0.21666667in;margin-left:0.6097222in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p57{text-indent:-0.068055555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p58{text-indent:-0.40694445in;margin-left:0.77708334in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p59{text-indent:-0.39027777in;margin-left:0.7583333in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p60{text-indent:-6.9444446E-4in;margin-left:0.37430555in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p61{text-indent:-0.19166666in;margin-left:0.56666666in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p62{text-indent:-0.5673611in;margin-left:0.5673611in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p63{text-indent:-0.59097224in;margin-left:0.59097224in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p64{text-indent:-0.19583334in;margin-left:0.5888889in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p65{text-indent:-0.67291665in;margin-left:0.67430556in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p66{text-indent:-0.37430555in;margin-left:0.37569445in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p67{text-indent:-0.7173611in;margin-left:0.71875in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p68{text-indent:-0.21527778in;margin-left:0.5902778in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p69{text-indent:-0.19583334in;margin-left:0.78402776in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p70{text-indent:-0.32777777in;margin-left:0.91805553in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p71{text-indent:-0.19722222in;margin-left:0.7875in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p72{text-indent:-0.25138888in;margin-left:0.625in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p73{text-indent:-0.25in;margin-left:0.6236111in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p74{text-indent:-0.62569445in;margin-left:0.62569445in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p75{text-indent:-0.25in;margin-left:0.625in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p76{text-indent:-0.0013888889in;margin-left:0.375in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:10pt;}
+.loan_agree .p77{margin-left:0.375in;text-align:start;hyphenate:auto;font-family:新細明體;font-size:9pt;}
+.loan_agree .p78{text-indent:-6.9444446E-4in; }

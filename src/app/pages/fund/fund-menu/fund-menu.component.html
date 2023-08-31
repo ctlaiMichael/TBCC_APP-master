@@ -1,0 +1,23 @@
+<ng-container *ngIf="showData; else noDataBox">
+    <section>
+        <ng-container *ngIf="nowStep == 'agree'">
+            <!-- 換約條款 -->
+            <app-one-provision [provisionOption]="agreeProvision" (backPageEmit)="onProvision($event)"></app-one-provision>
+        </ng-container>
+        <ng-container *ngIf="nowStep == 'showMenu'">
+            <ng-container *ngFor="let menu of menuData;">
+                <div class="row_single marginb_0 paddong_0">
+                    <h4 class="inner_title">{{menu.titleName | translate}}</h4>
+                </div>
+                <ng-container *ngFor="let menuContent of menu.content">
+                    <div class="inner_links_frame">
+                        <a class="inner_link" (click)="onGoEvent(menuContent)">{{menuContent.name | translate}}</a>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </section>
+</ng-container>
+<ng-template #noDataBox>
+    <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate}}</div>
+</ng-template>

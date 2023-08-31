@@ -1,0 +1,31 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "rtnCode": "ok",
+    "subCode": ""
+  },
+  "acctNo" : "9991737600032",
+  "acctBelongCustCode" : "16313302",
+  "acctBelongName" : "網際威信股份有限公司",
+  "dataQueryTime" : "2016/05/05 13:00:12",
+  "acountBalInfo" :
+  [
+    {
+      "seqNo" : "001",
+      "fnAcctNo" : "04864188062616",
+      "ccy" : "CNY",
+      "balance" : "513,000,000,000,000.00"
+    },
+    {
+      "seqNo" : "002",
+      "fnAcctNo" : "04864188062616",
+      "ccy" : "USD",
+      "balance" : "13,129,000.53"
+    }
+  ]
+}
+

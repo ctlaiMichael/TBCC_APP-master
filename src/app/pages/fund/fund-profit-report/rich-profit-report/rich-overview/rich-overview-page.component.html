@@ -1,0 +1,76 @@
+<ng-container *ngIf="!lookMoreOverview">
+    <div class="table_four_hl">
+        <!-- 標題 Start -->
+        <div class="table_four_hl_tr">
+            <p class="table_four_hl_th">投資幣別</p>
+            <p class="table_four_hl_th">參考報酬率%</p>
+            <p class="table_four_hl_th"></p>
+        </div>
+        <!-- 標題 End  -->
+        <!-- 列表start -->
+        <ng-container *ngIf="showData;">
+            <div class="table_four_hl_tr" (click)="iconTable(item)" *ngFor="let item of data">
+                <p class="table_four_hl_td">
+                    <i class="{{item.inCurrency|iconFlag}}"></i>{{item.inCurrency|iconFlag:'chineseName'}}({{item.inCurrency}})
+                </p>
+                <p class="table_four_hl_td {{ item.reward | fundAmtClass }}">{{item.reward}}</p>
+                <p class="table_four_hl_td">
+                    <a href="javascript:void(0)" class="arrow_link"></a>
+                </p>
+            </div>
+        </ng-container>
+        <!-- 列表 End  -->
+    </div>
+    <div class="row_single">
+        <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <div class="inner_content">
+            <ol class="order_list">
+                <li>本行特定金錢信託投資國內外共同基金均經金管會核准，惟並不表示該基金絕無風險，本行不負責基金之盈虧，亦不保證最低之收益，投資人應慎選投資標的，申購前應詳閱相關公開說明書及投資人須知等資料。</li>
+                <li>本行集合管理帳戶以往管理運用之績效不代表未來之表現，委託人/受益人應自負盈虧。</li>
+                <li>本行除善盡善良管理人之注意義務為本業務項下信託資金管理運用外，不擔保信託資金之管理運用績效，亦不擔保本金之最低收益，本帳戶具有風險，委託人簽約前應詳細閱讀個別集合管理帳戶之約定條款。</li>
+            </ol>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="lookMoreOverview">
+    <div class="row_single"></div>
+    <ul class="credit_card_bill_detail_list">
+        <li>
+            <p class="credit_card_name">
+                <i>投資幣別：</i>
+                <i>{{moreOverview.inCurrency|iconFlag:'chineseName'}}({{moreOverview.inCurrency}})</i>
+            </p>
+            <p>
+                <span>參考報酬率：</span>
+                <span class="{{ moreOverview.reward | fundAmtClass }}">{{moreOverview.reward}}%</span>
+            </p>
+            <p>
+                <span>庫存金額：</span>
+                <span>{{moreOverview.invenAmount | htMoney:moreOverview.inCurrency}}</span>
+            </p>
+            <p>
+                <span>現金配息：</span>
+                <span>{{moreOverview.addIntAmount | htMoney:moreOverview.inCurrency}}</span>
+            </p>
+            <p>
+                <span>參考現值：</span>
+                <span>{{moreOverview.refAmount | htMoney:moreOverview.inCurrency}}</span>
+            </p>
+            <p>
+                <span>參考損益：</span>
+                <span class="{{ moreOverview.refProfit | fundAmtClass }}">{{moreOverview.refProfit}}</span>
+            </p>
+            <p>
+                <span>預出金額：</span>
+                <span>{{moreOverview.aheadAmount | htMoney:'TWD'}}</span>
+            </p>
+            <p>
+                <span>在途金額：</span>
+                <span>{{moreOverview.onTheWayPrice | htMoney:'TWD'}}</span>
+            </p>
+        </li>
+    </ul>
+</ng-container>

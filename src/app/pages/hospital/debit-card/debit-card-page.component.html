@@ -1,0 +1,43 @@
+<section>
+		<div class="row_single">
+			<h4 class="simple_title">請設定繳費資訊</h4>
+		</div>
+		<!-- nav_first_page_frame -->
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['refNo']?'active_warnning':''">
+				<!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+				<li class="inner_table_cell">
+					銷帳編號
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" id="number" name="number" class="inner_input" placeholder="" [(ngModel)]="reqData.refNo" maxlength="16">
+				</li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['refNo']|translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['amount']?'active_warnning':''">
+				<!-- 	加入「active_warnning」後可顯示「input_info_warnning」 -->
+				<li class="inner_table_cell">
+					繳費金額
+				</li>
+				<li class="inner_table_cell">
+					<input type="text"  name="money" class="inner_input" placeholder="" [(ngModel)]="reqData.amount">
+				</li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['amount']|translate}}</i>
+		</div>
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void('0')" (click)="cancel()">取消</a><a href="javascript:void('0')" (click)="checkEvent()">確定</a>
+			</div>
+		</div>
+		<div class="row_single">
+			<h4 class="simple_title">提醒您</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content font_red"> 本功能需使用行動ATM進行繳款，如未安裝APP時請先至APP store或Google Play下載合庫行動 ATM APP。
+			</p>
+		</div>
+		<!-- nav_first_page_frame End -->
+	</section>

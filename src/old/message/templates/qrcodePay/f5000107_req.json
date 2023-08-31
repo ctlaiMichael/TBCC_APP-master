@@ -1,0 +1,12 @@
+{
+    "custId":"",
+    "trnsfrDate":"",
+    "orderNo":"",
+    "trnsToken":"",
+    "trnsfrOutAccnt":"",
+    "trnsfrInAccnt":"",
+    "trnsfrCurr":"",
+    "trnsfrAmount":"",
+    "subType":"",
+    "note":""
+}

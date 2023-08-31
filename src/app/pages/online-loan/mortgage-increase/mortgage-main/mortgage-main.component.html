@@ -1,0 +1,65 @@
+<!-- 主控頁面 -->
+<!-- type:判斷「信貸」or「房貸」，fullData:下一頁需要之資料，例:request -->
+<!-- resver:是否為預填單 -->
+<!-- action:'go':進入下一階段，'back':返回前一階段 -->
+
+<ng-container [ngSwitch]="nowPage">
+    <!-- 原案件分頁 -->
+    <ng-container *ngSwitchCase="'branch-case'">
+        <section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active"><span>1.請選擇本次往來分行</span></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+            <app-branch-case [page]="'1'" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-branch-case>
+            <ng-container #pageBox></ng-container>
+            <ng-container *ngIf="showContent">
+                <!-- 2019/12/09依客戶需求先判斷不顯示，查到資料再顯示 -->
+                <div class="row_single">
+                    <p class="inner_content">
+                        1.本貸款將依該原貸款之委扣帳號(限本人)作為本次之撥款帳號及委託扣款帳號(自動扣繳)。<br>
+                        2.若原貸款未設定委託扣款帳號，則另選擇一存款帳號(限貸款行或合併分行)作為本貸款之撥款帳號及委託扣款帳號(自動扣繳)。
+                    </p>
+                </div>
+            </ng-container>
+        </section>
+    </ng-container>
+    <!-- 選擇分行 -->
+    <ng-container *ngSwitchCase="'contact-branch'">
+        <app-contact-branch [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-contact-branch>
+    </ng-container>
+    <!-- 同意條款 -->
+    <ng-container *ngSwitchCase="'agree-term'">
+        <app-agree-term [type]="'mortgage'" [fullData]="personalData" [resver]="'N'" [action]='action' [agreeStep]="agreeStep"
+            (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-agree-term>
+    </ng-container>
+    <!-- kyc -->
+    <ng-container *ngSwitchCase="'kyc-fill'">
+        <app-kyc-fill [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-kyc-fill>
+    </ng-container>
+    <!-- 申請書 -->
+    <ng-container *ngSwitchCase="'consumer-apply'">
+        <app-consumer-apply [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-consumer-apply>
+    </ng-container>
+    <!-- 同一關係人 -->
+    <ng-container *ngSwitchCase="'relation-form'">
+        <app-relation-form [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-relation-form>
+    </ng-container>
+    <!-- 證明文件上傳 -->
+    <ng-container *ngSwitchCase="'file-upload'">
+        <app-file-upload [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-file-upload>
+    </ng-container>
+    <!-- 結果頁 -->
+    <ng-container *ngSwitchCase="'result-page'">
+        <app-loan-result-page [type]="'mortgage'" [fullData]="fullData" [resver]="'N'" [action]='action' (backPageEmit)="onPageBackEvent($event)"
+            (errorPageEmit)="onErrorBackEvent($event)"></app-loan-result-page>
+    </ng-container>
+</ng-container>

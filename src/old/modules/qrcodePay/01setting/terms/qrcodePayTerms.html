@@ -1,0 +1,75 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}" >
+    <header class="main_nav">
+		<button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" ng-click="clickBack()"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">QRCode使用條款</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--header end-->
+
+<!--section -->
+<section style="top:65px;">
+	<!-- popup window -->
+	<div id="qrcode" class="popup_window popup_open">
+		<!-- 「popup_open」為開啟popup的樣式，將此樣式移除可關閉popup -->
+		<div class="popup_content">
+			<div class="row_single">
+				<h4 class="simple_title">QRcode使用條例</h4>
+			</div>
+			<div class="row_single" style="overflow: scroll;height: 250px;">
+				<p class="inner_content">
+					存戶同意啟用於合作金庫商業銀行所約定之網路銀行轉出帳號(含晶片金融卡)消費扣款功能，並可透過行動網銀掃描QR Code進行消費扣款、繳稅、繳費及轉帳交易。
+					<br>一、消費扣款功能說明
+					<br>1. 憑約定之轉出帳號(含晶片金融卡) 及密碼進行消費扣款交易，均視為本存戶所為，與憑存摺及填具取款憑條加蓋原留印鑑之提款具同等效力。</span>
+					<br>2.
+					具晶片金融卡消費扣款之晶片金融卡可於國內、外貼有金融資訊系統跨行業務標章之實體或網路特約商店，透過晶片密碼驗證購買/取消商品或服務。本存戶進行上述交易時，應自行留存交易單據或電子訊息（此功能於國外交易僅限於日本地區使用）。
+					<br>二、 申請及限制
+					<br>1. 存戶欲使用消費扣款功能，應向貴行提出申請。
+					<br>2. 存戶須年滿十五歲其所持有之金融卡始可具備國外交易功能。凡未滿十五歲之存戶，其所領用之卡片雖已申請晶片金融卡消費扣款，仍無法於國外執行消費扣款交易。
+					<br>3. 持卡人於國內、外金融卡指定商店（貼有台灣金融卡、金融卡及SMART PAY標誌）進行消費扣款交易，經使用金融卡並輸入約定密碼後，視為同意啟用當次消費扣款服務功能以完成交易。
+					<br>4. 持卡人透過行動網銀掃描QR Code進行消費扣款交易，依行動網銀安控機制完成交易。
+					<br>5. 存戶同意申請行動網銀掃描QR Code進行交易，依「合作金庫商業銀行網路銀行服務約定事項」規定辦理。
+					<br>三、 交易限額
+					<br>1. 存戶同意於行動網銀掃描QR Code進行交易之限額，依「合作金庫商業銀行網路銀行服務約定事項」第十條第五項規定辦理。
+					<br>四、 消費限額及外幣匯率授權結算
+					<br>1. 本存戶於國內、外使用約定之轉出帳號(含晶片金融卡)消費扣款總金額每日不得逾新臺幣壹拾萬元或等值外幣。
+					<br>2.
+					本存戶進行跨國交易時，應自行控管不得超過中央銀行規定之外匯額度，並授權貴行為中華民國境內之結匯代理人，依據中央銀行有關規定辦理持卡交易之結匯手續。如本存戶已超出得使用之外匯額度時，應即依貴行之要求以外幣支付超額部分。
+					<br>五、 其他
+					<br>1. 本存戶與貴行間具有委任契約之性質，本存戶使用行動網銀台灣Pay於特約商店端輸入消費扣款指示時，為委託貴行自本存戶帳戶內扣款，並將消費款項即時轉入指定帳戶之行為。
+					<br>2. 本存戶明確瞭解此約定之網路銀行轉出帳號(含晶片金融卡)，於特約商店進行消費扣款交易或事業單位(企業)掃描QR Code
+					繳稅、費，與現金交易並無不同，如與特店或事業單位(企業)發生相關爭議（包括但不限於商品或服務之品質、數量、金額等），皆應向特店或事業單位(企業)尋求解決，不得以此作為向貴行請求返還帳款之依據。本存戶亦不得以與特約商店或事業單位(企業)間交易所生糾紛對抗貴行。
+					<br>六、 存戶同意銀行及財金資訊股份有限公司、與該中心往來之金融機構於其各該特定目的範圍內，得蒐集、電腦處理、國際傳遞及利用存戶之個人資料。
+					<br>七、 存戶同意本約定事項如有未盡事宜均依 貴行開戶總約定書、一般金融業務慣例及有關法令辦理。
+				</p>
+			</div>
+
+			<div class="row_single">
+				<div class="double_button">
+					<a ng-click="clickDisAgree()" ng-disabled="disable">不同意</a><a id="check" ng-click="clickAgree()" ng-disabled="disable">同意</a>
+				</div>
+			</div>
+			<div class="row_single">
+				<a id="cancel" ng-click="cancelAgree()" ng-if="isAgreeQRCode" ng-disabled="disable" class="button_confirm">取消約定</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!--section end-->
+
+<!--agree button-->
+<!-- <div class="agree_location">
+	<div class="row">
+		<div class="agree_check">
+			<div class="agree_title">本人已詳閱及瞭解上開注意事項並遵守之。</div>
+			<div class="agree_check_bt">
+				<button type="button" class="agree_bt" ng-click="clickAgree()" ng-disabled="disable"><p>同意</p></button>
+				<button type="button" class="agree_bt" ng-click="clickDisAgree()" ng-disabled="disable"><p>不同意</p></button>
+				<button type="button" class="disagree_bt" ng-click="cancelAgree()" ng-if="isAgreeQRCode" ng-disabled="disable"><p>取消約定</p></button>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!--agree button end-->

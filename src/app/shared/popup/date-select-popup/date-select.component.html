@@ -1,0 +1,40 @@
+<div [ngClass]="{ 'popup_window popup_open': showPopupFlag }">
+  <div [ngClass]="{ 'popup_content': showPopupFlag }">
+    <div class="row_single">
+      <!-- 標題 (已選擇: {{ chose }}/{{ total }} 筆) -->
+      <h4 class="simple_title">{{ title | translate }}
+        <ng-container *ngIf="canSelFlag">&nbsp;({{ 'FIELD.HAVE_CHOSE' | translate: { total: numberData.total, chose: numberData.chose } }})
+        </ng-container>
+      </h4>
+      <div class='row_single'></div>
+      <ng-container *ngFor="let row_item of rowData.data; let row_key = index; let row_last = last;">
+        <dl class="inner_table_three">
+          <ng-container *ngFor="let item of row_item; let item_key = index;">
+            <!-- Item Start -->
+            <dt class="inner_cell_three">
+              <div class="checkbox_button_plain">
+                <input type="checkbox" [(ngModel)]="item.ch">
+                <label (click)="onItemClickEvent(item)">
+                  <b>{{ item.name | translate }}</b>
+                </label>
+              </div>
+            </dt>
+            <!-- Item End -->
+          </ng-container>
+          <ng-container *ngIf="row_last">
+            <dt class="inner_cell_three" *ngFor="let more_item of rowData.more;"></dt>
+          </ng-container>
+        </dl>
+        <!-- Row End -->
+      </ng-container>
+    </div>
+    <div class="row_single">
+      <div class="double_button">
+        <!-- 取消 -->
+        <a class="setDate_cancel" href="javascript:void(0)" (click)="setCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+        <!-- 設定完成X 確定 -->
+        <a href="javascript:void(0)" (click)="setFinish()">{{ 'BTN.CHECK' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<ng-container [ngSwitch]="showPage">
+	<!-- 查詢頁 -->
+	<ng-container *ngSwitchCase="'inquiryPage'">
+		<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+			<app-sign-protect-search [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+				(errorPageEmit)="onErrorBackEvent($event)"></app-sign-protect-search>
+			<ng-container #pageBox></ng-container>
+		</section>
+	</ng-container>
+	<!-- 查詢頁 -->
+
+	<!-- 編輯頁 -->
+	<ng-container *ngSwitchCase="'editPage'">
+		<!--otherInfo利率相關資料 來不及整理資料直接塞 優化可調整-->
+		<app-sign-protect-edit [custInfo]="custInfo" [otherInfo]="otherInfo" [fullData]="fullData" (backPageEmit)="onPageBackEvent($event)"
+			(errorPageEmit)="onErrorBackEvent($event)"></app-sign-protect-edit>
+	</ng-container>
+	<!-- 編輯頁 -->
+
+
+	<!-- 撥款日期頁 undone -->
+	<ng-container *ngSwitchCase="'datePage'">
+		<app-sign-protect-date [custInfo]="custInfo"  [fullData]="fullData" (backPageEmit)="onPageBackEvent($event)"
+			(errorPageEmit)="onErrorBackEvent($event)"></app-sign-protect-date>
+	</ng-container>
+	<!-- 撥款日期頁 -->
+
+	<!-- 契約頁 undone -->
+	<ng-container *ngSwitchCase="'contractPage'">
+		<app-sign-protect-contract  [otherInfo]="otherInfo" [todayDate]="todayDate"  [signDate]="signDate" [draftContractData]="draftContract" [custInfo]="custInfo"
+			[fullData]="fullData" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+		</app-sign-protect-contract>
+	</ng-container>
+	<!-- 契約頁 -->
+
+	<!-- 安控頁 undone -->
+	<ng-container *ngSwitchCase="'securityPage'">
+		<section>
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security>
+		<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+					<a href="javascript:void(0)" (click)="finalCheck()">{{'BTN.CHECK' | translate }}</a>
+				</div>
+		</div>
+		<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+		</section>
+
+		<!-- <app-sign-protect-security [todayDate]="todayDate"  [signDate]="signDate" [custInfo]="custInfo"
+			[fullData]="fullData" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)">
+		</app-sign-protect-security> -->
+	</ng-container>
+	<!-- 安控頁 -->
+
+
+	<!-- 結果頁 -->
+	<ng-container *ngSwitchCase="'resultPage'">
+		<app-sign-protect-result [resultFlag] ='resultFlag' [todayDate]="todayDate" [signDate]="chineseDate" [resultInfo]="resultInfo"></app-sign-protect-result>
+	</ng-container>
+	<!-- 結果頁 -->
+</ng-container>

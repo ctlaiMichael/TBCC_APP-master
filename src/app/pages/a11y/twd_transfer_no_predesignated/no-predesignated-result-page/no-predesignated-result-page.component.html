@@ -1,0 +1,94 @@
+<section class="background_a11y">
+  <div class="row_single_a11y"></div>
+  <div class="row_white_a11y" [ngSwitch]="transferObj.transferResult">
+    <!-- 轉帳成功頁面 icon start -->
+    <div *ngSwitchCase="'success'">
+      <div class="success_icon_a11y"></div>
+      <div class="row8_black_a11y">
+        轉帳成功
+      </div>
+    </div>
+    <!-- 轉帳成功頁面 icon done -->
+    <!-- 轉帳失敗頁面 icon start -->
+    <div *ngSwitchCase="'fail'">
+      <div class="fail_icon_a11y"></div>
+      <div class="row8_black_a11y">
+        轉帳失敗
+      </div>
+    </div>
+    <!-- 轉帳成功頁面 icon done -->
+  </div>
+
+  <!-- 轉帳結果detail -->
+  <div [ngSwitch]="transferObj.transferResult">
+    <div *ngSwitchCase="'success'">
+      <div class="row_white_a11y">
+        <div class="row8_content_a11y">
+          轉出帳號<br>
+          <font class="font_money_a11y">{{formatAccount(transferObj.trnsOutAccts[transferObj.selectTrnsOutAcct].acctNo)}}
+          </font>
+        </div>
+        <div class="row8_content_a11y">
+          非約定轉入帳號<br>
+          <font class="font_money_a11y">
+              {{transferObj.selectbankFullName}}<br>
+        
+            {{formateTrnsInAcct(transferObj.inputTrnsInAcct)}}</font>
+        </div>
+        <div class="row8_content_a11y">
+          轉帳金額<br>
+          <font class="font_money_a11y">
+            NT$ {{transferObj.trnsfrAmount|htMoney:'TWD'}}</font>
+        </div>
+        <div class="row8_content_a11y">
+          手續費<br>
+          <font class="font_money_a11y">
+            NT$ {{transferObj.trnsfrFee|htMoney:'TWD'}}</font>
+        </div>
+        <div class="row8_content_a11y">
+          付款人備註<br>
+          <font class="font_money_a11y">{{transferObj.notePayer}}
+          </font>
+        </div>
+        <div class="row8_content_a11y">
+          給收款人訊息<br>
+          <font class="font_money_a11y">{{transferObj.notePayee}}
+          </font>
+        </div>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'fail'">
+      <div *ngIf="show_errObj">
+        <div class="row_white_a11y">
+          <div class="row8_content_a11y">
+            轉出帳號<br>
+            <font class="font_money_a11y">{{transferObj.trnsOutAccts[transferObj.selectTrnsOutAcct].acctNo | accountFormate}}
+            </font>
+          </div>
+          <div class="row8_content_a11y">
+            非約定轉入帳號<br>
+            <font class="font_money_a11y">
+                {{transferObj.selectbankFullName}}<br>
+          
+              {{formateTrnsInAcct(transferObj.inputTrnsInAcct)}}</font>
+          </div>
+          <div class="row8_content_a11y" title="{{twdTitle(transferObj.trnsfrAmount|htMoney:'TWD','轉帳金額')}}">
+            轉帳金額<br>
+            <font class="font_money_a11y">
+              NT$ {{transferObj.trnsfrAmount|htMoney:'TWD'}}</font>
+          </div>
+          <div class="row8_content_a11y">
+            失敗原因<br>
+            <font class="font_money_a11y" *ngIf="transferObj.transfer_errObj && transferObj.transfer_errObj.hostCodeMsg">{{transferObj.transfer_errObj.hostCodeMsg}}</font>
+            <font class="font_money_a11y" *ngIf="transferObj.transfer_errObj && transferObj.transfer_errObj.type === 'dialog' && transferObj.transfer_errObj.content">{{transferObj.transfer_errObj.content}}</font>
+          <!-- <div class="row8_content_a11y" *ngFor="let errObj_key of errObj_keys">
+            {{errObj_key}}<br>
+            <font class="font_money_a11y">{{transferObj.transfer_errObj[errObj_key]}}
+            </font> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

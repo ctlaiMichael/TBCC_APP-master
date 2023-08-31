@@ -1,0 +1,122 @@
+<ng-container>
+    <section>
+        <div class="sub_info_frame result">
+            <div class="step_final_icon_frame">
+                <i *ngIf="isSuccess" class="icon_success"></i>
+                <i *ngIf="!isSuccess" class="icons_fault"></i>
+                <span class="step_final_info">{{successMsg}}</span>
+            </div>
+            <p style="color:white; text-align: center">{{successDetail}}</p>
+        </div>
+        <div class="row_single" *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">
+        <h4 class="simple_title">變更前之約定</h4>
+        </div>
+        <ul class="table_info">
+            <li class="table_row">
+                <span>黃金存摺帳號</span>
+                <i>{{ goldtermsInfoOrg.goldAccount | accountFormate}}</i>
+            </li>
+            <li class="table_row">
+                <span>新台幣約定扣款帳號</span>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">{{ goldtermsInfoOrg.trnsfrOutAccount | accountFormate}}</i>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='Y'">{{ goldtermsInfo.trnsfrOutAccount | accountFormate}}</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='Y'">
+                <span>每筆扣款成功手續費</span>
+                <i> TWD 50</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">
+                <span>扣款狀態</span>
+                <i>{{ goldTermStatus }}</i>
+            </li>
+        </ul>
+        <ul class="table_info table_th_style">
+            <li class="table_row">
+                <span>約定扣款日期</span>
+                <i>金額</i>
+            </li>
+            <li class="table_row">
+                <span>6日</span>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">{{ (goldtermsInfoOrg.fixAmount6>0)?(goldtermsInfoOrg.fixAmount6 | currencyMoney:'TWD'):'--'}}</i>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='Y'">{{ (goldtermsInfo.fixAmount6>0)?(goldtermsInfo.fixAmount6 | currencyMoney:'TWD'):'--'}}</i>
+            </li>
+            <li class="table_row">
+                <span>16日</span>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">{{ (goldtermsInfoOrg.fixAmount16>0)?(goldtermsInfoOrg.fixAmount16 | currencyMoney:'TWD'):'--'}}</i>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='Y'">{{ (goldtermsInfo.fixAmount16>0)?(goldtermsInfo.fixAmount16 | currencyMoney:'TWD'):'--'}}</i>
+            </li>
+            <li class="table_row">
+                <span>26日</span>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">{{ (goldtermsInfoOrg.fixAmount26>0)?(goldtermsInfoOrg.fixAmount26 | currencyMoney:'TWD'):'--'}}</i>
+                <i *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='Y'">{{ (goldtermsInfo.fixAmount26>0)?(goldtermsInfo.fixAmount26 | currencyMoney:'TWD'):'--'}}</i>
+            </li>
+
+        </ul>
+        <div class="row_single" *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">
+            <h4 class="simple_title">變更後之約定</h4>
+        </div>
+        <ul class="table_info" *ngIf="goldtermsInfo.confirmData.firstGoldBuyFlag==='N'">
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='1'">
+                <span>新台幣約定扣款帳號</span>
+                <i>{{ goldtermsInfo.trnsfrOutAccount | accountFormate}}</i>
+            </li>
+
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount6>0">
+                <span style="border-bottom: none;padding-bottom: 0px;">新台幣扣款日期及金額</span>
+                <i style="border-bottom: none;padding-bottom: 0px;">{{ (goldtermsInfo.fixAmount6>0)?'6日':''}}</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount6>0">
+                <span></span>
+                <i>{{ (goldtermsInfo.fixAmount6>0)?(goldtermsInfo.fixAmount6 | currencyMoney:'TWD'):''}}</i>
+            </li>
+
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount16>0">
+                <span style="border-bottom: none;padding-bottom: 0px;">新台幣扣款日期及金額</span>
+                <i style="border-bottom: none;padding-bottom: 0px;">{{ (goldtermsInfo.fixAmount16>0)?'16日':''}}</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount16>0">
+                <span></span>
+                <i>{{ (goldtermsInfo.fixAmount16>0)?(goldtermsInfo.fixAmount16 | currencyMoney:'TWD'):''}}</i>
+            </li>
+
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount26>0">
+                <span style="border-bottom: none;padding-bottom: 0px;">新台幣扣款日期及金額</span>
+                <i style="border-bottom: none;padding-bottom: 0px;">{{ (goldtermsInfo.fixAmount26>0)?'26日':''}}</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='2' && goldtermsInfo.fixAmount26>0">
+                <span></span>
+                <i>{{ (goldtermsInfo.fixAmount26>0)?(goldtermsInfo.fixAmount26 | currencyMoney:'TWD'):''}}</i>
+            </li>
+
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='3' && goldtermsInfo.confirmData.payMethod==='3'">
+                <span>扣款狀態</span>
+                <i>終止扣款</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='3' && goldtermsInfo.confirmData.payMethod==='1'">
+                <span>扣款狀態</span>
+                <i>恢復扣款</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='3' && goldtermsInfo.confirmData.payMethod==='2'">
+                <span>扣款狀態</span>
+                <i>暫停扣款</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='3' && goldtermsInfo.confirmData.payMethod==='2'">
+                <span>起日</span>
+                <i>{{ goldtermsInfo.pauseBeginDay | htDate:'yyyy/MM/dd'}}</i>
+            </li>
+            <li class="table_row" *ngIf="goldtermsInfo.confirmData.selectChange==='3' && goldtermsInfo.confirmData.payMethod==='2'">
+                <span>迄日</span>
+                <i>{{ goldtermsInfo.pauseEndDay | htDate:'yyyy/MM/dd'}}</i>
+            </li>
+        </ul>
+        <div class="row_single"></div>
+        <div class="row_single">
+            <a href="javascript:void(0)" class="button_confirm" (click)="onBackEvent();">
+                {{ btnName }}
+            </a>
+        </div>
+    </section> 
+</ng-container>
+
+
+

@@ -1,0 +1,56 @@
+<!-- section -->
+<section>
+  <form [formGroup]="certForm">
+    <div class="row_single">
+      <h4 class="simple_title">您尚未下載憑證，請依「密碼通知書(憑證申請密碼)」輸入以下資訊</h4>
+    </div>
+    <!-- nav_first_page_frame -->
+    <div class="row_single">
+      <ul class="inner_table_frame" *ngIf="CNFromServer">
+        <li class="inner_table_cell">
+          憑證名稱(CN):
+        </li>
+        <li class="inner_table_cell">
+          <select name="" id="" class="inner_select" formControlName="cert">
+            <option *ngFor="let cert of certList"  value="{{cert.CertCN}}">{{cert.CertCN}}</option>
+          </select>
+        </li>
+      </ul>
+      <ul class="inner_table_frame normal_disable" *ngIf="!CNFromServer">
+        <li class="inner_table_cell">
+          憑證名稱(CN):
+        </li>
+        <li class="inner_table_cell">
+          <select name="" id="" class="inner_select" formControlName="cert">
+            <option value="{{certCN}}">{{certCN}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <ul class="inner_table_frame " [ngClass]="validate('pwd')?'active_warnning':''">
+        <li class="inner_table_cell">
+          憑證申請密碼
+        </li>
+        <li class="inner_table_cell" >
+          <input type="password" formControlName="pwd"  class="inner_input" placeholder="請輸入憑證密碼">
+        </li>
+      </ul>
+      <i class="input_info_warnning">請輸入正確資料</i>
+    </div>
+    <div class="row_single">
+      <div class="double_button">
+        <a (click)="cancel()">取消</a>
+        <a (click)="submit()">確定</a>
+      </div>
+    </div>
+    <div class="row_single">
+      <h4 class="simple_title">提醒您</h4>
+    </div>
+    <div class="row_single">
+      <p class="inner_content" class="font_red">此密碼為您至本行營業單位申請憑證時，由櫃員交付給您。若未拿到此密碼通知書，或密碼通知書列印不清楚，請洽您辦理憑證的營業單位或重新申請憑證。
+      </p>
+    </div>
+  </form>
+</section>
+<!-- section End -->

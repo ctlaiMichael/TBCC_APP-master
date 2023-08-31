@@ -1,0 +1,517 @@
+<!--表單頁-->
+<!-- 注意!!!!!id使用於大數據!!!! -->
+<div>
+	<h3 class="row_single in_wran_title11">您的申請資料<i class="input_name">*</i>表示必填<br>您申請的卡片為{{card_data.name}}</h3>
+	<!-- <div>您申請卡片為{{card_data.name}}</div> -->
+	
+<div class="bc_frame">
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.idNo}" ng-if="!fixUserId">
+		<i class="input_name" ng-class="{required:applyFormList.required.idNo}">{{'FIELD.IDENTITY' | translate}}</i>
+		<input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}" ng-model="inp.show.idNo"
+		 identity-mask-directive /><b></b>
+		<s class="input_comment">{{error_msg_list.idNo}}</s>
+	</div>
+	<div class="row_single info_list " ng-if="fixUserId">
+		<!-- 身分證字號(不允許變更) -->
+		<div class="input_frame normal_disable"><table><tr>
+		<td align="center"><i class="info_title">{{'FIELD.IDENTITY' | translate}}</i></td>
+		<td align="center"><p class="info_conetnt">{{inp.idNo ? inp.show.idNo : '--'}}</p></td>
+		</tr></table></div>
+	</div>
+ 
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.cnName}">
+		<!-- 中文姓名 -->
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.cnName}">{{'CTRL_APPLY.INPUT.NAME_CHINESE' | translate}}</i></td>
+		<td align="center"><input maxlength="50" type="text" id="twName" name="twName" placeholder="{{'CTRL_APPLY.INPUT.NAME_CHINESE_MSG' | translate}}" ng-model="inp.cnName" /><b></b></td>
+		
+		</tr></table></div><s class="input_comment">{{error_msg_list.cnName}}</s>
+	</div>
+
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.enName}" ng-show="!applyUserType">
+		<!-- 英文姓名 -->
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.enName}">{{'CTRL_APPLY.INPUT.NAME_ENGLISH' | translate}}</i></td>
+		<td align="center"><input maxlength="50" type="text" id="enName" name="enName" placeholder="{{'CTRL_APPLY.INPUT.NAME_ENGLISH_MSG' | translate}}({{'CTRL_APPLY.INPUT.NAME_ENGLISH_INFO' | translate}})" ng-model="inp.enName" /><b></b></td>
+		
+		</tr></table></div><s class="input_comment">{{error_msg_list.enName}}</s>
+	</div>
+
+	<div class="row_single input_single input_data" ng-class="{input_error:error_msg_list.birthday}">
+		<!-- 生日 -->
+		<div class="input_frame"><table><tr></tr>
+		<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.birthday}">{{'FIELD.BIRTHDAY' | translate}}</i></td>
+		<td align="center"><input maxlength="10" type="data" id="birthday" name="birthday" placeholder="1997/10/10" ng-model="inp.birthday" date-mask-directive /><b></b></td>
+	
+		</tr></table></div><s class="input_comment">{{error_msg_list.birthday}}</s>
+	</div>
+
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.email}">
+		<!-- E-mail -->
+		<div class="input_frame"><table><tr></tr>
+		<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.email}">{{'FIELD.EMAIL' | translate}}</i></td>
+		<td align="center"><input maxlength="50" type="text" id="email" name="email" placeholder="{{'INPUT_MSG.EMAIL' | translate}}" ng-model="inp.email" /><b></b></td>
+	
+		</tr></table></div><s class="input_comment">{{error_msg_list.email}}</s>
+	</div>
+	<!--0913信用卡需求異動 !-->
+	<div class="row_single input_single">
+		<div class="inner_checkbox">
+			<input type="checkbox" id="ebillApply" ng-model="inp.ebillApply"  ng-true-value="'1'" ng-false-value="'0'" />
+			<label for="ebillApply" class="original_checkbox option_for_group">
+				<span><i></i></span>
+				<b>同意申請電子帳單，並以Email方式寄至上述電子信箱，申請成功後停止郵寄紙本帳單。</b>
+			</label>
+		</div>
+	</div>
+	<!--0913信用卡需求異動 !-->
+
+	<!--0117信用卡需求異動 !-->
+	<div class="row_single input_single">
+		<div class="inner_checkbox">
+			<input type="checkbox" id="cashRemark" ng-model="inp.cashRemark"  ng-true-value="'1'" ng-false-value="'0'" />
+			<label for="cashRemark" class="original_checkbox option_for_group">
+				<span><i></i></span>
+				<b>本人同意 貴行核卡後主動寄發預借現金密碼函(無勾選視為不同意)。</b>
+			</label>
+		</div>
+	</div>
+	<!--0913信用卡需求異動 !-->
+
+
+	<div class="row_single input_single"  ng-class="{input_error:error_msg_list.mobile}">
+		<!-- 行動電話 -->
+		<div class="input_frame"><table><tr></tr>
+		<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.mobile}">{{'FIELD.MOBILE' | translate}}</i></td>
+		<td align="center"><input type="text" id="mobileNumber" name="mobileNumber" placeholder="0911111111" ng-model="inp.mobile" /><b></b></td>
+		
+		</tr></table></div>
+		<s class="input_comment">{{error_msg_list.mobile}}</s>
+	</div>
+
+	<!-- 0913信用卡需求異動-->
+	<div class="row_single  info_list"  ng-class="{input_error:error_msg_list.sameAsIdAddress}">
+		<div class="input_frame normal_disable"><table><tr></tr>
+		<td align="center"><i class="info_title required" ng-class="{required:applyFormList.required.sameAsIdAddress}">戶籍地址</i></td>
+		<td align="center"><p class="info_conetnt">同身分證背面戶籍地址資料<p></b></td>
+		</tr></table></div>
+	</div>
+	<!-- 0913信用卡需求異動-->
+
+	<div  ng-show="!applyUserType">
+
+
+			<div class="row_single input_single" ng-class="{input_error:error_msg_list.currentTel}">
+				<!-- 住家電話 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.currentTel}">{{'FIELD.TELPHONE' | translate}}區碼</i></td>
+				<td align="center"><input type="tel" id="telNo" name="telNo" placeholder="02"  ng-model="inp.currentTelArea" /></td>
+				</tr></table></div>
+				<s class="input_comment">{{error_msg_list.currentTel}}</s>
+			</div>
+
+			<div class="row_single input_single"ng-class="{input_error:error_msg_list.currentTel}">
+				<!-- 住家電話 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.currentTel}">{{'FIELD.TELPHONE' | translate}}</i></td>
+				<td align="center"><input type="tel" id="telNumber" name="telNumber" placeholder="23317531" ng-model="inp.currentTel" /></td> 	
+				</tr></table></div>
+				<s class="input_comment">{{error_msg_list.currentTel}}</s>
+			</div>
+		
+
+
+			<!-- <div  ng-show="!applyUserType">
+					<div class="row_single input_single tel_group"
+					 ng-class="{input_error:error_msg_list.currentTel}">
+						<住家電話>
+						<i class="input_name" ng-class="{required:applyFormList.required.currentTel}">{{'FIELD.TELPHONE' | translate}}</i>
+						<input type="tel" name="" placeholder="02"  ng-model="inp.currentTelArea" />
+						<input type="tel" name="" placeholder="23317531" ng-model="inp.currentTel" /><b></b>
+						<s class="input_comment">{{error_msg_list.currentTel}}</s>
+					</div> -->
+
+
+
+
+
+		<hr class="divider">
+		<!-- 通訊地址 Start -->
+		<div class="row_single">
+			<h4 class="simple_title">通訊地址</h4>
+		</div>
+		<div class="addressBox">
+			<!--0829信用卡需求異動 !-->
+			<div class="row_single input_single">
+				<div class="inner_checkbox">
+					<input type="checkbox" id="sameAdd" ng-click="sameAddress();" ng-model="inp.sameAdd"/>
+					<label for="sameAdd"  class="original_checkbox option_for_group">
+						<span><i></i></span>
+						<b>通訊地址同戶籍地址</b>
+					</label>
+				</div>
+			</div>
+			<!--0829信用卡需求異動 !-->
+			<div class="row_single input_single inputGroupBox"  ng-class="{input_error:(error_msg_list.currentEmpty||error_msg_list.currentPost)}">
+				<!-- 郵遞區號 -->
+				<div class="input_frame" ng-class="{normal_disable:inp.sameAdd}"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.currentAddr,normal_disable:inp.sameAdd}">郵遞區號</i></td>
+				<td align="center"><input type="text" name="post" placeholder="{{'INPUT_CHECK.AREA.POST' | translate}}" ng-model="inp.currentPost" /><b></b></td>
+				</tr></table></div>
+			</div>
+			<div class="row_single info_list info_select inputGroupBox"  ng-class="{input_error:(error_msg_list.currentEmpty||error_msg_list.currentCity)}">
+				<!-- 縣市 -->
+				<div class="input_frame" ng-class="{normal_disable:inp.sameAdd}"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.currentAddr,normal_disable:inp.sameAdd}">縣市</i></td>
+				<td align="center">
+					<select name="city" id="city" ng-model="inp.currentCity" >
+						<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+					</select>	
+				</td>
+				</tr></table></div>
+			</div>
+
+			<div class="row_single info_list info_select inputGroupBox"  ng-class="{input_error:(error_msg_list.currentEmpty||error_msg_list.currentTown)}">
+				<!-- 地區 -->
+				<div class="input_frame"  ng-class="{normal_disable:inp.sameAdd}"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.currentAddr,normal_disable:inp.sameAdd}">地區</i></td>
+				<td align="center">
+					<select name="area" ng-model="inp.currentTown">
+						<option value="">{{'INPUT_CHECK.AREA.AREA' | translate}}</option>
+					</select>
+				</td>
+				</tr></table></div>
+			</div>
+			<div class="row_single input_single"  ng-class="{input_error:(error_msg_list.currentEmpty||error_msg_list.currentPost||error_msg_list.currentCity||error_msg_list.currentTown||error_msg_list.currentAddr)}">
+				<!-- 地址 -->
+				<div class="input_frame" ng-class="{normal_disable:inp.sameAdd}"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.currentAddr,normal_disable:inp.sameAdd}">{{'CTRL_APPLY.INPUT.ADDR_CURRENT' | translate}}</i></td>
+				<td align="center"><input type="text" maxlength="100" name=""  placeholder="{{'INPUT_CHECK.AREA.ADDRESS' | translate}}" ng-model="inp.currentAddr" /><b></b></td>
+				</tr></table></div>
+				<s class="input_comment">
+					{{error_msg_list.currentEmpty}}
+					{{error_msg_list.currentPost}}
+					{{error_msg_list.currentCity}}
+					{{error_msg_list.currentTown}}
+					{{error_msg_list.currentAddr}}
+				</s>
+			</div>
+		</div>
+		
+		<!-- 通訊地址 End -->
+		<hr class="divider">	
+
+
+		<div class="row_single input_single" ng-if="applyFormList.education" ng-class="{input_error:error_msg_list.education}">
+			<!-- 教育程度 -->
+			<i class="input_name" ng-class="{required:applyFormList.required.education}">{{'CTRL_APPLY.INPUT.EDUCATION' | translate}}</i>
+			<br/>
+			<div class="inner_radio" ng-repeat="(key, value) in applyFormList.education">
+				<input type="radio" id="inp_education{{key}}" name="radio_education" value="{{key}}" ng-model="inp.education" />
+				<label for="inp_education{{key}}" class="original_checkbox option_for_group">
+					<span><i></i></span>
+					<b>{{value}}</b>
+				</label>
+			</div>
+			<s class="input_comment">{{error_msg_list.education}}</s>
+		</div>
+	</div>
+
+
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.elemSchool}">
+			<!-- 畢業國小名稱 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.elemSchool}">{{'CTRL_APPLY.INPUT.ELEMSCHOOL' | translate}}</i></td>
+				<td align="center"><input type="text" name="" placeholder="請輸入畢業國小名稱" ng-model="inp.elemSchool" maxlength="20" /><b></b></td>
+			
+				</tr></table></div><s class="input_comment">{{error_msg_list.elemSchool}}</s>
+		</div>
+
+	<div  ng-show="!applyUserType">
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.compName}">
+			<!-- 公司名稱 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compName}">{{'CTRL_APPLY.INPUT.COMP_NAME' | translate}}</i></td>
+				<td align="center"><input maxlength="50" type="text" name="" placeholder="{{'CTRL_APPLY.INPUT.COMP_NAME_MSG' | translate}}" ng-model="inp.compName" /><b></b></td>
+			
+				</tr></table></div><s class="input_comment">{{error_msg_list.compName}}</s>
+		</div>
+
+		<!-- <div class="row_single input_single address_group"
+		 ng-class="{input_error:(error_msg_list.compEmpty||error_msg_list.compPost||error_msg_list.compCity||error_msg_list.compTown||error_msg_list.compAddr)}">
+			 <公司地址> 
+			<i class="input_name" ng-class="{required:applyFormList.required.compAddr}">{{'CTRL_APPLY.INPUT.ADDR_COMP' | translate}}</i>
+			<input type="text" name="post" placeholder="{{'INPUT_CHECK.AREA.POST' | translate}}" ng-model="inp.compPost" />
+			<div class="address_select_group">
+				<select name="city" id="comp_city" ng-model="inp.compCity">
+					<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+				</select>
+				<select name="area" ng-model="inp.compTown">
+					<option value="">{{'INPUT_CHECK.AREA.AREA' | translate}}</option>
+				</select>
+			</div>
+			<input type="text" name="address"  placeholder="{{'INPUT_CHECK.AREA.ADDRESS' | translate}}" ng-model="inp.compAddr" />
+			<s class="input_comment">
+				{{error_msg_list.compEmpty}}
+				{{error_msg_list.compPost}}
+				{{error_msg_list.compCity}}
+				{{error_msg_list.compTown}}
+				{{error_msg_list.compAddr}}
+			</s>
+		</div> -->
+
+
+		<hr class="divider">
+		<!-- 通訊地址 Start -->
+		<div class="row_single">
+			<h4 class="simple_title">公司地址</h4>
+		</div>
+		<div class="addressBox">
+			
+			<div class="row_single input_single inputGroupBox"  ng-class="{input_error:(error_msg_list.compEmpty||error_msg_list.compPost)}">
+				<!-- 郵遞區號 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compAddr}">郵遞區號</i></td>
+				<td align="center"><input type="text" name="post" placeholder="{{'INPUT_CHECK.AREA.POST' | translate}}" ng-model="inp.compPost" /><b></b></td>
+				</tr></table></div>
+			</div>
+			<div class="row_single info_list info_select inputGroupBox"  ng-class="{input_error:(error_msg_list.compEmpty||error_msg_list.compCity)}">
+				<!-- 縣市 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.compAddr}">縣市</i></td>
+				<td align="center">
+					<select name="city" id="comp_city" ng-model="inp.compCity" >
+						<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+					</select>	
+				</td>
+				</tr></table></div>
+			</div>
+
+			<div class="row_single info_list info_select inputGroupBox"  ng-class="{input_error:(error_msg_list.compEmpty||error_msg_list.compTown)}">
+				<!-- 地區 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.compAddr}">地區</i></td>
+				<td align="center">
+					<select name="area" ng-model="inp.compTown">
+						<option value="">{{'INPUT_CHECK.AREA.AREA' | translate}}</option>
+					</select>
+				</td>
+				</tr></table></div>
+			</div>
+			<div class="row_single input_single"  ng-class="{input_error:(error_msg_list.compEmpty||error_msg_list.compPost||error_msg_list.compCity||error_msg_list.compTown||error_msg_list.compAddr)}">
+				<!-- 地址 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compAddr,normal_disable:inp.sameAdd}">{{'CTRL_APPLY.INPUT.ADDR_CURRENT' | translate}}</i></td>
+				<td align="center"><input maxlength="100" type="text" name="address"  placeholder="{{'INPUT_CHECK.AREA.ADDRESS' | translate}}" ng-model="inp.compAddr" /><b></b></td>
+				</tr></table></div>
+				<s class="input_comment">
+						{{error_msg_list.compEmpty}}
+						{{error_msg_list.compPost}}
+						{{error_msg_list.compCity}}
+						{{error_msg_list.compTown}}
+						{{error_msg_list.compAddr}}
+				</s>
+			</div>
+		</div>
+		
+		<!-- 通訊地址 End -->
+		<hr class="divider">	
+
+
+
+
+
+
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.compId}">
+			<!-- 統一編號 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compId}">{{'CTRL_APPLY.INPUT.COMP_ID' | translate}}</i></td>
+				<td align="center"><input maxlength="50" type="text" name="" placeholder="{{'CTRL_APPLY.INPUT.COMP_ID_MSG' | translate}}" ng-model="inp.compId" /><b></b></td>
+			
+				</tr></table></div><s class="input_comment">{{error_msg_list.compId}}</s>
+		</div>
+
+		<!-- <div class="row_single input_single tel_group"
+		 ng-class="{input_error:error_msg_list.compTel}">
+			
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compTel}">{{'CTRL_APPLY.INPUT.COMP_PHONE' | translate}}</i></td>
+				<td align="center"><input type="tel" name="" placeholder="02" ng-model="inp.compTelArea" /></td>
+				<td align="center"><input type="tel" name="" placeholder="23317531" ng-model="inp.compTel" /><b></b></td>
+
+				</tr></table></div><s class="input_comment">{{error_msg_list.compTel}}</s>
+	
+		</div> -->
+
+					<div class="row_single input_single " ng-class="{input_error:error_msg_list.compTel}">
+						<!-- 住家電話 -->
+						<div class="input_frame"><table><tr></tr>
+						<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compTel}">{{'CTRL_APPLY.INPUT.COMP_PHONE' | translate}}</i></td>
+						<td align="center"><input type="tel" name="" placeholder="02" ng-model="inp.compTelArea" /></td>
+						</tr></table></div>
+						<s class="input_comment">{{error_msg_list.currentTel}}</s>
+					</div>
+					<div class="row_single input_single " ng-class="{input_error:error_msg_list.compTel}">
+						<!-- 住家電話 -->
+						<div class="input_frame"><table><tr></tr>
+						<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.compTel}">{{'CTRL_APPLY.INPUT.COMP_PHONE' | translate}}</i></td>
+						<td align="center"><input type="tel" name="" placeholder="23317531" ng-model="inp.compTel" /><b></b></td>	
+						</tr></table></div>
+						<s class="input_comment">{{error_msg_list.compTel}}</s>
+					</div>
+
+
+
+
+
+
+		<div class="row_single info_list info_select"
+		 ng-class="{input_error:error_msg_list.industryType}">
+			<!-- 行業別 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.industryType}">{{'CTRL_APPLY.INPUT.industryText' | translate}}</i></td>
+				<td align="center"><select name="" class="industry" ng-model="inp.industryType">
+						<option value="">{{'CTRL_APPLY.INPUT.SELECT' | translate}}</option>
+						<option value="{{value}}" ng-repeat="value in applyFormList.industry">{{value}}</option>
+						<option value="other">{{'CTRL_APPLY.INPUT.industryText_Other' | translate}}</option>
+					</select></td>
+				</tr></table></div>
+				說明：如無職業者，行業別請選擇自由業或家管。
+		</div>
+		
+		<div class="row_single input_single "
+		 ng-class="{input_error:error_msg_list.industryType}">
+			<div class="row_single input_single "   ng-show="inp.industryType==='other'" >
+				<div class="input_frame"><table><tr></tr>
+				<td align="center">
+				<input type="text" name="inp.industryText" ng-model="inp.industryText" placeholder="請輸入行業別" />
+				</td>
+				</tr></table></div>
+			</div>
+			<s class="input_comment">{{error_msg_list.industryType}}</s>
+		</div>
+
+
+
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.posTitle}">
+			<!-- 職稱 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.posTitle}">{{'CTRL_APPLY.INPUT.posTitle' | translate}}</i></td>
+				<td align="center"><input maxlength="50" type="text" name="" placeholder="{{'CTRL_APPLY.INPUT.posTitle_MSG' | translate}}" ng-model="inp.posTitle" /><b></b></td>
+				
+				</tr></table></div><s class="input_comment">{{error_msg_list.posTitle}}</s>
+		</div>
+
+		<div class="row_single input_single input_aw"
+		 ng-class="{input_error:error_msg_list.workYear}">
+			<!-- 年資 -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.workYear}">{{'CTRL_APPLY.INPUT.workYear' | translate}}</i></td>
+				<td align="center"><input  maxlength="2" type="text" name="" placeholder="1" ng-model="inp.workYear" /><span>{{'TIME.YEAR' | translate}}</span></td>
+				
+				</tr></table></div><s class="input_comment">{{error_msg_list.workYear}}</s>
+		</div>
+
+		<div class="row_single input_single input_aw"
+		 ng-class="{input_error:error_msg_list.avgSalary}">
+			<!-- 平均月收入(萬) -->
+			<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="input_name" ng-class="{required:applyFormList.required.avgSalary}">{{'CTRL_APPLY.INPUT.avgSalary' | translate}}</i></td>
+				<td align="center"><input maxlength="6" type="text" name="" placeholder="2" ng-model="inp.avgSalary" /><b></b><span>{{'MONEY.TEN_THOUSAND_DOLLAR' | translate}}</span></td>
+				
+				</tr></table></div><s class="input_comment">{{error_msg_list.avgSalary}}</s>
+
+		</div>
+
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.billMailAddr}" ng-if="applyFormList.billMailAddr">
+			<!-- 帳單寄收地址 -->
+			<i class="input_name" ng-class="{required:applyFormList.required.billMailAddr}">{{'CTRL_APPLY.INPUT.billMailAddr' | translate}}</i>
+			<br/>
+			<div class="inner_radio" ng-repeat="(key, value) in applyFormList.billMailAddr">
+				<input type="radio" id="inp_billMailAddr{{key}}" name="radio_billMailAddr" value="{{key}}" ng-model="inp.billMailAddr" />
+				<label for="inp_billMailAddr{{key}}" class="original_checkbox option_for_group">
+					<span><i></i></span>
+					<b>{{value}}</b>
+				</label>
+			</div>
+			<s class="input_comment">{{error_msg_list.billMailAddr}}</s>
+		</div>
+	</div>
+
+
+
+
+	<!-- 往來分行 -->
+	<!-- <div class="row_single input_single address_group"
+	 ng-class="{input_error:(error_msg_list.branchId)}">
+		<i class="input_name" ng-class="{required:applyFormList.required.branchId}">{{'CTRL_APPLY.INPUT.branchName' | translate}}</i>
+		<input type="text" name="branch_id" placeholder="{{'INPUT_MSG.BRANCH.ID' | translate}}" />
+		<div class="address_select_group">
+			<select name="branch_city" id="branch_city">
+				<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+			</select>
+			<select name="branch" ng-model="inp.branchId">
+				<option value="">{{'INPUT_MSG.BRANCH.NAME' | translate}}</option>
+			</select>
+		</div>
+		<s class="input_comment">
+			{{error_msg_list.branchId}}
+		</s>
+	</div> -->
+
+	<hr class="divider">
+		<!-- 往來分行 Start -->
+		<div class="row_single">
+			<h4 class="simple_title">{{'CTRL_APPLY.INPUT.branchName' | translate}}</h4>
+		</div>
+		<div class="addressBox">
+			
+				<div class="row_single input_single inputGroupBox" ng-class="{input_error:(error_msg_list.branchId)}">	
+				<!-- 分行代號 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center">	<i class="input_name" ng-class="{required:applyFormList.required.branchId}">分行代碼</i></td>
+				<td align="center"> <input type="text" name="branch_id" placeholder="{{'INPUT_MSG.BRANCH.ID' | translate}}" /><b></b></td>
+				</tr></table></div>
+			</div>
+			<div class="row_single info_list info_select inputGroupBox" >
+				<!-- 縣市 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.compAddr}">分行縣市</i></td>
+				<td align="center">
+						<select name="branch_city" id="branch_city">
+								<option value="">{{'INPUT_CHECK.AREA.CITY' | translate}}</option>
+						</select>
+				</td>
+				</tr></table></div>
+			</div>
+
+			<div class="row_single info_list info_select inputGroupBox"  >
+				<!-- 分行 -->
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title" ng-class="{required:applyFormList.required.compAddr}">分行</i></td>
+				<td align="center">
+						<select name="branch" ng-model="inp.branchId">
+								<option value="">{{'INPUT_MSG.BRANCH.NAME' | translate}}</option>
+						</select>
+				</td>
+				</tr></table></div>
+				<s class="input_comment">
+						{{error_msg_list.branchId}}
+				</s>
+			</div>
+
+		</div>
+		
+		<!-- 往來分行 End -->
+		<hr class="divider">		
+
+
+
+
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="stepChangeToUpload()">{{'BTN.NEXT' | translate}}</button>
+	</div>
+</div>
+
+</div>
+<!--表單頁 //END-->

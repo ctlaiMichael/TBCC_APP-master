@@ -1,0 +1,41 @@
+<!-- section -->
+<section>
+  <div class="row_single">
+    <h4 class="simple_title">選擇快捷選單功能</h4>
+  </div>
+  <div class="row_single">
+    <a (click)="clickSave()" class="button_confirm">儲存設定</a>
+  </div>
+  <div class="row_single" id="all">
+
+    <!-- Menu Item -->
+    <div class="quicklink_menu" *ngFor="let item of menu;let menuIndex = index">
+      <div class="inner_checkbox" style="display: inline-block;">
+        <input type="checkbox" id="checkbox_{{menuIndex}}" name="inner_checkbox" [(ngModel)]="item.seleted">
+        <label for="checkbox_{{menuIndex}}" class="quicklink_check">
+          <span>
+            <i></i>
+          </span>
+          <b>{{item.name|translate}}</b>
+        </label>
+        <i *ngIf="!!item.subMenu" [ngClass]="{'down_arrow':!item.expand, 'up_arrow':item.expand}"   (click)="toggleMenu(item)"></i>
+      </div>
+      <!-- Sub Item -->
+      <div class="inner_checkbox inner_child" [ngStyle]="{'display':item.expand? 'inline-block' : 'none' }"  *ngFor="let subItem of item.subMenu;let subMenuIndex = index" >
+        <input type="checkbox" id="checkbox_{{menuIndex}}_{{subMenuIndex}}" name="inner_checkbox" [(ngModel)]="subItem.seleted" >
+        <label for="checkbox_{{menuIndex}}_{{subMenuIndex}}" class="quicklink_check">
+          <span>
+            <i></i>
+          </span>
+          <b>{{subItem.name|translate}}</b>
+        </label>
+      </div>
+      <!-- Sub Item End -->
+    </div>
+    <!-- Menu Item End -->
+  </div>
+
+  <div class="row_single">
+    <a (click)="clickSave()" class="button_confirm">儲存設定</a>
+  </div>
+</section>

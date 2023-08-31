@@ -1,0 +1,108 @@
+<section>
+    <ng-container *ngIf="showPage=='edit'">
+        <div class="row_single">
+            <h4 class='simple_title'>客戶基本資料</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content">
+                依據洗錢防制之相關法令規範 ，請您依序輸入『工作狀態、職業別、年收入、任職公司名稱、職稱』等資料，倘您需時間準備資料，請按「取消」離開。
+            </p>
+        </div>
+        <div class='row_single'>
+            <ul class="inner_table_frame suspend">
+                <li class="inner_table_cell">
+                    工作狀態
+                </li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" [(ngModel)]="custInfo.workingStatus" (change)="statusChnage()">
+                        <option *ngFor="let item of option1; let i = index" [ngValue]="item">{{ item }}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div class='row_single'>
+            <ul class="inner_table_frame suspend">
+                <li class="inner_table_cell">
+                    職業別
+                </li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" [(ngModel)]="custInfo.jobType" (change)="jobChange()">
+                        <option *ngFor="let item of option2; let i = index" [ngValue]="item">{{ item }}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <ng-container *ngIf="isJobOther == true">
+            <div class='row_single'>
+                <ul class="inner_table_frame suspend">
+                    <li class="inner_table_cell">
+                        <input type="text" class="inner_input" [(ngModel)]="custInfo.occupation" placeholder="請填入職業別">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">限填入1-6個中文字。</i>
+            </div>
+        </ng-container>
+        <!-- <div class="row_single">
+        <ul class="inner_table_frame suspend" [ngClass]="{'normal_disable':(radioVal=='2'), 'active_warnning':(errorMsg.money!='') }">
+            <li class="inner_table_cell">
+                每次投資金額
+            </li>
+            <li class="inner_table_cell">
+                <input type="text" class="inner_input" value="{{fullData.purchAmnt | htMoney}}" [(ngModel)]="purchAmnt" (change)="amntChange()">
+            </li>
+            <li class="inner_table_cell third_td">元</li>
+        </ul>
+        <i class="input_info_warnning">{{errorMsg.money | translate}}</i>
+    </div> -->
+        <div class='row_single'>
+            <ul class="inner_table_frame suspend">
+                <li class="inner_table_cell">
+                    年收入
+                </li>
+                <li class="inner_table_cell">
+                    <select class="inner_select" [(ngModel)]="custInfo.annualIncome">
+                        <option *ngFor="let item of option3; let i = index" [ngValue]="item">{{ item }}</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div class='row_single'>
+            <ul class="inner_table_frame suspend" [ngClass]="{'normal_disable':(isDisabled==true)}">
+                <li class="inner_table_cell">
+                    任職公司名稱
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" class="inner_input" [(ngModel)]="custInfo.companyName" placeholder="請填入任職公司名稱">
+                </li>
+            </ul>
+            <p class="inner_content" style="color:red; font-size:12px">
+                訊息文字長度限2-26位英數字(半形)或2-13個中文字(全形)。
+            </p>
+            <!-- <i class="input_info_warnning">訊息文字長度限2-26位英數字(半形)或2-13個中文字(全形)。</i> -->
+        </div>
+        <div class='row_single'>
+            <ul class="inner_table_frame suspend" [ngClass]="{'normal_disable':(isDisabled==true)}">
+                <li class="inner_table_cell">
+                    職稱
+                </li>
+                <li class="inner_table_cell">
+                    <input type="text" class="inner_input" [(ngModel)]="custInfo.jobTitle" placeholder="請填入職稱">
+                </li>
+            </ul>
+            <p class="inner_content" style="color:red; font-size:12px">
+                訊息文字長度限2-26位英數字(半形)或2-13個中文字(全形)。
+            </p>
+        </div>
+        <div class='row_single'>
+            <div class='double_button'>
+                <a href='javascript:void(0);' (click)="clickCancel()">取消</a>
+                <a href='javascript:void(0);' (click)="agreeSend()">確認</a>
+            </div>
+        </div>
+
+
+    </ng-container>
+    <ng-container *ngIf="showPage=='result'">
+        <app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+    </ng-container>
+</section>

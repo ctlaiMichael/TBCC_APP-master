@@ -1,0 +1,51 @@
+<section>
+  <!-- nav_first_page_frame -->
+  <form [formGroup]="pwdChangeForm">
+    <div class="row_single">
+      <ul class="inner_table_frame" [ngClass]="validate('oldPwd')?'active_warnning':''">
+        <li class="inner_table_cell">
+          *舊密碼
+        </li>
+        <li class="inner_table_cell">
+          <input maxlength="12" formControlName="oldPwd" type="password" id="oldPw" name="oldPw" class="inner_input"
+            placeholder="請輸入舊密碼">
+        </li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <ul class="inner_table_frame" [ngClass]="validate('newPwd')?'active_warnning':''">
+        <li class="inner_table_cell">
+          *新密碼
+        </li>
+        <li class="inner_table_cell">
+          <input maxlength="12" formControlName="newPwd" type="password" id="newPw" name="newPw" class="inner_input"
+            placeholder="請輸入新密碼">
+        </li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <ul class="inner_table_frame" [ngClass]="validate('checkPwd')?'active_warnning':''">
+        <li class="inner_table_cell">
+          *確認新密碼
+        </li>
+        <li class="inner_table_cell">
+          <input maxlength="12" formControlName="checkPwd" type="password" id="ConfirmNewPw" name="ConfirmNewPw"
+            class="inner_input" placeholder="請輸入確認新密碼">
+        </li>
+      </ul>
+    </div>
+  </form>
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="onCancel()" id="cancel2">取消</a>
+      <a (click)="changePwd()">確定</a>
+    </div>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content"> 「憑證保護密碼」須為4-12位英數字(區分大小寫)、符號，請務必牢記新密碼，日後若忘記此密碼，需回本行營業單位重新申請憑證。
+    </p>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<div class="step_box step1">
+	<!-- 申辦用 tab 框架 -->
+	<!--apply-menu></apply-menu-->
+	<!-- 補件上傳 -->
+	<div class="bc_frame">
+		<div class="row_single input_single"  ng-class="{input_error:error_msg_list.idNo}">
+		<div class="input_frame"><table><tr>
+		<td align="center"><i class="input_name required" style="width:100px;">{{'FIELD.IDENTITY' | translate}}</i></td>
+		<td align="center"><input type="text" name="" placeholder="{{'INPUT_MSG.IDENTITY' | translate}}" ng-model="inp.show.idNo"
+			identity-mask-directive /></td>
+		
+		</tr></table></div><s class="input_comment">請輸入您的{{error_msg_list.idNo}}，查詢需補文件</s>
+		</div>
+
+		<check-captcha-directive></check-captcha-directive>
+
+		<div class="bc_frame">
+			<div class="row_single2">
+				<button class="button_confirm" ng-click="stepChangeToUpload()">{{'BTN.SEARCH' | translate}}</button>
+			</div>
+		</div>
+
+		
+
+	</div>
+	<div class="bc_frame">
+		<div class="terms_frame">
+			<h3 class="row_single in_sub_title">{{'MESSAGE_NOTE_INFO' | translate}}</h3>
+			<p>
+			※身分證件或財力證明需於申請信用卡{{upload_range}}天內完成上傳作業，如逾時請重新申辦。<br>
+			<span class="color_red">※請上傳身分證或完整財力證明，包含申請時已上傳之文件</span>
+			</p>
+		</div>
+	</div>
+</div>

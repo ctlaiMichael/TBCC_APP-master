@@ -1,0 +1,31 @@
+<div class="bc_frame">
+	<h3 class="row_single in_wran_title"></h3>
+
+	<div class="row_single input_single address_group">
+		<div class="row_single info_list info_select">
+				<div class="input_frame"><table><tr></tr>
+				<td align="center"><i class="info_title">{{'CTRL_APPLY.INPUT.CARD_TYPE' | translate}}</i></td>
+				<td align="center"><select  ng-model="inp_type"  ng-options="list.name for list in (card_type_list  | orderBy:'order' | filter:list.show_select=true ) track by list.key" ng-change="cardSelectChange()">
+				<option value="">{{'CTRL_APPLY.INPUT.CARD_TYPE' | translate}}</option></select></td>
+				</tr></table></div>
+		</div>
+	</div>
+
+	
+
+
+	<div class="row_single input_single address_group">
+		<div class="row_single info_list info_select">
+				<div class="row_single info_list info_select">
+						<div class="input_frame"><table><tr></tr>
+						<td align="center"><i class="info_title">{{'CTRL_APPLY.INPUT.CARD_NAME' | translate}}</i></td>
+						<td align="center"><select  ng-model="inp_card"  ng-options="sublist.name for sublist in card_subtype_list">
+						<option value="">{{'CTRL_APPLY.INPUT.CARD_NAME' | translate}}</option></select></td>
+						</tr></table></div>
+		</div>
+	</div>
+
+	<div class="row_single2">
+		<button class="button_confirm" ng-click="submitChoose()">{{'BTN.CHECK' | translate}}</button>
+	</div>
+</div>

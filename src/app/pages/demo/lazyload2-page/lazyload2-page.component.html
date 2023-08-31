@@ -1,0 +1,16 @@
+<section>
+    Test Part
+
+    <select class="inner_select" (change)="onChange(testData)" [(ngModel)]="testData" selectCheck [listData]="testList" >
+        <option selected>請選擇</option>
+        <option *ngFor="let item of testList" [value]="item">{{item.name}}</option>
+    </select>
+
+    <div class="row_single">
+        <div class="double_button">
+            <a (click)="onClick('one')">ONE</a>
+            <a (click)="onClick('more')">MORE</a>
+        </div>
+    </div>
+
+</section>

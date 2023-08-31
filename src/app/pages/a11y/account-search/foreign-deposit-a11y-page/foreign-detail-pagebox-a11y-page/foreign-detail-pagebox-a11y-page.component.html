@@ -1,0 +1,67 @@
+<ng-container *ngIf="!isXFS">
+  <div *ngFor="let item of data">
+    <li class="row5_a11y">
+      <!-- 交易日: transDate -->
+      <p class="row5_content_all_a11y text_align_right_a11y" title="{{ item.mytransDate }}">
+        交易日<br>{{ item.transDate }}
+      </p>
+      <!-- 幣別: currency -->
+      <!-- <p class="row5_content_all"  title="{{item.mycurrency}}">
+            幣別<br> {{ currency }}
+        </p> -->
+      <!-- 提款金額: withdraw -->
+      <p *ngIf="item.isWithdraw" class="row5_content_all_a11y" title="{{item.mywithdraw_money}}">
+        提款金額<br>{{ item.withdraw }}
+      </p>
+      <!-- 存款金額: deposit -->
+      <p *ngIf="item.isDeposit" class="row5_content_all_a11y" title="{{item.mydeposit_money}}">
+        存款金額<br>{{ item.deposit }}
+      </p>
+      <!-- 結餘金額: balance -->
+      <p class="row5_content_all_a11y" title="{{item.mybalance_money}}">
+        結餘金額<br>{{ item.balance }}
+      </p>
+      <!-- 交易行庫: rcvBankName -->
+      <p class="row5_content_all_a11y">
+        交易行庫&nbsp;{{ item.rcvBankName }}
+      </p>
+      <!-- 摘要: digest  -->
+      <p *ngIf="!item.isdigest" class="row5_content_all_a11y">
+        摘要&nbsp;{{ item.digest }}
+      </p>
+    </li>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isXFS">
+  <div class="row5_a11y" style="height: 450px;" *ngFor="let item of data">
+    <!-- 交易日: transDate -->
+    <p class="row5_content_all_a11y text_align_right_a11y" title="{{ item.mytransDate }}">
+      交易日&nbsp;&nbsp;{{ item.transDate }}
+    </p>
+    <!-- 本金金額: balance1  -->
+    <p class="row5_content_all_a11y" title="{{item.mybalance1}}">
+      本金金額<br>{{ item.balance1 }}
+    </p>
+    <!-- 續存本金: balance2 -->
+    <p class="row5_content_all_a11y" title="{{item.mybalance2}}">
+      續存本金<br>{{ item.balance2 }}
+    </p>
+    <!-- 幣別 -->
+    <!-- <p class="row5_content_all"  title="{{item.mycurrency}}">
+        幣別&nbsp;&nbsp;{{ currency }}
+    </p> -->
+    <!-- 原幣毛息: grossInterest -->
+    <p class="row5_content_all_a11y" title="{{item.mygrossInterest}}">
+      原幣毛息<br>{{ item.grossInterest }}
+    </p>
+    <!-- 原幣稅: tax -->
+    <p class="row5_content_all_a11y" title="{{item.mytax}}">
+      原幣稅<br>{{ item.tax }}
+    </p>
+    <!-- 原幣淨息: interest -->
+    <p class="row5_content_all_a11y" title="{{item.interest}}">
+      原幣淨息<br>{{ item.interest }}
+    </p>
+  </div>
+</ng-container>

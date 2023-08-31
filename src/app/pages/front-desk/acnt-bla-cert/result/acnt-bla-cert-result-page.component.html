@@ -1,0 +1,88 @@
+
+    <div class="sub_info_frame result">
+        <div class="step_final_icon_frame">
+            <i class="icon_success"></i>
+            <span class="step_final_info">{{presentData| fieldCheck:'hostCodeMsg'}}</span>
+        </div>
+    </div>
+    <ng-container *ngIf="presentData">  
+    <ul class="table_info">
+        <li class="table_row">
+            <span>申請帳號</span>
+            <i>{{(presentData| fieldCheck:'account')| accountFormate}}</i>
+        </li>
+        <li class="table_row">
+            <span>中文姓名</span>
+            <i>{{presentData| fieldCheck:'chineseName'}}</i>
+        </li>
+        
+        <li class="table_row">
+            <span>英文姓名</span>
+            <i>{{presentData| fieldCheck:'englishName'}}</i>
+        </li>
+        <li class="table_row">
+            <span>幣別</span>
+            <i>{{presentData| fieldCheck:'currency'}}</i>
+        </li>
+        <li class="table_row">
+            <span>餘額表示方式</span>
+            <i>{{presentData| fieldCheck:'balanceName'}}</i>
+        </li>
+        <li class="table_row" *ngIf="presentData['balanceType']==='2' || presentData['balanceType']==='4'">
+            <span>申請金額</span>
+            <i>{{presentData| fieldCheck:'applyAmount' | htMoney}}</i>
+        </li>
+        <li class="table_row">
+            <span>金額表示方式</span>
+            <i>{{presentData| fieldCheck:'moneyPresentName'}}</i>
+        </li>
+            <li class="table_row">
+            <span>證明日期</span>
+            <i>{{(presentData| fieldCheck:'applyPeriod')|htDate: 'yyyy/MM/dd'}}</i>
+        </li>
+            <li class="table_row">
+            <span>申請金額用途</span>
+            <i>{{presentData| fieldCheck:'whyApply'}}</i>
+        </li>
+            <li class="table_row">
+            <span>收件地址</span>
+            <i>{{presentData| fieldCheck:'sendAddr'}}</i>
+        </li>
+            <li class="table_row">
+            <span>連絡電話</span>
+            <i>{{presentData| fieldCheck:'telNumber'}}</i>
+        </li>
+            <li class="table_row">
+            <span>行動電話</span>
+            <i>{{presentData| fieldCheck:'phoneNumber'}}</i>
+        </li>
+            <li class="table_row">
+            <span>份數</span>
+            <i>{{presentData| fieldCheck:'copyNumber'}}</i>
+        </li>
+            <li class="table_row">
+            <span>手續費</span>
+            <i>{{presentData| fieldCheck:'serviceCharge'}}</i>
+        </li>
+            <li class="table_row">
+            <span>郵寄費</span>
+            <i>{{presentData| fieldCheck:'mailFee'}}</i>
+        </li>
+            <li class="table_row">
+            <span>扣款帳號</span>
+            <i>{{(presentData| fieldCheck:'payAccount')| accountFormate}}</i>
+        </li>
+            <li class="table_row">
+            <span>申請結果EMail通知</span>
+            <i>{{presentData| fieldCheck:'e_mail'}}</i>
+        </li>
+
+
+    </ul>
+    </ng-container>
+
+
+    <div class="row_single"></div>
+    <div class="row_single">
+        <a (click)="backMenu()" class="button_confirm">返回線上櫃檯</a>
+    </div>

@@ -1,0 +1,34 @@
+{
+  "sch:MNBResponse": {
+    "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader": {
+      "sch:requestNo": "1481860700840-f1000102",
+      "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+      "sch:custId": "B1202812720"
+    },
+    "sch:result": {
+      "@xsi:type": "f10:f1000102ResultType",
+      "@xmlns:f10": "http://mnb.hitrust.com/service/schema/f1000102",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "f10:trnsRsltCode": "0",
+      "f10:hostCode": "",
+      "f10:hostCodeMsg": "",
+      "f10:isAgreeQRCode": "N",
+      "f10:defaultTrnsOutAcct": "006022663388",
+      "f10:trnsLimitAmt": "50000",
+      "f10:trnsOutAccts": {
+        "f10:trnsOutAcct": {
+          "0": {
+            "f10:acctNo": "9997705073012",
+            "f10:enabledSmartPay": "Y"
+          },
+          "1": {
+            "f10:acctNo": "006022663388",
+            "f10:enabledSmartPay": "Y"
+          }
+        }
+      }
+    }
+  }
+}

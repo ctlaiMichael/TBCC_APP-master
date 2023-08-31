@@ -1,0 +1,70 @@
+.agreement_height{
+    height: 100%;
+}
+.agreement_title{
+    border-left:3px #009274 solid;
+    width: 85%;
+    margin: auto;
+    margin-top: -35px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px
+}
+.agreement_title h2{
+    font-family: PingFangTC-Medium;
+    font-size: 17px;
+    color: #4A4A4A;
+    letter-spacing: 1.42px;
+    margin-left: 5px;
+}
+
+.agreement_text{
+    width: 80%;
+    margin: auto;
+    line-height:17px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+    height: 45%;
+}
+
+.agreement_text p{
+    font-family: PingFangTC-Regular;
+    font-size: 12px;
+    color: rgba(0,0,0,0.70);
+    letter-spacing: 1.25px;
+    margin-top: 7px;
+}
+
+.agreement_checkbox{
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    line-height: 17px;
+    height:55px;
+}
+
+.agreement_checkbox_input{
+    float:left;
+}
+
+.agreement_check_text{
+    width: 90%;
+    float: left;
+    margin-left: 5px;
+}
+
+.agreement_check_text p{
+    font-family: PingFangTC-Regular;
+    font-size: 14px;
+    color: #009274;
+    letter-spacing: 1.17px;
+}
+
+.agreement_button{
+    font-family: PingFangTC-Medium;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+    margin-top: -8px;
+}

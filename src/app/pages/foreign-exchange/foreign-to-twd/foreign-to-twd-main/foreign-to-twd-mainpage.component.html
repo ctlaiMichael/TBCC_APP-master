@@ -1,0 +1,24 @@
+<ng-container>
+    <ng-container [ngSwitch]="assignPage">
+        <!-- 編輯頁 -->
+        <ng-container *ngSwitchCase="'edit_page'">
+            <app-foreign-to-twd-edit (backPageEmit)="onBackPage($event)"></app-foreign-to-twd-edit>
+        </ng-container>
+        <!-- 確認頁 -->
+        <!-- <ng-container *ngSwitchCase="'confirm_page'">
+            <app-foreign-to-twd-confirm (backPageEmit)="onBackPage($event)" [formObj]="mainpageObj"></app-foreign-to-twd-confirm>
+        </ng-container> -->
+        <!-- 結果頁 -->
+        <ng-container *ngSwitchCase="'result_page'">
+            <app-foreign-to-twd-result [formObj]="mainpageObj" [securityResult]="securityResult"></app-foreign-to-twd-result>
+        </ng-container>
+        <ng-container *ngSwitchCase="'bargain_result_page'">
+            <app-bargain-result [formObj]="mainpageObj" [securityResult]="securityResult"></app-bargain-result>
+        </ng-container>
+        <!-- 結購性質 -->
+        <ng-container *ngSwitchCase="'proportyType'">
+            <app-proportyType (backPageEmit)="onBackPage($event)"></app-proportyType>
+        </ng-container>
+
+    </ng-container>
+</ng-container>

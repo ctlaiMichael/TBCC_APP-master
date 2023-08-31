@@ -1,0 +1,16 @@
+{
+  "reqHeader":{
+    "rquId":"12345",
+    "transDttm":"20160325123022879",
+    "deviceId":"Gphone12345",
+    "ipAddress":"29.10.33.21",
+    "locale":"zh-TW",
+    "appVersion":"2.0",
+    "osType":"01",
+    "idNo":"20795222",
+    "userId":"user01",
+    "telegramName":"T5000201"
+  },
+  "t5000201RequestType" : {
+  }
+}

@@ -1,0 +1,29 @@
+<div class="bc_frame">
+	<div class="row_single">
+		<div class="inner_checkbox agreeBox" after-agree-information="onAgreeInformationFinish"
+			 ng-repeat="inform_data in templateAgreeList | orderBy:'order'">
+			<input type="checkbox" id="checkbox_agree{{$index}}"  ng-model="inform_data.selected" ng-true-value="true" ng-false-value="false" ng-checked="false" />
+			<label for="checkbox_agree{{$index}}" class="original_checkbox option_for_group">
+				<span><i></i></span>
+				<b data-agree="{{inform_data.key}}">{{inform_data.title}}</b>
+			</label>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- <div class="bc_frame">
+	<div class="row_single">
+		<div class="checkbox_list checkbox_normal" after-agree-information="onAgreeInformationFinish"
+				ng-repeat="inform_data in templateAgreeList | orderBy:'order'">
+			<input type="checkbox" id="checkbox_agree{{$index}}"  ng-model="inform_data.selected" ng-true-value="true" ng-false-value="false" ng-checked="false" />
+			<label for="checkbox_agree{{$index}}" class="original_checkbox option_for_group">
+				<span></span>
+				<b data-agree="{{inform_data.key}}">{{inform_data.title}}</b>
+			</label>
+		</div>
+	</div>
+</div> -->
+<!-- popup-->
+

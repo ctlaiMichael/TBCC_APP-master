@@ -1,0 +1,11 @@
+.row_single.checkbox{
+
+    margin-bottom: 0px;
+}
+.inner_checkbox input[type='checkbox'] + label b {
+    font-size: 13px;
+    color: #797979;
+    font-weight: bold;
+    padding: 0 5px;
+    letter-spacing: 1px;
+}

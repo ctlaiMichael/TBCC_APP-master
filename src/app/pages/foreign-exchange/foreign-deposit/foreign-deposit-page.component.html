@@ -1,0 +1,25 @@
+<section *ngIf="!showContent; else contentBox" class="accountSum_main_pg" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages"
+  (scrollEvent)="onScrollEvent($event)">
+
+  <!-- 查詢時間：  -->
+  <!-- 20190611 國外部要求隱藏查詢時間-->
+  <!-- <div class="sub_info_subtitle">{{ 'FIELD.SEARCH_TIME' | translate }}：
+    <span>{{ dataTime | htDate}}</span>
+  </div>
+  <div class="row_single"></div> -->
+  <!-- 分頁 -->
+  <app-foreign-list [page]="'1'" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-foreign-list>
+  <ng-container #pageBox></ng-container>
+  <!-- 分頁 End -->
+</section>
+<!-- 內容頁 -->
+<ng-template #contentBox>
+  <!-- 定期存款 -->
+  <ng-container *ngIf="!showDemandDeposit; else otherAcctType">
+    <app-forex-time-deposit-page [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-forex-time-deposit-page>
+  </ng-container>
+  <!-- 活期存款 -->
+  <ng-template #otherAcctType>
+    <app-forex-demand-deposit-page [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-forex-demand-deposit-page>
+  </ng-template>
+</ng-template>

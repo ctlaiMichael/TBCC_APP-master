@@ -1,0 +1,10 @@
+<section>
+    <ng-container [ngSwitch]="showPage">
+        <ng-container *ngSwitchCase="'contentPage'">
+            <app-recommendation-content [setData]="fullData" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-recommendation-content>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <app-enter-recommendation (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-enter-recommendation>
+        </ng-container>
+    </ng-container>
+</section>

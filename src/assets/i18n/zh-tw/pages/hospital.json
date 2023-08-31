@@ -1,0 +1,10 @@
+{
+    "PG_HOSPITAL": {
+        "ERROR": {
+            "BRANCH":"請選擇分院"
+        },
+        "COMMON":{
+            "SELECTED":"請選擇"
+        }
+    }
+}

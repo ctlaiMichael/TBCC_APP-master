@@ -1,0 +1,46 @@
+<!-- <section>
+  <app-menu-temp (click)="test()" [mainMenuKey]="'epay'"></app-menu-temp>
+</section> -->
+<section>
+  <ng-container *ngIf="showData; else noDataBox">
+    <ng-container *ngIf="showType!='2'; else groupBox">
+      <!-- 基本版型 -->
+      <div class="inner_links_frame">
+        <a class="inner_link" *ngFor="let menu of menuData;" (click)="onGoEvent(menu)">{{menu.name | translate}}</a>
+      </div>
+      <!-- 基本版型 End -->
+    </ng-container>
+    <ng-template #groupBox>
+      <!-- 群組版型 -->
+      <ng-container *ngFor="let main_menu of menuData;">
+        <div class="row_single marginb_0 paddong_0">
+          <h4 class="inner_title">{{main_menu.titleName | translate}}</h4>
+        </div>
+        <div class="inner_links_frame">
+          <a class="inner_link" *ngFor="let menu of main_menu.content;"
+            (click)="onGoEvent(menu)">{{menu.name | translate}}</a>
+        </div>
+        <!-- 群組版型 End -->
+      </ng-container>
+    </ng-template>
+
+    <div class="row_single"></div>
+    <!-- 登出 -->
+    <div class="row_single">
+        <a class="button_confirm" href="javascript:void(0);" appLink="logout">{{ 'BTN.LOGOUT' | translate }}</a>
+    </div>
+    <div>
+      <!-- <div style="width:25%;float: left;margin-top: 16px;margin-bottom:16px;padding-left: 18px;">
+        <a class="inner_button" (click)="logout()"><span>登出</span></a>
+        <a class="inner_button" id="logout"><span>登出</span></a>
+      </div> -->
+      <div style="text-align: center;">
+        <img style="width:140px;" src="assets/images/epay/epay_logo.png">
+      </div>
+
+    </div>
+  </ng-container>
+  <ng-template #noDataBox>
+    <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate}}</div>
+  </ng-template>
+</section>

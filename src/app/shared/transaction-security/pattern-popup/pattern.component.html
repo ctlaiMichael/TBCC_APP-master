@@ -1,0 +1,15 @@
+<div class="row_single">
+  <h4 class="simple_title">請輸入圖形密碼</h4>
+</div>
+
+<div id="patternLock" style="margin-top: 50px;" [ngStyle]="styleForNarrow"></div>
+
+<div class="row_single">
+  <div class="button_confirm" (click)="cancel()">{{ 'BTN.CANCEL' | translate }}</div>
+</div>
+
+<div class="row_single">
+  <p class="inner_content" style="text-align: center;">
+    圖形交易驗證若錯誤達5次，需重新設定
+  </p>
+</div>

@@ -1,0 +1,27 @@
+
+   <ng-container *ngIf="check">
+    <div class="row_single">
+      <h4 class="simple_title">交易作業</h4>
+    </div>
+  <div class="row_single">
+    
+    <ul [ngClass]="ulClass" >
+      <li class="inner_table_cell">
+        信用卡會員登入密碼
+      </li>
+      <li class="inner_table_cell" >
+        <input type="password"  maxlength='12' name='' [(ngModel)]="returnObj.PD_val" class="inner_input">
+      </li>
+    </ul>
+    <i class="input_info_warnning">{{Pwd_error_msg}}</i>
+  </div>
+
+  
+  <div class="row_single">
+    <div class="double_button">
+      <a (click)="no()">取消</a>
+      <a (click)="yes()">確定</a>
+    </div>
+  </div>
+  
+</ng-container> 

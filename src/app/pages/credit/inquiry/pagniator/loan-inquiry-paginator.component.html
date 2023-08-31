@@ -1,0 +1,22 @@
+<!-- Page Start-->
+<ul *ngFor="let item of data" class="credit_card_bill_detail_list">
+    <li>
+        <p class="credit_card_name">
+            <i>帳號：</i><i>{{(item| fieldCheck:'acctNo')| accountFormate}}</i>
+        </p>
+        <p>
+            <span>目前利率</span><span>{{item| fieldCheck:'rate'}}%</span>
+        </p>
+        <p>
+            <span>上次利息收訖日</span><span>{{(item| fieldCheck:'lastInterRecDate')|htDate:'date'}}</span>
+        </p>
+        <p>
+            <span>到期日</span><span>{{(item| fieldCheck:'expirDate')|htDate:'date'}}</span>
+        </p>
+        <p class="no_border_bottom">
+            <span>現欠餘額</span><span>{{(item| fieldCheck:'balence')|htMoney}}</span>
+        </p>
+        <a href="javascript:void(0)" class="" (click)="onContentEvent(item)">詳細資訊</a>
+    </li>
+</ul>
+<!-- Page End-->

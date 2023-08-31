@@ -1,0 +1,40 @@
+<div>
+	<div class="bc_frame">
+		<!-- <div class="row_single info_list"> -->
+			<!-- 本期帳單應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_BILL' | translate }}</i>
+			<p class="info_conetnt">{{payment.payableAmt | currency:""}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 本期最低應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}</i>
+			<p class="info_conetnt">{{payment.lowestPayableAmt | currency:""}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 可設定帳單分期金額上限 -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PAY_MAX' | translate }}</i>
+			<p class="info_conetnt">{{payment.maxInstallmentAmt | currency:""}}</p>
+		</div> -->
+		<div id="selectBill" class="row_single info_list info_select accountselect">
+			<!-- 請選擇分期期數與分期利率 -->
+			<i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.SELECT' | translate }}</i>
+			<select  ng-model="selectBill" ng-change="onChange(selectBill)"
+				 ng-options="option.name for option in billOptions track by option.value" >
+				<option value="">{{ 'CTRL_INSTALLMENT.INPUT.SELECT' | translate }}</option>
+			</select>
+		</div>
+		<!-- <div class="row_single info_list" ng-if="selectBill && selectAvge"> -->
+			<!-- 每期繳款本金試算金額(如除不盡則加入首期) -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PAY_TEST' | translate }}</i> -->
+			<!-- 第一期 -->
+			<!-- <p class="info_conetnt" ng-if="selectAvge.first != selectAvge.avg">{{ 'BILL_MSG.MSG.PERIOD_1' | translate }}：{{selectAvge.first | currency:""}}</p> -->
+			<!-- 每期 -->
+			<!-- <p class="info_conetnt">{{ 'BILL_MSG.MSG.PERIOD_EACH' | translate }}：{{selectAvge.avg | currency:""}}	</p> -->
+		<!-- </div> -->
+	</div>
+	<div class="bc_frame">
+		<div class="button_row">
+			<button class="button button_confirm" ng-click="onForm()">{{'BTN.NEXT' | translate}}</button>
+		</div>
+	</div>
+</div>

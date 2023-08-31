@@ -1,0 +1,93 @@
+<div class="wrapper">
+    <!--header-->
+    <div class="row">
+        <header class="main_nav">
+            <!-- <div class="back_bt" ng-click="clickBack()">
+                <p class="back_title">返回</p>
+            </div> -->
+            <div class="page_title">客戶基本資料</div>
+            <div class="bank_logo">
+                <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+            </div>
+        </header>
+    </div>
+    <!--row-->
+    <!--header end-->
+
+    <!--section 扣款帳號設定頁面-->
+    <div class="row">
+        <section class="main_sec">
+            <div class="row">
+                <div class="main_content">
+       
+                <p style="font-size: 18px;">依據洗錢防制之相關法令規範 <span class="debit_title" style="font-size: 18px;">，請您務必於107年10月25日前完成『工作狀態、任職公司名稱、職業別、職稱、年收入』資料之鍵檔，</span>倘您未能於期限內完成鍵檔，本行得視交易往來情況暫停自動化設備之交易功能，至完成資料更新始重新開放。<br>如您對所提供資料有任何疑問，請電洽全省合庫各地分行或客服中心。</p>  
+                  
+                        
+
+                    
+
+                 <br>工作狀態<select name="Accountselect1" ng-model = "life1" style="height: 40px;width: 150px;margin-left:50px;" ng-change="clickWork()">
+                                    <option  value="">請選擇</option> 
+                                    <option ng-repeat="c in item1" value="{{$index}}" >{{c}}</option>
+                                </select>      
+                
+                       
+                <div><br>職業別<select name="Accountselect1" ng-model = "life2" style="height: 40px;width: 150px;margin-left:65px;" ng-change="clickWork()">
+                        <option  value="">請選擇</option> 
+                        <option ng-repeat="c in item2" value="{{$index}}" >{{c}}</option>
+                    </select>      
+                </div>
+                <input type="text" maxlength= "6" minlength="2" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\ u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\u4E00-\u9FA5]/g,'')" class="content_input"  ng-show="ww == 2" style="height: 30px;width: 150px;" ng-model="trnsStr1" placeholder="請填入職業別">
+                <div ng-show="ww == 2"><font color="red" size= "2" style ="font-weight:bold">限填入1-6個中文字。<br></font></div>
+                <!-- <input type="text"onkeyup="this.value=this.value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')"> -->
+
+                <div><br>年收入<select name="Accountselect1" ng-model = "life3" style="height: 40px;width: 150px;margin-left:65px;" >
+                        <option  value="">請選擇</option> 
+                        <option ng-repeat="c in item3" value="{{$index}}" >{{c}}</option>
+                    </select>      
+                </div>
+
+                <div ng-show="qq==1"><br>任職公司名稱<input type="text"  maxlength= "26" minlength="2" onkeyup="this.value=this.value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" class="content_input"  style="height: 30px;width: 150px;margin-left:20px;" ng-model="trnsAmountStr2" placeholder="請填入任職公司名稱">      
+                    <div><font color="red" size= "2" style ="font-weight:bold">訊息文字長度限2-26位英數字(半形)或2-13個中文字(全形)。<br></font>
+                </div></div>
+                <div ng-show="qq==2"><br>任職公司名稱<input type="text"  minlength="2"  class="content_input"  style="height: 30px;width: 150px;margin-left:20px;" ng-model="trnsAmountStr4"   readonly></div>
+
+
+                <div ng-show="qq==1" ><br>職稱<input type="text" maxlength= "14" minlength="2" onkeyup="this.value=this.value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" class="content_input" style="height: 30px;width: 150px;margin-left:83px;" ng-model="trnsAmountStr3" placeholder="請填入職稱">     
+                    <div><font color="red" size= "2" style ="font-weight:bold">訊息文字長度限2-14位英數字(半形)或2-7個中文字(全形)。<br></font>
+
+                </div></div>
+
+                <div ng-show="qq==2" ><br>職稱<input type="text" maxlength= "20" minlength="2"  class="content_input" style="height: 30px;width: 150px;margin-left:83px;" ng-model="trnsAmountStr5"  readonly></div> 
+
+                
+                       
+                <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt" ng-click="clickSubmit()">確認</button>
+                            <button type="button" class="cancel_bt" ng-click="clickBack()">取消</button>							
+                        </div>
+                    </div>
+                        
+
+                        
+
+                    
+
+                </div>
+                <!--main_content end-->
+            </div>
+            <!--row end-->
+
+        </section>
+        <!--main_sec end-->
+    </div>
+    <!--section 扣款帳號設定頁面 end-->
+
+
+    <!--end of footer-->
+
+
+</div>
+<!--wrapper end-->
+

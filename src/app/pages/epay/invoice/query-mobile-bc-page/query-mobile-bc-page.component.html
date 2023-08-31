@@ -1,0 +1,50 @@
+<section>
+	<div class="row_single">
+		<h4 class="simple_title">查詢手機條碼</h4>
+	</div>
+	<div class="row_single mobile">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				手機號碼
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" class="inner_input" maxlength="10" [(ngModel)]="phoneNo" placeholder="請輸入手機號碼"
+					required>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single mobile">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				手機條碼驗證碼
+			</li>
+			<li class="inner_table_cell">
+				<input type="password" class="inner_input" maxlength="16" [(ngModel)]="verifyCode"
+					placeholder="請輸入手機條碼驗證碼" required>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single mobile">
+		<dl class="inner_table_double">
+			<dt class="inner_cell_double">
+				<a (click)="clickForgetVer()" class="inner_button bt_100">
+					<span>查詢驗證碼</span>
+				</a>
+			</dt>
+		</dl>
+	</div>
+	<div class="row_single">
+		<div class="double_button">
+			<a (click)="clickClear()">{{ 'BTN.CLEAR' | translate }}</a>
+			<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+	<div class="row_single">
+		<h4 class="simple_title">提醒您</h4>
+	</div>
+	<div class="row_single">
+		<p class="inner_content">
+			點選確認後，會收到財政部電子發票整合服務平台，取得手機載具號碼
+		</p>
+	</div>
+</section>

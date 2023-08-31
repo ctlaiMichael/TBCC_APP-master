@@ -1,0 +1,184 @@
+<epay-left-menu-directive></epay-left-menu-directive>
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">出示收款碼(帳號收款)</h2>
+        <div class="no_bt" ></div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row">
+	<section style="top:125px;">
+			<div ng-if="onBigCode" style="position: absolute;top: 0px;left: 0px;z-index:5;">
+				<!-- <div class="shadow shadowMore" ng-click="clickBigCode(false)"></div> -->
+				<!-- <div class="pop_content {{popShow}}">
+					<img ng-src="data:image/png;base64,{{outimg}}" style="width:95vw" ng-click="closeBigCode()">
+				</div> -->
+				
+				<div style="text-align: center; display: block;" id="click_cancel">
+					<img style="width:100vw;" ng-src="data:image/png;base64,{{outimg}}" ng-click="closeBigCode()">
+				</div>
+			</div>
+
+		<div class="row">
+			<!-- style="text-align: right;font-size: 10px;"  -->
+			<div class="countSS" ng-bind="limitSec"></div>
+		</div>
+
+		<div class="result_sec" ng-if="result.respCode!=0">
+			<div class="result_location">
+				<div class="result_title2">
+					<p ng-if="result.respCode=='1'">條碼顯示失敗</p>
+					<p ng-if="result.respCode!='0'&& result.respCode!='1'&& result.respCode!= '' " >條碼顯示異常</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0 && result.respCode!=''">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">主機代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+
+				<!--barcode show-->
+				<!-- <div align="center" ><img src="ui/newMainPage/image/logocmyk-02.png" width="130" style="text-align: center;" ></div>
+				<div class="result_input" ng-if="result.respCode=='0'">
+					<div id="css_table">
+						<div class="css_tr" ng-if="genQRCode.length>0">
+							<div class="css_td_title" style="text-align: center;">
+								<qr text="genQRCode" class="QRSize" id="getqr" ng-click="showBigQrcode()" logo="logo"></qr>
+							</div>
+						</div>
+						<div class="css_tr" ng-if="genQRCode.length>0">
+							<div class="css_td_title" style="text-align: center;font-size:8px;">點圖放大
+							</div>
+						</div>
+						<div class="css_tr">
+							<div style="height:20px;"></div>
+						</div>
+						<div class="css_tr" >
+							<div class="css_td_title" style="color:red;text-align: center;font-size:12px;">合作金庫商業銀行<br>{{myAcct}}
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<div class="row_single display" ng-if="result.respCode=='0'">
+					<div class="main_info_block" ng-if="genQRCode.length>0">
+						<div class="main_info_innerblock">
+							<!-- 主畫面塊狀區-標題 -->
+							<div style="text-align: center;">
+								<img style="width:140px;" src="ui/newMainPage/image/logocmyk-02.png">
+							</div>
+							<div style="text-align: center;">
+								<qr text="genQRCode" class="QRSize" id="getqr" ng-click="showBigQrcode()" logo="logo"></qr>
+							</div>
+							<!-- 主畫面塊狀區-標題 //End -->
+							<div style="text-align: center;font-size: 12px">
+								點圖放大
+							</div>
+							<div id="goto" style="text-align: center;color: red;font-size: 14px;margin-top: 10px">
+								合作金庫商業銀行<br>
+								{{myAcct}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.countSS {
+		position: absolute;
+		top: -20px;
+		right: 20px;
+		font-size: 14px;
+	}
+
+	.pandding02010{
+		padding: 0px 20px 10px;
+	}
+
+	.QRSize canvas {
+		width: 150px;
+		height: 150px;
+	}
+
+	qr {
+		text-align: center;
+	}
+
+	.barcode img {
+		/* max-width: 60vw; */
+		text-align: center;
+		width: 6.2cm;
+		height: 1.6cm;
+	}
+
+	.pop_content {
+		/*此行指定放置廣告的div */
+		width: 100vw;
+		/*此行設定div的寬度*/
+		height: auto;
+		max-height: 80%;
+		overflow-y: auto;
+		/*此行設定div的高度*/
+		/* background-color: #1dff1d; */
+		/*此行設定div的背景圖形*/
+		position: fixed;
+		/*此行設定div為不隨捲動而移動的模式*/
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1001;
+		width: 100vw;
+		/* padding: 10px; */
+		text-align: center;
+	}
+
+	.pop_contentQR {
+		background-color: #1dff1d;
+		padding: 10px;
+	}
+
+	.pop_contentBar {
+		background-color: #ffffff;
+		padding: 5px;
+	}
+
+	.shadowMore {
+		display: block;
+		background: rgba(0, 0, 0, 1);
+	}
+</style>
+
+<!-- 跳出視窗 -->
+<!-- <div ng-if="onBigCode">
+	<div class="shadow shadowMore" ng-click="clickBigCode(false)"></div>
+	<div class="pop_content {{popShow}}">
+		<img ng-src="data:image/png;base64,{{outimg}}" style="width:95vw" ng-click="closeBigCode()">
+	</div>
+</div> -->
+<!-- 跳出視窗 // End -->

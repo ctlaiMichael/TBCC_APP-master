@@ -1,0 +1,34 @@
+<div role="alert" aria-live="assertive" aria-atomic="true">
+  <div *ngIf="isAndroid; else ios_content">
+    <div class="row_single_a11y" tabindex="0" #autoLogoutTitle>
+      <div class="simple_title_a11y"> {{'登出提示'|translate}}</div>
+    </div>
+    <div class="row_single_a11y">
+      <div class="inner_content_a11y simple_title_em_without_before_a11y">
+        {{'POPUP.LOGIN.AUTOLOGOUT_WARNING'|translate:param}}
+      </div>
+    </div>
+    <div class="row_single_a11y">
+      <div class="double_button_a11y">
+        <a (click)="no()" role="button">{{'立即登出'|translate}}</a>
+        <a (click)="yes()" role="button">{{'保持登入'|translate}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #ios_content>
+  <div class="row_single_a11y" tabindex="0" #autoLogoutTitle>
+    <div class="simple_title_a11y">{{'登出提示'|translate}}</div>
+  </div>
+  <div class="row_single_a11y">
+    <div class="inner_content_a11y simple_title_em_without_before_a11y">
+      {{'POPUP.LOGIN.AUTOLOGOUT_WARNING'|translate:param}}
+    </div>
+  </div>
+  <div class="row_single_a11y">
+    <div class="double_button_a11y">
+      <a (click)="no()" role="button">{{'立即登出'|translate}}</a>
+      <a (click)="yes()" role="button">{{'保持登入'|translate}}</a>
+    </div>
+  </div>
+</ng-template>

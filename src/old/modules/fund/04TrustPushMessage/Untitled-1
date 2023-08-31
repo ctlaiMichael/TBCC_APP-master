@@ -1,0 +1,140 @@
+var options = {
+            message: "", 
+            subject: '', 
+            files: [], 
+            appPackageName:'line',
+            
+            chooserTitle: '' 
+			}
+//訊息分享成功事件    
+        var onSuccess = function(s) {
+            console.log("Share completed");
+        };
+
+        //訊息分享失敗事件
+        var onError = function(e) {
+            console.log("Sharing failed with message");
+        };
+
+var image = new Image();
+        image.onload = function () {
+         var canvas1 = document.createElement('canvas');
+         canvas1.width = image.width;
+         canvas1.height = image.height;
+     
+         canvas1.getContext('2d').drawImage(image, 0, 0);
+     
+         //增加文字在圖片上
+         
+         
+
+
+//canvasTextAutoLine("恭喜發財紅包600元恭喜發財紅包600元",canvas1,50,50,50);
+//function canvasTextAutoLine(str,canvas,initX,initY,lineHeight){
+var str="恭喜發財紅包600元恭喜發財紅包600元";
+var initX = 30;
+var initY = 150;
+var lineHeight = 50;
+var ctx = canvas1.getContext("2d"); 
+ctx.font = "45px Arial";
+           var lineWidth = 0;
+     var canvasWidth = canvas1.width; 
+    var lastSubStrIndex= 0; 
+   for(let i=0;i<str.length;i++){ 
+     lineWidth+=ctx.measureText(str[i]).width; 
+        if(lineWidth>canvasWidth-initX-20){//减去initX,防止边界出现的问题
+           ctx.fillText(str.substring(lastSubStrIndex,i),initX,initY);
+          initY+=lineHeight;
+         lineWidth=0;
+            lastSubStrIndex=i;
+      } 
+     if(i==str.length-1){
+          ctx.fillText(str.substring(lastSubStrIndex,i+1),initX,initY);
+      }
+  }
+var base64text = canvas1.toDataURL('image/png');
+		 //把base64text資料放進要傳送object的files files需為array
+	 
+		 options.files = [base64text];
+        alert(JSON.stringify(options));
+         plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+        };
+        image.src = "ui/newMainPage/image/6661.png";
+        
+
+
+
+
+
+
+
+
+$scope.getDataUri = function(){
+		var options ;
+		if($scope.data == '1'){
+		 options = {
+			message: "", 
+			subject: '', 
+			files: [], 
+			appPackageName:'line',
+			
+			chooserTitle: '' 
+		};
+		}else if($scope.data == '2'){
+			 	options = {
+				message: "", 
+				subject: '', 
+				files: [], 
+				appPackageName:'whatsapp',
+				
+				chooserTitle: '' 
+			};
+		}else if($scope.data == '3'){
+			    options = {
+				message: "", 
+				subject: '', 
+				files: [], 
+				//appPackageName:'wechat',
+				
+				chooserTitle: '' 
+			};
+		}
+		//訊息分享成功事件	
+		var onSuccess = function(s) {
+			console.log("Share completed");
+		};
+
+		//訊息分享失敗事件
+		var onError = function(e) {
+			console.log("Sharing failed with message");
+		};
+
+
+		var image = new Image();
+		image.onload = function () {
+		 var canvas = document.createElement('canvas');
+		 canvas.width = image.width;
+		 canvas.height = image.height;
+	 
+		 canvas.getContext('2d').drawImage(image, 0, 0);
+	 
+		 //增加文字在圖片上
+		 var ctx = canvas.getContext("2d");
+		 ctx.font = "40px Arial";
+		 ctx.fillText($scope.write,50,70);
+		 //ctx.fillStyle('＃FFD700');
+	 
+		 //base64完資料 ＝ base64text
+		 var base64text = canvas.toDataURL('image/png');
+		 //把base64text資料放進要傳送object的files files需為array
+	 
+		 options.files = [base64text];
+	 
+		 //啟動訊息分享功能
+		 alert(JSON.stringify(options));
+		 plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+		};
+		if($scope.pic=='7771'){image.src = "ui/newMainPage/image/7771.png";}
+		else if($scope.pic=='6661'){image.src = "ui/newMainPage/image/6661.png";}
+		
+	}

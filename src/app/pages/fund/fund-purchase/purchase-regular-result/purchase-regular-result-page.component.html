@@ -1,0 +1,192 @@
+<section>
+
+    <section>
+        <!-- 交易成功 -->
+        <ng-container *ngIf="sucess">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame" [ngClass]="{ 'exclamation_active':(trust_failed) }">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">{{resTitle}}</span>
+                </div>
+            </div>
+        </ng-container>
+        <!-- 交易異常 -->
+        <ng-container *ngIf="failed_x">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame exclamation_active">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">交易異常</span>
+                </div>
+                <p class="sub_info_list">
+                    <span class="sub_info_title no_content" style="text-align: center;">{{resTitle}}</span>
+                </p>
+            </div>
+        </ng-container>
+        <!-- 交易失敗 -->
+        <ng-container *ngIf="failed_1">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame fault_active">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">交易失敗</span>
+                </div>
+                <p class="sub_info_list">
+                    <span class="sub_info_title no_content" style="text-align: center;">{{resTitle}}</span>
+                </p>
+            </div>
+        </ng-container>
+        <!-- 處理中 -->
+        <ng-container *ngIf="processing">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame exclamation_active">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">處理中</span>
+                </div>
+                <p class="sub_info_list">
+                    <span class="sub_info_title no_content">處理中請稍後。</span>
+                </p>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="sucess">
+            <ul class="table_info">
+                <li class="table_row">
+                    <span>生效日期</span>
+                    <i>{{info_data.effectDate | htDate:'date'}}</i>
+                </li>
+                <li class="table_row">
+                    <span>交易編號</span>
+                    <i>{{info_data.transCode}}</i>
+                </li>
+                <li class="table_row">
+                    <span>基金名稱</span>
+                    <i>{{info_data.fundCode}}-{{info_data.fundName}}</i>
+                </li>
+                <li class="table_row">
+                    <span>投資幣別/金額</span>
+                    <i>{{info_data.currency}} {{info_data.amount| htMoney:info_data.currency}}元</i>
+                </li>
+                <li class="table_row">
+                    <span>基本手續費率</span>
+                    <i>{{info_data.baseRate}}%</i>
+                </li>
+                <li class="table_row">
+                    <span>優惠手續費率</span>
+                    <i>{{info_data.favorRate}}%</i>
+                </li>
+                <li class="table_row">
+                    <span>申購手續費</span>
+                    <i>{{info_data.currency}} {{info_data.serviceFee| htMoney:info_data.currency}}元</i>
+                </li>
+                <li class="table_row">
+                    <span>扣款總金額</span>
+                    <i>{{info_data.currency}} {{info_data.totalAmnt| htMoney:info_data.currency}}元</i>
+                </li>
+                <li class="table_row RSP">
+                    <span>投資方式</span>
+                    <i>定期定額</i>
+                </li>
+
+                <!-- 新規格需顯示 -->
+                <li class="table_row VA">
+                    <span>評價方式</span>
+                    <ng-container *ngIf="info_data.codeDesc=='' || info_data.codeDesc==null;else codeDescBox">
+                        <i>--</i>
+                    </ng-container>
+                    <ng-template #codeDescBox>
+                        <i>{{info_data.codeDesc}}</i>
+                    </ng-template>
+                </li>
+
+                <!-- 先使用舊規格 -->
+                <!-- <li class="table_row RSP">
+                <span>套餐名稱</span>
+                <i>{{info_data.codeDesc}}</i>
+            </li> -->
+            </ul>
+
+            <ul class="table_info">
+                <li class="table_row">
+                    <ng-container *ngIf="info_data.payDate31 !== '' && info_data.payDate5W == ''">
+                        <span>每月扣款日</span>
+                        <i>{{info_data.payDate31}}日</i>
+                    </ng-container>
+
+                    <ng-container *ngIf="info_data.payDate5W != '' && info_data.payDate31 == ''">
+                        <span>每週扣款日</span>
+                        <i>週{{info_data.payDate5W}}</i>
+                    </ng-container>
+                </li>
+                <li class="table_row">
+                    <span>扣款帳號/<br>現金收益帳號</span>
+                    <i>{{info_data.payAcnt}}</i>
+                </li>
+                <li class="table_row">
+                    <span>通知/出場</span>
+                    <!-- 不設定 -->
+                    <ng-container *ngIf="info_data.notiCD == ''||(info_data.notiCD != '1' && info_data.notiCD != '2'&& info_data.notiCD != '3' && info_data.notiCD != '4')">
+                        <i>不設定</i>
+                    </ng-container>
+
+                    <!-- 自動贖回 -->
+                    <ng-container *ngIf="info_data.notiCD == '1'">
+                        <ng-container *ngIf="info_data.continue == 'Y'">
+                            <i>自動贖回-續扣</i>
+                        </ng-container>
+                        <ng-container *ngIf="info_data.continue == 'N'">
+                            <i>自動贖回-不續扣</i>
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- 即時畫面 -->
+                    <ng-container *ngIf="info_data.notiCD == '2'">
+                        <i>即時畫面</i>
+                    </ng-container>
+
+                    <!-- E-mail -->
+                    <ng-container *ngIf="info_data.notiCD == '3'">
+                        <i>E-mail</i>
+                    </ng-container>
+
+                    <!-- 即時畫面、E-mail -->
+                    <ng-container *ngIf="info_data.notiCD == '4'">
+                        <i>即時畫面、E-mail</i>
+                    </ng-container>
+                </li>
+
+                <li class="table_row">
+                    <span>停損點/停利點%</span>
+                    <i>{{showBalanceLoss}}/{{showBalancePros}}%</i>
+                </li>
+                <li class="table_row">
+                    <span>服務理專</span>
+                    <i>{{info_data.salesName}}-{{info_data.salesId | identityMask}}</i>
+                </li>
+                <li class="table_row">
+                    <span>轉介人員</span>
+                    <i>{{info_data.introName}}-{{info_data.introId | identityMask}}</i>
+                </li>
+            </ul>
+
+            <div class="row_single"></div>
+
+            <div class="row_single">
+                <a href="javascript:void(0);" class="button_confirm" (click)="sucessEnd()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">提醒您</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content">
+                    1.提醒您，如有任何基金理財問題，可先洽詢本行服務理專(營業部 02-3118811 ) 或客服中心電話04-22273131，我們將竭誠為您服務。
+                    <br> 2. 預約交易完成後，委託人如需查詢或取消預約交易可至「基金交易」項下之「預約作業查詢/取消預約」查詢作業狀態或取消預約交易。
+                </p>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="failed">
+            <div class="row_single"></div>
+            <div class="row_single">
+                <a href="javascript:void(0);" class="button_confirm" (click)="onHome()">返回行動網銀首頁</a>
+            </div>
+        </ng-container>
+    </section>

@@ -1,0 +1,227 @@
+<!-- section -->
+<section>
+  <ng-container *ngIf="!this.showPatternLock&& this.showAgree &&  !this.showPatternLockAgree">
+    <div class="row_single card_login_div">
+      <ul class="inner_button card_login_btn">
+        <li>
+          <a href="javascript:void(0);" [ngClass]="loginType=='1'?'card_login_click':'card_login_not_click'"
+            (click)="chooseLogin('1')">網銀登入</a>
+          <a href="javascript:void(0);" [ngClass]="loginType=='2'?'card_login_click':'card_login_not_click'"
+            (click)="chooseLogin('2')">信用卡登入</a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!showPatternLock">
+    <ng-container *ngIf="showAgree  && !showPatternLockAgree">
+      <!-- nav_first_page_frame -->
+      <div class="nav_first_page_frame" *ngIf="showFt">
+        <ul>
+          <li>
+            <div class="nav_button_frame">
+              <a href="javascript:void(0);" (click)="patternLogin()" class="nav_button">
+                <p>
+                  <i class="icon_login icon_login_graphic"></i>
+                  <span>圖形密碼</span>
+                </p>
+              </a>
+              <a href="javascript:void(0);" (click)="fastLogin()" class="nav_button">
+                <p>
+                  <i class="icon_login icon_login_face"></i>
+                  <span>指紋/臉部</span>
+                </p>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- nav_first_page_frame //End -->
+
+      <!-- 帳號密碼登入 -->
+      <form [formGroup]="loginForm">
+        <div class="account_input_frame">
+          <ul>
+            <li>
+              <div class="td_like" [ngClass]="validate('custId')?'input_error':''"
+                [attr.data-error]="(loginForm.getError('custId', 'custId')?'ERROR.ERROR_CUST_ID':'ERROR.NO_CUST_ID')|translate">
+                <!-- 出現錯誤訊息的樣式「input_error」 -->
+                <div class="ai_frame">
+                  <div class="ai_td">
+                    <input #custId type="{{seeObj.seecust?'password':'text'}}" maxlength="12"
+                      (keyup.enter)="onEnter('custId')" formControlName="custId" appUppercase class="account_input"
+                      placeholder="身分證字號">
+                  </div>
+                  <div class="ai_td">
+                    <div class="checkbox_normal">
+                      <input (click)="remember('remcust')" type="checkbox" id="checkbox_normal01" name="checkbox_normal"
+                        [checked]="remrmber_login.remcust === '1'">
+                        <!-- [checked]="loginRemember.rememberMe.remcust === '1'"> -->
+                      <label for="checkbox_normal01">
+                        <b>記住我</b>
+                        <span>
+                          <i></i>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox_codeeye">
+                      <input (click)="switchSee('seecust')" type="checkbox" id="checkbox_codeeye01"
+                        name="checkbox_codeeye">
+                      <label for="checkbox_codeeye01">
+                        <span>
+                          <i></i>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="td_like" [ngClass]="validate('userId')?'input_error':''"
+                [attr.data-error]="(loginForm.getError('userId', 'userId')?'ERROR.ERROR_USER_ID':'ERROR.NO_USER_ID')|translate">
+                <!-- 出現錯誤訊息的樣式「input_error」 -->
+                <div class="ai_frame">
+                  <div class="ai_td">
+                    <input #userId type="{{seeObj.seeuser?'password':'text'}}" maxlength="16"
+                      (keyup.enter)="onEnter('userId')" formControlName="userId" class="account_input"
+                      placeholder="使用者代號">
+                  </div>
+                  <div class="ai_td">
+                    <div class="checkbox_normal">
+                      <input (click)="remember('remuser')" type="checkbox" id="checkbox_normal02" name="checkbox_normal"
+                        [checked]="remrmber_login.remuser === '1'">
+                        <!-- [checked]="loginRemember.rememberMe.remuser === '1'"> -->
+                      <label for="checkbox_normal02">
+                        <b>記住我</b>
+                        <span>
+                          <i></i>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox_codeeye">
+                      <input (click)="switchSee('seeuser')" type="checkbox" id="checkbox_codeeye02"
+                        name="checkbox_codeeye">
+                      <label for="checkbox_codeeye02">
+                        <span>
+                          <i></i>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="td_like" [ngClass]="validate('pwd')?'input_error':''"
+                [attr.data-error]="(loginForm.getError('pwd', 'pwd')?'ERROR.ERROR_PWD':'ERROR.NO_PWD')|translate">
+                <!-- 出現錯誤訊息的樣式「input_error」 -->
+                <div class="ai_frame">
+                  <div class="ai_td">
+                    <input #pwd type="{{seeObj.seepwd?'password':'text'}}" class="account_input"
+                      (keyup.enter)="onEnter('pwd')" placeholder="密碼" formControlName="pwd" maxlength="12">
+                  </div>
+                  <div class="ai_td">
+                    <div class="checkbox_codeeye">
+                      <input (click)="switchSee('seepwd')" type="checkbox" id="checkbox_codeeye03"
+                        name="checkbox_codeeye">
+                      <label for="checkbox_codeeye03">
+                        <span>
+                          <i></i>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <!-- 登入即表示了解並同意合作金庫銀行行動裝置 -->
+              <div class="login_privacy_box font_red">
+                登入即表示了解並同意<br>合作金庫銀行行動裝置<i class="attract_link" (click)="gotoPrivacy()">隱私權保護政策</i>
+              </div>
+            </li>
+            <li>
+              <div class="td_like">
+                <p class="login_button">
+                  <a href="javascript:void(0);" (click)="cancel()">{{ 'BTN.CANCEL' | translate }}</a>
+                  <a href="javascript:void(0);" (click)="loginMethod()">{{ 'BTN.LOGIN' | translate }}</a>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+      <!-- 帳號密碼登入 //End -->
+    </ng-container>
+    <!-- 快速登入註冊提示 -->
+    <ng-container *ngIf="!showAgree && !showPatternLockAgree">
+      <div class="row_single">
+        <h4 class="simple_title">指紋/臉部快速登入</h4>
+      </div>
+      <div class="row_single">
+        <p class="inner_content">
+          支援手機指紋/臉部辨識功能，輕鬆體驗安全、便捷，快速登入及交易一指完成！
+        </p>
+      </div>
+      <div class="row_single">
+        <div class="double_button" style="margin-top: 10px;">
+          <a href="javascript:void(0)" (click)="showAgree = true;showFt = true">取消</a>
+          <a href="javascript:void(0)" (click)="resetLoginInfoForFinger()" id="agree">設定</a>
+        </div>
+      </div>
+    </ng-container>
+
+    <!--圖形鎖文宣-->
+    <ng-container *ngIf="showPatternLockAgree && showDoc">
+      <div class="row_single"></div>
+      <div class="row_single">
+        <h4 class="simple_title">圖形密碼快速登入</h4>
+      </div>
+      <div class="row_single">
+        <p class="inner_content">
+          使用圖形密碼功能，輕鬆體驗安全、便捷，快速登入！
+        </p>
+      </div>
+      <div class="row_single">
+        <div class="double_button" style="margin-top: 10px;">
+          <a href="javascript:void(0)"
+            (click)="showPatternLockAgree = false;showFt = true; goPatternLock = false;">取消</a>
+          <a href="javascript:void(0)" (click)="resetLoginInfoForPatternLock()">設定</a>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <!--圖形鎖-->
+  <ng-container *ngIf="showPatternLock">
+    <div class="login_pattern_caption">
+      <ng-container  *ngIf="loginType=='1'">
+      <div class="pattern-top-caption" style="float: none;" *ngIf="maskCust !== ''">身分證字號 {{ maskCust }}
+      </div>
+    </ng-container>
+      <ng-container *ngIf="loginType=='2'">
+        <div class="pattern-top-caption" style="float: none;" *ngIf="maskCust_card !== ''">身分證字號 {{ maskCust_card }}
+          </div>
+      </ng-container>
+      <div style="margin-top: 5px;">
+        <p class="pattern-top-caption">{{'PG_SECURITY.PATTERN_LOCK.LOGIN_TOP_CAPTION_1' | translate}}</p>
+        <!-- <p class="pattern-top-caption">{{'PG_SECURITY.PATTERN_LOCK.TOP_CAPTION_1_2' | translate}}</p> -->
+      </div>
+    </div>
+    <div>
+      <app-pattern-lock (getPatternEmit)="getPattern($event)"></app-pattern-lock>
+    </div>
+    <div class="row_single pattern_bottom">
+      <a class="button_confirm" (click)="patternLockLeftBtn();">{{ 'BTN.CANCEL' | translate}}</a>
+    </div>
+  </ng-container>
+
+
+</section>
+<!-- section //End -->
+
+<!-- footer -->
+<footer>
+  <span class="login_box3"></span>
+  <span class="login_box4"></span>
+</footer>
+<!-- footer //End -->

@@ -1,0 +1,70 @@
+<section>
+    <ng-container *ngIf="resultFlag==false">
+        <div class="sub_info_frame">
+            <ul class="step_bar_frame">
+                <li class="step_bar step_active">
+                    <span>1.輸入資料</span>
+                </li>
+                <li class="step_bar"></li>
+
+            </ul>
+        </div>
+        <div class='row_single'></div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['oldpwd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    舊密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="oldPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}"  [(ngModel)]="userInput.oldPw" maxlength="12">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['oldpwd']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['newpwd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    新密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="newPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}"  [(ngModel)]="userInput.newPw">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['newpwd']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame" [ngClass]="errorMsg['checkpwd']?'active_warnning':''">
+                <li class="inner_table_cell">
+                    確認新密碼
+                </li>
+                <li class="inner_table_cell">
+                    <input type="password" name="ConfirmNewPw" class="inner_input" placeholder="{{ 'FIELD.INPUT_PLACEHOLDER' | translate }}" [(ngModel)]="userInput.checkPw">
+                </li>
+            </ul>
+            <i class="input_info_warnning">{{errorMsg['checkpwd']|translate}}</i>
+        </div>
+        <div class="row_single">
+            <div class="double_button">
+                <a href="javascript:void('0')"  (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+                <a href="javascript:void('0')"  (click)="checkEvent()">{{'BTN.CHECK' | translate }}</a>
+            </div>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">密碼設定規則</h4>
+        </div>
+        <div class="row_single">
+            <p class="inner_content font_red">
+                1、8-12位英數字、符號，其中至少包含2位英文字，且區分大小寫，不可與網路連線代號相同<br>
+                2、不可使用相同的英、數字，如：111111、AAAAAA<br>
+
+                3、不可使用連續的英、數字，如：123456、ABCDEF<br><br>
+
+                請務必牢記新密碼，日後若忘記此密碼，需回本行營業單位辦理密碼重設，或至網路銀行使用本行晶片金融卡線上重設密碼。
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="resultFlag">
+        <app-result [successMsg]="successMsg"></app-result>
+    </ng-container>
+
+</section>

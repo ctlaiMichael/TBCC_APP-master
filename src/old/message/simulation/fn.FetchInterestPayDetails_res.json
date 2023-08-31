@@ -1,0 +1,43 @@
+{
+  "resHeader":{
+    "serviceId":"fn.FetchInterestPayDetails",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+
+  "acctBelongCustCode":"16313302",
+  "acctBelongName":"網際威信股份有限公司",
+  "dataQueryTime":"2016/05/05 13:00:12",
+  "intPayDetail" : [
+    {
+      "seqNo" : "0001",
+      "payDate":"2015/12/21",
+      "refNo" : "04864188062616",
+      "ccy" : "CNY",
+      "prinAmt" : "0.59",
+      "payInta":"2.92",
+      "payInte":"15",
+      "dedTaxe":"0",
+      "netPayInte":"15",
+      "exRate":"5.048323"
+    },
+    {
+      "seqNo" : "0002",
+      "payDate":"2015/12/21",
+      "refNo" : "04864188062616",
+      "ccy" : "USD",
+      "prinAmt" : "600.25",
+      "payInta":"0.02",
+      "payInte":"1",
+      "dedTaxe":"0",
+      "netPayInte":"1",
+      "exRate":"33.1170"
+    }
+  ]
+}

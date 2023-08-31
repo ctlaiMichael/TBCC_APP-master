@@ -1,0 +1,39 @@
+{
+  "result":0,
+  "error": "",
+  "data":[
+    {
+      "bindingid":1,
+      "nickname":"iphone6",
+      "platform":"ios",
+      "manufacturer":"apple",
+      "osversion":"9.2.1",
+      "lastlogindate":"2016/01/01 23:59:59",
+      "udid":"6a41cc40126611e6a8370800200c4517",
+      "status":0
+
+    },
+    {
+      "bindingid":2,
+      "nickname":"HiTRUST的Android",
+      "platform":"Android",
+      "manufacturer":"HTC",
+      "osversion":"Android 7.0",
+      "udid":"6a41cc40126611e6a8370800200c4516",
+      "lastlogindate":"2016/01/01 23:59:59",
+      "status":0
+
+    },{
+      "bindingid":3,
+      "nickname":"測試用手機",
+      "platform":"Android",
+      "manufacturer":"ASUS",
+      "osversion":"Android 6.5",
+      "udid":"6a41cc40126611e6a8370800200c4516",
+      "lastlogindate":"2016/01/01 23:59:59",
+      "status":0
+
+    }
+
+  ]
+}

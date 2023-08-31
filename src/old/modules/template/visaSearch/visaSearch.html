@@ -1,0 +1,11 @@
+<div class="showstep step1">
+	<ul class="sublink_frame">
+		<li ng-repeat="(key, value) in cardList" ng-click="periodPage(key);" >
+			<p>
+				<span>{{value.creditCardType}}</span>
+				<span>{{value.creditCardID | accountMaskFilter}}</span>
+			</p>
+
+		</li>
+	</ul>
+</div>

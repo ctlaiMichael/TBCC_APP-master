@@ -1,0 +1,83 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+    <header class="main_nav">
+        <div class="bank_logo" style="width:50px;height:50px; left:-50px;top:-5px;position: relative;" ng-click="clickMenuList(true)">
+            <img src="ui/images/i_smenu.png">
+        </div>
+        <!-- <button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button> -->
+        <h2 class="header_title" style="opacity:1;top:25px;">發票載具條碼</h2>
+        <div class="no_bt" ></div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<barcode-left-menu-directive></barcode-left-menu-directive>
+<!--section QRCode掃描後輸入頁面-->
+<div class="row">
+    <section class="main_sec" style="top: 125px;">
+        <div class="row">
+            <div class="main_content">
+                <div class="row_single mobile" ng-show="!hasBarcode">
+                        <ul class="inner_table_frame">
+                            <li class="inner_table_cell">
+                                手機條碼
+                            </li>
+                            <li class="inner_table_cell">
+                                <input type="text" name="" id="" class="inner_input" ng-model="mobileBarcode" placeholder="請輸入手機條碼" onfocus="this.mobileBarcode = ''"
+                                onblur="this.mobileBarcode='請輸入手機條碼，例：/AB56P5Q'" required>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <div class="row_single mobile" ng-show="!hasBarcode">
+                        <dl class="inner_table_double">
+                            <dt class="inner_cell_double">
+                                <a ng-click="clickQuery()" class="inner_button bt_100">
+                                    <span>查詢手機條碼</span>
+                                </a>
+                            </dt>
+                            <dt class="inner_cell_double">
+                                <a id="submit" href="javascript:void(0);" class="inner_button bt_100" ng-click="clickReg()">
+                                    <span>註冊手機條碼</span>
+                                </a>
+                            </dt>
+                        </dl>
+                    </div>
+                    <div class="row_single mobile" ng-show="!hasBarcode">
+                        <a id="check_mobilePopup" href="javascript:void(0);" class="button_confirm" ng-click="clickSubmit()">確定</a>
+                    </div>
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>
+
+<style>
+    .btnStyle {
+        text-align: center;
+        color: #08b889;
+        margin-top: 30px;
+        margin-bottom: 18px;
+    }
+
+    .fontColor {
+        color: #c5c5c5;
+        margin-top: 15px;
+        font-size: 22px;
+    }
+
+    .textCenter {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .fontSize22 {
+        font-size: 22px;
+    }
+    .pop_content{
+        width:55vw;
+    }
+</style>

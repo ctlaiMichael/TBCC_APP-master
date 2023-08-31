@@ -1,0 +1,246 @@
+<epay-left-menu-directive></epay-left-menu-directive>
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<button class="nav_left_menu_button back_button" style="opacity:1;left:10px;top:20px;" onclick="location.href='./qrcode.html'"><s class="menu_button_line"></s></button>
+        <h2 class="header_title" style="opacity:1;top:25px;">消費扣款-出示付款碼</h2>
+        <div class="no_bt" ></div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row">
+	<section style="top:100px;">
+
+		<div class="row"  >
+			<div style="text-align: right;padding-right:20px;" ng-class="marginTop" ng-bind="limitSec"></div>
+		</div>
+
+		<div class="result_sec" ng-if="result.respCode!=0">
+			<div class="result_location">
+				<div class="result_title2">
+					<p ng-if="result.respCode=='1'">條碼顯示失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">條碼顯示異常</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="result_sec pandding02010" ng-show="result.respCode=='0'">
+			<div class="main_info_block">
+				<div class="swiperBeScanShow" ng-show="cardNoFlag=='Y'" id="swiperBeScanShow" style="display:none;">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" style="text-align: center;" ng-repeat="list in barcodeList track by $index">
+								<div class="result_title">
+									<p class="barcodeStyle" ng-class="list.lvFoneSize" ng-bind="list.name"></p>
+								</div>
+								<div class="page_title" style="text-align: center;">
+									<angular-barcode class="barcode" ng-model="list.mobileBarcode" bc-options="bc" bc-class="barcode" bc-type="img" ng-click="showBigBarcode1(list.id)"
+									    id="{{list.id}}"></angular-barcode>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next" ng-show="barcodeList.length > 1"></div>
+						<div class="swiper-button-prev" ng-show="barcodeList.length > 1"></div>
+						<div class="swiper-pagination"  ng-show="cardNoFlag!='Y'" id="swiper-pagination" style="display:none;"></div>
+					</div>
+				</div>
+				<div class="row" ng-show="cardNoFlag=='N'" id="BarcodeShow" style="display:none;">
+					<div class="result_title">
+						<p>雲端發票行動條碼</p>
+					</div>
+					<div class="row_single" style="margin-top:20px">
+						<a ng-click="getBarcode()" class="button_confirm">手機條碼登錄</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="result_sec">
+				<!-- 錯誤訊息 -->
+				<div class="row_single" style="margin-top:20px;" ng-if="result.respCode!=0">
+					<div class="main_info_block">
+						<div class="main_info_innerblock">
+							<div id="css_table" style="margin: 10px 10px 10px -10px;">
+								<div class="css_tr">
+									<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+									<div class="css_td_content" ng-bind="result.hostCode"></div>
+								</div>
+								<div class="css_tr">&nbsp;</div>
+								<div class="css_tr">
+									<div class="css_td_title">代碼訊息：</div>
+									<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--barcode show-->
+				<div class="main_info_block" ng-if="result.respCode=='0' && genQRCode.length>0" style="padding:10px 20px;">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title" style="text-align: center;">
+								<img style="height:30px;margin: 0px;padding: 0px;" src="ui/newMainPage/image/logocmyk-02.png">
+							</div>
+						</div>
+						<div class="css_tr">
+							<div class="css_td_title" style="text-align: center;">
+								<qr text="genQRCode" class="QRSize" id="getqr" ng-click="showBigQrcode()"></qr>
+							</div>
+						</div>
+						<div class="css_tr">
+							<div class="css_td_title" style="text-align: center;font-size:8px;">點圖放大
+							</div>
+						</div>
+						<div class="css_tr">
+							<div style="height:10px;"></div>
+						</div>
+						<div class="css_tr">
+							<angular-barcode class="barcode" ng-model="genBarcode" bc-options="bc128" bc-class="barcode" bc-type="img" ng-click="showBigBarcode()"
+							    id="getBarcode"></angular-barcode>
+						</div>
+						<div class="css_tr">
+							<div style="height:10px;"></div>
+						</div>
+						<div class="css_tr">
+							<div class="css_td_title" style="text-align: left;font-size:16px;">我的帳號 :  <span ng-bind="myAcct"></span>
+							</div>
+						</div>
+						<div class="css_tr">
+							<div style="height:5px;"></div>
+						</div>
+						<div class="css_tr">
+							<div class="css_td_title" style="color:red;text-align: left;font-size:12px;">1.一維條碼單筆消費限額$5,000元<br>2.付款碼畫面請勿提供於商店外第三人
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.countSS {
+		position: absolute;
+		top: -20px;
+		right: 20px;
+		font-size: 12px;
+	}
+
+	.pandding02010 {
+		padding: 0px 20px 10px;
+	}
+
+	.QRSize canvas {
+		width: 150px;
+		height: 150px;
+	}
+
+	qr {
+		text-align: center;
+	}
+
+	.barcode img {
+		/* max-width: 60vw; */
+		text-align: center;
+		width: 6.2cm;
+		height: 1.6cm;
+	}
+
+	.pop_content {
+		/*此行指定放置廣告的div */
+		width: 100vw;
+		/*此行設定div的寬度*/
+		height: auto;
+		max-height: 80%;
+		overflow-y: auto;
+		/*此行設定div的高度*/
+		/* background-color: #1dff1d; */
+		/*此行設定div的背景圖形*/
+		position: fixed;
+		/*此行設定div為不隨捲動而移動的模式*/
+		left: 50%;
+		top: 50%;
+		/* transform: translate(-50%, -50%); */
+		-webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+		z-index: 1001;
+		width: 100vw;
+		/* padding: 10px; */
+		text-align: center;
+	}
+
+	.pop_contentQR {
+		background-color: #1dff1d;
+		padding: 10px;
+	}
+
+	.pop_contentBar {
+		background-color: #ffffff;
+		padding: 5px;
+	}
+
+	.shadowMore {
+		display: block;
+		background: rgba(0, 0, 0, 1);
+	}
+
+	.swiper-button-prev {
+	/* background-image: url(ui/images/swiper_button_L.png) !important; 
+	background-size:15px 50px;background-color: #326b40; */
+	position: absolute;
+	top: 50%;
+    left:0%;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    background-position: center;
+	background-repeat: no-repeat;} 
+	.swiper-button-next {
+	/* background-image: url(ui/images/swiper_button_R.png) !important; 
+	background-size:15px 50px;background-color: #326b40; */
+	position: absolute;
+    top: 50%;
+    left:91%;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;} 
+
+	.barcodeStyle {
+		width: 60vw;
+		text-align: center;
+		font-size: 12px;
+	}
+
+	.lvFoneSize {
+		font-size: 8px;
+	}
+
+	.marginTop {
+		margin-top: 20px;
+	}
+</style>
+
+<!-- 跳出視窗 -->
+<div ng-if="onBigCode">
+	<div class="shadow shadowMore" ng-click="clickBigCode(false)"></div>
+	<div class="pop_content {{popShow}}">
+		<img ng-if="isLC!=true" ng-src="data:image/png;base64,{{outimg}}" style="width:95vw;" ng-click="closeBigCode()">
+		<img ng-if="isLC==true" ng-src="data:image/png;base64,{{outimg}}" style="width:95vw;height:15vh;" ng-click="closeBigCode()">
+	</div>
+</div>
+<!-- 跳出視窗 // End -->

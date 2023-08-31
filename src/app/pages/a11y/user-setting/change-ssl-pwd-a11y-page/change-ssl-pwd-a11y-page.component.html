@@ -1,0 +1,61 @@
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single_a11y">
+    <div class="simple_title_a11y">提醒您，變更SSL轉帳密碼需依循以下規則</div>
+  </div>
+  <div class="row_single_a11y">
+    <ul>
+        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            有*為必填欄位
+        </li>
+        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            長度限8-16位英數混合，至少包含2位英文字，且區分大小寫。
+        </li>
+        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            不可使用相同的英數字、連續英文字或連號數字。
+        </li>
+        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            不可與身分證字號、統一編號、使用者代號及使用者密碼相同。
+        </li>
+        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+            變更密碼不可跟前一次密碼相同。
+        </li>
+    </ul>
+  </div>
+
+  <div class="row_single3_a11y">
+    <li class="inner_title_content_a11y">*舊SSL轉帳密碼</li>
+    <div class="td_like_a11y" [ngClass]="errorMsg['oldpwd']?'input_error_a11y':''">
+      <li class="ai_frame_a11y" style="width: 100%; height: 120%;">
+        <input type="password" class="account_input_a11y" placeholder="請輸入舊SSL轉帳密碼" [(ngModel)]="userpw.OLD_SSL" />
+      </li>
+    </div>
+    <i class="data_error_a11y">{{errorMsg['oldpwd']|translate}}</i>
+  </div>
+  <div class="row_single3_a11y">
+    <li class="inner_title_content_a11y">*新SSL轉帳密碼</li>
+    <div class="td_like_a11y" [ngClass]="errorMsg['newpwd']?'input_error_a11y':''">
+      <li class="ai_frame_a11y" style="width: 100%; height: 120%;">
+        <input type="password" class="account_input_a11y" placeholder="請輸入新SSL轉帳密碼" [(ngModel)]="userpw.NEW_SSL" />
+      </li>
+    </div>
+    <i class="data_error_a11y">{{errorMsg['newpwd']|translate}}</i>
+  </div>
+  <div class="row_single3_a11y">
+    <li class="inner_title_content_a11y">*確認新SSL轉帳密碼</li>
+    <div class="td_like_a11y" [ngClass]="errorMsg['checkpwd']?'input_error_a11y':''">
+      <li class="ai_frame_a11y" style="width: 100%; height: 120%;">
+        <input type="password" class="account_input_a11y" placeholder="請確認新SSL轉帳密碼" [(ngModel)]="userpw.CHECK_SSL" />
+      </li>
+    </div>
+    <i class="data_error_a11y">{{errorMsg['checkpwd']|translate}}</i>
+  </div>
+
+  <div class="row_single_a11y" >
+    <div><a class="button_confirm_a11y" (click)='checkEvent()' role="button">確定</a></div>
+  </div>
+  <div class="row_single_a11y" >
+    <a class="button_confirm_a11y">
+      <div class="button_cancel_a11y" (click)='cancelEdit()' role="button">取消</div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+{
+  "sch:MNBResponse" : {
+    "@xmlns:sch" : "http://mnb.hitrust.com/service/schema",
+    "sch:resHeader" : {
+      "sch:requestNo" : "1481860700840-fc001001",
+      "sch:requestTime" : "2016-12-13T18:27:40.500+08:00",
+      "sch:responseTime" : "2016-12-13T18:27:40.671+08:00",
+      "sch:custId" : "B1202812720"
+    },
+    "sch:result" : {
+      "@xsi:type" : "fc0:fc001001ResultType",
+      "@xmlns:fc0" : "http://mnb.hitrust.com/service/schema/fc001001",
+      "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+      "fc0:result" : "0",
+      "fc0:respCode" : "M0001",
+      "fc0:respCodeMsg" : "上傳成功",
+      "fc0:details" : {
+        "fc0:detail" : [
+          {
+            "fc0:creditCardNo" : 4057590600004109,
+            "fc0:cardType" : "JCB白金晶片卡",
+            "fc0:payableAmt" : 0.00,
+            "fc0:lowestPayableAmt" : 0.00,
+            "fc0:usableAmt" : 80000.00
+          },
+          {
+            "fc0:creditCardNo" : "0000000003102",
+            "fc0:cardType" : "VISA個人採購卡",
+            "fc0:payableAmt" : "200",
+            "fc0:lowestPayableAmt" : "70",
+            "fc0:usableAmt" : "90"
+          }
+        ]
+      },
+      "sch:paginatedInfo" : {
+        "sch:totalRowCount" : "11",
+        "sch:pageSize" : "2",
+        "sch:pageNumber" : "1",
+        "sch:sortColName" : "creditCardNo",
+        "sch:sortDirection" : "ASC"
+      }
+    }
+  }
+}

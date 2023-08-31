@@ -1,0 +1,70 @@
+<section id="bankChoose">
+
+	<div class="row content textC">
+		<div class="floatL" style="width:50%;">我的信用卡</div>
+		<div class="floatL" style="width:25%;">解除/綁定</div>
+		<div class="floatL" style="width:25%;">預設</div>
+
+
+		<div class="floatL matlast" style="width:100% ;" *ngFor="let card of cards; let recordIndex = index;">
+			<div class="floatL" style="width:50%; letter-spacing: 1px;">{{card.cardNo|emvCardMask}}</div>
+			<div class="floatL" style="width:25%;">
+				<div class="switch_opne_close" style="left: 15px;">
+					<input type="checkbox" name="toggle{{recordIndex}}" (click)="cardCvcShow(card)" [checked]="card.checked"
+						[(ngModel)]="card.checked">
+					<label for="toggle{{recordIndex}}">
+						<i></i>
+					</label>
+				</div>
+			</div>
+			<div class="floatL" style="width:25%;">
+				<div class="row_single">
+					<!-- 項目START -->
+					<div class="inner_radio">
+						<input type="radio" name="hi" id="month{{recordIndex}}" (click)="selectcard(card)" [value]="card.cardNo"
+							[(ngModel)]="defaultSelected" [disabled]="card.isBind=='N'">
+						<label for="month{{recordIndex}}">
+							<span>
+								<i></i>
+							</span>
+						</label>
+					</div>
+					<!-- 項目End -->
+				</div>
+				<!-- <input type="checkbox" name="hi" value="1" ng-model="card.selected" (click)="selectcard(card)" ng-disabled="!card.checked"> -->
+			</div>
+
+			<div *ngIf="card.inputValue" class="floatL cardCvc" style="margin-top: 10px;width:100% ;padding: 10px 0px;background-color: rgba(100,100,100,.1);box-shadow: 0px 1px 1px -1px #999;">
+				<div class="row_single">
+					<h4 class="simple_title">新增綁定</h4>
+				</div>
+				<div class="row_single">
+					<ul class="inner_table_frame">
+						<li class="inner_table_cell">*卡片有效月年：</li>
+						<li class="inner_table_cell">
+							<input #cardExpiredDate value="" class="inner_input last_three" size="15" maxlength="7" type="tel" name=""
+								placeholder="格式：MMYY">
+						</li>
+					</ul>
+				</div>
+				<div class="row_single">
+					<ul class="inner_table_frame">
+						<li class="inner_table_cell">*卡片背面末三碼：</li>
+						<li class="inner_table_cell">
+							<input #cardCheckId value="" class="inner_input last_three" size="15" maxlength="3" type="tel" name="">
+						</li>
+					</ul>
+				</div>
+		
+				<div class="row_single">
+					<div class="double_button">
+						<a (click)="clickCancel(card)">{{ 'BTN.CANCEL' | translate }}</a>
+						<a (click)="clickSubmit(card,cardExpiredDate.value,cardCheckId.value)">{{ 'BTN.CHECK' | translate }}</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+

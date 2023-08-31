@@ -1,0 +1,71 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "rtnCode": "ok",
+    "subCode": ""
+  },
+  "currency" :
+  [
+    {
+      "ccy" : "AUD",
+      "desc" : "澳幣"
+    },
+    {
+      "ccy" : "CAD",
+      "desc" : "加拿大幣"
+    },
+    {
+      "ccy" : "CHF",
+      "desc" : "瑞士法郎"
+    },
+    {
+      "ccy" : "CNY",
+      "desc" : "人民幣"
+    },
+    {
+      "ccy" : "EUR",
+      "desc" : "歐元"
+    },
+    {
+      "ccy" : "GBP",
+      "desc" : "英鎊"
+    },
+    {
+      "ccy" : "HKD",
+      "desc" : "港幣"
+    },
+    {
+      "ccy":"JPY",
+      "desc":"日幣"
+    },
+    {
+      "ccy":"NZD",
+      "desc":"紐西蘭幣"
+    },
+    {
+      "ccy":"SEK",
+      "desc":"瑞典幣"
+    },
+    {
+      "ccy":"SGD",
+      "desc":"新加坡幣"
+    },
+    {
+      "ccy":"THB",
+      "desc":"泰銖"
+    },
+    {
+      "ccy":"USD",
+      "desc":"美金"
+    },
+    {
+      "ccy":"ZAR",
+      "desc":"南非幣"
+    }
+  ]
+}
+

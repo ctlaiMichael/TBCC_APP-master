@@ -1,0 +1,80 @@
+<epay-left-menu-directive></epay-left-menu-directive>
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+        <div></div>
+        <div class="page_title">信用卡綁定結果</div>
+        <div class="bank_logo">
+            <img src="ui/tcbbOldStyle/image/cobanklogo.png">
+        </div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+<!--section -->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<!-- <div class="result_title">
+					<p>交易結果</p>
+				</div> -->
+				<div class="result_title2">
+					<div ng-if="result.trnsRsltCode == '0'" class="otp_textfield" style="line-height: 40px;text-align: center;color: #f00;font-weight: bold;">
+						綁定成功
+					</div>
+					<div ng-if="result.trnsRsltCode == '1'" class="otp_textfield" style="line-height: 40px;text-align: center;color: #f00;font-weight: bold;margin: -85px 0px ;">
+						綁定失敗，請重新輸入
+					</div>
+					<p ng-if="result.trnsRsltCode!='0'&&result.trnsRsltCode!='1'" class="otp_textfield" style="line-height: 40px;text-align: center;color: #f00;font-weight: bold;margin: -85px 0px ;">
+						綁定異常
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input">
+					<div id="css_table">
+                        <div class="css_tr">
+                            <div class="css_td_title" style="width: 120px;">交易結果代碼：</div>
+                            <div class="css_td_content" ng-bind="result.hostCode"></div>
+                        </div>
+                        <div class="css_tr">&nbsp;</div>
+                        <div class="css_tr">
+                            <div class="css_td_title">主機代碼訊息：</div>
+                            <div class="css_td_content" ng-bind="result.hostCodeMsg"></div>
+                        </div>
+                    </div>
+				</div>
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+                        <button type="button" class="confirm_bt " ng-click="clickBackCard()">返回</button>
+                        <button type="button" class="cancel_bt" ng-click="clickGoQrcode()">掃描QR Code</button>
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+				
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section -->
+
+<style>
+
+	
+</style>
+
+

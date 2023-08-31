@@ -1,0 +1,56 @@
+<!--header-->
+    <div class="header_bar">
+        <header class="main_nav">
+            <div class="no_bt" ></div>
+            <div class="page_title">QRCode消費扣款</div>
+            <div class="bank_logo"><img src="ui/tcbbOldStyle/image/cobanklogo.png" ></div>
+        </header>
+    </div> <!--row-->
+    <!--header end-->
+
+    <!--section 轉帳確認-->
+    <div class="row content">
+        <section class="main_sec">
+
+            <div class="notice_location"><p>請確認轉帳資訊</p></div>
+            <div class="notice_location"><p>以及是否要繼續交易！！</p></div>
+
+
+            <div class="row">
+                <div class="main_content">
+                     <div class="confirm_input">
+
+                        <div class="content_infor">
+                             <div class="content_text"><p>特店名稱:</p></div>
+                             <div class="ac_code ac_purple" ng-bind="qrcode.merchantName">星九客咖啡</div>
+                         </div>
+                         <div class="content_infor">
+                             <div class="content_text"><p>訂單編號:</p></div>
+                             <div class="ac_code ac_purple" ng-bind="paymentData.orderNumber"></div>
+                         </div>
+                         <div class="content_infor">
+                             <div class="content_text"><p>交易金額:</p></div>
+                             <div class="ac_code ac_purple"><span ng-bind="numFmt(paymentData.trnsAmount)"></span>元</div>
+                         </div>
+                         <hr>
+                         <div class="content_infor">
+                             <div class="content_text"><p>交易帳號:</p></div>
+                             <div class="ac_number ac_purple" ng-bind="paymentData.trnsfrOutAcct"></div>
+                         </div>
+                         
+                     </div> <!--main_input end-->
+
+                    <!--content_checkbt 按鈕組合-->
+                    <div class="row">
+                        <div class="content_bt">
+                            <button type="button" class="confirm_bt " ng-click="clickSubmit()">確定</button>
+                            <button type="button" class="cancel_bt " ng-click="clickCancel()">取消</button>
+                        </div>
+                    </div>
+                    <!--content_checkbt 按鈕組合 end-->
+
+                </div> <!--main_content end-->
+             </div> <!--row end-->
+        </section> <!--main_sec end-->
+    </div>
+    <!--section 轉帳確認-->

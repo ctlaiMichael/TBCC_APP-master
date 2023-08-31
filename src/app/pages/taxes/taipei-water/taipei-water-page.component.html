@@ -1,0 +1,144 @@
+<section #taipei_water>
+
+	<ng-container *ngIf="'result' != showPage">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar" [ngClass]="{'step_active':'original'== showPage}">
+					<span *ngIf="'original'== showPage">1.填寫資料</span>
+				</li>
+				<li class="step_bar" [ngClass]="{'step_active':'confirm'== showPage}">
+					<span *ngIf="'confirm'== showPage">2.確認</span>
+				</li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="'original' == showPage">
+		<div class="row_single">
+			<h4 class="simple_title">{{'PG_TAX.TITLE.TAIPEI-WATER' | translate}}</h4>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['account']?'active_warnning':''">
+				<li class="inner_table_cell">
+					扣款帳號
+				</li>
+				<li class="inner_table_cell">
+					<ng-container *ngIf="defaultAcctNoFlag;else otherShow">
+						<select class="inner_select" (change)="onChangeType()"
+							[(ngModel)]="allTaipeiWaterData['account']">
+							<option value="" selected disabled>請選擇扣款帳號</option>
+							<option *ngFor="let item of acctNo">{{item.acctNo | accountFormate }}</option>
+						</select>
+					</ng-container>
+					<ng-template #otherShow>
+						<select class="inner_select">
+							<option>{{allTaipeiWaterData['account'] | accountFormate }}</option>
+						</select>
+					</ng-template>
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['account'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['barcode1']?'active_warnning':''">
+				<li class="inner_table_cell">
+					第一條條碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" maxlength="9" class="inner_input" placeholder="請輸入第一條條碼"
+					(change)="waterNumber('barcode1')" [(ngModel)]="allTaipeiWaterData['barcode1']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['barcode1'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['barcode2']?'active_warnning':''">
+				<li class="inner_table_cell">
+					第二條條碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" maxlength="16" class="inner_input" placeholder="請輸入第二條條碼"
+						(change)="waterNumber('barcode2')" [(ngModel)]="allTaipeiWaterData['barcode2']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['barcode2'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['barcode3']?'active_warnning':''">
+				<li class="inner_table_cell">
+					第三條條碼
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" maxlength="15" class="inner_input" placeholder="請輸入第三條條碼"
+						(change)="waterNumber('barcode3')" [(ngModel)]="allTaipeiWaterData['barcode3']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['barcode3'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable"  [ngClass]="errorMsg['waterNumber']?'active_warnning':''">
+				<li class="inner_table_cell">
+					水號
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" [(ngModel)]="allTaipeiWaterData['waterNumber']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['waterNumber'] | translate}}</i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable" [ngClass]="errorMsg['payAmount']?'active_warnning':''">
+				<li class="inner_table_cell">
+					應繳總金額
+				</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" [(ngModel)]="allTaipeiWaterData['payAmount']">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg['payAmount'] | translate}}</i>
+			<div class="row_inner">
+				<a class="inner_button float_right_bt" (click)="billExample();">
+					<span>帳單範例說明</span>
+				</a>&nbsp;
+				<a class="inner_button float_right_bt" (click)="scanningBarcode();taipei_water.scrollTop = 0;">
+					<span>掃描條碼</span>
+				</a>
+			</div>
+		</div>
+		<!-- 安控機制start  -->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+		</app-select-security>
+		<!-- 安控機制end  -->
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+				<a href="javascript:void(0)" (click)="goConfirm()">{{'BTN.NEXT' | translate }}</a>
+			</div>
+		</div>
+
+		<div class="row_single">
+			<h4 class="simple_title">提醒您：</h4>
+		</div>
+		<div class="row_single">
+			<p class="inner_content">
+				僅限繳納臺北自來水事業處水費
+			</p>
+		</div>
+	</ng-container>
+	<!-- 確認頁-->
+	<ng-container *ngIf="'confirm' == showPage">
+		<app-taipei-water-confirm-page (backToEdit)="toEditPage($event)" (backPageEmit)="finalCheckData($event)"
+			[taipeiWaterConfirm]="allTaipeiWaterData"></app-taipei-water-confirm-page>
+	</ng-container>
+
+	<!-- 結果頁-->
+	<ng-container *ngIf="'result' == showPage">
+		<app-taipei-water-result-page [taipeiWaterResult]="taipeiWaterResultData"></app-taipei-water-result-page>
+	</ng-container>
+
+</section>

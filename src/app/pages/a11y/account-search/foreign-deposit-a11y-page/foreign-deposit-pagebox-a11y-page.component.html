@@ -1,0 +1,19 @@
+ <!-- 卡片式總覽4 -->
+ <div class="row_white_a11y" *ngFor="let item of data" >
+    <div class="row4_top_a11y" title="{{item.mylastTrnsDate}}">
+        {{item.date_type}}<br>
+        {{item.lastTrnsDate}}
+    </div>
+    <div class="row4_center_all_a11y user_icon_only_a11y" title="{{item.mydeposit_account}}">
+        {{item.acctTypeName}}<br>
+        {{item.acctNo}}
+    </div>
+    <div class="row4_center_all_a11y money_icon_only_a11y search_border_top_a11y" title="{{item.myavbl_balance}}">
+        可用餘額<br>
+        <font class="font_money_a11y">{{item.currency}}<br>{{item.balance| htMoney}}</font>
+    </div>
+    <div class="row4_bottom_a11y" style="margin-bottom: 2%" >
+        <div><a class="button_confirm_a11y" (click)="onContentEvent(item)" role="button">交易明細</a></div>
+    </div>
+</div>
+<!-- 卡片式總覽4 End -->

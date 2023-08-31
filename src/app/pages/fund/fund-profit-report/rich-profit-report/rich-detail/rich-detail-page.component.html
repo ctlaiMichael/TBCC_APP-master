@@ -1,0 +1,76 @@
+<!--智富庫存明細 Start-->
+<!-- <div class="row_single"></div> -->
+
+<!-- <ul class="credit_card_bill_detail_list"> -->
+<!-- 列表start -->
+
+<!-- <li *ngFor="let item of data"> -->
+<!-- title start -->
+<!-- <p class="credit_card_name">
+            <i>{{item.fundCode}}</i>
+            <i>{{item.fundName}}</i>
+        </p> -->
+<!-- title end -->
+<!-- <p>
+            <span>參考報酬率：</span>
+            <span class="{{ item.rewardT | fundAmtClass }}">{{item.rewardT}}%</span>
+        </p>
+        <p>
+            <span>交易日期：</span>
+            <span>{{item.enrollDate | htDate:'date'}}</span>
+        </p>
+        <p>
+            <span>投資幣別：</span>
+            <span>{{item.inCurrency}}</span>
+        </p>
+        <p>
+            <span>庫存金額：</span>
+            <span>{{item.invenAmountT | htMoney:item.inCurrency}}</span>
+        </p>
+        <p>
+            <span>參考損益：</span>
+            <span class="{{ item.refProfitT | fundAmtClass }}">{{item.refProfitT | htMoney:item.inCurrency}}</span>
+        </p>
+        <p>
+            <span>本階段停利點：</span>
+            <span class="{{ item.spoint1T | fundAmtClass }}">{{item.spoint1T}}%</span>
+        </p>
+        <p>
+            <span>本階段停損點：</span>
+            <span class="{{ item.spoint2T | fundAmtClass }}">{{item.spoint2T}}%</span>
+        </p> -->
+<!-- 有按鈕最後一個項目要加上 no_border_bottom -->
+<!-- <a (click)="onQuery(item)" class="">{{ 'BTN.SEARCH' | translate }}</a> -->
+<!-- </li> -->
+<!-- 列表 End  -->
+<!-- </ul> -->
+<!--智富庫存明細 End-->
+
+<!--智富庫存明細 Start-->
+
+<ng-container *ngFor="let item of data">
+    <table class="table_fund_font rich_table" (click)="onQuery(item)">
+    <tr>
+        <!-- 投資標的 -->
+        <td colspan="3" class="rich_pad_top">{{item.fundCode}}&nbsp;{{item.fundName}}</td>
+        <td rowspan="2" class="rich_pad_button"><a class="rich_allow_link" href="javascript:void(0)"></a></td>
+    </tr>
+    <tr class="rich_bod_bot">
+        <!-- 交易日期<br>庫存金額 -->
+        <td class="rich_pad_bot">{{item.enrollDate | htDate:'date'}}<br>
+            <i class="table_rich_font_money">{{item.invenAmountT | currencyMoney:item.inCurrency}}</i>
+        </td>
+        <!-- 參考損益<br>參考報酬率 -->
+        <td class="rich_align_ri">
+            <i class="{{ item.refProfitT | fundAmtClass }} rich_bold">{{item.refProfitT | htMoney:item.inCurrency}}</i><br>
+            <i class="{{ item.rewardT | fundAmtClass }} rich_bold">{{item.rewardT}}%</i>
+        </td>
+        <!-- 本階段停利點<br>本階段停損點 -->
+        <td class="rich_align_ri rich_pad_rig">
+            <i class="{{ item.spoint1T | fundAmtClass }} rich_bold">{{item.spoint1T}}%</i><br>
+            <i class="{{ item.spoint2T | fundAmtClass }} rich_bold">{{item.spoint2T}}%</i>
+        </td>
+    </tr>
+    </table>
+</ng-container>
+<!--智富庫存明細 End-->

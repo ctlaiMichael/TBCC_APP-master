@@ -1,0 +1,40 @@
+<div class="row_single">
+    <!-- 請選擇基礎幣別 -->
+    <h4 class="simple_title">{{ 'PG_FINANCIAL.EXCHANGE.FIELD.BASE_CURRENCY' | translate }}</h4>
+</div>
+<div class="row_single">
+    <div class="transfer_frame" [ngClass]="{'active_warnning': (errorMsg !== '')}">
+        <div class="transfer_td " (click)="popOpen()">
+            <span class="base_currency {{baseCurrency.name|iconFlag:'class'}}"></span>
+        </div>
+        <div class="transfer_td">
+            <button class="btn_style_inner color_fee" (click)="popOpen()">
+                {{ baseCurrency['name'] | currencyName: baseCurrency['currencyName']}}
+            </button>
+            <!-- 請輸入試算金額 -->
+            <input type="tel" class="inner_input" placeholder="{{ 'PG_FINANCIAL.EXCHANGE.FIELD.INPUT_INFO' | translate }}"
+                [(ngModel)]="count">
+        </div>
+        <div class=""></div>
+    </div>
+    <i class="input_info_warnning">{{ errorMsg | translate }}</i>
+</div>
+<div class="table_four_hl">
+    <div class="table_four_hl_tr">
+        <!-- 幣別 -->
+        <p class="table_four_hl_th table-th-align-l">{{ 'PG_FINANCIAL.EXCHANGE.FIELD.TITLE1' | translate }}</p>
+        <!-- 金額 -->
+        <p class="table_four_hl_th">{{ 'PG_FINANCIAL.EXCHANGE.FIELD.TITLE2' | translate }}</p>
+    </div>
+    <!-- 試算區塊 -->
+    <ng-container *ngFor="let item of new_table">
+        <div class="table_four_hl_tr" *ngIf="baseCurrency.name!=item.country">
+            <p class="table_four_hl_td eachMoney">
+                <i class="{{ item.country|iconFlag }}"></i>
+                {{item['country'] | currencyName: item['chineseName']}}
+                <!-- {{item.country| iconFlag:'chineseName'}}{{item.country}} -->
+            </p>
+            <p class="table_four_hl_td font_money_blu">{{ (item.money | rateTrans:item:baseCurrency:count) | htMoney }}</p>
+        </div>
+    </ng-container>
+</div>

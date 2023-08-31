@@ -1,0 +1,595 @@
+{
+	"SERVICE_STOP":"SERVICE_STOP",
+	"NO_ACCOUNT_LIST":"NO_ACCOUNT_LIST",
+	"BANK_NAME":"TCB BANK",
+	"WARNING":"WARNING",
+	"FAIL":"FAIL",
+	"ERROR":"ERROR",
+	"0":"SUCCESSED",
+	"MONTH" : {
+		"JAN":"JAN",
+		"FEB":"FEB",
+		"MAR":"MAR",
+		"APR":"APR",
+		"MAY":"MAY",
+		"JUN":"JUN",
+		"JUL":"JUL",
+		"AUG":"AUG",
+		"SEP":"SEP",
+		"OCT":"OCT",
+		"NOV":"NOV",
+		"DEC":"DEC",
+		"JAN_S":"01",
+		"FEB_S":"02",
+		"MAR_S":"03",
+		"APR_S":"04",
+		"MAY_S":"05",
+		"JUN_S":"06",
+		"JUL_S":"07",
+		"AUG_S":"08",
+		"SEP_S":"09",
+		"OCT_S":"10",
+		"NOV_S":"11",
+		"DEC_S":"12"
+	},
+	"TIME" : {
+		"YEAR" : "Year",
+		"MONTH" : "Month",
+		"DAY" : "Day"
+	},
+	"MONEY" : {
+		"TEN_THOUSAND" : "Ten Thousand",
+		"TEN_THOUSAND_DOLLAR" : "Ten Thousand",
+		"DOLLAR" : "NT dollar"
+	},
+	"LOGIN":"LOGIN",
+	"LOGIN_INDEX_OUT":"未登入",
+	"LOGIN_INDEX_IN":"已登入",
+	"LOGIN_EMPTY_INPUT":"請輸入使用者ID或密碼",
+	"LOGOUT":"LOGOUT",
+	"LOGOUT_SUCCESSED":"SUCCESSED LOGOUT",
+	"LOGIN_MENU":{
+		"TITLE":"請選擇登入方法",
+		"MENU_ERROR" : "不存在的登入模式",
+		"MENU_WEB":"個人網路銀行登入",
+		"MENU_CARD":"信用卡會員登入",
+		"RELOGIN" : "重新登入",
+		"LOGOUT_ERROR" : "ERROR LOGOUT",
+		"LOGOUT_SUCCESS" : "SUCCESSED LOGOUT",
+		"LOGOUT_BY_RELOGIN" : "系統已強制登出，請重新登入",
+		"LOGIN_SUCCESS" : "SUCCESSED LOGIN",
+		"LOGIN_ERROR" : "ERROR LOGIN",
+		"TIMEOUT" : "閒置時間過長系統已自動將您登出",
+		"TIMEOUT_SERVER" : "系統已自動將您登出",
+		"HAVE_TIMEOUT" : "LOGIN Timeout",
+		"LOGIN_CHECK" : "Please Login before",
+		"LOGIN_CHECK_WEB" : "要使用此功能必須登入個人網路銀行<br>請確認是否重新登入?",
+		"LOGOUT_CONFIRM" : "確認登出",
+		"LOGOUT_CONFIRM_MSG" : "您是否確定要登出行動銀行?"
+	},
+	"HTTP_ERROR" : {
+		"CONNECTION" : "拒絕連線"
+	},
+	"MESSAGE_RESULT_0":"已確認",
+	"MESSAGE_RESULT_1":"已取消",
+	"MESSAGE_RESULT_2":"已逾時",
+	"MESSAGE_NOTE_INFO":"注意事項",
+	"NOTE_ANTIVIRUS_TITLE":"安全提示",
+	"NOTE_ANTIVIRUS_CONTENT":"建議安裝防毒軟體",
+	"NOTE_JBROOT_TITLE":"安全提示",
+	"NOTE_JBROOT_CONTENT":"您的裝置可能不安全，請解除Root/JB狀態",
+	"MSG_WIFI_ERROR":"請確認行動數據或Wi-Fi連線正常",
+	"MSG_CONNECTION_ERROR":"系統維護中，請稍後再試!若有其他問題，請聯絡客服人員。",
+	"MSG_FORMATE_ERROR":"回傳資料格式錯誤，請聯絡客服人員。",
+	"NOTE_AUTOUPDATE_TITLE":"系統更新提示",
+	"NOTE_AUTOUPDATE_CONTENT":"目前有可用的更新，請點選「確定」立即下載更新檔，系統將自動登出。（檔案大小{0}MB）",
+	"NOTE_AUTOUPDATE_CONTENT_KB":"目前有可用的更新，請點選「確定」立即下載更新檔，系統將自動登出。（檔案大小{0}KB）",
+	"NOTE_AUTOUPDATE_FILESIZE":"檔案大小為",
+	"N1002_SERVICE":"聯絡客服",
+	"N1002_SYSTEM":"系統資訊",
+	"N1002_APP_VERSION":"行動銀行版本",
+	"N1002_DEVICE_VERSION":"手機軟體版本",
+	"N1002_DEVICE_MODEL":"裝置名稱",
+	"N1002_DEVICE_UUID":"識別碼(UDID)",
+	"TRADE_CANCEL":"交易已取消",
+	"TRADE_SUBMIT":"交易確認已送出",
+	"VERSION" : "VERSION",
+	"BTN" : {
+		"BACK":"BACK",
+		"CHECK":"CHECK",
+		"CANCEL":"CANCEL",
+		"NEXT":"NEXT",
+		"PREVIOUS":"PREVIOUS",
+		"APPLYNOW":"APPLY",
+		"BACK_TO_HOME":"HOME",
+		"SEARCH":"SEARCH",
+		"HOME":"HOME",
+		"SEND":"SEND",
+		"CHECK_SEND" : "SEND",
+		"CLEAR":"CLEAR",
+		"LOGIN":"LOGIN",
+		"LOGOUT":"LOGOUT"
+	},
+	"MENU":{
+		"MAIN":{
+			"MYCARD":"我的信用卡",
+			"BILLSEARCH":"帳單查詢",
+			"PAYCARDFEE":"繳卡費",
+			"QRCODE4FEE":"QR Code繳卡費",
+			"INSTSELECT":"分期付款",
+			"APPLY":"申請/補件",
+			"APP":"優惠活動",
+			"DIVIDEND":"紅利專區",
+			"ACTIVATECARD":"開卡/掛失"
+		},
+		"LEFT":{
+			"MYCARD":"我的信用卡",
+			"BILLSEARCH":"帳單查詢",
+			"BILLUNRECORDED":"信用卡未列帳單明細",
+			"VISASEARCH":"VISA金融卡帳單查詢",
+			"BILLPERIOD0":"本期帳單",
+			"BILLPERIOD1":"前期帳單",
+			"BILLPERIOD2":"前兩期帳單",
+			"PAYCARD":"繳卡費",
+			"PAYCARDFEE":"繳卡費",
+			"QRCODE4FEE":"QR Code繳卡費",
+			"APPLYANDUPLOAD":"申請/補件",
+			"APPLY":"申請信用卡",
+			"UPLOAD":"補件上傳",
+			"INSTSELECT":"分期付款",
+			"BILLINST":"帳單分期",
+			"SINGLEINST":"單筆分期",
+			"ACTIVITYAPP":"行銷活動",
+			"APP":"優惠活動",
+			"ACTIVITYLOGIN":"活動登錄",
+			"DIVIDEND":"紅利專區",
+			"ACTIVATECARD":"開卡/掛失",
+			"OPEN":"開卡",
+			"LOST":"掛失",
+			"QANDA":"Q&A",
+			"REGISTERED":"註冊信用卡會員",
+			"HOME":"首頁"
+		},
+		"FOOTER":{
+			"BACK_TO_HOME":"信用卡服務",
+			"PAYCARDFEE":"繳卡費",
+			"SINGLEINST":"單筆分期",
+			"ACTIVITYLOGIN":"活動登錄",
+			"HOME":"首頁"
+		}
+	},
+	"PAGE_TITLE" : {
+		"BACK_TO_HOME":"信用卡服務",
+		"ERRORMESSAGE":"錯誤訊息",
+		"DIVIDEND":"紅利積點",
+		"APPLY":"申請信用卡",
+		"UPLOAD":"補件上傳",
+		"PAYCARDFEE":"繳卡費",
+		"PAY_FORM":"自行輸入繳款",
+		"PAY_LOGIN":"登入網銀/信用卡會員繳款",
+		"QRCODE4FEE":"QR Code繳卡費",
+		"ACTIVATECARD":"開卡/掛失",
+		"ACTIVATEFORM":"信用卡開卡",
+		"LOSTFORM":"信用卡掛失",
+		"INSTSELECT":"分期付款",
+		"BILLINST":"帳單分期",
+		"SINGLEINST":"單筆分期",
+		"TAXBILLINST":"108年綜合所得稅分期",
+		"TAXBILLINST11":"108年綜合所得稅分期",
+		"HOUBILLINST":"109年房屋稅分期",
+		"LICENSEINST":"109年牌照稅分期",
+		"ACTIVITYLOGIN":"活動登錄",
+		"BILLSEARCH":"帳單查詢",
+		"BILLUNRECORDED":"信用卡未列帳單明細",
+		"BILLPERIOD0":"本期帳單",
+		"BILLPERIOD1":"前期帳單",
+		"BILLPERIOD2":"前兩期帳單",
+		"MYCARD":"我的信用卡",
+		"VISASEARCH":"VISA金融卡帳單查詢",
+		"QANDA":"Q&A"
+	},
+	"NACTIVE_MSG" : {
+		"CAMERA":"無法啟動相機",
+		"CAMERA_PHOTO":"無法啟動相簿",
+		"PHOTO":"無法取得圖片",
+		"OPEN_CAMERA" : "開啟相機",
+		"OPEN_PHOTO" : "開啟相簿"
+	},
+	"ERROR_MSG" : {
+		"NO_SEARCH" : "Search no data",
+		"NO_SEARCH_DETAIL" : "查無明細資料",
+		"ERROR":"ERROR",
+		"TELEGRAM" : "SEND API ERROR"
+	},
+	"FIELD" : {
+		"USERIDA":"使用者代號",
+		"IDENTITY":"Identity",
+		"IDENTITY_USER" : "Identity",
+		"PAYMENT_ID":"Payment Id",
+		"EMAIL":"E-Mail",
+		"MOBILE":"Phone Number",
+		"TELPHONE":"Telephone Number",
+		"DATE":"Date",
+		"DATE_BIRTHDAY":"Birthday",
+		"CAPTCHA":"Captcha Code",
+		"CAPTCHA_CHANGE" : "點圖可更換圖形驗證",
+		"AREA" : {
+			"POST":"Post number",
+			"CITY":"City",
+			"AREA":"Area",
+			"ADDRESS":"Address"
+		},
+		"NOTE":"NOTE",
+		"BIRTHDAY":"Birthday",
+		"PASSWORD":"Password",
+		"REMARK":"Remark",
+		"CARD" : {
+			"YM":"信用卡有效月年",
+			"CARDNUM":"信用卡號碼",
+			"OWNER" : "正附卡類型",
+			"TYPE_OWNER" : "正卡",
+			"TYPE_NOT_OWNER" : "附卡",
+			"BANK":"轉出銀行",
+			"ACNT" : "轉出帳號"
+		},
+		"PAYAMT":{
+			"INPUT":"繳費金額",
+			"SELECT":"繳費方式",
+			"TIME":"繳費日期",
+			"STATE" : "繳費狀態"
+		}
+	},
+	"INPUT_MSG" : {
+		"AGREE_PROVISION" : "本人已詳閱並同意上述條款之規定",
+		"AGREE_PROVISION_SPECAIL" : "本人已詳閱並同意上述特別約定條款之規定",
+		"IDENTITY":"Please input your identity",
+		"USERIDA":"請輸入6至16位英數字",
+		"EMAIL":"Please input your E-Mail",
+		"MOBILE":"Please input your telphone(0911111111)",
+		"TELPHONE":"Please input your phone",
+		"DATE":"Please input date",
+		"PASSWORD":"Please input password",
+		"SIGN" : "Please point before sign",
+		"CARD":{
+			"SELECT_BANK":"請選擇轉出銀行",
+			"BANK_CODE" : "請選擇轉出銀行代號",
+			"ACNT":"請輸入轉出帳號",
+			"SELECT_ACNT":"請選擇轉出帳號"
+		},
+		"PAYAMT":{
+			"INPUT":"請輸入繳費金額",
+			"SELECT":"請選擇繳費金額"
+		},
+		"BRANCH":{
+			"ID":"Please input branch id",
+			"NAME":"Please select branch"
+		},
+		"BANK" : {
+			"SELECT_BANK":"請選擇銀行",
+			"ID" : "請選擇銀行代號"
+		}
+	},
+	"INPUT_CHECK" : {
+		"ERROR" : "請確實完成資料",
+		"LEAVE" : "確認離開?",
+		"SELECT_ERROR" : "找不到對應的資料",
+		"STEP_ERROR" : "請依照正常步驟執行!",
+		"AGREE_PROVISION" : "請同意所有條款",
+		"AGREE_PROVISION_ONE" : "請同意條款",
+		"EMPTY":"Please input data",
+		"USERIDA":"請輸入正確資料",
+		"PASSWORD":"請輸入正確資料",
+		"IDENTITY":"Please input your identity",
+		"PAYMENT_ID":"Please input your A/C ID",
+		"EMAIL":"Please input E-Mail",
+		"MOBILE":"Please input your phone number(0911111111)",
+		"TELPHONE": {
+			"ERROR" : "Please input your tel phone number",
+			"AREA" : "區碼不符合規則",
+			"LENGTH" : "長度不符合規則",
+			"EXTEN" : "分機號碼不符合規則"
+		},
+		"ENGLISH":"Please input English",
+		"DATE":"Please input date",
+		"CAPTCHA":"Please input captcha",
+		"NUMBER" : {
+			"NUMBER":"Please input number",
+			"POSITIVE":"Please input positive integer number",
+			"NEGATIVE":"Please input negative integer number",
+			"POSITIVE_FLOAT":"Please input positive number",
+			"NEGATIVE_FLOAT":"Please input negative number"
+		},
+		"STRLENGTH":"Input string is wrong",
+		"STRLENGTH_MAX":"Input string is too long",
+		"STRLENGTH_MIN":"Input string is too short",
+		"SIGN" : "Please sign",
+		"AREA" : {
+			"POST":"Please input post id",
+			"CITY":"Please select city",
+			"AREA":"Please select area",
+			"ADDRESS":"Please input address"
+		},
+		"CARD":{
+			"ACNT":"請輸入正確的銀行帳號",
+			"YM":"請輸入正確的有效年月",
+			"CARDNUM":"請輸入正確的信用卡號碼",
+			"CARD_CHECK_CODE":"請輸入正確的檢查碼"
+		}
+	},
+	"BILL_MSG" : {
+		"NO_SEARCH" : "查無帳單明細資料",
+		"MSG" : {
+			"SEARCH_TIME" : "查詢時間",
+			"PAY_DATE" : "消費日期",
+			"PAY_DETAIL" : "消費明細",
+			"CARD_NUMBER" : "卡號",
+			"CARD_NAME" : "卡別/卡號末四碼",
+			"CARD_TYPE" : "正附卡別",
+			"MONEY" : "新臺幣金額",
+			"MONEY_TW" : "台幣金額",
+			"MONEY_F" : "外幣金額",
+			"FOREIGN_CURRENCY_DATE":"外幣折算日",
+			"PERIOD_EACH" : "每期",
+			"PERIOD_1" : "第一期"
+		},
+		"INPUT" : {
+			"PERIOD_PAY" : "本期應繳金額",
+			"PERIOD_PAY_BILL" : "本期帳單應繳金額",
+			"PERIOD_PAY_MIN" : "本期最低應繳金額",
+			"PERIOD_BALANCE" : "可用餘額"
+		}
+	},
+	"CTRL_APPLY" : {
+		"APPLY_MENU" : "APPLY",
+		"APPLY_BY_USER" : "已持有合庫信用卡",
+		"APPLY_BY_NEW" : "未持有合庫信用卡",
+		"CARD_INFO_TRAIT":"卡片特色",
+		"CARD_INFO_PRIVILEGE":"專屬優惠",
+		"INPUT" : {
+			"SELECT" : "請選擇",
+			"CARD_TYPE" : "請選擇申請類別",
+			"CARD_NAME" : "請選擇卡別",
+			"NAME_CHINESE" : "中文姓名",
+			"NAME_CHINESE_MSG" : "請輸入中文姓名",
+			"NAME_ENGLISH" : "英文姓名",
+			"NAME_ENGLISH_MSG" : "請輸入英文姓名",
+			"NAME_ENGLISH_INFO" : "請與護照相同",
+			"ADDR_CURRENT" : "通訊地址",
+			"EDUCATION" : "教育程度",
+			"ELEMSCHOOL" : "畢業國小名稱",
+			"COMP_NAME" : "公司名稱",
+			"COMP_NAME_MSG" : "請輸入公司名稱",
+			"ADDR_COMP" : "公司地址",
+			"COMP_ID" : "統一編號",
+			"COMP_ID_MSG" : "請輸入公司統一編號",
+			"COMP_PHONE" : "公司電話",
+			"industryText" : "行業別",
+			"industryText_Other" : "其他自行輸入",
+			"posTitle" : "職稱",
+			"posTitle_MSG" : "請輸入職稱",
+			"workYear" : "年資",
+			"avgSalary" : "平均月收入(萬)",
+			"billMailAddr" : "帳單寄收地址",
+			"branchName" : "往來分行",
+			"finProof" : "財力證明",
+			"idCopy" : "身分證[正/反]影本"
+		},
+		"CHECK" : {
+			"IMAGE_NUM" : "請至少選擇一張圖片",
+			"IMAGE_IDENTITY" : "請上傳正反身分證照片"
+		},
+		"APPLY" : {
+			"SUCCESS" : "申請信用卡成功",
+			"ERROR" : "申請信用卡失敗"
+		}
+	},
+	"CTRL_ACTIVITY" : {
+		"NO_SEARCH" : "目前查無可登錄的活動",
+		"NO_SEARCH_HAVE" : "目前查無已登錄的活動",
+		"BTN_LOGIN" : "確定登錄",
+		"BTN_HOME" : "BACK",
+		"MENU_NOT_SIGNED" : "NOT SIGNED",
+		"MENU_SIGNED" : "SIGNED",
+		"SIGNED_SUCCESS" : "Signed Success",
+		"SIGNED_ERROR" : "Signed Error",
+		"CHECK" : {
+			"CHOUSE" : "Please chouse one activity",
+			"SUCCESS" : "Signed Success",
+			"ERROR" : "Signed Error"
+		}
+	},
+	"CTRL_LOST_CARD" : {
+		"BTN":{
+			"APPLY" : "申請掛失",
+			"LOST_Y_RESULT":"掛失並補發",
+			"LOST_N_RESULT":"掛失不補發"
+		},
+		"INPUT" : {
+			"SELECT" : "請選擇卡片",
+			"CARD_TYPE_NAME" : "信用卡類別"
+		},
+		"SUCCESS" : "掛失申請已送出",
+		"ERROR" : "掛失申請失敗"
+	},
+	"CTRL_OPEN_CARD" : {
+		"SUCCESS" : "開卡完成",
+		"ERROR" : "開卡失敗"
+	},
+	"CTRL_BILL_SEARCH" : {
+		"BTN":{
+			"BACK_MENU":"回帳單查詢",
+			"BACK_VISA":"回VISA金融卡列表"
+		},
+		"PERIOD_NOW":"本期",
+		"PERIOD_1":"前一期",
+		"PERIOD_2":"前兩期",
+		"AMOUNT_TW" : "台幣加總金額"
+	},
+	"CTRL_DIVIDEND":{
+		"POINT" : "Point",
+		"BTN":{
+			"SEND":"立即兌換",
+			"EXCHANGE" : "確認兌換"
+		},
+		"MSG" : {
+			"EXCHANGE" : "兌換點數",
+			"TRANSFER_MONEY" : "Transfer NT dollar",
+			"AFTER_TRANSFER" : "Have Point"
+		},
+		"CHECK" : {
+			"MORE" : "Please input more than ",
+			"LESS" : "You can't excange point",
+			"OVER" : "Please input point don't max than ",
+			"HAVE" : "You have ",
+			"INPUT" : "Please input point",
+			"NO_POINT" : "No Point",
+			"NO_POINT_MSG" : "No Point. You can't excange point",
+			"EXCHANGE_SUCCESS" : "Exchange Success",
+			"EXCHANGE_ERROR" : "Exchange Error",
+			"FACTOR_1" : "且須為",
+			"FACTOR_2" : "的倍數",
+			"CANNOT" : "無法兌換",
+			"APPLY_ERROR" : "申請兌換失敗"
+		}
+	},
+	"CTRL_PAY":{
+		"BTN":{
+			"PAY_SUBMIT":"立即繳卡費",
+			"PAY_CHECK":"確定繳卡費"
+		},
+		"INPUT" : {
+			"MONEY" : "金額",
+			"PAY_ALL" : "全額繳清",
+			"PAY_LOW" : "最低金額",
+			"PAY_SELF" : "自行輸入"
+		},
+		"NOTE":{
+			"PAYFORM_NOTE1":"1.本繳費方式係本銀行提供使用者透過全國性繳費(稅)平台繳納正卡持卡人本行歸戶下之信用卡款。",
+			"PAYFORM_NOTE2":"2.繳費限額依各參加活存帳戶繳費作業金融機構之轉出銀行規定辦理。(本行帳戶轉出每日最高10萬元，每月最高20萬元)",
+			"PAYFORM_NOTE3":"3.以他行本人活期帳戶繳納信用卡費每筆交易手續費為新臺幣10元整，該費用將從您的活期帳戶直接扣除。"
+		},
+		"SUCCESS" : "繳費成功",
+		"ERROR" : "繳費失敗"
+	},
+	"CTRL_INSTALLMENT" : {
+		"INSTALLMENT" : "分期",
+		"BTN" : {
+			"BACK_MENU" : "返回分期付款列表"
+		},
+		"MSG" : {
+			"SUCCESS" : "申請成功",
+			"ERROR" : "申請失敗",
+			"UPLOAD_ERROR" : "簽名檔上傳失敗",
+			"AGREE_PROVISION" : "本人已詳閱並同意上述「帳單easy分期」注意事項",
+			"AGREE_PROVISION_PAYTAX" : "本人已詳閱並同意上述綜合所得稅分期注意事項",
+			"AGREE_PROVISION_HOUSE" : "本人已詳閱並同意上述注意事項",
+			"AGREE_PROVISION_LICENSE" : "本人已詳閱並同意上述牌照稅分期注意事項",
+			"PAY_MAX" : "可設定帳單分期金額上限",
+			"SELECT" : "請選擇分期期數與分期利率",
+			"PAY_TEST" : "每期繳款本金試算金額(如除不盡則加入首期)",
+			"NOTE_1":"提醒您",
+			"NOTE_2":"請記得於帳單繳款截止日前，先繳交本期最低應繳金額，才能申辦成功哦!",
+			"NOTE_3":"1.「108年綜所稅分期」僅限申請人之正、附卡片申辦<br>2.行動支付掃碼優惠限使用合庫E Pay或台灣行動支付APP掃描QR CODE支付",
+			"NOTE_4":"行動支付掃碼優惠限使用合庫E Pay或台灣行動支付APP掃描QR CODE支付",
+			"PERIOD_NUM" : "分期期數",
+			"RESULT" : "設定結果"
+		},
+		"INPUT" : {
+			"SELECT" : "請選擇",
+			"CHECK_SELECT" : "請選擇期數"
+		}
+	},
+	"ERROR_CODE" : {
+		"FC0001_001" : {
+			"MESSAGE" : "查無卡片資料",
+			"TITLE" : "卡片不存在",
+			"CONTENT" : "查無欲申請的卡片"
+		},
+		"FC0001_005" : {
+			"MESSAGE" : "信用卡尚未申請完成",
+			"TITLE" : "信用卡尚未申請完成",
+			"CONTENT" : "<p class=\"color_red\">您的檢附資料尚未提供或是上傳失敗。<br>請透過補件上傳功能提供相關檢附資料。<br>若有問題可撥打客服專線詢問相關細節，祝您事事順心!</p>"
+		},
+		"FC0001_006" : {
+			"MESSAGE" : "申請信用卡成功",
+			"TITLE" : "申請信用卡成功",
+			"CONTENT" : "感謝您的申請，我們會盡快處理您的申請案件。<br>若有問題可撥打客服專線詢問相關細節，祝您事事順心! "
+		},
+		"FC0002_001" : {
+			"MESSAGE" : "申請案件查詢失敗",
+			"TITLE" : "申請案件查詢失敗",
+			"CONTENT" : "申請案件查詢失敗，請重新查詢。"
+		},
+		"FC0002_002" : {
+			"MESSAGE" : "查無申請案件",
+			"TITLE" : "查無申請案件",
+			"CONTENT_1" : "目前查無您於",
+			"CONTENT_2" : "天內的申請案件，請您重新申辦。"
+		},
+		"FC0002_003" : {
+			"MESSAGE" : "文件上傳失敗",
+			"TITLE" : "文件上傳失敗",
+			"CONTENT" : "文件上傳失敗，請重新上傳。"
+		},
+		"FC0002_004" : {
+			"MESSAGE" : "文件上傳完成",
+			"TITLE" : "文件上傳完成",
+			"CONTENT" : "文件上傳已送出"
+		},
+		"FC0004_001" : {
+			"MESSAGE" : "查無本期帳單資料",
+			"TITLE" : "查無本期帳單資料",
+			"CONTENT" : "查無本期帳單資料"
+		},
+		"FC0004_002" : {
+			"MESSAGE" : "查無本期應繳金額",
+			"TITLE" : "查無本期應繳金額",
+			"CONTENT" : "本期應繳金額為0"
+		},
+		"FC0004_301" : {
+			"MESSAGE" : "QR Code掃描失敗",
+			"TITLE" : "QR Code掃描失敗",
+			"CONTENT" : "QR Code掃描失敗"
+		},
+		"FC0004_302" : {
+			"MESSAGE" : "QR Code掃描失敗",
+			"TITLE" : "QR Code掃描失敗",
+			"CONTENT" : "您已取消QR Code掃描"
+		},
+		"FC0004_303" : {
+			"MESSAGE" : "QR Code掃描失敗",
+			"TITLE" : "QR Code掃描失敗",
+			"CONTENT" : "您的帳單非本行帳單"
+		},
+		"FC0006_001" : {
+			"MESSAGE" : "查無卡片資料",
+			"TITLE" : "卡片不存在",
+			"CONTENT" : "查無欲掛失的卡片"
+		},
+		"FC0011_002" : {
+			"MESSAGE" : "本卡無未列帳單",
+			"TITLE" : "本卡無未列帳單",
+			"CONTENT" : "本卡無未列帳單"
+		},
+		"FC0012_002" : {
+			"MESSAGE" : "查無VISA帳單明細資料",
+			"TITLE" : "查無VISA帳單明細資料",
+			"CONTENT" : "查無VISA帳單明細資料"
+		},
+		"FC0013_001" : {
+			"MESSAGE" : "身分驗證失敗",
+			"TITLE" : "身分驗證失敗",
+			"CONTENT" : "請重新選擇申辦方式。"
+		},
+		"FC0013_002" : {
+			"MESSAGE" : "身分驗證失敗",
+			"TITLE" : "身分驗證失敗",
+			"CONTENT" : "系統連線逾時，身分驗證失敗，請重新輸入。"
+		},
+		"FC0013_003" : {
+			"MESSAGE" : "身分驗證失敗",
+			"TITLE" : "身分驗證失敗",
+			"CONTENT" : "驗證之卡片需持卡6個月，請重新輸入。"
+		}
+	}
+}

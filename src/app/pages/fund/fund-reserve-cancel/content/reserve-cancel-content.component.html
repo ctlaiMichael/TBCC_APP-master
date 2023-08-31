@@ -1,0 +1,160 @@
+<section *ngIf="!showContent; else contentBox">
+	<div class="sub_info_frame">
+		<ul class="step_bar_frame">
+			<li class="step_bar step_active">
+				<span>1.取消預約</span>
+			</li>
+			<li class="step_bar"></li>
+			<li class="step_bar"></li>
+		</ul>
+	</div>
+	<ul class="table_info table_th_style">
+		<li class="table_row">
+			<span>交易狀況</span>
+			<span class="ati_td">
+				{{setData.statusDesc}}
+			</span>
+		</li>
+		<li class="table_row">
+			<span>交易日期</span>
+			<i>{{ setData.enrollDate | htDate:'date' }}</i>
+		</li>
+		<li class="table_row">
+			<span>預約編號</span>
+			<i>{{setData.reserveTransCode}}</i>
+		</li>
+		<li class="table_row">
+			<span>生效日期</span>
+			<i>{{ setData.effectDate | htDate:'date' }}</i>
+		</li>
+		<li class="table_row">
+			<span>交易項目</span>
+			<i>{{setData.transTypeDesc}}</i>
+		</li>
+		<li class="table_row">
+			<span>交易編號</span>
+			<i>{{setData.transCode}}</i>
+		</li>
+		<li class="table_row">
+			<span>投資幣別</span>
+			<i>{{setData.currency}}</i>
+		</li>
+		<li class="table_row">
+			<span>基金幣別</span>
+			<i>{{setData.inCurrency}}</i>
+		</li>
+		<li class="table_row">
+			<span>申/轉/贖金額</span>
+			<i>{{setData.currency}} {{setData.purchAmnt | htMoney:setData.currency}}</i>
+		</li>
+		<li class="table_row">
+			<span>申/轉手續費</span>
+			<i>{{setData.currency}} {{setData.serviceFee}}</i>
+		</li>
+		<li class="table_row">
+			<span>扣款帳號/<br>贖回入賬帳號</span>
+			<i>{{showAccount}}</i>
+		</li>
+
+		<li class="table_row">
+			<span>處理日期</span>
+			<i>{{setData.lastChangeDate | htDate:'date' }}</i>
+		</li>
+		<li class="table_row">
+			<span>處理結果</span>
+			<i>{{setData.statusDesc}}</i>
+		</li>
+	</ul>
+	<!-- 原表格 END-->
+
+	<div class="row_single"></div>
+
+	<div class="row_single">
+		<div [hidden]="cancelBtn!=='C'">
+			<div class="double_button">
+				<a href="javascript:void(0);" (click)="onCheckData()">取消預約</a>
+				<a href="javascript:void(0);" (click)="onBackPageData()">返回</a>
+			</div>
+		</div>
+		<div [hidden]="cancelBtn==='C'">
+			<a href="javascript:void(0);" class="button_confirm" (click)="onBackPageData()">返回</a>
+		</div>
+	</div>
+</section>
+
+<ng-template #contentBox>
+	<section *ngIf="!showResult; else resultBox">
+		<div class="sub_info_frame">
+			<ul class="step_bar_frame">
+				<li class="step_bar"></li>
+				<li class="step_bar step_active">
+					<span>2.確認</span>
+				</li>
+				<li class="step_bar"></li>
+			</ul>
+		</div>
+
+		<div class="sub_info_subtitle">
+			交易時間:{{ trnsDateTime | htDate }}
+		</div>
+
+		<ul class="table_info table_th_style">
+			<li class="table_row">
+				<span>預約交易日期</span>
+				<i>{{ setData.enrollDate | htDate:'date' }}</i>
+			</li>
+			<li class="table_row">
+				<span>預約編號</span>
+				<i>{{setData.reserveTransCode}}</i>
+			</li>
+			<li class="table_row">
+				<span>預約生效日期</span>
+				<i>{{setData.effectDate | htDate:'date' }}</i>
+			</li>
+			<li class="table_row">
+				<span>交易項目</span>
+				<i>{{setData.transTypeDesc}}</i>
+			</li>
+			<li class="table_row">
+				<span>交易編號</span>
+				<i>{{setData.transCode}}</i>
+			</li>
+			<li class="table_row">
+				<span>申購/贖回/<br>轉出投資標的</span>
+				<i>{{setData.fundCode}}{{setData.fundName}}</i>
+			</li>
+			<li class="table_row">
+				<span>轉入投資標的</span>
+				<i>{{setData.inFundCode}}{{setData.inFundName}}</i>
+			</li>
+			<li class="table_row">
+				<span>申/轉/贖金額</span>
+				<i>{{setData.currency}} {{setData.purchAmnt}}</i>
+			</li>
+			<li class="table_row">
+				<span>申/轉手續費</span>
+				<i>{{setData.currency}} {{setData.serviceFee}}</i>
+			</li>
+			<li class="table_row">
+				<span>扣款/贖回入賬帳號</span>
+				<i>{{showAccount}}</i>
+			</li>
+		</ul>
+		<div class="row_single"></div>
+		<!-- 安控下拉選擇 -->
+		<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj"></app-select-security>
+		<!-- 安控輸入密碼 -->
+		<app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+
+		<div class="row_single">
+			<div class="double_button">
+				<a href="javascript:void(0)" (click)="backMenuPage()">離開</a>
+				<a href="javascript:void(0)" (click)="changeResultPage()">確定取消</a>
+			</div>
+		</div>
+	</section>
+	<!-- 結果頁 -->
+	<ng-template #resultBox>
+		<app-reserve-cancel-result [setData]="content_data" [e]="safeE"></app-reserve-cancel-result>
+	</ng-template>
+</ng-template>

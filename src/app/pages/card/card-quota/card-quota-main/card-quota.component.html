@@ -1,0 +1,276 @@
+<section>
+    <ng-container [ngSwitch]="nowPage">
+        <!-- 1.簡訊頁 -->
+        <ng-container *ngSwitchCase="'page1'">
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active"><span>1.填寫申請資料</span></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+            <div class="agree_info">
+                <div class="row_single">
+                    <h4 class='simple_title'>簡訊密碼</h4>
+                </div>
+                <div class="row_single">
+                    <div class="inner_content">
+                        當您點選「發送簡訊」按鈕後，系統會發送一封簡訊密碼至您的{{markPhone}}手機門號。<br>
+                        請您確認 (1) 行動電話為開機狀態 (2) 門號可正常接收簡訊<br>
+                        收到簡訊後，請於10分鐘內輸入手機簡訊中的密碼，逾時或密碼輸入錯誤達3次則該組密碼失效。<br>
+                        如資料已異動請致電本行客服中心04-2227-3131由專人為您服務。<br>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onCancel()">取消</a>
+                        <a href="javascript:void(0)" (click)="onSummit()">發送簡訊</a>
+                    </div>
+                </div>
+                <div class="row_single"></div>
+                <div class="row_single_quota">
+                    <div class="sub_info_subtitle_quota">
+                        <h2 class="title_quota_button">謹慎理財 信用無價</h2>
+                        <div class="inner_content_quota">循環利率：本行信用卡4.4%~15%(基準日為104年9月1日)。<br>
+                            預借現金手續費：每筆預借現金金額乘以3%加上新臺幣150元。<br>
+                            其他相關費用依本行網站公告，詳細折扣優惠活動內容請參考本行網站或向各分行查詢，本行保留修改、變更及終止折扣優惠活動之權利。<br>
+                            合作金庫銀行網址：https//www.tcb-bank.com.tw<br>
+                            客服專線：(04)2227-3131，(0800)033-175</div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- 2.填寫資料 -->
+        <ng-container *ngSwitchCase="'page2'">
+            <div class="sub_info_frame">
+                <ul class="step_bar_frame">
+                    <li class="step_bar step_active"><span>1.填寫申請資料</span></li>
+                    <li class="step_bar"></li>
+                    <li class="step_bar"></li>
+                </ul>
+            </div>
+   
+            <div class="row_single"></div>
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        中文姓名
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="" class="inner_input" placeholder="請輸入姓名" value="{{basicData['info_data']['chineseName']}}">
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        身分證字號
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="text" name="" class="inner_input" placeholder="請輸入號碼" value="{{basicReq['custId']}}">
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">*申請類別</h4>
+            </div>
+            <div class="row_single_2">
+                <div class="inner_radio radio_inline" (click)="selectQuota('0')">
+                    <input type="radio" [checked]="buttonBind.quotaCheck">
+                    <label for="radio_button01">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>臨時額度</b>
+                    </label>
+                </div>
+                <!-- *2020/05/26 永久額度先關閉，於第二階段開啟 -->
+                <!-- <div class="inner_radio radio_inline" (click)="selectQuota('1')">
+                    <input type="radio" [checked]="!buttonBind.quotaCheck">
+                    <label for="radio_button02">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b>永久額度</b>
+                    </label>
+                </div> -->
+            </div>
+
+            <div id="trans_date" class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.applyDate!=='' }">
+                    <li class="inner_table_cell">
+                        申請日
+                    </li>
+                    <li class="inner_table_cell">
+                        <input-date [min]="nextwoekDay" [max]="maxDay" [valueStr]="nextwoekDay" [(ngModel)]="reqData.applyDate" (backValueEmit)="onDateBack($event)"></input-date>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.applyDate | translate}}</i>
+            </div>
+
+            <ng-container *ngIf="buttonBind.quotaCheck">
+                <div id="trans_date" class="row_single">
+                    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.endDate!=='' }">
+                        <li class="inner_table_cell">
+                            申請迄日
+                        </li>
+                        <li class="inner_table_cell">
+                            <input-date [min]="nextwoekDay" [max]="maxDay" [valueStr]="date_placeholder" [setData]="input_setData" [(ngModel)]="reqData.endDate" (backValueEmit)="onEndBack($event)"></input-date>
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning">{{errorMsg.endDate | translate}}</i>
+                </div>
+            </ng-container>
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.cardNumer!=='' }">
+                    <li class="inner_table_cell">
+                        交易信用卡卡號
+                    </li>
+                    <li class="inner_table_cell">
+                        <select class="inner_select" [(ngModel)]="reqData.cardAccount" (change)="cardChange()">
+                            <option value="" selected disabled>請選擇</option>
+                            <ng-container *ngFor="let cardItem of basicData.data">
+                                <option [ngValue]="cardItem.cardNumer">{{cardItem.cardNumer}}</option>
+                            </ng-container>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.cardNumer | translate}}</i>
+            </div>
+            <div class="row_single">
+                <h4 class="simple_title">申請額度</h4>
+            </div>
+            <div class="row_single_2">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.quotaAmount!=='' }">
+                    <li class="inner_table_cell">
+                        新台幣(萬元)
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="tel" name="" class="inner_input" placeholder="請輸入金額" [(ngModel)]="reqData.applyAmount">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.quotaAmount | translate}}</i>
+            </div>
+            <div class="row_single">
+                <i class="select_info" style="text-align: left">您目前信用額度<i class="font_red">{{nowQuota}}</i>萬元整</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.reason!=='' }">
+                    <li class="inner_table_cell">
+                        申請原因
+                    </li>
+                    <li class="inner_table_cell">
+                        <select class="inner_select" [(ngModel)]="reqData.applyReason">
+                            <option value="" selected disabled>請選擇</option>
+                            <option [ngValue]="'出國'">出國</option>
+                            <option [ngValue]="'購屋'">購屋</option>
+                            <option [ngValue]="'裝潢'">裝潢</option>
+                            <option [ngValue]="'購物'">購物</option>
+                            <option [ngValue]="'保費'">保費</option>
+                            <option [ngValue]="'學費'">學費</option>
+                        </select>
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.reason | translate}}</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame normal_disable">
+                    <li class="inner_table_cell">
+                        手機門號
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="tel" name="" class="inner_input" placeholder="請輸入號碼" value="{{basicData['info_data']['cellPhone']}}">
+                    </li>
+                </ul>
+                <i class="input_info_warnning"></i>
+            </div>
+
+            <div class="row_single">
+                <h4 class="simple_title">市內電話</h4>
+            </div>
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.cityPhone!=='' }">
+                    <li class="inner_table_cell">
+                        <input type="tel" name="" class="inner_input" [(ngModel)]="bindPhoneData.cityPhone" placeholder="請輸入號碼"
+                            maxlength="12" value="">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.cityPhone | translate}}</i>
+            </div>
+
+            <div class="row_single">
+                <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':errorMsg.applyTelExt!=='' }">
+                    <li class="inner_table_cell">
+                        分機
+                    </li>
+                    <li class="inner_table_cell">
+                        <input type="tel" name="" class="inner_input" [(ngModel)]="bindPhoneData.applyTelExt"
+                            placeholder="請輸入分機" value="" maxlength="5">
+                    </li>
+                </ul>
+                <i class="input_info_warnning">{{errorMsg.applyTelExt | translate}}</i>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single_2">
+                <div class="inner_content">
+                    一、申請人聲明以上所有記載額度調整申請內容均為事實，並同意貴行查詢申請人於財團法人金融聯合徵信中心之信用紀錄。<br>
+                    二、本行保有徵提文件及額度調整與否之權利。
+                </div>
+            </div>
+            <div class="row_single_2">
+                <div class="inner_checkbox">
+                    <input type="checkbox" [(ngModel)]="buttonBind.agree">
+                    <label (click)="agree()">
+                        <span>
+                            <i></i>
+                        </span>
+                        <b style="font-size: 13px;font-weight: bold;padding: 0 5px;letter-spacing: 1px;color: #797979;">
+                            已詳閱並同意申請同意事項
+                        </b>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row_single">
+                <h4 class="simple_title">注意事項：</h4>
+            </div>
+            <div class="row_single">
+                <p class="inner_content font_red">
+                    ■ 臨時額度使用之款項將列入最低應繳金額須一次付清且臨時額度無法分期。<br>
+                    ■ 若您有分期消費需求，當分期總額超過原信用額度，請您申請調高永久額度並檢附財力證明。<br>
+                    ■ 檢附財力文件資料，如綜所稅申報資料、薪轉存摺封面及近三個月往來之內頁影本、近三個月薪資單、扣繳憑單、定存單、房屋所有權狀、稅單等...。
+                </p>
+            </div>
+            <div class="row_single_2">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="onPage2Cancel()">上一步</a>
+                    <a href="javascript:void(0)" (click)="onPage2Confirm()">下一步</a>
+                </div>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single_quota">
+                <div class="sub_info_subtitle_quota">
+                    <h2 class="title_quota_button">謹慎理財 信用無價</h2>
+                    <div class="inner_content_quota">循環利率：本行信用卡4.4%~15%(基準日為104年9月1日)。<br>預借現金手續費：每筆預借現金金額乘以3%加上新臺幣150元。<br>其他相關費用依本行網站公告，詳細折扣優惠活動內容請參考本行網站或向各分行查詢，本行保留修改、變更及終止折扣優惠活動之權利。<br>合作金庫銀行網址：https//www.tcb-bank.com.tw<br>客服專線：(04)2227-3131，(0800)033-175</div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- 3.文件上傳 -->
+        <ng-container *ngSwitchCase="'page3'">
+            <app-card-upload [type]="'0'" [custId]="basicReq['custId']" [basicData]="basicData" (backPageEmit)="backPageEmit($event)"></app-card-upload>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'confirm'">
+            <app-card-quota-confirm [reqData]="reqData" [picReqData]="picReqData" [loadStatus]="loadStatus"
+                [anotherData]="anotherData" (backPageEmit)="backPageEmit($event)"></app-card-quota-confirm>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'result'">
+            <app-card-quota-result [resultData]="resultData"></app-card-quota-result>
+        </ng-container>
+    </ng-container>
+</section>

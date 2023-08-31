@@ -1,0 +1,26 @@
+<!-- Page Start-->
+<ul *ngFor="let item of data" class="credit_card_bill_detail_list" >
+    <li>
+        <p>
+            <span>匯入時間</span>
+            <span>{{(item| fieldCheck:'queryTime')| htDate}} </span>
+        </p>
+        <p>
+            <span>匯款行庫</span>
+            <span>{{ (item| fieldCheck:'remitBankName') | branchName: false }}</span>
+        </p>
+        <p>
+            <span>匯款人</span>
+            <span>{{item| fieldCheck:'importer'}}</span>
+        </p>
+        <p>
+            <span>匯入金額</span>
+            <span>{{(item| fieldCheck:'importBal')|htMoney}}</span>
+        </p>
+        <p>
+            <span>入帳註記</span>
+            <span>{{(item| fieldCheck:'accountTypeDesc')}}</span>
+        </p>
+    </li>
+</ul>
+<!-- Page End-->

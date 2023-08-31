@@ -1,0 +1,249 @@
+<!--header-->
+<div class=" header_bar">
+    <header class="main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">返回</p>
+        </div>
+        <div class="page_title">定期(不)定額查詢/異動</div>
+        <div class="bank_logo"><img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png"></div>
+    </header>
+</div>
+<!--header end-->
+
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="">
+
+                <div class="content_infor">
+                    <div class="content_text" ng-cloak>
+                        <p>投資標的</p>
+                    </div>
+                    <div class="input_warning" ng-bind-html="fundTarget"></div>
+                </div>
+
+                <div style="text-align: center;margin-bottom: 15px;">
+                    <button type="button" class="{{keepData.fundType === 'C' ? 'confirm_bt_L_on' : 'confirm_bt_L_off'}}"
+                        ng-click="changeFundType('C')">國內標的</button>
+                    <button type="button" class="{{keepData.fundType === 'F' ? 'confirm_bt_R_on' : 'confirm_bt_R_off'}}"
+                        ng-click="changeFundType('F')">國外標的</button>
+                </div>
+
+                <div style="text-align: center;margin-bottom: 15px;">
+                    <button type="button" class="{{keepData.selectfund === 'Y' ? 'confirm_bt_L_on' : 'confirm_bt_L_off'}}"
+                        ng-click="changeSelectfund('Y')">精選基金標的</button>
+                    <button type="button" class="{{keepData.selectfund === 'N' ? 'confirm_bt_R_on' : 'confirm_bt_R_off'}}"
+                        ng-click="changeSelectfund('N')">自選基金標的</button>
+                </div>
+
+                <div style="text-align: center;margin-bottom: 15px;" ng-show="keepData.selectfund === 'N'">
+                    <select ng-model="compCode" ng-change="changeCompCode()">
+                        <option value="">請選擇基金公司</option>
+                        <option ng-repeat="company in keepData.companyList" value="{{company.compCode}}">{{company.compName}}</option>
+                    </select>
+                </div>
+
+                <div style="text-align: center;">
+                    <select ng-model="keepData.newFund" ng-options="fund.fundName for fund in keepData.fundList"
+                        ng-change="changeFund()">
+                        <option value="">請選擇基金標的</option>
+                    </select>
+                </div>
+
+                <div class="content_infor">
+                    <div class="content_text" ng-cloak>
+                        <p>每次投資金額變更<br>{{keepData.INCurrency}}</p>
+                    </div>
+                    <div class="input_warning">
+                        <input type="number" class="content_input" ng-model="purchAmnt" ng-cloak>
+                        <p class="content_text" ng-show="INCurrencyMessage !== ''" style="width:100%;color:red">{{INCurrencyMessage}}</p>
+                    </div>
+                </div>
+
+                <div class="content_infor">
+                    <div class="content_text">
+                        <p>每週/月扣款</p>
+                    </div>
+                    <div class="content_text">
+                        <input type="radio" value="month" ng-model="keepData.debitDateType" />每月<br />
+                        <input type="radio" value="week" ng-model="keepData.debitDateType" />每週
+                    </div>
+                    <div class="input_warning">
+                        <input type="text" class="content_input" value="{{DebitDateShow}}" ng-click="clickChgDebitDate()"
+                            ng-show="keepData.debitDateType === 'month'" style="width:120px;" readonly>
+                        <select ng-show="keepData.debitDateType === 'week'" ng-model="keepData.multipleWeek" multiple>
+                            <option value="1">星期一</option>
+                            <option value="2">星期二</option>
+                            <option value="3">星期三</option>
+                            <option value="4">星期四</option>
+                            <option value="5">星期五</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="content_infor">
+                    <div class="content_text">
+                        <p>扣款狀態變更</p>
+                    </div>
+                    <select ng-model="payTypeFlagSelected" ng-options="payTypeFlag.DebitStatusFlag as payTypeFlag.DebitStatus for payTypeFlag in payTypeFlagMenu">
+                        <!-- <option value=""> 請選擇 扣款狀態 </option> -->
+                    </select>
+                </div>
+                <div class="content_infor">
+                    <div class="content_text">
+                        <p>扣款帳號變更</p>
+                    </div>
+                    <select ng-model="SelectDebitAcctSelected" ng-options="fundDebitAcct.trnsOutAcct as fundDebitAcct.trnsOutAcct for fundDebitAcct in OutAC"
+                        ng-cloak>
+                        <!-- <option value=""> 請選擇 扣款帳號 </option> -->
+                    </select>
+                </div>
+                <div class="content_infor">
+                    <div class="content_text">
+                        <p>現金收益帳號變更</p>
+                    </div>
+                    <select ng-model="SelectCreditAcctSelected" ng-options="fundCreditAcct.acctNo as fundCreditAcct.acctNo for fundCreditAcct in InAC"
+                        ng-cloak>
+                        <!-- <option value=""> 請選擇 現金收益帳號 </option> -->
+                    </select>
+                </div>
+                <div class="content_infor" ng-if="keepData.investType === 'D'">
+                    <div class="content_text">
+                        <p>評價方式</p>
+                    </div>
+                    <div class="content_text2" style="width:70%; background-color:lightgray" ng-bind="keepData.evaCDText">前5日平均淨值/年平均淨值</div>
+                </div>
+
+                <div class="keep_con" ng-if="keepData.investType === 'D'">
+                    <div class="invest_title" style="background-color:lightgrey">
+                        <p class="content_text" style="text-align:center;">跌幅級距</p>
+                        <p class="content_text" style="text-align:center;">加/減碼金額</p>
+                        <p class="content_text" style="text-align:center;">漲幅級距</p>
+                        <p class="content_text" style="text-align:center;">加/減碼金額</p>
+                    </div>
+
+                    <div class="invest">
+                        <div class="content_text" style="text-align:center;">-5% &ge;<br />評價結果<br />&gt; -10%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.decline1Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.decline1"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="decline1Woring !== ''" style="width:100%;color:red">{{decline1Woring}}</p>
+                        </div>
+                        <div class="content_text" style="text-align:center;">5% &le;<br />評價結果<br />&lt; 10%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.gain1Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.gain1"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="gain1Woring !== ''" style="width:100%;color:red">{{gain1Woring}}</p>
+                        </div>
+                    </div>
+                    <div class="invest2">
+                        <div class="content_text" style="text-align:center;">-10% &ge;<br />評價結果<br />&gt; -15%</div>
+                        <div class="content_text" class="invest_con">
+                            <select ng-model="resfi000702Param.decline2Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.decline2"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="decline2Woring !== ''" style="width:100%;color:red">{{decline2Woring}}</p>
+                        </div>
+                        <div class="content_text" style="text-align:center;">10% &le;<br />評價結果<br />&lt; 15%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.gain2Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.gain2"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="gain2Woring !== ''" style="width:100%;color:red">{{gain2Woring}}</p>
+                        </div>
+                    </div>
+                    <div class="invest">
+                        <div class="content_text" style="text-align:center;">-15% &ge;<br />評價結果<br />&gt; -20%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.decline3Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.decline3"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="decline3Woring !== ''" style="width:100%;color:red">{{decline3Woring}}</p>
+                        </div>
+                        <div class="content_text" style="text-align:center;">15% &le;<br />評價結果<br />&lt; 20%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.gain3Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.gain3"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="gain3Woring !== ''" style="width:100%;color:red">{{gain3Woring}}</p>
+                        </div>
+                    </div>
+                    <div class="invest2">
+                        <div class="content_text" style="text-align:center;">-20% &ge;<br />評價結果<br />&gt; -25%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.decline4Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.decline4"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="decline4Woring !== ''" style="width:100%;color:red">{{decline4Woring}}</p>
+                        </div>
+                        <div class="content_text" style="text-align:center;">20% &le;<br />評價結果<br />&lt; 25%</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.gain4Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.gain4"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="gain4Woring !== ''" style="width:100%;color:red">{{gain4Woring}}</p>
+                        </div>
+                    </div>
+                    <div class="invest">
+                        <div class="content_text" style="text-align:center;">-25% &ge;<br />評價結果</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.decline5Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.decline5"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="decline5Woring !== ''" style="width:100%;color:red">{{decline5Woring}}</p>
+                        </div>
+                        <div class="content_text" style="text-align:center;">25% &le;<br />評價結果</div>
+                        <div class="content_text">
+                            <select ng-model="resfi000702Param.gain5Cd" style="width:40px;">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            <input type="number" oninput="value=value.replace(/^(0+)|[^\d]+/g,'')" ng-model="resfi000702Param.gain5"
+                                style="width:30px;" ng-cloak />
+                            <p class="content_text" ng-show="gain5Woring !== ''" style="width:100%;color:red">{{gain5Woring}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--content_checkbt 按鈕組合-->
+                <div class="send_btarea" style="margin-bottom: 15px;">
+                    <button type="button" class="send_yes" ng-click="clickSubmit()">
+                        <i class="fa fa-check" aria-hidden="true"></i> 確定變更</button>
+                    <button type="button" class="send_back" ng-click="clickCancel()">
+                        <i class="fa fa-undo" aria-hidden="true"></i> 取消</button>
+                </div>
+                <!--content_checkbt 按鈕組合 end-->
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+    </section>
+    <!--main_sec end-->
+</div>

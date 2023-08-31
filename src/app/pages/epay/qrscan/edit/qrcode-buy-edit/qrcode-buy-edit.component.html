@@ -1,0 +1,107 @@
+<section>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				特店名稱:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcodeObj.merchantName}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				訂單編號：
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcodeObj.orderNbr}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉出帳號：
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{form.trnsfrOutAcct}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉入行庫：
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" value="{{qrcodeObj.transfereeBank}}" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				轉入帳號：
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" value="{{qrcodeObj.transfereeAccount}}" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame"
+			[ngClass]="(disableAmountInput == true)?'normal_disable':(errorMsg['txnAmt']?'active_warnning':'')">
+			<li class="inner_table_cell">
+				轉帳金額：
+			</li>
+			<li class="inner_table_cell">
+				<input *ngIf='!disableAmountInput' [(ngModel)]='form.txnAmt' class="inner_input" placeholder="請輸入轉帳金額">
+				<input *ngIf='disableAmountInput' value="{{form.txnAmt}}" class="inner_input">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.txnAmt}}</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame" [ngClass]="errorMsg['merchantName1']?'active_warnning':''">
+			<li class="inner_table_cell">
+				付款人自我備註：
+			</li>
+			<li class="inner_table_cell">
+				<input [(ngModel)]='qrcodeObj.merchantName1' type="text" class="inner_input" placeholder="請輸入備註">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.merchantName1}}</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame" [ngClass]="errorMsg['orderNbr1']?'active_warnning':''">
+			<li class="inner_table_cell">
+				給收款人訊息
+			</li>
+			<li class="inner_table_cell">
+				<input [(ngModel)]='qrcodeObj.orderNbr1' type="text" class="inner_input" placeholder="請輸入備註">
+			</li>
+		</ul>
+		<i class="input_info_warnning">{{errorMsg.orderNbr1}}</i>
+		<i class="select_info">限本行轉入帳號</i>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				目前轉帳機制：
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+					<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<div class="double_button" id="btn_submit">
+			<a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+			<a (click)="clickSubmit()">{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+</section>

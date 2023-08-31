@@ -1,0 +1,37 @@
+<div ng-if="curStep == 4">
+	<div class="bc_frame">
+		<!-- <div class="row_single info_list"> -->
+			<!-- 本期帳單應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_BILL' | translate }}</i>
+			<p class="info_conetnt">{{payment.payableAmt}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 本期最低應繳金額 -->
+			<!-- <i class="info_title">{{ 'BILL_MSG.INPUT.PERIOD_PAY_MIN' | translate }}</i>
+			<p class="info_conetnt">{{payment.lowestPayableAmt}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 可設定帳單分期金額上限 -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PAY_MAX' | translate }}</i>
+			<p class="info_conetnt">{{payment.maxInstallmentAmt | currency:""}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 分期期數 -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.PERIOD_NUM' | translate }}</i>
+			<p class="info_conetnt">{{selectBill.name}}</p>
+		</div>
+		<div class="row_single info_list"> -->
+			<!-- 請選擇分期期數與分期利率 -->
+			<!-- <i class="info_title">{{ 'CTRL_INSTALLMENT.MSG.SELECT' | translate }}</i> -->
+			<!-- 第一期 -->
+			<!-- <p class="info_conetnt" ng-if="selectAvge.first != selectAvge.avg">{{ 'BILL_MSG.MSG.PERIOD_1' | translate }}：{{selectAvge.first | currency:""}}</p>
+			<p class="info_conetnt">{{ 'BILL_MSG.MSG.PERIOD_EACH' | translate }}：{{selectAvge.avg | currency:""}}</p> -->
+		<!-- </div> -->
+		<check-captcha-directive></check-captcha-directive>
+	</div>
+	<div class="bc_frame">
+		<div class="button_row">
+			<button class="button button_confirm" ng-click="onCheck()">{{'BTN.CHECK' | translate}}</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<div class="agree_info">
+    <div class="row_single">
+        <!-- 標題 -->
+        <h4 class="simple_title" [innerHtml]="(title | translate) | safeHtml"></h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content" [innerHtml]="contentHtml | safeHtml"></p>
+    </div>
+    <div class="row_single" *ngIf="showAgree">
+        <div class="inner_checkbox">
+            <input type="checkbox" [ngModel]="agreeChecked">
+            <label (click)="onCheckEvent()">
+                <span>
+                    <i></i>
+                </span>
+                <b [innerHtml]="(agree_msg | translate) | safeHtml"></b>
+            </label>
+        </div>
+    </div>
+    <div class="row_single">
+        <div class="double_button">
+            <!-- 不同意 -->
+            <a href="javascript:void(0);" (click)="agreeSend(false)">{{ btnCancleTitle | translate }}</a>
+            <!-- 同意 -->
+            <a href="javascript:void(0);" (click)="agreeSend(true)">{{ btnTitle | translate }}</a>
+        </div>
+    </div>
+</div>
+<!-- INFO -->
+<ng-container *ngIf="showInfo">
+    <div class="row_single">
+        <!-- 提醒您： -->
+        <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content">
+            <ng-container *ngFor="let info of infoData">{{ info | translate }}</ng-container>
+        </p>
+    </div>
+</ng-container>
+<!-- INFO END -->

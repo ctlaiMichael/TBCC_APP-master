@@ -1,0 +1,85 @@
+<section>
+    <ng-container *ngIf="show_page">
+        <!--父層 Start-->
+        <ng-container *ngIf="!goPayList">
+            <ng-container *ngIf="!notMySelfShow">
+                <div class="sub_info_frame">
+                    <h4 class="simple_title">請選擇繳費身分</h4>
+                </div>
+                <div class="inner_links_frame">
+                    <a href="javascript:void(0)" class="inner_link" (click)="onIsMySelf()">本人醫療費用</a>
+                    <a href="javascript:void(0)" class="inner_link" (click)="onNotMySelf()">非本人，當日醫療費用</a>
+                </div>
+            </ng-container>
+
+
+            <ng-container *ngIf="notMySelfShow">
+                <div class="sub_info_frame">
+                    <ul class="step_bar_frame">
+                        <li class="step_bar step_active">
+                            <span>1.繳款資料查詢</span>
+                        </li>
+                        <li class="step_bar"></li>
+                        <li class="step_bar"></li>
+                    </ul>
+                </div>
+                <div class="row_single"></div>
+                <div class="row_single">
+                    <div class="inner_radio radio_inline">
+                        <input type="radio" id="inner_radio01" name="inner_radio" checked="checked" (change)="inputChange('personal')">
+                        <label for="inner_radio01">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b>身分證字號</b>
+                        </label>
+                    </div>
+                    <div class="inner_radio radio_inline">
+                        <input type="radio" id="inner_radio02" name="inner_radio" (change)="inputChange('number')">
+                        <label for="inner_radio02">
+                            <span>
+                                <i></i>
+                            </span>
+                            <b>病歷號碼</b>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row_single">
+                    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkPersonId) }">
+                        <li class="inner_table_cell">
+                            <input class="inner_input" type="text" name="" placeholder="請輸入您要代繳之{{personalNumber}}" [(ngModel)]="inp_data.personal">
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning">{{personal_errorMsg | translate}}</i>
+                </div>
+
+                <div class="row_single">
+                    <ul class="inner_table_frame" [ngClass]="{ 'active_warnning':(checkBirthday) }">
+                        <li class="inner_table_cell">
+                            出生年月日
+                        </li>
+                        <li class="inner_table_cell">
+                            <!-- <input type="date" name="dateWithMinMax" min="2018-11-30" max="2020-03-31" class="inner_input_data" [(ngModel)]="inp_data.birthday"> -->
+                            <input-date [min]="minDay" [max]="maxDay" [(ngModel)]="inp_data.birthday"></input-date>
+                        </li>
+                    </ul>
+                    <i class="input_info_warnning">{{birthday_errorMsg | translate}}</i>
+                </div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)">{{ 'BTN.CANCEL' | translate }}</a>
+                        <a href="javascript:void(0)" (click)="confirm()">{{'BTN.CHECK' | translate }}</a>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        <!--父層 End-->
+
+        <!--子層 Start-->
+        <ng-container *ngIf="goPayList">
+            <app-ntuh-paylist [inputData]="reqData" [notMySelfShow]="notMySelfShow" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-ntuh-paylist>
+        </ng-container>
+        <!--子層 End-->
+    </ng-container>
+</section>

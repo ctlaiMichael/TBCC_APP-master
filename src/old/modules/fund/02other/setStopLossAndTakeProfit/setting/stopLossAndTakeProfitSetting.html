@@ -1,0 +1,139 @@
+<style>
+    input.ng-invalid {
+        border-color:red;
+    }
+    </style>
+
+<!--header-->
+<div class="row">
+    <header class="main_nav">
+        <div class="back_bt" ng-click="clickBack()">
+            <p class="back_title">返回</p>
+        </div>
+        <div class="page_title">停損/獲利點通知設定</div>
+        <div class="bank_logo">
+            <img class="logo" src="ui/tcbbOldStyle/image/cobanklogo.png">
+        </div>
+    </header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 扣款帳號設定頁面-->
+<div class="row">
+    <section class="main_sec">
+        <div class="row">
+            <div class="main_content">
+                <div class="fund_sec">
+                    <p>『即時畫面』:表示當設定之投資標的達到『停損/獲利點』時，一旦由網路銀行/行動網銀進入投資理財/基金業務，系統即會自動彈出視窗通知!</p>
+                </div>
+
+                <div class="fund_change">
+                    <div style="width: 100%;text-align: center;" >
+                        <button type="button" class="fund_bt" ng-click="clickAddFund(true)">新增通知標的</button>
+                    </div>
+                    <div class="fund_edit">
+
+                        <div class="fund_title">
+                            <p>刪除</p>
+                            <p>停損點</p>
+                            <p>獲利點</p>
+                            <p>通知方式</p>
+                        </div>
+
+                        <!-- 基金內容start -->
+                        <div class="fund_checkedit" ng-repeat="fund in fundList" ng-if="fund.selected">
+                            <div class="fund_content fund_name">
+                                <div class="fund_name_col1 delete_sign "><i class="fa fa-trash" style="font-size: 18px;" aria-hidden="true" ng-if="fund.clean"></i></div>
+                                <div class="fund_name_col2"><p>{{fund.fundCode}}&nbsp;{{fund.fundName}}</p></div>
+                            </div>
+                            <div class="fund_content">
+                                <div class="checkedit1">
+                                    <input class="fund_checkbox" type="checkbox" ng-model="fund.clean">
+                                </div>
+                                <div class="checkedit2">
+                                    <div><i class="fa fa-minus" ng-class="{'disabled_font':fund.clean}" aria-hidden="true"></i></div>
+                                    <input class="percent1" ng-class="{'disabled_font':fund.clean}" type="tel"  ng-pattern="{{stopLossRegex}}" maxlength="3" ng-model="fund.incomePoint" ng-disabled="fund.clean" style="width:20%;text-align: center;"    >
+                                    <div><i class="fa fa-percent percent2" ng-class="{'disabled_font':fund.clean}" aria-hidden="true"></i></div>
+                                    <div>&nbsp;&nbsp;&nbsp;</div>
+                                    <div>&nbsp;<i class="fa fa-plus" ng-class="{'disabled_font':fund.clean}" aria-hidden="true"></i></div>
+                                    <input class="percent1" ng-class="{'disabled_font':fund.clean}" type="tel"  ng-pattern="{{takeProfitRegex}}" maxlength="3" ng-model="fund.profitPoint" ng-disabled="fund.clean" style="width:20%;text-align: center;"    >
+                                    <div><i class="fa fa-percent" ng-class="{'disabled_font':fund.clean}" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="checkedit3">
+                                    <div class="checkradio" ng-class="{'disabled_font':fund.clean}">
+                                        <input class="fund_checkradio" type="checkbox" ng-model="fund.webNotice" ng-disabled="fund.clean" ><p>即時畫面</p>
+                                    </div>
+                                    <div class="checkradio" ng-class="{'disabled_font':fund.clean}">
+                                        <input class="fund_checkradio" type="checkbox" ng-model="fund.emailNotice" ng-disabled="fund.clean"><p>E-MAIL</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 基金內容end -->
+
+                    </div>
+                    <div style="width: 100%;text-align: center;" >
+                        <button type="button" class="fund_bt2" ng-click="clickSave()">確定變更</button>
+                    </div>
+                </div>
+
+            </div>
+            <!--main_content end-->
+        </div>
+        <!--row end-->
+
+    </section>
+    <!--main_sec end-->
+</div>
+<!--section 扣款帳號設定頁面 end-->
+
+
+<!-- 跳出選擇轉帳機制視窗 -->
+<div ng-if="onAddFund">
+    <div class="shadow" style="display: block" ng-click="clickAddFund(false)"></div>
+    <div class="pop_content">
+        <div class="select_item" ng-repeat="fund in fundList" ng-if="!fund.selected" ng-click="addFund(fund)">{{fund.fundCode}}&nbsp;{{fund.fundName}}</div>
+    </div>
+    <!--pop_pay end-->
+</div>
+<!-- 跳出選擇轉帳機制視窗 // End -->
+
+<style>
+    .pop_content {
+        /*此行指定放置廣告的div */
+        width: auto;
+        /*此行設定div的寬度*/
+        height: auto;
+        max-height: 80%;
+        overflow-y: auto;
+        /*此行設定div的高度*/
+        background-color: #ffffff;
+        /*此行設定div的背景圖形*/
+        box-shadow: 4px 4px 12px 4px rgba(20%, 20%, 40%, 0.5);
+        /*此行設定div的外框陰影*/
+        position: fixed;
+        /*此行設定div為不隨捲動而移動的模式*/
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+        line-height: 24px;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .select_item {
+        /* height: 40px; */
+        line-height: 40px;
+        border-bottom: solid 1px #efefef;
+    }
+
+    .fa {
+        font-size: 12px;
+    }
+
+    input[type=number] {
+        width: 20%;
+    }
+</style>

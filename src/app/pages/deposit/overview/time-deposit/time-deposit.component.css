@@ -1,0 +1,4 @@
+/* 改欄位寬度 */
+.table_data > .data_cell:first-child{
+    width: 95px;
+}

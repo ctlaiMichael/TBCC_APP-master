@@ -1,0 +1,116 @@
+<div class="status_bar" ng-if="ios"></div>
+<!--header-->
+<div class="header_bar " ng-class="{ios_header_bar:ios}">
+	<header class="main_nav">
+		<div class="no_bt"></div>
+		<div class="page_title">出示退款碼</div>
+		<div class="bank_logo">
+			<img src="ui/tcbbOldStyle/image/cobanklogo.png">
+		</div>
+	</header>
+</div>
+<!--row-->
+<!--header end-->
+
+<!--section 轉帳結果-->
+<div class="row content">
+	<section class="main_sec">
+
+		<div class="result_sec">
+			<div class="result_location">
+				<div class="result_title2">
+					<p ng-if="result.respCode=='0'">購物退款交易成功</p>
+					<p ng-if="result.respCode=='1'">購物退款交易失敗</p>
+					<p ng-if="result.respCode!='0'&&result.respCode!='1'">購物退款交易異常</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="main_content">
+				<!-- 錯誤訊息 -->
+				<div class="result_input" ng-if="result.respCode!=0">
+					<div id="css_table" style="margin: 10px 10px 10px -10px;">
+						<div class="css_tr">
+							<div class="css_td_title" style="width: 120px;">錯誤代碼：</div>
+							<div class="css_td_content" ng-bind="result.hostCode"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title">代碼訊息：</div>
+							<div class="css_td_content" ng-bind="result.respCodeMsg"></div>
+						</div>
+					</div>
+				</div>
+				<!--main_input end-->
+
+				<div class="result_input" ng-if="result.respCode=='0'">
+					<div id="css_table">
+						<div class="css_tr">
+							<div class="css_td_title widthEQ0">交易序號：</div>
+							<div class="css_td_content" ng-bind="result.QR.trnsNo"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title widthEQ0">交易時間：</div>
+							<div class="css_td_content" ng-bind="formatDate(result.QR.trnsDate)"></div>
+						</div>
+						<div class="css_tr" ng-show="result.QR.mode=='0'">&nbsp;</div>
+						<div class="css_tr" ng-show="result.QR.mode=='0'">
+							<div class="css_td_title" style="width: 120px;">店家名稱：</div>
+							<div class="css_td_content" ng-bind="result.QR.storeName"></div>
+						</div>
+						<div class="css_tr" ng-show="result.QR.mode=='0'">&nbsp;</div>
+						<div class="css_tr" ng-show="result.QR.mode=='0'">
+							<div class="css_td_title">訂單編號：</div>
+							<div class="css_td_content" ng-bind="result.QR.orderNo"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title widthEQ0">交易帳號：</div>
+							<div class="css_td_content" ng-bind="formatAcct(trnsAcctReFmt)"></div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title widthEQ0">交易金額：</div>
+							<div class="css_td_content">
+								<span ng-bind="numFmt(result.QR.trnsAmount)"></span>元</div>
+						</div>
+						<div class="css_tr">&nbsp;</div>
+						<div class="css_tr">
+							<div class="css_td_title widthEQ0">交易狀態：</div>
+							<div class="css_td_content" ng-bind="trnsStatus"></div>
+						</div>
+					</div>
+
+				</div>
+
+				<!--main_input end-->
+
+				<!--content_checkbt 按鈕組合-->
+				<div class="row">
+					<div class="content_bt">
+						<button type="button" class="confirm_bt" ng-click="clickBack()">確定</button>
+					</div>
+				</div>
+				<!--content_checkbt 按鈕組合 end-->
+
+			</div>
+			<!--main_content end-->
+		</div>
+		<!--row end-->
+	</section>
+	<!--main_sec end-->
+</div>
+<!--section 轉帳結果-->
+
+<style>
+	.tmpWidth {
+		width: 100px;
+		font-size: 14px;
+	}
+
+	.widthEQ0 {
+		width: 0px;
+	}
+</style>

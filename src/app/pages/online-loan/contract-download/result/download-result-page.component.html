@@ -1,0 +1,36 @@
+<section>
+
+    <ng-container [ngSwitch]="nowPage">
+
+        <ng-container *ngSwitchCase="'resultPage'">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">下載完成<br><br>
+                        您欲下載之資料已完成下載。
+                    </span>
+                </div>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single">
+                        <a href="javascript:void(0)" (click)="backLoan()" class="button_confirm">{{'PG_ONLINE.BTN.BACKLOAN' | translate}}</a>
+                    </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'testPage'">
+            <div class="sub_info_frame result">
+                <div class="step_final_icon_frame exclamation_active">
+                    <i class="icon_success"></i>
+                    <span class="step_final_info">沒有您要查詢的資料</span>
+                </div>
+                <p class="sub_info_list">
+                    <span class="sub_info_title no_content">如造成您的困擾，敬請見諒。若有其他疑問，請聯繫客服中心。</span>
+                </p>
+            </div>
+            <div class="row_single">
+                <div class="row_single"></div>
+                <a href="javascript:void(0);" class="button_confirm">{{'PG_ONLINE.BTN.BACKLOAN' | translate}}</a>
+            </div>
+        </ng-container>
+    </ng-container>
+</section>

@@ -1,0 +1,46 @@
+<section>
+  <!-- 成功結果 -->
+  <div class="sub_info_frame result">
+    <div class="step_final_icon_frame">
+      <i [ngClass]="trnsRsltClass"></i>
+      <span class="step_final_info">{{trnsRslt}}</span>
+      <!--錯誤訊息-->
+      <span *ngIf="trnsRsltCode !== '0' && !!electricityFeeResult.hostCodeMsg" class="step_final_info"
+        style="padding-top: 0.5em;">{{electricityFeeResult.hostCodeMsg}}</span>
+    </div>
+    <ng-container *ngIf="trnsRsltCode == '0'">
+      <p class="sub_info_list">
+        <i class="sub_info_title">交易時間</i>
+        <span class="sub_info_content color_yellow">{{electricityFeeResult.trnsDateTime| htDate}}</span>
+      </p>
+      <p class="sub_info_list">
+        <i class="sub_info_title">轉出帳號</i>
+        <span class="sub_info_content color_yellow">{{electricityFeeResult.trnsfrOutAcct | accountFormate}}</span>
+      </p>
+      <p class="sub_info_list">
+        <i class="sub_info_title">總計金額</i>
+        <span
+          class="sub_info_content color_yellow big_font">{{electricityFeeResult.txnAmt | currencyMoney:'TWD'}}</span>
+      </p>
+    </ng-container>
+  </div>
+  <!-- 成功結果 End -->
+  <!-- 雙欄位（一左一右）資訊範例 -->
+  <ng-container *ngIf="trnsRsltCode == '0'">
+    <ul class="table_info">
+      <li class="table_row2" *ngFor="let taiPowerFeeone of taiPowerFee;let i = index">
+        <!-- table_row內部框架可無視名稱（任何框架皆可使用） -->
+        <span>{{taiPowerFeeone}}</span>
+        <i>{{resultDesc[i]}}</i>
+        <!-- <i>交易成功</i> -->
+      </li>
+    </ul>
+  </ng-container>
+  <!-- 雙欄位（一左一右）資訊範例 End -->
+  <div class="row_single"></div>
+  <div class="row_single" (click)="gotohome()">
+    <a class="button_confirm">
+      回行動網銀
+    </a>
+  </div>
+</section>

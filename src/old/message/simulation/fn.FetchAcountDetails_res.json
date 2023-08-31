@@ -1,0 +1,65 @@
+{
+  "resHeader":{
+    "serviceId":"twd.FetchAcountDetails",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+
+  "acctBelongCustCode":"16313302",
+  "acctBelongName":"網際威信股份有限公司",
+  "acctNo":"04864188062616",
+  "dataQueryTime":"2016/05/05 13:00:12",
+  "acountDetailInfo" : [
+    {
+      "seq":"1",
+      "txDate": "2016/02/10",
+      "ccy":"USD",
+      "drawAmt": "10,000,000,000,000",
+      "depAmt": "",
+      "bal": "50,000",
+      "remark": "明細 1"
+    },
+    {
+      "seq":"2",
+      "txDate": "2016/02/11",
+      "ccy":"USD",
+      "drawAmt": "",
+      "depAmt": "20,000",
+      "bal": "60,000",
+      "remark": "明細 2"
+    },
+    {
+      "seq":"3",
+      "txDate": "2016/02/12",
+      "ccy":"USD",
+      "drawAmt": "",
+      "depAmt": "30,000",
+      "bal": "40,000",
+      "remark": "明細 3"
+    },
+    {
+      "seq":"4",
+      "txDate": "2016/02/13",
+      "ccy":"USD",
+      "drawAmt": "40,000",
+      "depAmt": "",
+      "bal": "10,000",
+      "remark": "明細 4"
+    },
+    {
+      "seq":"5",
+      "txDate": "2016/02/14",
+      "ccy":"USD",
+      "drawAmt": "",
+      "depAmt": "50,000",
+      "bal": "50,000",
+      "remark": "明細 5"
+    }
+  ]
+}

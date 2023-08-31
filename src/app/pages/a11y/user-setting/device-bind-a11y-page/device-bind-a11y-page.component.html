@@ -1,0 +1,102 @@
+
+
+    <!-- 步驟列 -->
+    <!-- <app-step-bar *ngIf="stepMenuData.length > 0" [setData]="stepMenuData" [setKey]="nowStep" (backPageEmit)="onStepBarEvent($event)"></app-step-bar> -->
+
+    <ng-container [ngSwitch]="editType">
+        <ng-container *ngSwitchCase="'apply'">
+            <section class="background1_a11y small_top_padding_a11y">
+            <!-- 申請 -->
+
+             <!-- INFO -->
+            <div class="row_single_a11y">
+                <div class="simple_title_a11y">提醒您，裝置綁定須依循以下規則</div>
+            </div>
+            <div class="row_single_a11y">
+                <ul>
+                    <li class="simple_title_a11y simple_title_em_without_before_a11y">有*為必填欄位</li>
+                    <li class="simple_title_a11y simple_title_em_without_before_a11y">
+                    {{ 'PG_OTP.BIND.INFO.APPLY' | translate }}
+                    </li>
+
+                </ul>
+            </div>
+
+                <!-- INFO END -->
+            
+             <app-login-pswd [setData]="inpSetData" [errorStr]="error_data.pswd" (backValueEmit)="onInputBack($event)"></app-login-pswd>
+            
+            <!-- BTN Box -->
+            <div class="row_single_2_a11y"></div>
+            <div class="row_single_a11y" >
+              <div><a href="javascript:void(0)" class="button_confirm_a11y" (click)="onSubmitEvent()" role="button">確定</a></div>
+            </div>
+            <div class="row_single_a11y" >
+              <a href="javascript:void(0)" class="button_confirm_a11y"  (click)="cancelEdit()">
+                <div class="button_cancel_a11y" role="button">取消</div>
+              </a>
+            </div>
+            <!-- BTN Box End -->
+        </section>
+        </ng-container>
+        <ng-container *ngSwitchCase="'identity'">
+        <section class="background_a11y">
+             <!-- INFO -->
+             <div class="row_single_a11y"></div>
+
+             <!-- <div class="row_white_a11y" style="padding-bottom:1em;">
+                <ul>
+                   
+                    <li class="simple_title_a11y simple_title_em_without_before_a11y">
+                        提醒您，{{ 'PG_OTP.BIND.INFO.IDENTITY' | translate }}
+                    </li>
+                </ul>
+            </div>    -->
+            <div class="row_white_a11y">
+              
+                    <div class="simple_title_a11y">提醒您，裝置綁定須依循以下規則</div>
+                   
+                    <ul>
+                        <!-- 您已取得裝置認證授權密碼。請務必記住此裝置認證密碼並於24小時內進行認證作業，否則裝置認證密碼將於24小時後失效。 -->
+                        <li class="simple_title_a11y simple_title_em_without_before_a11y">
+                        {{ 'PG_OTP.BIND.INFO.IDENTITY' | translate }}
+                        </li>
+                    </ul>
+                   
+            </div>
+            <!-- INFO END -->
+            <!-- 授權碼 -->
+            <!-- 裝置認證密碼 -->
+            <div class="row_white_a11y">
+                <div class="row_content_black_a11y">{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY' | translate }}<br class="br_height_a11y">
+                    <font class="row_content_green_a11y">{{ identity }}</font>
+                </div>
+            </div>
+
+
+            <!-- BTN Box -->
+            <div class="row_single_2_a11y"></div>
+            <div class="row_single_a11y" >
+              <div><a href="javascript:void(0)" class="button_confirm_a11y" (click)="onChangePage('bind')" role="button">{{ 'PG_OTP.BIND.FIELD.IDENTITY_CHECK' | translate }}</a></div>
+            </div>
+            <div class="row_single_a11y" >
+              <a href="javascript:void(0)" class="button_confirm_a11y"  (click)="cancelEdit()">
+                <div class="button_cancel_a11y" role="button">{{ 'PG_OTP.BIND.FIELD.IDENTITY_CANCEL' | translate }}</div>
+              </a>
+            </div>
+            <!-- BTN Box End -->
+            </section>
+        </ng-container>
+        <ng-container *ngSwitchCase="'bind'">
+            <!-- 啟動 -->
+            <app-device-bind-send-a11y [setData]="identity" (backPageEmit)="onBackPage($event)"></app-device-bind-send-a11y>
+
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <!-- 不顯示 -->
+            <div class="sub_info_subtitle">{{ 'ERROR.DEFAULT' | translate }}</div>
+        </ng-container>
+    </ng-container>
+
+
+

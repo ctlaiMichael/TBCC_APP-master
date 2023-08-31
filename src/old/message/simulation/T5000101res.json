@@ -1,0 +1,14 @@
+{
+  "resHeader": {
+    "requestNo": "12345",
+    "requestTime": "20160325123022879",
+    "responseTime": "20160325123023000",
+    "idNo": "20795222",
+    "userId": "A123456789",
+    "resultCode": "4001"
+  },
+  "t5000101ResultType": {
+    "isAccept": "1",
+    "messageToShow": "謝謝您！<br/>資料已成功送出，您將於15分鐘內收到確認簡訊，貸款服務專員也會於30分鐘內與您聯絡。"
+  }
+}

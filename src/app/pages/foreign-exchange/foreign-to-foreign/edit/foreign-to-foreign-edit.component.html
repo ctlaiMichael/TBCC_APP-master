@@ -1,0 +1,311 @@
+<ng-container [ngSwitch]="searchExchangeFlag">
+
+	<!-- 牌告匯率 -->
+	<ng-container *ngSwitchCase="'search'">
+		<app-exchange-page [searchExchangeFlag]="searchExchangeFlag" (backExchange)="backExchange($event)">
+		</app-exchange-page>
+	</ng-container>
+
+	<!-- 確認 -->
+	<ng-container *ngSwitchCase="'confirm'">
+		<app-foreign-to-foreign-confirm [formObj]="formObj" (backPageEmit)="backcomfirm($event)">
+		</app-foreign-to-foreign-confirm>
+	</ng-container>
+
+	<!-- edit -->
+	<ng-container *ngSwitchDefault>
+		<section>
+			<div class="sub_info_frame">
+				<ul class="step_bar_frame">
+					<li class="step_bar step_active">
+						<span>1.填寫資料</span>
+					</li>
+					<li class="step_bar"></li>
+					<li class="step_bar"></li>
+				</ul>
+			</div>
+
+			<div class="row_single"></div>
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsOutAcctsObj.length!==0)}">
+					<li class="inner_table_cell">
+						轉出帳號
+					</li>
+					<li class="inner_table_cell">
+						<ng-container *ngIf="trnsOutAccts.length!=1">
+							<select required [(ngModel)]="trnsOutAcctsObj" (change)="onChangeOutAcct()" class="inner_select">
+								<option value="" disabled selected> 請選擇轉出帳號 </option>
+								<option *ngFor="let item of trnsOutAccts" [ngValue]="item">{{item.trnsfrOutAccnt|accountFormate}}
+								</option>
+							</select>
+						</ng-container>
+						<ng-container *ngIf="trnsOutAccts.length==1">
+							<select [(ngModel)]="trnsOutAcctsObj" class="inner_select" (change)="chgBalance()">
+								<option value=""> {{trnsOutAccts[0].trnsfrOutAccnt| accountFormate}}</option>
+							</select>
+						</ng-container>
+					</li>
+				</ul>
+				<i class="select_info" *ngIf="selectedOutCurr != ''">
+					<i class="font_red">可用餘額</i>
+					<ng-container *ngIf="balance != undefined">
+						{{balance | currencyMoney:selectedOutCurr}}
+					</ng-container>
+				</i>
+				<i class="input_info_warnning">未選擇轉出帳號</i>
+			</div>
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsInAcctsObj.length!==0)}">
+					<li class="inner_table_cell">
+						轉入帳號
+					</li>
+					<li class="inner_table_cell">
+						<ng-container *ngIf="trnsInAccts.length!=1">
+							<select required class="inner_select" [(ngModel)]="trnsInAcctsObj" (change)="onChangeInAcct()">
+								<option value="" disabled selected> 請選擇轉入帳號 </option>
+								<option *ngFor="let item of trnsInAccts" [ngValue]="item">
+									{{item.trnsInSetType=='1'?'臨櫃約定':'線上約定'}}
+									<br>{{item.trnsfrInAccnt | accountFormate}}
+								</option>
+							</select>
+						</ng-container>
+						<ng-container *ngIf="trnsInAccts.length==1">
+							<select [(ngModel)]="trnsInAcctsObj" class="inner_select">
+								<option value=""> {{trnsInAccts[0].trnsInSetType=='1'?'臨櫃約定':'線上約定'}}
+									<br>{{trnsInAccts[0].trnsfrInAccnt | accountFormate}}</option>
+							</select>
+						</ng-container>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.trnsInAcctsObj}}</i>
+			</div>
+
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.selectedOutCurr.length!==0)}">
+					<li class="inner_table_cell">
+						轉出幣別
+					</li>
+					<li class="inner_table_cell">
+						<select name="currency" class="inner_select" required [(ngModel)]="selectedOutCurr" (click)="onCurrClick('currOut')"
+							[disabled]="popupFlag_currOut">
+							<option value="" disabled selected>請選擇外幣幣別</option>
+							<option *ngFor="let item of trnsOutCurr">{{item}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.selectedOutCurr}}</i>
+			</div> -->
+
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.selectedOutCurr.length!==0)}">
+					<li class="inner_table_cell">轉出幣別</li>
+					<li class="inner_table_cell">
+						<div class="inner_select" name="" style="line-height:45px" (click)="onCurrClick('currOut')">
+							{{selectedOutCurr==''?'請選擇轉出幣別':selectedOutCurr}}
+						</div>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.selectedOutCurr}}</i>
+			</div>
+
+
+			<!-- <div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.selectedInCurr.length!==0)}">
+					<li class="inner_table_cell">
+						轉入幣別
+					</li>
+					<li class="inner_table_cell">
+						<select name="currency" class="inner_select" required [(ngModel)]="selectedInCurr" (click)="onCurrClick('currIn')"
+							[disabled]="popupFlag_currIn">
+							<option value="" disabled selected>請選擇外幣幣別</option>
+							<option *ngFor="let item of trnsInCurr">{{item}}</option>
+						</select>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.selectedInCurr}}</i>
+				<div class="row_inner">
+					<a href="javascript:void(0)" class="inner_button float_right_bt" (click)="searchExchange()">
+						<span>牌告匯率</span>
+					</a>
+				</div>
+			</div> -->
+
+			<div class="row_single_2">
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.selectedInCurr.length!==0)}">
+					<li class="inner_table_cell">轉入幣別</li>
+					<li class="inner_table_cell">
+						<div class="inner_select" name="" style="line-height:45px" (click)="onCurrClick('currIn')">
+							{{selectedInCurr==''?'請選擇轉入幣別':selectedInCurr}}
+						</div>
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.selectedInCurr}}</i>
+			</div>
+
+
+			<div class="row_single">
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio01" name="curr_options" [(ngModel)]="curr_radio.options" value="1" class="inner_radio01"
+					 (click)="clearMoney(1)">
+					<label for="inner_radio01">
+						<span>
+							<i></i>
+						</span>
+						<!-- <b>固定{{selectedOutCurr==''?'轉出幣':selectedOutCurr}}</b> -->
+						<b>固定轉出幣</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio02" name="curr_options" [(ngModel)]="curr_radio.options" value="2" class="inner_radio01 rd2"
+					 name="inner_radio" (click)="clearMoney(2)">
+					<label for="inner_radio02">
+						<span>
+							<i></i>
+						</span>
+						<!-- <b>固定{{selectedInCurr==''?'轉入幣':selectedInCurr}}</b> -->
+						<b>固定轉入幣</b>
+					</label>
+				</div>
+
+				<ul class="inner_table_frame" [ngClass]="{'active_warnning':(errorObj.trnsfrAmount.length!==0)}">
+					<li class="inner_table_cell">
+						<ng-container *ngIf="curr_radio.options==='1';else elseTmpl">
+							{{selectedOutCurr==''?'轉出幣':selectedOutCurr}}</ng-container>
+						<ng-template #elseTmpl>{{selectedInCurr==''?'轉入幣':selectedInCurr}}</ng-template>
+					</li>
+					<li class="inner_table_cell">
+						<ng-container *ngIf="(curr_radio.options==='1' && selectedOutCurr=='JPY')
+						||(curr_radio.options==='2' && selectedInCurr=='JPY')">
+							<input type="number" [(ngModel)]="trnsfrAmount" class="inner_input" placeholder="請輸入轉帳金額"  oninput="value=value.replace(/[^\d.]/g,'');">
+						</ng-container>
+						<ng-container *ngIf="(curr_radio.options==='1' && selectedOutCurr!='JPY')
+						||(curr_radio.options==='2' && selectedInCurr!='JPY')">
+							<input type="number" [(ngModel)]="trnsfrAmount" class="inner_input" placeholder="請輸入轉帳金額"  oninput="value=value.replace(/[^\d.]/g,'');">
+						</ng-container>
+					</li>
+
+				</ul>
+				<i class="input_info_warnning">{{errorObj.trnsfrAmount|translate}}</i>
+			</div>
+
+
+			<div class="row_single_2">
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio03" class="inner_radio01" name="note_radio_options" [(ngModel)]="note_radio.options"
+					 value="1" (click)="chgNote('1')">
+					<label for="inner_radio03">
+						<span>
+							<i></i>
+						</span>
+						<b>轉出戶名</b>
+					</label>
+				</div>
+				<div class="inner_radio radio_inline">
+					<input type="radio" id="inner_radio04" class="inner_radio01" name="note_radio_options" [(ngModel)]="note_radio.options"
+					 value="2" (click)="chgNote('2')">
+					<label for="inner_radio04">
+						<span>
+							<i></i>
+						</span>
+						<b>自訂備註</b>
+					</label>
+				</div>
+				<ul class="inner_table_frame">
+					<li class="inner_table_cell">
+						給收款人訊息
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" [disabled]="note_radio.options==='1'" [(ngModel)]="input_note"
+						 [placeholder]="note_radio.options==='1'?'預設帶轉出戶名':'請輸入自訂備註'">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorObj.input_note}}</i>
+				<p class="inner_content">
+					自訂備註長度限18位英數字或8個中文字
+				</p>
+			</div>
+
+
+			<!-- <ul class="inner_table_frame">
+		<li class="inner_table_cell">
+			外幣帳號存摺備註
+		</li>
+		<li class="inner_table_cell">
+			<input type="text" [disabled]="note_radio.options==='1'" name="inner_radio_input" [(ngModel)]="note_input"
+				class="inner_input " placeholder="系統自動帶入成交匯率">
+		</li>
+	</ul>
+	<p class="inner_content">
+		備註文字長度限18位英數字或8個中文字
+	</p> -->
+
+			<app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+			</app-select-security>
+
+			<div class="row_single">
+				<div class="double_button">
+					<a href="javascript:void(0);" (click)="cancelEdit()">{{'BTN.CANCEL' | translate }}</a>
+					<a href="javascript:void(0);" (click)="getRate()">{{'BTN.NEXT' | translate }}</a>
+				</div>
+			</div>
+			<!-- </form> -->
+			<div class="row_single">
+				<h4 class="simple_title">提醒您</h4>
+			</div>
+			<div class="row_single">
+				<div class="inner_content">
+					<ol class="order_list">
+						<li>不同幣別外匯存款轉帳，當日即時交易執行時間限 09:00 ~ 15:30(幣別轉換 09:10 ~ 15:30)。</li>
+						<li>本交易若為不同客戶間外幣轉帳，其匯款分類為：695 未有資金流動交易，並適用交易性質細分類：A 不同客戶間轉讓(包括還款、捐贈、借款、投資)。</li>
+						<li>不同幣別轉換之計算方式：「轉換前幣別金額 * 轉換前幣別對新臺幣之牌告即期買入匯率 / 轉換後幣別對新臺幣之牌告即期賣出匯率 = 轉換後幣別金額」</li>
+						<li>轉出帳號須事先與本行約定方可承作。</li>
+						<li>依中央銀行「外匯收支及交易申報辦法規定」申報義務人務請審慎據實申報，若申報義務人申報不實，依管理外匯條例規定將處新臺幣三萬元以上六十萬元以下罰鍰。</li>
+						<li>交易幣別為人民幣，每人每日轉帳累計金額限人民幣2萬元(與臨櫃併計)。</li>
+						<!-- <li> <span id="footer_info">請按此查看辦理人民幣業務風險告知</span></li> -->
+					</ol>
+				</div>
+			</div>
+		</section>
+
+
+		<div class="popup_window" [ngClass]="{ 'popup_open': (popupFlag_currOut) }">
+			<div class="popup_content">
+				<div class="row_single">
+					<h4 class="simple_title">{{ 'ERROR.INFO_TITLE' | translate }}</h4>
+				</div>
+				<div class="row_single">
+					<p class="inner_content">
+						請先選擇轉出帳號，轉出幣別因轉出帳號的不同，有不同的設定
+					</p>
+				</div>
+				<div class="row_single">
+					<a href="javascript:void(0)" class="button_confirm" (click)="confirm_curr()">確定</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="popup_window" [ngClass]="{ 'popup_open': (popupFlag_currIn) }">
+			<div class="popup_content">
+				<div class="row_single">
+					<h4 class="simple_title">{{ 'ERROR.INFO_TITLE' | translate }}</h4>
+				</div>
+				<div class="row_single">
+					<p class="inner_content">
+						請先選擇轉入帳號，轉入幣別因轉入帳號的不同，有不同的設定
+					</p>
+				</div>
+				<div class="row_single">
+					<a href="javascript:void(0)" class="button_confirm" (click)="confirm_curr()">確定</a>
+				</div>
+
+			</div>
+		</div>
+	</ng-container>
+	<!-- popup window End -->
+</ng-container>
+
+
+<!-- 外轉外幣別 -->
+<ng-container *ngIf="popShow">
+	<app-currency-flag-popup [new_table]="new_table" (backPageEmit)="chooseOver($event)"></app-currency-flag-popup>
+</ng-container>

@@ -1,0 +1,91 @@
+<!-- 主畫面塊狀區-標題: 信用卡 -->
+<h4 class="mi_block_title">{{ 'HOME.MAIN.TITLE_CARD' | translate }}</h4>
+<!-- 主畫面塊狀區-標題 End -->
+<ng-container *ngIf="showData; else emptyBox">
+    <!-- 信用卡資訊框架 -->
+    <div class="credit_card_info_frame">
+        <!-- 額度百分比 (目前無此資料) -->
+        <!-- 
+        <div class="cc_progress_bar_frame">
+            <div class="cc_progress_bar">
+        -->
+        <!-- %數設定 -->
+        <!-- 
+                <i [ngStyle]="{ width: data.percent + '%' }"></i>
+        -->
+        <!-- 
+            </div>
+            <p class="progress_bar_info">
+        -->
+        <!-- 已用額度 XX% -->
+        <!-- 
+                <span class="used_quota">{{ 'HOME.MAIN.CARD.USE_AMOUNT' | translate }} {{ data.percent }}%</span>
+        -->
+        <!-- 可用餘額 ddd,ddd -->
+        <!-- 
+                <span class="ava_balance">{{ 'HOME.MAIN.CARD.HAVE_AMOUNT' | translate }}
+                    <br>{{ data.usableAmt | htMoney: showCurrency }}</span>
+            </p>
+        </div>
+        <hr class="mi_block_divider">
+        -->
+        <!-- 額度百分比 End -->
+
+        <hr class="mi_block_divider">
+        <!-- 信用卡詳細資訊 -->
+        <div class="credit_card_info_main">
+            <div class="credit_card_tr">
+                <!-- 繳款截止日: 目前無此資料 -->
+                <div class="credit_card_td">{{ 'HOME.MAIN.CARD.DATELINE' | translate }}</div>
+                <div class="credit_card_td">
+                    {{ data.dateline.month }}月份帳單未繳金額
+                </div>
+                <!-- <div class="credit_card_td">&nbsp;</div> -->
+                <!-- {{ month }}月份帳單未繳金額 => 先改為"本期帳單未繳金額"-->
+                <!-- <div class="credit_card_td">{{ 'HOME.MAIN.CARD.BILL_TITLE' | translate: data.dateline }}</div> -->
+            </div>
+            <div class="credit_card_tr">
+                <div class="credit_card_td">
+                    <!-- 繳款截止日: 目前無此資料 -->
+                    <span class="credit_card_data">
+                        <i>{{ data.dateline.month }}月</i>
+                        <i>15</i>
+                        <!-- <i>{{ data.dateline.day }}</i> -->
+                    </span>
+                    <div class="credit_card_currency">
+                        <img src="./assets/images/flag/Taiwan.png" alt="" class="">
+                        <b>TWD</b>
+                    </div>
+                </div>
+                <div class="credit_card_td">
+                    <span class="unpaid_amount" overAmountStyle [content]="data.bill" [option]="amountOption"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 信用卡詳細資訊 End -->
+
+    </div>
+    <!-- 信用卡資訊框架 End -->
+    <!-- BTN Box -->
+    <hr class="mi_block_divider">
+    <div class="main_info_2btn">
+        <!-- 帳單總覽 -->
+        <a href="javascript:void(0)" class="mib_btn"
+            (click)="onClickEvent('bill')">{{ 'HOME.MAIN.BTN_CARD_BILL' | translate }}</a>
+        <!-- 立即繳款 -->
+        <a href="javascript:void(0)" class="mib_btn"
+            (click)="onClickEvent('pay')">{{ 'HOME.MAIN.BTN_CARD_PAY' | translate }}</a>
+    </div>
+
+
+</ng-container>
+<ng-template #emptyBox>
+    <div>{{ 'ERROR.EMPTY' | translate }}</div>
+    <!-- BTN Box -->
+    <hr class="mi_block_divider">
+    <div class="main_info_btn">
+        <!-- 立即申請 -->
+        <a href="javascript:void(0)" class="mib_btn"
+            (click)="onClickEvent('apply')">{{ 'HOME.MAIN.BTN_CARD_APPLY' | translate }}</a>
+    </div>
+</ng-template>

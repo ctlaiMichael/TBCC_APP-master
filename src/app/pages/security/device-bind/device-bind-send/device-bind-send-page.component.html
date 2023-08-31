@@ -1,0 +1,60 @@
+<ng-container *ngIf="!showResult; else resultBox;">
+    <!-- 啟動 -->
+    <ng-container *ngIf="identityStr != ''">
+        <!-- 您的裝置認證密碼為：{{ identity }}，請將該密碼輸入「裝置認證密碼」欄位進行認證作業。 -->
+        <div class="sub_info_subtitle" [innerHtml]="'PG_OTP.BIND.INFO.BIND_identity' | translate: { identity: identityStr  }"></div>
+        <div class="row_single"></div>
+    </ng-container>
+
+    <div class="row_single">
+        <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data.OtpIdentity != '')}">
+            <!-- 裝置認證密碼 -->
+            <li class="inner_table_cell">*{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY' | translate }}</li>
+            <li class="inner_table_cell ">
+                <!-- 請輸入裝置認證密碼 -->
+                <input type="tel" name="" class="inner_input" placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_IDENTITY_EDIT' | translate }}" maxlength="{{inp_maxlen.OtpIdentity}}"
+                    autocomplete="off" disableautocomplete [(ngModel)]="inp_data.OtpIdentity">
+            </li>
+        </ul>
+        <i class="input_info_warnning">{{ error_data.OtpIdentity | translate }}</i>
+    </div>
+    <div class="row_single">
+        <ul class="inner_table_frame" [ngClass]="{'active_warnning':(error_data.commonName != '')}">
+            <!-- 裝置好記名稱 -->
+            <li class="inner_table_cell">*{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME' | translate }}</li>
+            <li class="inner_table_cell ">
+                <!-- 請輸入裝置好記名稱 -->
+                <input type="text" name="" maxlength="{{inp_maxlen.commonName}}" placeholder="{{ 'PG_OTP.BIND.FIELD.BIND_NICKNAME_EDIT' | translate }}"
+                    [(ngModel)]="inp_data.commonName" class="inner_input">
+            </li>
+        </ul>
+        <i class="input_info_warnning">{{ error_data.commonName | translate }}</i>
+    </div>
+    <!-- BTN Box -->
+    <div class="row_single">
+        <div class="double_button">
+            <a href="javascript:void(0)" (click)="onCancelEvent()">{{ 'BTN.CANCEL' | translate }}</a>
+            <!-- 確定: 送出後即產生授權碼，無法返回 -->
+            <a href="javascript:void(0)" (click)="onSubmitEvent()">{{ 'BTN.CHECK' | translate }}</a>
+        </div>
+    </div>
+    <!-- BTN Box End -->
+    <!-- INFO -->
+    <div class="row_single">
+        <!-- 提醒您： -->
+        <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+    </div>
+    <div class="row_single">
+        <p class="inner_content">
+            <!-- 1.「裝置認證密碼」，為您透過行動網銀或網路銀行申請產生的一組認證密碼，若輸入三次錯誤或逾24小時未輸入，則失效需重新申請。 -->
+            {{ 'PG_OTP.BIND.INFO.BIND_1' | translate }}
+            <!-- 2.「裝置好記名稱」，請您為本裝置設定好記名稱，以方便您日後更換手機等情形，須於本行網路銀行刪除已認證裝置時辨識之用。 -->
+            {{ 'PG_OTP.BIND.INFO.BIND_2' | translate }}
+        </p>
+    </div>
+    <!-- INFO END -->
+</ng-container>
+<ng-template #resultBox>
+    <!-- 結果頁 -->
+    <app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+</ng-template>

@@ -1,0 +1,245 @@
+<section>
+	<div class="row_single"></div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				繳款類別:
+			</li>
+			<li class="inner_table_cell">
+				<input value="{{qrcode.payCategory1}}" type="text" class="inner_input">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				所屬年度:
+			</li>
+			<li class="inner_table_cell">
+				<input type="text" class="inner_input" placeholder="{{belongYear}}">
+			</li>
+		</ul>
+	</div>
+	<div class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				繳款方式:
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" [(ngModel)]="status" (change)="chgStatus()">
+					<option value="">請選擇</option>
+					<option [ngValue]="'1'">金融卡帳戶</option>
+					<option [ngValue]="'3'">信用卡</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+
+	<ng-container *ngIf="status == '1'">
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					金融卡帳戶:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" [(ngModel)]="act">
+						<option value="">請選擇</option>
+						<option *ngFor="let acct of accts" [ngValue]="acct" ngDefaultControl>{{acct.acctNo}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+		<div class="row_single">
+			<div class="checkbox_button">
+				<input type="checkbox" [(ngModel)]="checkFlag">
+				<label for="checkbox_button02" (click)="clickClean('1')">
+					<b>同帳號存款人身分證統一編號</b>
+				</label>
+			</div>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="{'normal_disable' : (checkFlag == true)}">
+				<li class="inner_table_cell">納稅義務人<br>身分證統一編號:</li>
+				<li class="inner_table_cell">
+					<input type="text" class="inner_input" value="" [(ngModel)]="form2.payId" ngDefaultControl>
+				</li>
+			</ul>
+			<i class="input_info_warnning"></i>
+		</div>
+		<!-- 2020/02/19 文字說明錯誤，修改為下方 -->
+		<!-- <div class="row_single">
+			<p class="inner_content">
+				請確認「納稅義務人身分證統一編號」是否正確後再進行交易。
+			</p>
+		</div> -->
+		<div class="row_single">
+			<p class="inner_content font_red">
+				「納稅義務人身分證統一編號」預設為帳號存款人之身分證統一編號(可修改)，請確認「納稅義務人身分證統一編號」是否正確後再進行交易。
+			</p>
+		</div>
+		<div class="row_single" [(ngModel)]="check" value="1" (click)="clickcheckInfo()">
+			<a class="button_confirm">查詢繳款資訊</a>
+		</div>
+		<!-- 非本人訊息 -->
+		<ng-container *ngIf="check5 == '1'">
+			<div class="row_single">
+				<p class="inner_content font_red">
+					提醒您，您非納稅義務人本人，請先確認納稅義務人繳稅紀錄，如有繳稅紀錄，請以差額進行本次交易(相關繳稅明細請至Paytax網站查詢)。
+				</p>
+			</div>
+		</ng-container>
+	</ng-container>
+
+
+	<div class="row_single" *ngIf="check6 == '1'">
+		<ul class="inner_table_frame normal_disable">
+			<li class="inner_table_cell">
+				累計繳納金額:
+			</li>
+			<li class="inner_table_cell">
+				<input type="tel" class="inner_input" value="{{form.txnAmount}}">
+			</li>
+		</ul>
+	</div>
+
+	<div class="row_single" *ngIf="check == '1'">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				本次繳款金額:
+			</li>
+			<li class="inner_table_cell">
+				<input type="tel" class="inner_input" [(ngModel)]="form.trnsAmountStr1">
+			</li>
+		</ul>
+		<i class="input_info_warnning"></i>
+	</div>
+
+	<div class="row_single" *ngIf="check == '1'">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				目前轉帳機制:
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+					<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+
+
+	<ng-container *ngIf="status == '3'">
+		<div class="row_single">
+				<ul  class="inner_table_frame">	
+						
+					<div class="inner_radio " style="width:10px;padding-top:5px;padding-left:10px">
+						<input type="radio" id="radio_button01" name="inner_s_radio" [(ngModel)]="ismyself" value="yes">
+						<label for="radio_button01" (click)="selectId('yes')" >
+							<span>
+								<i></i>
+							</span>
+							<b>是</b>
+						</label>
+					</div>
+					<div class="inner_radio "  style="padding-left:10px">
+						<input type="radio" id="radio_button02" name="inner_s_radio" [(ngModel)]="ismyself" value="no" >
+						<label for="radio_button02" (click)="selectId('no')">
+							<span>
+								<i></i>
+							</span>
+							<b>否</b>
+						</label>
+					</div>
+								<li class="inner_table_cell" style="color:#6a6a6a">
+									持卡人為納稅義務人本人或配偶
+								</li>
+						
+				</ul>
+		</div>
+		
+		<div class="row_single">
+			<ul class="inner_table_frame normal_disable">
+				<li class="inner_table_cell">
+					納稅義務人<br>身分證統一編號:
+				</li>
+				<li class="inner_table_cell">
+					<input value="{{form2.payId}}" type="tel" class="inner_input">
+				</li>
+			</ul>
+			<i class="input_info_warnning"></i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					繳款金額:
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" class="inner_input" [(ngModel)]="form.trnsAmountStr">
+				</li>
+			</ul>
+			<i class="input_info_warnning"></i>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame">
+				<li class="inner_table_cell">
+					交易信用卡卡號:
+				</li>
+				<li class="inner_table_cell">
+					<select class="inner_select" [(ngModel)]="card">
+						<option value="">請選擇</option>
+						<option *ngFor="let cards of cardds" [ngValue]="cards" ngDefaultControl>
+							{{cards.cardType}},{{cards.creditCardNo}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['cardDate']?'active_warnning':''">
+				<li class="inner_table_cell">
+					卡片有效月年:
+				</li>
+				<li class="inner_table_cell">
+					<input [(ngModel)]='form.cardDate' type="tel" maxlength="4" (change)="checkFormat('cardDate', form.cardDate)"
+					 class="inner_input" placeholder="請輸入4位數字有效月年">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg.cardDate | translate}}</i>
+		</div>
+		<div class="row_single">
+			<ul class="inner_table_frame" [ngClass]="errorMsg['cardPassword']?'active_warnning':''">
+				<li class="inner_table_cell">
+					卡片背面末三碼:
+				</li>
+				<li class="inner_table_cell">
+					<input type="tel" [(ngModel)]='form.cardPassword' maxlength="3" (change)="checkFormat('cardPassword', form.cardPassword)"
+					 class="inner_input" placeholder="請輸入卡片背面末三碼">
+				</li>
+			</ul>
+			<i class="input_info_warnning">{{errorMsg.cardPassword | translate}}</i>
+		</div>
+		<div class="row_single">
+			<p class="inner_content font_red">
+				「注意事項」<br>
+				1. 以信用卡繳納綜合所得稅自繳稅款帶入資料為「持卡人身分證統一編號」，請確認繳納之持卡人是否為申報戶內或稅額試算通知書內「納稅義務人本人或配偶」。並以使用1張信用卡為限。<br>
+				2. 信用卡繳稅是否需支付服務費及收取標準，請洽發卡機構。<br>
+				3. 信用卡繳稅除5月份綜合所得稅自繳稅款案件，得於法定申報期間截止日前取消授權外，其餘案件一經授權成功，不得取消或更正。
+			</p>
+		</div>
+	</ng-container>
+	<div class="row_single" *ngIf="disable1 =='disable' ">
+			<div class="double_button">
+				<a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+				<a style="background:#d0d3d6">{{ 'BTN.CHECK' | translate }}</a>
+			</div>
+		</div>
+	<div *ngIf="disable1 !='disable'">
+	<div class="row_single" *ngIf="status =='' || status == '3' || check=='1'">
+		<div class="double_button">
+			<a (click)="clickCancel()">{{ 'BTN.CANCEL' | translate }}</a>
+			<a (click)="clickSubmit()" >{{ 'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+	</div>
+</section>

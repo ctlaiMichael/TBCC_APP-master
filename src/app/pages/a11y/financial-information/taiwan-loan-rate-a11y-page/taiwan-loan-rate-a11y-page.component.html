@@ -1,0 +1,65 @@
+<!-- section -->
+<section class="background1_a11y small_top_padding_a11y">
+  <div class="row_single"></div>
+
+  <ng-container *ngIf="showData; else noDataBox">
+    <div class="row_white_a11y" >
+      <div class="row3_area_a11y">
+        <p class="row3_sheet_a11y" [title]="mydataTime" >牌告日期：<br>{{ dataTime }}</p>
+      </div>
+    </div>
+    <div class="input_area_a11y">
+      <table class="Table_a11y">
+        <tr>
+          <th> 類別 </th>
+          <th> 利率(年息)% </th>
+        </tr>
+        <ng-container>
+          <tr>
+            <td>基準利率</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['BaseRate' ,{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>月基準利率</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['BaseRateM',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>定儲指利率</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['FDRate',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>定儲指數月指標利率</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['FDRateM',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>基準利率(原農民銀行)</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['BaseRate2',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>定儲指數利率(原農民銀行)</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['FDRate2',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          <tr>
+            <td>信用卡循環信用利率</td>
+            <td class="firstTable_a11y">{{ fullData | fieldCheck: ['CreditCardRate',{zero_type:false, empty_str:'--'} ]}}</td>
+          </tr>
+          
+        </ng-container>
+      </table>
+    </div>
+    <div class="row_single_a11y">
+      <h4 class="simple_title_em_a11y">提醒您</h4>
+    </div>
+    <div class="row_single_a11y" >
+      <p class="simple_title_content_a11y">
+        1. 實際放款利率另依個別、信用條件擔保品狀況、授信風險等情形訂定加碼幅度。
+        <br> 2. 基本放款利率 = 基準利率 + 3.944% 基本放款利率(原農民銀行) = 基準利率(原農民銀行 + 2.964%)
+        <br>
+      </p>
+    </div>
+  </ng-container>
+  <ng-template #noDataBox>
+    <div class="sub_info_subtitle_a11y">查無資料</div>
+  </ng-template>
+</section>
+<!-- section //End-->

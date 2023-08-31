@@ -1,0 +1,885 @@
+ /*定期(不)定額查詢/異動*/
+
+ .keep_title{
+    font-weight: bold;
+}
+
+
+input[type="date"]:before{ 
+    color:#A9A9A9; 
+    content:attr(placeholder); 
+} 
+
+
+input[type="date"].full:before { 
+    color:black; 
+    content:""!important; 
+}
+
+.keep_sel{
+    border: solid 1px #8C8B8B;
+    background-color: white;
+    width: 150px;
+    /*border-radius: 0px;*/
+    margin-top: 10px;
+}
+
+.keep_con{
+    /*border: solid 1px #8C8B8B;*/
+    background-color: #AAD5CA;
+    border-radius: 10px;
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.invest_title{
+    /*border: solid 1px #8C8B8B;*/
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    word-wrap:nowrap;
+
+}
+
+.invest_title11{
+    /*border: solid 1px #8C8B8B;*/
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    word-wrap:nowrap;
+    /* -webkit-line-clamp: 2; */
+
+}
+
+.invest_title22{
+    /*border: solid 1px #8C8B8B;*/
+    
+    align-items: flex-end;
+    
+    
+    /* -webkit-line-clamp: 2; */
+
+}
+
+.invest_title33{
+    /*border: solid 1px #8C8B8B;*/
+    
+    
+    align-items: flex-start;
+    
+    /* -webkit-line-clamp: 2; */
+
+}
+
+.invest_title p{
+    font-weight: bold;
+}
+
+.invest{
+    height: 60px;
+    background-color: #D4E9E6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest2{
+    height: 60px;
+    background-color: #E3F4F1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.invest_con{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 20%;
+}
+
+.invest_con2{
+    text-align: center;
+    width: 30%;
+}
+
+.invest_con3{
+    text-align: center;
+    width: 20%;
+}
+
+
+/*定期(不)定額查詢/異動 end*/
+
+/*停損獲利點通知設定*/
+
+.fund_sec p{
+    line-height: 20px;
+    text-align: justify;
+}
+
+.fund_change{
+    /*border: solid 1px pink;*/
+    height: 100%;
+    background: linear-gradient(to bottom, #ddebe9 0%,#8dbbb6 100%);
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.fund_bt{
+    background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+    width: 280px;
+    border-radius: 6px;
+    height: 35px;
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+
+}
+
+.fund_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.fund_checkedit{
+    /*border: solid 1px pink;*/
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    background-color: #E3F4F1;
+    height: 100px;
+    margin: 5px 10px;
+    align-items: center;
+    padding-bottom: 7px;
+
+}
+
+
+
+.fund_checkbox{
+    width: 18px;
+    height: 18px;
+    margin: 0 18px;
+    border: solid 1px pink;
+}
+.delete_sign{
+    margin: 0 18px;
+}
+
+.fund_checkradio{
+    width: 18px;
+    height: 18px;
+}
+
+.checkedit1{
+    width: 20%;
+}
+
+
+.checkedit2{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+
+}
+
+.checkedit3{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 30%;
+    min-width: 80px;
+    margin-left: 11px;
+    /*text-align: right;*/
+}
+
+.fund_name_col1{
+    width: 13%;
+}
+.fund_name_col2{
+    width: 87%;
+}
+
+.checkradio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 0px;
+}
+
+
+
+.fund_name p{
+    /*border-bottom: solid 1px green;*/
+}
+
+.percent1{
+    height: 25px;
+    border-radius: 5px;
+    border: solid 1px #8C8B8B;
+    background: none;
+}
+
+
+/*停損獲利點通知設定 end*/
+
+/*刪除後不可編輯*/
+
+.fund_sec p{
+    line-height: 20px;
+    text-align: justify;
+}
+
+.fund_edit{
+    /*border: solid 1px pink;*/
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: #AAD5CA;
+    height: 100%;
+    width: 95%;
+    margin: 10px 10px;
+}
+
+.fund_content{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+.fund_checkradio{
+    width: 18px;
+    height: 18px;
+}
+
+
+.checkradio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+}
+
+.fund_bt2{
+
+    background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+    width: 115px;
+    border-radius: 6px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+
+}
+
+.fund_name{
+    /*margin-top: 10px;*/
+    /*justify-content: center;*/
+    /*height: 20px;*/
+    color: green;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+
+}
+
+.delete_sign{
+    margin-right: 10px;
+/*     position: relative;
+    right: 20px;*/
+    color: #D0021B;
+    font-size: 18px;
+}
+
+.fund_name p{
+    /*border-bottom: solid 1px green;*/
+}
+
+.percent1{
+    height: 25px;
+    border-radius: 5px;
+    border: solid 1px #8C8B8B;
+    background: none;
+}
+
+.disabled_font{
+    color: #8C8B8B;
+}
+.disabled_margin2{
+    margin-left: 15px;
+}
+.disabled_margin3{
+    margin-left: 15px;
+}
+
+
+
+/*刪除後不可編輯 end*/
+
+/*交易結果*/
+
+.success_title{
+    margin-top: 10px;
+    color: red;
+}
+
+.fund_bt3{
+
+    background: linear-gradient(to bottom, rgb(249,118,115) 0%,rgb(191,59,55) 100%);
+    width: 80%;
+    border-radius: 6px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+
+}
+
+.disabled_margin4{
+    margin-left: 25px;
+}
+
+/*交易結果 end*/
+
+/*信託對帳單寄送方式*/
+
+.send_sec{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    border-bottom: solid 1px #B4B4B4;
+
+}
+
+.send_title{
+    font-weight: bold;
+}
+
+.send_sel{
+    border: solid 1px #8C8B8B;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+
+.send_con{
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.send_btarea{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.send_yes{
+    background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    border: none;
+
+}
+
+.send_back{
+    background:#EDEDED;
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: #3C3C3C;
+    font-size: 16px;
+    border: solid 1px #E9E6E6;
+}
+
+.send_info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.send_info ul{
+    justify-content: flex-start;
+    list-style: initial;
+    font-size: 16px;
+}
+
+/*信託對帳單寄送方式 end*/
+
+/*扣款日期異動*/
+
+.choice_title2{
+    margin-top: 10px;
+    text-align: right;
+}
+
+.choice_con{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.choice_date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+
+
+.datebox{
+    border: solid 1px #E9E6E6;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    background: #ffffff;
+    font-size: 14px;
+
+}
+
+.choice_info{
+    margin-top: 135px;
+}
+
+.choice_bt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.choice_done{
+    background:#EDEDED;
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: #3C3C3C;
+    font-size: 16px;
+    border: solid 1px #E9E6E6;
+}
+
+.choice_cancel{
+    background:#EDEDED;
+    width: 100px;
+    border-radius: 2px;
+    height: 30px;
+    margin-top: 10px;
+    color: #3C3C3C;
+    font-size: 16px;
+    border: solid 1px #E9E6E6;
+}
+
+.date_color{
+    background: linear-gradient(to bottom, rgb(86,143,138) 48%,rgb(15,104,93) 100%);
+}
+
+#css_table {
+    display:table;
+}
+.css_tr {
+    display: table-row;
+    margin: 5px 0px !important;
+}
+.css_td_title {
+    display: table-cell;
+    width:120px;
+    text-align: right;
+}
+.css_td_title11 {
+    display: table-cell;
+    width:120px;
+    text-align: left;
+}
+.css_td_title22 {
+    display: table-cell;
+    width:80px;
+    text-align: left;
+}
+
+.css_td_title33 {
+    display: table-cell;
+    width:100px;
+    text-align: left;
+}
+
+.css_td_content {
+    display: table-cell;
+}
+
+/*扣款日期異動 end*/
+
+
+/*-------------------------------------------------*/
+/*以下針對各個頁面不同版型微調*/
+
+/*定期(不)定額查詢/異動*/
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    .invest_con{
+        margin-left: 30px;
+        width: 16%;
+    }
+}
+
+@media screen and (max-width: 321px){
+
+    .invest_con2{
+        width: 28%;
+    }
+
+
+    .invest_con3 {
+        text-align: center;
+        width: 21%;
+    }
+}
+
+/*定期(不)定額查詢/異動 end*/
+
+/*停損/獲利點通知設定*/
+
+@media screen and (max-width: 321px) {
+    .delete_sign{
+        right: 0px;
+    }
+
+    .checkedit1 {
+        width: 15%;
+    }
+
+    .checkedit2{
+        width: 55%;
+    }
+
+    .checkedit3{
+        width: 40%;
+        min-width: 80px;
+    }
+    .fund_name_col1{
+         width: 15%;
+    }
+    .fund_name_col2{
+         width: 85%;
+    }
+}
+
+@media only screen and (min-device-width : 414px){
+    .delete_sign{
+        /*right: 40px;*/
+    }
+
+    .checkedit3{
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+
+    .delete_sign{
+        /*right: 160px;*/
+
+        /*margin: 0 65px;*/
+        margin: 0 65px;
+    }
+
+    .fund_checkbox{
+        margin: 0 65px;
+    }
+
+    .checkedit2{
+        width: 90%;
+    }
+
+
+
+
+}
+
+
+.multiselect {
+    width: 200px;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+  
+  #checkboxes label {
+    display: block;
+  }
+  
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+
+  .confirm_bt_L_on {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-left: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-right: solid 0px #0E7173;
+    color:white;
+}
+
+.confirm_bt_L_on11 {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-left: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-right: solid 0px #0E7173;
+    color:white;
+}
+
+.confirm_bt_L_off {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-left: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-right: solid 0px #E1E0E3;
+}
+
+.confirm_bt_R_on {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-right: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-left: solid 0px #0E7173;
+    color:white;
+    margin-left:-4px;
+}
+.confirm_bt_R_off {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-right: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-left: solid 0px #E1E0E3;
+    margin-left:-4px;
+}
+
+.confirm_bt_L_on1 {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-left: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-right: solid 0px #0E7173;
+    color:white;
+}
+.confirm_bt_L_off1 {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-left: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-right: solid 0px #E1E0E3;
+}
+
+.confirm_bt_R_on1 {
+    background: green;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#689B9D, #377E80);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#689B9D, #377E80);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#689B9D, #377E80);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#689B9D, #377E80);
+    /* Standard syntax */
+    height: 35px;
+    width: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #0E7173;
+    border-right: solid 1px #0E7173;
+    border-bottom: solid 1px #0E7173;
+    border-left: solid 0px #0E7173;
+    color:white;
+    margin-left:-4px;
+}
+.confirm_bt_R_off1 {
+    background: gray;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#CECECF, #F3F3F3);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#CECECF, #F3F3F3);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#CECECF, #F3F3F3);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#CECECF, #F3F3F3);
+    /* Standard syntax */
+    height: 35px;
+    width: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 0 2px 2px 0 #000000; */
+    border-top: solid 1px #E1E0E3;
+    border-right: solid 1px #E1E0E3;
+    border-bottom: solid 1px #E1E0E3;
+    border-left: solid 0px #E1E0E3;
+    margin-left:-4px;
+}
+
+
+
+/*停損/獲利點通知設定 end*/

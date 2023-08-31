@@ -1,0 +1,72 @@
+<!--Added by Ivan 2018.5.10-->
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<script>
+		if(window.location.href.indexOf('#')<0){
+			window.location.replace(window.location.href+'#/login/menu');
+		}
+	</script>
+	<meta charset="utf-8" />
+	<title>登入</title>
+	<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Apple -->
+	<meta name="apple-mobile-web-app-capable"  content="yes" />
+	<meta name="format-detection" content="telephone=no"/>
+
+	<!-- All CSS -->
+	<!-- All CSS -->
+	<link rel="stylesheet" href="ui/css/page_loading.css" />
+	    <link rel="stylesheet" href="ui/tcbbOldStyle/css/reset.css">
+    <link rel="stylesheet" href="ui/tcbbOldStyle/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--css樣式 - 共用元件-->
+	<link rel="stylesheet" href="ui/tcbbOldStyle/css/main.css">
+	<link rel="stylesheet" href="ui/tcbbOldStyle/css/modify.css">
+	<link rel="stylesheet" href="ui/css/biometric_popup.css" />
+	<link rel="stylesheet" href="ui/css/login.css" />
+
+
+	
+</head>
+<body class="login_body">
+
+<!-- 頁面 loadong 的動畫框架 -->
+<div class="loader-box" ng-controller="loadCtrl">
+	<div class="gif_loading"><img src="ui/images/spinner.gif" ;></div>
+	
+	<div class="lable_loading">正在載入中...</div>
+</div>
+<!-- 頁面 loadong 的動畫框架 //End -->
+<div class="wrapper" ui-view="content" ng-cloak></div> 
+<!--wrapper end-->
+
+
+<!--shadow-->
+<div id="shadow" class="shadow" style="display: none"></div>
+<!--shadow-->
+
+<div id="dialog"></div>
+
+<!-- popup -->
+<div ui-view="popup" ng-cloak></div>
+<!-- popup //End -->
+
+<script src="lib/jquery.min.js"></script>
+<script src="ui/js/touchslider.js"></script>
+<script src="ui/js/jquery.magnific-popup.min.js"></script>
+
+<script src="ui/main_tool.js"></script>
+<script src="ui/init.js"></script>
+<script src="../cordova.js"></script>
+
+<!--angular start-->
+<script type="text/javascript" src="lib/require.js" data-main="main"></script>
+<!--angular end-->
+
+<script type="text/javascript" src="lib/readxml.js"></script>
+<script type="text/javascript" src="lib/CelebrusInsert_tool.js"></script>
+
+</body>
+</html>

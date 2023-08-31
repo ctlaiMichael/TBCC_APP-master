@@ -1,0 +1,89 @@
+<section>
+  <div class="sub_info_frame">
+    <ul class="step_bar_frame">
+      <li class="step_bar step_active"><span>1.台電繳費資料選擇</span></li>
+      <li class="step_bar"></li>
+      <li class="step_bar "></li>
+    </ul>
+  </div>
+  <div class="row_single"></div>
+  <div class="row_single">
+    <!-- (click)="alert('imhere')" -->
+    <a *ngFor="let electricityFeeone of electricityFee">
+      <div class="accountCard_frame">
+        <div class="accountCard_td">
+          <ul class="accountCard_inner_table more_row">
+            <li class="accountCard_inner_row">
+              <!-- 帳單年月 -->
+              <span class="accountCard_inner_td accountCard_inner_td_l accountCard_name">
+                帳單年月
+              </span>
+              <!-- YYY年MM月 -->
+              <span class="accountCard_inner_td accountCard_inner_td_r">
+                {{ electricityFeeone.billDateDisplay }}
+              </span>
+            </li>
+
+            <li class="accountCard_inner_row">
+              <!-- 收費日 -->
+              <span class="accountCard_inner_td accountCard_inner_td_l ">收費日
+              </span>
+              <!-- YYY年MM月DD日 -->
+              <span
+                class="accountCard_inner_td accountCard_inner_td_r">{{ electricityFeeone.efeePayDate | htDate:'yyyy年MM月dd日' }}
+              </span>
+            </li>
+
+            <li class="accountCard_inner_row">
+              <!-- 收費類型 -->
+              <span class="accountCard_inner_td accountCard_inner_td_l ">收費類型
+              </span>
+              <!-- YYY年MM月DD日 -->
+              <span class="accountCard_inner_td accountCard_inner_td_r">{{electricityFeeone.efeeStyle}}
+              </span>
+            </li>
+
+            <li class="accountCard_inner_row">
+              <!-- 應繳總金額 -->
+              <span class="accountCard_inner_td accountCard_inner_td_l">應繳總金額</span>
+              <span class="accountCard_inner_td accountCard_inner_td_r accountCard_money">{{ 
+                  electricityFeeone.totalAmount  
+              }}</span>
+            </li>
+
+            <li class="accountCard_inner_row">
+              <!-- 用電度數 -->
+              <span class="accountCard_inner_td accountCard_inner_td_l">用電度數</span>
+              <span
+                class="accountCard_inner_td accountCard_inner_td_r accountCard_money">{{electricityFeeone.consumption}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="container" (click)="isConformRules(electricityFeeone.id);">
+          <input type="checkbox" [ngModel]="electricityFeeone.check" [checked]="electricityFeeone.check==true">
+          <span class="checkmark"></span>
+        </div>
+      </div>
+      <div class="row_single"></div>
+    </a>
+  </div>
+  <div class="row_single">
+    <h4 class="simple_title">繳費說明</h4>
+  </div>
+  <div class="row_single">
+    <p class="inner_content">
+      1.欠繳之費用請依照出帳時間依序勾選，先出帳之電費應先繳納。<br>
+      2.接電費不可單獨繳納，須至少搭配一期電費後才可勾選。<br>
+      3.可不繳納接電費，僅繳電費。<br>
+      4.單次繳費至多可繳納3筆電費(含接電費)。<br>
+      5.如以在其他代收單位或繳費平台繳費者，請勿重覆繳費。<br>
+      6.如有電費疑問，請電洽台電24小時客服專線1911。<br>
+    </p>
+  </div>
+  <div class="row_single">
+    <div class="double_button">
+      <a id="empty" (click)="cancelEdit()">取消</a><a (click)="gotoSumeFee()">確定</a>
+    </div>
+  </div>
+
+</section>

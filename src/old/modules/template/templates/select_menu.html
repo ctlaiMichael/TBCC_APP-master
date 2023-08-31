@@ -1,0 +1,3 @@
+<ul class="sublink_frame" ng-if="menu_data">
+	<li ng-repeat="sub_menu in menu_data.sub_menu"><a href="javascript:void(0);" ng-click="onMenuEvent(sub_menu)">{{sub_menu.name | translate }}</a></li>
+</ul>

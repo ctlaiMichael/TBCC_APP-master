@@ -1,0 +1,28 @@
+<section *ngIf="!showContent; else contentBox" paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+
+    <div class="sub_info_frame">
+        <p class="sub_info_list">
+            <i class="sub_info_title">借貸總額度：</i>
+            <span class="sub_info_content">{{ totalAmount | htMoney }}</span>
+        </p>
+        <p class="sub_info_list">
+            <!-- 查詢時間：  -->
+            <i class="sub_info_title">{{ 'FIELD.SEARCH_TIME' | translate }}：</i>
+            <span class="sub_info_content">{{dataTime|htDate}}</span>
+        </p>
+    </div>
+
+    <!-- Page1 -->
+    <app-loan-inquiry-paginator [page]="1" (backPageEmit)="onBackPage($event)" (errorPageEmit)="onErrorBackEvent($event)">
+    </app-loan-inquiry-paginator>
+    <!-- Page other -->
+    <ng-container #pageBox></ng-container>
+    <!-- 查無資料 -->
+    <div class="sub_info_subtitle" *ngIf="showEmpty">{{ 'ERROR.EMPTY' | translate }}</div>
+</section>
+<!-- 內容頁 -->
+
+<ng-template #contentBox>
+    <!-- <app-loan-detail-mainpage [acctObj]="acctObj" [setData]="content_data"></app-loan-detail-mainpage> -->
+    <app-loan-detail-mainpage [acctObj]="acctObj" (backPageEmit)="onBackPage($event)"></app-loan-detail-mainpage>
+</ng-template>

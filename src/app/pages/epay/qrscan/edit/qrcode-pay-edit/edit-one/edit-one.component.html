@@ -1,0 +1,232 @@
+<section>
+	<div class="sub_info_frame">
+		<ul class="step_bar_frame">
+			<li class="step_bar step_active"><span>1.填寫資料</span></li>
+			<li class="step_bar"></li>
+		</ul>
+	</div>
+
+	<div class="row_single"></div>
+
+	<!-- 金融卡信用卡切換-->
+	<div *ngIf='isEmv' class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				<div *ngIf="'1' == selectedItem">
+					<!-- card-logo -->
+					<ng-container *ngIf="'CARD' == iconFlag">
+						<img src="assets/images/epay/logo.png" style="height: 30px;">
+					</ng-container>
+				</div>
+				<!-- visa-logo -->
+				<div *ngIf="'2' == selectedItem">
+					<ng-container *ngIf="'VISA' == iconFlag">
+						<img src="assets/images/epay/visa_logo.png" style="height: 30px;">
+					</ng-container>
+					<!-- master-logo -->
+					<ng-container *ngIf="'MASTER' == iconFlag">
+						<img src="assets/images/epay/MasterCard_Logo.png" style="height: 30px;">
+					</ng-container>
+					<!-- jcb-logo -->
+					<ng-container *ngIf="'JCB' == iconFlag">
+						<img src="assets/images/epay/JCB_logo.png" style="height: 30px;">
+					</ng-container>
+				</div>
+			</li>
+			<li class="inner_table_cell">
+				<div *ngIf="'1' == selectedItem">
+					<select class="inner_select" (change)="onType($event)">
+						<option value="1" *ngIf="defaultTrnsOutAcct!=''">{{defaultTrnsOutAcct}}</option>
+						<option value="2" *ngIf="defaultTrnsCard!=''">{{defaultTrnsCard | emvCardMask}}</option>
+					</select>
+				</div>
+				<div *ngIf="'2' == selectedItem">
+					<select class="inner_select" (change)="onType($event)">
+						<option value="2" *ngIf="defaultTrnsCard!=''">{{defaultTrnsCard | emvCardMask}}</option>
+						<option value="1" *ngIf="defaultTrnsOutAcct!=''">{{defaultTrnsOutAcct}}</option>
+					</select>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- 金融卡信用卡切換-->
+
+	<!-- 金融卡 -->
+	<div *ngIf="'1' == selectedItem">
+		<ng-container *ngIf="meansTransactionMoney">
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable">
+					<li class="inner_table_cell">
+						特店名稱:
+					</li>
+					<li class="inner_table_cell">
+						<input value="{{qrcodeObj.merchantName}}" type="text" class="inner_input">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame"
+					[ngClass]="(disableOrderNumberInput==true)?'normal_disable':(errorMsg['billNumber']?'active_warnning':'')">
+					<li class="inner_table_cell">
+						訂單編號：
+					</li>
+					<li class="inner_table_cell">
+						<input *ngIf='!disableOrderNumberInput' [(ngModel)]='form.orderNumber' type="text"
+							class="inner_input" placeholder="請輸入訂單編號">
+						<input *ngIf='disableOrderNumberInput' value="{{form.orderNumber}}" type="text"
+							class="inner_input">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.billNumber}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame"
+					[ngClass]="(disableAmountInput==true)?'normal_disable':(errorMsg['transactionAmout']?'active_warnning':'')">
+					<li class="inner_table_cell">
+						交易金額：
+					</li>
+					<li class="inner_table_cell">
+						<input *ngIf='!disableAmountInput' [(ngModel)]='form.trnsAmount' type="text" class="inner_input"
+							placeholder="請輸入交易金額">
+						<input *ngIf='disableAmountInput' value="{{form.trnsAmount}}" type="text" class="inner_input">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.transactionAmout}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable">
+					<li class="inner_table_cell">
+						交易帳號：
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" value="{{form.trnsfrOutAcct}}" class="inner_input">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame" [ngClass]="noBarcode=='Y'?'normal_disable':''">
+					<li class="inner_table_cell">
+						發票載具:
+					</li>
+					<li class="inner_table_cell" *ngIf="noBarcode=='N'">
+						<select class="inner_select" (change)="changeBarcode($event)">
+							<option *ngFor='let item of barcode' value="{{item.key}}">{{item.name}}</option>
+						</select>
+					</li>
+					<li class="inner_table_cell" *ngIf="noBarcode=='Y'" (click)="getBarcode()">
+						<input type="text" class="inner_input" placeholder="手機條碼登入">
+					</li>
+				</ul>
+			</div>
+		</ng-container>
+	</div>
+	<!-- 金融卡 -->
+
+	<!-- 信用卡 -->
+	<!-- 信用卡卡號 fq000101-res defaultTrnsCard-->
+	<div *ngIf="'2' == selectedItem">
+		<ng-container *ngIf='meansTransactionCard'>
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable">
+					<li class="inner_table_cell">
+						店家名稱:
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" value="{{cardData.merchantNameByLang}}">
+					</li>
+				</ul>
+			</div>
+			<ng-container *ngIf="disablebillNumberInput">
+				<div class="row_single">
+					<ul class="inner_table_frame"
+						[ngClass]="(disablebillNumberInput==true)?'normal_disable':(errorMsg['billNumber']?'active_warnning':'')">
+						<li class="inner_table_cell">
+							訂單編號：
+						</li>
+						<li class="inner_table_cell">
+							<input *ngIf='!disablebillNumberInput' [(ngModel)]='cardData.billNumber' type="text"
+								class="inner_input" placeholder="請輸入訂單編號">
+							<input *ngIf='disablebillNumberInput' value="{{cardData.billNumber}}" type="text"
+								class="inner_input">
+						</li>
+					</ul>
+					<i class="input_info_warnning">{{errorMsg.billNumber}}</i>
+				</div>
+			</ng-container>
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable">
+					<li class="inner_table_cell">
+						幣別：
+					</li>
+					<li class="inner_table_cell">
+						<input type="text" class="inner_input" placeholder="新台幣">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame"
+					[ngClass]="(disableAmountInput==true)?'normal_disable':(errorMsg['transactionAmout']?'active_warnning':'')">
+					<li class="inner_table_cell">
+						交易金額：
+					</li>
+					<li class="inner_table_cell">
+						<input *ngIf='!disableAmountInput' [(ngModel)]='cardData.transactionAmout' type="text"
+							class="inner_input" placeholder="請輸入轉帳金額">
+						<input *ngIf='disableAmountInput' value="{{cardData.transactionAmout}}" type="text"
+							class="inner_input">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.transactionAmout}}</i>
+			</div>
+			<div class="row_single">
+				<ul class="inner_table_frame normal_disable">
+					<li class="inner_table_cell">
+						交易卡號
+					</li>
+					<li class="inner_table_cell">
+						<input value="{{trnsfrOutCard | emvCardMask}}" type="text" class="inner_input">
+					</li>
+				</ul>
+			</div>
+			<div class="row_single" *ngIf="mobileNumberDisply">
+				<ul class="inner_table_frame"
+					[ngClass]="(disablemobileNumberInput==true)?'normal_disable':(errorMsg['mobileNumber']?'active_warnning':'')">
+					<li class="inner_table_cell">
+						手機號碼:
+					</li>
+					<li class="inner_table_cell">
+						<input *ngIf='!disablemobileNumberInput' [(ngModel)]='cardData.mobileNumber' type="text"
+							class="inner_input" placeholder="請輸入手機號碼">
+						<input *ngIf='disablemobileNumberInput' [(ngModel)]='cardData.mobileNumber' type="text"
+							class="inner_input">
+					</li>
+				</ul>
+				<i class="input_info_warnning">{{errorMsg.mobileNumber}}</i>
+			</div>
+		</ng-container>
+	</div>
+	<!-- 信用卡 -->
+
+	<!-- 空控機制-->
+	<div class="row_single">
+		<ul class="inner_table_frame">
+			<li class="inner_table_cell">
+				目前轉帳機制：
+			</li>
+			<li class="inner_table_cell">
+				<select class="inner_select" (change)="onChangeSecurity(selectSecurityType)" [(ngModel)]="selectSecurityType">
+					<option *ngFor="let item of securityTypes" [ngValue]="item">{{item.name}}</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+	<!-- 空控機制-->
+
+	<div class="row_single">
+		<div class="double_button">
+			<a href="javascript:void(0)" (click)="clickCancel()">{{'BTN.CANCEL' | translate }}</a>
+			<a href="javascript:void(0)" (click)="clickSubmit()">{{'BTN.CHECK' | translate }}</a>
+		</div>
+	</div>
+
+</section>

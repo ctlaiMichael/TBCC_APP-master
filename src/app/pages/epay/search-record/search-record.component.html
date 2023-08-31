@@ -1,0 +1,252 @@
+<section>
+    <!-- 查詢頁 -->
+    <ng-container *ngIf="twoPage && !showQrcode">
+        <div class="row_single">
+            <h4 class="simple_title">請選擇查詢區間</h4>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    查詢起日
+                </li>
+                <li class="inner_table_cell">
+                    <input-date [min]="queryMinDate" [max]="queryMaxDate" [(ngModel)]="inp_data.startDate"></input-date>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <ul class="inner_table_frame">
+                <li class="inner_table_cell">
+                    查詢迄日
+                </li>
+                <li class="inner_table_cell">
+                    <input-date [min]="queryMinDate" [max]="queryMaxDate" [(ngModel)]="inp_data.endDate"></input-date>
+                </li>
+            </ul>
+        </div>
+        <div class="row_single">
+            <dl class="inner_table_double">
+                <dt class="inner_cell_double epay_search_record">
+                    <ul class="inner_table_frame">
+                        <li class="inner_table_cell">
+                            類別
+                        </li>
+                        <li class="inner_table_cell">
+                            <select name="" id="" class="inner_select" (change)="onChange($event)">
+                                <option *ngFor='let qr of qrTrnsType' value="{{qr.Type}}">{{qr.Name}}</option>
+                            </select>
+                        </li>
+                    </ul>
+                </dt>
+            </dl>
+        </div>
+        <div class="row_single clickConfirm">
+            <dl class="inner_table_double">
+                <dt class="inner_cell_double">
+                    <a href="javascript:void(0)" class="inner_button bt_100" (click)='onWeek()'>
+                        <span>近一週</span>
+                    </a>
+                </dt>
+                <dt class="inner_cell_double clickConfirm">
+                    <a href="javascript:void(0)" class="inner_button bt_100" (click)='onMonth()'>
+                        <span>近一月</span>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+        <div class="row_single clickConfirm">
+            <a (click)='sendFQ000304()' href="javascript:void(0);" class="button_confirm">查詢</a>
+        </div>
+        <div class="row_single">
+            <h4 class="simple_title">提醒您</h4>
+        </div>
+        <div class="row_single">
+            <div class="inner_content">
+                <ol class="order_list">
+                    <li>退款:須先選擇原交易紀錄後，出示退款碼辦理。</li>
+                    <li>本查詢保留近一年的交易紀錄。</li>
+                    <li>每次查詢區間不得超過兩個月。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 查詢結果 -->
+        <ng-container *ngIf='!onePage'>
+            <div class="sub_info_subtitle">
+                <!-- 查詢區間： -->
+                {{ 'FIELD.SEARCH_RANGE' | translate }}：
+                <span>{{ 'FIELD.SEARCH_RANGE_DATA' | translate:show_date }}</span>
+                <br>
+            </div>
+            <div class="table_four_hl">
+                <!-- 標題Start -->
+                <div class="table_four_hl_tr">
+                    <p class="table_four_hl_th" (click)="sortTrnsDate()">交易日期 {{sortDateSignal}}</p>
+                    <p class="table_four_hl_th" (click)="sortTrnsAcct()">交易帳號 {{sortAcctSignal}}</p>
+                    <p class="table_four_hl_th">交易金額</p>
+                    <p class="table_four_hl_th"></p>
+                </div>
+                <!-- 標題 //End -->
+                <!-- 列表start -->
+                <ng-container *ngIf="hasData">
+                <!-- <ng-container *ngIf="hasData ; else noDataBox"> -->
+                    <div class="table_four_hl_tr" (click)="twoPageChange(detail)" *ngFor='let detail of details'>
+                        <p class="table_four_hl_td epay_search_record">
+                            {{detail.trnsDate | htDate: 'MM/dd'}}<br>
+                            {{'EPAY.TRNSTYPE.' + detail.trnsType |translate}}<br>
+                        </p>
+                        <p class="table_four_hl_td epay_search_record">
+                            {{(detail.trnsAcct_trim)}}<br>
+                            <ng-container *ngIf="detail.trnsType == '1' || detail.trnsType == '6'">
+                                {{trimStoreName(detail.storeName)}}
+                            </ng-container>
+                        </p>
+                        <p class="table_four_hl_td epay_search_record">
+                            {{detail.trnsAmount | htMoney:'TWD'}}
+                        </p>
+                        <p class="table_four_hl_td">
+                            <a href="javascript:void('0')" class="arrow_link"></a>
+                        </p>
+                    </div>
+                </ng-container>
+
+
+
+            </div>
+            <!-- <ng-template #noDataBox> -->
+            <ng-container *ngIf="!hasData ">
+                <div class="sub_info_subtitle" style="background: none">
+                    <p class="" style="font-size: 20px;text-align: center; color: red;margin-top: 10px;">
+                        {{ 'ERROR.EMPTY' | translate }}</p>
+                </div>
+                <!-- </ng-template> -->
+            </ng-container>
+        </ng-container>
+
+    </ng-container>
+
+    <ng-container *ngIf="!twoPage && !showQrcode && resultPage==false">
+        <ul class="table_info">
+            <li class="table_row">
+                <span>交易序號</span>
+                <i>{{detail.trnsNo}}</i>
+            </li>
+            <li class="table_row">
+                <span>交易時間</span>
+                <i>{{detail.trnsDate | htDate}}</i>
+            </li>
+            <li class="table_row" *ngIf="detail.mode==0 && detail.feeType != '3'">
+                <span>付款方式</span>
+                <i *ngIf="isCard==false">帳戶扣款</i>
+                <i *ngIf="isCard==true">信用卡</i>
+            </li>
+            <!-- 電費特規，判斷 feeType == '3',舊code無此判斷 Start-->
+            <li class="table_row" *ngIf="detail.feeType == '3';">
+                <span>繳款類別</span>
+                <i>{{feeTypetoString}}</i>
+            </li>
+            <!-- End -->
+            <li class="table_row" *ngIf="detail.mode==0 && detail.feeType !='3'">
+                <span>{{storeNameTitle}}</span> <!-- 店家名稱or繳款類別 -->
+                <i>{{detail.storeName}}</i>
+            </li>
+            <li class="table_row" *ngIf="detail.mode==0 && isCard==false && detail.feeType != '3'">
+                <span>訂單編號</span>
+                <i>{{detail.orderNo}}</i>
+            </li>
+            <!---191224信卡格式化遮碼-->
+            <li class="table_row" *ngIf="isCard==false">
+                <span >交易帳號</span>
+            <i>{{detail.trnsAcct | accountMask1}}</i>
+            </li>
+            <li class="table_row" *ngIf="isCard">
+            <span >交易卡號</span>
+                <i>{{detail.trnsAcct | cardMask1}}</i>
+            </li>
+            <ng-container *ngIf="detail.feeType == '3';">
+                <li class="table_row" *ngFor="let taiPowerFeeone of taiPowerFee;">
+                    <span>{{taiPowerFeeone[0]}}</span>
+                    <i>{{taiPowerFeeone[1] | htMoney:'TWD'}}元<br>
+                        ({{taiPowerFeeone[2]}})
+                    </i>
+                </li>
+            </ng-container>
+            <li class="table_row">
+                <span>交易金額</span>
+                <i>{{detail.trnsAmount | htMoney:'TWD'}}元</i>
+            </li>
+            <li class="table_row" *ngIf="isCard">
+                <span>交易授權碼</span>
+                <i>{{detail.authCode}}</i>
+            </li>
+
+            <li class="table_row">
+                <span>交易狀態</span>
+                <i>{{'EPAY.status.' +detail.status |translate}}</i>
+            </li>
+        </ul>
+        <div (click)="backChange()" class="row_single" style="margin-top:20px" *ngIf="!showQrBtn">
+            <a class="button_confirm">返回</a>
+        </div>
+        <div class='row_single' style="margin-top:20px" *ngIf="showQrBtn">
+            <div class='double_button'>
+                <a (click)="showRefund()">出示退款碼</a>
+                <a (click)="backChange()">返回</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- 出示退款碼 -->
+    <span class="display" *ngIf="showQrcode">
+        <div style="text-align:right;padding: 10px 20px;" id="time">{{timeLeft}}秒</div>
+        <!-- qrcode放大 -->
+        <div *ngIf="showBigQrCode"
+            style="text-align: center; position: fixed; z-index: 999; width: 100vw; height: 100vh; background: rgb(255, 255, 255);"
+            (click)="showBigQrCode = false;">
+            <qr-code [value]="qrcode" [size]="350"></qr-code>
+        </div>
+          <!-- barcode放大 -->
+        <div *ngIf="showBigbarcode"
+          style="text-align: center; position: fixed; z-index: 999; width: 100vw; height: 100vh; background: rgb(255, 255, 255);"
+          (click)="showBigbarcode = false;">
+          <ngx-barcode [bc-value]="barcode"  [bc-display-value]="false"  [bc-width]="1" [bc-format]="'CODE128'"></ngx-barcode>
+        </div>
+
+        <div class="row_single">
+            <div class="main_info_block">
+                <div class="main_info_innerblock">
+                    <!-- 主畫面塊狀區-標題 -->
+                    <div style="text-align: center; position: relative;">
+                        <img style="width:140px;" src="assets/images/icons/logocmyk-02.png">
+                    </div>
+                    <div style="position: relative;">
+                        <!-- qrcode中間圖示
+            <div style="text-align: center; position: inherit; top: 100px;" (click)="showBigQrcode()">
+              <img style="width:40px;" src="assets/images/icons/tcbicon.png">
+            </div> -->
+                        <div (click)="showBigQrCode = true;" style="text-align: center">
+                            <qr-code [value]="qrcode" [size]="150"></qr-code>
+                        </div>
+                    </div>
+                    <!-- 主畫面塊狀區-標題 //End -->
+                    <div style="text-align: center;font-size: 12px">
+                        點圖放大
+                    </div>
+                    
+                    <div style="text-align: center" (click)="showBigbarcode=true;">
+                        <ngx-barcode [bc-value]="barcode" [bc-display-value]="false" [bc-height]="70" [bc-width]="0.8" [bc-format]="'CODE128'" style="text-align: center;">
+                        </ngx-barcode>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </span>
+
+    <!-- 結果頁 Start -->
+    <ng-container *ngIf="resultPage">
+        <!-- 結果頁 -->
+        <app-edit-result-temp [setData]="resultData"></app-edit-result-temp>
+    </ng-container>
+    <!-- 結果頁 End -->
+</section>

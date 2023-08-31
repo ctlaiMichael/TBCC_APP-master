@@ -1,0 +1,37 @@
+<section>
+    <div style="text-align: center;">
+        <img src="assets/images/header_logo_green.png" height="32px">
+    </div>
+    <div class="row_single"></div>
+    <div class="row_single"></div>
+    <!-- <div class="agreement_height">
+  <div class="login_navigation">
+      <img src="modules/login/image/header_logo_green.png" height="32px">
+  </div>
+  <div class="login_navigation2">
+  </div>
+  <div class="agreement_title">
+      <h2>跨境電子支付交易-身分認證程序</h2>
+  </div>
+  <div class="agreement_text">
+      <p>茲因辦理跨境電子支付交易之需要，本人同意貴行向財團法人金融聯合徵信中心查詢本人之“電子支付帳戶使用者通報案件及加強身分確認註記資料(電腦代號P33)"。
+      </p>
+
+  </div>
+  <div class="agreement_checkbox" id="first_agree" ng-model="first_agree">
+      <div class="agreement_checkbox_input">
+          <input type="checkbox" id="first_check">
+      </div>
+      <div class="agreement_check_text" >
+          <p>我已了解並同意上述內容。</p>
+      </div>
+  </div>
+  <div class="agreement_button">
+      <button class="first_leftbtn" ng-click="clickSubmit()">同意</button>
+      <button class="first_rightbtn" ng-click="clickBack()">不同意</button>
+  </div>
+
+</div> -->
+
+    <app-bound-agree-content (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-bound-agree-content>
+</section>

@@ -1,0 +1,122 @@
+<!-- 第二層(tag控制) -->
+<section paginatorCtrl [nowPage]="pageCounter" [totalPages]="totalPages" (scrollEvent)="onScrollEvent($event)">
+
+    <ng-container *ngIf="!goQuery">
+        <div class="sub_info_frame">
+            <p class="sub_info_list">
+                <i class="sub_info_title">產品代號</i>
+                <span class="sub_info_content ">{{inputData.fundCode}}</span>
+            </p>
+            <p class="sub_info_list">
+                <i class="sub_info_title">基金名稱</i>
+                <span class="sub_info_content" (click)='goWeb()'>{{inputData.fundName}} ({{inputData.riskRank}})</span>
+            </p>
+            <p class="sub_info_list">
+                <i class="sub_info_title">交易編號</i>
+                <span class="sub_info_content">{{inputData.transCode}}</span>
+            </p>
+            <ng-container *ngIf="fundType == ''; else fundTypeBox">
+                <p class="sub_info_list">
+                    <i class="sub_info_title">信託業務別</i>
+                    <span class="sub_info_content">- -</span>
+                </p>
+            </ng-container>
+
+            <ng-template #fundTypeBox>
+                <p class="sub_info_list">
+                    <i class="sub_info_title">信託業務別</i>
+                    <span class="sub_info_content">{{fundType}}</span>
+                </p>
+            </ng-template>
+        </div>
+
+        <!-- 頁籤 Start -->
+        <app-bookmark [setData]="bookmarkData" [defaultKey]="default" (backPageEmit)="onBookMarkBack($event)">
+        </app-bookmark>
+        <!-- 頁籤 End -->
+        <ng-container *ngIf="nowPageType === 'summary'; else detailBox">
+            <!-- 損益 -->
+            <app-fund-detail-loss [lossData]="inputData" (backPageEmit)="onPageBackEvent($event)" (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-loss>
+        </ng-container>
+
+        <ng-template #detailBox>
+            <!-- 自訂搜尋box -->
+            <app-date-range-search [show]="showSearchBox" [dateObj]="searchBoxRule" [infoData]="searchInfoData"
+                (backPageEmit)="onSearchBack($event)"></app-date-range-search>
+            <!-- 自訂 -->
+            <div class="sub_info_subtitle font_align_left" *ngIf="detailReqObj.show">
+                <!-- 查詢區間： -->
+                <ng-container *ngIf="nowPageType !== 'custom'; else rangeBox;">
+                    {{ 'FIELD.SEARCH_RANGE' | translate }}：
+                    <span>{{ 'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}</span>
+                    <br>
+                </ng-container>
+                <ng-template #rangeBox>
+                    <a href="javascript:void(0);" class="search_range_btn mb_15" (click)="onChangePage('search-box')">{{
+                        'FIELD.SEARCH_RANGE_DATA' | translate:detailReqObj }}
+                        <i class="search_range_icon icon_search"></i>
+                    </a>
+                </ng-template>
+                <!-- 查詢時間：  -->
+                <!-- {{ 'FIELD.SEARCH_TIME' | translate }}：
+            <span>{{ dataTime | htDate}}</span> -->
+            </div>
+
+            <ng-container *ngIf="showDetailRow">
+                <div class="table_four_hl" id='fund_1'>
+                    <div class="table_four_hl_tr">
+                        <p class="table_four_hl_th">交易日期</p>
+                        <p class="table_four_hl_th">明細類別</p>
+                        <p class="table_four_hl_th">金額</p>
+                        <p class="table_four_hl_th"></p>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- Detail Start -->
+            <ul class="table_data_frame" *ngIf="detailReqObj.show">
+                <ng-container [ngSwitch]="nowPageType">
+                    <ng-container *ngSwitchCase="'7D'">
+                        <!-- 7D -->
+                        <app-fund-detail-transaction [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                            (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-transaction>
+                        <ng-container #pageBox7D></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'1M'">
+                        <!-- 1M -->
+                        <app-fund-detail-transaction [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                            (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-transaction>
+                        <ng-container #pageBox1M></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'12M'">
+                        <!-- 12M -->
+                        <app-fund-detail-transaction [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                            (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-transaction>
+                        <ng-container #pageBox12M></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'custom'">
+                        <!-- 自訂 -->
+                        <app-fund-detail-transaction [reqObj]="detailReqObj" [page]="'1'" (backPageEmit)="onPageBackEvent($event)"
+                            (errorPageEmit)="onErrorBackEvent($event)">
+                        </app-fund-detail-transaction>
+                        <ng-container #pageBox></ng-container>
+                    </ng-container>
+
+                    <ng-container *ngSwitchDefault>
+                        <!-- 不顯示 -->
+                    </ng-container>
+                </ng-container>
+            </ul>
+            <!-- Detail End -->
+        </ng-template>
+    </ng-container>
+</section>
+
+<!-- 查詢交易明細詳細資料 -->
+<ng-container *ngIf="goQuery">
+    <app-fund-detail-transaction-more [queryData]="queryData" [queryInfoData]="queryInfoData" (backPageEmit)="onPageBackEvent($event)"
+        (errorPageEmit)="onErrorBackEvent($event)"></app-fund-detail-transaction-more>
+</ng-container>

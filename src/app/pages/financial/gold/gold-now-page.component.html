@@ -1,0 +1,52 @@
+<ng-container *ngIf="showData; else noDataBox">
+
+	<div class="sub_info_subtitle font_align_left">
+		<!-- 掛牌時間 -->
+		{{ 'FIELD.FINANCIAL_TIME' | translate }}：{{ dataTime | htDate}}
+		<br>
+		<!-- 牌價幣別：新台幣（元）  -->
+		{{ 'PG_GOLD.RATE.FIELD.CURRENCY' | translate }}：{{ 'PG_FINANCIAL.FIELD.UNIT_TWD' | translate }}
+		<br>
+		<!-- 商品重量: 1公克  -->
+		{{ 'PG_GOLD.RATE.FIELD.WEIGHT' | translate }}：{{ 'PG_GOLD.RATE.BARS.1G' | translate }}
+		<a href="javascript:void(0)" class="gold_refresh_btn" (click)="onRegetEvent()"></a>
+	</div>
+
+	<!-- 黃金存摺即期內容 -->
+	<div class="table_gold_frame">
+		<div class="table_gold_row">
+			<!-- 黃金存摺 -->
+			<div class="table_gold_th">{{ 'PG_GOLD.RATE.FIELD.DEPOSIT' | translate }}</div>
+			<!-- 賣出 -->
+			<div class="table_gold_th">{{ 'PG_GOLD.RATE.FIELD.SELL' | translate }}</div>
+			<!-- 買進 -->
+			<div class="table_gold_th">{{ 'PG_GOLD.RATE.FIELD.BUY' | translate }}</div>
+		</div>
+		<div class="table_gold_row">
+			<div class="table_gold_td">{{gold_bankbook.name | translate }}</div>
+			<div class="table_gold_td font_money_blu">{{gold_bankbook.sell}}</div>
+			<div class="table_gold_td font_money_blu">{{gold_bankbook.buy}}</div>
+		</div>
+	</div>
+	<!-- 黃金條塊即期內容 -->
+	<div class="table_gold_frame">
+		<div class="table_gold_row">
+			<!-- 黃金條塊 -->
+			<div class="table_gold_th">{{ 'PG_GOLD.RATE.FIELD.BARS' | translate }}</div>
+			<!-- 賣出 -->
+			<div class="table_gold_th">{{ 'PG_GOLD.RATE.FIELD.SELL' | translate }}</div>
+			<!-- 黃金存摺轉換<br>條塊應補繳款 -->
+			<div class="table_gold_th" [innerHtml]="'PG_GOLD.RATE.FIELD.BALANCE' | translate"></div>
+		</div>
+		<div class="table_gold_row" *ngFor="let item of gold_bar">
+			<div class="table_gold_td" [innerHtml]="(item.name | translate) | safeHtml"></div>
+			<div class="table_gold_td font_money_blu">{{ item.sell }}</div>
+			<div class="table_gold_td font_money_blu">{{ item.balance }}</div>
+		</div>
+	</div>
+	<!-- 黃金存摺即期內容 end -->
+
+</ng-container>
+<ng-template #noDataBox>
+	<div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+</ng-template>

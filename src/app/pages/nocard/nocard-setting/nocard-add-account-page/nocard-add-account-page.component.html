@@ -1,0 +1,131 @@
+<!-- 新增/刪除帳號 -->
+<section>
+  <ng-container *ngIf="'originalPage' == showPage">
+  <!-- 進度條 -->
+  <div class="sub_info_frame" *ngIf="firstTime; else notFirstTime">
+    <ul class="step_bar_frame">
+      <li class="step_bar"></li>
+      <li class="step_bar step_active"><span>2.提款帳號新增</span></li>
+      <li class="step_bar"></li>
+    </ul>
+  </div>
+  <ng-template #notFirstTime>
+    <div class="sub_info_frame">
+      <ul class="step_bar_frame">
+        <li class="step_bar step_active"><span>1.提款帳號異動</span></li>
+        <li class="step_bar"></li>
+      </ul>
+    </div>
+  </ng-template>
+
+  <!-- 新增/取消 -->
+  <ul class="tab_table" *ngIf="!firstTime">
+    <li class="tab_two_cell">
+      <button class="tab_button" id="add" (click)="addList()"
+      [ngClass]="adding? 'active' : ''"
+      [disabled]="accountAddList.length > 0? false: true">
+        新增
+      </button>
+    </li>
+    <li class="tab_two_cell">
+      <button class="tab_button" id="remove" (click)="removeList()"
+      [ngClass]="cancel? 'active' : ''"
+      [disabled]="accountCancelList.length > 0? false: true"
+      >
+        取消
+      </button>
+    </li>
+  </ul>
+  <div id="addInput">
+    <!-- add part -->
+    <!--- 請選擇認證機制 新增帳號時才顯示--->
+    <div class="row_single"></div>
+    <div class="row_single_2" *ngIf="adding" >
+      <ul class="inner_table_frame">
+        <li class="inner_table_cell">
+          認證機制
+        </li>
+        <li class="inner_table_cell">
+          <input
+            type="text"
+            class="inner_input normal_disable"
+            id="authType"
+            [value]="verifyMethod"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="row_single">
+      <h4 class="simple_title">請選擇提款帳號</h4>
+    </div>
+
+    <!-- 新增帳號清單 -->
+    <form *ngIf="adding">
+      <div class="row_single" id="addAcctList">
+        <div class="inner_checkbox" *ngFor = "let item of accountAddList; let acctindex = index">
+            <input
+              type="checkbox"
+              id="checkbox_account{{acctindex}}"
+              name="subBox"
+              [value]="acctindex"
+              [checked]="item.checked"
+              (change)="selectAcctNo(item.account, acctindex)"
+            />
+            <label for="checkbox_account{{acctindex}}" style="display:inline;">
+            <span><i></i></span>
+            <b class="firstagree">{{ item.account | accountFormate }}</b>
+            </label>
+
+          <!-- type用text，不然最前面的0會被吃掉，patter、inputmode則是可能可以讓手機使用數字鍵盤輸入 -->
+          <br />
+          <input
+            *ngIf="isATM"
+            [ngClass]="item['errorMsgPwd']?'active_warnning':''"
+            id="pwd{{acctindex}}"
+            type="tel"
+            pattern="\d*"
+            class="nocard_input"
+            placeholder="請輸入手機設備認證碼"
+            maxlength="12"
+            name="pwd"
+            [(ngModel)]="item.pwd"
+          />
+        </div>
+      </div>
+    </form>
+
+    <!-- 刪除帳號清單 -->
+    <form *ngIf="!adding">
+      <div class="row_single" id="cancelAcctList">
+        <div class="inner_checkbox"  *ngFor = "let item of accountCancelList; let index = index">
+          <input
+            type="checkbox"
+            id="cancel_account{{index}}"
+            name="subBox"
+            [value]="acctindex"
+            [checked]="item.checked"
+            (change)="selectAcctNo(item.account, index)"/>
+            <label for="cancel_account{{index}}" style="display:inline;">
+            <span><i></i></span>
+            <!-- <b class="firstagree">{{ item.account | accountFormate }}</b> -->
+            <b class="firstagree">{{ item.accountStr}}</b>
+            </label>
+        </div>
+      </div>
+    </form>
+    <div class="row_single" id="otp_send">
+      <a class="button_confirm" id="next_step" (click)="nextStep()">
+        {{ "BTN.NEXT" | translate }}</a>
+    </div>
+  </div>
+</ng-container>
+
+<!-- 同意條款頁 -->
+<ng-container *ngIf="'agreementPage' == showPage">
+  <app-nocard-agreement-page (goToAdd)="goAddPage($event)" ></app-nocard-agreement-page>
+</ng-container>
+<!-- 確認頁 -->
+<ng-container *ngIf="'confirmPage' == showPage">
+  <app-nocard-confirm-page (backToAdd)="backAddPage($event)" [confirmData] = "editData"></app-nocard-confirm-page>
+</ng-container>
+</section>

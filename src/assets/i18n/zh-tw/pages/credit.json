@@ -1,0 +1,20 @@
+{
+	"PG_CREDIT": {
+		"ERROR": {
+			"ACCT_CONTENT": "很抱歉，您欲查詢的帳戶資訊不存在"
+		},
+		"LOAN": {
+			"FIELD": {
+
+			},
+			"DETAIL_TITLE": {
+				"TITLE1": "交易日",
+				"TITLE2": "摘要",
+				"TITLE3": "本金餘額"
+			},
+			"SEARCH_INFO": {
+				"INFO1": "輸入查詢之起始日期及終止日期，借款資料可查詢近兩年內資料。"
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"custId" : "",
+	"trnsfrOutAcct" : "",
+	"trnsfrInBank" : "",
+	"trnsfrInAcct" : "",
+	"trnsfrAmount" : "",
+	"notePayer" : "",
+	"notePayee" : "",
+	"trnsToken" : ""
+}

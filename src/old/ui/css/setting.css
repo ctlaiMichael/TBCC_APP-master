@@ -1,0 +1,128 @@
+/* body{
+  background-image: none;
+} */
+.setting_body{
+  background-image: url('../../modules/login/image/logo_bk_large.png');
+  background-position: -180px 220px;
+  background-repeat: no-repeat;
+}
+
+.navigation{
+    background-color: #009274;
+    height:70px;
+    letter-spacing: 2px;
+}
+
+.page-title{
+font-size: 20px;
+color: white;
+text-align: center;
+line-height: 70px;
+font-family: PingFangTC-Medium;
+}
+
+.navigation img{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top:2.4%;
+    
+}
+
+.column2{
+    border-left: #CCFF66 8px solid;
+    border-bottom:gainsboro 1px solid;
+    height: 52px;
+}
+
+.column2 h2{
+    float:left;
+    font-size: 15px;
+    font-family: PingFangTC-Medium;
+    color: #4A4A4A;
+    letter-spacing: 1.17px;
+    margin-left: 17px;
+    line-height: 52px;
+}
+
+.column{
+    height: 52px;
+    border-bottom:gainsboro 1px solid;
+
+}
+
+.column h2{
+    float:left;
+    font-size: 17px;
+    font-family: PingFangTC-Medium;
+    color: #4A4A4A;
+    letter-spacing: 1.17px;
+    margin-left: 25px;
+    line-height: 52px;
+    font-weight:bold;
+}
+.column input{
+    float: right;
+    margin-right: 14px;
+    height: 52px;
+    line-height: 52px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 21px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+  
+  .switch input {display:none;margin-top: 20px;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    top: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #009274;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #009274;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(18px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

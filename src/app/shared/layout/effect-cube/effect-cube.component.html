@@ -1,0 +1,12 @@
+<!-- Swiper -->
+<img style="width: 100vw; background-position: center; background-size: cover;" src="assets/images/banner.jpg"
+  *ngIf='!banners.length'>
+<div class="swiper-container swiper-ad-container">
+  <div class="swiper-wrapper">
+    <!-- <img class="swiper-slide" src="assets/images/banner.jpg" *ngIf='!banners.length'> -->
+    <img class="swiper-slide" *ngFor="let banner of banners"
+      [src]="_DomSanitizer.bypassSecurityTrustUrl(banner.BANNER_IMG)" (click)="clickBanner(banner)">
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination swiper-ad-pagination"></div>
+</div>

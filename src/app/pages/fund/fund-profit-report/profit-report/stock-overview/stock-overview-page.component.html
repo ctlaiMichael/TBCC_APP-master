@@ -1,0 +1,40 @@
+<div class="table_four_hl">
+    <!-- 標題Start -->
+    <div class="table_four_hl_tr">
+        <p class="table_four_hl_th">投資幣別</p>
+        <p class="table_four_hl_th">參考報酬率%</p>
+        <p class="table_four_hl_th"></p>
+    </div>
+
+    <!-- 列表 End  -->
+    <!-- 列表start -->
+    <div class="table_four_hl_tr" (click)="iconTable(item)" *ngFor="let item of data">
+        <p class="table_four_hl_td">
+            <i class="{{item.inCurrency|iconFlag}}"></i>{{item.inCurrency|iconFlag:'chineseName'}}({{item.inCurrency}})
+        </p>
+        <ng-container *ngIf="item.reward.substring(0,1) == '+'">
+            <p class="table_four_hl_td font_red">{{item.reward}}</p>
+        </ng-container>
+
+        <ng-container *ngIf="item.reward.substring(0,1) == '-'">
+            <p class="table_four_hl_td font_bl_gre">{{item.reward}}</p>
+        </ng-container>
+
+        <ng-container *ngIf="item.reward.substring(0,1) !== '+' && item.reward.substring(0,1) !== '-'">
+                <p class="table_four_hl_td">{{item.reward}}</p>
+        </ng-container>
+        <p class="table_four_hl_td">
+            <a href="javascript:void(0)" class="arrow_link"></a>
+        </p>
+    </div>
+
+    <!-- 列表 End  -->
+</div>
+<div class="row_single">
+    <h4 class="simple_title">提醒您</h4>
+</div>
+<div class="row_single">
+    <p class="inner_content">
+        請注意，本行特定金錢信託投資國內外共同基金均經金管會核准，惟並不表示該基金絕無風險，本行不負責基金之盈虧，亦不保證最低之收益，投資人應慎選投資標的，申購前應詳閱相關公開說明書及投資人須知等資料。
+    </p>
+</div>

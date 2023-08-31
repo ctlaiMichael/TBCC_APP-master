@@ -1,0 +1,98 @@
+{
+  "resHeader": {
+    "serviceId":"open.TwdRate",
+    "ediId" : "企業戶代碼",
+    "optId" : "使用者代碼",
+    "reqId" : "12345",
+    "reqDateTime" : "20160325123022879",
+    "resDateTime" : "20160325123023879",
+    "rtnCode" : "回應代碼",
+    "subCode" : "回應子代碼",
+    "rtnMsg" : "回應說明"
+  },
+  "rates": [
+    {
+      "groupName": "定期存款",
+      "groupDesc": "可讓您獲取更高的利息回報，您還可選擇每月取息或於定存到期時一次取息。",
+      "groupUnit": "(單位：年息%)",
+      "lastUpdate": "2016/04/08 12:33:35",
+      "details": [
+        {
+          "item": "一個月",
+          "fixed": "0.670",
+          "floatRate": "0.670"
+        },
+        {
+          "item": "二個月",
+          "fixed": "0.670",
+          "floatRate": "0.670"
+        },
+        {
+          "item": "三個月",
+          "fixed": "0.730",
+          "floatRate": "0.730"
+        },
+        {
+          "item": "四個月",
+          "fixed": "0.730",
+          "floatRate": "0.730"
+        },
+        {
+          "item": "五個月",
+          "fixed": "0.730",
+          "floatRate": "0.730"
+        },
+        {
+          "item": "六個月",
+          "fixed": "0.850",
+          "floatRate": "0.880"
+        },
+        {
+          "item": "七個月",
+          "fixed": "0.850",
+          "floatRate": "0.880"
+        },
+        {
+          "item": "八個月",
+          "fixed": "0.850",
+          "floatRate": "0.880"
+        },
+        {
+          "item": "九個月",
+          "fixed": "0.980",
+          "floatRate": "0.1010"
+        },
+        {
+          "item": "十個月",
+          "fixed": "0.980",
+          "floatRate": "0.1010"
+        },
+        {
+          "item": "十一個月",
+          "fixed": "0.980",
+          "floatRate": "0.1010"
+        },
+        {
+          "item": "一年期",
+          "fixed": "1.125",
+          "floatRate": "1.135"
+        },
+        {
+          "item": "十三個月",
+          "fixed": "1.125",
+          "floatRate": "1.135"
+        },
+        {
+          "item": "二年期",
+          "fixed": "1.090",
+          "floatRate": "1.160"
+        },
+        {
+          "item": "三年期",
+          "fixed": "1.070",
+          "floatRate": "1.160"
+        }
+      ]
+    }
+  ]
+}

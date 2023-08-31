@@ -1,0 +1,28 @@
+<div class="sub_info_frame result">
+    <div class="step_final_icon_frame">
+        <i class="icon_success"></i>
+        <span class="step_final_info">交易成功</span>
+    </div>
+</div>
+<ul class="table_info">
+    <li class="table_row">
+        <span>交易時間</span>
+        <i>{{( resultObj | fieldCheck: ['trnsDateTime' ,{zero_type:false, empty_str:'--'}] ) | htDate}}</i>
+    </li>
+    <li class="table_row">
+        <span>定存帳號</span>
+        <i>{{(resultObj | fieldCheck: ['fDAccount' ,{zero_type:false, empty_str:'--'}])| accountFormate}}</i>
+    </li>
+    <li class="table_row">
+        <span>綜存帳號</span>
+        <i>{{(resultObj | fieldCheck: ['mBAccount' ,{zero_type:false, empty_str:'--'}])| accountFormate}}</i>
+    </li>
+    <li class="table_row">
+        <span>交易金額</span>
+        <i>{{ (resultObj | fieldCheck:['balance' ,{zero_type:false, empty_str:'--'}]) | currencyMoney:'TWD'}}</i>
+    </li>
+</ul>
+<div class="row_single"></div>
+<div class="row_single">
+    <a href="javascript:void('0')" class="button_confirm" (click)="goMenu()">{{'BTN.CHECK' | translate }}</a>
+</div>

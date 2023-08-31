@@ -1,0 +1,17 @@
+<div class="row_single">
+    <h4 class="simple_title">{{title|translate}}</h4>
+</div>
+<div class="row_single inner_scroll_content">
+    <div class="inner_content" [innerHtml]="content | safeHtml "></div>
+</div>
+<div class="row_single" *ngIf="!doubleButton; else DoubleButtonBox">
+    <a href="javascript:void(0)" class="button_confirm" (click)="onClickEvent()">{{btnTitle|translate}}</a>
+</div>
+<ng-template #DoubleButtonBox>
+    <div class="row_single">
+        <div class="double_button">
+            <a href="javascript:void(0)" class="" (click)="onCancleEvent()">{{btnCancleTitle|translate}}</a>
+            <a href="javascript:void(0)" class="" (click)="onClickEvent()">{{btnTitle|translate}}</a>
+        </div>
+    </div>
+</ng-template>

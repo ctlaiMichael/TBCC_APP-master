@@ -1,0 +1,69 @@
+<ng-container *ngIf="showData ; else noDataBox">
+    <ng-container *ngFor="let item of data;">
+        <li class="table_data" expandList>
+            <!-- 交易日: transDate -->
+            <span class="data_cell">{{ ((item | fieldCheck: 'transDate') | htDate: 'MM/dd')}}</span>
+            <!-- 摘要: digest  -->
+            <i class="data_cell">{{ item | fieldCheck: 'digest'}}</i>
+            <!-- 支出/存入 -->
+            <b class="data_cell" depositAmount [data]="item"></b>
+            <s class="data_cell">
+                <button class="sub_open"></button>
+            </s>
+        </li>
+        <div class="sub_open_info_frame" style="overflow: hidden;">
+            <dl class="sub_open_info">
+                <!-- 交易時間: transDate + transTime -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.transTime' | translate }}</span>
+                    <span>{{ (item['transDate'] + item['transTime'] | htDate )}}</span>
+                    <span></span>
+                </dt>
+                <!-- 支票號碼: checkNumber -->
+                <dt class="sub_open_row" *ngIf="!!item.checkNumber && item.checkNumber.length > 0">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.checkNumber' | translate }}</span>
+                    <span>{{ item | fieldCheck: 'checkNumber'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 結餘金額: balance1 -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.balance' | translate }}</span>
+                    <span>{{ (item | fieldCheck: 'balance1') | htMoney}}</span>
+                    <span></span>
+                </dt>
+                <!-- 交易行庫: rcvBankName -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.rcvBankName' | translate }}</span>
+                    <span>{{ (item | fieldCheck: 'rcvBankName') | branchName: false}}</span>
+                    <span></span>
+                </dt>
+                <!-- 備註: remarks -->
+                <dt class="sub_open_row">
+                    <span></span>
+                    <span>{{ 'PG_DEPOSIT.FIELD.remarks' | translate }}</span>
+                    <span>{{ item | fieldCheck: 'remarks'}}</span>
+                    <span></span>
+                </dt>
+                <!-- 財金跨行附言欄: textMark -->
+                <dt class="sub_open_row" *ngIf="!!item.textMark && item.textMark.length > 0">
+                    <span></span>
+                    <span style="min-width: 74px;">{{ 'PG_DEPOSIT.FIELD.textMark' | translate }}</span>
+                    <span>{{ item | fieldCheck: 'textMark'}}</span>
+                    <span></span>
+                </dt>
+            </dl>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #noDataBox>
+    <li class="table_data">
+        <span class="data_cell" [ngClass]="{'msg_active': (showError != '')}">
+            {{ 'ERROR.EMPTY' | translate }}
+            <ng-container *ngIf="showError !== ''"><br>{{ showError | translate }}</ng-container>
+        </span>
+    </li>
+</ng-template>

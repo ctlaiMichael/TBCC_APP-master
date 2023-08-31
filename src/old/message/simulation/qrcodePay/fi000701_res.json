@@ -1,0 +1,59 @@
+{
+    "sch:MNBResponse": {
+        "@xmlns:sch": "http://mnb.hitrust.com/service/schema",
+        "sch:resHeader": {
+            "sch:requestNo": "1481860700840-fi000701",
+            "sch:requestTime": "2016-12-13T18:27:40.500+08:00",
+            "sch:responseTime": "2016-12-13T18:27:40.671+08:00",
+            "sch:custId": "F121374529"
+        },
+        "sch:result": {
+            "@xsi:type": "fi0:fi000701ResultType",
+            "@xmlns:fi0": "http://mnb.hitrust.com/service/schema/fi000701",
+            "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "fi0:custId": "F121374529",
+            "fi0:details": {
+                "fi0:detail": [
+                  {
+                    "fi0:fundCode": "0802",
+                    "fi0:fundName": "富蘭克林坦伯頓成長基金",
+                    "fi0:investType": "2",
+                    "fi0:investDesc": "單筆",
+                    "fi0:iNCurrency": "USD",
+                    "fi0:invenAmount": "1000",
+                    "fi0:transCode": "CA000053475",
+                    "fi0:trustAcnt": "0600888007480",
+                    "fi0:debitStatus": ""
+                  },{
+                    "fi0:fundCode": "0602",
+                    "fi0:fundName": "寶來全球新興市場精選組合基金",
+                    "fi0:investType": "2",
+                    "fi0:investDesc": "單筆",
+                    "fi0:iNCurrency": "USD",
+                    "fi0:invenAmount": "5000",
+                    "fi0:transCode": "AA000053475",
+                    "fi0:trustAcnt": "0800888007480",
+                    "fi0:debitStatus": "T"
+                  },{
+                    "fi0:fundCode": "0511",
+                    "fi0:fundName": "寶來亞洲精選組合基金",
+                    "fi0:investType": "1",
+                    "fi0:investDesc": "小額",
+                    "fi0:iNCurrency": "USD",
+                    "fi0:invenAmount": "3000",
+                    "fi0:transCode": "AS000053475",
+                    "fi0:trustAcnt": "0210888007480",
+                    "fi0:debitStatus": "S"
+                  }
+                ]
+              },
+              "sch:paginatedInfo": {
+                "sch:totalRowCount": "2",
+                "sch:pageSize": "1",
+                "sch:pageNumber": "0",
+                "sch:sortColName": "fundName",
+                "sch:sortDirection": "ASC"
+              }
+        }
+    }
+}

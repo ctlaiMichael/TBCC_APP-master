@@ -1,0 +1,33 @@
+<section>
+    <ng-container *ngIf="showData; else noDataBox">
+        <!-- 牌告日期 -->
+        <div class="sub_info_subtitle">
+            {{ 'FIELD.RATE_DATE' | translate }}：{{ dataTime| htDate: 'date' }}
+        </div>
+        <ul class="table_info table_th_style">
+            <li class="table_row">
+                <!-- 期間 -->
+                <span>{{ 'PG_FINANCIAL.BOND_RATE.FIELD.TITLE1' | translate }}</span>
+                <!-- R/P利率(年息)% -->
+                <i>{{ 'PG_FINANCIAL.BOND_RATE.FIELD.TITLE2' | translate }}</i>
+            </li>
+            <li class="table_row" *ngFor="let item of data">
+                <span>{{item | fieldCheck: ['duration',{zero_type:false, empty_str:'--'}]}}</span>
+                <i> {{(item | fieldCheck: 'rpRate')|htFinancial}}</i>
+            </li>
+        </ul>
+        <div class="row_single">
+            <!-- 提醒您： -->
+            <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+        </div>
+        <div class="row_single">
+            <!-- 1. 公債買賣斷交易利率參照櫃檯買賣中心最新報價，實際承作利率請洽本行財務部債票券科。 -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.BOND_RATE.INFO.INFO1' | translate }}</p>
+            <!-- 2. 本行財務部債票券科聯絡電話：(02)21738888分機2153或2156。 -->
+            <p class="inner_content">{{ 'PG_FINANCIAL.BOND_RATE.INFO.INFO2' | translate: {tel:tel.show_tel} }}</p>
+        </div>
+    </ng-container>
+    <ng-template #noDataBox>
+        <div class="sub_info_subtitle">{{ 'ERROR.EMPTY' | translate }}</div>
+    </ng-template>
+</section>

@@ -1,0 +1,135 @@
+<section>
+    <ng-container *ngIf="!showPreview">
+        <ng-container [ngSwitch]="nowPage">
+            <ng-container *ngSwitchCase="'page1'">
+                <div class="sub_info_subtitle2">
+                    身分證上傳(正面)
+                </div>
+                <div>
+                    <div (click)="chosePic('pic1')" class="upload_show">
+                        <img [src]="(!showPicData['pic1']) ? defaultImg : showPicData['pic1']" class="upload_pic">
+                    </div>
+                </div>
+                <div class="sub_info_subtitle2">
+                    身分證上傳(反面)
+                </div>
+                <div>
+                    <div (click)="chosePic('pic2')" class="upload_show">
+                        <img [src]="(!showPicData['pic2']) ? defaultImg : showPicData['pic2']" class="upload_pic">
+                    </div>
+                </div>
+                <div class="sub_info_subtitle2">
+                    財力證明文件上傳
+                </div>
+                <div>
+                    <div (click)="chosePic('pic3')" class="upload_show">
+                        <img [src]="(!showPicData['pic3']) ? defaultImg : showPicData['pic3']" class="upload_pic">
+                    </div>
+                </div>
+                <div class="sub_info_subtitle2">
+                    在職證明文件上傳
+                </div>
+                <div>
+                    <div (click)="chosePic('pic4')" class="upload_show">
+                        <img [src]="(!showPicData['pic4']) ? defaultImg : showPicData['pic4']" class="upload_pic">
+                    </div>
+                </div>
+                <div class="row_single"></div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack1()">{{ 'BTN.PREVIOUS' | translate }}</a>
+                        <a href="javascript:void(0)" (click)="onNext1()">{{ 'BTN.NEXT' | translate }}</a>
+                    </div>
+                </div>
+                <div class="row_single">
+                    <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        1.上傳檔案類型限JPG或PNG，每個檔案大小不可超過1MB，合計不得超過 4 MB。
+                        <br> 2.財力證明為最近三個月薪資證明、最近一年扣繳憑單或所得清單，擇一檢附。
+                        <br> 3.詳細內容依本行規定為主，本行保有貸款額度，適用利率與最後核貸與否之權利。
+                        <br> 4.如未收到您的上傳文件時，將由專人去電服務提醒，以傳真或文件上傳方式將文件補齊，感謝您的合作。
+                    </p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'page2'">
+                <div class="row_single">
+                    <h4 class='simple_title'>證明文件</h4>
+                </div>
+                <div class="sub_info_subtitle2">
+                    戶籍謄本或戶口名簿謄本上傳
+                </div>
+                <div>
+                    <div (click)="chosePic('pic5')" class="upload_show">
+                        <img [src]="(!showPicData['pic5']) ? defaultImg : showPicData['pic5']" class="upload_pic">
+                    </div>
+                </div>
+                <div class="sub_info_subtitle2">
+                    其他證明文件(如駕照、健保卡等)
+                </div>
+                <div>
+                    <div (click)="chosePic('pic6')" class="upload_show">
+                        <img [src]="(!showPicData['pic6']) ? defaultImg : showPicData['pic6']" class="upload_pic">
+                    </div>
+                </div>
+                <app-select-security (securityObj)="securityOptionBak($event)" [transactionObj]="transactionObj">
+                </app-select-security>
+                <!-- <ng-container *ngIf="showCheckSecurity">
+                    <app-check-security [securityObj]="securityObj" (stepObj)=stepBack($event)></app-check-security>
+                </ng-container> -->
+                <div class="row_single"></div>
+                <div class="row_single">
+                    <div class="double_button">
+                        <a href="javascript:void(0)" (click)="onBack2()">{{ 'BTN.PREVIOUS' | translate }}</a>
+                        <a href="javascript:void(0)" (click)="onNext2()">{{ 'BTN.CHECK' | translate }}</a>
+                    </div>
+                </div>
+                <!-- 2019/12/06 客戶更改需求，移除此按鈕 -->
+                <!-- <div class="row_single">
+                    <a href="javascript:void(0);" class="button_confirm" (click)="onLate()">稍後上傳</a>
+                </div> -->
+                <div class="row_single">
+                    <h4 class="simple_title">{{ 'FIELD.INFO_TITLE' | translate }}</h4>
+                </div>
+                <div class="row_single">
+                    <p class="inner_content">
+                        1.上傳檔案類型限JPG或PNG，每個檔案大小不可超過1MB，合計不得超過 4 MB。
+                        <br> 2.財力證明為最近三個月薪資證明、最近一年扣繳憑單或所得清單，擇一檢附。
+                        <br> 3.詳細內容依本行規定為主，本行保有貸款額度，適用利率與最後核貸與否之權利。
+                        <br> 4.如未收到您的上傳文件時，將由專人去電服務提醒，以傳真或文件上傳方式將文件補齊，感謝您的合作。
+                    </p>
+                </div>
+            </ng-container>
+            <!-- <ng-container *ngSwitchCase="'goResult'">
+                <app-main-upload-result></app-main-upload-result>
+            </ng-container> -->
+        </ng-container>
+    </ng-container>
+
+
+    <!-- 圖片預覽 -->
+    <ng-container *ngIf="showPreview">
+        <div class="pic_preview">
+            <div class="row_single">
+                <ng-container *ngIf="previewPic">
+                    <img [src]="previewPic">
+                </ng-container>
+            </div>
+            <div class="row_single"></div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="openCamera('photo')">開啟相簿</a>
+                    <a href="javascript:void(0)" (click)="openCamera('camera')">開啟相機</a>
+                </div>
+            </div>
+            <div class="row_single">
+                <div class="double_button">
+                    <a href="javascript:void(0)" (click)="delPic()">刪除圖片</a>
+                    <a href="javascript:void(0)" (click)="checkPic()">{{ 'BTN.CHECK' | translate }}</a>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>

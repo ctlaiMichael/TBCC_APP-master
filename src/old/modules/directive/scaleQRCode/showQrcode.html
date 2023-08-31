@@ -1,0 +1,35 @@
+
+<!--QRCode -->
+<qr text="genQRCode" ></qr>
+<!--QRCode end-->
+
+<!-- 跳出視窗 -->
+<div ng-if="onBigQRCode">
+    <div class="shadow" style="display: block;background: rgba(0, 0, 0, 0.8);" ng-click="clickBigQRCode(false)"></div>
+    <div class="pop_content">
+		<img ng-src="data:image/png;base64,{{outimg}}" style="width:95vw" ng-click="closeBigQRCode()" >
+    </div>
+</div>
+<!-- 跳出視窗 // End -->
+
+<style>
+    .pop_content {
+        /*此行指定放置廣告的div */
+        width: 100vw;
+        /*此行設定div的寬度*/
+        height: auto;
+        max-height: 80%;
+        overflow-y: auto;
+        /*此行設定div的高度*/
+        background-color: #1dff1d;
+        /*此行設定div的背景圖形*/
+        position: fixed;
+        /*此行設定div為不隨捲動而移動的模式*/
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+        width: 100vw;
+        padding: 10px;
+    }
+</style>
